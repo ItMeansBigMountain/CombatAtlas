@@ -172,9 +172,11 @@ hermes cron create SCHED    Create: '30m', 'every 2h', '0 9 * * *'
 hermes cron edit ID         Edit schedule, prompt, delivery
 hermes cron pause/resume ID Control job state
 hermes cron run ID          Trigger on next tick
-hermes cron remove ID       Delete a job
+hermes cron remove NAME     Delete a job
 hermes cron status          Scheduler status
 ```
+
+Cron script pitfall: script paths are relative to `~/.hermes/scripts/`; absolute paths are rejected. For direct scheduled automation, place an executable script in the Hermes scripts directory and create the job with `script="filename.sh"` plus `no_agent=true`.
 
 ### Webhooks
 

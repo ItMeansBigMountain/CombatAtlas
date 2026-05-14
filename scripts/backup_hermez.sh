@@ -141,7 +141,7 @@ fi
 
 cd "$REPO"
 
-git add .gitignore README.md .hermes projects scripts/backup_hermez.sh
+git add .gitignore README.md KANBAN.md .hermes projects scripts/backup_hermez.sh
 
 if git diff --cached --quiet; then
   echo "HeRmEz backup complete: no changes to commit at $STAMP"
