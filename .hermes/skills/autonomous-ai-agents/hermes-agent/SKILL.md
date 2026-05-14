@@ -347,6 +347,10 @@ Profiles use `~/.hermes/profiles/<name>/` with the same layout.
 
 Edit with `hermes config edit` or `hermes config set section.key value`.
 
+### Backing Hermes into a GitHub workspace repo
+
+When a user wants a GitHub repo to become the durable project home and backup location for Hermes state, use the sanitized workspace-repo pattern in `references/workspace-backup-repo.md`: clone the repo under the Hermes home, create `.hermes/` and `projects/`, sync Hermes state with explicit secret/volatile excludes, set `terminal.cwd` to the repo, then commit and push after verification. For a low-risk push test, update the repo README and compare local HEAD with `git ls-remote` after pushing.
+
 | Section | Key options |
 |---------|-------------|
 | `model` | `default`, `provider`, `base_url`, `api_key`, `context_length` |
