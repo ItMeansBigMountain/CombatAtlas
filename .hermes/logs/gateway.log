@@ -1,0 +1,93 @@
+2026-05-11 03:47:21,169 INFO gateway.run: Starting Hermes Gateway...
+2026-05-11 03:47:21,169 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-11 03:47:21,169 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-11 03:47:21,169 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-11 03:47:21,543 INFO gateway.run: Connecting to discord...
+2026-05-11 03:47:21,703 INFO gateway.platforms.discord: [Discord] Registered /skill command with 84 skill(s) via autocomplete
+2026-05-11 03:47:24,287 INFO gateway.platforms.discord: [Discord] Connected as Velox#6418
+2026-05-11 03:47:24,290 INFO gateway.run: ✓ discord connected
+2026-05-11 03:47:24,291 INFO gateway.run: Gateway running with 1 platform(s)
+2026-05-11 03:47:24,295 INFO gateway.run: Channel directory built: 1 target(s)
+2026-05-11 03:47:25,297 INFO gateway.run: Press Ctrl+C to stop
+2026-05-11 03:47:25,311 INFO gateway.run: Cron ticker started (interval=60s)
+2026-05-11 03:47:30,299 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-05-11 03:50:42,485 INFO gateway.platforms.discord: [Discord] Safely reconciled 42 slash command(s): unchanged=0 updated=0 recreated=0 created=42 deleted=0
+2026-05-11 04:22:35,264 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:thread:1503250944526258207:1503250944526258207 (5 chars)
+2026-05-11 04:22:35,680 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1503250944526258207 msg='hello'
+2026-05-11 04:22:38,815 INFO gateway.run: response ready: platform=discord chat=1503250944526258207 time=3.1s api_calls=1 response=22 chars
+2026-05-11 04:22:38,826 INFO gateway.platforms.base: [Discord] Sending response (22 chars) to 1503250944526258207
+2026-05-11 04:23:14,874 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:thread:1503251111149047868:1503251111149047868 (74 chars)
+2026-05-11 04:23:15,276 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1503251111149047868 msg='i want this thread to be about configuring this discord. you are the admin'
+2026-05-11 04:23:21,497 INFO gateway.run: response ready: platform=discord chat=1503251111149047868 time=6.2s api_calls=1 response=841 chars
+2026-05-11 04:23:21,503 INFO gateway.platforms.base: [Discord] Sending response (841 chars) to 1503251111149047868
+2026-05-11 04:24:33,271 INFO gateway.run: Received SIGTERM/SIGINT — initiating shutdown
+2026-05-11 04:24:33,277 WARNING gateway.run: Shutdown diagnostic — other hermes processes running:
+  root           1  0.0  0.0  10236  1360 ?        Ssl  03:34   0:01 ttyd --port 4860 -c oyama:***REMOVED*** -W -t titleFixed Hermes Agent -t disableResizeOverlay true /hermes.sh
+  root           7  0.0  0.0   4724  3368 pts/0    Ss+  03:34   0:00 /bin/zsh /hermes.sh
+  root           9  1.8  4.7 1117584 383508 pts/0  Sl+  03:34   0:55 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes
+  hermes       788  0.0  0.0   6792  4092 ?        R    04:24   0:00 ps aux
+2026-05-11 04:24:33,278 INFO gateway.run: Stopping gateway...
+2026-05-11 04:24:33,517 INFO gateway.run: Sent shutdown notification to home channel discord:1499990220077137943
+2026-05-11 04:24:33,525 INFO gateway.platforms.discord: [Discord] Disconnected
+2026-05-11 04:24:33,525 INFO gateway.run: ✓ discord disconnected
+2026-05-11 04:24:33,529 INFO gateway.run: Gateway stopped
+2026-05-11 04:24:33,529 INFO gateway.run: Cron ticker stopped
+2026-05-11 04:24:33,530 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so systemd Restart=on-failure can revive the gateway.
+2026-05-11 04:24:47,829 INFO gateway.run: Starting Hermes Gateway...
+2026-05-11 04:24:47,829 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-11 04:24:47,829 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-11 04:24:47,830 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-11 04:24:47,833 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-05-11 04:24:48,198 INFO gateway.run: Connecting to discord...
+2026-05-11 04:24:48,389 INFO gateway.platforms.discord: [Discord] Registered /skill command with 84 skill(s) via autocomplete
+2026-05-11 04:24:50,969 INFO gateway.platforms.discord: [Discord] Connected as Velox#6418
+2026-05-11 04:24:50,972 INFO gateway.run: ✓ discord connected
+2026-05-11 04:24:50,973 INFO gateway.run: Gateway running with 1 platform(s)
+2026-05-11 04:24:50,977 INFO gateway.run: Channel directory built: 3 target(s)
+2026-05-11 04:24:50,978 INFO gateway.platforms.discord: [Discord] Skipping Discord slash command sync: same slash-command fingerprint already synced
+2026-05-11 04:24:51,980 INFO gateway.run: Press Ctrl+C to stop
+2026-05-11 04:24:51,995 INFO gateway.run: Cron ticker started (interval=60s)
+2026-05-11 04:24:56,986 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-05-12 04:02:58,913 INFO gateway.run: Session expiry: 2 sessions to finalize (discord:2)
+2026-05-12 04:02:58,920 INFO gateway.run: Session expiry done: 2 finalized
+┌─────────────────────────────────────────────────────────┐
+│           ⚕ Hermes Gateway Starting...                 │
+├─────────────────────────────────────────────────────────┤
+│  Messaging platforms + cron scheduler                    │
+│  Press Ctrl+C to stop                                   │
+└─────────────────────────────────────────────────────────┘
+
+2026-05-14 03:35:51,759 INFO gateway.run: Starting Hermes Gateway...
+2026-05-14 03:35:51,759 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-14 03:35:51,762 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-14 03:35:51,762 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-14 03:35:52,215 INFO gateway.run: Connecting to discord...
+2026-05-14 03:35:52,585 INFO gateway.platforms.discord: [Discord] Registered /skill command with 86 skill(s) via autocomplete
+2026-05-14 03:35:55,246 INFO gateway.platforms.discord: [Discord] Connected as Velox#6418
+2026-05-14 03:35:55,249 INFO gateway.run: ✓ discord connected
+2026-05-14 03:35:55,251 INFO gateway.run: Gateway running with 1 platform(s)
+2026-05-14 03:35:55,257 INFO gateway.run: Channel directory built: 3 target(s)
+2026-05-14 03:35:56,263 INFO gateway.run: Press Ctrl+C to stop
+2026-05-14 03:35:56,314 INFO gateway.run: Cron ticker started (interval=60s)
+2026-05-14 03:36:01,267 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+┌─────────────────────────────────────────────────────────┐
+│           ⚕ Hermes Gateway Starting...                 │
+├─────────────────────────────────────────────────────────┤
+│  Messaging platforms + cron scheduler                    │
+│  Press Ctrl+C to stop                                   │
+└─────────────────────────────────────────────────────────┘
+
+2026-05-14 03:36:20,765 INFO gateway.run: Starting Hermes Gateway...
+2026-05-14 03:36:20,765 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-14 03:36:20,767 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-14 03:36:20,767 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-14 03:36:21,109 INFO gateway.run: Connecting to discord...
+2026-05-14 03:36:21,441 INFO gateway.platforms.discord: [Discord] Registered /skill command with 86 skill(s) via autocomplete
+2026-05-14 03:36:24,192 INFO gateway.platforms.discord: [Discord] Connected as Velox#6418
+2026-05-14 03:36:24,195 INFO gateway.run: ✓ discord connected
+2026-05-14 03:36:24,197 INFO gateway.run: Gateway running with 1 platform(s)
+2026-05-14 03:36:24,202 INFO gateway.run: Channel directory built: 3 target(s)
+2026-05-14 03:36:24,203 INFO gateway.platforms.discord: [Discord] Skipping Discord slash command sync: same slash-command fingerprint already synced
+2026-05-14 03:36:25,209 INFO gateway.run: Press Ctrl+C to stop
+2026-05-14 03:36:25,252 INFO gateway.run: Cron ticker started (interval=60s)
+2026-05-14 03:36:30,234 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)

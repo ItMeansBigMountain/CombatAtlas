@@ -1,0 +1,521 @@
+2026-05-10 01:52:07,944 ERROR asyncio: unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<Application.run_async() done, defined at /opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py:620> exception=OSError(5, 'Input/output error')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2004, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/usr/lib/python3.13/selectors.py", line 452, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+  File "/opt/hermes/cli.py", line 12119, in _signal_handler
+    def _signal_handler(signum, frame):
+    
+  File "/opt/hermes/cli.py", line 12163, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 746, in _run_async
+    result = await f
+             ^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 751, in _run_async
+    self._redraw(render_as_done=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 543, in _redraw
+    self.context.copy().run(run_in_context)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 524, in run_in_context
+    self.renderer.render(self, self.layout, is_done=render_as_done)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 726, in render
+    output.flush()
+    ~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/vt100.py", line 706, in flush
+    flush_stdout(self.stdout, data)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/flush_stdout.py", line 33, in flush_stdout
+    stdout.buffer.write(data.encode(stdout.encoding or "utf-8", "replace"))
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 886, in run_async
+    return await _run_async(f)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 756, in _run_async
+    self.renderer.reset()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 429, in reset
+    self.output.flush()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/vt100.py", line 706, in flush
+    flush_stdout(self.stdout, data)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/flush_stdout.py", line 33, in flush_stdout
+    stdout.buffer.write(data.encode(stdout.encoding or "utf-8", "replace"))
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+2026-05-10 09:40:59,509 ERROR asyncio: unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<Application.run_async() done, defined at /opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py:620> exception=OSError(5, 'Input/output error')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2004, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/usr/lib/python3.13/selectors.py", line 452, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+  File "/opt/hermes/cli.py", line 12119, in _signal_handler
+    def _signal_handler(signum, frame):
+    
+  File "/opt/hermes/cli.py", line 12163, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 746, in _run_async
+    result = await f
+             ^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 751, in _run_async
+    self._redraw(render_as_done=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 543, in _redraw
+    self.context.copy().run(run_in_context)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 524, in run_in_context
+    self.renderer.render(self, self.layout, is_done=render_as_done)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 726, in render
+    output.flush()
+    ~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/vt100.py", line 706, in flush
+    flush_stdout(self.stdout, data)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/flush_stdout.py", line 33, in flush_stdout
+    stdout.buffer.write(data.encode(stdout.encoding or "utf-8", "replace"))
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 886, in run_async
+    return await _run_async(f)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 756, in _run_async
+    self.renderer.reset()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 429, in reset
+    self.output.flush()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/vt100.py", line 706, in flush
+    flush_stdout(self.stdout, data)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/flush_stdout.py", line 33, in flush_stdout
+    stdout.buffer.write(data.encode(stdout.encoding or "utf-8", "replace"))
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+2026-05-10 21:31:50,267 ERROR asyncio: Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<Application.run_async() done, defined at /opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py:620> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2004, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/usr/lib/python3.13/selectors.py", line 452, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+  File "/opt/hermes/cli.py", line 12163, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 746, in _run_async
+    result = await f
+             ^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/controls.py", line 709, in get_processed_line
+    return cache[i]
+           ~~~~~^^^
+KeyError: 0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/cli.py", line 12220, in run
+    app.run()
+    ~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 1002, in run
+    return asyncio.run(coro)
+           ~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 194, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+    ~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+    ~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 206, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2042, in _run_once
+    handle._run()
+    ~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 886, in run_async
+    return await _run_async(f)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 751, in _run_async
+    self._redraw(render_as_done=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 543, in _redraw
+    self.context.copy().run(run_in_context)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 524, in run_in_context
+    self.renderer.render(self, self.layout, is_done=render_as_done)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 682, in render
+    layout.container.write_to_screen(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        screen,
+        ^^^^^^^
+    ...<4 lines>...
+        z_index=None,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 392, in write_to_screen
+    c.write_to_screen(
+    ~~~~~~~~~~~~~~~~~^
+        screen,
+        ^^^^^^^
+    ...<4 lines>...
+        z_index,
+        ^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 1735, in write_to_screen
+    draw_func()
+    ~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 1759, in _write_to_screen_at_index
+    ui_content = self.content.create_content(
+        write_position.width - total_margin_width, write_position.height
+    )
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/controls.py", line 790, in create_content
+    cursor_position=translate_rowcol(
+                    ~~~~~~~~~~~~~~~~^
+        document.cursor_position_row, document.cursor_position_col
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ),
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/controls.py", line 773, in translate_rowcol
+    return Point(x=get_processed_line(row).source_to_display(col), y=row)
+                   ~~~~~~~~~~~~~~~~~~^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/controls.py", line 711, in get_processed_line
+    processed_line = transform(i, get_line(i), get_line)
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/controls.py", line 684, in transform
+    transformation = merged_processor.apply_transformation(
+        TransformationInput(
+    ...<8 lines>...
+        )
+    )
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/processors.py", line 986, in apply_transformation
+    transformation = p.apply_transformation(
+        TransformationInput(
+    ...<8 lines>...
+        )
+    )
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/processors.py", line 504, in apply_transformation
+    fragments_before = to_formatted_text(self.text, self.style)
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/formatted_text/base.py", line 82, in to_formatted_text
+    return to_formatted_text(value(), style=style)
+                             ~~~~~^^
+  File "/opt/hermes/cli.py", line 11181, in get_prompt
+    return cli_ref._get_tui_prompt_fragments()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/cli.py", line 10096, in _get_tui_prompt_fragments
+    symbol, state_suffix = self._get_tui_prompt_symbols()
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/cli.py", line 10064, in _get_tui_prompt_symbols
+    profile = get_active_profile_name()
+  File "/opt/hermes/hermes_cli/profiles.py", line 846, in get_active_profile_name
+    resolved = hermes_home.resolve()
+  File "/usr/lib/python3.13/pathlib/_local.py", line 672, in resolve
+    return self.with_segments(os.path.realpath(self, strict=strict))
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 444, in realpath
+  File "/opt/hermes/cli.py", line 12163, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+2026-05-11 04:22:36,456 WARNING [20260511_042235_6497eb31] agent.prompt_builder: Failed to parse skill file /opt/data/skills/autonomous-ai-agents/hermes-agent/SKILL.md: [Errno 13] Permission denied: '/opt/data/skills/autonomous-ai-agents/hermes-agent/SKILL.md'
+2026-05-11 04:24:33,277 WARNING gateway.run: Shutdown diagnostic — other hermes processes running:
+  root           1  0.0  0.0  10236  1360 ?        Ssl  03:34   0:01 ttyd --port 4860 -c oyama:***REMOVED*** -W -t titleFixed Hermes Agent -t disableResizeOverlay true /hermes.sh
+  root           7  0.0  0.0   4724  3368 pts/0    Ss+  03:34   0:00 /bin/zsh /hermes.sh
+  root           9  1.8  4.7 1117584 383508 pts/0  Sl+  03:34   0:55 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes
+  hermes       788  0.0  0.0   6792  4092 ?        R    04:24   0:00 ps aux
+2026-05-11 04:28:56,014 WARNING [20260511_042656_a914cc] root: Failed to generate context summary: peer closed connection without sending complete message body (incomplete chunked read). Further summary attempts paused for 60 seconds.
+2026-05-11 04:32:53,229 WARNING [20260511_033414_bfa92e] agent.auxiliary_client: Auxiliary compression: connection error on auto and no fallback available (tried: openrouter, nous, local/custom, api-key)
+2026-05-11 04:32:53,230 WARNING [20260511_033414_bfa92e] root: Failed to generate context summary: Codex auxiliary Responses stream exceeded 120.0s total timeout. Further summary attempts paused for 60 seconds.
+2026-05-11 04:47:53,410 ERROR asyncio: Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<Application.run_async() done, defined at /opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py:620> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2004, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/usr/lib/python3.13/selectors.py", line 452, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+  File "/opt/hermes/cli.py", line 12163, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 746, in _run_async
+    result = await f
+             ^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/cli.py", line 12220, in run
+    app.run()
+    ~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 1002, in run
+    return asyncio.run(coro)
+           ~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 194, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+    ~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+    ~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 206, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2042, in _run_once
+    handle._run()
+    ~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 886, in run_async
+    return await _run_async(f)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 751, in _run_async
+    self._redraw(render_as_done=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 543, in _redraw
+    self.context.copy().run(run_in_context)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 524, in run_in_context
+    self.renderer.render(self, self.layout, is_done=render_as_done)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 639, in render
+    height = layout.container.preferred_height(
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        size.columns, size.rows
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ).preferred
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 319, in preferred_height
+    c.preferred_height(width, max_available_height) for c in self._all_children
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 2642, in preferred_height
+    return Dimension.zero()
+           ~~~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/dimension.py", line 94, in zero
+    @classmethod
+    
+  File "/opt/hermes/cli.py", line 12163, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+2026-05-14 03:37:04,300 WARNING [20260514_033622_9ee0f3] run_agent: Tool terminal returned error (0.42s): {"output": "Traceback (most recent call last):\n  File \"<stdin>\", line 20, in <module>\nNameError: name 'false' is not defined. Did you mean: 'False'?", "exit_code": 1, "error": null}
+2026-05-14 05:06:02,906 ERROR asyncio: Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<Application.run_async() done, defined at /opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py:620> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2004, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/usr/lib/python3.13/selectors.py", line 452, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+  File "/opt/hermes/cli.py", line 13086, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 746, in _run_async
+    result = await f
+             ^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/cli.py", line 13173, in run
+    app.run()
+    ~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 1002, in run
+    return asyncio.run(coro)
+           ~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 194, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+    ~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+    ~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 206, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2042, in _run_once
+    handle._run()
+    ~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 886, in run_async
+    return await _run_async(f)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 751, in _run_async
+    self._redraw(render_as_done=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 543, in _redraw
+    self.context.copy().run(run_in_context)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 524, in run_in_context
+    self.renderer.render(self, self.layout, is_done=render_as_done)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 639, in render
+    height = layout.container.preferred_height(
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        size.columns, size.rows
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ).preferred
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 319, in preferred_height
+    c.preferred_height(width, max_available_height) for c in self._all_children
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 1606, in preferred_height
+    return self._merge_dimensions(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        dimension=to_dimension(self.height),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        get_preferred=preferred_content_height,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dont_extend=self.dont_extend_height(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 1657, in _merge_dimensions
+    return Dimension(
+        min=min_, max=max_, preferred=preferred, weight=dimension.weight
+    )
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/dimension.py", line 42, in __init__
+    def __init__(
+    
+  File "/opt/hermes/cli.py", line 13086, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt

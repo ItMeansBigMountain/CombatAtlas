@@ -1,0 +1,46 @@
+# Keep the backup repo from accidentally publishing local secrets or volatile runtime files.
+# The .hermes/ directory itself is intentionally tracked as a sanitized backup.
+
+# Secrets / credentials
+.env
+.env.*
+!.env.example
+!.env.*.template
+.git-credentials
+.netrc
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.*.template
+**/*secret*
+**/*token*
+**/*credential*
+**/auth.json
+**/auth.lock
+**/auth-*.json
+**/oauth*.json
+**/keyring*
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/id_rsa*
+**/id_ed25519*
+
+# Runtime locks / pids / sockets
+*.lock
+*.pid
+*.sock
+**/.tick.lock
+
+# Caches and transient build artifacts
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/node_modules/
+**/.DS_Store
+**/Thumbs.db
+
+# Git internals from nested repos/backups
+**/.git/

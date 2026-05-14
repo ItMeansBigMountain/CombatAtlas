@@ -1,0 +1,878 @@
+2026-05-10 00:26:26,634 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-10 00:26:26,637 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-10 00:26:26,640 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-10 00:26:27,185 INFO hermes_cli.plugins: Plugin discovery complete: 10 found, 7 enabled
+2026-05-10 00:31:34,233 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-10 00:31:34,233 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-10 00:31:34,234 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-10 00:31:34,475 INFO hermes_cli.plugins: Plugin discovery complete: 10 found, 7 enabled
+2026-05-10 00:31:36,279 INFO run_agent: No .env file found. Using system environment variables.
+2026-05-10 00:31:36,968 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 00:31:44,194 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 00:31:44,202 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 00:31:44,435 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 00:31:44,444 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 00:31:44,491 INFO tools.tirith_security: tirith not found — downloading latest release for x86_64-unknown-linux-gnu...
+2026-05-10 00:31:44,825 INFO tools.tirith_security: cosign not on PATH — installing tirith with SHA-256 verification only (install cosign for full supply chain verification)
+2026-05-10 00:31:44,956 INFO tools.tirith_security: tirith installed to /opt/data/bin/tirith (SHA-256 only)
+2026-05-10 01:52:07,944 ERROR asyncio: unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<Application.run_async() done, defined at /opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py:620> exception=OSError(5, 'Input/output error')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2004, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/usr/lib/python3.13/selectors.py", line 452, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+  File "/opt/hermes/cli.py", line 12119, in _signal_handler
+    def _signal_handler(signum, frame):
+    
+  File "/opt/hermes/cli.py", line 12163, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 746, in _run_async
+    result = await f
+             ^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 751, in _run_async
+    self._redraw(render_as_done=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 543, in _redraw
+    self.context.copy().run(run_in_context)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 524, in run_in_context
+    self.renderer.render(self, self.layout, is_done=render_as_done)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 726, in render
+    output.flush()
+    ~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/vt100.py", line 706, in flush
+    flush_stdout(self.stdout, data)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/flush_stdout.py", line 33, in flush_stdout
+    stdout.buffer.write(data.encode(stdout.encoding or "utf-8", "replace"))
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 886, in run_async
+    return await _run_async(f)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 756, in _run_async
+    self.renderer.reset()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 429, in reset
+    self.output.flush()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/vt100.py", line 706, in flush
+    flush_stdout(self.stdout, data)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/flush_stdout.py", line 33, in flush_stdout
+    stdout.buffer.write(data.encode(stdout.encoding or "utf-8", "replace"))
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+2026-05-10 04:24:38,365 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-10 04:24:38,366 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-10 04:24:38,367 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-10 04:24:38,666 INFO hermes_cli.plugins: Plugin discovery complete: 10 found, 7 enabled
+2026-05-10 04:24:39,762 INFO run_agent: No .env file found. Using system environment variables.
+2026-05-10 04:24:40,226 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 04:24:42,976 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 04:24:42,984 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 04:24:43,208 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 04:24:43,216 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 09:40:59,509 ERROR asyncio: unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<Application.run_async() done, defined at /opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py:620> exception=OSError(5, 'Input/output error')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2004, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/usr/lib/python3.13/selectors.py", line 452, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+  File "/opt/hermes/cli.py", line 12119, in _signal_handler
+    def _signal_handler(signum, frame):
+    
+  File "/opt/hermes/cli.py", line 12163, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 746, in _run_async
+    result = await f
+             ^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 751, in _run_async
+    self._redraw(render_as_done=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 543, in _redraw
+    self.context.copy().run(run_in_context)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 524, in run_in_context
+    self.renderer.render(self, self.layout, is_done=render_as_done)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 726, in render
+    output.flush()
+    ~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/vt100.py", line 706, in flush
+    flush_stdout(self.stdout, data)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/flush_stdout.py", line 33, in flush_stdout
+    stdout.buffer.write(data.encode(stdout.encoding or "utf-8", "replace"))
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 886, in run_async
+    return await _run_async(f)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 756, in _run_async
+    self.renderer.reset()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 429, in reset
+    self.output.flush()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/vt100.py", line 706, in flush
+    flush_stdout(self.stdout, data)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/flush_stdout.py", line 33, in flush_stdout
+    stdout.buffer.write(data.encode(stdout.encoding or "utf-8", "replace"))
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+2026-05-10 21:11:55,604 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-10 21:11:55,604 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-10 21:11:55,605 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-10 21:11:55,854 INFO hermes_cli.plugins: Plugin discovery complete: 10 found, 7 enabled
+2026-05-10 21:11:56,740 INFO run_agent: No .env file found. Using system environment variables.
+2026-05-10 21:11:57,118 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 21:11:59,740 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 21:11:59,747 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 21:11:59,946 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 21:11:59,953 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-10 21:31:50,267 ERROR asyncio: Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<Application.run_async() done, defined at /opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py:620> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2004, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/usr/lib/python3.13/selectors.py", line 452, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+  File "/opt/hermes/cli.py", line 12163, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 746, in _run_async
+    result = await f
+             ^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/controls.py", line 709, in get_processed_line
+    return cache[i]
+           ~~~~~^^^
+KeyError: 0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/cli.py", line 12220, in run
+    app.run()
+    ~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 1002, in run
+    return asyncio.run(coro)
+           ~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 194, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+    ~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+    ~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 206, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2042, in _run_once
+    handle._run()
+    ~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 886, in run_async
+    return await _run_async(f)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 751, in _run_async
+    self._redraw(render_as_done=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 543, in _redraw
+    self.context.copy().run(run_in_context)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 524, in run_in_context
+    self.renderer.render(self, self.layout, is_done=render_as_done)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 682, in render
+    layout.container.write_to_screen(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        screen,
+        ^^^^^^^
+    ...<4 lines>...
+        z_index=None,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 392, in write_to_screen
+    c.write_to_screen(
+    ~~~~~~~~~~~~~~~~~^
+        screen,
+        ^^^^^^^
+    ...<4 lines>...
+        z_index,
+        ^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 1735, in write_to_screen
+    draw_func()
+    ~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 1759, in _write_to_screen_at_index
+    ui_content = self.content.create_content(
+        write_position.width - total_margin_width, write_position.height
+    )
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/controls.py", line 790, in create_content
+    cursor_position=translate_rowcol(
+                    ~~~~~~~~~~~~~~~~^
+        document.cursor_position_row, document.cursor_position_col
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ),
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/controls.py", line 773, in translate_rowcol
+    return Point(x=get_processed_line(row).source_to_display(col), y=row)
+                   ~~~~~~~~~~~~~~~~~~^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/controls.py", line 711, in get_processed_line
+    processed_line = transform(i, get_line(i), get_line)
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/controls.py", line 684, in transform
+    transformation = merged_processor.apply_transformation(
+        TransformationInput(
+    ...<8 lines>...
+        )
+    )
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/processors.py", line 986, in apply_transformation
+    transformation = p.apply_transformation(
+        TransformationInput(
+    ...<8 lines>...
+        )
+    )
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/processors.py", line 504, in apply_transformation
+    fragments_before = to_formatted_text(self.text, self.style)
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/formatted_text/base.py", line 82, in to_formatted_text
+    return to_formatted_text(value(), style=style)
+                             ~~~~~^^
+  File "/opt/hermes/cli.py", line 11181, in get_prompt
+    return cli_ref._get_tui_prompt_fragments()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/cli.py", line 10096, in _get_tui_prompt_fragments
+    symbol, state_suffix = self._get_tui_prompt_symbols()
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/cli.py", line 10064, in _get_tui_prompt_symbols
+    profile = get_active_profile_name()
+  File "/opt/hermes/hermes_cli/profiles.py", line 846, in get_active_profile_name
+    resolved = hermes_home.resolve()
+  File "/usr/lib/python3.13/pathlib/_local.py", line 672, in resolve
+    return self.with_segments(os.path.realpath(self, strict=strict))
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 444, in realpath
+  File "/opt/hermes/cli.py", line 12163, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+2026-05-11 03:09:20,585 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-11 03:09:20,586 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-11 03:09:20,587 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-11 03:09:20,815 INFO hermes_cli.plugins: Plugin discovery complete: 10 found, 7 enabled
+2026-05-11 03:09:21,671 INFO run_agent: No .env file found. Using system environment variables.
+2026-05-11 03:09:22,060 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:09:24,898 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-11 03:09:24,899 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-11 03:09:24,900 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-11 03:09:25,141 INFO hermes_cli.plugins: Plugin discovery complete: 10 found, 7 enabled
+2026-05-11 03:09:25,965 INFO run_agent: No .env file found. Using system environment variables.
+2026-05-11 03:09:26,339 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:09:28,884 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:09:28,891 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:09:29,088 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:09:29,095 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:22:43,029 INFO agent.model_metadata: Cached context length gpt-5.5@https://chatgpt.com/backend-api/codex -> 272,000 tokens
+2026-05-11 03:22:43,036 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:22:43,038 INFO agent.model_metadata: Cached context length gpt-5.5@https://chatgpt.com/backend-api/codex/ -> 272,000 tokens
+2026-05-11 03:26:12,063 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:26:12,063 INFO agent.auxiliary_client: Auxiliary title_generation: using auto (gpt-5.5) at https://chatgpt.com/backend-api/codex/
+2026-05-11 03:26:50,424 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-11 03:26:50,424 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-11 03:26:50,425 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-11 03:26:50,601 INFO hermes_cli.plugins: Plugin discovery complete: 10 found, 7 enabled
+2026-05-11 03:28:06,055 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:34:11,016 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-11 03:34:11,021 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-11 03:34:11,028 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-11 03:34:11,947 INFO hermes_cli.plugins: Plugin discovery complete: 10 found, 7 enabled
+2026-05-11 03:34:14,006 INFO run_agent: Loaded environment variables from /opt/data/.env
+2026-05-11 03:34:14,915 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:34:23,033 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:34:23,041 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:34:23,264 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:34:23,272 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:35:40,754 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:37:28,535 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:37:28,754 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:37:28,754 INFO agent.auxiliary_client: Auxiliary title_generation: using auto (gpt-5.5) at https://chatgpt.com/backend-api/codex/
+2026-05-11 03:43:10,769 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-11 03:43:10,769 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-11 03:43:10,770 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-11 03:43:10,985 INFO hermes_cli.plugins: Plugin discovery complete: 10 found, 7 enabled
+2026-05-11 03:44:40,546 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:47:20,225 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-11 03:47:20,225 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-11 03:47:20,226 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-11 03:47:20,456 INFO hermes_cli.plugins: Plugin discovery complete: 10 found, 7 enabled
+2026-05-11 03:47:21,169 INFO gateway.run: Starting Hermes Gateway...
+2026-05-11 03:47:21,169 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-11 03:47:21,169 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-11 03:47:21,169 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-11 03:47:21,543 INFO gateway.run: Connecting to discord...
+2026-05-11 03:47:21,703 INFO gateway.platforms.discord: [Discord] Registered /skill command with 84 skill(s) via autocomplete
+2026-05-11 03:47:21,704 INFO discord.client: logging in using static token
+2026-05-11 03:47:22,285 INFO discord.gateway: Shard ID None has connected to Gateway (Session ID: afabf8cf3a866bb43680acac7b4fcfcf).
+2026-05-11 03:47:24,287 INFO gateway.platforms.discord: [Discord] Connected as Velox#6418
+2026-05-11 03:47:24,290 INFO gateway.run: ✓ discord connected
+2026-05-11 03:47:24,291 INFO gateway.run: Gateway running with 1 platform(s)
+2026-05-11 03:47:24,295 INFO gateway.run: Channel directory built: 1 target(s)
+2026-05-11 03:47:25,297 INFO gateway.run: Press Ctrl+C to stop
+2026-05-11 03:47:25,311 INFO gateway.run: Cron ticker started (interval=60s)
+2026-05-11 03:47:30,299 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-05-11 03:47:47,011 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 03:50:42,485 INFO gateway.platforms.discord: [Discord] Safely reconciled 42 slash command(s): unchanged=0 updated=0 recreated=0 created=42 deleted=0
+2026-05-11 04:01:58,388 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 04:04:12,078 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 04:22:35,264 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:thread:1503250944526258207:1503250944526258207 (5 chars)
+2026-05-11 04:22:35,680 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1503250944526258207 msg='hello'
+2026-05-11 04:22:35,691 INFO run_agent: Loaded environment variables from /opt/data/.env
+2026-05-11 04:22:36,425 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 04:22:36,437 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 04:22:36,456 WARNING [20260511_042235_6497eb31] agent.prompt_builder: Failed to parse skill file /opt/data/skills/autonomous-ai-agents/hermes-agent/SKILL.md: [Errno 13] Permission denied: '/opt/data/skills/autonomous-ai-agents/hermes-agent/SKILL.md'
+2026-05-11 04:22:38,810 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 04:22:38,810 INFO agent.auxiliary_client: Auxiliary title_generation: using auto (gpt-5.5) at https://chatgpt.com/backend-api/codex/
+2026-05-11 04:22:38,815 INFO gateway.run: response ready: platform=discord chat=1503250944526258207 time=3.1s api_calls=1 response=22 chars
+2026-05-11 04:22:38,826 INFO gateway.platforms.base: [Discord] Sending response (22 chars) to 1503250944526258207
+2026-05-11 04:23:14,874 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:thread:1503251111149047868:1503251111149047868 (74 chars)
+2026-05-11 04:23:15,276 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1503251111149047868 msg='i want this thread to be about configuring this discord. you are the admin'
+2026-05-11 04:23:15,360 INFO [20260511_042235_6497eb31] agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 04:23:21,475 INFO agent.auxiliary_client: Auxiliary title_generation: using auto (gpt-5.5) at https://chatgpt.com/backend-api/codex/
+2026-05-11 04:23:21,497 INFO gateway.run: response ready: platform=discord chat=1503251111149047868 time=6.2s api_calls=1 response=841 chars
+2026-05-11 04:23:21,503 INFO gateway.platforms.base: [Discord] Sending response (841 chars) to 1503251111149047868
+2026-05-11 04:24:33,271 INFO gateway.run: Received SIGTERM/SIGINT — initiating shutdown
+2026-05-11 04:24:33,277 WARNING gateway.run: Shutdown diagnostic — other hermes processes running:
+  root           1  0.0  0.0  10236  1360 ?        Ssl  03:34   0:01 ttyd --port 4860 -c oyama:***REMOVED*** -W -t titleFixed Hermes Agent -t disableResizeOverlay true /hermes.sh
+  root           7  0.0  0.0   4724  3368 pts/0    Ss+  03:34   0:00 /bin/zsh /hermes.sh
+  root           9  1.8  4.7 1117584 383508 pts/0  Sl+  03:34   0:55 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes
+  hermes       788  0.0  0.0   6792  4092 ?        R    04:24   0:00 ps aux
+2026-05-11 04:24:33,278 INFO gateway.run: Stopping gateway...
+2026-05-11 04:24:33,517 INFO gateway.run: Sent shutdown notification to home channel discord:1499990220077137943
+2026-05-11 04:24:33,525 INFO gateway.platforms.discord: [Discord] Disconnected
+2026-05-11 04:24:33,525 INFO gateway.run: ✓ discord disconnected
+2026-05-11 04:24:33,529 INFO gateway.run: Gateway stopped
+2026-05-11 04:24:33,529 INFO gateway.run: Cron ticker stopped
+2026-05-11 04:24:33,530 INFO gateway.run: Exiting with code 1 (signal-initiated shutdown without restart request) so systemd Restart=on-failure can revive the gateway.
+2026-05-11 04:24:46,907 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-11 04:24:46,908 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-11 04:24:46,909 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-11 04:24:47,203 INFO hermes_cli.plugins: Plugin discovery complete: 10 found, 7 enabled
+2026-05-11 04:24:47,829 INFO gateway.run: Starting Hermes Gateway...
+2026-05-11 04:24:47,829 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-11 04:24:47,829 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-11 04:24:47,830 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-11 04:24:47,833 INFO gateway.run: Previous gateway exited cleanly — skipping session suspension
+2026-05-11 04:24:48,198 INFO gateway.run: Connecting to discord...
+2026-05-11 04:24:48,389 INFO gateway.platforms.discord: [Discord] Registered /skill command with 84 skill(s) via autocomplete
+2026-05-11 04:24:48,389 INFO discord.client: logging in using static token
+2026-05-11 04:24:48,966 INFO discord.gateway: Shard ID None has connected to Gateway (Session ID: 8cc86979ceb1b35979a0c536c270c892).
+2026-05-11 04:24:50,969 INFO gateway.platforms.discord: [Discord] Connected as Velox#6418
+2026-05-11 04:24:50,972 INFO gateway.run: ✓ discord connected
+2026-05-11 04:24:50,973 INFO gateway.run: Gateway running with 1 platform(s)
+2026-05-11 04:24:50,977 INFO gateway.run: Channel directory built: 3 target(s)
+2026-05-11 04:24:50,978 INFO gateway.platforms.discord: [Discord] Skipping Discord slash command sync: same slash-command fingerprint already synced
+2026-05-11 04:24:51,980 INFO gateway.run: Press Ctrl+C to stop
+2026-05-11 04:24:51,995 INFO gateway.run: Cron ticker started (interval=60s)
+2026-05-11 04:24:56,986 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-05-11 04:25:13,293 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 04:26:56,593 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 04:26:56,674 INFO [20260511_042656_a914cc] agent.auxiliary_client: Auxiliary compression: using auto (gpt-5.5) at https://chatgpt.com/backend-api/codex/
+2026-05-11 04:28:56,014 WARNING [20260511_042656_a914cc] root: Failed to generate context summary: peer closed connection without sending complete message body (incomplete chunked read). Further summary attempts paused for 60 seconds.
+2026-05-11 04:30:53,168 INFO [20260511_033414_bfa92e] agent.auxiliary_client: Auxiliary compression: using auto (gpt-5.5) at https://chatgpt.com/backend-api/codex/
+2026-05-11 04:32:53,170 INFO [20260511_033414_bfa92e] agent.auxiliary_client: Auxiliary compression: connection error on auto (Codex auxiliary Responses stream exceeded 120.0s total timeout), trying fallback
+2026-05-11 04:32:53,229 WARNING [20260511_033414_bfa92e] agent.auxiliary_client: Auxiliary compression: connection error on auto and no fallback available (tried: openrouter, nous, local/custom, api-key)
+2026-05-11 04:32:53,230 WARNING [20260511_033414_bfa92e] root: Failed to generate context summary: Codex auxiliary Responses stream exceeded 120.0s total timeout. Further summary attempts paused for 60 seconds.
+2026-05-11 04:36:25,435 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-11 04:47:53,410 ERROR asyncio: Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<Application.run_async() done, defined at /opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py:620> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2004, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/usr/lib/python3.13/selectors.py", line 452, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+  File "/opt/hermes/cli.py", line 12163, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 746, in _run_async
+    result = await f
+             ^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/cli.py", line 12220, in run
+    app.run()
+    ~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 1002, in run
+    return asyncio.run(coro)
+           ~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 194, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+    ~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+    ~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 206, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2042, in _run_once
+    handle._run()
+    ~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 886, in run_async
+    return await _run_async(f)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 751, in _run_async
+    self._redraw(render_as_done=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 543, in _redraw
+    self.context.copy().run(run_in_context)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 524, in run_in_context
+    self.renderer.render(self, self.layout, is_done=render_as_done)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 639, in render
+    height = layout.container.preferred_height(
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        size.columns, size.rows
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ).preferred
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 319, in preferred_height
+    c.preferred_height(width, max_available_height) for c in self._all_children
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 2642, in preferred_height
+    return Dimension.zero()
+           ~~~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/dimension.py", line 94, in zero
+    @classmethod
+    
+  File "/opt/hermes/cli.py", line 12163, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+2026-05-11 06:52:11,123 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-11 07:43:01,196 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-11 08:08:07,535 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-11 08:33:19,918 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-11 10:20:08,490 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-11 14:15:05,587 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-11 14:54:09,882 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-11 16:35:44,315 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-11 20:19:19,696 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-11 20:36:00,096 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-11 21:48:50,314 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-11 22:21:12,575 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-11 23:25:37,925 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-11 23:52:48,594 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-12 01:29:27,527 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-12 04:02:58,913 INFO gateway.run: Session expiry: 2 sessions to finalize (discord:2)
+2026-05-12 04:02:58,920 INFO gateway.run: Session expiry done: 2 finalized
+2026-05-12 04:30:04,755 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-12 05:01:15,196 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-12 05:58:44,625 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-12 08:05:19,521 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-12 09:18:20,960 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-12 12:51:29,907 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-12 14:28:26,385 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-12 17:28:43,296 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-12 18:20:24,694 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-12 21:29:41,578 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-12 22:24:59,395 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-13 01:08:13,721 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-13 01:40:40,499 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-13 05:16:20,934 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-13 08:16:40,200 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-13 09:18:53,733 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-13 11:46:20,150 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-13 14:07:58,885 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-13 16:53:44,137 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-13 17:59:17,757 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-13 18:47:02,123 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-13 21:14:10,515 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-13 22:23:14,775 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-14 00:11:11,246 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-14 01:37:55,804 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-14 01:57:16,084 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-14 02:29:44,906 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-14 03:31:28,179 INFO discord.gateway: Shard ID None has successfully RESUMED session 8cc86979ceb1b35979a0c536c270c892.
+2026-05-14 03:31:34,058 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-14 03:31:34,059 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-14 03:31:34,061 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-14 03:31:34,429 INFO hermes_cli.plugins: Plugin discovery complete: 10 found, 7 enabled
+2026-05-14 03:31:35,737 INFO run_agent: Loaded environment variables from /opt/data/.env
+2026-05-14 03:31:36,221 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:31:40,825 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:31:40,833 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:31:41,043 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:31:41,053 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:31:49,345 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:32:05,503 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:32:05,503 INFO agent.auxiliary_client: Auxiliary title_generation: using auto (gpt-5.5) at https://chatgpt.com/backend-api/codex/
+2026-05-14 03:35:49,543 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-14 03:35:49,543 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-14 03:35:49,545 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-14 03:35:49,546 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-14 03:35:49,548 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-14 03:35:49,548 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-14 03:35:50,140 INFO hermes_cli.plugins: Plugin discovery complete: 12 found, 8 enabled
+2026-05-14 03:35:50,147 INFO hermes_cli.plugins: Plugin discovery complete: 12 found, 8 enabled
+2026-05-14 03:35:51,759 INFO gateway.run: Starting Hermes Gateway...
+2026-05-14 03:35:51,759 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-14 03:35:51,762 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-14 03:35:51,762 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-14 03:35:52,215 INFO gateway.run: Connecting to discord...
+2026-05-14 03:35:52,585 INFO gateway.platforms.discord: [Discord] Registered /skill command with 86 skill(s) via autocomplete
+2026-05-14 03:35:52,586 INFO discord.client: logging in using static token
+2026-05-14 03:35:52,656 INFO run_agent: Loaded environment variables from /opt/data/.env
+2026-05-14 03:35:53,233 INFO discord.gateway: Shard ID None has connected to Gateway (Session ID: cd7e81d59dbe518875f57ec2967e8d01).
+2026-05-14 03:35:53,522 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:35:53,544 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:35:53,553 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:35:53,629 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:35:53,637 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:35:55,246 INFO gateway.platforms.discord: [Discord] Connected as Velox#6418
+2026-05-14 03:35:55,249 INFO gateway.run: ✓ discord connected
+2026-05-14 03:35:55,251 INFO gateway.run: Gateway running with 1 platform(s)
+2026-05-14 03:35:55,257 INFO gateway.run: Channel directory built: 3 target(s)
+2026-05-14 03:35:56,263 INFO gateway.run: Press Ctrl+C to stop
+2026-05-14 03:35:56,314 INFO gateway.run: Cron ticker started (interval=60s)
+2026-05-14 03:36:01,267 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-05-14 03:36:18,671 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-14 03:36:18,674 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-14 03:36:18,676 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-14 03:36:19,490 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-14 03:36:19,491 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-14 03:36:19,491 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-14 03:36:19,556 INFO hermes_cli.plugins: Plugin discovery complete: 12 found, 8 enabled
+2026-05-14 03:36:19,920 INFO hermes_cli.plugins: Plugin discovery complete: 12 found, 8 enabled
+2026-05-14 03:36:20,765 INFO gateway.run: Starting Hermes Gateway...
+2026-05-14 03:36:20,765 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-14 03:36:20,767 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-14 03:36:20,767 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-14 03:36:21,109 INFO gateway.run: Connecting to discord...
+2026-05-14 03:36:21,441 INFO gateway.platforms.discord: [Discord] Registered /skill command with 86 skill(s) via autocomplete
+2026-05-14 03:36:21,442 INFO discord.client: logging in using static token
+2026-05-14 03:36:21,562 INFO run_agent: Loaded environment variables from /opt/data/.env
+2026-05-14 03:36:22,181 INFO discord.gateway: Shard ID None has connected to Gateway (Session ID: 10278cfae94492acf65a202de13b3019).
+2026-05-14 03:36:22,407 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:36:22,427 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:36:22,435 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:36:22,517 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:36:22,525 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:36:24,192 INFO gateway.platforms.discord: [Discord] Connected as Velox#6418
+2026-05-14 03:36:24,195 INFO gateway.run: ✓ discord connected
+2026-05-14 03:36:24,197 INFO gateway.run: Gateway running with 1 platform(s)
+2026-05-14 03:36:24,202 INFO gateway.run: Channel directory built: 3 target(s)
+2026-05-14 03:36:24,203 INFO gateway.platforms.discord: [Discord] Skipping Discord slash command sync: same slash-command fingerprint already synced
+2026-05-14 03:36:25,209 INFO gateway.run: Press Ctrl+C to stop
+2026-05-14 03:36:25,252 INFO gateway.run: Cron ticker started (interval=60s)
+2026-05-14 03:36:30,234 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-05-14 03:36:46,278 INFO run_agent: OpenAI client created (agent_init, shared=True) thread=Thread-3 (process_loop):135948797298368 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 03:36:46,288 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:36:46,297 INFO [20260514_033622_9ee0f3] run_agent: conversation turn: session=20260514_033622_9ee0f3 model=gpt-5.5 provider=openai-codex platform=cli history=0 msg='lets set up github. i have an access token in your environment variables named G...'
+2026-05-14 03:36:46,423 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-5 (_call):135948772120256 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 03:36:51,161 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-5 (_call):135948772120256 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 03:36:51,162 INFO [20260514_033622_9ee0f3] run_agent: API call #1: model=gpt-5.5 provider=openai-codex in=13805 out=37 total=13842 latency=4.8s cache=9216/13805 (67%)
+2026-05-14 03:36:51,172 INFO [20260514_033622_9ee0f3] run_agent: tool skill_view completed (0.01s, 8893 chars)
+2026-05-14 03:36:51,184 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-6 (_call):135948772120256 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 03:36:57,100 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-6 (_call):135948772120256 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 03:36:57,100 INFO [20260514_033622_9ee0f3] run_agent: API call #2: model=gpt-5.5 provider=openai-codex in=16302 out=201 total=16503 latency=5.9s cache=13312/16302 (82%)
+2026-05-14 03:36:57,103 INFO [20260514_033622_9ee0f3] tools.terminal_tool: Creating new local environment for task default...
+2026-05-14 03:36:57,320 INFO [20260514_033622_9ee0f3] tools.environments.base: Session snapshot created (session=a67a295fa749, cwd=/opt/hermes)
+2026-05-14 03:36:57,321 INFO [20260514_033622_9ee0f3] tools.terminal_tool: local environment ready for task default
+2026-05-14 03:36:57,539 INFO [20260514_033622_9ee0f3] run_agent: tool terminal completed (0.44s, 239 chars)
+2026-05-14 03:36:57,577 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-10 (_call):135948755338944 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 03:37:03,876 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-10 (_call):135948755338944 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 03:37:03,877 INFO [20260514_033622_9ee0f3] run_agent: API call #3: model=gpt-5.5 provider=openai-codex in=16596 out=277 total=16873 latency=6.3s cache=15872/16596 (96%)
+2026-05-14 03:37:04,300 WARNING [20260514_033622_9ee0f3] run_agent: Tool terminal returned error (0.42s): {"output": "Traceback (most recent call last):\n  File \"<stdin>\", line 20, in <module>\nNameError: name 'false' is not defined. Did you mean: 'False'?", "exit_code": 1, "error": null}
+2026-05-14 03:37:04,332 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-12 (_call):135948755338944 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 03:37:11,842 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-12 (_call):135948755338944 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 03:37:11,843 INFO [20260514_033622_9ee0f3] run_agent: API call #4: model=gpt-5.5 provider=openai-codex in=16943 out=175 total=17118 latency=7.5s cache=16384/16943 (97%)
+2026-05-14 03:37:12,063 INFO [20260514_033622_9ee0f3] run_agent: tool terminal completed (0.22s, 102 chars)
+2026-05-14 03:37:12,081 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-14 (_call):135948755338944 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 03:37:32,900 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-14 (_call):135948755338944 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 03:37:32,901 INFO [20260514_033622_9ee0f3] run_agent: API call #5: model=gpt-5.5 provider=openai-codex in=17172 out=991 total=18163 latency=20.8s cache=16384/17172 (95%)
+2026-05-14 03:37:33,922 INFO [20260514_033622_9ee0f3] run_agent: tool terminal completed (1.02s, 275 chars)
+2026-05-14 03:37:33,970 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-16 (_call):135948755338944 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 03:37:40,530 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-16 (_call):135948755338944 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 03:37:40,530 INFO [20260514_033622_9ee0f3] run_agent: API call #6: model=gpt-5.5 provider=openai-codex in=18255 out=275 total=18530 latency=6.6s cache=16896/18255 (93%)
+2026-05-14 03:37:40,589 INFO [20260514_033622_9ee0f3] run_agent: Turn ended: reason=text_response(finish_reason=stop) model=gpt-5.5 api_calls=6/90 budget=6/90 tool_turns=5 last_msg_role=assistant response_len=577 session=20260514_033622_9ee0f3
+2026-05-14 03:37:40,805 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 03:37:40,805 INFO agent.auxiliary_client: Auxiliary title_generation: using auto (gpt-5.5) at https://chatgpt.com/backend-api/codex/
+2026-05-14 03:42:57,152 INFO tools.terminal_tool: Cleaned up inactive environment for task: default
+2026-05-14 05:06:02,906 ERROR asyncio: Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<Application.run_async() done, defined at /opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py:620> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2004, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/usr/lib/python3.13/selectors.py", line 452, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+  File "/opt/hermes/cli.py", line 13086, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 746, in _run_async
+    result = await f
+             ^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/cli.py", line 13173, in run
+    app.run()
+    ~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 1002, in run
+    return asyncio.run(coro)
+           ~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 194, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+    ~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+    ~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 206, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2042, in _run_once
+    handle._run()
+    ~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 886, in run_async
+    return await _run_async(f)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 751, in _run_async
+    self._redraw(render_as_done=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 543, in _redraw
+    self.context.copy().run(run_in_context)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 524, in run_in_context
+    self.renderer.render(self, self.layout, is_done=render_as_done)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 639, in render
+    height = layout.container.preferred_height(
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        size.columns, size.rows
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ).preferred
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 319, in preferred_height
+    c.preferred_height(width, max_available_height) for c in self._all_children
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 1606, in preferred_height
+    return self._merge_dimensions(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        dimension=to_dimension(self.height),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        get_preferred=preferred_content_height,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dont_extend=self.dont_extend_height(),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/containers.py", line 1657, in _merge_dimensions
+    return Dimension(
+        min=min_, max=max_, preferred=preferred, weight=dimension.weight
+    )
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/layout/dimension.py", line 42, in __init__
+    def __init__(
+    
+  File "/opt/hermes/cli.py", line 13086, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+2026-05-14 05:13:09,452 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-14 05:13:09,452 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-14 05:13:09,452 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-14 05:13:09,882 INFO hermes_cli.plugins: Plugin discovery complete: 12 found, 8 enabled
+2026-05-14 05:13:11,475 INFO run_agent: Loaded environment variables from /opt/data/.env
+2026-05-14 05:13:12,076 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 05:13:12,093 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 05:13:12,101 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 05:13:12,151 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 05:13:12,159 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 06:06:25,577 INFO run_agent: OpenAI client created (agent_init, shared=True) thread=Thread-3 (process_loop):133271009969856 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:06:25,590 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 06:06:25,595 INFO [20260514_051311_8439de] run_agent: conversation turn: session=20260514_051311_8439de model=gpt-5.5 provider=openai-codex platform=cli history=0 msg='HeRmEz is the name of my github repo that i want you to backup .hermes into as w...'
+2026-05-14 06:06:25,658 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-5 (_call):133270984791744 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:06:32,341 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-5 (_call):133270984791744 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:06:32,342 INFO [20260514_051311_8439de] run_agent: API call #1: model=gpt-5.5 provider=openai-codex in=13854 out=128 total=13982 latency=6.7s cache=9216/13854 (67%)
+2026-05-14 06:06:32,363 INFO run_agent: tool skill_view completed (0.02s, 15618 chars)
+2026-05-14 06:06:32,366 INFO run_agent: tool skill_view completed (0.02s, 42452 chars)
+2026-05-14 06:06:32,384 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-6 (_call):133270984791744 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:06:44,277 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-6 (_call):133270984791744 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:06:44,278 INFO [20260514_051311_8439de] run_agent: API call #2: model=gpt-5.5 provider=openai-codex in=29766 out=384 total=30150 latency=11.9s cache=13312/29766 (45%)
+2026-05-14 06:06:44,283 INFO [20260514_051311_8439de] run_agent: tool todo completed (0.00s, 577 chars)
+2026-05-14 06:06:44,298 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-7 (_call):133270984791744 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:06:48,945 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-7 (_call):133270984791744 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:06:48,946 INFO [20260514_051311_8439de] run_agent: API call #3: model=gpt-5.5 provider=openai-codex in=30318 out=185 total=30503 latency=4.7s cache=29696/30318 (98%)
+2026-05-14 06:06:48,949 INFO [20260514_051311_8439de] tools.terminal_tool: Creating new local environment for task default...
+2026-05-14 06:06:49,168 INFO [20260514_051311_8439de] tools.environments.base: Session snapshot created (session=396fea12f266, cwd=/opt/hermes)
+2026-05-14 06:06:49,169 INFO [20260514_051311_8439de] tools.terminal_tool: local environment ready for task default
+2026-05-14 06:06:49,590 INFO [20260514_051311_8439de] run_agent: tool terminal completed (0.64s, 364 chars)
+2026-05-14 06:06:49,621 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-11 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:06:53,221 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-11 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:06:53,222 INFO [20260514_051311_8439de] run_agent: API call #4: model=gpt-5.5 provider=openai-codex in=30621 out=109 total=30730 latency=3.6s cache=30208/30621 (99%)
+2026-05-14 06:06:53,223 INFO [20260514_051311_8439de] run_agent: tool todo completed (0.00s, 579 chars)
+2026-05-14 06:06:53,243 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-12 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:07:00,689 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-12 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:07:00,690 INFO [20260514_051311_8439de] run_agent: API call #5: model=gpt-5.5 provider=openai-codex in=30891 out=340 total=31231 latency=7.5s cache=30208/30891 (98%)
+2026-05-14 06:07:01,333 INFO [20260514_051311_8439de] run_agent: tool search_files completed (0.64s, 5660 chars)
+2026-05-14 06:07:03,152 INFO [20260514_051311_8439de] run_agent: tool terminal completed (0.82s, 2308 chars)
+2026-05-14 06:07:03,174 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-17 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:07:15,749 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-17 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:07:15,750 INFO [20260514_051311_8439de] run_agent: API call #6: model=gpt-5.5 provider=openai-codex in=33578 out=393 total=33971 latency=12.6s cache=30720/33578 (91%)
+2026-05-14 06:07:16,622 INFO [20260514_051311_8439de] run_agent: tool read_file completed (0.87s, 5939 chars)
+2026-05-14 06:07:16,643 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-22 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:07:33,361 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-22 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:07:33,362 INFO [20260514_051311_8439de] run_agent: API call #7: model=gpt-5.5 provider=openai-codex in=36219 out=739 total=36958 latency=16.7s cache=33280/36219 (92%)
+2026-05-14 06:07:34,011 INFO [20260514_051311_8439de] run_agent: tool write_file completed (0.65s, 110 chars)
+2026-05-14 06:07:34,040 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-27 (_call):133270619551424 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:07:38,479 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-27 (_call):133270619551424 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:07:38,480 INFO [20260514_051311_8439de] run_agent: API call #8: model=gpt-5.5 provider=openai-codex in=37003 out=146 total=37149 latency=4.5s cache=35840/37003 (97%)
+2026-05-14 06:07:39,125 INFO [20260514_051311_8439de] run_agent: tool write_file completed (0.64s, 113 chars)
+2026-05-14 06:07:39,150 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-32 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:07:58,952 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-32 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:07:58,952 INFO [20260514_051311_8439de] run_agent: API call #9: model=gpt-5.5 provider=openai-codex in=37195 out=938 total=38133 latency=19.8s cache=36864/37195 (99%)

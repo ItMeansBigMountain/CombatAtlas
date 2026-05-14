@@ -1,0 +1,47 @@
+{
+  "updated_at": "2026-05-14T06:05:25.551301",
+  "platforms": {
+    "discord": [
+      {
+        "id": "1499990220077137943",
+        "name": "general",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1503250944526258207:1503250944526258207",
+        "name": "TRAPISTAN / #general / hello / topic 1503250944526258207",
+        "type": "thread",
+        "thread_id": "1503250944526258207"
+      },
+      {
+        "id": "1503251111149047868:1503251111149047868",
+        "name": "TRAPISTAN / #general / i want this thread to be about configuring this discord. you are the admin / topic 1503251111149047868",
+        "type": "thread",
+        "thread_id": "1503251111149047868"
+      }
+    ],
+    "telegram": [],
+    "whatsapp": [],
+    "slack": [],
+    "signal": [],
+    "mattermost": [],
+    "matrix": [],
+    "homeassistant": [],
+    "email": [],
+    "sms": [],
+    "dingtalk": [],
+    "msgraph_webhook": [],
+    "feishu": [],
+    "wecom": [],
+    "wecom_callback": [],
+    "weixin": [],
+    "bluebubbles": [],
+    "qqbot": [],
+    "yuanbao": [],
+    "google_chat": [],
+    "irc": [],
+    "line": [],
+    "teams": []
+  }
+}

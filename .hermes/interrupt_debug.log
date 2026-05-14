@@ -1,0 +1,4 @@
+03:26:11 interrupt fired: msg='i want the bot to have total control over the server since n', children=0, parent._interrupt=True
+03:26:11 ENTER: queued interrupt msg='i want the bot to have total control over the server since n', agent_running=True
+04:35:18 ENTER: queued interrupt msg='check if the bot is admin now', agent_running=True
+04:35:18 interrupt fired: msg='check if the bot is admin now', children=0, parent._interrupt=True
