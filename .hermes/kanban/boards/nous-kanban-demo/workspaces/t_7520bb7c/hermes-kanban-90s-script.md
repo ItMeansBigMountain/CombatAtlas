@@ -1,0 +1,56 @@
+# Hermes Kanban — 90-second square launch video script
+
+Format: 1:1 square video, fast UI-led motion, clean captions on every beat.
+Structure: brief -> decomposition -> parallel cards -> handoffs -> final assembly.
+
+## Voiceover script, ~90 seconds
+
+What if you could hand an AI team a big goal — and watch it organize the work for you?
+
+This is Hermes Kanban: a shared board where autonomous agents coordinate like a real production team.
+
+Start with a brief: “make a launch video explaining Hermes Kanban.”
+
+Instead of one assistant trying to do everything in one long thread, Hermes turns the goal into cards: research the message, design the storyboard, animate the first cut, edit the final version, and review the result.
+
+Each card has an owner, a workspace, acceptance criteria, and dependencies. When the planning card finishes, the research and design cards unlock in parallel.
+
+Now the board is alive. One agent drafts the message. Another creates the visual direction. They work at the same time, in isolated workspaces, without stepping on each other.
+
+When both cards are done, their handoffs flow into the next card. The animator does not need to read every chat log — just the structured summary, files, and decisions from upstream.
+
+Then the editor polishes the cut. The reviewer checks it against the original brief. If something needs human input, a card blocks with a clear reason. If it passes, the pipeline moves forward.
+
+The result is not just automation. It is accountable collaboration: visible state, durable handoffs, parallel execution, and a final assembly that traces back to the original brief.
+
+Hermes Kanban turns one request into a coordinated agent workflow — from idea, to cards, to finished work.
+
+## Shot list and timing
+
+| Time | Beat | Visual direction | On-screen text |
+|---:|---|---|---|
+| 0–6s | Hook | Empty square frame. A single prompt appears, then zooms into a clean kanban board. | “Give AI a goal. Watch it organize the work.” |
+| 6–14s | Brief | Card titled “Make launch video” lands in Brief column. Cursor or glow highlights the task body. | “1. Start with a brief” |
+| 14–26s | Decomposition | The single card splits into connected cards: Research, Storyboard, Animate, Edit, Review. Dependency lines animate in. | “2. Decompose into specialist cards” |
+| 26–42s | Parallel cards | Research and Storyboard cards move into Running side by side. Two agent avatars or terminals animate in parallel. | “Parallel work, isolated workspaces” |
+| 42–58s | Handoffs | Research and Storyboard cards complete. Their summaries/files flow as small packets into Animate. | “Structured handoffs, not chat archaeology” |
+| 58–70s | Fan-in | Animate card unlocks, assembles inputs into a video timeline. Then Edit card unlocks. | “Dependencies unlock the next step” |
+| 70–80s | Review/blocking | Review card checks boxes. Briefly show a “blocked: needs human decision” state, then “approved.” | “Visible state. Clear blockers.” |
+| 80–90s | Final assembly | All cards collapse into a finished video tile with a trace line back to the original brief. End on Hermes Kanban logo/title. | “From idea → cards → finished work” |
+
+## Caption-only fallback
+
+- One brief becomes a workflow.
+- Hermes decomposes the goal into cards.
+- Specialist agents work in parallel.
+- Dependencies control handoffs.
+- Summaries and artifacts move downstream.
+- Humans see state, blockers, and review points.
+- The final result traces back to the original request.
+
+## Production notes
+
+- Keep every visual readable on mobile: large cards, 3–5 words per caption, high contrast.
+- Use a subtle pulse or moving connector lines to make the board feel alive.
+- Avoid dense terminal text; show only the durable concepts: owner, status, dependencies, handoff.
+- End with the same card graph resolving into the final video artifact so the structure mirrors the narrative.

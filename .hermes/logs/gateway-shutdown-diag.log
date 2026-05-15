@@ -1,0 +1,16 @@
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-05-15T00:52:13Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+hermes         1  0.0  0.0   1704  1104 ?        Ss   May14   0:02 ttyd --port 4860 -c oyama:***REMOVED*** -W -t titleFixed Hermes Agent -t disableResizeOverlay true /hermes.sh
+hermes        10  0.1  3.3 1004876 273636 ?      SNl  May14   1:51 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes gateway run
+hermes      3654  1.5  0.0   4444  3440 ?        SNs  00:52   0:00  \_ /usr/bin/bash -c source /tmp/hermes-snap-e2791cfd827d.sh >/dev/null 2>&1 || true builtin cd -- /opt/hermes || exit 126 eval '/opt/hermes/.venv/bin/python -m hermes_cli.main gateway restart >/tmp/hermes_gateway_restart.out 2>&1; code=$?; tail -80 /tmp/hermes_gateway_restart.out; exit $code' __hermes_ec=$? export -p > /tmp/hermes-snap-e2791cfd827d.sh 2>/dev/null || true pwd -P > /tmp/hermes-cwd-e2791cfd827d.txt 2>/dev/null || true printf '\n__HERMES_CWD_e2791cfd827d__%s__HERMES_CWD_e2791cfd827d__\n' "$(pwd -P)" exit $__hermes_ec
+hermes      3656 96.7  0.7  66540 57408 ?        SN   00:52   0:00      \_ /opt/hermes/.venv/bin/python -m hermes_cli.main gateway restart
+hermes       121  0.1  0.0      0     0 ?        Z    May14   1:13 [hermes] <defunct>
+hermes        22  0.0  0.0      0     0 ?        Z    May14   0:17 [hermes] <defunct>
+--- pstree of self ---
+--- /proc/loadavg ---
+0.00 0.00 0.00 1/281 3664
+--- recent dmesg (oom/killed) ---
+=== end ===

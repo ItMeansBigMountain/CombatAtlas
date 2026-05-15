@@ -1199,3 +1199,630 @@ KeyboardInterrupt
 2026-05-14 06:33:33,929 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-175 (_call):133270993184448 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
 2026-05-14 06:33:41,518 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-175 (_call):133270993184448 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
 2026-05-14 06:33:41,518 INFO [20260514_051311_8439de] run_agent: API call #71: model=gpt-5.5 provider=openai-codex in=112268 out=113 total=112381 latency=7.6s cache=111616/112268 (99%)
+2026-05-14 06:33:46,402 INFO [20260514_051311_8439de] run_agent: tool terminal completed (4.88s, 423 chars)
+2026-05-14 06:33:46,490 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-177 (_call):133270993184448 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:33:50,267 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-177 (_call):133270993184448 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:33:50,268 INFO [20260514_051311_8439de] run_agent: API call #72: model=gpt-5.5 provider=openai-codex in=112576 out=89 total=112665 latency=3.8s cache=112128/112576 (100%)
+2026-05-14 06:33:50,277 INFO [20260514_051311_8439de] run_agent: tool memory completed (0.01s, 913 chars)
+2026-05-14 06:33:50,376 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-178 (_call):133270993184448 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:33:53,543 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-178 (_call):133270993184448 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:33:53,543 INFO [20260514_051311_8439de] run_agent: API call #73: model=gpt-5.5 provider=openai-codex in=112929 out=41 total=112970 latency=3.2s cache=112128/112929 (99%)
+2026-05-14 06:33:53,545 INFO [20260514_051311_8439de] run_agent: tool todo completed (0.00s, 626 chars)
+2026-05-14 06:33:53,600 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-179 (_call):133270993184448 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:34:04,112 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-179 (_call):133270993184448 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:34:04,113 INFO [20260514_051311_8439de] run_agent: API call #74: model=gpt-5.5 provider=openai-codex in=113154 out=453 total=113607 latency=10.5s cache=112640/113154 (100%)
+2026-05-14 06:34:04,252 INFO [20260514_051311_8439de] run_agent: Turn ended: reason=text_response(finish_reason=stop) model=gpt-5.5 api_calls=27/90 budget=27/90 tool_turns=70 last_msg_role=assistant response_len=1430 session=20260514_051311_8439de
+2026-05-14 06:34:04,282 INFO run_agent: OpenAI client created (agent_init, shared=True) thread=bg-review:133270993184448 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:34:04,290 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 06:34:04,292 INFO [20260514_063404_b38f41] run_agent: conversation turn: session=20260514_063404_b38f41 model=gpt-5.5 provider=openai-codex platform=cli history=153 msg='Review the conversation above and update the skill library. Be ACTIVE — most ses...'
+2026-05-14 06:34:04,396 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-180 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:34:20,392 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-180 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:34:20,393 INFO [20260514_063404_b38f41] run_agent: API call #1: model=gpt-5.5 provider=openai-codex in=105041 out=707 total=105748 latency=16.0s
+2026-05-14 06:34:20,397 INFO [20260514_063404_b38f41] run_agent: tool skill_manage completed (0.00s, 89 chars)
+2026-05-14 06:34:20,426 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-181 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:34:28,708 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-181 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:34:28,709 INFO [20260514_063404_b38f41] run_agent: API call #2: model=gpt-5.5 provider=openai-codex in=105792 out=312 total=106104 latency=8.3s cache=104960/105792 (99%)
+2026-05-14 06:34:28,713 INFO [20260514_063404_b38f41] run_agent: tool skill_manage completed (0.00s, 96 chars)
+2026-05-14 06:34:28,740 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-182 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:34:34,954 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-182 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:34:34,954 INFO [20260514_063404_b38f41] run_agent: API call #3: model=gpt-5.5 provider=openai-codex in=106150 out=225 total=106375 latency=6.2s cache=105472/106150 (99%)
+2026-05-14 06:34:34,967 INFO [20260514_063404_b38f41] run_agent: Turn ended: reason=text_response(finish_reason=stop) model=gpt-5.5 api_calls=3/16 budget=3/16 tool_turns=72 last_msg_role=assistant response_len=900 session=20260514_063404_b38f41
+2026-05-14 06:34:34,968 INFO [20260514_063404_b38f41] run_agent: OpenAI client closed (agent_close, shared=True, tcp_force_closed=0) thread=bg-review:133270993184448 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:34:38,359 INFO [20260514_051311_8439de] run_agent: conversation turn: session=20260514_051311_8439de model=gpt-5.5 provider=openai-codex platform=cli history=153 msg='here are some api tokens that i can give you and you can save so that we can int...'
+2026-05-14 06:34:38,362 INFO [20260514_051311_8439de] run_agent: Preflight compression: ~142,234 tokens >= 136,000 threshold (model gpt-5.5, ctx 272,000)
+2026-05-14 06:34:38,364 INFO [20260514_051311_8439de] run_agent: context compression started: session=20260514_051311_8439de messages=154 tokens=~142,234 model=gpt-5.5 focus=None
+2026-05-14 06:34:38,401 INFO [20260514_051311_8439de] agent.auxiliary_client: Auxiliary compression: using auto (gpt-5.5) at https://chatgpt.com/backend-api/codex/
+2026-05-14 06:35:50,993 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (123 chars)
+2026-05-14 06:35:51,515 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='here are some api tokens that i can give you and you can save so that we can int'
+2026-05-14 06:35:51,666 INFO run_agent: Loaded environment variables from /opt/data/.env
+2026-05-14 06:35:53,197 INFO run_agent: OpenAI client created (agent_init, shared=True) thread=asyncio_1:128316738213568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:35:53,518 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 06:35:53,537 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 06:35:53,542 INFO [20260514_063551_8a4df295] run_agent: conversation turn: session=20260514_063551_8a4df295 model=gpt-5.5 provider=openai-codex platform=discord history=0 msg='here are some api tokens that i can give you and you can save so that we can int...'
+2026-05-14 06:35:53,652 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-1 (_call):128316355901120 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:36:00,936 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-1 (_call):128316355901120 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:36:00,937 INFO [20260514_063551_8a4df295] run_agent: API call #1: model=gpt-5.5 provider=openai-codex in=14244 out=89 total=14333 latency=7.3s cache=1536/14244 (11%)
+2026-05-14 06:36:00,958 INFO [20260514_063551_8a4df295] run_agent: tool skill_view completed (0.02s, 44836 chars)
+2026-05-14 06:36:00,984 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-2 (_call):128316355901120 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:36:04,951 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-2 (_call):128316355901120 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:36:04,952 INFO [20260514_063551_8a4df295] run_agent: API call #2: model=gpt-5.5 provider=openai-codex in=25812 out=140 total=25952 latency=4.0s cache=13824/25812 (54%)
+2026-05-14 06:36:05,002 INFO [20260514_063551_8a4df295] run_agent: Turn ended: reason=text_response(finish_reason=stop) model=gpt-5.5 api_calls=2/90 budget=2/90 tool_turns=1 last_msg_role=assistant response_len=559 session=20260514_063551_8a4df295
+2026-05-14 06:36:05,027 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 06:36:05,028 INFO agent.auxiliary_client: Auxiliary title_generation: using auto (gpt-5.5) at https://chatgpt.com/backend-api/codex/
+2026-05-14 06:36:05,052 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=13.5s api_calls=2 response=559 chars
+2026-05-14 06:36:05,073 INFO gateway.platforms.base: [Discord] Sending response (559 chars) to 1499990220077137943
+2026-05-14 06:36:38,434 INFO [20260514_051311_8439de] agent.auxiliary_client: Auxiliary compression: connection error on auto (Codex auxiliary Responses stream exceeded 120.0s total timeout), trying fallback
+2026-05-14 06:36:38,506 WARNING [20260514_051311_8439de] agent.auxiliary_client: Auxiliary compression: connection error on auto and no fallback available (tried: openrouter, nous, local/custom, api-key)
+2026-05-14 06:36:38,507 WARNING [20260514_051311_8439de] root: Failed to generate context summary: Codex auxiliary Responses stream exceeded 120.0s total timeout. Further summary attempts paused for 30 seconds.
+2026-05-14 06:36:38,550 INFO [20260514_051311_8439de] run_agent: context compression done: session=20260514_063638_925612 messages=154->9 tokens=~19,770
+2026-05-14 06:36:38,568 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-185 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:36:42,881 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-185 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:36:42,883 INFO [20260514_051311_8439de] run_agent: API call #75: model=gpt-5.5 provider=openai-codex in=15146 out=73 total=15219 latency=4.3s cache=9216/15146 (61%)
+2026-05-14 06:36:42,900 INFO [20260514_051311_8439de] run_agent: tool skill_view completed (0.01s, 44836 chars)
+2026-05-14 06:36:42,927 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-186 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:36:48,685 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-186 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:36:48,686 INFO [20260514_051311_8439de] run_agent: API call #76: model=gpt-5.5 provider=openai-codex in=26698 out=206 total=26904 latency=5.8s cache=14848/26698 (56%)
+2026-05-14 06:36:48,777 INFO [20260514_051311_8439de] run_agent: Turn ended: reason=text_response(finish_reason=stop) model=gpt-5.5 api_calls=2/90 budget=2/90 tool_turns=3 last_msg_role=assistant response_len=824 session=20260514_063638_925612
+2026-05-14 06:38:49,294 INFO tools.terminal_tool: Cleaned up inactive environment for task: default
+2026-05-14 06:41:12,609 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (396 chars)
+2026-05-14 06:41:13,039 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='im good placing them here   vercel : vcp_3CqEHNB5Ya9PuCwXiArYSaMn8RWk2gbeoyc5f5d'
+2026-05-14 06:41:13,127 INFO [20260514_063551_8a4df295] run_agent: conversation turn: session=20260514_063551_8a4df295 model=gpt-5.5 provider=openai-codex platform=discord history=4 msg='im good placing them here   vercel : vcp_3CqEHNB5Ya9PuCwXiArYSaMn8RWk2gbeoyc5f5d...'
+2026-05-14 06:41:13,138 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-4 (_call):128316355901120 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:41:17,901 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-4 (_call):128316355901120 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:41:17,902 INFO [20260514_063551_8a4df295] run_agent: API call #3: model=gpt-5.5 provider=openai-codex in=26087 out=176 total=26263 latency=4.8s cache=13824/26087 (53%)
+2026-05-14 06:41:17,907 INFO [20260514_063551_8a4df295] tools.terminal_tool: Creating new local environment for task default...
+2026-05-14 06:41:18,135 INFO [20260514_063551_8a4df295] tools.environments.base: Session snapshot created (session=ad724f6d5ae1, cwd=/opt/data)
+2026-05-14 06:41:18,135 INFO [20260514_063551_8a4df295] tools.terminal_tool: local environment ready for task default
+2026-05-14 06:41:18,366 INFO [20260514_063551_8a4df295] run_agent: tool terminal completed (0.46s, 59 chars)
+2026-05-14 06:41:18,391 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-8 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:41:22,376 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-8 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:41:22,377 INFO [20260514_063551_8a4df295] run_agent: API call #4: model=gpt-5.5 provider=openai-codex in=26302 out=122 total=26424 latency=4.0s cache=25600/26302 (97%)
+2026-05-14 06:41:22,391 INFO [20260514_063551_8a4df295] run_agent: tool skill_view completed (0.01s, 6929 chars)
+2026-05-14 06:41:22,408 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-9 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:41:41,217 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-9 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:41:41,218 INFO [20260514_063551_8a4df295] run_agent: API call #5: model=gpt-5.5 provider=openai-codex in=28606 out=968 total=29574 latency=18.8s cache=26112/28606 (91%)
+2026-05-14 06:41:41,220 WARNING [20260514_063551_8a4df295] run_agent: Tool terminal returned error (0.00s): {"output": "", "exit_code": -1, "error": "Foreground command uses '&' backgrounding. Use terminal(background=true) for long-lived processes, then run health checks and tests in follow-up terminal call
+2026-05-14 06:41:41,241 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-10 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:41:57,209 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-10 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:41:57,210 INFO [20260514_063551_8a4df295] run_agent: API call #6: model=gpt-5.5 provider=openai-codex in=29643 out=775 total=30418 latency=16.0s cache=28160/29643 (95%)
+2026-05-14 06:42:00,443 INFO [20260514_063551_8a4df295] run_agent: tool execute_code completed (3.23s, 244 chars)
+2026-05-14 06:42:00,471 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-14 (_call):128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:42:06,251 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-14 (_call):128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:42:06,251 INFO [20260514_063551_8a4df295] run_agent: API call #7: model=gpt-5.5 provider=openai-codex in=30516 out=183 total=30699 latency=5.8s cache=29184/30516 (96%)
+2026-05-14 06:42:06,284 INFO [20260514_063551_8a4df295] run_agent: Turn ended: reason=text_response(finish_reason=stop) model=gpt-5.5 api_calls=5/90 budget=4/90 tool_turns=5 last_msg_role=assistant response_len=422 session=20260514_063551_8a4df295
+2026-05-14 06:42:06,332 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=53.3s api_calls=5 response=422 chars
+2026-05-14 06:42:06,342 INFO gateway.platforms.base: [Discord] Sending response (422 chars) to 1499990220077137943
+2026-05-14 06:47:17,969 INFO tools.terminal_tool: Cleaned up inactive environment for task: default
+2026-05-14 06:51:27,351 INFO [20260514_065047_70ce4d] run_agent: conversation turn: session=20260514_065047_70ce4d model=gpt-5.5 provider=openai-codex platform=cli history=0 msg='i want a kanban board just like this https://x.com/NousResearch/status/205099769...'
+2026-05-14 06:51:27,401 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-188 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:51:32,378 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-188 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:51:32,380 INFO [20260514_065047_70ce4d] run_agent: API call #1: model=gpt-5.5 provider=openai-codex in=14062 out=78 total=14140 latency=5.0s cache=3584/14062 (25%)
+2026-05-14 06:51:32,398 INFO [20260514_065047_70ce4d] run_agent: tool skill_view completed (0.01s, 15144 chars)
+2026-05-14 06:51:32,416 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-189 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:51:38,406 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-189 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:51:38,406 INFO [20260514_065047_70ce4d] run_agent: API call #2: model=gpt-5.5 provider=openai-codex in=17747 out=98 total=17845 latency=6.0s cache=13824/17747 (78%)
+2026-05-14 06:51:38,417 INFO [20260514_065047_70ce4d] run_agent: tool skill_view completed (0.01s, 44836 chars)
+2026-05-14 06:51:38,430 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-190 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:51:42,889 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-190 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:51:42,890 INFO [20260514_065047_70ce4d] run_agent: API call #3: model=gpt-5.5 provider=openai-codex in=29324 out=62 total=29386 latency=4.5s cache=17408/29324 (59%)
+2026-05-14 06:51:42,900 INFO [20260514_065047_70ce4d] tools.browser_tool: Created local browser session h_d9eb6703b0 for task 20260514_065047_70ce4d
+2026-05-14 06:51:43,277 WARNING [20260514_065047_70ce4d] run_agent: Tool browser_navigate returned error (0.39s): {"success": false, "error": "Auto-launch failed: Chrome not found. Checked:\n  - agent-browser cache: /opt/data/.agent-browser/browsers\n  - System Chrome installations\n  - Puppeteer browser cache\n 
+2026-05-14 06:51:43,296 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-191 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:51:50,384 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-191 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:51:50,384 INFO [20260514_065047_70ce4d] run_agent: API call #4: model=gpt-5.5 provider=openai-codex in=29479 out=149 total=29628 latency=7.1s cache=29184/29479 (99%)
+2026-05-14 06:51:50,386 INFO [20260514_065047_70ce4d] tools.terminal_tool: Creating new local environment for task default...
+2026-05-14 06:51:50,622 INFO [20260514_065047_70ce4d] tools.environments.base: Session snapshot created (session=7113004633ad, cwd=/opt/hermes)
+2026-05-14 06:51:50,623 INFO [20260514_065047_70ce4d] tools.terminal_tool: local environment ready for task default
+2026-05-14 06:51:50,854 WARNING [20260514_065047_70ce4d] run_agent: Tool terminal returned error (0.47s): {"output": "/usr/bin/bash: line 11: python: command not found", "exit_code": 127, "error": null}
+2026-05-14 06:51:50,878 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-194 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:51:57,507 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-194 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:51:57,508 INFO [20260514_065047_70ce4d] run_agent: API call #5: model=gpt-5.5 provider=openai-codex in=29667 out=158 total=29825 latency=6.6s cache=29184/29667 (98%)
+2026-05-14 06:51:58,149 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.64s, 4216 chars)
+2026-05-14 06:51:58,189 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-196 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:52:04,603 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-196 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:52:04,604 INFO [20260514_065047_70ce4d] run_agent: API call #6: model=gpt-5.5 provider=openai-codex in=31195 out=206 total=31401 latency=6.4s cache=29184/31195 (94%)
+2026-05-14 06:52:05,244 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.64s, 218 chars)
+2026-05-14 06:52:05,280 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-198 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:52:12,207 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-198 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:52:12,208 INFO [20260514_065047_70ce4d] run_agent: API call #7: model=gpt-5.5 provider=openai-codex in=31478 out=270 total=31748 latency=6.9s cache=30720/31478 (98%)
+2026-05-14 06:52:12,438 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.23s, 4717 chars)
+2026-05-14 06:52:13,675 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.24s, 1717 chars)
+2026-05-14 06:52:26,320 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (11.64s, 4491 chars)
+2026-05-14 06:52:26,357 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-202 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:52:32,242 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-202 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:52:32,242 INFO [20260514_065047_70ce4d] run_agent: API call #8: model=gpt-5.5 provider=openai-codex in=35465 out=193 total=35658 latency=5.9s cache=31232/35465 (88%)
+2026-05-14 06:52:32,465 WARNING [20260514_065047_70ce4d] run_agent: Tool terminal returned error (0.22s): {"output": "/usr/bin/bash: line 3: hermes: command not found", "exit_code": 127, "error": null}
+2026-05-14 06:52:33,686 WARNING [20260514_065047_70ce4d] run_agent: Tool terminal returned error (0.22s): {"output": "/usr/bin/bash: line 3: hermes: command not found", "exit_code": 127, "error": null}
+2026-05-14 06:52:34,916 WARNING [20260514_065047_70ce4d] run_agent: Tool terminal returned error (0.23s): {"output": "/usr/bin/bash: line 3: hermes: command not found", "exit_code": 127, "error": null}
+
+[Tool loop warning: same_tool_failure_warning; count=3; terminal has failed 3 times this turn. This loo
+2026-05-14 06:52:36,148 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.23s, 93 chars)
+2026-05-14 06:52:36,191 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-207 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:52:42,290 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-207 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:52:42,291 INFO [20260514_065047_70ce4d] run_agent: API call #9: model=gpt-5.5 provider=openai-codex in=35855 out=240 total=36095 latency=6.1s cache=35328/35855 (99%)
+2026-05-14 06:52:43,130 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.84s, 308 chars)
+2026-05-14 06:52:44,565 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.43s, 338 chars)
+2026-05-14 06:52:46,200 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.63s, 128 chars)
+2026-05-14 06:52:48,025 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.82s, 1491 chars)
+2026-05-14 06:52:48,062 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-212 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:53:01,005 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-212 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:53:01,005 INFO [20260514_065047_70ce4d] run_agent: API call #10: model=gpt-5.5 provider=openai-codex in=36745 out=356 total=37101 latency=13.0s cache=35328/36745 (96%)
+2026-05-14 06:53:02,235 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (1.23s, 7860 chars)
+2026-05-14 06:53:02,283 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-214 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:53:10,795 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-214 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:53:10,796 INFO [20260514_065047_70ce4d] run_agent: API call #11: model=gpt-5.5 provider=openai-codex in=38799 out=92 total=38891 latency=8.5s cache=36352/38799 (94%)
+2026-05-14 06:53:11,226 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.43s, 780 chars)
+2026-05-14 06:53:11,271 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-216 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:53:23,091 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-216 (_call):133270609061568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:53:23,092 INFO [20260514_065047_70ce4d] run_agent: API call #12: model=gpt-5.5 provider=openai-codex in=39088 out=287 total=39375 latency=11.8s cache=38400/39088 (98%)
+2026-05-14 06:53:23,389 INFO [20260514_065047_70ce4d] tools.vision_tools: vision_analyze: native fast path (provider=openai-codex, model=gpt-5.5)
+2026-05-14 06:53:25,054 INFO [20260514_065047_70ce4d] run_agent: tool vision_analyze completed (1.96s, 24858 chars)
+2026-05-14 06:53:25,094 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-217 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:53:34,817 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-217 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:53:34,819 INFO [20260514_065047_70ce4d] run_agent: API call #13: model=gpt-5.5 provider=openai-codex in=41184 out=232 total=41416 latency=9.7s cache=1536/41184 (4%)
+2026-05-14 06:53:38,270 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (3.45s, 723 chars)
+2026-05-14 06:53:38,317 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-219 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:53:42,750 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-219 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:53:42,751 INFO [20260514_065047_70ce4d] run_agent: API call #14: model=gpt-5.5 provider=openai-codex in=41681 out=122 total=41803 latency=4.5s cache=40448/41681 (97%)
+2026-05-14 06:53:44,586 WARNING [20260514_065047_70ce4d] run_agent: Tool terminal returned error (1.83s): {"output": "/usr/bin/bash: line 3: file: command not found", "exit_code": 127, "error": null}
+2026-05-14 06:53:44,635 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-221 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:53:49,018 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-221 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:53:49,020 INFO [20260514_065047_70ce4d] run_agent: API call #15: model=gpt-5.5 provider=openai-codex in=41844 out=96 total=41940 latency=4.4s cache=40960/41844 (98%)
+2026-05-14 06:53:49,022 INFO [20260514_065047_70ce4d] tools.vision_tools: vision_analyze: native fast path (provider=openai-codex, model=gpt-5.5)
+2026-05-14 06:53:49,025 INFO [20260514_065047_70ce4d] run_agent: tool vision_analyze completed (0.00s, 74988 chars)
+2026-05-14 06:53:49,072 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-222 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:54:05,543 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-222 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:54:05,543 INFO [20260514_065047_70ce4d] run_agent: API call #16: model=gpt-5.5 provider=openai-codex in=43410 out=456 total=43866 latency=16.5s cache=41472/43410 (96%)
+2026-05-14 06:54:06,183 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.64s, 882 chars)
+2026-05-14 06:54:06,239 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-224 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:54:10,779 INFO tools.browser_tool: Cleaning up inactive session for task: 20260514_065047_70ce4d (inactive for 147s)
+2026-05-14 06:54:33,495 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-224 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:54:33,495 INFO [20260514_065047_70ce4d] run_agent: API call #17: model=gpt-5.5 provider=openai-codex in=44060 out=1381 total=45441 latency=27.3s cache=42496/44060 (96%)
+2026-05-14 06:54:43,154 WARNING [20260514_065047_70ce4d] run_agent: Tool terminal returned error (9.66s): {"output": "Board 'nous-kanban-demo' created.\n  Display name: Nous Kanban Demo\n  DB path:      /opt/data/kanban/boards/nous-kanban-demo/kanban.db\n  Switched to 'nous-kanban-demo'.\nTraceback (most 
+2026-05-14 06:54:43,214 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-226 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:54:47,456 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-226 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:54:47,456 INFO [20260514_065047_70ce4d] run_agent: API call #18: model=gpt-5.5 provider=openai-codex in=45580 out=123 total=45703 latency=4.3s cache=43008/45580 (94%)
+2026-05-14 06:54:48,097 WARNING [20260514_065047_70ce4d] run_agent: Tool terminal returned error (0.64s): {"output": "usage: hermes [-h] [--version] [-z PROMPT] [-m MODEL] [--provider PROVIDER]\n              [-t TOOLSETS] [--resume SESSION] [--continue [SESSION_NAME]]\n              [--worktree] [--accep
+2026-05-14 06:54:48,139 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-228 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:54:53,696 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-228 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:54:53,697 INFO [20260514_065047_70ce4d] run_agent: API call #19: model=gpt-5.5 provider=openai-codex in=45941 out=131 total=46072 latency=5.6s cache=44544/45941 (97%)
+2026-05-14 06:54:54,526 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.82s, 660 chars)
+2026-05-14 06:54:54,575 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-230 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:55:05,448 INFO gateway.run: kanban dispatcher [nous-kanban-demo]: spawned=2 reclaimed=0 crashed=0 timed_out=0 promoted=0 auto_blocked=0
+2026-05-14 06:55:17,003 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-230 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:55:17,005 INFO [20260514_065047_70ce4d] run_agent: API call #20: model=gpt-5.5 provider=openai-codex in=46294 out=1124 total=47418 latency=22.4s cache=45056/46294 (97%)
+2026-05-14 06:55:25,170 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (8.16s, 2618 chars)
+2026-05-14 06:55:25,237 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-232 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:55:34,475 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-232 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:55:34,476 INFO [20260514_065047_70ce4d] run_agent: API call #21: model=gpt-5.5 provider=openai-codex in=48086 out=301 total=48387 latency=9.3s cache=45568/48086 (95%)
+2026-05-14 06:55:35,716 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (1.24s, 216 chars)
+2026-05-14 06:55:37,354 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.63s, 81 chars)
+2026-05-14 06:55:38,993 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.64s, 996 chars)
+2026-05-14 06:55:39,050 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-236 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:55:52,282 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-236 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:55:52,283 INFO [20260514_065047_70ce4d] run_agent: API call #22: model=gpt-5.5 provider=openai-codex in=48860 out=323 total=49183 latency=13.3s cache=47104/48860 (96%)
+2026-05-14 06:55:53,133 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.85s, 1718 chars)
+2026-05-14 06:55:53,195 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-238 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:55:58,498 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-238 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:55:58,501 INFO [20260514_065047_70ce4d] run_agent: API call #23: model=gpt-5.5 provider=openai-codex in=49639 out=104 total=49743 latency=5.3s cache=48128/49639 (97%)
+2026-05-14 06:55:59,161 INFO [20260514_065047_70ce4d] run_agent: tool terminal completed (0.66s, 545 chars)
+2026-05-14 06:55:59,225 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-240 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:56:10,882 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-240 (_call):133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:56:10,882 INFO [20260514_065047_70ce4d] run_agent: API call #24: model=gpt-5.5 provider=openai-codex in=49955 out=506 total=50461 latency=11.7s cache=48640/49955 (97%)
+2026-05-14 06:56:11,025 INFO [20260514_065047_70ce4d] run_agent: Turn ended: reason=text_response(finish_reason=stop) model=gpt-5.5 api_calls=24/90 budget=24/90 tool_turns=23 last_msg_role=assistant response_len=1478 session=20260514_065047_70ce4d
+2026-05-14 06:56:11,066 INFO run_agent: OpenAI client created (agent_init, shared=True) thread=bg-review:133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:56:11,085 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 06:56:11,091 INFO [20260514_065611_fa1998] run_agent: conversation turn: session=20260514_065611_fa1998 model=gpt-5.5 provider=openai-codex platform=cli history=58 msg='Review the conversation above and update the skill library. Be ACTIVE — most ses...'
+2026-05-14 06:56:11,141 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-241 (_call):133270993184448 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:56:11,279 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-14 06:56:11,279 INFO agent.auxiliary_client: Auxiliary title_generation: using auto (gpt-5.5) at https://chatgpt.com/backend-api/codex/
+2026-05-14 06:56:34,106 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-241 (_call):133270993184448 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:56:34,107 INFO [20260514_065611_fa1998] run_agent: API call #1: model=gpt-5.5 provider=openai-codex in=41452 out=1137 total=42589 latency=23.0s
+2026-05-14 06:56:34,120 INFO [20260514_065611_fa1998] run_agent: tool skill_manage completed (0.01s, 89 chars)
+2026-05-14 06:56:34,146 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-243 (_call):133270993184448 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:56:38,752 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-243 (_call):133270993184448 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:56:38,753 INFO [20260514_065611_fa1998] run_agent: API call #2: model=gpt-5.5 provider=openai-codex in=42633 out=128 total=42761 latency=4.6s cache=40448/42633 (95%)
+2026-05-14 06:56:38,765 INFO [20260514_065611_fa1998] run_agent: Turn ended: reason=text_response(finish_reason=stop) model=gpt-5.5 api_calls=2/16 budget=2/16 tool_turns=24 last_msg_role=assistant response_len=559 session=20260514_065611_fa1998
+2026-05-14 06:56:38,765 INFO [20260514_065611_fa1998] run_agent: OpenAI client closed (agent_close, shared=True, tcp_force_closed=0) thread=bg-review:133270965913280 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 06:56:59,260 ERROR asyncio: unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<Application.run_async() done, defined at /opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py:620> exception=OSError(5, 'Input/output error')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2004, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/usr/lib/python3.13/selectors.py", line 452, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+  File "/opt/hermes/cli.py", line 13086, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 746, in _run_async
+    result = await f
+             ^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 751, in _run_async
+    self._redraw(render_as_done=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 543, in _redraw
+    self.context.copy().run(run_in_context)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 524, in run_in_context
+    self.renderer.render(self, self.layout, is_done=render_as_done)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 726, in render
+    output.flush()
+    ~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/vt100.py", line 706, in flush
+    flush_stdout(self.stdout, data)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/flush_stdout.py", line 33, in flush_stdout
+    stdout.buffer.write(data.encode(stdout.encoding or "utf-8", "replace"))
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 886, in run_async
+    return await _run_async(f)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 756, in _run_async
+    self.renderer.reset()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 429, in reset
+    self.output.flush()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/vt100.py", line 706, in flush
+    flush_stdout(self.stdout, data)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/flush_stdout.py", line 33, in flush_stdout
+    stdout.buffer.write(data.encode(stdout.encoding or "utf-8", "replace"))
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+2026-05-14 06:56:59,280 INFO tools.terminal_tool: Manually cleaned up environment for task: default
+2026-05-14 06:56:59,280 INFO tools.terminal_tool: Cleaned 1 environments
+2026-05-14 06:57:05,867 INFO gateway.run: kanban dispatcher [nous-kanban-demo]: spawned=5 reclaimed=0 crashed=0 timed_out=0 promoted=0 auto_blocked=0
+2026-05-14 06:59:06,256 INFO gateway.run: kanban dispatcher [nous-kanban-demo]: spawned=1 reclaimed=0 crashed=0 timed_out=0 promoted=0 auto_blocked=0
+2026-05-14 07:00:06,459 INFO gateway.run: kanban dispatcher [nous-kanban-demo]: spawned=2 reclaimed=0 crashed=0 timed_out=0 promoted=0 auto_blocked=0
+2026-05-14 07:05:07,610 INFO gateway.run: kanban dispatcher [nous-kanban-demo]: spawned=1 reclaimed=0 crashed=0 timed_out=0 promoted=0 auto_blocked=0
+2026-05-14 07:07:07,961 INFO gateway.run: kanban dispatcher [nous-kanban-demo]: spawned=1 reclaimed=0 crashed=0 timed_out=0 promoted=0 auto_blocked=0
+2026-05-14 07:11:08,679 INFO gateway.run: kanban dispatcher [nous-kanban-demo]: spawned=2 reclaimed=0 crashed=0 timed_out=0 promoted=0 auto_blocked=0
+2026-05-14 07:15:58,872 INFO discord.gateway: Shard ID None has successfully RESUMED session 10278cfae94492acf65a202de13b3019.
+2026-05-14 07:24:55,240 INFO discord.gateway: Shard ID None has successfully RESUMED session 10278cfae94492acf65a202de13b3019.
+2026-05-14 07:43:09,426 INFO gateway.run: Agent cache idle-TTL evict: session=agent:main:discord:group:1499990220077137943:219376861866754049 (idle=3663s)
+2026-05-14 07:43:09,427 INFO run_agent: OpenAI client closed (cache_evict, shared=True, tcp_force_closed=0) thread=agent-cache-idle-agent:main:discord:group:128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-14 07:43:09,427 INFO gateway.run: Agent cache idle sweep: evicted 1 agent(s)
+2026-05-14 10:55:18,047 INFO discord.gateway: Shard ID None has successfully RESUMED session 10278cfae94492acf65a202de13b3019.
+2026-05-14 14:49:04,969 INFO discord.gateway: Shard ID None has successfully RESUMED session 10278cfae94492acf65a202de13b3019.
+2026-05-14 18:08:19,986 INFO discord.gateway: Shard ID None has successfully RESUMED session 10278cfae94492acf65a202de13b3019.
+2026-05-14 18:43:59,080 INFO discord.gateway: Shard ID None has successfully RESUMED session 10278cfae94492acf65a202de13b3019.
+2026-05-14 18:58:59,593 INFO discord.gateway: Shard ID None has successfully RESUMED session 10278cfae94492acf65a202de13b3019.
+2026-05-14 19:54:15,765 INFO discord.gateway: Shard ID None has successfully RESUMED session 10278cfae94492acf65a202de13b3019.
+2026-05-14 21:41:11,650 INFO discord.gateway: Shard ID None has successfully RESUMED session 10278cfae94492acf65a202de13b3019.
+2026-05-14 22:49:15,608 INFO discord.gateway: Shard ID None has successfully RESUMED session 10278cfae94492acf65a202de13b3019.
+2026-05-14 23:46:21,015 INFO discord.gateway: Shard ID None has successfully RESUMED session 10278cfae94492acf65a202de13b3019.
+2026-05-15 00:33:25,385 INFO discord.gateway: Shard ID None has successfully RESUMED session 10278cfae94492acf65a202de13b3019.
+2026-05-15 00:50:26,501 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (327 chars)
+2026-05-15 00:50:27,060 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='okay now make fallbacks to the free openrouter/free models and see if you can fi'
+2026-05-15 00:50:27,139 INFO [20260514_063551_8a4df295] run_agent: OpenAI client created (agent_init, shared=True) thread=asyncio_1:128316738213568 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:50:27,147 INFO [20260514_063551_8a4df295] agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-15 00:50:27,149 INFO [20260514_063551_8a4df295] run_agent: conversation turn: session=20260514_063551_8a4df295 model=gpt-5.5 provider=openai-codex platform=discord history=14 msg='okay now make fallbacks to the free openrouter/free models and see if you can fi...'
+2026-05-15 00:50:27,159 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-15 (_call):128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:50:33,885 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-15 (_call):128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:50:33,885 INFO [20260514_063551_8a4df295] run_agent: API call #1: model=gpt-5.5 provider=openai-codex in=30186 out=144 total=30330 latency=6.7s cache=1536/30186 (5%)
+2026-05-15 00:50:33,899 INFO [20260514_063551_8a4df295] run_agent: tool skill_view completed (0.01s, 15137 chars)
+2026-05-15 00:50:33,914 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-16 (_call):128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:50:37,524 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-16 (_call):128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:50:37,525 INFO [20260514_063551_8a4df295] run_agent: API call #2: model=gpt-5.5 provider=openai-codex in=34523 out=52 total=34575 latency=3.6s cache=29696/34523 (86%)
+2026-05-15 00:50:37,528 INFO [20260514_063551_8a4df295] run_agent: tool memory completed (0.00s, 405 chars)
+2026-05-15 00:50:37,543 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-17 (_call):128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:50:41,421 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-17 (_call):128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:50:41,422 INFO [20260514_063551_8a4df295] run_agent: API call #3: model=gpt-5.5 provider=openai-codex in=34680 out=116 total=34796 latency=3.9s cache=34304/34680 (99%)
+2026-05-15 00:50:41,424 INFO [20260514_063551_8a4df295] tools.terminal_tool: Creating new local environment for task default...
+2026-05-15 00:50:41,650 INFO [20260514_063551_8a4df295] tools.environments.base: Session snapshot created (session=e2791cfd827d, cwd=/opt/data)
+2026-05-15 00:50:41,650 INFO [20260514_063551_8a4df295] tools.terminal_tool: local environment ready for task default
+2026-05-15 00:50:41,874 WARNING [20260514_063551_8a4df295] run_agent: Tool terminal returned error (0.45s): {"output": "/usr/bin/bash: line 3: python: command not found", "exit_code": 127, "error": null}
+2026-05-15 00:50:43,530 INFO [20260514_063551_8a4df295] run_agent: tool search_files completed (0.65s, 7952 chars)
+2026-05-15 00:50:43,549 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-23 (_call):128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:50:50,843 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-23 (_call):128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:50:50,843 INFO [20260514_063551_8a4df295] run_agent: API call #4: model=gpt-5.5 provider=openai-codex in=37109 out=180 total=37289 latency=7.3s cache=34304/37109 (92%)
+2026-05-15 00:50:51,067 WARNING [20260514_063551_8a4df295] run_agent: Tool terminal returned error (0.22s): {"output": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/opt/hermes/hermes_cli/main.py\"
+2026-05-15 00:50:52,513 INFO [20260514_063551_8a4df295] run_agent: tool search_files completed (0.44s, 6603 chars)
+2026-05-15 00:50:54,572 INFO [20260514_063551_8a4df295] run_agent: tool search_files completed (1.06s, 18 chars)
+2026-05-15 00:50:54,591 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-30 (_call):128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:50:59,374 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-30 (_call):128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:50:59,374 INFO [20260514_063551_8a4df295] run_agent: API call #5: model=gpt-5.5 provider=openai-codex in=39306 out=172 total=39478 latency=4.8s cache=36864/39306 (94%)
+2026-05-15 00:51:00,195 INFO [20260514_063551_8a4df295] run_agent: tool terminal completed (0.82s, 82 chars)
+2026-05-15 00:51:02,085 INFO [20260514_063551_8a4df295] run_agent: tool read_file completed (0.89s, 10572 chars)
+2026-05-15 00:51:03,964 INFO [20260514_063551_8a4df295] run_agent: tool read_file completed (0.88s, 5200 chars)
+2026-05-15 00:51:03,982 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-40 (_call):128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:51:09,602 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-40 (_call):128316323382976 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:51:09,602 INFO [20260514_063551_8a4df295] run_agent: API call #6: model=gpt-5.5 provider=openai-codex in=44322 out=163 total=44485 latency=5.6s cache=38912/44322 (88%)
+2026-05-15 00:51:09,874 INFO run_agent: tool search_files completed (0.27s, 5710 chars)
+2026-05-15 00:51:10,319 INFO run_agent: tool read_file completed (0.71s, 6503 chars)
+2026-05-15 00:51:10,325 INFO run_agent: tool read_file completed (0.72s, 5221 chars)
+2026-05-15 00:51:10,349 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-51 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:51:21,654 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-51 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:51:21,655 INFO [20260514_063551_8a4df295] run_agent: API call #7: model=gpt-5.5 provider=openai-codex in=50263 out=538 total=50801 latency=11.3s cache=44032/50263 (88%)
+2026-05-15 00:51:22,539 INFO [20260514_063551_8a4df295] run_agent: tool read_file completed (0.88s, 3173 chars)
+2026-05-15 00:51:23,765 INFO [20260514_063551_8a4df295] run_agent: tool terminal completed (0.23s, 103 chars)
+2026-05-15 00:51:24,993 INFO [20260514_063551_8a4df295] run_agent: tool terminal completed (0.23s, 152 chars)
+2026-05-15 00:51:25,013 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-58 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:51:37,101 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-58 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:51:37,101 INFO [20260514_063551_8a4df295] run_agent: API call #8: model=gpt-5.5 provider=openai-codex in=52016 out=476 total=52492 latency=12.1s cache=50176/52016 (96%)
+2026-05-15 00:51:37,326 INFO [20260514_063551_8a4df295] run_agent: tool terminal completed (0.22s, 181 chars)
+2026-05-15 00:51:37,350 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-60 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:51:46,085 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-60 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:51:46,086 INFO [20260514_063551_8a4df295] run_agent: API call #9: model=gpt-5.5 provider=openai-codex in=52563 out=365 total=52928 latency=8.7s cache=51712/52563 (98%)
+2026-05-15 00:51:46,326 INFO [20260514_063551_8a4df295] run_agent: tool terminal completed (0.24s, 244 chars)
+2026-05-15 00:51:46,348 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-62 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:52:02,099 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-62 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:52:02,099 INFO [20260514_063551_8a4df295] run_agent: API call #10: model=gpt-5.5 provider=openai-codex in=53022 out=658 total=53680 latency=15.8s cache=52224/53022 (98%)
+2026-05-15 00:52:02,523 INFO [20260514_063551_8a4df295] run_agent: tool terminal completed (0.42s, 2147 chars)
+2026-05-15 00:52:03,744 INFO [20260514_063551_8a4df295] run_agent: tool terminal completed (0.22s, 618 chars)
+2026-05-15 00:52:04,965 INFO [20260514_063551_8a4df295] run_agent: tool terminal completed (0.22s, 89 chars)
+2026-05-15 00:52:04,988 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-66 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:52:12,722 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-66 (_call):128316343314112 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 00:52:12,723 INFO [20260514_063551_8a4df295] run_agent: API call #11: model=gpt-5.5 provider=openai-codex in=54492 out=261 total=54753 latency=7.7s cache=52736/54492 (97%)
+2026-05-15 00:52:13,352 INFO gateway.run: Received SIGTERM as a planned gateway stop — exiting cleanly
+2026-05-15 00:52:13,353 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=yes parent_pid=1 parent_name=ttyd loadavg_1m=0.00 parent_cmdline='ttyd --port 4860 -c oyama:***REMOVED*** -W -t titleFixed Hermes Agent -t disableResizeOverlay true /hermes.sh'
+2026-05-15 00:52:13,355 INFO gateway.run: Stopping gateway...
+2026-05-15 00:52:13,489 INFO gateway.run: Sent shutdown notification to active chat discord:1499990220077137943
+2026-05-15 00:52:13,490 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.13s
+2026-05-15 00:52:28,963 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-15 00:52:28,963 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-15 00:52:28,964 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-15 00:52:29,135 INFO hermes_cli.plugins: Plugin discovery complete: 12 found, 8 enabled
+2026-05-15 00:52:29,917 INFO gateway.run: Starting Hermes Gateway...
+2026-05-15 00:52:29,918 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-15 00:52:29,919 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-15 00:52:29,919 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-15 00:52:30,323 INFO gateway.run: Connecting to discord...
+2026-05-15 00:52:30,331 ERROR gateway.platforms.base: [Discord] Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 00:52:30,332 WARNING gateway.run: ✗ discord failed to connect
+2026-05-15 00:52:30,333 INFO gateway.platforms.discord: [Discord] Disconnected
+2026-05-15 00:52:30,334 ERROR gateway.run: Gateway hit a non-retryable startup conflict: discord: Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 00:52:30,336 ERROR gateway.run: Gateway exiting cleanly: discord: Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 02:21:53,055 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-15 02:21:53,055 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-15 02:21:53,056 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-15 02:21:53,069 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-15 02:21:53,070 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-15 02:21:53,070 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-15 02:21:53,478 INFO hermes_cli.plugins: Plugin discovery complete: 12 found, 8 enabled
+2026-05-15 02:21:53,508 INFO hermes_cli.plugins: Plugin discovery complete: 12 found, 8 enabled
+2026-05-15 02:21:54,462 INFO gateway.run: Starting Hermes Gateway...
+2026-05-15 02:21:54,463 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-15 02:21:54,463 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-15 02:21:54,464 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-15 02:21:54,806 INFO gateway.run: Connecting to discord...
+2026-05-15 02:21:54,840 ERROR gateway.platforms.base: [Discord] Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 02:21:54,842 WARNING gateway.run: ✗ discord failed to connect
+2026-05-15 02:21:54,842 INFO gateway.platforms.discord: [Discord] Disconnected
+2026-05-15 02:21:54,843 ERROR gateway.run: Gateway hit a non-retryable startup conflict: discord: Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 02:21:54,844 ERROR gateway.run: Gateway exiting cleanly: discord: Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 02:21:55,060 INFO run_agent: Loaded environment variables from /opt/data/.env
+2026-05-15 02:21:55,665 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-15 02:21:55,687 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-15 02:21:55,696 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-15 02:21:55,753 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-15 02:21:55,762 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-15 02:22:10,555 INFO run_agent: OpenAI client created (agent_init, shared=True) thread=Thread-3 (process_loop):133044298086080 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:10,582 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-15 02:22:10,589 INFO [20260515_022155_1e8a98] run_agent: conversation turn: session=20260515_022155_1e8a98 model=gpt-5.5 provider=openai-codex platform=cli history=0 msg='is my discord bot down?'
+2026-05-15 02:22:10,696 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-5 (_call):133044272907968 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:15,965 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-5 (_call):133044272907968 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:15,965 INFO [20260515_022155_1e8a98] run_agent: API call #1: model=gpt-5.5 provider=openai-codex in=13748 out=58 total=13806 latency=5.3s
+2026-05-15 02:22:15,979 INFO [20260515_022155_1e8a98] run_agent: tool skill_view completed (0.01s, 45976 chars)
+2026-05-15 02:22:15,995 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-6 (_call):133044272907968 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:20,092 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-6 (_call):133044272907968 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:20,093 INFO [20260515_022155_1e8a98] run_agent: API call #2: model=gpt-5.5 provider=openai-codex in=25538 out=157 total=25695 latency=4.1s cache=13312/25538 (52%)
+2026-05-15 02:22:20,095 INFO [20260515_022155_1e8a98] tools.terminal_tool: Creating new local environment for task default...
+2026-05-15 02:22:20,311 INFO [20260515_022155_1e8a98] tools.environments.base: Session snapshot created (session=110aae2b5a68, cwd=/opt/hermes)
+2026-05-15 02:22:20,311 INFO [20260515_022155_1e8a98] tools.terminal_tool: local environment ready for task default
+2026-05-15 02:22:20,535 WARNING [20260515_022155_1e8a98] run_agent: Tool terminal returned error (0.44s): {"output": "/usr/bin/bash: line 3: python: command not found\n/usr/bin/bash: line 3: hermes: command not found", "exit_code": 127, "error": null}
+2026-05-15 02:22:21,754 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (0.22s, 619 chars)
+2026-05-15 02:22:22,971 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (0.22s, 96 chars)
+2026-05-15 02:22:22,997 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-12 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:29,394 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-12 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:29,395 INFO [20260515_022155_1e8a98] run_agent: API call #3: model=gpt-5.5 provider=openai-codex in=26057 out=291 total=26348 latency=6.4s cache=25088/26057 (96%)
+2026-05-15 02:22:30,415 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (1.02s, 481 chars)
+2026-05-15 02:22:31,635 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (0.22s, 9349 chars)
+2026-05-15 02:22:32,857 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (0.22s, 159 chars)
+2026-05-15 02:22:32,876 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-16 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:38,842 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-16 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:38,843 INFO [20260515_022155_1e8a98] run_agent: API call #4: model=gpt-5.5 provider=openai-codex in=29380 out=248 total=29628 latency=6.0s cache=25600/29380 (87%)
+2026-05-15 02:22:39,060 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (0.21s, 148 chars)
+2026-05-15 02:22:40,277 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (0.22s, 45 chars)
+2026-05-15 02:22:41,499 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (0.22s, 4444 chars)
+2026-05-15 02:22:41,661 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-20 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:46,664 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-20 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:46,665 INFO [20260515_022155_1e8a98] run_agent: API call #5: model=gpt-5.5 provider=openai-codex in=31108 out=189 total=31297 latency=5.0s cache=29184/31108 (94%)
+2026-05-15 02:22:47,310 INFO [20260515_022155_1e8a98] run_agent: tool search_files completed (0.64s, 1579 chars)
+2026-05-15 02:22:48,738 INFO [20260515_022155_1e8a98] run_agent: tool search_files completed (0.43s, 900 chars)
+2026-05-15 02:22:49,958 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (0.22s, 267 chars)
+2026-05-15 02:22:49,978 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-27 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:52,203 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-27 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:52,204 INFO [20260515_022155_1e8a98] run_agent: API call #6: model=gpt-5.5 provider=openai-codex in=32047 out=39 total=32086 latency=2.2s cache=30720/32047 (96%)
+2026-05-15 02:22:53,070 INFO [20260515_022155_1e8a98] run_agent: tool read_file completed (0.86s, 725 chars)
+2026-05-15 02:22:53,092 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-32 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:57,084 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-32 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:22:57,085 INFO [20260515_022155_1e8a98] run_agent: API call #7: model=gpt-5.5 provider=openai-codex in=32314 out=77 total=32391 latency=4.0s cache=31744/32314 (98%)
+2026-05-15 02:22:57,516 INFO [20260515_022155_1e8a98] run_agent: tool search_files completed (0.43s, 11063 chars)
+2026-05-15 02:22:57,542 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-35 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:00,650 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-35 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:00,650 INFO [20260515_022155_1e8a98] run_agent: API call #8: model=gpt-5.5 provider=openai-codex in=35545 out=91 total=35636 latency=3.1s cache=31744/35545 (89%)
+2026-05-15 02:23:01,287 INFO [20260515_022155_1e8a98] run_agent: tool search_files completed (0.63s, 18 chars)
+2026-05-15 02:23:01,313 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-38 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:09,904 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-38 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:09,904 INFO [20260515_022155_1e8a98] run_agent: API call #9: model=gpt-5.5 provider=openai-codex in=35654 out=58 total=35712 latency=8.6s cache=35328/35654 (99%)
+2026-05-15 02:23:10,344 INFO [20260515_022155_1e8a98] run_agent: tool search_files completed (0.44s, 6197 chars)
+2026-05-15 02:23:10,375 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-41 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:12,935 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-41 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:12,935 INFO [20260515_022155_1e8a98] run_agent: API call #10: model=gpt-5.5 provider=openai-codex in=37513 out=54 total=37567 latency=2.6s cache=35328/37513 (94%)
+2026-05-15 02:23:13,369 INFO [20260515_022155_1e8a98] run_agent: tool search_files completed (0.43s, 5661 chars)
+2026-05-15 02:23:13,390 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-44 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:16,286 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-44 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:16,286 INFO [20260515_022155_1e8a98] run_agent: API call #11: model=gpt-5.5 provider=openai-codex in=39298 out=49 total=39347 latency=2.9s cache=37376/39298 (95%)
+2026-05-15 02:23:16,722 INFO [20260515_022155_1e8a98] run_agent: tool search_files completed (0.43s, 18 chars)
+2026-05-15 02:23:16,747 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-47 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:20,208 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-47 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:20,211 INFO [20260515_022155_1e8a98] run_agent: API call #12: model=gpt-5.5 provider=openai-codex in=39365 out=79 total=39444 latency=3.5s cache=38912/39365 (99%)
+2026-05-15 02:23:23,243 INFO [20260515_022155_1e8a98] run_agent: tool search_files completed (3.03s, 18 chars)
+2026-05-15 02:23:23,268 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-50 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:26,294 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-50 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:26,295 INFO [20260515_022155_1e8a98] run_agent: API call #13: model=gpt-5.5 provider=openai-codex in=39469 out=76 total=39545 latency=3.0s cache=38912/39469 (99%)
+2026-05-15 02:23:26,727 INFO [20260515_022155_1e8a98] run_agent: tool search_files completed (0.43s, 6460 chars)
+2026-05-15 02:23:26,753 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-53 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:30,740 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-53 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:30,741 INFO [20260515_022155_1e8a98] run_agent: API call #14: model=gpt-5.5 provider=openai-codex in=41345 out=81 total=41426 latency=4.0s cache=38912/41345 (94%)
+2026-05-15 02:23:48,381 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (17.64s, 37313 chars)
+2026-05-15 02:23:48,410 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-55 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:50,587 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-55 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:50,587 INFO [20260515_022155_1e8a98] run_agent: API call #15: model=gpt-5.5 provider=openai-codex in=52644 out=36 total=52680 latency=2.2s cache=40960/52644 (78%)
+2026-05-15 02:23:51,450 INFO [20260515_022155_1e8a98] run_agent: tool read_file completed (0.86s, 4201 chars)
+2026-05-15 02:23:51,477 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-60 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:53,395 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-60 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:53,396 INFO [20260515_022155_1e8a98] run_agent: API call #16: model=gpt-5.5 provider=openai-codex in=53924 out=33 total=53957 latency=1.9s cache=52224/53924 (97%)
+2026-05-15 02:23:54,267 INFO [20260515_022155_1e8a98] run_agent: tool read_file completed (0.87s, 7607 chars)
+2026-05-15 02:23:54,291 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-65 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:56,295 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-65 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:23:56,296 INFO [20260515_022155_1e8a98] run_agent: API call #17: model=gpt-5.5 provider=openai-codex in=56381 out=33 total=56414 latency=2.0s cache=53760/56381 (95%)
+2026-05-15 02:23:57,163 INFO [20260515_022155_1e8a98] run_agent: tool read_file completed (0.86s, 9547 chars)
+2026-05-15 02:23:57,189 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-70 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:24:14,357 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-70 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:24:14,359 INFO [20260515_022155_1e8a98] run_agent: API call #18: model=gpt-5.5 provider=openai-codex in=59292 out=33 total=59325 latency=17.2s cache=55808/59292 (94%)
+2026-05-15 02:24:15,230 INFO [20260515_022155_1e8a98] run_agent: tool read_file completed (0.87s, 8632 chars)
+2026-05-15 02:24:15,261 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-75 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:24:20,718 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-75 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:24:20,719 INFO [20260515_022155_1e8a98] run_agent: API call #19: model=gpt-5.5 provider=openai-codex in=61832 out=207 total=62039 latency=5.5s cache=58880/61832 (95%)
+2026-05-15 02:24:21,154 INFO [20260515_022155_1e8a98] run_agent: tool search_files completed (0.43s, 116 chars)
+2026-05-15 02:24:22,376 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (0.22s, 536 chars)
+2026-05-15 02:24:22,403 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-79 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:24:32,019 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-79 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:24:32,020 INFO [20260515_022155_1e8a98] run_agent: API call #20: model=gpt-5.5 provider=openai-codex in=62292 out=286 total=62578 latency=9.6s cache=61440/62292 (99%)
+2026-05-15 02:24:32,238 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (0.22s, 147 chars)
+2026-05-15 02:24:32,271 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-81 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:24:35,163 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-81 (_call):133043917420224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:24:35,164 INFO [20260515_022155_1e8a98] run_agent: API call #21: model=gpt-5.5 provider=openai-codex in=62639 out=87 total=62726 latency=2.9s cache=61952/62639 (99%)
+2026-05-15 02:24:35,184 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (0.02s, 204 chars)
+2026-05-15 02:24:35,216 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-82 (_call):133043902736064 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:24:35,574 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-05-15 02:24:35,575 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-05-15 02:24:35,575 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-05-15 02:24:36,020 INFO hermes_cli.plugins: Plugin discovery complete: 12 found, 8 enabled
+2026-05-15 02:24:37,015 INFO gateway.run: Starting Hermes Gateway...
+2026-05-15 02:24:37,015 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-15 02:24:37,016 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-15 02:24:37,016 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-15 02:24:37,049 INFO tools.process_registry: Recovered detached process: set -a; . /opt/data/.env; set +a; export HERMES_HOME=/opt/da (pid=3956)
+2026-05-15 02:24:37,050 INFO gateway.run: Recovered 1 background process(es) from previous run
+2026-05-15 02:24:37,409 INFO gateway.run: Connecting to discord...
+2026-05-15 02:24:37,502 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-82 (_call):133043902736064 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:24:37,502 INFO [20260515_022155_1e8a98] run_agent: API call #22: model=gpt-5.5 provider=openai-codex in=62790 out=33 total=62823 latency=2.3s cache=62464/62790 (99%)
+2026-05-15 02:24:37,747 INFO gateway.platforms.discord: [Discord] Registered /skill command with 86 skill(s) via autocomplete
+2026-05-15 02:24:37,747 INFO discord.client: logging in using static token
+2026-05-15 02:24:38,357 INFO discord.gateway: Shard ID None has connected to Gateway (Session ID: 84238eb67335059fa585f690f147ab6e).
+2026-05-15 02:24:40,360 INFO gateway.platforms.discord: [Discord] Connected as Velox#6418
+2026-05-15 02:24:40,363 INFO gateway.run: ✓ discord connected
+2026-05-15 02:24:40,364 INFO gateway.run: Gateway running with 1 platform(s)
+2026-05-15 02:24:40,368 INFO gateway.run: Channel directory built: 4 target(s)
+2026-05-15 02:24:40,369 INFO gateway.platforms.discord: [Discord] Skipping Discord slash command sync: same slash-command fingerprint already synced
+2026-05-15 02:24:41,371 INFO gateway.run: Press Ctrl+C to stop
+2026-05-15 02:24:41,414 INFO gateway.run: Cron ticker started (interval=60s)
+2026-05-15 02:24:45,506 INFO [20260515_022155_1e8a98] run_agent: tool process completed (8.00s, 87 chars)
+2026-05-15 02:24:45,531 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-83 (_call):133043902736064 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:24:46,378 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-05-15 02:24:51,592 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-83 (_call):133043902736064 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:24:51,593 INFO [20260515_022155_1e8a98] run_agent: API call #23: model=gpt-5.5 provider=openai-codex in=62858 out=115 total=62973 latency=6.1s cache=62464/62858 (99%)
+2026-05-15 02:24:51,595 INFO [20260515_022155_1e8a98] run_agent: tool process completed (0.00s, 232 chars)
+2026-05-15 02:24:53,615 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (1.02s, 218 chars)
+2026-05-15 02:24:54,838 INFO [20260515_022155_1e8a98] run_agent: tool terminal completed (0.22s, 3900 chars)
+2026-05-15 02:24:54,868 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-86 (_call):133043902736064 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:25:06,961 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-86 (_call):133043902736064 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:25:06,962 INFO [20260515_022155_1e8a98] run_agent: API call #24: model=gpt-5.5 provider=openai-codex in=64279 out=562 total=64841 latency=12.1s cache=62464/64279 (97%)
+2026-05-15 02:25:06,970 INFO [20260515_022155_1e8a98] run_agent: tool skill_manage completed (0.00s, 89 chars)
+2026-05-15 02:25:06,997 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-87 (_call):133043902736064 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:25:11,400 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-87 (_call):133043902736064 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 02:25:11,401 INFO [20260515_022155_1e8a98] run_agent: API call #25: model=gpt-5.5 provider=openai-codex in=64878 out=168 total=65046 latency=4.4s cache=64000/64878 (99%)
+2026-05-15 02:25:11,507 INFO [20260515_022155_1e8a98] run_agent: Turn ended: reason=text_response(finish_reason=stop) model=gpt-5.5 api_calls=25/90 budget=25/90 tool_turns=24 last_msg_role=assistant response_len=692 session=20260515_022155_1e8a98
+2026-05-15 02:25:11,687 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-15 02:25:11,687 INFO agent.auxiliary_client: Auxiliary title_generation: using auto (gpt-5.5) at https://chatgpt.com/backend-api/codex/
+2026-05-15 02:47:15,352 INFO discord.gateway: Shard ID None has successfully RESUMED session 84238eb67335059fa585f690f147ab6e.
+2026-05-15 03:01:13,789 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (327 chars)
+2026-05-15 03:01:14,232 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='okay now make fallbacks to the free openrouter/free models and see if you can fi'
+2026-05-15 03:01:14,340 INFO run_agent: Loaded environment variables from /opt/data/.env
+2026-05-15 03:01:15,243 INFO run_agent: OpenAI client created (agent_init, shared=True) thread=asyncio_1:138021810312896 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:15,468 INFO agent.auxiliary_client: Vision auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-15 03:01:15,479 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider openai-codex (gpt-5.5)
+2026-05-15 03:01:15,482 INFO [20260514_063551_8a4df295] run_agent: conversation turn: session=20260514_063551_8a4df295 model=gpt-5.5 provider=openai-codex platform=discord history=14 msg='okay now make fallbacks to the free openrouter/free models and see if you can fi...'
+2026-05-15 03:01:15,498 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-1 (_call):138021566408384 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:20,607 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-1 (_call):138021566408384 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:20,608 INFO [20260514_063551_8a4df295] run_agent: API call #1: model=gpt-5.5 provider=openai-codex in=30186 out=112 total=30298 latency=5.1s cache=2560/30186 (8%)
+2026-05-15 03:01:20,619 INFO [20260514_063551_8a4df295] run_agent: tool skill_view completed (0.01s, 15137 chars)
+2026-05-15 03:01:20,629 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-2 (_call):138021566408384 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:24,118 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-2 (_call):138021566408384 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:24,118 INFO [20260514_063551_8a4df295] run_agent: API call #2: model=gpt-5.5 provider=openai-codex in=34491 out=106 total=34597 latency=3.5s cache=29696/34491 (86%)
+2026-05-15 03:01:24,119 INFO [20260514_063551_8a4df295] run_agent: tool todo completed (0.00s, 607 chars)
+2026-05-15 03:01:24,129 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-3 (_call):138021566408384 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:29,836 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-3 (_call):138021566408384 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:29,837 INFO [20260514_063551_8a4df295] run_agent: API call #3: model=gpt-5.5 provider=openai-codex in=34759 out=215 total=34974 latency=5.7s cache=34304/34759 (99%)
+2026-05-15 03:01:29,838 INFO [20260514_063551_8a4df295] tools.terminal_tool: Creating new local environment for task default...
+2026-05-15 03:01:30,056 INFO [20260514_063551_8a4df295] tools.environments.base: Session snapshot created (session=ec1120a6ce1c, cwd=/opt/data/HeRmEz)
+2026-05-15 03:01:30,056 INFO [20260514_063551_8a4df295] tools.terminal_tool: local environment ready for task default
+2026-05-15 03:01:30,273 WARNING [20260514_063551_8a4df295] run_agent: Tool terminal returned error (0.44s): {"output": "/usr/bin/bash: line 3: python: command not found", "exit_code": 127, "error": null}
+2026-05-15 03:01:31,915 INFO [20260514_063551_8a4df295] run_agent: tool search_files completed (0.64s, 7148 chars)
+2026-05-15 03:01:33,134 INFO [20260514_063551_8a4df295] run_agent: tool terminal completed (0.22s, 93 chars)
+2026-05-15 03:01:33,156 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-11 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:38,422 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-11 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:38,423 INFO [20260514_063551_8a4df295] run_agent: API call #4: model=gpt-5.5 provider=openai-codex in=37066 out=151 total=37217 latency=5.3s cache=34304/37066 (93%)
+2026-05-15 03:01:38,424 INFO [20260514_063551_8a4df295] run_agent: tool todo completed (0.00s, 607 chars)
+2026-05-15 03:01:38,436 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-12 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:43,504 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-12 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:43,505 INFO [20260514_063551_8a4df295] run_agent: API call #5: model=gpt-5.5 provider=openai-codex in=37386 out=203 total=37589 latency=5.1s cache=36864/37386 (99%)
+2026-05-15 03:01:44,724 INFO [20260514_063551_8a4df295] run_agent: tool terminal completed (1.22s, 1516 chars)
+2026-05-15 03:01:46,154 INFO [20260514_063551_8a4df295] run_agent: tool search_files completed (0.43s, 10280 chars)
+2026-05-15 03:01:47,372 INFO [20260514_063551_8a4df295] run_agent: tool terminal completed (0.22s, 103 chars)
+2026-05-15 03:01:47,387 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-17 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:50,536 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-17 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:50,536 INFO [20260514_063551_8a4df295] run_agent: API call #6: model=gpt-5.5 provider=openai-codex in=41016 out=47 total=41063 latency=3.2s cache=36864/41016 (90%)
+2026-05-15 03:01:51,396 INFO [20260514_063551_8a4df295] run_agent: tool read_file completed (0.86s, 11615 chars)
+2026-05-15 03:01:51,409 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-22 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:58,295 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-22 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:01:58,296 INFO [20260514_063551_8a4df295] run_agent: API call #7: model=gpt-5.5 provider=openai-codex in=45472 out=188 total=45660 latency=6.9s cache=40448/45472 (89%)
+2026-05-15 03:01:58,722 INFO [20260514_063551_8a4df295] run_agent: tool search_files completed (0.43s, 6905 chars)
+2026-05-15 03:01:58,738 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-25 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:02:03,177 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-25 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:02:03,178 INFO [20260514_063551_8a4df295] run_agent: API call #8: model=gpt-5.5 provider=openai-codex in=47606 out=67 total=47673 latency=4.4s cache=45056/47606 (95%)
+2026-05-15 03:02:03,609 INFO [20260514_063551_8a4df295] run_agent: tool search_files completed (0.43s, 6891 chars)
+2026-05-15 03:02:03,624 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-28 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:02:06,113 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-28 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:02:06,113 INFO [20260514_063551_8a4df295] run_agent: API call #9: model=gpt-5.5 provider=openai-codex in=49590 out=51 total=49641 latency=2.5s cache=47104/49590 (95%)
+2026-05-15 03:02:06,544 INFO [20260514_063551_8a4df295] run_agent: tool search_files completed (0.43s, 10789 chars)
+2026-05-15 03:02:06,561 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-31 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:02:09,090 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-31 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:02:09,090 INFO [20260514_063551_8a4df295] run_agent: API call #10: model=gpt-5.5 provider=openai-codex in=52667 out=52 total=52719 latency=2.5s cache=49152/52667 (93%)
+2026-05-15 03:02:09,519 INFO [20260514_063551_8a4df295] run_agent: tool search_files completed (0.43s, 9545 chars)
+2026-05-15 03:02:09,537 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-34 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:02:11,855 INFO run_agent: OpenAI client closed (request_complete, shared=False, tcp_force_closed=0) thread=Thread-34 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5
+2026-05-15 03:02:11,856 INFO [20260514_063551_8a4df295] run_agent: API call #11: model=gpt-5.5 provider=openai-codex in=55516 out=32 total=55548 latency=2.3s cache=52224/55516 (94%)
+2026-05-15 03:02:12,722 INFO [20260514_063551_8a4df295] run_agent: tool read_file completed (0.86s, 12752 chars)
+2026-05-15 03:02:12,737 INFO run_agent: OpenAI client created (codex_stream_request, shared=False) thread=Thread-39 (_call):138021551724224 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5

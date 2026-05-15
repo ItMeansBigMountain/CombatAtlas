@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-14T06:30:25.612267",
+  "updated_at": "2026-05-15T02:58:41.496522",
   "platforms": {
     "discord": [
       {
@@ -19,6 +19,12 @@
         "name": "TRAPISTAN / #general / i want this thread to be about configuring this discord. you are the admin / topic 1503251111149047868",
         "type": "thread",
         "thread_id": "1503251111149047868"
+      },
+      {
+        "id": "1499990220077137943",
+        "name": "TRAPISTAN / #general",
+        "type": "group",
+        "thread_id": null
       }
     ],
     "telegram": [],

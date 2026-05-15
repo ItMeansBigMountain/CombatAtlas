@@ -704,6 +704,26 @@ schema footprint is zero outside worker processes.
 
 User docs: https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban
 
+#### Kanban board setup workflow
+
+When setting up a project-specific board for a user workspace:
+
+1. Inspect state first: `hermes profile list`, `hermes kanban boards list`, `hermes kanban list`, and the `kanban:` block in config.
+2. Initialize idempotently: `hermes kanban init`.
+3. Create a named board for the workspace: `hermes kanban boards create <slug> --name "..." --description "..." --switch`.
+4. Verify with an explicit env override when the current chat/session may already have `HERMES_KANBAN_BOARD` pinned. A running Hermes session can pin `HERMES_KANBAN_BOARD=default`, which takes precedence over the global `/opt/data/kanban/current` file and makes `hermes kanban boards current` appear to ignore `boards switch`. Use `HERMES_KANBAN_BOARD=<slug> hermes kanban ...` in that session, or start a fresh Hermes session after switching boards.
+5. Seed a harmless verification task and complete it, plus a triage starter card if useful. This confirms create/list/complete works without spawning an unwanted worker.
+6. Verify gateway/dispatcher state: `hermes gateway status`, config `kanban.dispatch_in_gateway: true`, and `hermes kanban diagnostics`.
+7. If the workspace is Git-backed, document the board in the repo (for example `KANBAN.md`) and run the workspace backup/push workflow.
+8. If the user asks to "reset" after creating or inspecting a board, restore the prior active board (or `default` if unspecified) with `hermes kanban boards switch <slug>` and verify with `hermes kanban boards current`. Do this after seeding/verification so the user's normal queue is not left pointed at a demo or temporary board.
+
+For demo/reference boards that should resemble a public Kanban example, create a dedicated board rather than repurposing the user's active workspace board, give it a descriptive icon/color, and seed a small fan-out/fan-in dependency graph that demonstrates `todo -> ready/running -> blocked/done` behavior. If the demo requires specialist-looking assignees, create or clone real Hermes profiles first; the dispatcher ignores unknown assignee names.
+
+Pitfalls:
+- Only assign tasks to profiles that exist in `hermes profile list` / `hermes kanban assignees`. On small setups the only valid assignee may be `default`; invented specialist names leave cards sitting in `ready`.
+- `hermes kanban create --json` returns the task id in the `id` field, not `task_id`. When shell-scripting dependency graphs, parse `json.load(sys.stdin)["id"]`.
+- `hermes kanban list` does not accept a global `--all` flag on some versions; use the plain list/show commands unless help output confirms extra filters are available.
+
 ---
 
 ## Troubleshooting
@@ -752,6 +772,7 @@ Common gateway problems:
   - To verify Discord-side admin after the invite, use `scripts/check_discord_admin.py` from this skill with `DISCORD_BOT_TOKEN` and `DISCORD_HOME_CHANNEL`/`DISCORD_HOME_CHANNEL_ID` in env. It computes guild role permissions plus channel/category overwrites and reports `base_administrator` plus effective moderation permissions.
   - Tool pitfall: in some gateway/container contexts the direct terminal tool can fail with `Could not determine home directory`, and `python` may not be installed even when `python3` is. If so, use `execute_code` with `hermes_tools.terminal(...)`, write longer probes to `/tmp`, and run them with `/usr/bin/python3` to preserve the Discord env without exposing tokens.
 - **Discord token not configured**: `hermes config check` lists `DISCORD_BOT_TOKEN` as optional, so gateway status may be clean but Discord will not connect. Verify by sourcing the env file and checking `bool(os.getenv('DISCORD_BOT_TOKEN'))` before starting the gateway.
+- **Discord lock stuck on zombie PID**: If `hermes gateway status` says `Discord bot token already in use (PID N)` but `ps -p N -o stat,cmd` shows a defunct/zombie Hermes process and no live gateway exists, remove the stale lock under `${XDG_STATE_HOME:-$HOME/.local/state}/hermes/gateway-locks/discord-bot-token-*.lock`, then restart the gateway and verify logs show `Connected as ...` plus `✓ discord connected`.
 - **Starting Discord gateway in the official Docker image**: `hermes gateway run` refuses to run as root unless `HERMES_ALLOW_ROOT_GATEWAY=1` is set. Prefer fixing ownership (`chown -R hermes:hermes /opt/data`, keep `/opt/data` 700 and `.env`/`config.yaml` 600) and launching as the `hermes` user, e.g. `runuser -u hermes -- sh -lc 'set -a; . /opt/data/.env; set +a; /opt/hermes/.venv/bin/python -m hermes_cli.main gateway run'`. Verify with `python -m hermes_cli.main gateway status` and `tail`/grep `/opt/data/logs/gateway.log` for `Connected as ...` and `✓ discord connected`.
 - **Approval policy for total-control setups**: If a user explicitly wants the agent to have full control and command approvals block needed operations, set `approvals.mode: off` in `config.yaml` (or `hermes config set approvals.mode off` when the CLI is on PATH), then verify `approvals.mode=off` from YAML before retrying. This affects future command approval prompts but does not bypass external OS permissions. If they also want privileged local control from Discord while keeping the gateway non-root, configure passwordless sudo for the `hermes` user and verify with `runuser -u hermes -- sudo -n true`; see `references/discord-gateway-env.md` for the Debian/official-image recipe.
 - **Slack bot only works in DMs**: Must subscribe to `message.channels` event. Without it, the bot ignores public channels.

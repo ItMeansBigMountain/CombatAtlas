@@ -91,3 +91,79 @@
 2026-05-14 03:36:25,209 INFO gateway.run: Press Ctrl+C to stop
 2026-05-14 03:36:25,252 INFO gateway.run: Cron ticker started (interval=60s)
 2026-05-14 03:36:30,234 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-05-14 06:35:50,993 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (123 chars)
+2026-05-14 06:35:51,515 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='here are some api tokens that i can give you and you can save so that we can int'
+2026-05-14 06:36:05,052 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=13.5s api_calls=2 response=559 chars
+2026-05-14 06:36:05,073 INFO gateway.platforms.base: [Discord] Sending response (559 chars) to 1499990220077137943
+2026-05-14 06:41:12,609 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (396 chars)
+2026-05-14 06:41:13,039 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='im good placing them here   vercel : vcp_3CqEHNB5Ya9PuCwXiArYSaMn8RWk2gbeoyc5f5d'
+WARNING run_agent: Tool terminal returned error (0.00s): {"output": "", "exit_code": -1, "error": "Foreground command uses '&' backgrounding. Use terminal(background=true) for long-lived processes, then run health checks and tests in follow-up terminal call
+2026-05-14 06:42:06,332 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=53.3s api_calls=5 response=422 chars
+2026-05-14 06:42:06,342 INFO gateway.platforms.base: [Discord] Sending response (422 chars) to 1499990220077137943
+2026-05-14 06:55:05,448 INFO gateway.run: kanban dispatcher [nous-kanban-demo]: spawned=2 reclaimed=0 crashed=0 timed_out=0 promoted=0 auto_blocked=0
+2026-05-14 06:57:05,867 INFO gateway.run: kanban dispatcher [nous-kanban-demo]: spawned=5 reclaimed=0 crashed=0 timed_out=0 promoted=0 auto_blocked=0
+2026-05-14 06:59:06,256 INFO gateway.run: kanban dispatcher [nous-kanban-demo]: spawned=1 reclaimed=0 crashed=0 timed_out=0 promoted=0 auto_blocked=0
+2026-05-14 07:00:06,459 INFO gateway.run: kanban dispatcher [nous-kanban-demo]: spawned=2 reclaimed=0 crashed=0 timed_out=0 promoted=0 auto_blocked=0
+2026-05-14 07:05:07,610 INFO gateway.run: kanban dispatcher [nous-kanban-demo]: spawned=1 reclaimed=0 crashed=0 timed_out=0 promoted=0 auto_blocked=0
+2026-05-14 07:07:07,961 INFO gateway.run: kanban dispatcher [nous-kanban-demo]: spawned=1 reclaimed=0 crashed=0 timed_out=0 promoted=0 auto_blocked=0
+2026-05-14 07:11:08,679 INFO gateway.run: kanban dispatcher [nous-kanban-demo]: spawned=2 reclaimed=0 crashed=0 timed_out=0 promoted=0 auto_blocked=0
+2026-05-14 07:43:09,426 INFO gateway.run: Agent cache idle-TTL evict: session=agent:main:discord:group:1499990220077137943:219376861866754049 (idle=3663s)
+2026-05-14 07:43:09,427 INFO gateway.run: Agent cache idle sweep: evicted 1 agent(s)
+2026-05-15 00:50:26,501 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (327 chars)
+2026-05-15 00:50:27,060 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='okay now make fallbacks to the free openrouter/free models and see if you can fi'
+WARNING run_agent: Tool terminal returned error (0.45s): {"output": "/usr/bin/bash: line 3: python: command not found", "exit_code": 127, "error": null}
+WARNING run_agent: Tool terminal returned error (0.22s): {"output": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/opt/hermes/hermes_cli/main.py\"
+2026-05-15 00:52:13,352 INFO gateway.run: Received SIGTERM as a planned gateway stop — exiting cleanly
+2026-05-15 00:52:13,353 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=yes parent_pid=1 parent_name=ttyd loadavg_1m=0.00 parent_cmdline='ttyd --port 4860 -c oyama:***REMOVED*** -W -t titleFixed Hermes Agent -t disableResizeOverlay true /hermes.sh'
+WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=yes parent_pid=1 parent_name=ttyd loadavg_1m=0.00 parent_cmdline='ttyd --port 4860 -c oyama:***REMOVED*** -W -t titleFixed Hermes Agent -t disableResizeOverlay true /hermes.sh'
+2026-05-15 00:52:13,355 INFO gateway.run: Stopping gateway...
+2026-05-15 00:52:13,489 INFO gateway.run: Sent shutdown notification to active chat discord:1499990220077137943
+2026-05-15 00:52:13,490 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.13s
+2026-05-15 00:52:29,917 INFO gateway.run: Starting Hermes Gateway...
+2026-05-15 00:52:29,918 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-15 00:52:29,919 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-15 00:52:29,919 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-15 00:52:30,323 INFO gateway.run: Connecting to discord...
+2026-05-15 00:52:30,331 ERROR gateway.platforms.base: [Discord] Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 00:52:30,332 WARNING gateway.run: ✗ discord failed to connect
+2026-05-15 00:52:30,333 INFO gateway.platforms.discord: [Discord] Disconnected
+2026-05-15 00:52:30,334 ERROR gateway.run: Gateway hit a non-retryable startup conflict: discord: Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 00:52:30,336 ERROR gateway.run: Gateway exiting cleanly: discord: Discord bot token already in use (PID 10). Stop the other gateway first.
+┌─────────────────────────────────────────────────────────┐
+│           ⚕ Hermes Gateway Starting...                 │
+├─────────────────────────────────────────────────────────┤
+│  Messaging platforms + cron scheduler                    │
+│  Press Ctrl+C to stop                                   │
+└─────────────────────────────────────────────────────────┘
+
+2026-05-15 02:21:54,462 INFO gateway.run: Starting Hermes Gateway...
+2026-05-15 02:21:54,463 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-15 02:21:54,463 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-15 02:21:54,464 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-15 02:21:54,806 INFO gateway.run: Connecting to discord...
+2026-05-15 02:21:54,840 ERROR gateway.platforms.base: [Discord] Discord bot token already in use (PID 10). Stop the other gateway first.
+ERROR gateway.platforms.base: [Discord] Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 02:21:54,842 WARNING gateway.run: ✗ discord failed to connect
+WARNING gateway.run: ✗ discord failed to connect
+2026-05-15 02:21:54,842 INFO gateway.platforms.discord: [Discord] Disconnected
+2026-05-15 02:21:54,843 ERROR gateway.run: Gateway hit a non-retryable startup conflict: discord: Discord bot token already in use (PID 10). Stop the other gateway first.
+ERROR gateway.run: Gateway hit a non-retryable startup conflict: discord: Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 02:21:54,844 ERROR gateway.run: Gateway exiting cleanly: discord: Discord bot token already in use (PID 10). Stop the other gateway first.
+ERROR gateway.run: Gateway exiting cleanly: discord: Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 02:24:37,015 INFO gateway.run: Starting Hermes Gateway...
+2026-05-15 02:24:37,015 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-15 02:24:37,016 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-15 02:24:37,016 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-15 02:24:37,050 INFO gateway.run: Recovered 1 background process(es) from previous run
+2026-05-15 02:24:37,409 INFO gateway.run: Connecting to discord...
+2026-05-15 02:24:37,747 INFO gateway.platforms.discord: [Discord] Registered /skill command with 86 skill(s) via autocomplete
+2026-05-15 02:24:40,360 INFO gateway.platforms.discord: [Discord] Connected as Velox#6418
+2026-05-15 02:24:40,363 INFO gateway.run: ✓ discord connected
+2026-05-15 02:24:40,364 INFO gateway.run: Gateway running with 1 platform(s)
+2026-05-15 02:24:40,368 INFO gateway.run: Channel directory built: 4 target(s)
+2026-05-15 02:24:40,369 INFO gateway.platforms.discord: [Discord] Skipping Discord slash command sync: same slash-command fingerprint already synced
+2026-05-15 02:24:41,371 INFO gateway.run: Press Ctrl+C to stop
+2026-05-15 02:24:41,414 INFO gateway.run: Cron ticker started (interval=60s)
+2026-05-15 02:24:46,378 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-05-15 03:01:13,789 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (327 chars)
+2026-05-15 03:01:14,232 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='okay now make fallbacks to the free openrouter/free models and see if you can fi'

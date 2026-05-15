@@ -1,2 +1,11 @@
 {"ts": "2026-05-14T03:35:51.185760+00:00", "tag": "gateway.start", "pid": 11, "python": "3.13.5", "platform": "linux", "replace": false, "argv": ["/opt/hermes/.venv/bin/hermes", "gateway", "run"], "stdin_is_tty": false, "absorb_windows_console_controls": false}
 {"ts": "2026-05-14T03:36:20.423782+00:00", "tag": "gateway.start", "pid": 10, "python": "3.13.5", "platform": "linux", "replace": false, "argv": ["/opt/hermes/.venv/bin/hermes", "gateway", "run"], "stdin_is_tty": false, "absorb_windows_console_controls": false}
+{"ts": "2026-05-15T00:52:28.802043+00:00", "tag": "gateway.start", "pid": 3656, "python": "3.13.5", "platform": "linux", "replace": false, "argv": ["/opt/hermes/hermes_cli/main.py", "gateway", "restart"], "stdin_is_tty": false, "absorb_windows_console_controls": false}
+{"ts": "2026-05-15T00:52:30.337448+00:00", "tag": "asyncio.run.returned", "pid": 3656, "python": "3.13.5", "platform": "linux", "success": true}
+{"ts": "2026-05-15T00:52:30.337554+00:00", "tag": "gateway.exit_clean", "pid": 3656, "python": "3.13.5", "platform": "linux"}
+{"ts": "2026-05-15T00:52:30.337799+00:00", "tag": "atexit.hook", "pid": 3656, "python": "3.13.5", "platform": "linux", "sys_exc": "(None, None, None)"}
+{"ts": "2026-05-15T02:21:54.128703+00:00", "tag": "gateway.start", "pid": 3675, "python": "3.13.5", "platform": "linux", "replace": false, "argv": ["/opt/hermes/.venv/bin/hermes", "gateway", "run"], "stdin_is_tty": false, "absorb_windows_console_controls": false}
+{"ts": "2026-05-15T02:21:54.845966+00:00", "tag": "asyncio.run.returned", "pid": 3675, "python": "3.13.5", "platform": "linux", "success": true}
+{"ts": "2026-05-15T02:21:54.846071+00:00", "tag": "gateway.exit_clean", "pid": 3675, "python": "3.13.5", "platform": "linux"}
+{"ts": "2026-05-15T02:21:54.846328+00:00", "tag": "atexit.hook", "pid": 3675, "python": "3.13.5", "platform": "linux", "sys_exc": "(None, None, None)"}
+{"ts": "2026-05-15T02:24:36.668487+00:00", "tag": "gateway.start", "pid": 3956, "python": "3.13.5", "platform": "linux", "replace": false, "argv": ["/opt/hermes/.venv/bin/hermes", "gateway", "run"], "stdin_is_tty": false, "absorb_windows_console_controls": false}

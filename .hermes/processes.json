@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "session_id": "proc_192225f94cd3",
+    "command": "set -a; . /opt/data/.env; set +a; export HERMES_HOME=/opt/data; /opt/hermes/.venv/bin/hermes gateway run",
+    "pid": 3956,
+    "pid_scope": "host",
+    "cwd": "/opt/hermes",
+    "started_at": 1778811875.1672878,
+    "task_id": "default",
+    "session_key": "",
+    "watcher_platform": "",
+    "watcher_chat_id": "",
+    "watcher_user_id": "",
+    "watcher_user_name": "",
+    "watcher_thread_id": "",
+    "watcher_interval": 0,
+    "notify_on_complete": false,
+    "watch_patterns": []
+  }
+]

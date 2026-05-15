@@ -1,0 +1,1 @@
+2026-05-14 06:59:40,839 WARNING [20260514_065722_be5349] run_agent: Tool browser_navigate returned error (0.35s): {"success": false, "error": "Auto-launch failed: Chrome not found. Checked:\n  - agent-browser cache: /opt/data/.agent-browser/browsers\n  - System Chrome installations\n  - Puppeteer browser cache\n 

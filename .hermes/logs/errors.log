@@ -525,3 +525,102 @@ KeyboardInterrupt
 2026-05-14 06:29:31,617 WARNING [20260514_062907_ce315e] run_agent: Tool skill_manage returned error (0.00s): {"success": false, "error": "File must be under one of: assets, references, scripts, templates. Got: 'SKILL.md'"}
 2026-05-14 06:31:10,482 WARNING [20260514_051311_8439de] run_agent: Tool browser_navigate returned error (0.46s): {"success": false, "error": "Auto-launch failed: Chrome not found. Checked:\n  - agent-browser cache: /opt/data/.agent-browser/browsers\n  - System Chrome installations\n  - Puppeteer browser cache\n 
 2026-05-14 06:32:42,095 WARNING [20260514_051311_8439de] run_agent: Tool terminal returned error (0.42s): {"output": "{\n  \"id\": \"t_c82a17b4\",\n  \"title\": \"Kanban setup verification\",\n  \"body\": \"Kanban board was initialized for the HeRmEz workspace at /opt/data/HeRmEz. This task verifies creat
+2026-05-14 06:36:38,506 WARNING [20260514_051311_8439de] agent.auxiliary_client: Auxiliary compression: connection error on auto and no fallback available (tried: openrouter, nous, local/custom, api-key)
+2026-05-14 06:36:38,507 WARNING [20260514_051311_8439de] root: Failed to generate context summary: Codex auxiliary Responses stream exceeded 120.0s total timeout. Further summary attempts paused for 30 seconds.
+2026-05-14 06:41:41,220 WARNING [20260514_063551_8a4df295] run_agent: Tool terminal returned error (0.00s): {"output": "", "exit_code": -1, "error": "Foreground command uses '&' backgrounding. Use terminal(background=true) for long-lived processes, then run health checks and tests in follow-up terminal call
+2026-05-14 06:51:43,277 WARNING [20260514_065047_70ce4d] run_agent: Tool browser_navigate returned error (0.39s): {"success": false, "error": "Auto-launch failed: Chrome not found. Checked:\n  - agent-browser cache: /opt/data/.agent-browser/browsers\n  - System Chrome installations\n  - Puppeteer browser cache\n 
+2026-05-14 06:51:50,854 WARNING [20260514_065047_70ce4d] run_agent: Tool terminal returned error (0.47s): {"output": "/usr/bin/bash: line 11: python: command not found", "exit_code": 127, "error": null}
+2026-05-14 06:52:32,465 WARNING [20260514_065047_70ce4d] run_agent: Tool terminal returned error (0.22s): {"output": "/usr/bin/bash: line 3: hermes: command not found", "exit_code": 127, "error": null}
+2026-05-14 06:52:33,686 WARNING [20260514_065047_70ce4d] run_agent: Tool terminal returned error (0.22s): {"output": "/usr/bin/bash: line 3: hermes: command not found", "exit_code": 127, "error": null}
+2026-05-14 06:52:34,916 WARNING [20260514_065047_70ce4d] run_agent: Tool terminal returned error (0.23s): {"output": "/usr/bin/bash: line 3: hermes: command not found", "exit_code": 127, "error": null}
+
+[Tool loop warning: same_tool_failure_warning; count=3; terminal has failed 3 times this turn. This loo
+2026-05-14 06:53:44,586 WARNING [20260514_065047_70ce4d] run_agent: Tool terminal returned error (1.83s): {"output": "/usr/bin/bash: line 3: file: command not found", "exit_code": 127, "error": null}
+2026-05-14 06:54:43,154 WARNING [20260514_065047_70ce4d] run_agent: Tool terminal returned error (9.66s): {"output": "Board 'nous-kanban-demo' created.\n  Display name: Nous Kanban Demo\n  DB path:      /opt/data/kanban/boards/nous-kanban-demo/kanban.db\n  Switched to 'nous-kanban-demo'.\nTraceback (most 
+2026-05-14 06:54:48,097 WARNING [20260514_065047_70ce4d] run_agent: Tool terminal returned error (0.64s): {"output": "usage: hermes [-h] [--version] [-z PROMPT] [-m MODEL] [--provider PROVIDER]\n              [-t TOOLSETS] [--resume SESSION] [--continue [SESSION_NAME]]\n              [--worktree] [--accep
+2026-05-14 06:56:59,260 ERROR asyncio: unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-1' coro=<Application.run_async() done, defined at /opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py:620> exception=OSError(5, 'Input/output error')>
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 2004, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/usr/lib/python3.13/selectors.py", line 452, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+  File "/opt/hermes/cli.py", line 13086, in _signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 746, in _run_async
+    result = await f
+             ^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 751, in _run_async
+    self._redraw(render_as_done=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 543, in _redraw
+    self.context.copy().run(run_in_context)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 524, in run_in_context
+    self.renderer.render(self, self.layout, is_done=render_as_done)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 726, in render
+    output.flush()
+    ~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/vt100.py", line 706, in flush
+    flush_stdout(self.stdout, data)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/flush_stdout.py", line 33, in flush_stdout
+    stdout.buffer.write(data.encode(stdout.encoding or "utf-8", "replace"))
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 886, in run_async
+    return await _run_async(f)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/application/application.py", line 756, in _run_async
+    self.renderer.reset()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/renderer.py", line 429, in reset
+    self.output.flush()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/vt100.py", line 706, in flush
+    flush_stdout(self.stdout, data)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/prompt_toolkit/output/flush_stdout.py", line 33, in flush_stdout
+    stdout.buffer.write(data.encode(stdout.encoding or "utf-8", "replace"))
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 5] Input/output error
+2026-05-15 00:50:41,874 WARNING [20260514_063551_8a4df295] run_agent: Tool terminal returned error (0.45s): {"output": "/usr/bin/bash: line 3: python: command not found", "exit_code": 127, "error": null}
+2026-05-15 00:50:51,067 WARNING [20260514_063551_8a4df295] run_agent: Tool terminal returned error (0.22s): {"output": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/opt/hermes/hermes_cli/main.py\"
+2026-05-15 00:52:13,353 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=yes parent_pid=1 parent_name=ttyd loadavg_1m=0.00 parent_cmdline='ttyd --port 4860 -c oyama:***REMOVED*** -W -t titleFixed Hermes Agent -t disableResizeOverlay true /hermes.sh'
+2026-05-15 00:52:30,331 ERROR gateway.platforms.base: [Discord] Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 00:52:30,332 WARNING gateway.run: ✗ discord failed to connect
+2026-05-15 00:52:30,334 ERROR gateway.run: Gateway hit a non-retryable startup conflict: discord: Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 00:52:30,336 ERROR gateway.run: Gateway exiting cleanly: discord: Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 02:21:54,840 ERROR gateway.platforms.base: [Discord] Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 02:21:54,842 WARNING gateway.run: ✗ discord failed to connect
+2026-05-15 02:21:54,843 ERROR gateway.run: Gateway hit a non-retryable startup conflict: discord: Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 02:21:54,844 ERROR gateway.run: Gateway exiting cleanly: discord: Discord bot token already in use (PID 10). Stop the other gateway first.
+2026-05-15 02:22:20,535 WARNING [20260515_022155_1e8a98] run_agent: Tool terminal returned error (0.44s): {"output": "/usr/bin/bash: line 3: python: command not found\n/usr/bin/bash: line 3: hermes: command not found", "exit_code": 127, "error": null}
+2026-05-15 03:01:30,273 WARNING [20260514_063551_8a4df295] run_agent: Tool terminal returned error (0.44s): {"output": "/usr/bin/bash: line 3: python: command not found", "exit_code": 127, "error": null}
