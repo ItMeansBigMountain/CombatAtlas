@@ -167,3 +167,19 @@ ERROR gateway.run: Gateway exiting cleanly: discord: Discord bot token already i
 2026-05-15 02:24:46,378 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
 2026-05-15 03:01:13,789 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (327 chars)
 2026-05-15 03:01:14,232 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='okay now make fallbacks to the free openrouter/free models and see if you can fi'
+2026-05-15 03:03:44,131 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=149.9s api_calls=20 response=1967 chars
+2026-05-15 03:03:44,178 INFO gateway.platforms.base: [Discord] Sending response (1967 chars) to 1499990220077137943
+2026-05-15 03:08:23,068 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (85 chars)
+2026-05-15 03:08:23,538 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Client ID    694001457450-bl7k3vi73von6ej63h18e48b1re047l2.apps.googleuserconten'
+2026-05-15 03:08:32,538 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=9.0s api_calls=1 response=772 chars
+2026-05-15 03:08:32,543 INFO gateway.platforms.base: [Discord] Sending response (772 chars) to 1499990220077137943
+2026-05-15 03:31:21,619 INFO gateway.platforms.discord: [Discord] Cached user document: /opt/data/cache/documents/doc_7f3a4bbde675_message.txt
+2026-05-15 03:31:22,172 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='[Content of message.txt]: {   "type": "service_account",   "project_id": "gen-la'
+2026-05-15 03:32:51,288 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=89.1s api_calls=7 response=1572 chars
+2026-05-15 03:32:51,294 INFO gateway.platforms.base: [Discord] Sending response (1572 chars) to 1499990220077137943
+2026-05-15 03:39:00,544 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (3 chars)
+2026-05-15 03:39:01,027 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='yes'
+2026-05-15 03:39:11,858 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=10.8s api_calls=2 response=483 chars
+2026-05-15 03:39:11,865 INFO gateway.platforms.base: [Discord] Sending response (483 chars) to 1499990220077137943
+2026-05-15 04:00:49,446 INFO gateway.run: Session expiry: 1 sessions to finalize (discord:1)
+2026-05-15 04:00:49,450 INFO gateway.run: Session expiry done: 1 finalized

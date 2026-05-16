@@ -210,6 +210,20 @@ hermes auth remove P INDEX  Remove by provider + index
 hermes auth reset PROVIDER  Clear exhaustion status
 ```
 
+### Fallback Providers
+
+Fallback providers are tried in order when the primary model fails with rate-limit, overload, or connection errors. They are stored as top-level `fallback_providers` in `config.yaml` as a list of `{provider, model, base_url?, api_mode?}` entries.
+
+```
+hermes fallback             Show current fallback chain
+hermes fallback list        Show current fallback chain
+hermes fallback add         Pick provider/model and append it to the chain
+hermes fallback remove      Remove an entry
+hermes fallback clear       Remove all fallbacks
+```
+
+For OpenRouter free fallback coverage, a practical chain is `openrouter/free` first, followed by specific `:free` models appropriate for the workload. Verify current availability/pricing via OpenRouter `/api/v1/models` before hardcoding model IDs, because free-model availability changes.
+
 ### Other
 
 ```
@@ -372,6 +386,8 @@ Full config reference: https://hermes-agent.nousresearch.com/docs/user-guide/con
 ### Providers
 
 20+ providers supported. Set via `hermes model` or `hermes setup`.
+
+For ordered backup models, use the top-level `fallback_providers` list (or `hermes fallback add/list/remove/clear`). See `references/openrouter-free-fallbacks.md` for the verified pattern for using OpenRouter's free models as fallbacks while preserving the user's primary model.
 
 | Provider | Auth | Key env var |
 |----------|------|-------------|

@@ -24,11 +24,16 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 ## References
 
 - `references/gmail-search-syntax.md` — Gmail search operators (is:unread, from:, newer_than:, etc.)
+- `references/calendar-service-account.md` — service-account setup for Calendar automation when the user shares calendars with the service account.
 
 ## Scripts
 
 - `scripts/setup.py` — OAuth2 setup (run once to authorize)
 - `scripts/google_api.py` — compatibility wrapper CLI. It prefers `gws` for operations when available, while preserving Hermes' existing JSON output contract.
+
+### Service-account Calendar route
+
+If the user provides a Google Cloud **service-account JSON** and wants Calendar automation without personal OAuth, use the service-account route in `references/calendar-service-account.md` instead of the OAuth setup below. Save the JSON as a credentials file with mode `600`, set `GOOGLE_APPLICATION_CREDENTIALS` in the Hermes env file, and have the user share the target calendar with the service account's `client_email`. A successful auth check may still show zero calendars until the user shares a calendar. Continue to use personal OAuth for Gmail/Drive/Docs/Sheets as a Google user, or when the user wants Hermes to act exactly as their account.
 
 ## First-Time Setup
 
@@ -162,6 +167,7 @@ Should print `AUTHENTICATED`. Setup is complete — token refreshes automaticall
 - Token is stored at `~/.hermes/google_token.json` and auto-refreshes.
 - Pending OAuth session state/verifier are stored temporarily at `~/.hermes/google_oauth_pending.json` until exchange completes.
 - If `gws` is installed, `google_api.py` points it at the same `~/.hermes/google_token.json` credentials file. Users do not need to run a separate `gws auth login` flow.
+- A Google AI Studio / Gemini API key (`GOOGLE_API_KEY` or `GEMINI_API_KEY`) is **not** enough for private Google Workspace data. It can call some Google APIs only where API-key auth is supported (for example public calendar data), and the target API must be enabled in the Google Cloud project. Personal Gmail/Calendar/Drive/Docs/Sheets actions require OAuth with a Desktop OAuth client JSON plus the user approval flow above.
 - To revoke: `$GSETUP --revoke`
 
 ## Usage
@@ -324,6 +330,7 @@ All commands return JSON. Parse with `jq` or read directly. Key fields:
 | `REFRESH_FAILED` | Token revoked or expired — redo Steps 3-5 |
 | `HttpError 403: Insufficient Permission` | Missing API scope — `$GSETUP --revoke` then redo Steps 3-5 |
 | `AUTHENTICATED (partial)` or "Token missing scopes" | New write capabilities (Drive write/delete, Docs create/edit) require re-authorization. `$GSETUP --revoke` then redo Steps 3-5 to grant the upgraded scopes. |
+| `calendar_count: 0` after service-account auth | Auth works, but no calendars have been shared with the service account yet. Share the target calendar with the service account `client_email`; see `references/calendar-service-account.md`. |
 | `HttpError 403: Access Not Configured` | API not enabled — user needs to enable it in Google Cloud Console |
 | `ModuleNotFoundError` | Run `$GSETUP --install-deps` |
 | Advanced Protection blocks auth | Workspace admin must allowlist the OAuth client ID |
