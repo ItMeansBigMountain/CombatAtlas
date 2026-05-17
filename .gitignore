@@ -44,3 +44,6 @@
 
 # Git internals from nested repos/backups
 **/.git/
+
+# Active nested project worktrees are backed up as Git bundles under .hermes/project-backups/
+/projects/cox-elementary-pta/
