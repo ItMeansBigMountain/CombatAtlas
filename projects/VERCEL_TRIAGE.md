@@ -17,13 +17,14 @@ Workspace path: `/opt/data/HeRmEz/projects`
 
 ## Important deployment-protection issue
 
-The existing Vercel deployment URLs currently return `401 Unauthorized` from anonymous/manual browser checks. This usually means Vercel Deployment Protection / authentication is enabled for those deployments or the public aliases are not configured correctly.
+Resolved: deployment SSO protection has been disabled via the Vercel API for the currently discovered Vercel projects.
 
-Needed before manual testing is easy:
+Verification after disabling:
 
-1. Either disable protection for preview/production deployments, or
-2. Provide the intended public alias/domain per app, or
-3. Provide the deployment-bypass setting/token if the team wants protected previews.
+- `3d-react-web`: anonymous HTTP 200.
+- `ticvoter`: no longer 401, but latest deployment returns 404 and needs redeploy/build repair.
+- `musclemadness`: no longer 401, but latest deployment returns 404 and needs redeploy/build repair.
+- `codology`: no longer 401, but latest deployment returns 404 and needs redeploy/build repair.
 
 ## Immediate deploy/redeploy candidates
 

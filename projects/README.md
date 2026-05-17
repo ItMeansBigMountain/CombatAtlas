@@ -71,7 +71,9 @@ Use this table as the single place to record Vercel preview/production URLs as p
 
 Detailed deployment scan: [`VERCEL_TRIAGE.md`](./VERCEL_TRIAGE.md)
 
-Current finding: the Vercel API token is available, but existing Vercel deployment URLs are returning `401 Unauthorized` in anonymous checks, so deployment protection/alias settings need to be addressed before easy manual testing.
+Current finding: the Vercel API token is available. Deployment SSO protection has now been disabled for the currently discovered Vercel projects. `3d-react-web` verifies publicly with HTTP 200; `ticvoter`, `musclemadness`, and `codology` now need redeploy/build repair because their latest public URLs return 404 instead of 401.
+
+Free hosting/data plan: [`FREE_HOSTING_AND_SQLITE_PLAN.md`](./FREE_HOSTING_AND_SQLITE_PLAN.md)
 
 ## Workflow for each project
 
