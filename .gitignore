@@ -38,7 +38,13 @@
 **/.pytest_cache/
 **/.mypy_cache/
 **/.ruff_cache/
+**/.expo/
+**/.next/
+**/.nuxt/
 **/node_modules/
+**/dist/
+**/build/
+**/coverage/
 **/.DS_Store
 **/Thumbs.db
 
@@ -47,3 +53,9 @@
 
 # Active nested project worktrees are backed up as Git bundles under /projects/_backups/
 /projects/cox-elementary-pta/
+
+# Original root-owned source copy after legacy project import; active copies live under /projects/
+/legacy-projects/
+
+# Imported raw aggregate archive; active project copies live in top-level /projects folders
+/projects/legacy-src/

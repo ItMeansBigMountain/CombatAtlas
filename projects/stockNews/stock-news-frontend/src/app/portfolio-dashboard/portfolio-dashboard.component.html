@@ -1,0 +1,76 @@
+<div class="dashboard-container">
+    <!-- SETTINGS BUTTON -->
+    <button class="settings-btn" (click)="goToSettings()">Settings</button>
+
+    <!-- LOGOUT BUTTON -->
+    <button class="logout-btn" (click)="logout()">Logout</button>
+
+
+    <!-- EMOTIONS LEGEND -->
+    
+
+
+    <!-- TITLE -->
+    <!-- <h2>{{ userData.username }}'s Portfolio Dashboard</h2>
+    <h4>Equity: ${{ userData.equity }}</h4>
+    <h4>Cash: ${{ userData.cash }}</h4>
+    <h4>Dividend_total: ${{ userData.dividend_total }}</h4>
+     -->
+
+    <!-- TIMEFRAME SELECTOR -->
+    <!-- <div class="timeframe-selector">
+        <div class="timeframe">
+            <label for="timeframeFrom">From:</label>
+            <input type="date" id="timeframeFrom" name="timeframeFrom" [value]="fromDate">
+        </div>
+        <div class="timeframe">
+            <label for="timeframeTo">To:</label>
+            <input type="date" id="timeframeTo" name="timeframeTo" [value]="toDate">
+        </div>
+    </div> -->
+
+    <!-- ADD INVESTMENT BUTTON  -->
+    <div class="add-investment">
+        <input type="text" placeholder="Ticker Symbol" [(ngModel)]="newInvestmentSymbol">
+        <input type="number" placeholder="Amount Invested" [(ngModel)]="newInvestmentAmount">
+        <button (click)="addInvestment()">Add Investment</button>
+    </div>
+
+
+    <div class="investment-list">
+        <h3>Your Investments</h3>
+        <ul>
+            <!-- Dynamically generate list items -->
+            <li class="investment-item" *ngFor="let investment of investments; let i = index">
+                <div class="investment-actions">
+                    <button *ngIf="!investment.editing" (click)="enableEditing(investment)">Edit</button>
+                    <button *ngIf="investment.editing" (click)="deleteEditing(i)">Delete</button>
+                    <button *ngIf="investment.editing" (click)="saveEditing(investment, i)">Save</button>
+                    <button *ngIf="investment.editing" (click)="cancelEditing(investment)">Cancel</button>
+                </div>
+                <div class="investment-details">
+                    <span class="ticker">{{ investment.ticker_name }}</span>
+                    <span *ngIf="!investment.editing" class="amount">${{ investment.amount_invested }}</span>
+                    <input *ngIf="investment.editing" type="number" [(ngModel)]="investment.amount_invested">
+                </div>
+
+                <div class="investment-analysis">
+                    <span class="sentiment">Sentiment: {{ investment.analysis_data?.sentiment | number:'1.2-2' }}</span>
+                    <!-- Pie chart for emotions -->
+                    <ngx-charts-pie-chart *ngIf="investment.analysis_data" [view]="[100, 100]" [scheme]="colorScheme"
+                        [results]="formatEmotions(investment.analysis_data?.emotions)" [doughnut]="true"
+                        [gradient]="false">
+                    </ngx-charts-pie-chart>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- ANALYSIS BUTTON -->
+    <button class="run-analysis-btn" (click)="analyzeStocks()">Run Analysis</button>
+
+    <!-- Spinner Icon -->
+    <div *ngIf="isLoading" class="loader"></div>
+
+</div>

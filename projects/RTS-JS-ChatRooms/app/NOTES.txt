@@ -1,0 +1,89 @@
+what is web rtc?
+    JS apis that allow us to establish peer to peer connections between two browsers to echange voice and video data
+
+NOT THE SAME AS WEBSOCKETS
+
+websockets are peer to server
+    affan sends server message, message sends message to bun
+
+rtc is peer to peer
+    affan sends message directly to bun
+
+
+
+DIFFERENCES
+
+    Web rtc uses UDP protocol
+        - UDP not reliable for important data
+        - no built in signaling
+
+    websockets are a WSS protocol
+
+
+
+
+SDP 
+    session description protocol    - object containing metadata of the session connection
+
+ICE canidates
+    public ip address and port that recieve data
+    
+    STUN servers that are routing our data for the connection rather than the device themselves routing the rtc data
+        ie: google STUN server
+
+    TRICKLING ICE 
+        sends over ICE canidates to peers as they are generated rather than a batch sent with the SDP
+
+
+SIGNALING 
+    peer sends SDP to server to establish connection with another peer. the other peer then sends his SDP back to the server who sends it to init peer. Now they establish an RTC
+
+    init peer asks STUN server "whats my ip address"
+        STUN replies and sends over to peer to the ICE ip address
+        peer 2 will do the same
+
+
+    You can use Agora api as a signaling server but you could also use a python server to do the work for you.  
+
+
+
+
+
+
+
+
+
+
+____________________________________________________________________________ 
+
+STUN SERVER LIST
+# source : http://code.google.com/p/natvpn/source/browse/trunk/stun_server_list
+# A list of available STUN server.
+
+    stun:stun.l.google.com:19302
+    stun:stun1.l.google.com:19302
+    stun:stun2.l.google.com:19302
+    stun:stun3.l.google.com:19302
+    stun:stun4.l.google.com:19302
+    stun:stun01.sipphone.com
+    stun:stun.ekiga.net
+    stun:stun.fwdnet.net
+    stun:stun.ideasip.com
+    stun:stun.iptel.org
+    stun:stun.rixtelecom.se
+    stun:stun.schlund.de
+    stun:stunserver.org
+    stun:stun.softjoys.com
+    stun:stun.voiparound.com
+    stun:stun.voipbuster.com
+    stun:stun.voipstunt.com
+    stun:stun.voxgratia.org
+    stun:stun.xten.com
+
+____________________________________________________________________________
+
+
+
+
+
+

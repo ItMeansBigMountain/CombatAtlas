@@ -1,0 +1,19 @@
+1. collect data
+2. develop a hypthoesis for a strategy
+3. backtest that strategy
+4. implement the strategy in production
+
+***Disclaimer***
+we will be using IEX API
+we will be using random data
+we will not be executing trades
+output is going to be excel sheets to provide order sheets for traders to execute
+
+
+
+MULTIPLES
+    multiples are calculated by dividing stock price b some measure of the companies worth such as earnings or assets
+        price to earnings 
+        price to book value
+        price to free cash flow
+

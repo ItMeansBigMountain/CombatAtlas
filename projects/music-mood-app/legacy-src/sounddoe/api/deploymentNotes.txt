@@ -1,0 +1,56 @@
+
+Refer to minimized notes for tasks
+
+    -git will not be logged in so youll need to either scp or open the git repo for download
+    -make sure you are sudo while doing all of this
+    -make sure no python apps are running 
+    -set enviroment variables and then source them
+
+
+    -NOTES FOR REDEPLOYMENT AFTER UPDATES: 
+        RUN "cd ~"
+        RUN "source .bash_profile"
+        ** this will re enstate enviroment variables
+
+
+
+
+
+
+
+
+
+
+
+SSH NOTES
+
+
+SSH
+    the ssh service needs to be open and port specified , default is 22
+    - ssh  [USERNAME]@<ip address>
+    - ssh  sosai@192.168.1.101
+
+AWS SSH <connect>
+    make sure you have an instance with aws 
+    create keyys file.pem
+    - ssh -i "KEYS.pem" USERNAME@<ip address>
+    - ssh -i "oyama.pem" ubuntu@ec2-18-189-2-102.us-east-2.compute.amazonaws.com
+
+AWS SSH <send files>
+    Folder --> scp -i "oyama.pem" -r FOLDER_NAME ubuntu@ec2-3-131-97-55.us-east-2.compute.amazonaws.com:~
+    File --> scp -i "oyama.pem" FILE_NAME ubuntu@ec2-3-131-97-55.us-east-2.compute.amazonaws.com:~
+
+UBUNTU KILL PROGRAMS RUNNING
+    LIST ALL APPS RUNNING
+        ps -fA
+            SEARCH (look for pid to kill)
+                ps -fA | grep python
+        
+    KILL 
+        kill PID
+
+SETTING UP SHELL ENVIROMENT VARIABLES
+    cd ~                           -go to home dir
+    nano .bash_profile             -edit the bash profile that will set variables per instance
+    export VARIABLE="VALUE"        -set variables in file
+    source .bash_profile           -source hidden variables per instance

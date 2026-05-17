@@ -1,0 +1,55 @@
+{
+  "headlines": [
+    {
+      "ticker": "AAPL",
+      "tickers": [
+        "AAPL"
+      ],
+      "title": "Apple services growth beats expectations as hardware demand stays resilient",
+      "summary": "Analysts cite strong margins and recurring revenue.",
+      "source": "Sample News",
+      "date": "2026-05-03"
+    },
+    {
+      "ticker": "TSLA",
+      "tickers": [
+        "TSLA"
+      ],
+      "title": "Tesla faces margin pressure after price cuts and demand concerns",
+      "summary": "Investors watch delivery trends and profit risk.",
+      "source": "Sample News",
+      "date": "2026-05-03"
+    },
+    {
+      "ticker": "MSFT",
+      "tickers": [
+        "MSFT"
+      ],
+      "title": "Microsoft cloud profit gains continue with optimistic AI demand",
+      "summary": "Enterprise demand remains strong.",
+      "source": "Sample News",
+      "date": "2026-05-03"
+    },
+    {
+      "ticker": "NVDA",
+      "tickers": [
+        "NVDA"
+      ],
+      "title": "Nvidia shares surge as data center growth sets another record",
+      "summary": "AI chip demand remains bullish.",
+      "source": "Sample News",
+      "date": "2026-05-03"
+    },
+    {
+      "ticker": "AAPL",
+      "tickers": [
+        "AAPL",
+        "MSFT"
+      ],
+      "title": "Mega-cap tech mixed as investors weigh growth against valuation risk",
+      "summary": "Sentiment remains neutral across large-cap technology.",
+      "source": "Sample News",
+      "date": "2026-05-03"
+    }
+  ]
+}

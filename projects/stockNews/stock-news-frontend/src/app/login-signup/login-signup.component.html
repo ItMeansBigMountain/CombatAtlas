@@ -1,0 +1,45 @@
+<div class="login-container">
+    <h2>{{ isLoginMode ? 'Login to Your Account' : 'Sign Up' }}</h2>
+    <form (ngSubmit)="isLoginMode ? login(f) : signup(f)" #f="ngForm">
+        <div *ngIf="isLoginMode; else signUpBlock" class="form-group">
+            <label for="loginUsername">Username:</label>
+            <input type="text" id="loginUsername" name="username" ngModel required #loginUsernameModel="ngModel">
+            <div *ngIf="f.submitted && loginUsernameModel.invalid" class="invalid-feedback">
+                Username is required.
+            </div>
+        </div>
+        <ng-template #signUpBlock>
+            <div class="form-group">
+                <label for="signupUsername">Username:</label>
+                <input type="text" id="signupUsername" name="username" ngModel required #signupUsernameModel="ngModel">
+                <div *ngIf="f.submitted && signupUsernameModel.invalid" class="invalid-feedback">
+                    Username is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" ngModel required #emailModel="ngModel">
+                <div *ngIf="f.submitted && emailModel.invalid" class="invalid-feedback">
+                    Email is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required [(ngModel)]="confirmPassword" ngModel #confirmPasswordModel="ngModel">
+                <div *ngIf="f.submitted && confirmPasswordModel.invalid" class="invalid-feedback">
+                    Confirm Password is required.
+                </div>
+            </div>
+        </ng-template>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" ngModel required #passwordModel="ngModel">
+            <div *ngIf="f.submitted && passwordModel.invalid" class="invalid-feedback">
+                Password is required.
+            </div>
+        </div>
+        <button type="submit" class="btn">{{ isLoginMode ? 'Login' : 'Sign Up' }}</button>
+        <p class="signup-link" *ngIf="isLoginMode">Don't have an account? <a href="#" (click)="toggleMode($event)">Sign Up</a></p>
+        <p class="signup-link" *ngIf="!isLoginMode">Already have an account? <a href="#" (click)="toggleMode($event)">Login</a></p>
+    </form>
+</div>

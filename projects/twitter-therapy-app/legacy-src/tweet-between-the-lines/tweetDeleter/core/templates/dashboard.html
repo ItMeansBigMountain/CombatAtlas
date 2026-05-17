@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <h1>Welcome, {{ user_info }}!</h1>
+
+
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="search_term">Search your tweets:</label>
+        <input type="text" id="search_term" name="search_term">
+        <input type="submit" value="Search">
+    </form>
+
+
+
+
+    <form method="post" action="{% url 'post_tweet' %}">
+        {% csrf_token %}
+        <textarea name="tweet" placeholder="What's happening?"></textarea>
+        <button type="submit">Tweet</button>
+    </form>
+
+
+
+
+
+
+    {% if search_results %}
+    <h2>Search results:</h2>
+    <ul>
+        {% for tweet in search_results %}
+        <li>{{ tweet }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+
+
+</body>
+
+</html>

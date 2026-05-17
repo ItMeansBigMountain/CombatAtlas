@@ -1,0 +1,16 @@
+{
+    "web": {
+        "client_id": "422180951323-ubqn8d35r3mouaiump8nnj55p6ri7std.apps.googleusercontent.com",
+        "project_id": "autotweet-357502",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "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",
+        "redirect_uris": [
+            "http://localhost:5000/"
+        ],
+        "javascript_origins": [
+            "http://localhost:5000"
+        ]
+    }
+}

@@ -1,0 +1,4 @@
+{
+    "base_url" : "API_SERVER_IP:8080",
+    "qty_rendered" : 10
+}

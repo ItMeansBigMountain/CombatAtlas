@@ -1,0 +1,119 @@
+SIGN IN to Azure using VS Code
+    'CTRL + SHIFT + P'
+    'azure: sign in'
+
+AZURE PORTAL
+    create resoruce
+    search --> 'container registry'
+    create container
+
+
+GET ACCESS KEYS
+    open recent container made
+    side navbar --> access keys 
+    copy username and password (make sure admin is switched on)
+
+
+DOCKER LOGIN 
+    "make sure docker desktop is running "
+        "C:\Program Files\Docker\Docker\DockerCli.exe" -SwitchDaemon
+    
+    'docker login NAME_OF_CONTAINER_LOGIN_SERVER'
+        ex: 
+            'docker login azure'
+            'docker login oyamachat.azurecr.io'
+
+
+BUILD CONTAINER IMAGE
+
+    VS CODE
+        'CTRL + SHIFT + P'
+            docker: build image
+            add options
+
+    CLI 
+        docker build -t NAME_OF_CONTAINER_LOGIN_SERVER/PROJECT_NAME:latest DOCKERFILE_PATH
+            ex: 
+                docker build -t oyamachat.azurecr.io/oyamachat:latest .
+
+
+
+RUN DOCKER CONTAINER
+    docker run -d -p DOCKERFILE_PORT:APP_PORT IMAGE_NAME
+        ex: docker run -d -p 80:80 oyamachat.azurecr.io/oyamachat
+
+
+
+PUSH TO AZURE CONTAINER
+
+    VS CODE 
+        go to docker tab
+        find latest image
+        right click and select push
+
+
+    CLI 
+        docker push IMAGE_NAME
+        docker push oyamachat.azurecr.io/oyamachat:latest
+
+
+DEPLOY IMAGE TO AZURE APP SERVICE
+    
+    VS CODE 
+        go to docker tab
+        choose Azure dropdown
+        select subsription
+        select container repo
+        select image
+        right click on latest
+        choose 'Deploy to Azure App Service'
+
+
+    AZURE DASHBOARD
+        go to relative container's registry
+        select repositories
+        select docker image
+        select latest
+        
+        create a resoruce
+        select web
+        choose 'webapp'
+            make sure to choose "PUBLISH DOCKER CONTAINER RADIO BUTTON"
+        select relative docker registry and image/tag (latest)
+
+
+    CHANGE PORT TO APP HOSTING PORT
+
+        VS CODE
+            go to Azure tab
+            select subscription dropdown
+            select app Services dropdown
+            select web app
+            Right Click application settings
+            add new setting 
+                Name = WEBSITES_PORT
+                Value = 80
+
+
+        AZURE DASHBOARD 
+            go to web app from dashboard
+            side navbar choose configuration
+            click on "new application setting"
+                Name = WEBSITES_PORT
+                Value = 80
+
+
+
+
+
+
+
+STEPS
+    - create flask app
+    - created Azure container registry
+    - took registry access keys and logged into docker cli
+    - built a docker container image
+    - make sure image runs locally
+    - pushed image to Azure container
+    - deployed Azure container image to Azure App Service
+    - changed the WEBSITES_PORT variable to match the docker listener/app host port
