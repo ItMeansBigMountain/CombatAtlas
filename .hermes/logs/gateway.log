@@ -183,3 +183,6 @@ ERROR gateway.run: Gateway exiting cleanly: discord: Discord bot token already i
 2026-05-15 03:39:11,865 INFO gateway.platforms.base: [Discord] Sending response (483 chars) to 1499990220077137943
 2026-05-15 04:00:49,446 INFO gateway.run: Session expiry: 1 sessions to finalize (discord:1)
 2026-05-15 04:00:49,450 INFO gateway.run: Session expiry done: 1 finalized
+2026-05-16 04:25:33,966 INFO gateway.run: Document cache cleanup: removed 1 stale file(s)
+2026-05-17 01:25:36,987 INFO gateway.run: curator: curator: snapshot created (2026-05-17T01-25-36Z)
+2026-05-17 01:25:37,116 INFO gateway.run: curator: curator: auto: no changes; llm: skipped (no candidates)
