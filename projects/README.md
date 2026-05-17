@@ -67,6 +67,12 @@ Use this table as the single place to record Vercel preview/production URLs as p
   - https://ticvoter-ep90g308p-itmeansbigmountains-projects.vercel.app
   - https://ticvoter.vercel.app
 
+## Triage notes
+
+Detailed deployment scan: [`VERCEL_TRIAGE.md`](./VERCEL_TRIAGE.md)
+
+Current finding: the Vercel API token is available, but existing Vercel deployment URLs are returning `401 Unauthorized` in anonymous checks, so deployment protection/alias settings need to be addressed before easy manual testing.
+
 ## Workflow for each project
 
 1. Open the project folder in `/opt/data/HeRmEz/projects/<project-name>`.
