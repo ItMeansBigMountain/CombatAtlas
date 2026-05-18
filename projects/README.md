@@ -75,6 +75,8 @@ Current finding: the Vercel API token is available. Deployment SSO protection ha
 
 Free hosting/data plan: [`FREE_HOSTING_AND_SQLITE_PLAN.md`](./FREE_HOSTING_AND_SQLITE_PLAN.md)
 
+Credential status / missing tokens: [`CREDENTIALS_STATUS.md`](./CREDENTIALS_STATUS.md)
+
 ## Workflow for each project
 
 1. Open the project folder in `/opt/data/HeRmEz/projects/<project-name>`.
