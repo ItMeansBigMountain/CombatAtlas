@@ -34,21 +34,25 @@ Verification after disabling:
 - Build notes: Vercel build succeeds with warnings about stale CRA/Browserslist, a missing Mediapipe source map, and large bundle size. These are polish items, not blockers.
 - Visual/browser review is still pending because this container does not currently have Chrome installed for browser automation.
 
-## Immediate update — Codology no-login leaderboard redeploy
+## Immediate update — Codology Basic 13 no-login leaderboard redeploy
 
-- Frontend deployment: `https://codology-joj5tq3lb-itmeansbigmountains-projects.vercel.app`
+- Frontend deployment: `https://codology-ky38h3a53-itmeansbigmountains-projects.vercel.app`
 - Frontend alias: `https://codology-three.vercel.app`
 - API alias: `https://codology-api.vercel.app`
 - Verified checks:
   - `GET /` on frontend returns anonymous HTTP 200.
+  - Latest frontend JS bundle contains `Basic 13`, `Code Picture`, and Basic 13 question text, and no longer references `../assets/` question images.
   - `GET /api/highscores` returns anonymous HTTP 200.
   - `POST /api/add-highscore` accepts `{ username, score, time }` without login and the posted score appears in `GET /api/highscores`.
 - Fixes made:
   - Removed the frontend Login screen from the app flow; `Home` is now the initial route.
+  - Replaced broken/static question images with styled code-card visuals rendered in React Native Web text.
+  - Added all 13 Basic 13 drills in both Python and JavaScript, 26 quiz cards total.
+  - Added kid-friendly learning tips for every Basic 13 card.
   - Added a post-game name entry form. Players submit their display name only after completing the game.
   - Implemented a rendered leaderboard screen instead of only logging API results.
   - Kept API highscores anonymous and sorted by highest score then fastest time.
-  - Added `npm test` source checks for the no-login leaderboard flow.
+  - Added `npm test` source checks for the no-login leaderboard flow and Basic 13 content.
 - Data note: no user database is needed for the current flow. The no-DB Vercel API uses demo-mode in-memory highscores, which are good for a live demo but not guaranteed durable across cold starts/redeploys. A durable leaderboard later would need a tiny hosted store/DB, but not user accounts.
 
 ## Immediate deploy/redeploy candidates

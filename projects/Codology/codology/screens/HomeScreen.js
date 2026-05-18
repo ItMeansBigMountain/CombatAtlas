@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
     ActivityIndicator,
-    Image,
     Pressable,
+    ScrollView,
     StyleSheet,
     Text,
     TextInput,
@@ -10,35 +10,10 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import axios from 'axios';
+import { basic13Questions, totalBasic13Challenges } from '../data/basic13Questions';
 
 const API_URL = 'https://codology-api.vercel.app/api';
-
-const questions = [
-    {
-        image: require('../assets/icon.png'),
-        prompt: 'Which programming language does this question represent?',
-        options: ['JavaScript', 'Python', 'Ruby', 'Java'],
-        correctAnswer: 0,
-    },
-    {
-        image: require('../assets/icon.png'),
-        prompt: 'Which coding language is commonly used for AI and data science?',
-        options: ['Swift', 'Python', 'PHP', 'Kotlin'],
-        correctAnswer: 1,
-    },
-    {
-        image: require('../assets/icon.png'),
-        prompt: 'Which language is famous for Rails?',
-        options: ['C#', 'Go', 'Ruby', 'TypeScript'],
-        correctAnswer: 2,
-    },
-    {
-        image: require('../assets/icon.png'),
-        prompt: 'Which language runs on the JVM and is often taught in CS classes?',
-        options: ['Rust', 'Elixir', 'Lua', 'Java'],
-        correctAnswer: 3,
-    },
-];
+const questions = basic13Questions;
 
 const HomeScreen = () => {
     const navigation = useNavigation();
@@ -54,6 +29,7 @@ const HomeScreen = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const finalScore = useMemo(() => score, [score]);
+    const question = questions[questionIndex];
 
     useEffect(() => {
         return () => {
@@ -88,7 +64,6 @@ const HomeScreen = () => {
     const handleAnswerSelection = (selectedAnswerIndex) => {
         if (selectedOption !== null) return;
 
-        const question = questions[questionIndex];
         const wasCorrect = selectedAnswerIndex === question.correctAnswer;
         const nextScore = wasCorrect ? score + 1 : score;
 
@@ -102,7 +77,7 @@ const HomeScreen = () => {
             } else {
                 finishGame(nextScore);
             }
-        }, 550);
+        }, 700);
     };
 
     const submitHighScore = async () => {
@@ -129,12 +104,11 @@ const HomeScreen = () => {
         }
     };
 
-    const question = questions[questionIndex];
-
     if (isGameOver) {
         return (
             <View style={styles.container}>
                 <View style={styles.card}>
+                    <Text style={styles.eyebrow}>Basic 13 Review Complete</Text>
                     <Text style={styles.title}>Game Over</Text>
                     <Text style={styles.resultText}>Score: {finalScore} / {questions.length}</Text>
                     <Text style={styles.resultText}>Time: {timer} seconds</Text>
@@ -164,13 +138,19 @@ const HomeScreen = () => {
     }
 
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
             {!isGameStarted ? (
                 <View style={styles.card}>
-                    <Text style={styles.title}>Codology</Text>
-                    <Text style={styles.helperText}>Guess the coding language, race the clock, then add your name to the leaderboard.</Text>
+                    <Text style={styles.eyebrow}>Python + JavaScript</Text>
+                    <Text style={styles.title}>Codology: Basic 13</Text>
+                    <Text style={styles.helperText}>
+                        Practice the 13 classic beginner algorithm drills. Each challenge appears in both Python and JavaScript, with friendly hints made for kids learning to code.
+                    </Text>
+                    <View style={styles.statsPill}>
+                        <Text style={styles.statsText}>{totalBasic13Challenges} challenges • {questions.length} quiz cards</Text>
+                    </View>
                     <Pressable style={styles.primaryButton} onPress={startGame}>
-                        <Text style={styles.buttonText}>Start Game</Text>
+                        <Text style={styles.buttonText}>Start Basic 13 Review</Text>
                     </Pressable>
                     <Pressable style={styles.secondaryButton} onPress={() => navigation.navigate('HighScores')}>
                         <Text style={styles.secondaryButtonText}>View Leaderboard</Text>
@@ -178,20 +158,36 @@ const HomeScreen = () => {
                 </View>
             ) : (
                 <View style={styles.gameCard}>
-                    <Text style={styles.timer}>Time: {timer} seconds</Text>
-                    <Text style={styles.score}>Score: {score}</Text>
-                    <Text style={styles.prompt}>{question.prompt}</Text>
-                    <Image source={question.image} style={styles.image} />
+                    <View style={styles.topRow}>
+                        <Text style={styles.timer}>Time: {timer}s</Text>
+                        <Text style={styles.score}>Score: {score}</Text>
+                    </View>
+                    <Text style={styles.progress}>Question {questionIndex + 1} of {questions.length}</Text>
+                    <Text style={styles.challengeNumber}>Basic 13 {question.number}</Text>
+                    <Text style={styles.prompt}>{question.title}</Text>
+                    <View style={styles.languageBadge}>
+                        <Text style={styles.languageBadgeText}>{question.language}</Text>
+                    </View>
+                    <Text style={styles.task}>{question.task}</Text>
+
+                    <View style={styles.codeCard} accessibilityLabel="Code Picture">
+                        <Text style={styles.codeTitle}>Code Picture</Text>
+                        <Text style={styles.codeSnippet}>{question.codeSnippet}</Text>
+                    </View>
+
+                    <Text style={styles.kidTip}>Kid tip: {question.kidTip}</Text>
+
                     <View style={styles.optionsContainer}>
                         {question.options.map((option, index) => {
                             const isSelected = selectedOption === index;
-                            const isCorrect = selectedOption !== null && index === question.correctAnswer;
+                            const showResult = selectedOption !== null;
+                            const isCorrect = showResult && index === question.correctAnswer;
                             return (
                                 <Pressable
                                     key={option}
                                     style={[
                                         styles.optionButton,
-                                        isSelected && styles.buttonSelected,
+                                        isSelected && !isCorrect && styles.buttonSelected,
                                         isCorrect && styles.buttonCorrect,
                                     ]}
                                     onPress={() => handleAnswerSelection(index)}
@@ -203,7 +199,7 @@ const HomeScreen = () => {
                     </View>
                 </View>
             )}
-        </View>
+        </ScrollView>
     );
 };
 
@@ -215,9 +211,16 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: '#f4f1ff',
     },
+    scrollContainer: {
+        flexGrow: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 20,
+        backgroundColor: '#f4f1ff',
+    },
     card: {
         width: '100%',
-        maxWidth: 520,
+        maxWidth: 620,
         backgroundColor: '#ffffff',
         borderRadius: 24,
         padding: 24,
@@ -228,17 +231,32 @@ const styles = StyleSheet.create({
     },
     gameCard: {
         width: '100%',
-        maxWidth: 760,
+        maxWidth: 860,
         backgroundColor: '#ffffff',
         borderRadius: 24,
         padding: 24,
         alignItems: 'center',
+    },
+    topRow: {
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 8,
+    },
+    eyebrow: {
+        color: '#6b5bd6',
+        fontSize: 14,
+        fontWeight: '900',
+        letterSpacing: 1.2,
+        textTransform: 'uppercase',
+        marginBottom: 6,
     },
     title: {
         color: 'darkslateblue',
         fontSize: 34,
         fontWeight: '800',
         marginBottom: 12,
+        textAlign: 'center',
     },
     helperText: {
         color: '#3d375c',
@@ -247,28 +265,94 @@ const styles = StyleSheet.create({
         lineHeight: 24,
         marginBottom: 18,
     },
+    statsPill: {
+        backgroundColor: '#ebe7ff',
+        borderRadius: 999,
+        paddingVertical: 8,
+        paddingHorizontal: 14,
+        marginBottom: 12,
+    },
+    statsText: {
+        color: 'darkslateblue',
+        fontWeight: '800',
+    },
     timer: {
         fontSize: 18,
         fontWeight: '700',
-        marginBottom: 4,
     },
     score: {
         fontSize: 18,
         fontWeight: '700',
-        marginBottom: 16,
+    },
+    progress: {
+        color: '#6e6790',
+        fontWeight: '800',
+        marginBottom: 8,
+    },
+    challengeNumber: {
+        color: '#6b5bd6',
+        fontSize: 16,
+        fontWeight: '900',
+        marginBottom: 4,
     },
     prompt: {
-        fontSize: 22,
-        fontWeight: '700',
+        fontSize: 24,
+        fontWeight: '800',
         textAlign: 'center',
-        marginBottom: 16,
+        marginBottom: 10,
         color: '#241a4a',
     },
-    image: {
-        width: 180,
-        height: 180,
-        resizeMode: 'contain',
-        marginBottom: 22,
+    task: {
+        color: '#3d375c',
+        fontSize: 18,
+        textAlign: 'center',
+        lineHeight: 25,
+        marginBottom: 14,
+    },
+    languageBadge: {
+        backgroundColor: '#241a4a',
+        borderRadius: 999,
+        paddingVertical: 7,
+        paddingHorizontal: 14,
+        marginBottom: 10,
+    },
+    languageBadgeText: {
+        color: '#ffffff',
+        fontWeight: '900',
+    },
+    codeCard: {
+        width: '100%',
+        backgroundColor: '#17132b',
+        borderColor: '#6b5bd6',
+        borderWidth: 2,
+        borderRadius: 18,
+        padding: 18,
+        marginBottom: 14,
+    },
+    codeTitle: {
+        color: '#bdb6ff',
+        fontSize: 13,
+        fontWeight: '900',
+        marginBottom: 10,
+        textTransform: 'uppercase',
+        letterSpacing: 1,
+    },
+    codeSnippet: {
+        color: '#f8f7ff',
+        fontFamily: 'monospace',
+        fontSize: 16,
+        lineHeight: 23,
+    },
+    kidTip: {
+        width: '100%',
+        backgroundColor: '#fff7d6',
+        borderRadius: 14,
+        color: '#5a4300',
+        fontSize: 16,
+        fontWeight: '700',
+        lineHeight: 22,
+        padding: 12,
+        marginBottom: 16,
     },
     optionsContainer: {
         flexDirection: 'row',
@@ -278,7 +362,9 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     optionButton: {
-        minWidth: 145,
+        minWidth: 220,
+        maxWidth: 380,
+        flexGrow: 1,
         backgroundColor: '#333',
         borderRadius: 20,
         paddingVertical: 14,
@@ -320,6 +406,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 16,
         fontWeight: '700',
+        textAlign: 'center',
     },
     secondaryButtonText: {
         color: 'darkslateblue',
