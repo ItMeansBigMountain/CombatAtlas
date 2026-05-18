@@ -15,33 +15,34 @@ Both files are ignored by Git and set to owner-only permissions (`0600`).
 
 ### Genius
 
-The MusicAI code currently expects `GENIUS_API_KEY`, which is the **Genius Client Access Token**, not just OAuth client ID/secret.
+Received and stored locally:
 
-To get it:
+- Genius OAuth client ID/secret
+- Genius Client Access Token as `GENIUS_API_KEY`
 
-1. Go to <https://genius.com/api-clients>
-2. Open the app/client.
-3. Copy the **Client Access Token**.
-4. Put it into `GENIUS_API_KEY` locally and into deployment environment variables later.
+The MusicAI code currently uses `GENIUS_API_KEY` / Client Access Token for direct bearer-token API access.
 
-The OAuth client ID/secret are saved locally too in case we wire OAuth back in, but the current code path uses direct bearer-token access.
+### IBM Watson NLU / LLM replacement
 
-### IBM Watson NLU
+Watson is still not configured.
 
-Needed values:
+Current blank local values:
 
 - `WATSON_API_KEY`
 - `WATSON_SERVICE_URL`
 
-How to retrieve:
+Preferred path now: replace Watson NLU sentiment/lyric analysis with an LLM fallback, likely OpenAI.
 
-1. Go to <https://cloud.ibm.com/resources>
-2. Open the Natural Language Understanding service instance.
-3. Click **Manage** or **Service credentials**.
-4. Copy `apikey` into `WATSON_API_KEY`.
-5. Copy `url` into `WATSON_SERVICE_URL`.
+Local placeholders added to `MusicAI/.env`:
 
-If there is no service instance, create one from IBM Cloud Catalog → Natural Language Understanding, then create service credentials.
+- `OPENAI_API_KEY=`
+- `LLM_SENTIMENT_PROVIDER=openai`
+
+Still needed if we use OpenAI:
+
+- `OPENAI_API_KEY`
+
+Implementation note: refactor MusicAI so Watson analysis is optional. If `WATSON_API_KEY` and `WATSON_SERVICE_URL` are absent but `OPENAI_API_KEY` is present, call the LLM sentiment analyzer instead. If neither exists, use deterministic/demo sentiment output so the app still deploys.
 
 ## Spotify redirect URL
 
