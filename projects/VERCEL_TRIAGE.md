@@ -47,7 +47,7 @@ Verification after disabling:
   - Patched Sequelize MySQL initialization to explicitly include `mysql2`, which fixed the Vercel `Please install mysql2 package manually` runtime error.
   - Repointed the Expo app API URL from the old LAN IP to `https://codology-api.vercel.app/api`.
   - Exported the Expo web app to `dist` and deployed it to the existing `codology` Vercel project.
-- Remaining blocker for full app behavior: auth/signup/highscore persistence requires a real MySQL `DATABASE_URL`/`MYSQL_URL` or a backend storage refactor. The public API endpoint works without DB access; DB-backed routes will fail until storage is configured.
+- Remaining blocker for production persistence: auth/signup/highscore persistence needs a real MySQL `DATABASE_URL`/`MYSQL_URL` or a durable storage refactor. To keep the live demo usable without DB credentials, the API now falls back to demo-mode auth/highscores when no database env is configured. Verified `POST /api/signup`, `POST /api/login`, and `GET /api/private` return 200 with signed tokens on `https://codology-api.vercel.app`.
 
 ## Immediate deploy/redeploy candidates
 

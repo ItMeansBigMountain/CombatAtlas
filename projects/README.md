@@ -18,7 +18,7 @@ Use this table as the single place to record Vercel preview/production URLs as p
 | cellphone_scripts | Needs triage | — | — | — |
 | CloudAutomation | Needs triage | — | — | — |
 | coding-school-platform | Needs triage | — | — | — |
-| Codology | Redeployed frontend + API / publicly accessible | https://codology-6wk56qa0o-itmeansbigmountains-projects.vercel.app | https://codology-three.vercel.app; API: https://codology-api.vercel.app/api/public | Frontend and API return anonymous HTTP 200. API public endpoint works; auth/highscore writes still need real DATABASE_URL/MySQL before full functionality. |
+| Codology | Redeployed frontend + API / login fixed in demo mode | https://codology-6wk56qa0o-itmeansbigmountains-projects.vercel.app | https://codology-three.vercel.app; API: https://codology-api.vercel.app/api/public | Frontend and API return anonymous HTTP 200. Signup/login now return tokens and `/api/private` verifies them. Runs in demo-mode auth/highscores until a real MySQL `DATABASE_URL`/`MYSQL_URL` is added. |
 | CombatAtlas | Needs triage | — | — | — |
 | consumer-advocate-app | Needs triage | — | — | — |
 | honda-tech-upgrade | Needs triage | — | — | — |
