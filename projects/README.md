@@ -24,8 +24,8 @@ Use this table as the single place to record Vercel preview/production URLs as p
 | honda-tech-upgrade | Needs triage | — | — | — |
 | journal-ai | Needs triage | — | — | — |
 | local-meeting-transcriber | Needs triage | — | — | — |
-| muscleMadness | Deployed / needs manual review | https://musclemadness-lvdo5n1l9-itmeansbigmountains-projects.vercel.app | https://musclemadness-theta.vercel.app | — |
-| muscleMadness_API | Needs triage | — | — | — |
+| muscleMadness | Skipped for now | https://musclemadness-lvdo5n1l9-itmeansbigmountains-projects.vercel.app | https://musclemadness-theta.vercel.app | User said to skip `muscleMadness` for now. |
+| muscleMadness_API | Skipped for now | — | — | User said to skip `muscleMadness` for now. |
 | music-mood-app | Needs triage | — | — | — |
 | MusicAI | Needs triage | — | — | — |
 | oyama-productions-legal | Needs triage | — | — | — |
@@ -40,8 +40,8 @@ Use this table as the single place to record Vercel preview/production URLs as p
 | stockNews | Needs triage | — | — | — |
 | store-code-content-studio | Needs triage | — | — | — |
 | survey-analytics-website | Needs triage | — | — | — |
-| ticVoter | Deployed / needs manual review | https://ticvoter-ep90g308p-itmeansbigmountains-projects.vercel.app | https://ticvoter.vercel.app | — |
-| ticVoter_REST.api | Needs triage | — | — | — |
+| ticVoter | Skipped for now | https://ticvoter-ep90g308p-itmeansbigmountains-projects.vercel.app | https://ticvoter.vercel.app | User said to skip `ticVoter` for now. |
+| ticVoter_REST.api | Skipped for now | — | — | User said to skip `ticVoter` for now. |
 | tiktok-clone | Needs triage | — | — | — |
 | tiktok-shop-shopify-commerce | Needs triage | — | — | — |
 | tournament-wager-app | Needs triage | — | — | — |
@@ -73,7 +73,7 @@ Use this table as the single place to record Vercel preview/production URLs as p
 
 Detailed deployment scan: [`VERCEL_TRIAGE.md`](./VERCEL_TRIAGE.md)
 
-Current finding: the Vercel API token is available. Deployment SSO protection has now been disabled for the currently discovered Vercel projects. `3d-react-web` verifies publicly with HTTP 200; `ticvoter`, `musclemadness`, and `codology` now need redeploy/build repair because their latest public URLs return 404 instead of 401.
+Current finding: the Vercel API token is available. Deployment SSO protection has now been disabled for the currently discovered Vercel projects. `3d-react-web` and `codology` verify publicly with HTTP 200. `muscleMadness` and `ticVoter` are intentionally skipped for now per user direction.
 
 Free hosting/data plan: [`FREE_HOSTING_AND_SQLITE_PLAN.md`](./FREE_HOSTING_AND_SQLITE_PLAN.md)
 
