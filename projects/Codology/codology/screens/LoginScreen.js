@@ -13,8 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { getUniqueId, getManufacturer } from 'react-native-device-info';
 
 
-// const API_URL = Platform.OS === 'ios' ? 'http://192.168.1.94:5000' : 'http://localhost:5000';
-const API_URL = 'http://192.168.1.94:5000';
+const API_URL = 'https://codology-api.vercel.app/api';
 
 
 

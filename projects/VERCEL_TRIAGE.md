@@ -26,6 +26,29 @@ Verification after disabling:
 - `musclemadness`: no longer 401, but latest deployment returns 404 and needs redeploy/build repair.
 - `codology`: no longer 401, but latest deployment returns 404 and needs redeploy/build repair.
 
+## Immediate update — 3d-react-web redeploy
+
+- Latest production deployment: `https://3d-react-2ghv4m4c9-itmeansbigmountains-projects.vercel.app`
+- Public alias: `https://3d-react-web.vercel.app`
+- Verification: both URLs return anonymous HTTP 200 with `text/html; charset=utf-8`.
+- Build notes: Vercel build succeeds with warnings about stale CRA/Browserslist, a missing Mediapipe source map, and large bundle size. These are polish items, not blockers.
+- Visual/browser review is still pending because this container does not currently have Chrome installed for browser automation.
+
+## Immediate update — Codology redeploy
+
+- Frontend deployment: `https://codology-6wk56qa0o-itmeansbigmountains-projects.vercel.app`
+- Frontend alias: `https://codology-three.vercel.app`
+- API alias: `https://codology-api.vercel.app`
+- Verified checks:
+  - `GET /` on frontend returns anonymous HTTP 200.
+  - `GET /api/public` on the API returns anonymous HTTP 200 with `{"message":"here is your public resource"}`.
+- Fixes made:
+  - Added Vercel serverless routing for `SERVER/api/index.js`.
+  - Patched Sequelize MySQL initialization to explicitly include `mysql2`, which fixed the Vercel `Please install mysql2 package manually` runtime error.
+  - Repointed the Expo app API URL from the old LAN IP to `https://codology-api.vercel.app/api`.
+  - Exported the Expo web app to `dist` and deployed it to the existing `codology` Vercel project.
+- Remaining blocker for full app behavior: auth/signup/highscore persistence requires a real MySQL `DATABASE_URL`/`MYSQL_URL` or a backend storage refactor. The public API endpoint works without DB access; DB-backed routes will fail until storage is configured.
+
 ## Immediate deploy/redeploy candidates
 
 | Project | Type | Current state | What is needed |

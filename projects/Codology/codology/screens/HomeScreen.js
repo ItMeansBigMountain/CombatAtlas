@@ -11,7 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
-const API_URL = 'http://192.168.1.94:5000';
+const API_URL = 'https://codology-api.vercel.app/api';
 
 
 

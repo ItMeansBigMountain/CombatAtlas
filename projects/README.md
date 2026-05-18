@@ -11,14 +11,14 @@ Use this table as the single place to record Vercel preview/production URLs as p
 
 | Project | Status | Vercel production / preview URL | Alias / friendly URL | Manual testing notes |
 |---|---|---|---|---|
-| 3d-react-web | Deployed / needs manual review | https://3d-react-brdh9bo6k-itmeansbigmountains-projects.vercel.app | — | — |
+| 3d-react-web | Redeployed / publicly accessible | https://3d-react-2ghv4m4c9-itmeansbigmountains-projects.vercel.app | https://3d-react-web.vercel.app | Build passes; anonymous HTTP check returns 200 for production and alias. Browser visual review still pending because Chrome is not installed in this container. |
 | addictive-mobile-games | Needs triage | — | — | — |
 | api.requests | Needs triage | — | — | — |
 | bitcoin-bike-startup | Needs triage | — | — | — |
 | cellphone_scripts | Needs triage | — | — | — |
 | CloudAutomation | Needs triage | — | — | — |
 | coding-school-platform | Needs triage | — | — | — |
-| Codology | Deployed / needs manual review | https://codology-ncnfz5hgm-itmeansbigmountains-projects.vercel.app | https://codology-three.vercel.app | — |
+| Codology | Redeployed frontend + API / publicly accessible | https://codology-6wk56qa0o-itmeansbigmountains-projects.vercel.app | https://codology-three.vercel.app; API: https://codology-api.vercel.app/api/public | Frontend and API return anonymous HTTP 200. API public endpoint works; auth/highscore writes still need real DATABASE_URL/MySQL before full functionality. |
 | CombatAtlas | Needs triage | — | — | — |
 | consumer-advocate-app | Needs triage | — | — | — |
 | honda-tech-upgrade | Needs triage | — | — | — |
@@ -56,10 +56,12 @@ Use this table as the single place to record Vercel preview/production URLs as p
 ## Already deployed legacy URLs found
 
 - **3d-react-web**
-  - https://3d-react-brdh9bo6k-itmeansbigmountains-projects.vercel.app
+  - Frontend: https://3d-react-2ghv4m4c9-itmeansbigmountains-projects.vercel.app
+  - Frontend alias: https://3d-react-web.vercel.app
 - **Codology**
-  - https://codology-ncnfz5hgm-itmeansbigmountains-projects.vercel.app
-  - https://codology-three.vercel.app
+  - Frontend: https://codology-6wk56qa0o-itmeansbigmountains-projects.vercel.app
+  - Frontend alias: https://codology-three.vercel.app
+  - API public check: https://codology-api.vercel.app/api/public
 - **muscleMadness**
   - https://musclemadness-lvdo5n1l9-itmeansbigmountains-projects.vercel.app
   - https://musclemadness-theta.vercel.app
