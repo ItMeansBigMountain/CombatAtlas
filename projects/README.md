@@ -37,7 +37,7 @@ Use this table as the single place to record Vercel preview/production URLs as p
 | scraper-project | Needs triage | — | — | — |
 | sleep-dream-app | Needs triage | — | — | — |
 | social-media-analysis | Needs triage | — | — | — |
-| stockNews | Needs triage | — | — | — |
+| stockNews | Deployed / needs manual browser review | https://stock-news-frontend-norfaejlp-itmeansbigmountains-projects.vercel.app | https://stocknews-sentiment.vercel.app | Angular demo dashboard uses local browser portfolio storage and calls Django API at https://stocknews-api.vercel.app for latest Yahoo Finance RSS + heuristic sentiment. |
 | store-code-content-studio | Needs triage | — | — | — |
 | survey-analytics-website | Needs triage | — | — | — |
 | ticVoter | Skipped for now | https://ticvoter-ep90g308p-itmeansbigmountains-projects.vercel.app | https://ticvoter.vercel.app | User said to skip `ticVoter` for now. |

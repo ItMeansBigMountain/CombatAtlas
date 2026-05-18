@@ -4,8 +4,8 @@ import { PortfolioDashboardComponent } from './portfolio-dashboard/portfolio-das
 import { SettingsComponent } from './settings/settings.component';
 
 export const routes: Routes = [
-    { path: 'login', component: LoginSignupComponent },
+    { path: 'login', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: PortfolioDashboardComponent },
     { path: 'settings', component: SettingsComponent },
-    { path: '', redirectTo: '/login', pathMatch: 'full' }
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];

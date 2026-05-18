@@ -63,7 +63,7 @@ Verification after disabling:
 | `Codology` | Express backend + Expo/mobile frontend | Existing `codology` and `codology-api` Vercel projects exist. Root backend has Express scripts. Mobile frontend is Expo. | Decide whether Vercel should host only API, only web build, or both as separate projects. Need manual product review. |
 | `muscleMadness` | Expo React Native web build | Existing Vercel project exists. Dependencies are older Expo 44. | Skipped for now per user direction. |
 | `ticVoter` | Expo React Native web build | Existing Vercel project exists. Dependencies are older Expo 44. | Skipped for now per user direction. |
-| `stockNews` | Angular frontend + Django backend | Angular frontend exists; local build failed only because deps were not installed (`ng` missing). | Run `npm ci`, build Angular, then deploy frontend to Vercel. Backend likely needs separate Render/Railway/Fly/Vercel serverless refactor. |
+| `stockNews` | Angular frontend + Django backend | Frontend and API deployed. Backend now supports no-secret latest Yahoo Finance RSS + heuristic sentiment while IBM Watson credentials are pending. | Manual browser automation blocked by missing Chrome; anonymous HTTP checks pass for frontend and API. Frontend alias: `https://stocknews-sentiment.vercel.app`; API alias: `https://stocknews-api.vercel.app`. |
 
 ## Backend/API candidates needing deployment decisions
 
@@ -129,7 +129,7 @@ These are useful code archives, learning material, notebooks, or automation scri
 2. Re-deploy and manually test `3d-react-web` because its local build already passes.
 3. Triage `Codology` because it already has Vercel projects and both frontend/backend pieces.
 4. Skip `ticVoter` and `muscleMadness` for now per user direction.
-5. Build/deploy `stockNews` frontend, then decide backend hosting.
+5. `stockNews` is deployed for live review; revisit only for IBM Watson NLU credentials or durable account storage.
 6. Pick one project-plan folder to turn into a clean modern Vercel app rather than trying to rescue every legacy folder at once.
 
 ## What I need from the user

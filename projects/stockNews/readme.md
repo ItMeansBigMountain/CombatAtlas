@@ -12,6 +12,14 @@ This application allows users to log in, manage their stock portfolio, and get s
 ├── stockNews.txt             # Detailed description of app functionality
 ```
 
+## Deployment Status
+
+- Frontend: https://stocknews-sentiment.vercel.app
+- API: https://stocknews-api.vercel.app
+- Demo mode stores the portfolio in browser localStorage and uses the API only for latest-news analysis.
+- Current analysis source is public Yahoo Finance RSS plus transparent keyword sentiment so the app works without IBM Watson or NewsAPI credentials.
+- IBM Watson NLU can be re-enabled later with environment variables `WATSON_APIKEY`/`WATSON_INSTANCE_URL` once the correct service API key is available.
+
 ## Features (from readme.md)
 - OAuth2 authentication for secure login/signup
 - Dashboard to manage and view stock portfolio

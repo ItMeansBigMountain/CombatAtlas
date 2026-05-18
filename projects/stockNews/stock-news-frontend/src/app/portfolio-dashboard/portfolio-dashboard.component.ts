@@ -1,8 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { StockService } from '../stock.service';
-
+import { StockService, StockInvestment } from '../stock.service';
 
 @Component({
   selector: 'app-portfolio-dashboard',
@@ -10,23 +9,17 @@ import { StockService } from '../stock.service';
   styleUrls: ['./portfolio-dashboard.component.css']
 })
 export class PortfolioDashboardComponent implements OnInit {
-
-  userData: any;
   fromDate!: string;
   toDate!: string;
   newInvestmentSymbol: string = '';
   newInvestmentAmount: number = 0;
-  investments: any[] = [];
+  investments: StockInvestment[] = [];
   isLoading: boolean = false;
-  emotionChartData: any[] = []
+  errorMessage: string = '';
 
   colorScheme: any = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA', '#FF7F0E']
+    domain: ['#16a34a', '#ef4444', '#f59e0b', '#6366f1', '#64748b']
   };
-
-
-
-
 
   constructor(
     private stockService: StockService,
@@ -36,27 +29,8 @@ export class PortfolioDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.checkUserToken();
     this.initializeDateRange();
     this.fetchUserInvestments();
-  }
-
-  private checkUserToken(): void {
-    const token = this.authService.getToken();
-    if (token) {
-      this.authService.getUserData().subscribe({
-        next: (data) => {
-          this.userData = data;
-          this.cdr.detectChanges(); // Update view with user data
-        },
-        error: (error) => {
-          this.authService.removeToken(); // Remove invalid token
-          this.router.navigate(['/login']); // Redirect to login if token validation fails
-        }
-      });
-    } else {
-      this.router.navigate(['/login']);
-    }
   }
 
   private initializeDateRange(): void {
@@ -70,122 +44,121 @@ export class PortfolioDashboardComponent implements OnInit {
     this.stockService.getAllStocks().subscribe({
       next: (stocks) => {
         this.investments = stocks;
-        this.cdr.detectChanges(); // Update view with fetched stocks
+        this.cdr.detectChanges();
       },
-      error: (error) => {
+      error: () => {
+        this.errorMessage = 'Could not load the saved demo portfolio.';
       }
     });
   }
 
   logout(): void {
-    this.authService.removeToken(); // Remove the token from storage
-    this.router.navigate(['/login']); // Navigate back to the login page
+    this.authService.removeToken();
+    this.router.navigate(['/dashboard']);
   }
 
   addInvestment(): void {
-    const newInvestment = {
-      ticker_name: this.newInvestmentSymbol.toUpperCase(),
-      amount_invested: this.newInvestmentAmount
-      // Add other necessary investment details
-    };
+    const ticker = this.newInvestmentSymbol.toUpperCase().trim();
+    const amount = Number(this.newInvestmentAmount);
+    if (!ticker || amount <= 0) {
+      this.errorMessage = 'Enter a ticker symbol and an investment amount greater than $0.';
+      return;
+    }
 
-    this.stockService.addStock(newInvestment).subscribe({
-      next: (response: any) => {
-        location.reload()
-        this.cdr.detectChanges(); // Refresh the list
+    this.stockService.addStock({ ticker_name: ticker, amount_invested: amount }).subscribe({
+      next: () => {
+        this.errorMessage = '';
+        this.newInvestmentSymbol = '';
+        this.newInvestmentAmount = 0;
+        this.fetchUserInvestments();
       },
-      error: (error: any) => {
+      error: () => {
+        this.errorMessage = 'Could not add that ticker.';
       }
     });
-
-    // Reset input fields
-    this.newInvestmentSymbol = '';
-    this.newInvestmentAmount = 0;
   }
 
-  // EDITING
-  enableEditing(investment: any): void {
+  enableEditing(investment: StockInvestment): void {
     investment.editing = true;
   }
 
   deleteEditing(index: number): void {
-    const stockId = this.investments[index].id; // Ensure your investments array objects have an 'id' field
-    if (stockId) {
-      this.stockService.deleteStock(stockId).subscribe({
-        next: () => {
-          this.investments.splice(index, 1); // Remove the item from the array on successful deletion
-          this.cdr.detectChanges(); // Update the view to reflect the changes
-        },
-        error: (error) => {
-          // Handle error, maybe show an error message to the user
-        }
-      });
-    } else {
-      // Handle case where stock ID is missing
-    }
+    const stockId = this.investments[index].id;
+    this.stockService.deleteStock(stockId).subscribe({
+      next: () => {
+        this.investments.splice(index, 1);
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.errorMessage = 'Could not delete that stock.';
+      }
+    });
   }
 
-
-  saveEditing(investment: any, index: number): void {
+  saveEditing(investment: StockInvestment, index: number): void {
     investment.editing = false;
-
-    this.stockService.updateStock(investment.id, { ticker_name: investment.ticker_name, amount_invested: investment.amount_invested })
-      .subscribe({
-        next: (response) => {
-          // Handle successful update
-          this.investments[index] = { ...response };
-          this.cdr.detectChanges(); // Refresh the list to display updated stock
-        },
-        error: (error) => {
-          // Handle update error
-          // Optionally, revert the changes in the UI or show an error message
-          investment.editing = true; // Allow the user to try editing again
-        }
-      });
-    // No need to reload the page; Angular should update the view automatically
-    // location.reload()
+    this.stockService.updateStock(investment.id, {
+      ticker_name: investment.ticker_name,
+      amount_invested: investment.amount_invested,
+      analysis_data: investment.analysis_data,
+      last_analysis_date: investment.last_analysis_date
+    }).subscribe({
+      next: (response) => {
+        this.investments[index] = { ...response };
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.errorMessage = 'Could not save that edit.';
+        investment.editing = true;
+      }
+    });
   }
 
-
-  cancelEditing(investment: any): void {
+  cancelEditing(investment: StockInvestment): void {
     investment.editing = false;
-    location.reload()
+    this.fetchUserInvestments();
   }
 
   goToSettings(): void {
     this.router.navigate(['/settings']);
   }
 
-  // ANALYSIS METHOD
   analyzeStocks(): void {
-    this.isLoading = true; // Show spinner
+    if (!this.investments.length) {
+      this.errorMessage = 'Add at least one stock before running analysis.';
+      return;
+    }
 
-    // Assuming you have a backend API endpoint /api/analyze-stocks
+    this.isLoading = true;
+    this.errorMessage = '';
     this.stockService.analyzeStocks(this.investments).subscribe({
       next: (analysisResults) => {
-        // Handle analysis results, for example, updating the sentiment for each stock
-
-        this.isLoading = false; // Hide spinner
-        this.investments.forEach((investment, index) => {
-          // Update sentiment based on the analysis
-          investment.analysis_data = analysisResults[index].analysis_data;
-        });
-
-
-        // Refresh the list to display updated sentiments
-        // location.reload()
+        this.isLoading = false;
+        this.investments = analysisResults;
         this.cdr.detectChanges();
       },
-      error: (error) => {
-        // Hide spinner
+      error: () => {
         this.isLoading = false;
+        this.errorMessage = 'Latest-news analysis is temporarily unavailable. Try again in a minute.';
       }
     });
   }
 
+  sentimentPercent(investment: StockInvestment): number {
+    const score = Number(investment.analysis_data?.sentiment || 0);
+    return Math.round(((score + 1) / 2) * 100);
+  }
+
+  sentimentClass(investment: StockInvestment): string {
+    return investment.analysis_data?.label || 'neutral';
+  }
+
   formatEmotions(emotions: any): any[] {
+    if (!emotions) {
+      return [];
+    }
     return Object.keys(emotions).map(key => ({
-      name: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize the first letter
+      name: key.charAt(0).toUpperCase() + key.slice(1),
       value: emotions[key]
     }));
   }
