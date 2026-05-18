@@ -357,7 +357,55 @@ for s in json.load(sys.stdin)['secrets']:
 
 Note: For secrets, `gh secret set` is dramatically simpler. If setting secrets is needed and `gh` isn't available, recommend installing it for just that operation.
 
-## 8. Releases
+## 8. Backing Up Nested Repositories into a Parent Private Repo
+
+When a user wants an active project backed up inside a larger private workspace repo, first check whether the project is itself a Git repo. If it is nested inside the parent repo, prefer a **Git bundle** committed to the parent repo over trying to `git add` the nested worktree directly.
+
+Recommended sequence:
+
+1. In the child repo, verify status, remote, branch, and latest commit.
+2. From the child repo, create a bundle under the parent workspace's project backup directory, typically `git bundle create <parent>/projects/_backups/<name>/<name>.bundle --all`. For this user's HeRmEz workspace, project backup artifacts belong under `/opt/data/HeRmEz/projects/_backups/`, not under `.hermes/`.
+3. Add a small README next to the bundle documenting source path, remote URL, branch, latest commit, and restore commands.
+4. Add the active nested worktree path to the parent repo's `.gitignore` so runtime files, local DBs, media uploads, caches, and nested `.git` internals do not get tracked accidentally while the bundle/README remain tracked.
+5. Verify the bundle with `git bundle verify` **and** by cloning it into `/tmp` and checking expected files.
+6. Commit and push only the bundle, README, and parent `.gitignore` change.
+7. Verify the parent remote with `git ls-remote origin refs/heads/main`.
+
+See `references/nested-repo-backup-bundles.md` for a concrete command template and restore verification pattern, including the user's preferred `/opt/data/HeRmEz/projects/_backups/` layout.
+
+For broader imports of many unfinished legacy folders into the private workspace, use `references/legacy-project-imports.md` and treat the work as a secure migration: inventory, ignore runtime artifacts, remove nested git internals, secret-scan, create a deployment URL tracker, then commit/push.
+
+### Pitfalls
+
+- Do not assume `git add projects/foo/` is a safe backup if `projects/foo` is itself a Git repo; it can become submodule-like or miss the intended history.
+- A bundle captures committed Git history, not dirty working tree changes. If the child repo has uncommitted changes, commit them in the child first or explicitly tell the user what is not captured.
+- Do not bundle or track secrets, local SQLite DBs, uploaded media, caches, or environment files unless the user explicitly asks for a full machine/runtime snapshot and approves the security implications.
+
+## 9. Importing Legacy Project Collections into a Workspace
+
+Use this when the user provides a folder such as `legacy-projects/` and wants unfinished apps moved into the active workspace `projects/` directory for future development/deployment. For this user's HeRmEz workspace, active project work belongs under `/opt/data/HeRmEz/projects`, project backups under `/opt/data/HeRmEz/projects/_backups`, and deployment/manual-testing tracking belongs in `/opt/data/HeRmEz/projects/README.md`.
+
+Recommended sequence:
+
+1. Inspect the source and destination directories before moving anything; verify requested paths that may differ from the mounted path in the current environment.
+2. Move/copy each legacy app into a top-level folder under `projects/`, preserving existing destination folders and documenting conflicts instead of overwriting blindly.
+3. Create or update `projects/README.md` as a Vercel/manual-testing tracker with columns for project, local path, type, status, production URL, preview URL, and notes/next step.
+4. Add ignore rules before staging: `.env`, `.vercel/`, `node_modules/`, build outputs, caches, SQLite DBs, and the original `legacy-projects/` source copy if it remains on disk.
+5. Remove nested `.git/` directories from imported project copies unless submodules are explicitly intended; verify no gitlinks are staged.
+6. Stage the import, then run a staged-content secret scan before committing. Sanitize hardcoded credentials/API keys/passwords/SECRET_KEY values to placeholders and restage.
+7. If local DBs were accidentally staged, add `**/db.sqlite3` and `**/*.sqlite3`, then `git rm --cached` the tracked DB files before the final push.
+8. Commit/push and verify with `git ls-remote origin refs/heads/main`.
+
+See `references/legacy-project-imports.md` for a concrete command template, staged secret scan, and README tracker guidance.
+
+### Pitfalls
+
+- Do not commit `.env`, `.vercel`, `node_modules`, build folders, SQLite DBs, runtime tokens, or generated caches.
+- Do not quote discovered secret values in user-facing replies or persistent notes; report that credentials were sanitized.
+- Scan staged content, not only the working tree, because large imports and duplicated legacy archives can hide old secrets in notebooks, docs, and scripts.
+- If the user mentions a Docker host path that is not mounted, verify and use the active workspace path rather than failing or pretending the path exists.
+
+## 10. Releases
 
 **With gh:**
 
@@ -404,7 +452,95 @@ curl -s -X POST \
   --data-binary @./dist/binary-amd64
 ```
 
-## 9. GitHub Actions Workflows
+## 11. GitHub Pages for Static Sites
+
+Use this when publishing a simple static site (plain HTML/CSS/JS) to GitHub Pages.
+
+### Recommended sequence
+
+1. Create or reuse a public repo.
+2. Commit the static site at the repository root, with `index.html` in `/`.
+3. Push to `main`.
+4. Enable Pages from the `main` branch and `/` root.
+5. Poll the Pages URL until it returns HTTP 200; first deploys commonly return 404 for a minute or two.
+6. Verify key pages and static assets over the live `github.io` URL.
+
+### With gh
+
+```bash
+cd /path/to/static-site
+OWNER=$(gh api user --jq '.login')
+REPO=my-static-site
+
+gh repo create "$REPO" --public --source . --push
+
+gh api -X POST \
+  "/repos/$OWNER/$REPO/pages" \
+  -f source[branch]=main \
+  -f source[path]=/
+
+PAGES_URL="https://${OWNER,,}.github.io/$REPO/"
+for i in {1..24}; do
+  if curl -fsS "$PAGES_URL" | grep -q '<title>'; then
+    echo "Live: $PAGES_URL"
+    break
+  fi
+  sleep 5
+done
+```
+
+### With git + curl fallback
+
+Use this path when `gh` is unavailable but a token exists in `GITHUB_TOKEN`, `GH_TOKEN`, or `~/.git-credentials`.
+
+```bash
+cd /path/to/static-site
+REPO=my-static-site
+TOKEN=${GITHUB_TOKEN:-${GH_TOKEN:-}}
+if [ -z "$TOKEN" ] && [ -f ~/.git-credentials ]; then
+  TOKEN=$(grep github.com ~/.git-credentials | head -1 | sed 's|https://[^:]*:\([^@]*\)@github.com.*|\1|')
+fi
+OWNER=$(curl -fsS -H "Authorization: Bearer $TOKEN" https://api.github.com/user | python3 -c 'import sys,json; print(json.load(sys.stdin)["login"])')
+
+curl -fsS -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Accept: application/vnd.github+json" \
+  https://api.github.com/user/repos \
+  -d "{\"name\":\"$REPO\",\"private\":false,\"auto_init\":false}" || true
+
+git init
+git branch -M main
+git add .
+git commit -m "Launch static site" || true
+git remote remove origin 2>/dev/null || true
+git remote add origin "https://github.com/$OWNER/$REPO.git"
+git push -u origin main
+
+curl -fsS -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Accept: application/vnd.github+json" \
+  "https://api.github.com/repos/$OWNER/$REPO/pages" \
+  -d '{"source":{"branch":"main","path":"/"}}'
+
+PAGES_URL="https://$(echo "$OWNER" | tr '[:upper:]' '[:lower:]').github.io/$REPO/"
+for i in {1..24}; do
+  if curl -fsS "$PAGES_URL" >/tmp/pages-index.html 2>/dev/null; then
+    echo "Live: $PAGES_URL"
+    break
+  fi
+  sleep 5
+done
+```
+
+### Pitfalls
+
+- A newly enabled Pages site can return `404 Not Found` briefly even after the API returns success; poll before reporting failure.
+- GitHub Pages username/organization subdomains are lowercase even when the account login has uppercase letters.
+- For plain static sites, keep `index.html` at repository root if Pages source path is `/`.
+- Verify the deployed site over HTTPS, not only the local files: homepage, secondary pages, CSS, JS, images, and important external links.
+- If adding client-provided external links, place them in a visible section as well as the footer/social icons when the user asks for “side links” or “additional links.”
+
+## 12. GitHub Actions Workflows
 
 **With gh:**
 
@@ -466,7 +602,7 @@ curl -s -X POST \
   -d '{"ref": "main", "inputs": {"environment": "staging"}}'
 ```
 
-## 10. Gists
+## 13. Gists
 
 **With gh:**
 

@@ -5,3 +5,7 @@ A daily HeRmEz backup cron job exists: job_id cfcea697da5c, name "Daily HeRmEz G
 Hermes Kanban board for the user's main workspace is slug "hermez" (display name "HeRmEz Workspace"), DB path /opt/data/kanban/boards/hermez/kanban.db, active-board file /opt/data/kanban/current set to hermez. Current known assignee profile is default.
 §
 Google Workspace service account credentials are stored at /opt/data/google_service_account.json with env GOOGLE_APPLICATION_CREDENTIALS=/opt/data/google_service_account.json; service account email is ai-service@gen-lang-client-0835809364.iam.gserviceaccount.com. Use the service-account route for Calendar automation unless user asks for personal OAuth.
+§
+Cox Elementary PTA dynamic Django site is deployed at https://cox-elementary-pta.onrender.com from repo /opt/data/HeRmEz/projects/cox-elementary-pta.
+§
+Cox Elementary PTA project backup is stored as a Git bundle at /opt/data/HeRmEz/projects/_backups/cox-elementary-pta/cox-elementary-pta.bundle with restore notes in that folder's README.md.

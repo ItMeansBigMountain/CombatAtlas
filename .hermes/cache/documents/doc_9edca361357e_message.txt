@@ -1,0 +1,148 @@
+sponsors on the fundraising page doesnt show the picture i uploaded...
+
+also here are some guidelines you can follow 
+🦅 Cox Elementary PTA Website (Psychology-Driven Design)
+🧠 Design Psychology Principles Used
+This site is built around:
+
+Cognitive ease → simple navigation, predictable layout
+Emotional engagement → warm, community-centered language
+Behavior nudges → clear calls-to-action (“Join”, “Volunteer”, “RSVP”)
+Chunking → info broken into small readable sections
+Visual hierarchy → parents can skim in under 10 seconds
+Social proof → showing participation (“Join 120+ parent volunteers”)
+🏠 HOME PAGE (Landing)
+✨ Hero Section
+COX ELEMENTARY PTA
+Building connection. Supporting students. Strengthening community.
+
+👉 Buttons:
+
+📅 View Events
+🤝 Volunteer
+📰 Latest Newsletter
+💡 Quick Impact Panel (Psychology: instant reward)
+🎒 120+ volunteers this year
+📚 3 school-wide events supported monthly
+❤️ 100% student-centered funding
+📣 Upcoming Highlight (attention capture)
+Next Event: Scholastic Book Fair
+📅 May 26–29
+💬 “Every purchase helps classrooms grow!”
+
+🧠 Why PTA Matters (emotional framing)
+When families and teachers work together, students:
+
+feel more supported
+perform better academically
+develop stronger confidence in school
+🤝 VOLUNTEER PAGE
+💛 Volunteer With Cox PTA
+Small time commitment. Big impact.
+
+🧠 Psychology Strategy: reduce intimidation
+Instead of “sign up for roles,” we use:
+👉 “Choose what fits your life”
+
+🙌 Ways to Help
+📚 Book Fair Helper (1–2 hours)
+🎪 Event Setup Crew (flexible shifts)
+🍎 Teacher Appreciation Support
+📣 Communications / Social Media Help
+🏫 On-call Volunteer List (no pressure, opt-in)
+💡 Why people say yes (social proof)
+“Even one hour makes a difference in my child’s school experience.”
+
+👉 CTA Button:
+I Want to Volunteer
+
+📅 EVENTS PAGE
+🎉 Cox PTA Events Calendar
+🧠 Psychological design: predictability + control
+Parents feel less overwhelmed when events are structured visually.
+
+📌 Upcoming Events
+📚 Scholastic Book Fair
+
+May 26–29
+Teacher wishlists available
+Students can “gift” books to teachers ❤️
+🧦 Jump for Jackets Drive
+
+May 29, 3–5 PM
+Bring new/gently used jackets
+Community donation event
+🧠 PTA General Meeting
+
+May 20, 2026
+Updates, planning, and volunteer opportunities
+📊 Filter buttons:
+Family Events
+Fundraisers
+Meetings
+Volunteer Needed
+📰 NEWSLETTERS PAGE
+📬 PTA Newsletters
+🧠 Psychology principle: “progress loop”
+People are more likely to stay engaged when they can see continuity.
+
+📖 Latest Issue (May 2026)
+Theme: Growing Together 🌱
+
+Inside:
+
+Upcoming events
+Volunteer highlights
+Teacher appreciation updates
+Student achievement spotlight
+👉 Download PDF
+
+📚 Archive
+April 2026 – Spring Kickoff
+March 2026 – Literacy Month
+February 2026 – Community Care Edition
+💡 Subscribe box (behavior trigger)
+📧 “Get PTA updates in your inbox — no spam, just school impact.”
+
+🧑‍🏫 ABOUT PAGE
+💛 About Cox PTA
+We are parents, teachers, and community members working together to:
+
+Support student learning
+Fund enrichment programs
+Build school spirit
+Strengthen communication between families and staff
+🧠 Psychological framing: identity
+Instead of “what we do,” we say:
+👉 “What we believe”
+
+We believe:
+
+Every child deserves support
+Every family has something to contribute
+Community makes education stronger
+📞 CONTACT PAGE
+📬 Get in Touch
+Email: PTA contact
+Social media links
+Volunteer coordinator contact
+🧠 Psychology note:
+Keep this page low friction → fewer fields = more messages sent.
+
+🎨 OPTIONAL ADD-ONS (If you want to level it up)
+1. 🔥 “Impact Tracker”
+Live counter:
+
+Funds raised
+Volunteer hours
+Events completed
+2. 🧠 “Choose Your Role Quiz”
+“Not sure how to help? Take this 30-second quiz.”
+
+3. 📱 Mobile-first layout
+Big buttons, minimal text blocks, swipe-friendly sections
+
+4. ❤️ Emotional microcopy examples
+“Every hour helps a student.”
+“Small actions, big school impact.”
+“You don’t need more time — just the right moment.”

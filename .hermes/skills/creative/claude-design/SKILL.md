@@ -235,6 +235,7 @@ For repo implementation:
 - follow the repo's actual stack
 - use existing components and tokens where possible
 - do not create a standalone artifact if the user asked for production code
+- if a static design/mockup evolves into a client-editable site with admin updates, newsletters, events, forms, fundraising, deployment, or domains, hand off to or load `client-editable-django-sites` and preserve the approved visual system while making content dynamic
 
 ## HTML / CSS / JS Standards
 
@@ -540,6 +541,13 @@ Minimum:
 - HTML is saved completely
 - obvious syntax issues are checked
 
+For multi-page static sites, also verify local serving and links:
+
+1. Start a local server from the artifact directory, e.g. `python3 -m http.server 4177`.
+2. Fetch the main pages over HTTP rather than only reading files from disk.
+3. Check same-site stylesheet/script/image references and same-site fragment links.
+4. A reusable helper is available at `scripts/static_site_verify.py` in this skill directory; copy or invoke it with a base URL and page list, e.g. `python scripts/static_site_verify.py http://127.0.0.1:4177/ index.html events.html volunteer.html`.
+
 Better:
 
 - open in a browser tool and check console errors
@@ -548,7 +556,7 @@ Better:
 - test light/dark or variants if present
 - test responsive breakpoints if relevant
 
-If verification is limited by environment, say exactly what was and was not verified.
+If browser tooling is unavailable or not installed, do not stop at that failure: use the local HTTP/link verification fallback above, then clearly state that visual browser verification was not performed.
 
 Never say “done” if the file was not actually written.
 
