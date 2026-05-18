@@ -34,20 +34,22 @@ Verification after disabling:
 - Build notes: Vercel build succeeds with warnings about stale CRA/Browserslist, a missing Mediapipe source map, and large bundle size. These are polish items, not blockers.
 - Visual/browser review is still pending because this container does not currently have Chrome installed for browser automation.
 
-## Immediate update — Codology redeploy
+## Immediate update — Codology no-login leaderboard redeploy
 
-- Frontend deployment: `https://codology-6wk56qa0o-itmeansbigmountains-projects.vercel.app`
+- Frontend deployment: `https://codology-joj5tq3lb-itmeansbigmountains-projects.vercel.app`
 - Frontend alias: `https://codology-three.vercel.app`
 - API alias: `https://codology-api.vercel.app`
 - Verified checks:
   - `GET /` on frontend returns anonymous HTTP 200.
-  - `GET /api/public` on the API returns anonymous HTTP 200 with `{"message":"here is your public resource"}`.
+  - `GET /api/highscores` returns anonymous HTTP 200.
+  - `POST /api/add-highscore` accepts `{ username, score, time }` without login and the posted score appears in `GET /api/highscores`.
 - Fixes made:
-  - Added Vercel serverless routing for `SERVER/api/index.js`.
-  - Patched Sequelize MySQL initialization to explicitly include `mysql2`, which fixed the Vercel `Please install mysql2 package manually` runtime error.
-  - Repointed the Expo app API URL from the old LAN IP to `https://codology-api.vercel.app/api`.
-  - Exported the Expo web app to `dist` and deployed it to the existing `codology` Vercel project.
-- Remaining blocker for production persistence: auth/signup/highscore persistence needs a real MySQL `DATABASE_URL`/`MYSQL_URL` or a durable storage refactor. To keep the live demo usable without DB credentials, the API now falls back to demo-mode auth/highscores when no database env is configured. Verified `POST /api/signup`, `POST /api/login`, and `GET /api/private` return 200 with signed tokens on `https://codology-api.vercel.app`.
+  - Removed the frontend Login screen from the app flow; `Home` is now the initial route.
+  - Added a post-game name entry form. Players submit their display name only after completing the game.
+  - Implemented a rendered leaderboard screen instead of only logging API results.
+  - Kept API highscores anonymous and sorted by highest score then fastest time.
+  - Added `npm test` source checks for the no-login leaderboard flow.
+- Data note: no user database is needed for the current flow. The no-DB Vercel API uses demo-mode in-memory highscores, which are good for a live demo but not guaranteed durable across cold starts/redeploys. A durable leaderboard later would need a tiny hosted store/DB, but not user accounts.
 
 ## Immediate deploy/redeploy candidates
 

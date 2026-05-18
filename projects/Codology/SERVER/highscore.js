@@ -37,6 +37,7 @@ const addHighScore = async (req, res) => {
 
         if (!hasConfiguredDatabase) {
             demoHighscores.push(entry);
+            demoHighscores.sort((a, b) => b.score - a.score || a.time - b.time);
             return res.status(200).json({ message: 'successful post', demoMode: true });
         }
 

@@ -5,7 +5,8 @@
   "main": "SERVER/app.js",
   "scripts": {
     "start": "node SERVER/app.js",
-    "dev": "nodemon SERVER/app.js"
+    "dev": "nodemon SERVER/app.js",
+    "test": "node tests/no-login-flow.test.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

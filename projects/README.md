@@ -18,7 +18,7 @@ Use this table as the single place to record Vercel preview/production URLs as p
 | cellphone_scripts | Needs triage | — | — | — |
 | CloudAutomation | Needs triage | — | — | — |
 | coding-school-platform | Needs triage | — | — | — |
-| Codology | Redeployed frontend + API / login fixed in demo mode | https://codology-6wk56qa0o-itmeansbigmountains-projects.vercel.app | https://codology-three.vercel.app; API: https://codology-api.vercel.app/api/public | Frontend and API return anonymous HTTP 200. Signup/login now return tokens and `/api/private` verifies them. Runs in demo-mode auth/highscores until a real MySQL `DATABASE_URL`/`MYSQL_URL` is added. |
+| Codology | Redeployed frontend + API / no-login leaderboard flow | https://codology-joj5tq3lb-itmeansbigmountains-projects.vercel.app | https://codology-three.vercel.app; API: https://codology-api.vercel.app/api/highscores | Frontend and API return anonymous HTTP 200. Login is removed from the app flow; players start immediately, enter a name after the game, and submit to the leaderboard. API highscores run in demo-mode memory unless a durable DB is added. |
 | CombatAtlas | Needs triage | — | — | — |
 | consumer-advocate-app | Needs triage | — | — | — |
 | honda-tech-upgrade | Needs triage | — | — | — |
@@ -59,9 +59,9 @@ Use this table as the single place to record Vercel preview/production URLs as p
   - Frontend: https://3d-react-2ghv4m4c9-itmeansbigmountains-projects.vercel.app
   - Frontend alias: https://3d-react-web.vercel.app
 - **Codology**
-  - Frontend: https://codology-6wk56qa0o-itmeansbigmountains-projects.vercel.app
+  - Frontend: https://codology-joj5tq3lb-itmeansbigmountains-projects.vercel.app
   - Frontend alias: https://codology-three.vercel.app
-  - API public check: https://codology-api.vercel.app/api/public
+  - API highscores: https://codology-api.vercel.app/api/highscores
 - **muscleMadness**
   - https://musclemadness-lvdo5n1l9-itmeansbigmountains-projects.vercel.app
   - https://musclemadness-theta.vercel.app
