@@ -52,6 +52,7 @@ terminal:
   container_persistent: true
   docker_volumes: []
   docker_mount_cwd_to_workspace: false
+  docker_extra_args: []
   docker_run_as_host_user: false
   persistent_shell: true
 web:
@@ -103,9 +104,12 @@ compression:
   hygiene_hard_message_limit: 400
 prompt_caching:
   cache_ttl: 5m
+  long_lived_prefix: true
+  long_lived_ttl: 1h
 openrouter:
   response_cache: true
   response_cache_ttl: 300
+  min_coding_score: 0.65
 bedrock:
   region: ''
   discovery:
@@ -199,6 +203,7 @@ display:
   bell_on_complete: false
   show_reasoning: false
   streaming: false
+  timestamps: false
   final_response_markdown: strip
   persistent_output: true
   persistent_output_max_lines: 200
@@ -281,7 +286,7 @@ memory:
   user_profile_enabled: true
   memory_char_limit: 2200
   user_char_limit: 1375
-  provider: ''
+  provider: holographic
 delegation:
   model: ''
   provider: ''
@@ -354,6 +359,7 @@ approvals:
   timeout: 60
   cron_mode: deny
   mcp_reload_confirm: true
+  destructive_slash_confirm: true
 command_allowlist:
 - overwrite project env/config via redirection
 quick_commands: {}
@@ -371,6 +377,8 @@ security:
     enabled: false
     domains: []
     shared_files: []
+  acked_advisories: []
+  allow_lazy_installs: true
 cron:
   wrap_response: true
   max_parallel_jobs: null
@@ -408,3 +416,9 @@ session_reset:
   mode: both
   idle_minutes: 1440
   at_hour: 4
+plugins:
+  hermes-memory-store:
+    db_path: $HERMES_HOME/memory_store.db
+    auto_extract: false
+    default_trust: 0.5
+    hrr_dim: 1024

@@ -1,0 +1,79 @@
+{
+  "APIEndpoint": "https://cloud.ibm.com",
+  "IsPrivate": false,
+  "IsAccessFromVPC": false,
+  "ConsoleEndpoint": "https://cloud.ibm.com",
+  "ConsolePrivateEndpoint": "",
+  "ConsolePrivateVPCEndpoint": "",
+  "CloudType": "public",
+  "CloudName": "bluemix",
+  "CRIType": "",
+  "Region": "",
+  "RegionID": "",
+  "IAMEndpoint": "https://iam.cloud.ibm.com",
+  "IAMPrivateEndpoint": "",
+  "IAMPrivateVPCEndpoint": "",
+  "IAMToken": "",
+  "IAMRefreshToken": "",
+  "IsLoggedInAsCRI": false,
+  "Account": {
+    "GUID": "",
+    "Name": "",
+    "Owner": ""
+  },
+  "Profile": {
+    "ID": "",
+    "Name": "",
+    "ComputeResource": {
+      "Name": "",
+      "ID": ""
+    },
+    "User": {
+      "Name": "",
+      "ID": ""
+    }
+  },
+  "ResourceGroup": {
+    "GUID": "",
+    "Name": "",
+    "State": "",
+    "Default": false,
+    "QuotaID": ""
+  },
+  "LoginAt": "0001-01-01T00:00:00Z",
+  "PluginRepos": [
+    {
+      "Name": "IBM Cloud",
+      "URL": "https://plugins.cloud.ibm.com"
+    }
+  ],
+  "SSLDisabled": false,
+  "Locale": "",
+  "MessageOfTheDayTime": 0,
+  "LastSessionUpdateTime": 0,
+  "Trace": "",
+  "ColorEnabled": "",
+  "AlphaCommandsEnabled": "",
+  "HTTPTimeout": 0,
+  "TypeOfSSO": "manual",
+  "FallbackAccount": {
+    "GUID": "",
+    "Name": "",
+    "Owner": ""
+  },
+  "FallbackIAMTokens": {
+    "IAMToken": "",
+    "IAMRefreshToken": ""
+  },
+  "AssumedTrustedProfileId": "",
+  "CLIInfoEndpoint": "",
+  "CheckCLIVersionDisabled": true,
+  "UsageStatsDisabled": false,
+  "UsageStatsEnabled": false,
+  "UsageStatsEnabledLastUpdate": "0001-01-01T00:00:00Z",
+  "SDKVersion": "1.10.3",
+  "UpdateCheckInterval": 0,
+  "UpdateRetryCheckInterval": 0,
+  "UpdateNotificationInterval": 0,
+  "PaginationURLs": []
+}

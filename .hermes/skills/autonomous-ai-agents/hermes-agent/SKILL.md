@@ -234,7 +234,35 @@ hermes plugins list/install/remove  Plugin management
 hermes honcho setup/status  Honcho memory integration (requires honcho plugin)
 hermes memory setup/status/off  Memory provider config
 hermes completion bash|zsh  Shell completions
-hermes acp                  ACP server (IDE integration)
+```
+
+#### Memory provider setup notes
+
+`hermes memory setup` is interactive-only. If the user asks for a specific provider and you are operating non-interactively (gateway/Discord/automation), configure it directly instead of trying to drive the prompt:
+
+```bash
+hermes config set memory.provider holographic
+hermes config set plugins.hermes-memory-store.db_path '$HERMES_HOME/memory_store.db'
+hermes config set plugins.hermes-memory-store.auto_extract false
+hermes config set plugins.hermes-memory-store.default_trust 0.5
+hermes config set plugins.hermes-memory-store.hrr_dim 1024
+hermes memory status
+```
+
+For holographic memory, verify more than config status: load and initialize the provider so SQLite/HRR dependencies and plugin discovery are exercised:
+
+```bash
+python - <<'PY'
+from plugins.memory import load_memory_provider
+p = load_memory_provider('holographic')
+assert p is not None, 'provider not found'
+p.initialize('setup_verification')
+print(p.name)
+print(p.system_prompt_block().split('\n')[0])
+PY
+```
+
+Config changes affect new sessions/gateway runs; tell gateway users to `/restart` before expecting newly exposed provider tools such as `fact_store` to appear.
 hermes claw migrate         Migrate from OpenClaw
 hermes uninstall            Uninstall Hermes
 ```

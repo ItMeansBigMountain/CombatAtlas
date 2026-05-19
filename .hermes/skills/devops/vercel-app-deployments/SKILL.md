@@ -112,13 +112,14 @@ For legacy projects, prefer the lowest-friction deploy path before asking for pa
 
 - Frontend-only apps: Vercel static/site deployment, no database.
 - Demo APIs: SQLite or bundled JSON/sample data.
+- Prototype games/quizzes that only use accounts for high scores: remove login friction first; collect a display name after the game and post anonymous leaderboard rows. Add durable score storage later only if leaderboard persistence matters.
 - Django/Flask apps with durable writes: SQLite on a host with persistent disk (Render/Railway/Fly/etc.) unless there is a reason to use serverless.
 - Vercel serverless backends: avoid relying on local SQLite for durable writes; use read-only seed data or a free hosted DB.
 - Firebase/Supabase: use only when the app needs hosted auth/realtime or already depends on it.
 
 ## HeRmEz legacy-project triage reference
 
-For this user's imported legacy project workspace, see `references/hermez-vercel-triage.md` for the classification pattern, common user inputs, and README/triage-doc approach. See `references/vercel-protection-and-free-data.md` for the exact Vercel `ssoProtection` API patch and free SQLite/sample-data planning pattern. See `references/oauth-and-third-party-credentials.md` for safely handling Spotify/Genius/Watson/Agora/Imgflip-style credentials, redirect URLs, and redacted status docs during deployment setup.
+For this user's imported legacy project workspace, see `references/hermez-vercel-triage.md` for the classification pattern, common user inputs, and README/triage-doc approach. See `references/hermez-imported-project-redeploys.md` for working redeploy patterns discovered while continuing the imported projects: linked Vercel redeploys, Express API subdirectory routing, Sequelize/MySQL serverless fixes, nested Expo web exports, anonymous HTTP verification, and tracker updates. See `references/vercel-protection-and-free-data.md` for the exact Vercel `ssoProtection` API patch and free SQLite/sample-data planning pattern. See `references/oauth-and-third-party-credentials.md` for safely handling Spotify/Genius/Watson/Agora/Imgflip-style credentials, redirect URLs, and redacted status docs during deployment setup.
 
 ## URL tracker
 
@@ -130,9 +131,17 @@ Create/update a workspace README table like:
 | my-app | Deployed / needs manual review | https://...vercel.app | https://my-app.vercel.app | Login works; mobile nav needs polish |
 ```
 
+When the user explicitly deprioritizes or skips projects during triage, immediately mark those rows as `Skipped for now` (including paired API/backend rows), add a short note such as `User said to skip <project> for now`, and update the triage doc's recommended next order so future sessions do not keep resurfacing the skipped projects.
+
 ## Pitfalls
 
 - Do not deploy every legacy folder blindly; many are specs/scripts, not apps.
 - Do not commit `.vercel/`, `.env`, `node_modules`, build outputs, local DBs, or generated credentials.
 - Do not expose Vercel tokens or protection bypass tokens in chat, commits, docs, or logs.
 - Do not report a URL as manually testable until it returns a public 200/expected response or the user has a protection bypass path.
+- For nested legacy apps, run the build/export/deploy command from the actual deployable subdirectory and verify `.vercel/project.json` there points at the intended Vercel project; parent and child folders can be linked to different projects.
+- For Vercel serverless Express APIs, a successful deployment can still 404 if `vercel.json` does not route requests to the exported API app. Add explicit `builds`/`routes` for `api/index.js` when needed and then verify a known endpoint.
+- If login/signup routes time out because a legacy serverless API defaults to localhost MySQL and no `DATABASE_URL`/`MYSQL_URL` exists, do not stop at “needs DB” when the user needs a live demo. Add a clearly documented demo-mode in-memory fallback that preserves the frontend response contract (for example, signup/login both return JWTs), then verify signup → login → private-route remotely. See `references/hermez-imported-project-redeploys.md`.
+- For Sequelize/MySQL APIs on Vercel, `mysql2` in `package.json` may not be enough. If logs show “Please install mysql2 package manually,” require `mysql2` and pass `dialectModule: mysql2` in the Sequelize constructor.
+- For Expo web apps, prefer `npx expo export --platform web` with `outputDirectory: "dist"`; if `export:web` fails, do not assume the app is undeployable — use the export command that matches the installed Expo SDK/bundler.
+- For imported quiz/education apps whose question images are missing, duplicated placeholders, or unavailable in the web export, do not reflexively chase asset paths. If the user wants curriculum review, replace image prompts with deterministic rendered lesson/code cards and add source tests for curriculum coverage; see `references/hermez-imported-project-redeploys.md`.
