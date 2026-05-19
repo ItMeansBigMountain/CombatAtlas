@@ -112,6 +112,42 @@ def _fallback_articles(ticker):
     return articles
 
 
+def _watson_article_analysis(articles):
+    """Analyze the fetched headlines/descriptions with IBM Watson NLU when configured.
+
+    The app still keeps the no-secret heuristic fallback, but now uses the verified
+    Watson service whenever credentials are available in the environment or the
+    local credential JSON file.
+    """
+    text = "\n".join(
+        f"{article.get('title', '')}. {article.get('description', '')}"
+        for article in articles
+        if article.get('title') or article.get('description')
+    ).strip()
+    if not text:
+        return None
+
+    client = watson.login()
+    result = json.loads(watson.analyzeText(client, text))
+    document_sentiment = result.get("sentiment", {}).get("document", {})
+    score = round(float(document_sentiment.get("score") or 0.0), 3)
+    label = document_sentiment.get("label") or (
+        "positive" if score > 0.08 else "negative" if score < -0.08 else "neutral"
+    )
+    stock_label = "bullish" if label == "positive" else "bearish" if label == "negative" else "neutral"
+    emotions = result.get("emotion", {}).get("document", {}).get("emotion") or _score_to_emotions(score)
+    return {
+        "sentiment": score,
+        "label": stock_label,
+        "confidence": round(abs(score), 3),
+        "emotions": emotions,
+        "watson_language": result.get("language"),
+        "top_keywords": [item.get("text") for item in result.get("keywords", [])[:5] if item.get("text")],
+        "top_entities": [item.get("text") for item in result.get("entities", [])[:5] if item.get("text")],
+        "analyzer": "IBM Watson Natural Language Understanding + Yahoo Finance RSS",
+    }
+
+
 def analyze_ticker(ticker):
     try:
         articles = _fetch_latest_articles(ticker)
@@ -128,7 +164,7 @@ def analyze_ticker(ticker):
     neutral = max(0, len(scores) - bullish - bearish)
     confidence = round((abs(avg) + (max(bullish, bearish, neutral) / max(1, len(scores)))) / 2, 3)
 
-    return {
+    analysis = {
         "sentiment": avg,
         "label": "bullish" if avg > 0.08 else "bearish" if avg < -0.08 else "neutral",
         "confidence": confidence,
@@ -140,6 +176,15 @@ def analyze_ticker(ticker):
         "latest_articles": articles,
         "analyzer": "latest Yahoo Finance RSS + heuristic sentiment",
     }
+
+    try:
+        watson_analysis = _watson_article_analysis(articles)
+    except Exception:
+        watson_analysis = None
+    if watson_analysis:
+        analysis.update(watson_analysis)
+
+    return analysis
 
 
 class NewsSourceViewSet(viewsets.ModelViewSet):

@@ -1,5 +1,9 @@
 import os
 import json
+from pathlib import Path
+
+DEFAULT_IBM_NLU_CREDENTIALS_FILE = '/opt/data/credentials/ibm-nlu-api-key.json'
+DEFAULT_IBM_NLU_URL = 'https://api.us-south.natural-language-understanding.watson.cloud.ibm.com/instances/dd2384c5-cbf9-45c5-9dc8-fb9dd95dea56'
 
 try:
     from ibm_watson import NaturalLanguageUnderstandingV1
@@ -23,9 +27,37 @@ except Exception:  # IBM Watson is optional for the public demo.
     EmotionOptions = RelationsOptions = SemanticRolesOptions = SentimentOptions = SyntaxOptions = None
 
 
+def _credentials_from_file():
+    credentials_file = os.getenv('IBM_WATSON_CREDENTIALS_FILE') or os.getenv('WATSON_CREDENTIALS_FILE') or DEFAULT_IBM_NLU_CREDENTIALS_FILE
+    path = Path(credentials_file)
+    if not path.exists():
+        return {}
+    with path.open() as handle:
+        return json.load(handle)
+
+
+def _get_credentials():
+    file_credentials = _credentials_from_file()
+    watson_apikey = (
+        os.getenv('WATSON_APIKEY')
+        or os.getenv('WATSON_NLU_APIKEY')
+        or os.getenv('WATSON_API_KEY')
+        or os.getenv('IBM_WATSON_API_KEY')
+        or file_credentials.get('apikey')
+    )
+    watson_instance_url = (
+        os.getenv('WATSON_INSTANCE_URL')
+        or os.getenv('WATSON_NLU_URL')
+        or os.getenv('WATSON_SERVICE_URL')
+        or os.getenv('IBM_WATSON_SERVICE_URL')
+        or file_credentials.get('url')
+        or DEFAULT_IBM_NLU_URL
+    )
+    return watson_apikey, watson_instance_url
+
+
 def login():
-    watson_apikey = os.getenv('WATSON_APIKEY') or os.getenv('WATSON_NLU_APIKEY')
-    watson_instance_url = os.getenv('WATSON_INSTANCE_URL') or os.getenv('WATSON_NLU_URL')
+    watson_apikey, watson_instance_url = _get_credentials()
 
     if not NaturalLanguageUnderstandingV1 or not IAMAuthenticator:
         raise RuntimeError('IBM Watson SDK is not installed')
