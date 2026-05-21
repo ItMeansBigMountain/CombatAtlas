@@ -12,4 +12,4 @@ Cox Elementary PTA project backup is stored as a Git bundle at /opt/data/HeRmEz/
 §
 Hermes external memory provider is configured as holographic in /opt/data/config.yaml, with plugin config under plugins.hermes-memory-store using $HERMES_HOME/memory_store.db, auto_extract false, default_trust 0.5, hrr_dim 1024.
 §
-stockNews legacy project is deployed with frontend at https://stocknews-sentiment.vercel.app and API at https://stocknews-api.vercel.app from /opt/data/HeRmEz/projects/stockNews. Current demo uses browser localStorage for portfolio data and Yahoo Finance RSS + heuristic sentiment while IBM Watson NLU credentials are pending.
+stockNews legacy project is deployed with frontend at https://stocknews-sentiment.vercel.app and API at https://stocknews-api.vercel.app from /opt/data/HeRmEz/projects/stockNews. Demo uses localStorage portfolio data + Yahoo RSS heuristic sentiment. IBM Cloud CLI v2.43.0 is at /opt/data/bin/ibmcloud; NLU API key JSON is stored at /opt/data/credentials/ibm-nlu-api-key.json.

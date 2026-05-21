@@ -14,3 +14,74 @@ hermes        22  0.0  0.0      0     0 ?        Z    May14   0:17 [hermes] <def
 0.00 0.00 0.00 1/281 3664
 --- recent dmesg (oom/killed) ---
 === end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-05-20T01:39:18Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+hermes         1  0.0  0.0   1704   500 ?        Ss   May14   0:04 ttyd --port 4860 -c oyama:***REMOVED*** -W -t titleFixed Hermes Agent -t disableResizeOverlay true /hermes.sh
+hermes      3956  0.2  8.9 1457892 724764 ?      Ssl  May15  18:59 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes gateway run
+hermes     63800  0.2  0.0   4444  3296 ?        Ss   01:39   0:00  \_ bash -lc sleep 8; kill 3956 2>/dev/null || true; sleep 2; cd /opt/data/hermes-agent; exec /opt/data/.local/bin/hermes gateway run
+hermes     63810  0.0  0.0   2968  1792 ?        S    01:39   0:00      \_ sleep 2
+--- pstree of self ---
+--- /proc/loadavg ---
+0.12 0.08 0.07 1/388 63818
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-05-20T01:39:19Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+hermes         1  0.0  0.0   1704   500 ?        Ss   May14   0:04 ttyd --port 4860 -c oyama:***REMOVED*** -W -t titleFixed Hermes Agent -t disableResizeOverlay true /hermes.sh
+hermes      3956  0.2  8.9 1441404 724580 ?      Rsl  May15  18:59 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes gateway run
+hermes     63821  0.0  0.0   2972  1832 ?        Ss   01:39   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 3956 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     63823  0.0  0.0   4444  3216 ?        S    01:39   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 3956 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     63825  0.0  0.0   6792  3824 ?        R    01:39   0:00          \_ ps auxf --sort=-pcpu
+hermes     63826  0.0  0.0   2976  1676 ?        S    01:39   0:00          \_ head -60
+hermes        10  0.0  0.0      0     0 ?        ZN   May14   1:51 [hermes] <defunct>
+hermes       121  0.0  0.0      0     0 ?        Z    May14   1:13 [hermes] <defunct>
+hermes      3676  0.0  0.0      0     0 ?        Z    May15   0:22 [hermes] <defunct>
+hermes     11007  0.0  0.0      0     0 ?        Z    May17   0:07 [python] <defunct>
+hermes        22  0.0  0.0      0     0 ?        Z    May14   0:17 [hermes] <defunct>
+hermes     62317  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     63185  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     63081  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62998  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62237  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62283  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62698  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62582  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62455  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62860  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62490  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62963  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62791  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62756  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62421  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62825  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62524  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62386  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     59247  0.0  0.0      0     0 ?        Z    May18   0:02 [esbuild] <defunct>
+hermes     62640  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62352  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62929  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     62894  0.0  0.0      0     0 ?        Zs   May19   0:01 [node] <defunct>
+hermes     59894  0.0  0.0      0     0 ?        Z    May18   0:01 [esbuild] <defunct>
+hermes     60682  0.0  0.0      0     0 ?        Z    May18   0:01 [esbuild] <defunct>
+hermes     60031  0.0  0.0      0     0 ?        Z    May18   0:01 [esbuild] <defunct>
+hermes     60200  0.0  0.0      0     0 ?        Zs   May18   0:01 [node] <defunct>
+hermes     60140  0.0  0.0      0     0 ?        Zs   May18   0:01 [node] <defunct>
+hermes     60402  0.0  0.0      0     0 ?        Zs   May18   0:01 [node] <defunct>
+hermes     60364  0.0  0.0      0     0 ?        Zs   May18   0:01 [node] <defunct>
+hermes     60326  0.0  0.0      0     0 ?        Zs   May18   0:01 [node] <defunct>
+hermes     60238  0.0  0.0      0     0 ?        Zs   May18   0:01 [node] <defunct>
+hermes     57543  0.0  0.0      0     0 ?        Zs   May18   0:01 [node] <defunct>
+hermes     57487  0.0  0.0      0     0 ?        Zs   May18   0:01 [node] <defunct>
+hermes     55541  0.0  0.0      0     0 ?        Zs   May18   0:01 [node] <defunct>
+hermes     55743  0.0  0.0      0     0 ?        Zs   May18   0:01 [node] <defunct>
+--- pstree of self ---
+--- /proc/loadavg ---
+0.12 0.08 0.07 3/380 63829
+--- recent dmesg (oom/killed) ---
+=== end ===

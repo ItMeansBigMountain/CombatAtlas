@@ -20,15 +20,15 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 4
+        "completed": 5
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-05-20T03:00:00+00:00",
-      "last_run_at": "2026-05-18T03:00:58.080728+00:00",
+      "next_run_at": "2026-05-22T03:00:00+00:00",
+      "last_run_at": "2026-05-19T03:01:04.811135+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -36,7 +36,49 @@
       "origin": null,
       "enabled_toolsets": null,
       "workdir": null
+    },
+    {
+      "id": "92f873723241",
+      "name": "Morning one-big-priority check-in",
+      "prompt": "You are doing a proactive daily morning check-in for the user in Discord. Send a concise, warm message that:\n1) Asks: \u201cWhat\u2019s your one big priority today?\u201d\n2) Briefly asks for any context/blockers.\n3) Offers that when they reply, you will update durable memories only for stable patterns/preferences/recurring goals\u2014not one-off daily tasks\u2014and give a practical recommendation on how you can help their life or what they can do better.\n4) Include one small, useful reflection prompt or habit suggestion tailored generally to prioritization, without pretending to know today\u2019s answer.\nKeep it natural and short. Do not schedule more cron jobs. Do not claim you have already updated memory today unless the user\u2019s reply is available in the current run context.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 8 * * *",
+        "display": "0 8 * * *"
+      },
+      "schedule_display": "0 8 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-05-21T01:20:05.320432+00:00",
+      "next_run_at": "2026-05-21T08:00:00+00:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null
     }
   ],
-  "updated_at": "2026-05-19T03:00:01.230653+00:00"
+  "updated_at": "2026-05-21T03:00:36.598088+00:00"
 }
