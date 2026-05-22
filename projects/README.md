@@ -5,6 +5,13 @@ Active and legacy projects live here so we can finish them, deploy them to Verce
 > Runtime path in this container: `/opt/data/HeRmEz/projects`  
 > User-facing mapped path requested: `/docker/hermes-agent-xbit/data/HeRmEz/projects`
 
+
+## Full Vercel deployment pass — 2026-05-22
+
+All deployable project folders now have a public Vercel URL verified with anonymous HTTP `200`. Many plan-only/script/archive folders are intentionally deployed as safe static review shells so they can be edited from a visible baseline without adding secrets, accounts, payments, or paid integrations.
+
+See the complete verified URL list: [`DEPLOY_FINAL_URLS.md`](./DEPLOY_FINAL_URLS.md).
+
 ## Vercel manual testing tracker
 
 Use this table as the single place to record Vercel preview/production URLs as projects are completed and deployed. Add notes after each manual test pass.
