@@ -37,6 +37,8 @@ if command -v vercel >/dev/null 2>&1; then vercel --version; else echo 'vercel c
 
 If the CLI is unavailable, use `npx vercel` or the REST API with the token from `VERCEL_TOKEN`/`VERCEL_API_TOKEN`.
 
+Before a deploy, verify the token in the exact execution context that will run `npx vercel` (same terminal/session/workdir), because higher-level wrappers or different tool backends may have different environment injection. If neither `VERCEL_TOKEN` nor `VERCEL_API_TOKEN` is present there, stop after local build/preview verification and report the deploy-auth blocker without exposing secrets.
+
 ## Inventory existing Vercel projects via API
 
 ```bash
@@ -71,6 +73,19 @@ node -e "let p=require('./package.json'); console.log(p.scripts||{}); console.lo
    - Expo web: inspect Expo version; old SDKs often need dependency/export fixes before Vercel.
 4. Note missing env vars from `.env.example`/templates by key name only, not value.
 5. Decide whether backend/API components belong on Vercel serverless or a service better suited for long-running apps/databases (Render/Railway/Fly/etc.).
+6. If a folder is only a README/SCOPE/PROJECT plan but the user asks to begin work across projects, do not leave it as inert triage. Pick the highest-leverage low-risk plan-only app and build the smallest Vercel-ready MVP from the stated scope, favoring static/local-first implementations that avoid credentials, payments, official trademarked assets, and databases until manual review proves value.
+
+## Workspace deploy queue for many projects
+
+When the user asks to review every project or create a work queue, create/update a durable queue document in the workspace (for this user's project workspace, `/opt/data/HeRmEz/projects/WORK_QUEUE.md`) with:
+
+- an "Active now" ranked section,
+- every project classified as live app, app scaffold, backend/API candidate, plan-only app, or script/archive,
+- the current deployment path,
+- the next work item,
+- explicit blockers.
+
+Keep `/opt/data/HeRmEz/projects/README.md` as the public URL tracker and `/opt/data/HeRmEz/projects/VERCEL_TRIAGE.md` as the detailed evidence log. The work queue is the operator view for choosing what to build next; the README is the review URL table.
 
 ## Deployment protection / 401 pattern
 
@@ -119,7 +134,11 @@ For legacy projects, prefer the lowest-friction deploy path before asking for pa
 
 ## HeRmEz legacy-project triage reference
 
-For this user's imported legacy project workspace, see `references/hermez-vercel-triage.md` for the classification pattern, common user inputs, and README/triage-doc approach. See `references/hermez-imported-project-redeploys.md` for working redeploy patterns discovered while continuing the imported projects: linked Vercel redeploys, Express API subdirectory routing, Sequelize/MySQL serverless fixes, nested Expo web exports, anonymous HTTP verification, and tracker updates. See `references/vercel-protection-and-free-data.md` for the exact Vercel `ssoProtection` API patch and free SQLite/sample-data planning pattern. See `references/oauth-and-third-party-credentials.md` for safely handling Spotify/Genius/Watson/Agora/Imgflip-style credentials, redirect URLs, and redacted status docs during deployment setup.
+For this user's imported legacy project workspace, see `references/hermez-vercel-triage.md` for the classification pattern, common user inputs, and README/triage-doc approach. See `references/hermez-imported-project-redeploys.md` for working redeploy patterns discovered while continuing the imported projects: linked Vercel redeploys, Express API subdirectory routing, Sequelize/MySQL serverless fixes, nested Expo web exports, anonymous HTTP verification, and tracker updates. See `references/hermez-static-mvp-reframe-and-card-intel.md` for the pattern of reframing a plan-only/legacy folder into a static Vite MVP, renaming misleading project folders, deploying with token fallback, disabling protection on newly-created projects, and verifying a Pokémon card price-scanner MVP. See `references/vercel-protection-and-free-data.md` for the exact Vercel `ssoProtection` API patch and free SQLite/sample-data planning pattern. See `references/oauth-and-third-party-credentials.md` for safely handling Spotify/Genius/Watson/Agora/Imgflip-style credentials, redirect URLs, and redacted status docs during deployment setup.
+
+## Plan-only app reframes
+
+When a project folder is mostly README/SCOPE/PROJECT scaffolding and the user changes the product direction, treat the latest user direction as the source of truth rather than preserving the imported legacy concept. If the old folder name is misleading and no deployed external integration depends on it yet, rename the folder and update project-local docs plus workspace trackers from the new path. Prefer a static Vercel-ready MVP using public/no-key APIs and browser-only logic before adding accounts, databases, or paid API keys. See `references/plan-only-app-reframes.md` for the detailed reframe workflow and pitfalls.
 
 ## URL tracker
 
@@ -136,6 +155,7 @@ When the user explicitly deprioritizes or skips projects during triage, immediat
 ## Pitfalls
 
 - Do not deploy every legacy folder blindly; many are specs/scripts, not apps.
+- When the user changes a project direction, update/replace stale README/SCOPE/PROJECT/tracker text immediately and rename the folder if the old name will mislead future work.
 - Do not commit `.vercel/`, `.env`, `node_modules`, build outputs, local DBs, or generated credentials.
 - Do not expose Vercel tokens or protection bypass tokens in chat, commits, docs, or logs.
 - Do not report a URL as manually testable until it returns a public 200/expected response or the user has a protection bypass path.

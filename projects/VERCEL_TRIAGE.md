@@ -55,6 +55,33 @@ Verification after disabling:
   - Added `npm test` source checks for the no-login leaderboard flow and Basic 13 content.
 - Data note: no user database is needed for the current flow. The no-DB Vercel API uses demo-mode in-memory highscores, which are good for a live demo but not guaranteed durable across cold starts/redeploys. A durable leaderboard later would need a tiny hosted store/DB, but not user accounts.
 
+## Immediate update — card-intel-scanner reframed as Card Intel Scanner
+
+- Project path: `/opt/data/HeRmEz/projects/card-intel-scanner`
+- New product direction: unofficial Pokémon card scanner + price aggregator, replacing the Pokémon Go friend-code concept.
+- Type: static React/Vite MVP; no backend required.
+- Local verification:
+  - `npm install` completed with 0 vulnerabilities.
+  - `npm run build` passes.
+  - `npm run preview` returns local HTTP 200.
+  - Built bundle contains scanner/pricing source logic.
+  - Pokémon TCG API verification with browser-style headers returns card data containing TCGplayer and Cardmarket pricing.
+- Implemented:
+  - Upload/camera image intake.
+  - Browser OCR via `tesseract.js` to extract likely card text.
+  - Manual search/correction flow.
+  - Pokémon TCG API card matching.
+  - Aggregated price rows from TCGplayer and Cardmarket where available.
+  - eBay sold-comps search link for reality validation.
+  - Blended median estimate from numeric price signals.
+- Vercel state: deployed to production and verified publicly.
+- Production deployment: `https://card-intel-scanner-dxz5ue8l2-itmeansbigmountains-projects.vercel.app`
+- Public alias: `https://card-intel-scanner.vercel.app`
+- Anonymous verification:
+  - production URL returns HTTP 200.
+  - alias returns HTTP 200.
+  - deployed JS bundle contains TCGplayer, Cardmarket, and eBay pricing logic.
+
 ## Immediate deploy/redeploy candidates
 
 | Project | Type | Current state | What is needed |
@@ -90,7 +117,7 @@ These have project plans/readmes but little or no app scaffold. They need produc
 - `local-meeting-transcriber`
 - `music-mood-app`
 - `oyama-productions-legal`
-- `pokemon-go-qr-trade-site`
+- `card-intel-scanner`
 - `policy-pit-app`
 - `portfolio-sentiment-subscription-app`
 - `robinhood-email-reports`

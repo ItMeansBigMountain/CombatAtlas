@@ -21,6 +21,9 @@
     "resume_reason": null,
     "last_resume_marked_at": null,
     "is_fresh_reset": false,
+    "was_auto_reset": false,
+    "auto_reset_reason": null,
+    "reset_had_activity": false,
     "origin": {
       "platform": "discord",
       "chat_id": "1503250944526258207",
@@ -57,6 +60,9 @@
     "resume_reason": null,
     "last_resume_marked_at": null,
     "is_fresh_reset": false,
+    "was_auto_reset": false,
+    "auto_reset_reason": null,
+    "reset_had_activity": false,
     "origin": {
       "platform": "discord",
       "chat_id": "1503251111149047868",
@@ -73,9 +79,9 @@
   },
   "agent:main:discord:group:1499990220077137943:219376861866754049": {
     "session_key": "agent:main:discord:group:1499990220077137943:219376861866754049",
-    "session_id": "20260521_011954_ba09b7fd",
-    "created_at": "2026-05-21T01:19:54.088861",
-    "updated_at": "2026-05-21T01:20:18.258351",
+    "session_id": "20260521_150705_13d4f398",
+    "created_at": "2026-05-21T15:07:05.230243",
+    "updated_at": "2026-05-22T02:09:21.662167",
     "display_name": "TRAPISTAN / #general",
     "platform": "discord",
     "chat_type": "group",
@@ -84,7 +90,7 @@
     "cache_read_tokens": 0,
     "cache_write_tokens": 0,
     "total_tokens": 0,
-    "last_prompt_tokens": 16017,
+    "last_prompt_tokens": 79797,
     "estimated_cost_usd": 0.0,
     "cost_status": "unknown",
     "expiry_finalized": false,
@@ -93,6 +99,9 @@
     "resume_reason": null,
     "last_resume_marked_at": null,
     "is_fresh_reset": false,
+    "was_auto_reset": false,
+    "auto_reset_reason": null,
+    "reset_had_activity": false,
     "origin": {
       "platform": "discord",
       "chat_id": "1499990220077137943",
@@ -103,7 +112,7 @@
       "thread_id": null,
       "chat_topic": null,
       "guild_id": "1499990218890154135",
-      "message_id": "1506828847578873877"
+      "message_id": "1507037010374955069"
     }
   }
 }

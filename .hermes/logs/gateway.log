@@ -447,3 +447,57 @@ ERROR gateway.run: Gateway exiting cleanly: discord: Discord bot token already i
 2026-05-21 01:20:18,263 INFO gateway.platforms.base: [Discord] Sending response (330 chars) to 1499990220077137943
 2026-05-21 02:21:26,601 INFO gateway.run: Agent cache idle-TTL evict: session=agent:main:discord:group:1499990220077137943:219376861866754049 (idle=3668s)
 2026-05-21 02:21:26,603 INFO gateway.run: Agent cache idle sweep: evicted 1 agent(s)
+2026-05-21 04:01:43,488 INFO gateway.run: Session expiry: 1 sessions to finalize (discord:1)
+2026-05-21 04:01:43,490 INFO gateway.run: Session expiry done: 1 finalized
+2026-05-21 15:07:04,728 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (1981 chars)
+2026-05-21 15:07:05,229 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Remember these and apply to your workflows and personalities  These are the ment'
+2026-05-21 15:07:15,332 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=10.1s api_calls=2 response=571 chars
+2026-05-21 15:07:15,343 INFO gateway.platforms.base: [Discord] Sending response (571 chars) to 1499990220077137943
+2026-05-21 15:25:02,978 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (1368 chars)
+2026-05-21 15:25:03,609 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='The morning report should look something like this   This is an example and your'
+WARNING run_agent: Tool memory returned error (0.01s): {"success": false, "error": "Memory at 1,352/1,375 chars. Adding this entry (377 chars) would exceed the limit. Replace or remove existing entries first.", "current_entries": ["User prefers Discord bo
+2026-05-21 15:25:30,064 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=26.5s api_calls=3 response=815 chars
+2026-05-21 15:25:30,068 INFO gateway.platforms.base: [Discord] Sending response (815 chars) to 1499990220077137943
+2026-05-21 15:45:10,858 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (154 chars)
+2026-05-21 15:45:11,327 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='I need you to begin working on any of the projects. Make a work queue to review '
+WARNING run_agent: Tool terminal returned error (5.85s): {"output": "Error: No existing credentials found. Please run `vercel login` or pass \"--token\"\nLearn More: https://err.sh/vercel/no-credentials-found", "exit_code": 1, "error": null}
+WARNING run_agent: Tool terminal returned error (0.22s): {"output": "", "exit_code": 1, "error": null}
+WARNING run_agent: Tool browser_navigate returned error (0.30s): {"success": false, "error": "Auto-launch failed: Chrome not found. Checked:\n  - agent-browser cache: /opt/data/.agent-browser/browsers\n  - System Chrome installations\n  - Puppeteer browser cache\n 
+2026-05-21 15:51:39,985 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=388.7s api_calls=44 response=2286 chars
+2026-05-21 15:51:40,023 INFO gateway.platforms.base: [Discord] Sending response (2286 chars) to 1499990220077137943
+2026-05-21 16:53:53,870 INFO gateway.run: Agent cache idle-TTL evict: session=agent:main:discord:group:1499990220077137943:219376861866754049 (idle=3734s)
+2026-05-21 16:53:53,872 INFO gateway.run: Agent cache idle sweep: evicted 1 agent(s)
+2026-05-21 18:02:41,159 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (184 chars)
+2026-05-21 18:02:41,961 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='For this project I want to change it up. I don’t want it to be Pokémon go anymor'
+WARNING run_agent: Tool terminal returned error (0.22s): {"output": "local 200 text/html 453 True\nbundle 214900 True True True\nTraceback (most recent call last):\n  File \"<stdin>\", line 12, in <module>\n  File \"/usr/lib/python3.13/urllib/request.py\", 
+WARNING run_agent: Tool patch returned error (0.00s): {"error": "path required"}
+2026-05-21 18:07:44,777 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=302.8s api_calls=29 response=1315 chars
+2026-05-21 18:07:44,791 INFO gateway.platforms.base: [Discord] Sending response (1315 chars) to 1499990220077137943
+2026-05-21 19:09:15,803 INFO gateway.run: Agent cache idle-TTL evict: session=agent:main:discord:group:1499990220077137943:219376861866754049 (idle=3691s)
+2026-05-21 19:09:15,806 INFO gateway.run: Agent cache idle sweep: evicted 1 agent(s)
+┌─────────────────────────────────────────────────────────┐
+│           ⚕ Hermes Gateway Starting...                 │
+├─────────────────────────────────────────────────────────┤
+│  Messaging platforms + cron scheduler                    │
+│  Press Ctrl+C to stop                                   │
+└─────────────────────────────────────────────────────────┘
+
+2026-05-21 20:23:31,120 INFO gateway.run: Starting Hermes Gateway...
+2026-05-21 20:23:31,120 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-21 20:23:31,123 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-21 20:23:31,124 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-21 20:23:31,966 INFO gateway.run: Connecting to discord...
+2026-05-21 20:23:32,366 INFO gateway.platforms.discord: [Discord] Registered /skill command with 91 skill(s) via autocomplete
+2026-05-21 20:23:35,170 INFO gateway.platforms.discord: [Discord] Connected as Velox#6418
+2026-05-21 20:23:35,173 INFO gateway.run: ✓ discord connected
+2026-05-21 20:23:35,174 INFO gateway.run: Gateway running with 1 platform(s)
+2026-05-21 20:23:35,179 INFO gateway.run: Channel directory built: 4 target(s)
+2026-05-21 20:23:36,184 INFO gateway.run: Press Ctrl+C to stop
+2026-05-21 20:23:36,249 INFO gateway.run: Cron ticker started (interval=60s)
+2026-05-21 20:23:41,188 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+2026-05-21 20:30:29,217 INFO gateway.platforms.discord: [Discord] Safely reconciled 46 slash command(s): unchanged=0 updated=0 recreated=41 created=5 deleted=0
+2026-05-22 02:07:09,005 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (49 chars)
+2026-05-22 02:07:09,522 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='You should have the api token now in your env var'
+WARNING run_agent: Tool terminal returned error (0.42s): {"output": "Traceback (most recent call last):\n  File \"<stdin>\", line 8, in <module>\n  File \"/usr/lib/python3.13/urllib/request.py\", line 189, in urlopen\n    return opener.open(url, data, timeo
+2026-05-22 02:09:21,650 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=132.1s api_calls=15 response=1000 chars
+2026-05-22 02:09:21,678 INFO gateway.platforms.base: [Discord] Sending response (1000 chars) to 1499990220077137943
