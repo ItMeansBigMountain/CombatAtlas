@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createWorker } from 'tesseract.js';
 import './styles.css';
@@ -39,6 +39,7 @@ type SourceRow = {
 };
 
 const API = 'https://api.pokemontcg.io/v2/cards';
+const LIVE_SCAN_INTERVAL_MS = 3200;
 
 function money(value: number | null | undefined) {
   if (value === null || value === undefined || Number.isNaN(value)) return '—';
@@ -84,6 +85,16 @@ function median(values: number[]) {
   return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
 }
 
+async function recognizeText(source: File | HTMLCanvasElement) {
+  const worker = await createWorker('eng');
+  try {
+    const result = await worker.recognize(source);
+    return result.data.text || '';
+  } finally {
+    await worker.terminate();
+  }
+}
+
 function App() {
   const [query, setQuery] = useState('Charizard');
   const [cards, setCards] = useState<PokemonCard[]>([]);
@@ -92,15 +103,25 @@ function App() {
   const [ocrLoading, setOcrLoading] = useState(false);
   const [ocrText, setOcrText] = useState('');
   const [error, setError] = useState('');
+  const [cameraActive, setCameraActive] = useState(false);
+  const [liveScanning, setLiveScanning] = useState(false);
+  const [scanStatus, setScanStatus] = useState('Camera idle');
+
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
+  const intervalRef = useRef<number | null>(null);
+  const scanningRef = useRef(false);
+  const lastAutoTermRef = useRef('');
 
   const selected = useMemo(() => cards.find((card) => card.id === selectedId) || cards[0], [cards, selectedId]);
   const rows = selected ? priceRows(selected) : [];
   const estimate = median(rows.map((row) => row.value).filter((value): value is number => typeof value === 'number'));
 
-  async function searchCards(searchTerm = query) {
+  async function searchCards(searchTerm = query, silent = false) {
     const term = searchTerm.trim();
     if (!term) return;
-    setLoading(true);
+    if (!silent) setLoading(true);
     setError('');
     try {
       const q = `name:${JSON.stringify(`*${term}*`)}`;
@@ -114,7 +135,7 @@ function App() {
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Search failed');
     } finally {
-      setLoading(false);
+      if (!silent) setLoading(false);
     }
   }
 
@@ -123,10 +144,7 @@ function App() {
     setError('');
     setOcrText('');
     try {
-      const worker = await createWorker('eng');
-      const result = await worker.recognize(file);
-      await worker.terminate();
-      const raw = result.data.text || '';
+      const raw = await recognizeText(file);
       const cleaned = cleanOcr(raw);
       setOcrText(raw.trim());
       if (cleaned) {
@@ -142,6 +160,113 @@ function App() {
     }
   }
 
+  function stopCamera() {
+    if (intervalRef.current) {
+      window.clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+    streamRef.current?.getTracks().forEach((track) => track.stop());
+    streamRef.current = null;
+    setCameraActive(false);
+    setLiveScanning(false);
+    setScanStatus('Camera idle');
+  }
+
+  async function startCamera() {
+    setError('');
+    if (!navigator.mediaDevices?.getUserMedia) {
+      setError('This browser does not expose camera access. Try Chrome/Safari over HTTPS or localhost.');
+      return;
+    }
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: { ideal: 'environment' },
+          width: { ideal: 1280 },
+          height: { ideal: 720 }
+        },
+        audio: false
+      });
+      streamRef.current = stream;
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        await videoRef.current.play();
+      }
+      setCameraActive(true);
+      setScanStatus('Camera ready. Hold a card inside the yellow frame.');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to start camera');
+    }
+  }
+
+  async function scanCurrentFrame() {
+    if (scanningRef.current || !videoRef.current || !canvasRef.current) return;
+    const video = videoRef.current;
+    if (!video.videoWidth || !video.videoHeight) return;
+
+    scanningRef.current = true;
+    setLiveScanning(true);
+    setScanStatus('Reading card text from live camera…');
+
+    try {
+      const canvas = canvasRef.current;
+      const context = canvas.getContext('2d', { willReadFrequently: true });
+      if (!context) throw new Error('Could not read camera frame');
+
+      // OCR the center guide area instead of the whole frame. This is faster and avoids
+      // background text poisoning the card-name search.
+      const cropWidth = Math.floor(video.videoWidth * 0.68);
+      const cropHeight = Math.floor(video.videoHeight * 0.52);
+      const cropX = Math.floor((video.videoWidth - cropWidth) / 2);
+      const cropY = Math.floor((video.videoHeight - cropHeight) / 2);
+      canvas.width = cropWidth;
+      canvas.height = cropHeight;
+      context.filter = 'contrast(1.28) brightness(1.08) saturate(0.82)';
+      context.drawImage(video, cropX, cropY, cropWidth, cropHeight, 0, 0, cropWidth, cropHeight);
+
+      const raw = await recognizeText(canvas);
+      const cleaned = cleanOcr(raw);
+      setOcrText(raw.trim());
+
+      if (!cleaned) {
+        setScanStatus('No readable text yet. Move closer, reduce glare, or tap Search manually.');
+        return;
+      }
+
+      setQuery(cleaned);
+      if (cleaned.toLowerCase() === lastAutoTermRef.current.toLowerCase()) {
+        setScanStatus(`Still tracking: ${cleaned}`);
+        return;
+      }
+
+      lastAutoTermRef.current = cleaned;
+      setScanStatus(`Detected “${cleaned}” — loading price comps…`);
+      await searchCards(cleaned, true);
+    } catch (err) {
+      setScanStatus('Live scan paused after a frame error. Try again or use upload/manual search.');
+      setError(err instanceof Error ? err.message : 'Live camera scan failed');
+    } finally {
+      scanningRef.current = false;
+      setLiveScanning(false);
+    }
+  }
+
+  function toggleLiveScan() {
+    if (!cameraActive) return;
+    if (intervalRef.current) {
+      window.clearInterval(intervalRef.current);
+      intervalRef.current = null;
+      setScanStatus('Live scan paused. Camera remains open.');
+      return;
+    }
+
+    scanCurrentFrame();
+    intervalRef.current = window.setInterval(scanCurrentFrame, LIVE_SCAN_INTERVAL_MS);
+  }
+
+  useEffect(() => stopCamera, []);
+
   return (
     <main className="shell">
       <section className="hero panel">
@@ -149,23 +274,47 @@ function App() {
           <p className="eyebrow">card intel / price recon</p>
           <h1>Card Intel Scanner</h1>
           <p className="lede">
-            Scan or search a Pokémon card, match it against the Pokémon TCG database, then compare price signals from TCGplayer, Cardmarket, and eBay sold comps.
+            Scan, search, or use live camera mode on a Pokémon card. The app identifies readable card text, matches it against the Pokémon TCG database, and overlays price signals from TCGplayer, Cardmarket, and eBay sold comps.
           </p>
         </div>
         <div className="mission-box">
-          <strong>MVP rule</strong>
-          <span>No accounts. No inventory lock-in. Fast comps first.</span>
+          <strong>Live mode</strong>
+          <span>Hold a card inside the camera frame and the price badge follows the scan zone like an AR filter.</span>
         </div>
       </section>
 
       <section className="grid">
         <article className="panel controls">
-          <p className="eyebrow">01 / scan</p>
+          <p className="eyebrow">01 / live scan</p>
           <h2>Identify the card</h2>
+
+          <div className={`camera-box ${cameraActive ? 'active' : ''}`}>
+            <video ref={videoRef} playsInline muted autoPlay />
+            <div className="scan-guide" aria-hidden="true">
+              {selected && (
+                <div className="ar-price-tag">
+                  <span>{selected.name}</span>
+                  <strong>{money(estimate)}</strong>
+                </div>
+              )}
+            </div>
+            {!cameraActive && <div className="camera-placeholder">Camera preview appears here</div>}
+          </div>
+          <canvas ref={canvasRef} className="capture-canvas" />
+
+          <div className="camera-actions">
+            <button onClick={cameraActive ? stopCamera : startCamera}>{cameraActive ? 'Stop camera' : 'Start camera'}</button>
+            <button disabled={!cameraActive || liveScanning} onClick={toggleLiveScan}>
+              {intervalRef.current ? 'Pause realtime scan' : liveScanning ? 'Scanning…' : 'Realtime scan'}
+            </button>
+            <button disabled={!cameraActive || liveScanning} onClick={scanCurrentFrame}>Scan frame once</button>
+          </div>
+          <p className="status-line">{scanStatus}</p>
+
           <label className="dropzone">
             <input type="file" accept="image/*" capture="environment" onChange={(event) => event.target.files?.[0] && scanImage(event.target.files[0])} />
-            <span>{ocrLoading ? 'Scanning image…' : 'Upload / camera scan'}</span>
-            <small>OCR grabs visible card text. Manual correction stays available.</small>
+            <span>{ocrLoading ? 'Scanning image…' : 'Upload / camera still'}</span>
+            <small>Fallback OCR grabs visible card text. Manual correction stays available.</small>
           </label>
 
           <label className="field">
@@ -178,7 +327,7 @@ function App() {
 
           <div className="matches">
             <h3>Matches</h3>
-            {cards.length === 0 ? <p className="muted">Search to load possible card matches.</p> : cards.map((card) => (
+            {cards.length === 0 ? <p className="muted">Search or run realtime scan to load possible card matches.</p> : cards.map((card) => (
               <button className={`match ${selected?.id === card.id ? 'active' : ''}`} key={card.id} onClick={() => setSelectedId(card.id)}>
                 <span>{card.name}</span>
                 <small>{card.set?.name} #{card.number} · {card.rarity || 'unknown rarity'}</small>
@@ -216,7 +365,7 @@ function App() {
               </div>
 
               <div className="operator-note">
-                <strong>Read:</strong> TCGplayer market is the US liquidity signal. Cardmarket is EU demand/trend. eBay sold comps validate reality for condition, grading, and hype spikes.
+                <strong>Read:</strong> TCGplayer market is the US liquidity signal. Cardmarket is EU demand/trend. eBay sold comps validate reality for condition, grading, and hype spikes. Live scan OCR focuses on the yellow guide box; use bright, glare-free light for the best hit rate.
               </div>
             </>
           )}

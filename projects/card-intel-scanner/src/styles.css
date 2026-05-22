@@ -76,6 +76,82 @@ button:disabled { opacity: 0.45; cursor: not-allowed; }
 .dropzone input { display: none; }
 .dropzone span { font-weight: 950; font-size: 1.25rem; }
 .dropzone small, .muted { color: #94a3b8; line-height: 1.5; }
+.camera-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 24px;
+  background: rgba(2, 6, 23, 0.6);
+  margin-bottom: 14px;
+}
+.camera-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+}
+.camera-box.active video { opacity: 1; }
+.camera-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #94a3b8;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+}
+.scan-guide {
+  position: absolute;
+  inset: 24% 16%;
+  border: 2px solid rgba(250, 204, 21, 0.92);
+  border-radius: 18px;
+  box-shadow: 0 0 0 999px rgba(2, 6, 23, 0.34), 0 0 32px rgba(250, 204, 21, 0.22);
+  pointer-events: none;
+}
+.scan-guide::before,
+.scan-guide::after {
+  content: '';
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-color: #facc15;
+  border-style: solid;
+}
+.scan-guide::before { top: -2px; left: -2px; border-width: 5px 0 0 5px; border-radius: 18px 0 0 0; }
+.scan-guide::after { right: -2px; bottom: -2px; border-width: 0 5px 5px 0; border-radius: 0 0 18px 0; }
+.ar-price-tag {
+  position: absolute;
+  left: 50%;
+  top: -18px;
+  transform: translate(-50%, -100%);
+  display: grid;
+  gap: 2px;
+  min-width: min(220px, 78vw);
+  max-width: 280px;
+  padding: 10px 14px;
+  border: 1px solid rgba(34, 197, 94, 0.42);
+  border-radius: 18px;
+  background: rgba(6, 20, 18, 0.86);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(14px);
+  text-align: center;
+}
+.ar-price-tag span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #d1fae5;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+.ar-price-tag strong { color: #fef3c7; font-size: 1.4rem; line-height: 1; }
+.camera-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+.camera-actions button { flex: 1 1 130px; }
+.status-line { color: #bfdbfe; font-size: 0.9rem; line-height: 1.45; margin: 0 0 16px; }
+.capture-canvas { display: none; }
 .error { margin: 14px 0 0; color: #fecdd3; background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.25); border-radius: 16px; padding: 12px; }
 details { margin-top: 14px; color: #cbd5e1; }
 pre { white-space: pre-wrap; color: #94a3b8; background: rgba(2, 6, 23, 0.45); border-radius: 14px; padding: 12px; max-height: 160px; overflow: auto; }
