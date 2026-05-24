@@ -804,6 +804,178 @@ def _infer_vibe_from_titles(titles):
     return tags
 
 
+YOUTUBE_ANALYSIS_VERSION = 'youtube-title-watson-v1'
+
+
+def _clean_youtube_title(title):
+    title = (title or '').strip()
+    noise = ['(official video)', '[official video]', '(official audio)', '[official audio]', '(lyrics)', '[lyrics]', '(lyric video)', 'music video']
+    clean = title
+    for token in noise:
+        clean = clean.replace(token, ' ').replace(token.title(), ' ')
+    return ' '.join(clean.split())
+
+
+def _youtube_playlist_items(youtube_token, playlist_id, max_items=100):
+    rows = []
+    page_token = None
+    while playlist_id and len(rows) < max_items:
+        params = {
+            'part': 'snippet,contentDetails',
+            'playlistId': playlist_id,
+            'maxResults': min(50, max_items - len(rows)),
+        }
+        if page_token:
+            params['pageToken'] = page_token
+        data = _youtube_api_get(youtube_token, 'playlistItems', params)
+        if not isinstance(data, dict):
+            break
+        for item in data.get('items', []):
+            snippet = item.get('snippet') or {}
+            details = item.get('contentDetails') or {}
+            resource = snippet.get('resourceId') or {}
+            video_id = details.get('videoId') or resource.get('videoId') or item.get('id')
+            title = (snippet.get('title') or '').strip()
+            if not title or title in {'Private video', 'Deleted video'}:
+                continue
+            thumbs = snippet.get('thumbnails') or {}
+            thumb = (thumbs.get('medium') or thumbs.get('default') or thumbs.get('high') or {}).get('url') or '/static/fallback.svg'
+            rows.append({
+                'provider': 'youtube_music',
+                'id': video_id,
+                'playlist_item_id': item.get('id'),
+                'title': title,
+                'analysis_text': _clean_youtube_title(title),
+                'channel': snippet.get('videoOwnerChannelTitle') or snippet.get('channelTitle') or 'YouTube',
+                'thumbnail': thumb,
+                'published_at': snippet.get('publishedAt'),
+            })
+        page_token = data.get('nextPageToken')
+        if not page_token:
+            break
+    return rows
+
+
+def _analysis_model_from_result(result):
+    if isinstance(result, dict):
+        if 'analysis' in result and isinstance(result.get('analysis'), dict):
+            return result.get('analysis') or {}
+        return result
+    return {}
+
+
+def _analyze_youtube_track_cached(user_id, track, force_refresh=False):
+    text = track.get('analysis_text') or track.get('title') or ''
+    item_id = track.get('id') or hashlib.sha256(text.encode()).hexdigest()[:16]
+    if not force_refresh:
+        cached = token_store.load_cached_analysis(user_id, 'youtube_music', 'track', item_id, YOUTUBE_ANALYSIS_VERSION, text)
+        if cached:
+            return cached
+    analysis, warning = analyze_text_safely(text)
+    payload = {
+        'provider': 'youtube_music',
+        'item_type': 'track',
+        'item_id': item_id,
+        'title': track.get('title'),
+        'channel': track.get('channel'),
+        'thumbnail': track.get('thumbnail'),
+        'analysis_text': text,
+        'analysis': analysis,
+        'warning': warning,
+        'analyzer_version': YOUTUBE_ANALYSIS_VERSION,
+    }
+    return token_store.save_cached_analysis(user_id, 'youtube_music', 'track', item_id, YOUTUBE_ANALYSIS_VERSION, text, payload)
+
+
+def _aggregate_track_analyses(track_results):
+    emotion_keys = ['sadness', 'joy', 'fear', 'disgust', 'anger']
+    totals = {k: 0.0 for k in emotion_keys}
+    emotion_count = 0
+    sentiments = {}
+    keywords = {}
+    concepts = {}
+    cached_hits = 0
+    analyzed = []
+    for result in track_results:
+        cached_hits += 1 if (result.get('cache') or {}).get('hit') else 0
+        model = _analysis_model_from_result(result)
+        emotion = model.get('overall_emotion') or {}
+        if emotion:
+            emotion_count += 1
+            for key in emotion_keys:
+                totals[key] += float(emotion.get(key) or 0)
+        sentiment = model.get('sentiment') or 'unknown'
+        sentiments[sentiment] = sentiments.get(sentiment, 0) + 1
+        for kw in model.get('keywords') or []:
+            label = kw[0] if isinstance(kw, (list, tuple)) and kw else str(kw)
+            if label:
+                keywords[label] = keywords.get(label, 0) + 1
+        for concept in model.get('concepts') or []:
+            if concept:
+                concepts[concept] = concepts.get(concept, 0) + 1
+        analyzed.append({
+            'title': result.get('title'),
+            'channel': result.get('channel'),
+            'thumbnail': result.get('thumbnail'),
+            'sentiment': sentiment,
+            'emotion': emotion,
+            'keywords': model.get('keywords') or [],
+            'concepts': model.get('concepts') or [],
+            'source': model.get('source'),
+            'cache_hit': bool((result.get('cache') or {}).get('hit')),
+        })
+    averages = {k: round(totals[k] / emotion_count, 4) for k in emotion_keys} if emotion_count else {}
+    dominant_emotion = max(averages, key=averages.get) if averages else 'unknown'
+    dominant_sentiment = max(sentiments, key=sentiments.get) if sentiments else 'unknown'
+    top_keywords = sorted(keywords.items(), key=lambda kv: kv[1], reverse=True)[:10]
+    top_concepts = sorted(concepts.items(), key=lambda kv: kv[1], reverse=True)[:8]
+    return {
+        'track_count': len(track_results),
+        'cached_hits': cached_hits,
+        'new_analyses': len(track_results) - cached_hits,
+        'average_emotion': averages,
+        'dominant_emotion': dominant_emotion,
+        'sentiment_counts': sentiments,
+        'dominant_sentiment': dominant_sentiment,
+        'top_keywords': top_keywords,
+        'top_concepts': top_concepts,
+        'mood_tags': _infer_vibe_from_titles([r.get('title') or '' for r in track_results] + [dominant_emotion, dominant_sentiment]),
+        'tracks': analyzed,
+    }
+
+
+def _youtube_playlist_metadata(youtube_token, playlist_id):
+    data = _youtube_api_get(youtube_token, 'playlists', {'part': 'snippet,contentDetails', 'id': playlist_id, 'maxResults': 1})
+    if not isinstance(data, dict) or not data.get('items'):
+        return {}
+    item = data['items'][0]
+    snippet = item.get('snippet') or {}
+    details = item.get('contentDetails') or {}
+    thumbs = snippet.get('thumbnails') or {}
+    thumb = (thumbs.get('medium') or thumbs.get('default') or thumbs.get('high') or {}).get('url') or '/static/fallback.svg'
+    return {
+        'id': playlist_id,
+        'name': snippet.get('title') or 'Untitled YouTube playlist',
+        'owner': snippet.get('channelTitle') or 'YouTube',
+        'description': snippet.get('description') or '',
+        'thumbnail': thumb,
+        'total_tracks': details.get('itemCount', 0),
+    }
+
+
+def analyze_youtube_playlist_for_user(user_id, youtube_token, playlist_id, force_refresh=False, max_items=100):
+    playlist = _youtube_playlist_metadata(youtube_token, playlist_id)
+    tracks = _youtube_playlist_items(youtube_token, playlist_id, max_items=max_items)
+    results = [_analyze_youtube_track_cached(user_id, track, force_refresh=force_refresh) for track in tracks]
+    aggregate = _aggregate_track_analyses(results)
+    playlist.update({
+        'requested_max_items': max_items,
+        'loaded_tracks': len(tracks),
+        'analysis': aggregate,
+    })
+    return playlist
+
+
 def _youtube_dashboard_snapshot(youtube_token):
     snapshot = _empty_music_snapshot(primary_provider='YouTube')
     if not youtube_token:
@@ -847,6 +1019,7 @@ def _youtube_dashboard_snapshot(youtube_token):
             'thumbnail': thumb,
             'total_tracks': details.get('itemCount', 0),
             'sample_tracks': video_titles[:3],
+            'analysis_url': f'/youtube/playlist/{playlist_id}/analysis' if playlist_id else '',
         })
 
     tags = _infer_vibe_from_titles(title_pool)
@@ -861,6 +1034,44 @@ def _youtube_dashboard_snapshot(youtube_token):
     else:
         snapshot['taste_feedback'] = 'YouTube is connected. Create or save playlists on YouTube/YouTube Music, then MusicAI can scan them for vibe signals.'
     return snapshot
+
+
+@application.route('/youtube/playlist/<playlist_id>/analysis', methods=['GET', 'POST'])
+def youtube_playlist_analysis(playlist_id):
+    user_id = _session_user_id()
+    if not user_id:
+        return flask.redirect('/')
+    youtube_token_data = token_store.load_provider_token(user_id, 'youtube_music') or {}
+    youtube_token = youtube_token_data.get('access_token')
+    if not youtube_token:
+        return flask.render_template('error.html',
+                                     error_title='Connect YouTube first',
+                                     error_message='MusicAI needs your YouTube playlist permission before it can analyze a playlist.',
+                                     error_details='Go back to the homepage and connect YouTube/YouTube Music.'), 403
+    force_refresh = flask.request.method == 'POST' and flask.request.form.get('refresh') == '1'
+    try:
+        max_items = int(flask.request.values.get('max_items', 100))
+    except Exception:
+        max_items = 100
+    max_items = max(1, min(max_items, 150))
+    playlist = analyze_youtube_playlist_for_user(user_id, youtube_token, playlist_id, force_refresh=force_refresh, max_items=max_items)
+    return flask.render_template('youtube_playlist_analysis.html', playlist=playlist, force_refresh=force_refresh)
+
+
+@application.route('/api/youtube/playlist/<playlist_id>/analysis', methods=['POST'])
+def api_youtube_playlist_analysis(playlist_id):
+    user_id = _session_user_id()
+    if not user_id:
+        return jsonify({'ok': False, 'error': 'not_authenticated'}), 401
+    youtube_token_data = token_store.load_provider_token(user_id, 'youtube_music') or {}
+    youtube_token = youtube_token_data.get('access_token')
+    if not youtube_token:
+        return jsonify({'ok': False, 'error': 'youtube_not_connected'}), 403
+    payload = flask.request.get_json(silent=True) or {}
+    force_refresh = bool(payload.get('refresh'))
+    max_items = max(1, min(int(payload.get('max_items') or 100), 150))
+    playlist = analyze_youtube_playlist_for_user(user_id, youtube_token, playlist_id, force_refresh=force_refresh, max_items=max_items)
+    return jsonify({'ok': True, 'playlist': playlist})
 
 
 @application.route('/Dashboard', methods=['GET'])
@@ -1997,756 +2208,5 @@ def user_playlists(token):
                 "id" : item['id'],
                 "songs" : [],
             }
-
-            # LOOKUP SONGS (pagination using key next)
-            pl_tracks_call = requests.get(url=item['tracks']['href'] , headers = headers).json()
-            while pl_tracks_call:
-                for track in pl_tracks_call['items']:
-                    
-                    all_playlists[count]['songs'].append(   (track['track']['id'] , track['track']['name']  ,[ i['name'] for i in track['track']['artists']  ] )   )
-            
-                # PAGINATION [TRACKS]
-                if pl_tracks_call['next']:
-                    pl_tracks_call = requests.get(url=pl_tracks_call['next'] , headers = headers).json()
-                else:
-                    pl_tracks_call = None
-            
-            count += 1
-
-         # PAGINATION [PLAYLISTS]
-        if results['next']:
-            results = requests.get(url=item['next'] , headers = headers).json()
-        else:
-            results = None
-    return all_playlists
-
-def user_recently_played(token, limit=20):
-    """Fetch user's recently played tracks from Spotify"""
-    try:
-        # Get recently played tracks
-        endpoint = f"https://api.spotify.com/v1/me/player/recently-played?limit={limit}"
-        results = fetch_spotify_data(token, endpoint)
-        
-        if results == "ERROR":
-            print("ERROR: Failed to fetch recently played tracks")
-            return []
-        
-        recent_tracks = []
-        for item in results.get('items', []):
-            track = item['track']
-            played_at = item['played_at']
-            
-            # Get artist image for thumbnail
-            thumbnail = '/static/fallback.svg'
-            if track.get('artists') and len(track['artists']) > 0:
-                artist_href = track['artists'][0].get('href')
-                if artist_href:
-                    artist_data = fetch_spotify_data(token, artist_href)
-                    if artist_data != "ERROR" and artist_data.get('images'):
-                        thumbnail = artist_data['images'][-1]['url']
-            
-            # GET TRACK INFO
-            track_info = {
-                'id': track['id'],
-                'name': track['name'],
-                'artists': [artist['name'] for artist in track['artists']],
-                'album': track['album']['name'],
-                'thumbnail': thumbnail,
-                'played_at': played_at,
-                'popularity': track.get('popularity', 0)
-            }
-            recent_tracks.append(track_info)
-        
-        return recent_tracks
-        
-    except Exception as e:
-        print(f"ERROR: Failed to fetch recently played tracks: {e}")
-        return []
-
-
-
-
-
-
-# song AI  analysis 
-def _song_analysis_details(token , song_id , details : bool , song_title , artist_name): 
-
-    # check if song in database already
-    try:
-        with open('song_db.json' , "r") as db:
-            loaded = json.load(db)
-            if song_id in loaded:
-                return loaded[song_id]
-    except (FileNotFoundError, json.JSONDecodeError):
-        # Create empty database if it doesn't exist
-        loaded = {}
-
-    endpoint = f"https://api.spotify.com/v1/audio-features/{song_id}"
-    titleInfo = fetch_spotify_data(token, f'https://api.spotify.com/v1/tracks/{song_id}')
-    
-    if titleInfo == "ERROR":
-        print(f"ERROR: Failed to fetch track info for {song_id}")
-        return None
-        
-    try:
-        song_title = titleInfo['name']  
-        artist_name = titleInfo['artists'][0]['name']
-    except (KeyError, IndexError, TypeError):
-        print(f"ERROR: Invalid track info structure for {song_id}")
-        return None
-
-    # fetch data
-    res = fetch_spotify_data(token , endpoint )
-    
-    if res == "ERROR":
-        print(f"ERROR: Failed to fetch audio features for {song_id}")
-        print(f"  Song: {song_title} by {artist_name}")
-        print(res)
-        # Additional debugging for 403 errors
-        try:
-            headers = {"Authorization": "Bearer " + token}
-            response = requests.get(url=endpoint, headers=headers)
-            
-            if response.status_code == 403:
-                print(f"DEBUG: 403 Forbidden - Checking token scopes...")
-                print(f"DEBUG: Token starts with: {token[:20]}...")
-                
-                # Validate token scopes
-                if validate_token_scopes(token):
-                    print(f"DEBUG: Token is valid for basic endpoints")
-                    print(f"DEBUG: 403 error suggests insufficient scopes for audio features")
-                    print(f"DEBUG: Required scopes for audio features: user-read-private, user-read-email")
-                    print(f"DEBUG: Current token may be missing required scopes")
-                else:
-                    print(f"DEBUG: Token validation failed - token may be expired or invalid")
-                    
-            elif response.status_code == 401:
-                print(f"DEBUG: 401 Unauthorized - Token expired or invalid")
-            else:
-                print(f"DEBUG: HTTP {response.status_code}: {response.text}")
-                
-        except Exception as e:
-            print(f"DEBUG: Error during debugging: {e}")
-        
-        return None
-
-    # SONG DETAIL DOUBLE FEATURE of the function
-    if details:
-        try:
-            analysis = requests.get( url = res['analysis_url'], headers = {"Authorization": "Bearer " + token} ).json()
-            pprint.pprint( analysis.keys()  );print("\n")
-            pprint.pprint( analysis['track']   )
-            return analysis
-        except Exception as e:
-            print(f"ERROR: Failed to fetch detailed analysis: {e}")
-            return None
-
-    # check if response was a dictionary
-    if isinstance(res , dict):
-        pass
-    else:
-        print(f"ERROR: Invalid response type for {song_id}: {type(res)}")
-        return None
-
-    # API COOL DOWN ERROR HANDLING
-    while 'error' in res.keys():
-        print(f'< {song_id} > got an error\n waiting for api cooldown')
-        time.sleep(API_COOLDOWN_RATE)
-        res = _song_analysis_details(token, song_id , details, song_title, artist_name )
-    
-    # append WATSON AI to SOTIFY results  (master dictionary of clean watson frequencies)
-    res['ai'] = _watson_lyric_analysis( song_title, artist_name)
-    res['song_title'] = song_title
-    res['artist_name'] = artist_name
-
-    # adding items to song_db.json DATABASE
-    try:
-        with open('song_db.json' , 'r') as db:
-            loaded = json.load( db )
-            loaded[song_id] = res
-        with open('song_db.json' , 'w') as db:
-            db.write( json.dumps(loaded) )
-    except Exception as e:
-        print(f"ERROR: Failed to save to database: {e}")
-
-    return res
-
-def _watson_lyric_analysis(  song_title, artist_name):
-    print(f"\nAnalyzing {artist_name} : {song_title}")
-    genius_token = flask.session.get("genius_token")
-    lyrics = _request_song_info(genius_token , song_title , artist_name )
-
-    # NLU
-    song_ai = []
-    nlu = None
-    if lyrics:
-        # INSTEAD OF GRABBING AI RESPONSE FOR EACH BAR... JUST RUN THE WHOLE LYRIC STRING
-        watson_input = ""
-        try:
-            # APPEND LYRICS
-            for bar in lyrics:
-                watson_input += f"{bar} "
-            # GET WATSON INFO
-            nlu = watson.ai_to_Text( watson_input )
-            # AVERAGE CALC IS RETURNING CLEAN DATA by reading an array,
-            # WE PLACE ONE ITEM IF WE DECIDE TO RUN LYRICS AS ONE
-            nlu =  watson.averages_calc(   [  nlu  ]   )
-
-        except Exception as e:
-            nlu = None
-            print(f'\n\nWATSON API ERROR: {e}\n\n\n{watson_input}\n')
-    else:
-        print("No lyrics found\n")
-
-    context = {
-        'lyrics' : lyrics,
-        'nlu' : nlu,
-        # 'tone' : tone
-    }
-    return context
-
-def _request_song_info(token, song_title, artist_name):
-    base_url = 'https://api.genius.com'
-    # Use the stored Genius API key directly
-    headers = {'Authorization': 'Bearer ' + genius_api_key}
-    search_url = base_url + '/search'
-    data = {'q': song_title + ' ' + artist_name}
-    response = requests.get(search_url, data=data, headers=headers).json()
-
-    # Search for matches in the request response
-    remote_song_info = None
-    for hit in response['response']['hits']:
-        if artist_name.lower() in hit['result']['primary_artist']['name'].lower():
-            remote_song_info = hit
-            break
-
-    # Extract lyrics from URL if the song was found
-    if remote_song_info:
-        song_url = remote_song_info['result']['url']
-        return _webcrawl_lyrics(song_url)
-    else:
-        return None
-
-def _webcrawl_lyrics(url):
-    # EXTRACT HTML
-    page = requests.get(url)
-    html = bs4.BeautifulSoup(page.text, 'html.parser')
-
-    try:
-        lyrics = html.find("div", {"id": "lyrics-root-pin-spacer"}).get_text()
-    except Exception as e:
-        print(  '\ndef _webcrawl_lyrics(url):\nERROR FINDING LYRICS: ' , str(e))
-        return None
-
-
-    
-    # CREATE ARRAY THAT FINDS A LOWER CASE AND AN UPPERCASE RIGHT NEXT TO EACHOTHER AND SPLITS STRING
-    lyrics_text = str(lyrics)
-    all_bars = []
-    br_point = 0
-    previous = 0
-    for x in range(0, len(lyrics_text)  - 1 , 1)  :
-        if  lyrics_text[x].islower() and lyrics_text[x+1].isupper():
-            br_point = x+1
-            bar = lyrics_text[previous:br_point]
-            all_bars.append(bar)
-            previous = br_point
-        
-
-    # removing "[ SONG EVENT ]" from each bar
-    event_start = None
-    event_end = None
-    for x in all_bars:
-        found = False
-        for y in range(len(x)):
-            if x[y] == '['  : event_start = y  
-            if x[y] == ']'  :
-                found = True
-                event_end = y
-                no_event_bar = x[:event_start] + ' ' + x[event_end+1:]
-        if found:
-            x = no_event_bar
-
-    all_bars.remove('Share URLCopy')
-    if "1Embed" in all_bars:
-        all_bars.remove('1Embed')
-    if all_bars[-1] == "Embed":
-        all_bars.pop(-1)
-    if len(all_bars) <= 3:
-        all_bars = None
-
-    return all_bars
-
-
-
-
-# music group analysis
-
-def group_music_analysis(token , group:dict() ):
-    final  = {
-        'acousticness' : [],
-        'danceability' : [],
-        'duration_ms' : [],
-        'energy' : [],
-        'instrumentalness' : [],
-        'liveness' : [],
-        'loudness' : [],
-        'speechiness' : [],
-        'tempo' : [],
-        'valence' : [],
-        'ai' : []
-    }
-
-    # songs found by WATSON
-    watson_arr = []
-
-    for album in group:
-        print("\n\n--------" ,  group[album]["name"] , "------"  )
-        for song in group[album]['songs']:
-            song_id = song[0]
-            song_name = song[1]
-            song_artists = song[2] #main artist is item number 0
-            analysis = _song_analysis_details(token,  song_id , False ,  song_name , song_artists[0] )
-            
-            # check if response returned a dictionary
-            if isinstance(analysis , dict):
-                pass
-            else:
-                print('\n----- DEBUG -----\n------ group_music_analysis(token , group:dict() ) --------')
-                print("Spotify returned a Response type instead of JSON")
-                continue
-
-
-            # populates all songs into final song_stat variable
-            for x in final.keys():
-                final[x].append(analysis[x])
-                
-            # check if watson ai
-            if analysis['ai']['nlu'] is not None:
-                print("☁☁☁")
-                watson_arr.append(  (analysis['song_title'] , analysis['artist_name']  )   )
-
-
-
-    # AVERAGING  SPOTIFY  #every key except ["ai"]
-    spotty_keys = list(final.keys())[:-1]
-    for attribute in spotty_keys:
-        final[attribute] =  statistics.mean(final[attribute])
-    
-
-
-    # ----------------AVERAGING WATSON for FINAL ["ai"]   --------------------
-    group_merge_ai = {}
-
-    # CHECKING FOR PROPER nlu DICTIONARY && creating merged dict...
-    solid_nlu = False
-    for x in range(  len(final['ai'])   ):
-        if final['ai'][x]['nlu'] is not None :
-            solid_nlu = True
-            good_dict = final['ai'][x]['nlu']
-            break
-    if solid_nlu:
-        for key in good_dict :
-            if key =='averageEmotion':
-                group_merge_ai[key] = []
-                continue
-            group_merge_ai[key] = {}
-            for inner_keys in good_dict[key]:
-                group_merge_ai[key][inner_keys] = []
-    else: #IMPORTANT CATCH IF NO AI
-        final['ai'] = None
-        return final 
-
-
-    # # # DEBUG
-    # with open("group_merge_ai.json" , "a") as output:
-    #     json.dump(group_merge_ai, output, indent = 2)
-
-
-    # merge all values in NLU into group_merge_ai
-    for x in range( 0 ,   len(final['ai'])   ,   1  ):
-        NLU = final['ai'][x]['nlu']
-        
-        # APPEND ALL WATSON DATA INTO group_merge_ai , otherwise ignore it and move on
-        if NLU is not None :
-            # append all group emotions ------> EMOTIONS
-            group_merge_ai['averageEmotion'].append(NLU['averageEmotion'])
-
-            # create dict keys for all concept frequencies  ------> CONCEPTS
-            singularities = []
-            for i in NLU['conceptfrequencies']:
-                # Singular keys found with empty arr
-                if len( NLU['conceptfrequencies'][i] ) < 1:
-                    print("DEBUG full group: singularity:   ", i)
-                    singularities.append(i)
-                    continue
-                # if there the key already exists!
-                if i in group_merge_ai['conceptfrequencies']:
-                    # ITERATE THROUGH NLU['conceptfrequencies'][i]
-                    for concept in NLU['conceptfrequencies'][i]:
-                        if isinstance(concept, str):
-                            group_merge_ai['conceptfrequencies'][i].append(concept)
-                        elif isinstance(concept, list):
-                            for inner_concept in concept:
-                                group_merge_ai['conceptfrequencies'][i].append(inner_concept)
-                else:
-                    # if the concept is not in the dictionary as a key... add it with it's coentents as well
-                    # print(NLU['conceptfrequencies'][i] )
-                    group_merge_ai['conceptfrequencies'][i] = []
-                    for concept in NLU['conceptfrequencies'][i]:
-                        if isinstance(concept, str):
-                            group_merge_ai['conceptfrequencies'][i].append(concept)
-                        elif isinstance(concept, list):
-                            for inner_concept in concept:
-                                group_merge_ai['conceptfrequencies'][i].append(inner_concept)
-            NLU['conceptfrequencies']['singularities'] = singularities
-
-
-            # goes through dictionary and populates the merge
-            for key in NLU.keys():
-                if key == "averageEmotion" or  key == "conceptfrequencies":
-                    continue
-                for i in NLU[key]:
-                    if isinstance(NLU[key][i], int):
-                        if  i  in group_merge_ai[key]:
-                            if isinstance(group_merge_ai[key][i], list):
-                                group_merge_ai[key][i] = 1
-                            else:
-                                group_merge_ai[key][i] +=  NLU[key][i]
-                        else:
-                             group_merge_ai[key][i] = NLU[key][i]
-                    else:
-                        # print( group_merge_ai[key][i]  ) #/// VARIALE IN QUESION!
-                        if i  in group_merge_ai[key]:
-                            group_merge_ai[key][i].extend(  NLU[key][i]    )
-                        else:
-                            group_merge_ai[key][i] = NLU[key][i]
-
-    # OVER ALL EMOTION AVERAGE
-    temp = {
-        "Anger": [],
-        "Disgust": [],
-        "Fear": [],
-        "Joy": [],
-        "Sadness": []
-      }
-    for x in  range( 0 , len(group_merge_ai['averageEmotion'])  ,   1 ):
-        for key in group_merge_ai['averageEmotion'][x]:
-            temp[key].append(group_merge_ai['averageEmotion'][x][key])
-    # replace vars 
-    for emotion in temp:
-        temp[emotion] = statistics.mean(temp[emotion])
-
-
-    # LISTS BECOMES MERGED DICTIONARIES
-    group_merge_ai['amount'] = len(group_merge_ai['averageEmotion']) #FIND AMOUNT OF ANALYZED SONGS  
-    group_merge_ai['averageEmotion'] = temp
-    final['ai'] = group_merge_ai
-    
-    # remember watson_arr? 
-    final['ai']['watson_songs'] = watson_arr
-    
-
-
-    # # DEBUG
-    # with open("final.json" , "a") as output:
-    #     json.dump(final, output, indent = 2)
-
-    return final 
-
-def liked_group_average(token , group : list()  ): 
-
-    #  -------   spotify OUTPUT VARIABLES    -------
-    # populate song arr
-    song_stats  = {
-        'acousticness' : [],
-        'danceability' : [],
-        'duration_ms' : [],
-        'energy' : [],
-        'instrumentalness' : [],
-        'liveness' : [],
-        'loudness' : [],
-        'speechiness' : [],
-        'tempo' : [],
-        'valence' : [],
-        'ai' : []
-    }
-    # populating song_stats arrays with song stats.
-    each_song_stats = {}
-
-    # WATSON ai found songs
-    watson_arr = []
-    
-    # iterate through each sonf in group ----> (group is a list)
-    for song in group :
-        name = song['name']
-        song_id = song['id']
-        # Song == a specific song's clean data //phase 0
-        song = _song_analysis_details(token, song_id , False ,  name , song['artists'][0] )
-        # append data to keys of 
-        for x in song_stats.keys():
-            song_stats[x].append(song[x])
-       
-
-        # ADD FINAL SONG PRODUCT as a key in each_song_stats
-        each_song_stats[name] = song
-
-        # check if watson ai
-        if song['ai']['nlu'] is not None:
-            print("☁")
-            watson_arr.append(  ( song['song_title'] , song['artist_name'] )    )
-
-
- 
- 
-    #    DEBUG
-        # each_song_stats[song_id] = song
-        # print(each_song_stats[name]['id'])
-
-
-
-
-    # ****************
-    # AT THIS POINT song_stats is a dictionary that holds arrays populated with all the user's liked music
-    # this is to analyse the average of the whole playlist
-    # ****************
-
-
-
-    # averaging spotify (turning each key into it's average)
-    spotty_keys = list(song_stats.keys())[:-1]  #every key except ["ai"]
-    for x in spotty_keys:
-        song_stats[x] =  statistics.mean(song_stats[x])
-
-
-
-
-    # averaging watson    ["ai"]
-    #  -------  watson  OUTPUT VARIABLES    -------
-    group_merge_ai = {}
-
-    # CHECKING FOR PROPER nlu DICTIONARY && creating merged dict...
-    solid_nlu = False
-    for x in range(len(song_stats['ai'])):
-        if song_stats['ai'][x]['nlu'] :
-            solid_nlu = True
-            good_dict = x
-            break
-    if solid_nlu:
-        for key in song_stats['ai'][x]['nlu']:
-            if key =='averageEmotion':
-                group_merge_ai[key] = []
-                continue
-            group_merge_ai[key] = {}
-            for inner_keys in song_stats['ai'][x]['nlu'][key]:
-                group_merge_ai[key][inner_keys] = []
-    else: #IMPORTANT CATCH IF NO AI
-        song_stats['ai'] = None
-
-        return song_stats , each_song_stats
-
-    #    NLU IS EACH ITEM IN THE SONG_STATS['ai']  ---> which needs to become a grouped dict of lists avg!!!!!
-
-
-    # iterate through every SONG TEXT and grab nlu
-    # merge all values in NLU into group_merge_ai
-    for x in range( 0 ,   len(song_stats['ai'])   ,   1  ):
-        NLU = song_stats['ai'][x]['nlu']
-
-        if NLU is not None :
-            # append all group emotions ------> EMOTIONS
-            group_merge_ai['averageEmotion'].append(NLU['averageEmotion'])
-
-            # create dict keys for all concept frequencies  ------> CONCEPTS
-            singularities = []
-            for i in NLU['conceptfrequencies']:
-                # Singular keys found with empty arr
-                if len( NLU['conceptfrequencies'][i] ) < 1:
-                    # print("DEBUG: singularity:   ", i)
-                    singularities.append(i)
-                    continue
-                # if there the key already exists!
-                if i in group_merge_ai['conceptfrequencies']:
-                    # ITERATE THROUGH NLU['conceptfrequencies'][i]
-                    for concept in NLU['conceptfrequencies'][i]:
-                        if isinstance(concept, str):
-                            group_merge_ai['conceptfrequencies'][i].append(concept)
-                        elif isinstance(concept, list):
-                            for inner_concept in concept:
-                                group_merge_ai['conceptfrequencies'][i].append(inner_concept)
-                else:
-                    # if the concept is not in the dictionary as a key... add it with it's coentents as well
-                    # print(NLU['conceptfrequencies'][i] )
-                    group_merge_ai['conceptfrequencies'][i] = []
-                    for concept in NLU['conceptfrequencies'][i]:
-                        if isinstance(concept, str):
-                            group_merge_ai['conceptfrequencies'][i].append(concept)
-                        elif isinstance(concept, list):
-                            for inner_concept in concept:
-                                group_merge_ai['conceptfrequencies'][i].append(inner_concept)
-            NLU['conceptfrequencies']['singularities'] = singularities
-
-
-            # goes through dictionary and populates the merge
-            for key in NLU.keys():
-                if key == "averageEmotion" or  key == "conceptfrequencies":
-                    continue
-                for i in NLU[key]:
-                    if isinstance(NLU[key][i], int):
-                        if  i  in group_merge_ai[key]:
-                            if isinstance(group_merge_ai[key][i], list):
-                                group_merge_ai[key][i] = 1
-                            else:
-                                group_merge_ai[key][i] +=  NLU[key][i]
-                        else:
-                             group_merge_ai[key][i] = NLU[key][i]
-                    else:
-                        # print( group_merge_ai[key][i]  ) #/// VARIALE IN QUESION!
-                        if i  in group_merge_ai[key]:
-                            group_merge_ai[key][i].extend(  NLU[key][i]    )
-                        else:
-                            group_merge_ai[key][i] = NLU[key][i]
-
-
-
-
-
-
-    # Average all emotions in array
-    # OVER ALL EMOTION AVERAGE
-    temp = {
-        "Anger": [],
-        "Disgust": [],
-        "Fear": [],
-        "Joy": [],
-        "Sadness": []
-      }
-    for x in  range( 0 , len(group_merge_ai['averageEmotion'])  ,   1 ):
-        for key in group_merge_ai['averageEmotion'][x]:
-            temp[key].append(group_merge_ai['averageEmotion'][x][key])
-    # replace vars 
-    for emotion in temp:
-        temp[emotion] = statistics.mean(temp[emotion])
-
-
-
-
-    # LISTS BECOMES MERGED DICTIONARIES
-    group_merge_ai['amount'] = len(group_merge_ai['averageEmotion']) #FIND AMOUNT OF ANALYZED SONGS  
-    group_merge_ai['averageEmotion'] = temp
-    song_stats['ai'] = group_merge_ai
-
-    
-    
-    # remember watson_arr?
-    song_stats['ai']['watson_songs'] = watson_arr
-    
-    return song_stats , each_song_stats
-
-
-
-# helper functions
-def fetch_meme(username):
-    try:
-        # Check if we have imgflip credentials
-        if not imgflip_username or not imgflip_password:
-            print("WARNING: Imgflip credentials not found. Using local fallback image.")
-            return {'data': {'url': '/static/fallback.svg'}}
-        
-        # Collection of funny code and music-related meme texts
-        meme_texts = [
-            # Code-related memes
-            (f"{username} thinks", "they're a data scientist..."),
-            (f"{username} when", "the code finally compiles"),
-            (f"{username} debugging", "at 3 AM"),
-            (f"{username} trying to", "understand their own code"),
-            (f"{username} after", "fixing one bug"),
-            (f"{username} when", "git merge works"),
-            (f"{username} coding", "without Stack Overflow"),
-            (f"{username} explaining", "their code to others"),
-            (f"{username} trying to", "deploy to production"),
-            (f"{username} when", "the tests pass"),
-            
-            # Music-related memes
-            (f"{username} listening to", "their own playlist"),
-            (f"{username} when", "their favorite song comes on"),
-            (f"{username} trying to", "find the perfect song"),
-            (f"{username} analyzing", "music like a pro"),
-            (f"{username} discovering", "new music"),
-            (f"{username} when", "Spotify recommends hits"),
-            (f"{username} explaining", "music theory"),
-            (f"{username} trying to", "match the beat"),
-            (f"{username} when", "the bass drops"),
-            (f"{username} analyzing", "song emotions"),
-            
-            # Code + Music crossover memes
-            (f"{username} coding", "to music"),
-            (f"{username} when", "music helps debug"),
-            (f"{username} trying to", "code and listen"),
-            (f"{username} explaining", "code with music analogies"),
-            (f"{username} debugging", "with headphones on"),
-            (f"{username} when", "music inspires code"),
-            (f"{username} coding", "like a DJ"),
-            (f"{username} trying to", "sync code and music"),
-            (f"{username} when", "the algorithm grooves"),
-            (f"{username} analyzing", "code like a song")
-        ]
-        
-        # Randomly select a meme text combination
-        text0, text1 = random.choice(meme_texts)
-
-        # fetch all memes
-        response = requests.get('https://api.imgflip.com/get_memes')
-        response.raise_for_status()
-        data = response.json()
-        
-        if 'data' not in data or 'memes' not in data['data']:
-            print("ERROR: Invalid response from imgflip API")
-            return {'data': {'url': '/static/fallback.svg'}}
-        
-        memes = data['data']['memes']
-        # List top memes with 2 text slots
-        images = [{'name': image['name'], 'url': image['url'], 'id': image['id']} 
-                 for image in memes if image['box_count'] == 2]
-        
-        if not images:
-            print("ERROR: No 2-text memes available")
-            return {'data': {'url': '/static/fallback.svg'}}
-        
-        # Take random meme from available ones
-        meme = random.choice(images)
-        
-        # Generate meme with proper authentication
-        URL = 'https://api.imgflip.com/caption_image'
-        params = {
-            'username': imgflip_username,
-            'password': imgflip_password,
-            'template_id': meme['id'],
-            'text0': text0,
-            'text1': text1
-        }
-        
-        meme_response = requests.post(URL, data=params)
-        meme_response.raise_for_status()
-        result = meme_response.json()
-        
-        if 'success' in result and result['success'] and 'data' in result:
-            print(f"SUCCESS: Generated meme with template '{meme['name']}' and text: '{text0}' / '{text1}'")
-            return result
-        else:
-            error_msg = result.get('error_message', 'Unknown error')
-            print(f"ERROR: Failed to generate meme: {error_msg}")
-            return {'data': {'url': '/static/fallback.svg'}}
-            
-    except Exception as e:
-        print(f"ERROR: fetch_meme failed: {e}")
-        return {'data': {'url': '/static/fallback.svg'}}
-
-
-
-
-if __name__ == '__main__':
-    application.run(host='0.0.0.0', port=8080)
-# application.run( port = 8080)
 
 

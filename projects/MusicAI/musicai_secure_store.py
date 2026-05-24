@@ -139,6 +139,24 @@ def _init_sqlite() -> sqlite3.Connection:
         )
         """
     )
+    conn.execute(
+        """
+        CREATE TABLE IF NOT EXISTS musicai_analysis_cache (
+          user_id TEXT NOT NULL,
+          provider TEXT NOT NULL,
+          item_type TEXT NOT NULL,
+          item_id TEXT NOT NULL,
+          analyzer_version TEXT NOT NULL,
+          input_hash TEXT NOT NULL,
+          input_text TEXT,
+          analysis_json TEXT NOT NULL,
+          created_at REAL NOT NULL,
+          updated_at REAL NOT NULL,
+          hits INTEGER NOT NULL DEFAULT 0,
+          PRIMARY KEY (user_id, provider, item_type, item_id, analyzer_version, input_hash)
+        )
+        """
+    )
     conn.commit()
     return conn
 
@@ -178,6 +196,24 @@ def _init_postgres(conn) -> None:
               profile_json TEXT,
               updated_at DOUBLE PRECISION NOT NULL,
               PRIMARY KEY (provider, provider_account_id)
+            )
+            """
+        )
+        cur.execute(
+            """
+            CREATE TABLE IF NOT EXISTS musicai_analysis_cache (
+              user_id TEXT NOT NULL,
+              provider TEXT NOT NULL,
+              item_type TEXT NOT NULL,
+              item_id TEXT NOT NULL,
+              analyzer_version TEXT NOT NULL,
+              input_hash TEXT NOT NULL,
+              input_text TEXT,
+              analysis_json TEXT NOT NULL,
+              created_at DOUBLE PRECISION NOT NULL,
+              updated_at DOUBLE PRECISION NOT NULL,
+              hits INTEGER NOT NULL DEFAULT 0,
+              PRIMARY KEY (user_id, provider, item_type, item_id, analyzer_version, input_hash)
             )
             """
         )
@@ -356,3 +392,131 @@ def delete_provider_token(user_id: str, provider: str) -> None:
         conn.commit()
     finally:
         conn.close()
+
+
+
+def _cache_key_parts(user_id: str, provider: str, item_type: str, item_id: str, analyzer_version: str, input_text: str):
+    if not all([user_id, provider, item_type, item_id, analyzer_version]):
+        raise ValueError("user_id, provider, item_type, item_id, and analyzer_version are required")
+    input_hash = hashlib.sha256((input_text or "").strip().encode("utf-8")).hexdigest()
+    return user_id, provider, item_type, item_id, analyzer_version, input_hash
+
+
+def load_cached_analysis(
+    user_id: str,
+    provider: str,
+    item_type: str,
+    item_id: str,
+    analyzer_version: str,
+    input_text: str,
+) -> Dict[str, Any]:
+    key = _cache_key_parts(user_id, provider, item_type, item_id, analyzer_version, input_text)
+    if _db_url():
+        conn = _pg_connect()
+        try:
+            _init_postgres(conn)
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    SELECT analysis_json, created_at, updated_at, hits
+                    FROM musicai_analysis_cache
+                    WHERE user_id=%s AND provider=%s AND item_type=%s AND item_id=%s AND analyzer_version=%s AND input_hash=%s
+                    """,
+                    key,
+                )
+                row = cur.fetchone()
+                if row:
+                    cur.execute(
+                        """
+                        UPDATE musicai_analysis_cache
+                        SET hits = hits + 1, updated_at = %s
+                        WHERE user_id=%s AND provider=%s AND item_type=%s AND item_id=%s AND analyzer_version=%s AND input_hash=%s
+                        """,
+                        (time.time(), *key),
+                    )
+                    conn.commit()
+        finally:
+            conn.close()
+    else:
+        conn = _init_sqlite()
+        try:
+            row = conn.execute(
+                """
+                SELECT analysis_json, created_at, updated_at, hits
+                FROM musicai_analysis_cache
+                WHERE user_id=? AND provider=? AND item_type=? AND item_id=? AND analyzer_version=? AND input_hash=?
+                """,
+                key,
+            ).fetchone()
+            if row:
+                conn.execute(
+                    """
+                    UPDATE musicai_analysis_cache
+                    SET hits = hits + 1, updated_at = ?
+                    WHERE user_id=? AND provider=? AND item_type=? AND item_id=? AND analyzer_version=? AND input_hash=?
+                    """,
+                    (time.time(), *key),
+                )
+                conn.commit()
+        finally:
+            conn.close()
+    if not row:
+        return {}
+    payload = json.loads(row[0])
+    payload["cache"] = {"hit": True, "created_at": row[1], "updated_at": row[2], "hits": row[3]}
+    return payload
+
+
+def save_cached_analysis(
+    user_id: str,
+    provider: str,
+    item_type: str,
+    item_id: str,
+    analyzer_version: str,
+    input_text: str,
+    analysis: Dict[str, Any],
+) -> Dict[str, Any]:
+    key = _cache_key_parts(user_id, provider, item_type, item_id, analyzer_version, input_text)
+    now = time.time()
+    payload_json = json.dumps(analysis or {}, separators=(",", ":"))
+    if _db_url():
+        conn = _pg_connect()
+        try:
+            _init_postgres(conn)
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    INSERT INTO musicai_analysis_cache
+                    (user_id, provider, item_type, item_id, analyzer_version, input_hash, input_text, analysis_json, created_at, updated_at, hits)
+                    VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,0)
+                    ON CONFLICT (user_id, provider, item_type, item_id, analyzer_version, input_hash) DO UPDATE SET
+                      input_text = EXCLUDED.input_text,
+                      analysis_json = EXCLUDED.analysis_json,
+                      updated_at = EXCLUDED.updated_at
+                    """,
+                    (*key, input_text, payload_json, now, now),
+                )
+            conn.commit()
+        finally:
+            conn.close()
+    else:
+        conn = _init_sqlite()
+        try:
+            conn.execute(
+                """
+                INSERT INTO musicai_analysis_cache
+                (user_id, provider, item_type, item_id, analyzer_version, input_hash, input_text, analysis_json, created_at, updated_at, hits)
+                VALUES (?,?,?,?,?,?,?,?,?,?,0)
+                ON CONFLICT(user_id, provider, item_type, item_id, analyzer_version, input_hash) DO UPDATE SET
+                  input_text=excluded.input_text,
+                  analysis_json=excluded.analysis_json,
+                  updated_at=excluded.updated_at
+                """,
+                (*key, input_text, payload_json, now, now),
+            )
+            conn.commit()
+        finally:
+            conn.close()
+    output = dict(analysis or {})
+    output["cache"] = {"hit": False, "created_at": now, "updated_at": now, "hits": 0}
+    return output

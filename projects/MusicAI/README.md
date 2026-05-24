@@ -73,17 +73,19 @@ The application now has:
 - Provider-neutral landing page for tracking playlist mood, feel, vibe, and music taste across vendors
 - One-account/multi-OAuth model: Spotify, YouTube Music, and SoundCloud routes can link provider identities into one MusicAI account
 - Dashboard that uses YouTube playlists as the primary working source for music-taste/vibe scanning, with Spotify/SoundCloud kept as future connectors
+- Per-playlist YouTube analysis at `/youtube/playlist/<playlist_id>/analysis`: loads playlist items, analyzes each song/video title individually, then aggregates emotion/sentiment/keyword averages for the playlist
 - No-login Watson lyric/mood analyzer remains available as the primary demo
 - Spotify and SoundCloud OAuth architecture remains in place, but both are parked as TODOs while their Premium/paid API access blockers are not worth solving
 - Genius and Watson integrations surfaced as core music-intelligence features
 - Encrypted OAuth token storage via `musicai_secure_store.py`
+- Cached song-analysis storage in Postgres/SQLite so repeated playlist scans reuse prior Watson results instead of re-calling the analyzer for unchanged songs
 - Durable Postgres-ready token backend through `MUSICAI_DATABASE_URL`, `MUSICAI_TOKEN_DB`, `DATABASE_URL`, or `POSTGRES_URL`
 - SQLite fallback only for local or temporary Vercel testing
 
 ## Next Steps for Completion
 1. **Durable database**: Vercel/Neon Postgres is provisioned on the free plan and production `/healthz` should report `backend: postgres` and `durable: true`.
-2. **YouTube core**: keep improving playlist/video title scanning into richer vibe, mood, and taste summaries.
-3. **Redeploy and verify routes**: `/`, `/healthz`, `/analyze-text`, `/api/analyze-text`, `/providers/youtube_music/connect`.
+2. **YouTube core**: keep improving playlist/video title scanning into richer vibe, mood, and taste summaries; next upgrade is lyrics/audio metadata per track when a reliable source is available.
+3. **Redeploy and verify routes**: `/`, `/healthz`, `/analyze-text`, `/api/analyze-text`, `/providers/youtube_music/connect`, `/youtube/playlist/<playlist_id>/analysis`.
 4. **Provider TODOs**: revisit Spotify when Premium/dev-mode blocker is resolved; revisit SoundCloud when paid API access is approved.
 5. **Real-user controls**: add disconnect/export/delete-account flows before public launch.
 6. **Testing**: run post-deployment browser and OAuth testing after the feature rollout is live.

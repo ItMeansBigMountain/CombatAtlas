@@ -72,7 +72,7 @@
       <div class="panel">
         <h2 style="margin-top:0">YouTube playlists</h2>
         {% for playlist in context.snapshot.playlists %}
-          <div class="card track"><img class="cover" src="{{ playlist.thumbnail }}" alt=""><div><h4>{{ playlist.name }}</h4><p>{{ playlist.total_tracks }} videos · {{ playlist.owner }}</p>{% if playlist.sample_tracks %}<p>Sample: {{ playlist.sample_tracks|join(' · ') }}</p>{% endif %}</div></div>
+          <div class="card track"><img class="cover" src="{{ playlist.thumbnail }}" alt=""><div><h4>{{ playlist.name }}</h4><p>{{ playlist.total_tracks }} videos · {{ playlist.owner }}</p>{% if playlist.sample_tracks %}<p>Sample: {{ playlist.sample_tracks|join(' · ') }}</p>{% endif %}<p style="margin-top:12px"><a class="btn primary" href="{{ playlist.analysis_url }}">Analyze every song</a></p></div></div>
         {% else %}<p class="muted">Connect YouTube or save playlists there; this is now the primary MusicAI scan source.</p>{% endfor %}
       </div>
       <div class="panel">

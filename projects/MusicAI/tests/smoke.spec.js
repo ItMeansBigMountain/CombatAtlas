@@ -55,3 +55,9 @@ test('YouTube connect route redirects to Google OAuth with YouTube scopes', asyn
   expect(url.searchParams.get('scope')).toContain('youtube.force-ssl');
   expect(url.searchParams.get('redirect_uri')).toContain('/providers/youtube_music/callback');
 });
+
+test('playlist analysis route is protected until YouTube is connected', async ({ request }) => {
+  const response = await request.get('/youtube/playlist/PL_TEST/analysis', { maxRedirects: 0 });
+  expect(response.status()).toBe(302);
+  expect(response.headers()['location']).toBe('/');
+});
