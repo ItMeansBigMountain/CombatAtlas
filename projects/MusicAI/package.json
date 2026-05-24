@@ -1,0 +1,11 @@
+{
+  "name": "musicai-smoke-tests",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test:smoke": "PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1"
+  }
+}

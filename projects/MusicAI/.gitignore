@@ -35,3 +35,9 @@ Thumbs.db
 
 # python
 __pycache__/
+.vercel
+.env*.local
+node_modules/
+.cache/
+test-results/
+playwright-report/

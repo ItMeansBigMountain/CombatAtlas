@@ -69,22 +69,24 @@ Based on the demo notes, the application likely requires:
 - Integration with IBM Watson for advanced NLP
 
 ## Current State
-The application appears to be functional with:
-- Core Flask application structure
-- API integrations implemented
-- Test files for various components
-- Sample data files
-- Deployment infrastructure scripts
+The application now has:
+- Provider-neutral landing page for tracking playlist mood, feel, vibe, and music taste across vendors
+- One-account/multi-OAuth model: Spotify, YouTube Music, and SoundCloud routes can link provider identities into one MusicAI account
+- Dashboard that uses YouTube playlists as the primary working source for music-taste/vibe scanning, with Spotify/SoundCloud kept as future connectors
+- No-login Watson lyric/mood analyzer remains available as the primary demo
+- Spotify and SoundCloud OAuth architecture remains in place, but both are parked as TODOs while their Premium/paid API access blockers are not worth solving
+- Genius and Watson integrations surfaced as core music-intelligence features
+- Encrypted OAuth token storage via `musicai_secure_store.py`
+- Durable Postgres-ready token backend through `MUSICAI_DATABASE_URL`, `MUSICAI_TOKEN_DB`, `DATABASE_URL`, or `POSTGRES_URL`
+- SQLite fallback only for local or temporary Vercel testing
 
 ## Next Steps for Completion
-1. **Dependency Installation**: Install required Python packages
-2. **Environment Configuration**: Create .env file from env.template with actual API keys
-3. **Database Setup**: Initialize any required databases
-4. **Testing**: Run existing test suite to verify functionality
-5. **API Validation**: Test connections to Spotify, Genius, and IBM Watson APIs
-6. **UI Refinement**: Improve web interface based on templates
-7. **Documentation**: Create user guide and API documentation
-8. **Deployment Preparation**: Prepare for deployment to cloud services (Azure, AWS, etc.)
+1. **Durable database**: Vercel/Neon Postgres is provisioned on the free plan and production `/healthz` should report `backend: postgres` and `durable: true`.
+2. **YouTube core**: keep improving playlist/video title scanning into richer vibe, mood, and taste summaries.
+3. **Redeploy and verify routes**: `/`, `/healthz`, `/analyze-text`, `/api/analyze-text`, `/providers/youtube_music/connect`.
+4. **Provider TODOs**: revisit Spotify when Premium/dev-mode blocker is resolved; revisit SoundCloud when paid API access is approved.
+5. **Real-user controls**: add disconnect/export/delete-account flows before public launch.
+6. **Testing**: run post-deployment browser and OAuth testing after the feature rollout is live.
 
 ## Integration Opportunities
 This project could integrate with:

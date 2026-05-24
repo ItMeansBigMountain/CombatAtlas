@@ -1,173 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>We are listening...</title>
-
-
-
-
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <!--Bootsrap 4 CDN-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <!--Fontawesome CDN-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-
-    <style>
-        body {
-            background: url("https://images.unsplash.com/photo-1559533077-4dc3e9bd43f2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80") no-repeat center center fixed;
-            background-color: black;
-        }
-
-        html,
-        body,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: "Roboto", sans-serif
-        }
-    </style>
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/556f844f3f.js" crossorigin="anonymous"></script>
-
-
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MusicAI — Your cross-platform music taste map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: dark; --bg:#07070d; --card:#151522; --soft:#222235; --text:#f7f7fb; --muted:#aaaac0; --green:#1db954; --violet:#9b5cff; --cyan:#22d3ee; --danger:#ff6b8a; --amber:#facc15; }
+    * { box-sizing: border-box; }
+    body { margin:0; min-height:100vh; font-family:Inter,system-ui,sans-serif; color:var(--text); background: radial-gradient(circle at 20% 0%, #40206f 0, transparent 32rem), radial-gradient(circle at 85% 15%, #064e64 0, transparent 30rem), var(--bg); }
+    a { color: inherit; }
+    .wrap { width:min(1160px, calc(100% - 32px)); margin:0 auto; padding:32px 0 56px; }
+    .nav { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:48px; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:-.03em; }
+    .logo { width:42px; height:42px; display:grid; place-items:center; border-radius:14px; background:linear-gradient(135deg,var(--green),var(--violet)); box-shadow:0 16px 45px #0008; }
+    .pill { display:inline-flex; align-items:center; gap:8px; border:1px solid #ffffff24; color:#d8d8e8; background:#ffffff10; border-radius:999px; padding:8px 12px; font-size:13px; font-weight:800; }
+    .hero { display:grid; grid-template-columns:1.08fr .92fr; gap:28px; align-items:stretch; }
+    .panel { background:linear-gradient(180deg,#ffffff12,#ffffff08); border:1px solid #ffffff1c; border-radius:30px; padding:30px; box-shadow:0 22px 80px #0008; backdrop-filter: blur(12px); }
+    h1 { font-size:clamp(42px, 6.6vw, 78px); line-height:.92; letter-spacing:-.07em; margin:14px 0 20px; }
+    .lede { color:#d4d4e6; font-size:clamp(17px, 2vw, 21px); line-height:1.55; max-width:760px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 18px; border-radius:999px; border:1px solid transparent; text-decoration:none; font-weight:900; }
+    .primary { background:var(--green); color:#031006; }
+    .secondary { border-color:#ffffff30; background:#ffffff12; color:#fff; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:24px; }
+    .card { background:#0f0f18; border:1px solid #ffffff14; border-radius:22px; padding:18px; }
+    .card h3 { margin:0 0 8px; font-size:16px; }
+    .card p { margin:0; color:var(--muted); font-size:14px; line-height:1.45; }
+    .provider { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:12px; padding:14px; border-radius:18px; background:#0d0d15; border:1px solid #ffffff14; text-decoration:none; }
+    .provider:hover { border-color:#ffffff36; transform:translateY(-1px); }
+    .provider strong { display:block; margin-bottom:4px; }
+    .provider span { color:var(--muted); font-size:13px; line-height:1.35; }
+    .status { flex:0 0 auto; font-size:12px; font-weight:900; padding:6px 9px; border-radius:999px; background:#ffffff12; color:#d8d8e8; }
+    .ready { background:#1db95422; color:#6effa5; }
+    .connected { background:#22d3ee22; color:#8cf3ff; }
+    .planned,.roadmap { background:#9b5cff22; color:#d8c3ff; }
+    .needs_config { background:#facc1522; color:#ffe27a; }
+    .privacy { margin-top:18px; color:#c7c7d8; font-size:14px; line-height:1.5; }
+    .privacy b { color:#fff; }
+    @media (max-width: 860px) { .hero { grid-template-columns:1fr; } .grid { grid-template-columns:1fr; } .nav { align-items:flex-start; flex-direction:column; } }
+  </style>
 </head>
-
-
-
-
-
 <body>
-    <div class="container">
+  <main class="wrap">
+    <nav class="nav">
+      <div class="brand"><div class="logo">♪</div><div>MusicAI</div></div>
+      <div class="actions" style="margin:0">
+        {% if content.signed_in %}<a class="pill" href="/Dashboard">Open dashboard</a><a class="pill" href="/logout">Log out</a>{% endif %}
+        <div class="pill">One account · multiple OAuth providers</div>
+      </div>
+    </nav>
 
-        <div class="d-flex justify-content-center h-100">
-
-
-
-            <div class="card">
-                <div class="card-header">
-
-                    <h1>
-                        SPOTTY AI 
-                    </h1>
-
-
-                    <div style="color: rgb(128, 6, 6);">
-                        {% if messages %}
-                        {% for message in messages %}
-                        <a>{{ message }}</a><br>
-                        {% endfor %}
-                        {% endif %}
-                    </div>
-
-                </div>
-
-
-
-
-
-                <div class="card-body">
-
-
-                    <a href="{{content.refreshable_url}}">
-                        <button class="btn btn-success btn-lg active">
-                            Login Using Spotify & Genius
-                        </button>
-                    </a>
-
-
-                    <!-- <form action="/login" method="POST">
-						
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
-							</div>
-							<input type="text" name="log-email" class="form-control" placeholder="Email">
-
-						</div>
-						<div class="input-group form-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
-							</div>
-							<input type="password" name="log-pw" class="form-control" placeholder="password">
-						</div>
-
-						<div class="form-group">
-							<input type="submit" value="Login" class="btn float-right login_btn">
-						</div>
-					</form> -->
-
-                <br>
-                <div class="card-text"  >
-                    <!-- DISCLAIMER -->
-                    Welcome!
-                    <br>
-                    This website requires the user to log into Spotify to analyze playlists.
-                    <br>
-                    Genius is also used in order to obtain lyrics for text sentiment alaysis.
-                    <br>
-                    Please log into these outlets in order to use this application.
-                    <br>
-                    <b> We will NOT use your personal data for marketing purposes. </b>
-                </div>
-
-
-                </div>
-                <div class="card-footer">
-
-                    <footer class="w3-container w3-black w3-center w3-margin-top">
-                        <p>Find me on social media.</p>
-                        <a href="" target="_blank">
-                            <i class="fa fa-facebook-official w3-hover-opacity"></i>
-                        </a>
-                        <a href="https://instagram.com/_trapistan" target="_blank">
-                            <i class="fa fa-instagram w3-hover-opacity"></i>
-                        </a>
-                        <a href="" target="_blank">
-                            <i class="fa fa-snapchat w3-hover-opacity"></i>
-                        </a>
-                        <a href="https://www.twitter.com/nehauri" target="_blank">
-                            <i class="fa fa-twitter w3-hover-opacity"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/affan-fareed-9b601873/" target="_blank">
-                            <i class="fa fa-linkedin w3-hover-opacity"></i>
-                        </a>
-                        <p>Oyama Productions</p>
-                    </footer>
-
-                </div>
-
-
-            </div>
-
-
-
+    <section class="hero">
+      <div class="panel">
+        <span class="pill">Mood · feel · vibe tracking</span>
+        <h1>Your YouTube music taste, decoded by vibe.</h1>
+        <p class="lede">Connect YouTube now and MusicAI scans your playlists and music videos to explain the mood, feel, and patterns in your taste. Spotify and SoundCloud stay in the architecture for later, but YouTube powers the core product today.</p>
+        <div class="actions">
+          <a class="btn primary" href="/providers/youtube_music/connect">Connect YouTube / log in</a>
+          <a class="btn secondary" href="/analyze-text">Try lyric mood analyzer</a>
+          {% if content.signed_in %}<a class="btn secondary" href="/Dashboard">View dashboard</a>{% endif %}
         </div>
-    </div>
+        <div class="grid">
+          <div class="card"><h3>Playlist mood map</h3><p>Track the emotional shape of playlists and saved music: energy, sadness, joy, darkness, confidence, nostalgia.</p></div>
+          <div class="card"><h3>One MusicAI account</h3><p>Start with YouTube OAuth today; the account model still supports linking more providers later.</p></div>
+          <div class="card"><h3>Music taste feedback</h3><p>See what your libraries say about your vibe: top genres, artists, repeat patterns, and blind spots.</p></div>
+          <div class="card"><h3>Secure by default</h3><p>OAuth tokens are encrypted before storage and designed for durable Postgres on Vercel.</p></div>
+        </div>
+      </div>
+
+      <aside class="panel">
+        <h2 style="margin-top:0">Login + provider hub</h2>
+        {% for provider in content.providers %}
+          <a class="provider" href="{{ provider.connect_url }}">
+            <div><strong>{{ provider.label }}</strong><span>{{ provider.description }}</span></div>
+            {% if provider.connected %}
+              <div class="status connected">Connected</div>
+            {% else %}
+              <div class="status {{ provider.status }}">{{ provider.status.replace('_', ' ')|title }}</div>
+            {% endif %}
+          </a>
+        {% endfor %}
+        <p class="privacy"><b>Privacy:</b> MusicAI asks vendors for read-only music/library scopes so it can analyze taste. You can connect multiple vendors to one account and disconnect by logging out or revoking access in the vendor settings.</p>
+      </aside>
+    </section>
+  </main>
 </body>
-
-
-
-
-
 </html>

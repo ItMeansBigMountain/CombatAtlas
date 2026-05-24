@@ -3,3 +3,5 @@ ibm_watson
 python-dotenv
 requests
 beautifulsoup4
+cryptography
+psycopg[binary]
