@@ -481,6 +481,7 @@ def _public_watson_model(model):
         'sentiment': model.get('sentiment'),
         'keywords': model.get('keywords', []),
         'entities': model.get('entities', []),
+        'relations': model.get('relations', []),
         'concepts': model.get('concepts', []),
         'subjects': model.get('subjects', []),
     }
@@ -515,8 +516,18 @@ def _fallback_text_analysis(text):
         'overall_emotion': emotion,
         'keywords': [{'text': w, 'relevance': round(1 - (i * 0.08), 2)} for i, w in enumerate(top_terms)],
         'entities': [],
+        'relations': [],
         'concepts': ['/music and audio/music', '/arts and entertainment/music'],
         'subjects': ['music mood analysis'],
+        'nlu_summary': {
+            'averageEmotion': emotion,
+            'sentiment_frequencies': {label: [text[:80]]},
+            'keywordfrequencies': {'neutral': top_terms},
+            'entityfrequencies': {},
+            'conceptfrequencies': {'music': ['/music and audio/music']},
+            'subjectsfrequencies': {'present': ['music mood analysis']},
+            'relationsfrequencies': {},
+        },
         'note': 'Watson NLU failed or is not configured; this is a transparent local fallback for demo continuity.'
     }
 
@@ -606,6 +617,168 @@ def _youtube_video_metadata(youtube_token, video_id):
     return {'id': video_id, 'title': snippet.get('title') or video_id, 'channel': snippet.get('channelTitle') or 'YouTube', 'thumbnail': thumb}
 
 
+
+def _as_list(value):
+    if value is None:
+        return []
+    return value if isinstance(value, list) else [value]
+
+
+def _clean_genius_lyrics(text):
+    text = re.sub(r'\d+Embed$', '', text or '').strip()
+    text = re.sub(r'(?i)^.*?lyrics', '', text, count=1).strip() if len(text) > 200 else text
+    text = re.sub(r'(?i)(you might also like|embed)$', '', text).strip()
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    return text.strip()
+
+
+def _scrape_genius_lyrics(url):
+    if not url:
+        return None
+    try:
+        page = requests.get(url, headers={'User-Agent': 'Mozilla/5.0 MusicAI/1.0'}, timeout=12)
+        page.raise_for_status()
+        html = bs4.BeautifulSoup(page.text, 'html.parser')
+        containers = html.select('div[data-lyrics-container="true"]') or html.select('[class*="Lyrics__Container"]')
+        if containers:
+            chunks = []
+            for node in containers:
+                text = node.get_text('\n')
+                if text:
+                    chunks.append(text)
+            lyrics = _clean_genius_lyrics('\n'.join(chunks))
+            if len(lyrics) > 40:
+                return lyrics
+        old = html.find('div', {'id': 'lyrics-root-pin-spacer'})
+        if old:
+            lyrics = _clean_genius_lyrics(old.get_text('\n'))
+            if len(lyrics) > 40:
+                return lyrics
+    except Exception as exc:
+        print(f"WARNING: Genius lyric scrape failed: {exc}")
+    return None
+
+
+def _fetch_lyrics_ovh(title, artist=''):
+    # Public fallback for production/serverless cases where Genius HTML blocks scraping.
+    if not (title and artist):
+        return None
+    try:
+        url = f"https://api.lyrics.ovh/v1/{urllib.parse.quote(artist)}/{urllib.parse.quote(title)}"
+        response = requests.get(url, headers={'User-Agent': 'MusicAI/1.0'}, timeout=12)
+        if response.status_code != 200:
+            return None
+        lyrics = _clean_genius_lyrics((response.json() or {}).get('lyrics') or '')
+        return lyrics if len(lyrics) > 40 else None
+    except Exception as exc:
+        print(f"WARNING: lyrics.ovh fallback failed: {exc}")
+        return None
+
+
+def _parse_song_query(query):
+    clean = _clean_youtube_title(query or '')
+    clean = re.sub(r'https?://\S+', '', clean).strip() or clean
+    for sep in [' - ', ' — ', ' – ', ' by ']:
+        if sep in clean:
+            left, right = [p.strip() for p in clean.split(sep, 1)]
+            if sep.strip() == 'by':
+                return {'title': left, 'artist': right, 'query': clean}
+            return {'artist': left, 'title': right, 'query': clean}
+    return {'title': clean, 'artist': '', 'query': clean}
+
+
+def _find_genius_song(title, artist=''):
+    if not genius_api_key:
+        return None
+    query = ' '.join(x for x in [title, artist] if x).strip()
+    if not query:
+        return None
+    try:
+        response = requests.get(
+            'https://api.genius.com/search',
+            params={'q': query},
+            headers={'Authorization': 'Bearer ' + genius_api_key, 'User-Agent': 'MusicAI/1.0'},
+            timeout=12,
+        )
+        response.raise_for_status()
+        hits = (((response.json() or {}).get('response') or {}).get('hits') or [])
+        if not hits:
+            return None
+        artist_lower = (artist or '').lower()
+        best = None
+        if artist_lower:
+            for hit in hits:
+                result = hit.get('result') or {}
+                primary = ((result.get('primary_artist') or {}).get('name') or '').lower()
+                if artist_lower in primary or primary in artist_lower:
+                    best = result
+                    break
+        best = best or (hits[0].get('result') or {})
+        return {
+            'title': best.get('title') or title,
+            'artist': ((best.get('primary_artist') or {}).get('name') or artist or ''),
+            'url': best.get('url'),
+            'thumbnail': best.get('song_art_image_thumbnail_url') or best.get('header_image_thumbnail_url'),
+            'id': best.get('id'),
+        }
+    except Exception as exc:
+        print(f"WARNING: Genius search failed: {exc}")
+        return None
+
+
+def _legacy_nlu_summary(raw_model, public_model):
+    try:
+        summary = watson.averages_calc([raw_model])
+        # Normalize the one-song average too, so old dashboard sections and new
+        # cards share the same key shape.
+        if 'averageEmotion' in summary:
+            summary['averageEmotion'] = _normalize_emotion_profile(summary.get('averageEmotion') or {}, '')
+        return summary
+    except Exception as exc:
+        print(f"WARNING: Watson legacy summary failed: {exc}")
+    return {
+        'averageEmotion': public_model.get('overall_emotion') or {},
+        'sentiment_frequencies': {str(public_model.get('sentiment') or 'neutral'): [public_model.get('title', 'song')]},
+        'entityfrequencies': {},
+        'keywordfrequencies': {'keywords': [kw.get('text') if isinstance(kw, dict) else (kw[0] if isinstance(kw, (list, tuple)) and kw else str(kw)) for kw in public_model.get('keywords') or []]},
+        'conceptfrequencies': {'concepts': public_model.get('concepts') or []},
+        'subjectsfrequencies': {'subjects': public_model.get('subjects') or []},
+        'relationsfrequencies': {},
+    }
+
+
+def analyze_song_lyrics_safely(title, artist='', fallback_text=''):
+    """Legacy-style pipeline: Genius lyrics/API -> Watson NLU -> modern JSON."""
+    genius_song = _find_genius_song(title, artist)
+    resolved_title = (genius_song or {}).get('title') or title
+    resolved_artist = (genius_song or {}).get('artist') or artist
+    lyrics_text = _scrape_genius_lyrics((genius_song or {}).get('url')) if genius_song else None
+    if not lyrics_text:
+        lyrics_text = _fetch_lyrics_ovh(resolved_title, resolved_artist)
+    text_source = 'lyrics' if lyrics_text else 'metadata'
+    analysis_text = lyrics_text or fallback_text or ' '.join(x for x in [title, artist] if x)
+    # Watson payloads over huge lyrics can be slow/noisy in serverless; the old
+    # app analyzed the lyric text as one document, so keep that behavior with a
+    # safe cap.
+    watson_text = analysis_text[:4500]
+    try:
+        raw = watson.ai_to_Text(watson_text)
+        public = _public_watson_model(raw)
+        public['nlu_summary'] = _legacy_nlu_summary(raw, public)
+        warning = None
+    except Exception as exc:
+        public = _fallback_text_analysis(watson_text)
+        warning = str(exc)
+    public['analyzed_text_source'] = text_source
+    public['lyrics_found'] = bool(lyrics_text)
+    public['lyric_url'] = (genius_song or {}).get('url')
+    public['genius_title'] = (genius_song or {}).get('title')
+    public['genius_artist'] = (genius_song or {}).get('artist')
+    public['lyrics_preview'] = (lyrics_text or '').split('\n')[:18]
+    public['lyrics_line_count'] = len([line for line in (lyrics_text or '').split('\n') if line.strip()])
+    return public, warning, genius_song or {}
+
+
 def analyze_song_query_for_user(user_id, query, youtube_token=None, force_refresh=False):
     query = (query or '').strip()
     if not query:
@@ -613,21 +786,25 @@ def analyze_song_query_for_user(user_id, query, youtube_token=None, force_refres
     video_id = _extract_youtube_video_id(query)
     metadata = _youtube_video_metadata(youtube_token, video_id) if video_id else {}
     title = metadata.get('title') or query
+    parsed = _parse_song_query(title)
+    song_title = parsed.get('title') or title
+    artist = parsed.get('artist') or ''
     item_id = video_id or hashlib.sha256(query.lower().encode()).hexdigest()[:24]
     analysis_text = _clean_youtube_title(title)
     if not force_refresh:
         cached = token_store.load_cached_analysis(user_id or 'public', 'manual', 'song', item_id, YOUTUBE_ANALYSIS_VERSION, analysis_text)
         if cached:
             return cached
-    analysis, warning = analyze_text_safely(analysis_text)
+    analysis, warning, genius_song = analyze_song_lyrics_safely(song_title, artist, fallback_text=analysis_text)
     payload = {
         'provider': 'youtube_music' if video_id else 'manual',
         'item_type': 'song',
         'item_id': item_id,
         'query': query,
-        'title': title,
-        'channel': metadata.get('channel') or 'Manual search',
-        'thumbnail': metadata.get('thumbnail') or '/static/fallback.svg',
+        'title': (genius_song.get('title') if analysis.get('lyrics_found') else title) or title,
+        'artist': genius_song.get('artist') or artist,
+        'channel': metadata.get('channel') or genius_song.get('artist') or 'Manual search',
+        'thumbnail': metadata.get('thumbnail') or genius_song.get('thumbnail') or '/static/fallback.svg',
         'analysis_text': analysis_text,
         'analysis': analysis,
         'warning': warning,
@@ -1150,7 +1327,7 @@ def _infer_vibe_from_titles(titles):
     return tags
 
 
-YOUTUBE_ANALYSIS_VERSION = 'youtube-title-watson-v2'
+YOUTUBE_ANALYSIS_VERSION = 'lyrics-watson-v4'
 
 
 def _clean_youtube_title(title):
@@ -1217,14 +1394,16 @@ def _analyze_youtube_track_cached(user_id, track, force_refresh=False):
         cached = token_store.load_cached_analysis(user_id, 'youtube_music', 'track', item_id, YOUTUBE_ANALYSIS_VERSION, text)
         if cached:
             return cached
-    analysis, warning = analyze_text_safely(text)
+    parsed = _parse_song_query(track.get('title') or text)
+    analysis, warning, genius_song = analyze_song_lyrics_safely(parsed.get('title') or text, parsed.get('artist') or '', fallback_text=text)
     payload = {
         'provider': 'youtube_music',
         'item_type': 'track',
         'item_id': item_id,
         'title': track.get('title'),
+        'artist': genius_song.get('artist') or parsed.get('artist') or '',
         'channel': track.get('channel'),
-        'thumbnail': track.get('thumbnail'),
+        'thumbnail': track.get('thumbnail') or genius_song.get('thumbnail'),
         'analysis_text': text,
         'analysis': analysis,
         'warning': warning,
@@ -1241,6 +1420,10 @@ def _aggregate_track_analyses(track_results):
     keywords = {}
     concepts = {}
     cached_hits = 0
+    lyrics_hits = 0
+    entities = {}
+    subjects = {}
+    relations = {}
     analyzed = []
     for result in track_results:
         cached_hits += 1 if (result.get('cache') or {}).get('hit') else 0
@@ -1260,9 +1443,23 @@ def _aggregate_track_analyses(track_results):
                 label = kw[0] if isinstance(kw, (list, tuple)) and kw else str(kw)
             if label:
                 keywords[label] = keywords.get(label, 0) + 1
+        if model.get('lyrics_found'):
+            lyrics_hits += 1
         for concept in model.get('concepts') or []:
             if concept:
                 concepts[concept] = concepts.get(concept, 0) + 1
+        for ent in model.get('entities') or []:
+            label = ent.get('text') if isinstance(ent, dict) else (ent[0] if isinstance(ent, (list, tuple)) and ent else str(ent))
+            if label:
+                entities[label] = entities.get(label, 0) + 1
+        for subject in model.get('subjects') or []:
+            label = subject.get('text') if isinstance(subject, dict) else (subject[0] if isinstance(subject, (list, tuple)) and subject else str(subject))
+            if label:
+                subjects[label] = subjects.get(label, 0) + 1
+        for rel in model.get('relations') or []:
+            label = rel.get('text') if isinstance(rel, dict) else (' · '.join(map(str, rel)) if isinstance(rel, (list, tuple)) else str(rel))
+            if label:
+                relations[label] = relations.get(label, 0) + 1
         analyzed.append({
             'title': result.get('title'),
             'channel': result.get('channel'),
@@ -1271,6 +1468,13 @@ def _aggregate_track_analyses(track_results):
             'emotion': emotion,
             'keywords': model.get('keywords') or [],
             'concepts': model.get('concepts') or [],
+            'entities': model.get('entities') or [],
+            'subjects': model.get('subjects') or [],
+            'relations': model.get('relations') or [],
+            'nlu_summary': model.get('nlu_summary') or {},
+            'lyrics_found': bool(model.get('lyrics_found')),
+            'lyrics_line_count': model.get('lyrics_line_count') or 0,
+            'analyzed_text_source': model.get('analyzed_text_source') or 'metadata',
             'source': model.get('source'),
             'cache_hit': bool((result.get('cache') or {}).get('hit')),
         })
@@ -1279,16 +1483,23 @@ def _aggregate_track_analyses(track_results):
     dominant_sentiment = max(sentiments, key=sentiments.get) if sentiments else 'unknown'
     top_keywords = sorted(keywords.items(), key=lambda kv: kv[1], reverse=True)[:10]
     top_concepts = sorted(concepts.items(), key=lambda kv: kv[1], reverse=True)[:8]
+    top_entities = sorted(entities.items(), key=lambda kv: kv[1], reverse=True)[:10]
+    top_subjects = sorted(subjects.items(), key=lambda kv: kv[1], reverse=True)[:10]
+    top_relations = sorted(relations.items(), key=lambda kv: kv[1], reverse=True)[:10]
     return {
         'track_count': len(track_results),
         'cached_hits': cached_hits,
         'new_analyses': len(track_results) - cached_hits,
+        'lyrics_hits': lyrics_hits,
         'average_emotion': averages,
         'dominant_emotion': dominant_emotion,
         'sentiment_counts': sentiments,
         'dominant_sentiment': dominant_sentiment,
         'top_keywords': top_keywords,
         'top_concepts': top_concepts,
+        'top_entities': top_entities,
+        'top_subjects': top_subjects,
+        'top_relations': top_relations,
         'mood_tags': _infer_vibe_from_titles([r.get('title') or '' for r in track_results] + [dominant_emotion, dominant_sentiment]),
         'tracks': analyzed,
     }

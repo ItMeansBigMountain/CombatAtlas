@@ -39,9 +39,9 @@
         <div class="stat"><strong>{{ analysis.track_count }}</strong><span class="muted">songs analyzed</span></div>
         <div class="stat"><strong>{{ analysis.cached_hits }}</strong><span class="muted">cache hits</span></div>
         <div class="stat"><strong>{{ analysis.new_analyses }}</strong><span class="muted">new Watson calls</span></div>
-        <div class="stat"><strong>{{ analysis.dominant_emotion }}</strong><span class="muted">dominant emotion</span></div>
+        <div class="stat"><strong>{{ analysis.lyrics_hits or 0 }}</strong><span class="muted">lyrics found</span></div>
       </div>
-      <p class="muted" style="margin-top:16px">MusicAI analyzes each loaded playlist item individually, caches each song analysis, then averages emotion/sentiment signals into this playlist-level read. Default scans 25 songs to avoid serverless timeout; choose a larger batch after the first pass and cached songs will be reused.</p>
+      <p class="muted" style="margin-top:16px">MusicAI now follows the old pipeline when possible: each song is resolved to Genius lyrics, the lyric text is sent through Watson NLU, then MusicAI aggregates emotions, topics, keywords, entities, subjects, and relations across the playlist. If lyrics are missing, it transparently falls back to title/metadata analysis.</p>
       <div class="tags">{% for tag in analysis.mood_tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
     </div>
 
@@ -63,17 +63,31 @@
     </div>
 
     <div class="panel wide">
+      <h2>Topics, entities, subjects & relations</h2>
+      <div class="statgrid">
+        <div class="stat"><strong>{{ analysis.dominant_emotion }}</strong><span class="muted">dominant emotion</span></div>
+        <div class="stat"><strong>{{ (analysis.top_entities or [])|length }}</strong><span class="muted">entity groups</span></div>
+        <div class="stat"><strong>{{ (analysis.top_subjects or [])|length }}</strong><span class="muted">subject groups</span></div>
+        <div class="stat"><strong>{{ (analysis.top_relations or [])|length }}</strong><span class="muted">relation groups</span></div>
+      </div>
+      <h3>Entities</h3><div class="tags">{% for name, count in analysis.top_entities %}<span class="tag">{{ name }} · {{ count }}</span>{% else %}<span class="pill">No entities detected</span>{% endfor %}</div>
+      <h3>Subjects</h3><div class="tags">{% for name, count in analysis.top_subjects %}<span class="tag">{{ name }} · {{ count }}</span>{% else %}<span class="pill">No subjects detected</span>{% endfor %}</div>
+      <h3>Relations</h3><div class="tags">{% for name, count in analysis.top_relations %}<span class="tag">{{ name }} · {{ count }}</span>{% else %}<span class="pill">No relations detected</span>{% endfor %}</div>
+    </div>
+
+    <div class="panel wide">
       <h2>Individual song analysis</h2>
       {% for track in analysis.tracks %}
         <article class="track">
           <img src="{{ track.thumbnail or '/static/fallback.svg' }}" alt="">
           <div>
             <h3>{{ track.title }}</h3>
-            <p class="muted">{{ track.channel }} · {{ track.sentiment }} · {{ track.source or 'analysis' }} {% if track.cache_hit %}<span class="pill">cached</span>{% else %}<span class="pill">new</span>{% endif %}</p>
+            <p class="muted">{{ track.channel }} · {{ track.sentiment }} · {{ track.source or 'analysis' }} · {{ track.analyzed_text_source }} {% if track.lyrics_found %}<span class="pill">lyrics {{ track.lyrics_line_count }} lines</span>{% endif %} {% if track.cache_hit %}<span class="pill">cached</span>{% else %}<span class="pill">new</span>{% endif %}</p>
             <div class="tags">
               {% for key, value in track.emotion.items() %}<span class="pill">{{ key }} {{ '%.0f'|format(value * 100) }}%</span>{% endfor %}
             </div>
-            {% if track.keywords %}<p class="muted">Keywords: {% for kw in track.keywords[:4] %}{{ kw[0] if kw is sequence else kw }}{% if not loop.last %}, {% endif %}{% endfor %}</p>{% endif %}
+            {% if track.keywords %}<p class="muted">Keywords: {% for kw in track.keywords[:4] %}{{ kw.text if kw is mapping else kw[0] if kw is sequence and kw is not string else kw }}{% if not loop.last %}, {% endif %}{% endfor %}</p>{% endif %}
+            {% if track.concepts %}<p class="muted">Topics: {% for concept in track.concepts[:3] %}{{ concept }}{% if not loop.last %}, {% endif %}{% endfor %}</p>{% endif %}
           </div>
         </article>
       {% else %}<p class="muted">No public playlist songs were available to analyze.</p>{% endfor %}

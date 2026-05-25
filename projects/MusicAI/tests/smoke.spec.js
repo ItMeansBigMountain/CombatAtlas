@@ -67,12 +67,12 @@ test('single song analyzer accepts a song name and shows cached analysis UI', as
   expect(api.status()).toBe(200);
   const json = await api.json();
   expect(json.ok).toBe(true);
-  expect(json.result.title).toContain('Kendrick');
+  expect(`${json.result.title} ${json.result.artist || json.result.channel}`).toContain('Kendrick');
   const emotionValues = Object.values(json.result.analysis.overall_emotion || {});
   expect(emotionValues.some((value) => Number(value) > 0)).toBeTruthy();
   await page.goto('/analyze-song');
   await page.getByPlaceholder(/youtu\.be|Kendrick/i).fill('Kendrick Lamar - DNA');
   await page.getByRole('button', { name: 'Analyze song' }).click();
-  await expect(page.getByText('Kendrick Lamar - DNA')).toBeVisible();
+  await expect(page.getByRole('heading', { name: /DNA\.?/ })).toBeVisible();
   await expect(page.getByText(/Emotion profile/i)).toBeVisible();
 });
