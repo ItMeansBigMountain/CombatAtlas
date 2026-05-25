@@ -11,6 +11,7 @@ import hashlib
 import urllib.parse
 import uuid
 import secrets
+import re
 
 # string to python class type
 import ast
@@ -326,6 +327,110 @@ def validate_token_scopes(token):
         return False
 
 
+def authorize_spotify_REFRESHABLE(state=None):
+    return _spotify_authorize_url('code', state=state)
+
+
+def authorize_spotify_IMPLICIT():
+    return _spotify_authorize_url('token')
+
+
+def _spotify_authorize_url(response_type, state=None):
+    params = {
+        'client_id': spotify_clientId,
+        'response_type': response_type,
+        'redirect_uri': spotify_callbackURL,
+        'scope': spotty_full_permission,
+    }
+    if state:
+        params['state'] = state
+    return 'https://accounts.spotify.com/authorize?' + urllib.parse.urlencode(params)
+
+
+def _retrieve_refreshable_token(auth_code, request_id=None):
+    url = 'https://accounts.spotify.com/api/token'
+    message = f"{spotify_clientId}:{spotify_clientSecret}"
+    headers = {'Authorization': 'Basic ' + base64.b64encode(message.encode()).decode()}
+    data = {'grant_type': 'authorization_code', 'code': auth_code, 'redirect_uri': spotify_callbackURL}
+    try:
+        response = requests.post(url, headers=headers, data=data, timeout=20)
+        print(f"OAUTH_TOKEN_EXCHANGE_RESPONSE request_id={request_id} status={response.status_code} body={response.text[:500] if response.status_code >= 400 else '[success]'}")
+        response.raise_for_status()
+        body = response.json()
+        return {'access_token': body['access_token'], 'refresh_token': body.get('refresh_token'), 'expires_in': body.get('expires_in', 3600)}
+    except Exception as exc:
+        print(f"ERROR: Failed to retrieve Spotify tokens request_id={request_id}: {exc}")
+        return None
+
+
+def _refresh_spotify_token(refresh_token):
+    url = 'https://accounts.spotify.com/api/token'
+    message = f"{spotify_clientId}:{spotify_clientSecret}"
+    headers = {'Authorization': 'Basic ' + base64.b64encode(message.encode()).decode()}
+    data = {'grant_type': 'refresh_token', 'refresh_token': refresh_token}
+    try:
+        response = requests.post(url, headers=headers, data=data, timeout=20)
+        response.raise_for_status()
+        body = response.json()
+        return {'access_token': body['access_token'], 'refresh_token': body.get('refresh_token', refresh_token), 'expires_in': body.get('expires_in', 3600)}
+    except Exception as exc:
+        print(f"ERROR: Failed to refresh Spotify token: {exc}")
+        return None
+
+
+def fetch_spotify_data(token, endpoint, request_id=None):
+    response = None
+    try:
+        response = requests.get(url=endpoint, headers={'Authorization': 'Bearer ' + token}, timeout=20)
+        print(f"SPOTIFY_API_RESPONSE request_id={request_id} endpoint={endpoint} status={response.status_code} body={response.text[:500] if response.status_code >= 400 else '[success]'}")
+        response.raise_for_status()
+        body = response.json()
+        if 'error' in body:
+            flask.session['spotify_expired'] = True
+            return 'ERROR'
+        return body
+    except Exception as exc:
+        status = getattr(response, 'status_code', 'unknown') if response is not None else 'unknown'
+        print(f"SPOTIFY_API_ERROR request_id={request_id} status={status} error={exc}")
+        flask.session['spotify_expired'] = True
+        return 'ERROR'
+
+
+def _paged_spotify_items(token, endpoint):
+    rows = []
+    data = fetch_spotify_data(token, endpoint)
+    while isinstance(data, dict):
+        rows.extend(data.get('items') or [])
+        next_url = data.get('next')
+        if not next_url:
+            break
+        data = fetch_spotify_data(token, next_url)
+    return rows
+
+
+def user_likes(token):
+    songs = []
+    for item in _paged_spotify_items(token, 'https://api.spotify.com/v1/me/tracks'):
+        track = item.get('track') or {}
+        songs.append({'artists': [a.get('name') for a in track.get('artists', [])], 'name': track.get('name'), 'id': track.get('id'), 'popularity': track.get('popularity')})
+    return songs
+
+
+def user_albums(token):
+    albums = {}
+    for idx, item in enumerate(_paged_spotify_items(token, 'https://api.spotify.com/v1/me/albums')):
+        album = item.get('album') or {}
+        albums[idx] = {'name': album.get('name'), 'genres': album.get('genres', []), 'id': album.get('id'), 'popularity': album.get('popularity', 0), 'songs': [(t.get('id'), t.get('name'), [a.get('name') for a in t.get('artists', [])]) for t in ((album.get('tracks') or {}).get('items') or [])]}
+    return albums
+
+
+def user_playlists(token):
+    playlists = {}
+    for idx, item in enumerate(_paged_spotify_items(token, 'https://api.spotify.com/v1/me/playlists')):
+        playlists[idx] = {'owner': (item.get('owner') or {}).get('display_name'), 'name': item.get('name'), 'description': item.get('description'), 'id': item.get('id'), 'songs': []}
+    return playlists
+
+
 # database check
 path_to_file = "song_db.json"
 if exists(path_to_file):
@@ -392,6 +497,113 @@ def analyze_text_safely(text):
         return _fallback_text_analysis(text), str(e)
 
 
+def _svg_meme_data_url(username):
+    """Local fallback meme/avatar so profiles still feel alive when Imgflip is unavailable."""
+    safe_name = (username or 'MusicAI listener')[:28]
+    caption = f"{safe_name} when the playlist finally explains the vibe"
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+      <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#7c5cff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+      <rect width="640" height="640" rx="64" fill="#070812"/>
+      <circle cx="320" cy="245" r="158" fill="url(#g)" opacity=".95"/>
+      <circle cx="265" cy="220" r="24" fill="#070812"/><circle cx="375" cy="220" r="24" fill="#070812"/>
+      <path d="M235 300c40 56 130 56 170 0" fill="none" stroke="#070812" stroke-width="24" stroke-linecap="round"/>
+      <text x="320" y="482" text-anchor="middle" font-family="Impact,Arial Black,sans-serif" font-size="36" fill="white" stroke="#000" stroke-width="7" paint-order="stroke">MUSICAI PROFILE</text>
+      <text x="320" y="535" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="24" fill="#dbeafe">{caption}</text>
+    </svg>'''
+    return 'data:image/svg+xml;base64,' + base64.b64encode(svg.encode()).decode()
+
+
+def fetch_meme(username):
+    """Return an Imgflip meme URL when configured, otherwise a generated local meme avatar."""
+    fallback = _svg_meme_data_url(username)
+    if not (imgflip_username and imgflip_password):
+        return {'success': True, 'data': {'url': fallback, 'source': 'local_meme'}}
+    try:
+        templates = ['181913649', '112126428', '87743020', '129242436']
+        template_id = random.choice(templates)
+        response = requests.post('https://api.imgflip.com/caption_image', data={
+            'template_id': template_id,
+            'username': imgflip_username,
+            'password': imgflip_password,
+            'text0': f"{username or 'Me'} opens MusicAI",
+            'text1': 'The playlist had receipts',
+        }, timeout=12)
+        data = response.json()
+        if data.get('success') and (data.get('data') or {}).get('url'):
+            return data
+        print(f"WARNING: Imgflip meme failed: {data.get('error_message')}")
+    except Exception as exc:
+        print(f"WARNING: Imgflip meme exception: {exc}")
+    return {'success': True, 'data': {'url': fallback, 'source': 'local_meme'}}
+
+
+def _profile_avatar(user_data, connected, meme_url):
+    candidates = [
+        user_data.get('image'),
+        ((user_data.get('images') or [{}])[0] or {}).get('url') if isinstance(user_data.get('images'), list) else None,
+    ]
+    for provider in (connected or {}).values():
+        profile = provider.get('profile') or {}
+        candidates.extend([
+            profile.get('picture'), profile.get('avatar_url'), profile.get('image'),
+            ((profile.get('images') or [{}])[0] or {}).get('url') if isinstance(profile.get('images'), list) else None,
+        ])
+    return next((c for c in candidates if c), None) or meme_url or '/static/fallback.svg'
+
+
+def _extract_youtube_video_id(value):
+    value = (value or '').strip()
+    patterns = [r'(?:youtube\.com/watch\?v=|youtu\.be/|youtube\.com/shorts/)([A-Za-z0-9_-]{6,})', r'[?&]v=([A-Za-z0-9_-]{6,})']
+    for pattern in patterns:
+        m = re.search(pattern, value)
+        if m:
+            return m.group(1)
+    return None
+
+
+def _youtube_video_metadata(youtube_token, video_id):
+    if not (youtube_token and video_id):
+        return {}
+    data = _youtube_api_get(youtube_token, 'videos', {'part': 'snippet', 'id': video_id, 'maxResults': 1})
+    if not isinstance(data, dict) or not data.get('items'):
+        return {}
+    item = data['items'][0]
+    snippet = item.get('snippet') or {}
+    thumbs = snippet.get('thumbnails') or {}
+    thumb = (thumbs.get('medium') or thumbs.get('default') or thumbs.get('high') or {}).get('url') or '/static/fallback.svg'
+    return {'id': video_id, 'title': snippet.get('title') or video_id, 'channel': snippet.get('channelTitle') or 'YouTube', 'thumbnail': thumb}
+
+
+def analyze_song_query_for_user(user_id, query, youtube_token=None, force_refresh=False):
+    query = (query or '').strip()
+    if not query:
+        raise ValueError('Song name or URL is required')
+    video_id = _extract_youtube_video_id(query)
+    metadata = _youtube_video_metadata(youtube_token, video_id) if video_id else {}
+    title = metadata.get('title') or query
+    item_id = video_id or hashlib.sha256(query.lower().encode()).hexdigest()[:24]
+    analysis_text = _clean_youtube_title(title)
+    if not force_refresh:
+        cached = token_store.load_cached_analysis(user_id or 'public', 'manual', 'song', item_id, YOUTUBE_ANALYSIS_VERSION, analysis_text)
+        if cached:
+            return cached
+    analysis, warning = analyze_text_safely(analysis_text)
+    payload = {
+        'provider': 'youtube_music' if video_id else 'manual',
+        'item_type': 'song',
+        'item_id': item_id,
+        'query': query,
+        'title': title,
+        'channel': metadata.get('channel') or 'Manual search',
+        'thumbnail': metadata.get('thumbnail') or '/static/fallback.svg',
+        'analysis_text': analysis_text,
+        'analysis': analysis,
+        'warning': warning,
+        'analyzer_version': YOUTUBE_ANALYSIS_VERSION,
+    }
+    return token_store.save_cached_analysis(user_id or 'public', 'manual', 'song', item_id, YOUTUBE_ANALYSIS_VERSION, analysis_text, payload)
+
+
 # homepage
 @application.route('/', methods=['GET'])
 def home():
@@ -429,6 +641,11 @@ def healthz():
             'warning': storage.warning,
         }
     })
+
+
+@application.route('/static/<path:filename>')
+def legacy_static(filename):
+    return flask.send_from_directory('static', filename)
 
 
 @application.route('/oauth-debug', methods=['GET'])
@@ -490,7 +707,7 @@ def analyze_text_page():
   button,a.button{display:inline-block;background:#1db954;color:#031006;border:0;border-radius:999px;padding:12px 18px;font-weight:800;text-decoration:none;cursor:pointer;}
   pre{white-space:pre-wrap;background:#0f0f18;border-radius:14px;padding:16px;border:1px solid #393953;overflow:auto;} .muted{color:#aaa} .err{color:#ff8b8b;}
 </style>
-<main><p><a class="button" href="/">← Home</a></p><div class="card">
+<main><p><a class="button" href="/">← Home</a> <a class="button" href="/analyze-song">Analyze a song</a></p><div class="card">
 <h1>MusicAI Watson lyric / mood analyzer</h1>
 <p class="muted">Paste lyrics, a song description, or music notes. MusicAI returns sentiment, emotion, entities, concepts, and keywords using Watson NLU.</p>
 <form method="post"><textarea name="text">{{ text }}</textarea><p><button type="submit">Analyze with Watson</button></p></form>
@@ -498,6 +715,46 @@ def analyze_text_page():
 {% if analysis %}<h2>Analysis</h2><pre>{{ analysis | tojson(indent=2) }}</pre>{% endif %}
 </div></main>
 ''', text=text, analysis=analysis, error=error)
+
+
+@application.route('/api/analyze-song', methods=['POST'])
+def api_analyze_song():
+    payload = flask.request.get_json(silent=True) or {}
+    query = (payload.get('query') or payload.get('song') or payload.get('url') or '').strip()
+    if not query:
+        return jsonify({'ok': False, 'error': 'Missing song name or URL'}), 400
+    user_id = _session_user_id() or 'public'
+    youtube_token = None
+    if _session_user_id():
+        youtube_token_data = token_store.load_provider_token(_session_user_id(), 'youtube_music') or {}
+        youtube_token, _ = _ensure_youtube_token(_session_user_id(), youtube_token_data)
+    try:
+        result = analyze_song_query_for_user(user_id, query, youtube_token=youtube_token, force_refresh=bool(payload.get('refresh')))
+        return jsonify({'ok': True, 'result': result})
+    except Exception as exc:
+        return jsonify({'ok': False, 'error': str(exc)}), 400
+
+
+@application.route('/analyze-song', methods=['GET', 'POST'])
+def analyze_song_page():
+    result = None
+    error = None
+    query = flask.request.values.get('query', '')
+    if flask.request.method == 'POST':
+        query = (query or '').strip()
+        if not query:
+            error = 'Drop a YouTube URL or type a song name first.'
+        else:
+            user_id = _session_user_id() or 'public'
+            youtube_token = None
+            if _session_user_id():
+                youtube_token_data = token_store.load_provider_token(_session_user_id(), 'youtube_music') or {}
+                youtube_token, _ = _ensure_youtube_token(_session_user_id(), youtube_token_data)
+            try:
+                result = analyze_song_query_for_user(user_id, query, youtube_token=youtube_token, force_refresh=flask.request.form.get('refresh') == '1')
+            except Exception as exc:
+                error = str(exc)
+    return flask.render_template('song_lookup_analysis.html', query=query, result=result, error=error, signed_in=bool(_session_user_id()))
 
 
 # spotify login
@@ -961,10 +1218,14 @@ def _aggregate_track_analyses(track_results):
             emotion_count += 1
             for key in emotion_keys:
                 totals[key] += float(emotion.get(key) or 0)
-        sentiment = model.get('sentiment') or 'unknown'
+        sentiment_value = model.get('sentiment') or 'unknown'
+        sentiment = sentiment_value.get('label', 'unknown') if isinstance(sentiment_value, dict) else str(sentiment_value)
         sentiments[sentiment] = sentiments.get(sentiment, 0) + 1
         for kw in model.get('keywords') or []:
-            label = kw[0] if isinstance(kw, (list, tuple)) and kw else str(kw)
+            if isinstance(kw, dict):
+                label = kw.get('text') or kw.get('keyword') or ''
+            else:
+                label = kw[0] if isinstance(kw, (list, tuple)) and kw else str(kw)
             if label:
                 keywords[label] = keywords.get(label, 0) + 1
         for concept in model.get('concepts') or []:
@@ -1107,9 +1368,9 @@ def youtube_playlist_analysis(playlist_id):
                                      error_details='Go back to the homepage and connect YouTube/YouTube Music.'), 403
     force_refresh = flask.request.method == 'POST' and flask.request.form.get('refresh') == '1'
     try:
-        max_items = int(flask.request.values.get('max_items', 100))
+        max_items = int(flask.request.values.get('max_items', 25))
     except Exception:
-        max_items = 100
+        max_items = 25
     max_items = max(1, min(max_items, 150))
     playlist = analyze_youtube_playlist_for_user(user_id, youtube_token, playlist_id, force_refresh=force_refresh, max_items=max_items)
     return flask.render_template('youtube_playlist_analysis.html', playlist=playlist, force_refresh=force_refresh)
@@ -1197,6 +1458,7 @@ def Dashboard():
     except Exception as meme_error:
         print(f"ERROR: Meme generation failed: {meme_error}")
         meme_url = '/static/fallback.svg'
+    profile_avatar = _profile_avatar(user_data, connected, meme_url)
 
     amount_analyzed = flask.session.get('amount', 0)
     snapshot = _youtube_dashboard_snapshot(youtube_token) if youtube_token else _spotify_dashboard_snapshot(spotify_token)
@@ -1213,6 +1475,7 @@ def Dashboard():
         'username': flask.session.get('username') or user_data.get('display_name', 'MusicAI listener'),
         'email': flask.session.get('email') or user_data.get('email', ''),
         'meme': meme_url,
+        'profile_avatar': profile_avatar,
         'amount_analyzed': amount_analyzed,
         'recent_tracks': snapshot['recent_tracks'],
         'providers': _provider_view_model(),
@@ -1996,274 +2259,8 @@ def show_error():
     error_title = flask.request.args.get('title', 'An error occurred')
     error_message = flask.request.args.get('message', 'Something went wrong')
     error_details = flask.request.args.get('details', '')
-    
-    return flask.render_template('error.html',
-                               error_title=error_title,
-                               error_message=error_message,
-                               error_details=error_details)
+    return flask.render_template('error.html', error_title=error_title, error_message=error_message, error_details=error_details)
 
 
-
-
-
-
-
-# SPOTIFY AND GENIUS AUTHORIZATIONS
-
-#  Authorization by getting token
-def authorize_spotify_NO_USER():
-    url = "https://accounts.spotify.com/api/token"
-    headers = {}
-    data = {}
-
-    # Encode as Base64
-    message = f"{spotify_clientId}:{spotify_clientSecret}"
-    messageBytes = message.encode('ascii')
-    base64Bytes = base64.b64encode(messageBytes)
-    base64Message = base64Bytes.decode('ascii')
-
-    headers['Authorization'] = f"Basic {base64Message}"
-    data['grant_type'] = "client_credentials"
-
-
-    r = requests.post(url, headers=headers, data=data).json()
-
-    token = r['access_token']
-    return token
-def _spotify_authorize_url(response_type, state=None):
-    """Build Spotify auth URLs with proper query encoding.
-
-    Spotify performs an exact redirect_uri comparison against the developer
-    dashboard entry, so never hand-concatenate this URL.
-    """
-    params = {
-        'client_id': spotify_clientId,
-        'response_type': response_type,
-        'redirect_uri': spotify_callbackURL,
-        'scope': spotty_full_permission.strip(),
-    }
-    if state:
-        params['state'] = state
-    return 'https://accounts.spotify.com/authorize?' + urllib.parse.urlencode(params)
-
-
-def authorize_spotify_IMPLICIT():
-    return _spotify_authorize_url('token')
-
-
-def authorize_spotify_REFRESHABLE(state=None):
-    return _spotify_authorize_url('code', state=state)
-def _retrieve_refreshable_token(auth_code, request_id=None):
-    """Exchange authorization code for access and refresh tokens"""
-    url = "https://accounts.spotify.com/api/token"
-    headers = {}
-    data = {}
-
-    # Encode as Base64
-    message = f"{spotify_clientId}:{spotify_clientSecret}"
-    messageBytes = message.encode('ascii')
-    base64Bytes = base64.b64encode(messageBytes)
-    base64Message = base64Bytes.decode('ascii')
-
-    headers['Authorization'] = f"Basic {base64Message}"
-    data['grant_type'] = "authorization_code"
-    data['code'] = auth_code
-    data['redirect_uri'] = spotify_callbackURL
-
-    try:
-        print(f"OAUTH_TOKEN_EXCHANGE_START request_id={request_id} redirect_uri={spotify_callbackURL!r}")
-        r = requests.post(url, headers=headers, data=data)
-        print(f"OAUTH_TOKEN_EXCHANGE_RESPONSE request_id={request_id} status={r.status_code} body={r.text[:500] if r.status_code >= 400 else '[success]'}")
-        r.raise_for_status()
-        response_data = r.json()
-        
-        return {
-            'access_token': response_data['access_token'],
-            'refresh_token': response_data.get('refresh_token'),
-            'expires_in': response_data.get('expires_in', 3600)
-        }
-    except Exception as e:
-        print(f"ERROR: Failed to retrieve Spotify tokens request_id={request_id}: {e}")
-        return None
-
-def _refresh_spotify_token(refresh_token):
-    """Refresh expired Spotify access token"""
-    url = "https://accounts.spotify.com/api/token"
-    headers = {}
-    data = {}
-
-    # Encode as Base64
-    message = f"{spotify_clientId}:{spotify_clientSecret}"
-    messageBytes = message.encode('ascii')
-    base64Bytes = base64.b64encode(messageBytes)
-    base64Message = base64Bytes.decode('ascii')
-
-    headers['Authorization'] = f"Basic {base64Message}"
-    data['grant_type'] = "refresh_token"
-    data['refresh_token'] = refresh_token
-
-    try:
-        r = requests.post(url, headers=headers, data=data)
-        r.raise_for_status()
-        response_data = r.json()
-        
-        return {
-            'access_token': response_data['access_token'],
-            'refresh_token': response_data.get('refresh_token', refresh_token),  # Keep old refresh token if new one not provided
-            'expires_in': response_data.get('expires_in', 3600)
-        }
-    except Exception as e:
-        print(f"ERROR: Failed to refresh Spotify token: {e}")
-        return None
-def _retrieve_genius_token(auth_code):
-    # Exchange authorization code for access token
-    url = "https://api.genius.com/oauth/token"
-    
-    data = {
-        'code': auth_code,
-        'client_id': genius_clientId,
-        'client_secret': genius_clientsECRET,
-        'grant_type': "authorization_code",
-        'redirect_uri': genius_callbackURL
-    }
-    
-    try:
-        r = requests.post(url, data=data)
-        r.raise_for_status()  # Raise exception for bad status codes
-        
-        response_data = r.json()
-        
-        if 'access_token' in response_data:
-            token = response_data['access_token']
-            print(f"SUCCESS: Retrieved Genius token for {flask.request.remote_addr}")
-            return token
-        else:
-            print(f"ERROR: No access_token in Genius response: {response_data}")
-            return None
-            
-    except requests.exceptions.RequestException as e:
-        print(f"ERROR: Request failed for Genius token: {e}")
-        return None
-    except Exception as e:
-        print(f"ERROR: Failed to retrieve Genius token: {e}")
-        return None
-
-# Genius 
-def Oauth_function(base_url, CLIENT_ID, callback, scope, clientsECRET, res_type):
-    # For Genius OAuth, we don't need client_secret in the authorization URL
-    # Only include the required parameters for the authorization step
-    url = f'{base_url}?client_id={CLIENT_ID}&redirect_uri={callback}&scope={scope}&response_type={res_type}'
-    return url
-
-
-
-# SPOTIFFY ENDPOINTS
-def fetch_spotify_data(token, endpoint, request_id=None):
-    response = None
-    try:
-        headers = {"Authorization": "Bearer " + token}
-        response = requests.get(url=endpoint, headers=headers)
-        print(f"SPOTIFY_API_RESPONSE request_id={request_id} endpoint={endpoint} status={response.status_code} body={response.text[:500] if response.status_code >= 400 else '[success]'}")
-        response.raise_for_status()
-        res = response.json()
-        
-        if 'error' in res:
-            error_msg = res['error'].get('message', 'Unknown error')
-            print(f"\n{flask.request.remote_addr} -------\nERROR {error_msg} \n")
-            flask.session['spotify_expired'] = True
-            return f"ERROR"
-        
-        return res
-    except requests.exceptions.RequestException as e:
-        status = getattr(response, 'status_code', 'unknown') if response is not None else 'unknown'
-        body = getattr(response, 'text', '')[:500] if response is not None else ''
-        flask.g.spotify_error_status = status
-        flask.g.spotify_error_body = body
-        print(f"\n{flask.request.remote_addr} -------\nREQUEST ERROR: {str(e)} status={status} body={body} \n")
-        flask.session['spotify_expired'] = True
-        return f"ERROR"
-    except Exception as e:
-        print(f"\n{flask.request.remote_addr} -------\nUNEXPECTED ERROR: {str(e)} \n")
-        flask.session['spotify_expired'] = True
-        return f"ERROR"
-
-
-
-
-
-# grab music groups
-def user_likes(token):
-   
-    # LOOKUP SONGS
-    # headers = {"Authorization": "Bearer " + token}
-    results = fetch_spotify_data(token , 'https://api.spotify.com/v1/me/tracks' )
-    all_songs = []
-    totalLikedSongs = int(results['total'])
-    while results:   
-        for idx, item in enumerate(results['items']):
-            track = item['track']
-            song_info = {
-                "artists"  : [  track['artists'][i]['name']  for i in range(len(track['artists']))  ],
-                "name"  :  track['name'] ,
-                "id"  :  track['id'],
-                "popularity"  :  track['popularity']
-            }
-            all_songs.append( song_info )
-       
-        #next page check
-        if results['next']: 
-            results = fetch_spotify_data(token , results['next'] )
-        else:
-            results = None
-
-    return all_songs
-def user_albums(token):
-    playlistUrl = f"https://api.spotify.com/v1/me/albums"
-    headers = {"Authorization": "Bearer " + token}
-    results = requests.get(url=playlistUrl, headers=headers).json()
-
-    # GRAB ALBUMS
-    all_albums = {}
-    count = 0
-    while results:  
-        for item in results['items']:
-            album = item['album']
-            all_albums[count] =  {
-                'name' : item['album']['name'],
-                "genres" : album['genres'],
-                "id" : album['id'],
-                "popularity" : album['popularity'],
-                "songs" : [],
-            }
-            # ADD SONGS
-            for track in item['album']['tracks']['items']:
-                all_albums[count]['songs'].append(   (track['id'] , track['name']    ,  [i['name'] for i in track['artists']  ]  )   )
-            count += 1
-
-        if results['next']: #next page check
-            results = requests.get(url=results['next'], headers=headers).json()
-        else:
-            results = None
-    
-    
-    
-    return all_albums
-def user_playlists(token):
-    playlistUrl = f"https://api.spotify.com/v1/me/playlists"
-    headers = {"Authorization": "Bearer " + token}
-    results = requests.get(url=playlistUrl, headers=headers).json()
-
-    all_playlists = {}
-    count = 0
-    # EVERY PLAYLIST
-    while results:   
-        for item in results['items']:
-            all_playlists[count] =  {
-                'owner' : item['owner']['display_name'],
-                'name' : item['name'],
-                "description" : item['description'],
-                "id" : item['id'],
-                "songs" : [],
-            }
-
-
+if __name__ == '__main__':
+    application.run(debug=application.config.get('DEBUG', False))

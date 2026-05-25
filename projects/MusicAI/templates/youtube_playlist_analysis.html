@@ -27,10 +27,11 @@
     </div>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <a class="btn" href="/Dashboard">← Dashboard</a>
-      <form method="post" style="margin:0"><input type="hidden" name="refresh" value="1"><input type="hidden" name="max_items" value="{{ playlist.requested_max_items or 100 }}"><button class="btn danger" type="submit">Re-analyze fresh</button></form>
+      <form method="post" style="margin:0;display:flex;gap:8px;flex-wrap:wrap" onsubmit="document.getElementById('loading').style.display='block'"><input type="hidden" name="refresh" value="1"><select name="max_items" class="btn" style="background:#111426;color:white"><option value="25">25 songs</option><option value="50">50 songs</option><option value="100">100 songs</option><option value="150">150 songs</option></select><button class="btn danger" type="submit">Re-analyze fresh</button></form>
     </div>
   </div>
 
+  <div id="loading" class="panel wide" style="display:none;margin-top:16px"><strong>Analyzing playlist…</strong><p class="muted">MusicAI is scanning songs one by one, using cached analyses where possible. This can take a minute for large playlists.</p></div>
   {% set analysis = playlist.analysis %}
   <section class="grid">
     <div class="panel wide">
@@ -40,7 +41,7 @@
         <div class="stat"><strong>{{ analysis.new_analyses }}</strong><span class="muted">new Watson calls</span></div>
         <div class="stat"><strong>{{ analysis.dominant_emotion }}</strong><span class="muted">dominant emotion</span></div>
       </div>
-      <p class="muted" style="margin-top:16px">MusicAI analyzes every playlist item individually, caches each song analysis, then averages the emotion/sentiment signals into this playlist-level read.</p>
+      <p class="muted" style="margin-top:16px">MusicAI analyzes each loaded playlist item individually, caches each song analysis, then averages emotion/sentiment signals into this playlist-level read. Default scans 25 songs to avoid serverless timeout; choose a larger batch after the first pass and cached songs will be reused.</p>
       <div class="tags">{% for tag in analysis.mood_tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
     </div>
 

@@ -58,6 +58,19 @@ test('YouTube connect route redirects to Google OAuth with YouTube scopes', asyn
 
 test('playlist analysis route is protected until YouTube is connected', async ({ request }) => {
   const response = await request.get('/youtube/playlist/PL_TEST/analysis', { maxRedirects: 0 });
-  expect(response.status()).toBe(302);
+  expect([302, 303]).toContain(response.status());
   expect(response.headers()['location']).toBe('/');
+});
+
+test('single song analyzer accepts a song name and shows cached analysis UI', async ({ page, request }) => {
+  const api = await request.post('/api/analyze-song', { data: { query: 'Kendrick Lamar - DNA' } });
+  expect(api.status()).toBe(200);
+  const json = await api.json();
+  expect(json.ok).toBe(true);
+  expect(json.result.title).toContain('Kendrick');
+  await page.goto('/analyze-song');
+  await page.getByPlaceholder(/youtu\.be|Kendrick/i).fill('Kendrick Lamar - DNA');
+  await page.getByRole('button', { name: 'Analyze song' }).click();
+  await expect(page.getByText('Kendrick Lamar - DNA')).toBeVisible();
+  await expect(page.getByText(/Emotion profile/i)).toBeVisible();
 });
