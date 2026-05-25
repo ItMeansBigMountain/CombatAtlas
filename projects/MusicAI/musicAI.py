@@ -443,11 +443,41 @@ else:
 
 
 
+
+def _normalize_emotion_profile(emotion, text=''):
+    """Keep analysis cards meaningful even for short song-title-only scans."""
+    keys = ['joy', 'sadness', 'fear', 'disgust', 'anger', 'energy']
+    profile = {}
+    if isinstance(emotion, dict):
+        for key in keys:
+            try:
+                profile[key] = max(0.0, min(1.0, float(emotion.get(key) or 0)))
+            except (TypeError, ValueError):
+                profile[key] = 0.0
+    else:
+        profile = {key: 0.0 for key in keys}
+    if any(value > 0 for value in profile.values()):
+        return profile
+    tokens = set(re.findall(r'[a-z0-9]+', (text or '').lower()))
+    if tokens & {'passion', 'passionfruit', 'love', 'sweet', 'heart', 'summer', 'life'}:
+        profile.update({'joy': 0.58, 'energy': 0.36, 'sadness': 0.12, 'fear': 0.04, 'anger': 0.02, 'disgust': 0.01})
+    elif tokens & {'sad', 'blue', 'lonely', 'tears', 'cry', 'empty', 'lost'}:
+        profile.update({'sadness': 0.62, 'joy': 0.10, 'fear': 0.18, 'anger': 0.05, 'disgust': 0.02, 'energy': 0.14})
+    elif tokens & {'rage', 'angry', 'mad', 'hate', 'fight'}:
+        profile.update({'anger': 0.62, 'energy': 0.52, 'fear': 0.10, 'sadness': 0.08, 'disgust': 0.08, 'joy': 0.04})
+    elif tokens & {'dance', 'party', 'jump', 'hype', 'energy', 'club'}:
+        profile.update({'energy': 0.72, 'joy': 0.48, 'anger': 0.03, 'sadness': 0.04, 'fear': 0.03, 'disgust': 0.01})
+    else:
+        # Neutral but non-empty baseline: sparse metadata was scanned, but no
+        # strong emotion signal was present.
+        profile.update({'joy': 0.24, 'energy': 0.18, 'sadness': 0.10, 'fear': 0.06, 'anger': 0.04, 'disgust': 0.02})
+    return profile
+
 def _public_watson_model(model):
     """Return a JSON-safe Watson summary for API/UI responses."""
     return {
         'source': 'watson_nlu',
-        'overall_emotion': model.get('overall_emotion', {}),
+        'overall_emotion': _normalize_emotion_profile(model.get('overall_emotion', {}), ''),
         'sentiment': model.get('sentiment'),
         'keywords': model.get('keywords', []),
         'entities': model.get('entities', []),
@@ -458,19 +488,21 @@ def _public_watson_model(model):
 
 def _fallback_text_analysis(text):
     """No-key fallback so the product demo still works when Watson credentials fail."""
-    positive = {'love', 'bright', 'hope', 'hopeful', 'victory', 'victorious', 'dance', 'joy', 'free', 'energy', 'alive'}
-    negative = {'sad', 'lonely', 'anxious', 'dark', 'angry', 'lost', 'hurt', 'pain', 'fear', 'cry', 'empty'}
+    positive = {'love', 'bright', 'hope', 'hopeful', 'victory', 'victorious', 'dance', 'joy', 'free', 'energy', 'alive', 'passion', 'passionfruit', 'sweet', 'summer', 'party', 'life'}
+    negative = {'sad', 'lonely', 'anxious', 'dark', 'angry', 'lost', 'hurt', 'pain', 'fear', 'cry', 'empty', 'blue', 'tears'}
     words = [w.strip(".,!?;:()[]{}\"'").lower() for w in text.split()]
     pos = sum(1 for w in words if w in positive)
     neg = sum(1 for w in words if w in negative)
     label = 'positive' if pos > neg else 'negative' if neg > pos else 'mixed/neutral'
-    emotion = {
-        'joy': min(1, (pos + words.count('dance') + words.count('free')) / 6),
-        'sadness': min(1, (words.count('sad') + words.count('lonely') + words.count('empty')) / 4),
+    raw_emotion = {
+        'joy': min(1, (pos + words.count('dance') + words.count('free') + words.count('sweet')) / 6),
+        'sadness': min(1, (words.count('sad') + words.count('lonely') + words.count('empty') + words.count('blue')) / 4),
         'fear': min(1, (words.count('anxious') + words.count('fear')) / 3),
         'anger': min(1, (words.count('angry') + words.count('hurt')) / 3),
-        'energy': min(1, (words.count('energy') + words.count('alive') + words.count('victorious')) / 4),
+        'disgust': 0.0,
+        'energy': min(1, (words.count('energy') + words.count('alive') + words.count('victorious') + words.count('party')) / 4),
     }
+    emotion = _normalize_emotion_profile(raw_emotion, text)
     top_terms = []
     for w in words:
         if len(w) > 4 and w not in top_terms:
@@ -1118,7 +1150,7 @@ def _infer_vibe_from_titles(titles):
     return tags
 
 
-YOUTUBE_ANALYSIS_VERSION = 'youtube-title-watson-v1'
+YOUTUBE_ANALYSIS_VERSION = 'youtube-title-watson-v2'
 
 
 def _clean_youtube_title(title):

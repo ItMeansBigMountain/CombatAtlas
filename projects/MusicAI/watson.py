@@ -104,14 +104,17 @@ def ai_to_Text(message):
   # MAKE A DICTIONARY THAT HOLDS THE AVERAGES OF THE OUTPUT
   # after saving the averages, refer to the message_Dictionary to get a total avg of all messages user sent
 
-  emotion = response['emotion']['document']['emotion'] #dict
-  entities = response['entities'] #list
-  keywords = response['keywords'] #list
-  relations = response['relations'] #list
-  semantic_roles = response['semantic_roles'] #list
-  sentiment = response['sentiment'] #dict
-  concepts = response['concepts'] #list
-  categories = response['categories'] #list
+  emotion = response.get('emotion', {}).get('document', {}).get('emotion', {}) #dict
+  entities = response.get('entities') or [] #list
+  keywords = response.get('keywords') or [] #list
+  relations = response.get('relations') or [] #list
+  # Watson often omits semantic_roles/categories for short song-title strings.
+  # Treat those sections as optional so short-title analysis still returns
+  # sentiment/emotion instead of falling all the way back to local zeros.
+  semantic_roles = response.get('semantic_roles') or [] #list
+  sentiment = response.get('sentiment') or {} #dict
+  concepts = response.get('concepts') or [] #list
+  categories = response.get('categories') or [] #list
 
 
 
@@ -129,11 +132,11 @@ def ai_to_Text(message):
   model = {
     'overall_emotion' : emotion,
     'relations' : clean_relations,
-    'sentiment' :  sentiment['document']['label']  ,
-    'entities' : [  (  i['text'] , i['type']  , i['sentiment']['label']  ) for i in entities  ],
-    'keywords' : [  (  i['text'] , i['sentiment']['label']   ) for i in keywords  ],
-    'subjects' : [  (  i['subject']['text'] , i['action']['verb']['tense'] ) for i in semantic_roles  ],
-    'concepts' : [  i['label']  for i in categories  ],
+    'sentiment' :  sentiment.get('document', {}).get('label', 'neutral')  ,
+    'entities' : [  (  i.get('text') , i.get('type')  , (i.get('sentiment') or {}).get('label', 'neutral')  ) for i in entities  ],
+    'keywords' : [  (  i.get('text') , (i.get('sentiment') or {}).get('label', 'neutral')   ) for i in keywords  ],
+    'subjects' : [  (  (i.get('subject') or {}).get('text') , ((i.get('action') or {}).get('verb') or {}).get('tense', 'unknown') ) for i in semantic_roles  ],
+    'concepts' : [  i.get('label')  for i in (categories or concepts) if i.get('label')  ],
   }
 
 
