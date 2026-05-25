@@ -1,0 +1,1722 @@
+{
+  "session_id": "20260522_235654_c580c5",
+  "model": "gpt-5.5",
+  "base_url": "https://chatgpt.com/backend-api/codex",
+  "platform": "discord",
+  "session_start": "2026-05-22T23:54:45.208929",
+  "last_updated": "2026-05-23T02:20:07.179878",
+  "system_prompt": "You are Hermes Agent, an intelligent AI assistant created by Nous Research. You are helpful, knowledgeable, and direct. You assist users with a wide range of tasks including answering questions, writing and editing code, analyzing information, creative work, and executing actions via your tools. You communicate clearly, admit uncertainty when appropriate, and prioritize being genuinely useful over being verbose unless otherwise directed below. Be targeted and efficient in your exploration and investigations.\n\nIf the user asks about configuring, setting up, or using Hermes Agent itself, load the `hermes-agent` skill with skill_view(name='hermes-agent') before answering. Docs: https://hermes-agent.nousresearch.com/docs\n\nYou have persistent memory across sessions. Save durable facts using the memory tool: user preferences, environment details, tool quirks, and stable conventions. Memory is injected into every turn, so keep it compact and focused on facts that will still matter later.\nPrioritize what reduces future user steering — the most valuable memory is one that prevents the user from having to correct or remind you again. User preferences and recurring corrections matter more than procedural task details.\nDo NOT save task progress, session outcomes, completed-work logs, or temporary TODO state to memory; use session_search to recall those from past transcripts. Specifically: do not record PR numbers, issue numbers, commit SHAs, 'fixed bug X', 'submitted PR Y', 'Phase N done', file counts, or any artifact that will be stale in 7 days. If a fact will be stale in a week, it does not belong in memory. If you've discovered a new way to do something, solved a problem that could be necessary later, save it as a skill with the skill tool.\nWrite memories as declarative facts, not instructions to yourself. 'User prefers concise responses' ✓ — 'Always respond concisely' ✗. 'Project uses pytest with xdist' ✓ — 'Run tests with pytest -n 4' ✗. Imperative phrasing gets re-read as a directive in later sessions and can cause repeated work or override the user's current request. Procedures and workflows belong in skills, not memory. When the user references something from a past conversation or you suspect relevant cross-session context exists, use session_search to recall it before asking them to repeat themselves. After completing a complex task (5+ tool calls), fixing a tricky error, or discovering a non-trivial workflow, save the approach as a skill with skill_manage so you can reuse it next time.\nWhen using a skill and finding it outdated, incomplete, or wrong, patch it immediately with skill_manage(action='patch') — don't wait to be asked. Skills that aren't maintained become liabilities.\n\n# Tool-use enforcement\nYou MUST use your tools to take action — do not describe what you would do or plan to do without actually doing it. When you say you will perform an action (e.g. 'I will run the tests', 'Let me check the file', 'I will create the project'), you MUST immediately make the corresponding tool call in the same response. Never end your turn with a promise of future action — execute it now.\nKeep working until the task is actually complete. Do not stop with a summary of what you plan to do next time. If you have tools available that can accomplish the task, use them instead of telling the user what you would do.\nEvery response should either (a) contain tool calls that make progress, or (b) deliver a final result to the user. Responses that only describe intentions without acting are not acceptable.\n\n# Execution discipline\n<tool_persistence>\n- Use tools whenever they improve correctness, completeness, or grounding.\n- Do not stop early when another tool call would materially improve the result.\n- If a tool returns empty or partial results, retry with a different query or strategy before giving up.\n- Keep calling tools until: (1) the task is complete, AND (2) you have verified the result.\n</tool_persistence>\n\n<mandatory_tool_use>\nNEVER answer these from memory or mental computation — ALWAYS use a tool:\n- Arithmetic, math, calculations → use terminal or execute_code\n- Hashes, encodings, checksums → use terminal (e.g. sha256sum, base64)\n- Current time, date, timezone → use terminal (e.g. date)\n- System state: OS, CPU, memory, disk, ports, processes → use terminal\n- File contents, sizes, line counts → use read_file, search_files, or terminal\n- Git history, branches, diffs → use terminal\n- Current facts (weather, news, versions) → use web_search\nYour memory and user profile describe the USER, not the system you are running on. The execution environment may differ from what the user profile says about their personal setup.\n</mandatory_tool_use>\n\n<act_dont_ask>\nWhen a question has an obvious default interpretation, act on it immediately instead of asking for clarification. Examples:\n- 'Is port 443 open?' → check THIS machine (don't ask 'open where?')\n- 'What OS am I running?' → check the live system (don't use user profile)\n- 'What time is it?' → run `date` (don't guess)\nOnly ask for clarification when the ambiguity genuinely changes what tool you would call.\n</act_dont_ask>\n\n<prerequisite_checks>\n- Before taking an action, check whether prerequisite discovery, lookup, or context-gathering steps are needed.\n- Do not skip prerequisite steps just because the final action seems obvious.\n- If a task depends on output from a prior step, resolve that dependency first.\n</prerequisite_checks>\n\n<verification>\nBefore finalizing your response:\n- Correctness: does the output satisfy every stated requirement?\n- Grounding: are factual claims backed by tool outputs or provided context?\n- Formatting: does the output match the requested format or schema?\n- Safety: if the next step has side effects (file writes, commands, API calls), confirm scope before executing.\n</verification>\n\n<missing_context>\n- If required context is missing, do NOT guess or hallucinate an answer.\n- Use the appropriate lookup tool when missing information is retrievable (search_files, web_search, read_file, etc.).\n- Ask a clarifying question only when the information cannot be retrieved by tools.\n- If you must proceed with incomplete information, label assumptions explicitly.\n</missing_context>\n\n## Skills (mandatory)\nBefore replying, scan the skills below. If a skill matches or is even partially relevant to your task, you MUST load it with skill_view(name) and follow its instructions. Err on the side of loading — it is always better to have context you don't need than to miss critical steps, pitfalls, or established workflows. Skills contain specialized knowledge — API endpoints, tool-specific commands, and proven workflows that outperform general-purpose approaches. Load the skill even if you think you could handle the task with basic tools like web_search or terminal. Skills also encode the user's preferred approach, conventions, and quality standards for tasks like code review, planning, and testing — load them even for tasks you already know how to do, because the skill defines how it should be done here.\nWhenever the user asks you to configure, set up, install, enable, disable, modify, or troubleshoot Hermes Agent itself — its CLI, config, models, providers, tools, skills, voice, gateway, plugins, or any feature — load the `hermes-agent` skill first. It has the actual commands (e.g. `hermes config set …`, `hermes tools`, `hermes setup`) so you don't have to guess or invent workarounds.\nIf a skill has issues, fix it with skill_manage(action='patch').\nAfter difficult/iterative tasks, offer to save as a skill. If a skill you loaded was missing steps, had wrong commands, or needed pitfalls you discovered, update it before finishing.\n\n<available_skills>\n  autonomous-ai-agents: Skills for spawning and orchestrating autonomous AI coding agents and multi-agent workflows — running independent agent processes, delegating tasks, and coordinating parallel workstreams.\n    - claude-code: Delegate coding to Claude Code CLI (features, PRs).\n    - codex: Delegate coding to OpenAI Codex CLI (features, PRs).\n    - hermes-agent: Configure, extend, or contribute to Hermes Agent.\n    - kanban-codex-lane: Use when a Hermes Kanban worker wants to run Codex CLI as...\n    - opencode: Delegate coding to OpenCode CLI (features, PR review).\n  creative: Creative content generation — ASCII art, hand-drawn style diagrams, and visual design tools.\n    - architecture-diagram: Dark-themed SVG architecture/cloud/infra diagrams as HTML.\n    - ascii-art: ASCII art: pyfiglet, cowsay, boxes, image-to-ascii.\n    - ascii-video: ASCII video: convert video/audio to colored ASCII MP4/GIF.\n    - baoyu-article-illustrator: Article illustrations: type × style × palette consistency.\n    - baoyu-comic: Knowledge comics (知识漫画): educational, biography, tutorial.\n    - baoyu-infographic: Infographics: 21 layouts x 21 styles (信息图, 可视化).\n    - claude-design: Design one-off HTML artifacts (landing, deck, prototype).\n    - comfyui: Generate images, video, and audio with ComfyUI — install,...\n    - design-md: Author/validate/export Google's DESIGN.md token spec files.\n    - excalidraw: Hand-drawn Excalidraw JSON diagrams (arch, flow, seq).\n    - humanizer: Humanize text: strip AI-isms and add real voice.\n    - ideation: Generate project ideas via creative constraints.\n    - manim-video: Manim CE animations: 3Blue1Brown math/algo videos.\n    - p5js: p5.js sketches: gen art, shaders, interactive, 3D.\n    - pixel-art: Pixel art w/ era palettes (NES, Game Boy, PICO-8).\n    - popular-web-designs: 54 real design systems (Stripe, Linear, Vercel) as HTML/CSS.\n    - pretext: Use when building creative browser demos with @chenglou/p...\n    - sketch: Throwaway HTML mockups: 2-3 design variants to compare.\n    - songwriting-and-ai-music: Songwriting craft and Suno AI music prompts.\n    - touchdesigner-mcp: Control a running TouchDesigner instance via twozero MCP ...\n  data-science: Skills for data science workflows — interactive exploration, Jupyter notebooks, data analysis, and visualization.\n    - jupyter-live-kernel: Iterative Python via live Jupyter kernel (hamelnb).\n  devops:\n    - cloud-provider-cli-setup: Use when installing, configuring, or verifying cloud prov...\n    - kanban-orchestrator: Decomposition playbook + anti-temptation rules for an orc...\n    - kanban-worker: Pitfalls, examples, and edge cases for Hermes Kanban work...\n    - vercel-app-deployments: Triage, deploy, and manually verify Vercel apps from exis...\n    - webhook-subscriptions: Webhook subscriptions: event-driven agent runs.\n  dogfood:\n    - dogfood: Exploratory QA of web apps: find bugs, evidence, reports.\n  email: Skills for sending, receiving, searching, and managing email from the terminal.\n    - himalaya: Himalaya CLI: IMAP/SMTP email from terminal.\n  gaming: Skills for setting up, configuring, and managing game servers, modpacks, and gaming-related infrastructure.\n    - minecraft-modpack-server: Host modded Minecraft servers (CurseForge, Modrinth).\n    - pokemon-player: Play Pokemon via headless emulator + RAM reads.\n  github: GitHub workflow skills for managing repositories, pull requests, code reviews, issues, and CI/CD pipelines using the gh CLI and git via terminal.\n    - codebase-inspection: Inspect codebases w/ pygount: LOC, languages, ratios.\n    - github-auth: GitHub auth setup: HTTPS tokens, SSH keys, gh CLI login.\n    - github-code-review: Review PRs: diffs, inline comments via gh or REST.\n    - github-issues: Create, triage, label, assign GitHub issues via gh or REST.\n    - github-pr-workflow: GitHub PR lifecycle: branch, commit, open, CI, merge.\n    - github-repo-management: Clone/create/fork repos; manage remotes, releases.\n  mcp: Skills for working with MCP (Model Context Protocol) servers, tools, and integrations. Documents the built-in native MCP client — configure servers in config.yaml for automatic tool discovery.\n    - native-mcp: MCP client: connect servers, register tools (stdio/HTTP).\n  media: Skills for working with media content — YouTube transcripts, GIF search, music generation, and audio visualization.\n    - gif-search: Search/download GIFs from Tenor via curl + jq.\n    - heartmula: HeartMuLa: Suno-like song generation from lyrics + tags.\n    - songsee: Audio spectrograms/features (mel, chroma, MFCC) via CLI.\n    - spotify: Spotify: play, search, queue, manage playlists and devices.\n    - youtube-content: YouTube transcripts to summaries, threads, blogs.\n  mlops: Knowledge and Tools for Machine Learning Operations - tools and frameworks for training, fine-tuning, deploying, and optimizing ML/AI models\n    - huggingface-hub: HuggingFace hf CLI: search/download/upload models, datasets.\n  mlops/evaluation: Model evaluation benchmarks, experiment tracking, data curation, tokenizers, and interpretability tools.\n    - evaluating-llms-harness: lm-eval-harness: benchmark LLMs (MMLU, GSM8K, etc.).\n    - weights-and-biases: W&B: log ML experiments, sweeps, model registry, dashboards.\n  mlops/inference: Model serving, quantization (GGUF/GPTQ), structured output, inference optimization, and model surgery tools for deploying and running LLMs.\n    - llama-cpp: llama.cpp local GGUF inference + HF Hub model discovery.\n    - obliteratus: OBLITERATUS: abliterate LLM refusals (diff-in-means).\n    - outlines: Outlines: structured JSON/regex/Pydantic LLM generation.\n    - serving-llms-vllm: vLLM: high-throughput LLM serving, OpenAI API, quantization.\n  mlops/models: Specific model architectures and tools — image segmentation (Segment Anything / SAM) and audio generation (AudioCraft / MusicGen). Additional model skills (CLIP, Stable Diffusion, Whisper, LLaVA) are available as optional skills.\n    - audiocraft-audio-generation: AudioCraft: MusicGen text-to-music, AudioGen text-to-sound.\n    - segment-anything-model: SAM: zero-shot image segmentation via points, boxes, masks.\n  mlops/research: ML research frameworks for building and optimizing AI systems with declarative programming.\n    - dspy: DSPy: declarative LM programs, auto-optimize prompts, RAG.\n  mlops/training: Fine-tuning, RLHF/DPO/GRPO training, distributed training frameworks, and optimization tools for training LLMs and other models.\n    - axolotl: Axolotl: YAML LLM fine-tuning (LoRA, DPO, GRPO).\n    - fine-tuning-with-trl: TRL: SFT, DPO, PPO, GRPO, reward modeling for LLM RLHF.\n    - unsloth: Unsloth: 2-5x faster LoRA/QLoRA fine-tuning, less VRAM.\n  note-taking: Note taking skills, to save information, assist with research, and collab on multi-session planning and information sharing.\n    - obsidian: Read, search, create, and edit notes in the Obsidian vault.\n  productivity: Skills for document creation, presentations, spreadsheets, and other productivity workflows.\n    - airtable: Airtable REST API via curl. Records CRUD, filters, upserts.\n    - google-workspace: Gmail, Calendar, Drive, Docs, Sheets via gws CLI or Python.\n    - linear: Linear: manage issues, projects, teams via GraphQL + curl.\n    - maps: Geocode, POIs, routes, timezones via OpenStreetMap/OSRM.\n    - nano-pdf: Edit PDF text/typos/titles via nano-pdf CLI (NL prompts).\n    - notion: Notion API + ntn CLI: pages, databases, markdown, Workers.\n    - ocr-and-documents: Extract text from PDFs/scans (pymupdf, marker-pdf).\n    - operator-morning-reports: Proactive daily operator-style morning reports: local pul...\n    - powerpoint: Create, read, edit .pptx decks, slides, notes, templates.\n    - teams-meeting-pipeline: Operate the Teams meeting summary pipeline via Hermes CLI...\n  red-teaming:\n    - godmode: Jailbreak LLMs: Parseltongue, GODMODE, ULTRAPLINIAN.\n  research: Skills for academic research, paper discovery, literature review, domain reconnaissance, market data, content monitoring, and scientific knowledge retrieval.\n    - arxiv: Search arXiv papers by keyword, author, category, or ID.\n    - blogwatcher: Monitor blogs and RSS/Atom feeds via blogwatcher-cli tool.\n    - llm-wiki: Karpathy's LLM Wiki: build/query interlinked markdown KB.\n    - polymarket: Query Polymarket: markets, prices, orderbooks, history.\n  smart-home: Skills for controlling smart home devices — lights, switches, sensors, and home automation systems.\n    - openhue: Control Philips Hue lights, scenes, rooms via OpenHue CLI.\n  social-media: Skills for interacting with social platforms and social-media workflows — posting, reading, monitoring, and account operations.\n    - xurl: X/Twitter via xurl CLI: post, search, DM, media, v2 API.\n  software-development:\n    - client-editable-django-sites: Build dynamic, client-editable Django websites with admin...\n    - collectible-card-scanner-apps: Use when building or improving collectible card scanner, ...\n    - debugging-hermes-tui-commands: Debug Hermes TUI slash commands: Python, gateway, Ink UI.\n    - hermes-agent-skill-authoring: Author in-repo SKILL.md: frontmatter, validator, structure.\n    - node-inspect-debugger: Debug Node.js via --inspect + Chrome DevTools Protocol CLI.\n    - plan: Plan mode: write markdown plan to .hermes/plans/, no exec.\n    - python-debugpy: Debug Python: pdb REPL + debugpy remote (DAP).\n    - requesting-code-review: Pre-commit review: security scan, quality gates, auto-fix.\n    - spike: Throwaway experiments to validate an idea before build.\n    - subagent-driven-development: Execute plans via delegate_task subagents (2-stage review).\n    - systematic-debugging: 4-phase root cause debugging: understand bugs before fixing.\n    - test-driven-development: TDD: enforce RED-GREEN-REFACTOR, tests before code.\n    - writing-plans: Write implementation plans: bite-sized tasks, paths, code.\n  yuanbao:\n    - yuanbao: Yuanbao (元宝) groups: @mention users, query info/members.\n</available_skills>\n\nOnly proceed without loading a skill if genuinely none are relevant to the task.\n\nHost: Linux (6.8.0-111-generic)\nUser home directory: /opt/data\nCurrent working directory: /opt/hermes\n\nYou are in a Discord server or group chat communicating with your user. You can send media files natively: include MEDIA:/absolute/path/to/file in your response. Images (.png, .jpg, .webp) are sent as photo attachments, audio as file attachments. You can also include image URLs in markdown format ![alt](url) and they will be sent as attachments.\n\n══════════════════════════════════════════════\nMEMORY (your personal notes) [94% — 2,080/2,200 chars]\n══════════════════════════════════════════════\nThe user's primary Hermes workspace repo is /opt/data/HeRmEz, cloned from https://github.com/ItMeansBigMountain/HeRmEz.git. Future project folders should be created under /opt/data/HeRmEz/projects, and Hermes config terminal.cwd is set to /opt/data/HeRmEz.\n§\nA daily HeRmEz backup cron job exists: job_id cfcea697da5c, name \"Daily HeRmEz GitHub backup\", schedule \"0 3 * * *\", script backup_hermez.sh in /opt/data/scripts, no_agent true, backing up /opt/data into /opt/data/HeRmEz/.hermes and pushing to origin/main.\n§\nHermes Kanban board for the user's main workspace is slug \"hermez\" (display name \"HeRmEz Workspace\"), DB path /opt/data/kanban/boards/hermez/kanban.db, active-board file /opt/data/kanban/current set to hermez. Current known assignee profile is default.\n§\nGoogle Workspace service account credentials are stored at /opt/data/google_service_account.json with env GOOGLE_APPLICATION_CREDENTIALS=/opt/data/google_service_account.json; service account email is ai-service@gen-lang-client-0835809364.iam.gserviceaccount.com. Use the service-account route for Calendar automation unless user asks for personal OAuth.\n§\nCox Elementary PTA dynamic Django site is deployed at https://cox-elementary-pta.onrender.com from repo /opt/data/HeRmEz/projects/cox-elementary-pta.\n§\nCox Elementary PTA project backup is stored as a Git bundle at /opt/data/HeRmEz/projects/_backups/cox-elementary-pta/cox-elementary-pta.bundle with restore notes in that folder's README.md.\n§\nHermes external memory provider is configured as holographic in /opt/data/config.yaml, with plugin config under plugins.hermes-memory-store using $HERMES_HOME/memory_store.db, auto_extract false, default_trust 0.5, hrr_dim 1024.\n§\nstockNews legacy project is deployed with frontend at https://stocknews-sentiment.vercel.app and API at https://stocknews-api.vercel.app from /opt/data/HeRmEz/projects/stockNews. Demo uses localStorage portfolio data + Yahoo RSS heuristic sentiment. IBM Cloud CLI v2.43.0 is at /opt/data/bin/ibmcloud; NLU API key JSON is stored at /opt/data/credentials/ibm-nlu-api-key.json.\n\n══════════════════════════════════════════════\nUSER PROFILE (who the user is) [92% — 1,277/1,375 chars]\n══════════════════════════════════════════════\nUser prefers Discord bot conversations to be natural channel back-and-forth rather than automatic per-conversation threads.\n§\nUser wants apps/projects created with Hermes to live as project directories under /opt/data/HeRmEz/projects in the configured Git-backed workspace.\n§\nUser prefers client website projects to be deployed live first with Git-based auto-deploys, then handle Stripe/payment setup and custom domain attachment afterward.\n§\nUser prefers client/community websites to use psychology-driven, mobile-first UX: cognitive ease, low-friction actions, strong visual hierarchy, social proof, app-like mobile interactions, and warm community-centered copy.\n§\nUser wants project backups to live under /opt/data/HeRmEz/projects, specifically /opt/data/HeRmEz/projects/_backups for backup artifacts, rather than under /opt/data/HeRmEz/.hermes.\n§\nUser values rigorous, momentum-oriented operator work: first-principles/leverage thinking, ReAct loops, root-cause/risk analysis, and capability/system-oriented planning over project-oriented planning; projects are temporary execution vehicles to complete and move on from.\n§\nUser wants collectible-card scanner products to become live/recorded video AR overlays that track cards and compare prices across multiple platforms.\n\n# Holographic Memory\nActive. 12 facts stored with entity resolution and trust scoring.\nUse fact_store to search, probe entities, reason across entities, or add facts.\nUse fact_feedback to rate facts after using them (trains trust scores).\n\nConversation started: Saturday, May 23, 2026 02:19 AM\nModel: gpt-5.5\nProvider: openai-codex",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_back",
+        "description": "Navigate back to the previous page in browser history. Requires browser_navigate to be called first.",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_click",
+        "description": "Click on an element identified by its ref ID from the snapshot (e.g., '@e5'). The ref IDs are shown in square brackets in the snapshot output. Requires browser_navigate and browser_snapshot to be called first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ref": {
+              "type": "string",
+              "description": "The element reference from the snapshot (e.g., '@e5', '@e12')"
+            }
+          },
+          "required": [
+            "ref"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_console",
+        "description": "Get browser console output and JavaScript errors from the current page. Returns console.log/warn/error/info messages and uncaught JS exceptions. Use this to detect silent JavaScript errors, failed API calls, and application warnings. Requires browser_navigate to be called first. When 'expression' is provided, evaluates JavaScript in the page context and returns the result — use this for DOM inspection, reading page state, or extracting data programmatically.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "clear": {
+              "type": "boolean",
+              "default": false,
+              "description": "If true, clear the message buffers after reading"
+            },
+            "expression": {
+              "type": "string",
+              "description": "JavaScript expression to evaluate in the page context. Runs in the browser like DevTools console — full access to DOM, window, document. Return values are serialized to JSON. Example: 'document.title' or 'document.querySelectorAll(\"a\").length'"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_get_images",
+        "description": "Get a list of all images on the current page with their URLs and alt text. Useful for finding images to analyze with the vision tool. Requires browser_navigate to be called first.",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_navigate",
+        "description": "Navigate to a URL in the browser. Initializes the session and loads the page. Must be called before other browser tools. For plain-text endpoints — URLs ending in .md, .txt, .json, .yaml, .yml, .csv, .xml, raw.githubusercontent.com, or any documented API endpoint — prefer curl via the terminal tool or web_extract; the browser stack is overkill and much slower for these. Use browser tools when you need to interact with a page (click, fill forms, dynamic content). Returns a compact page snapshot with interactive elements and ref IDs — no need to call browser_snapshot separately after navigating.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "The URL to navigate to (e.g., 'https://example.com')"
+            }
+          },
+          "required": [
+            "url"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_press",
+        "description": "Press a keyboard key. Useful for submitting forms (Enter), navigating (Tab), or keyboard shortcuts. Requires browser_navigate to be called first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "description": "Key to press (e.g., 'Enter', 'Tab', 'Escape', 'ArrowDown')"
+            }
+          },
+          "required": [
+            "key"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_scroll",
+        "description": "Scroll the page in a direction. Use this to reveal more content that may be below or above the current viewport. Requires browser_navigate to be called first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "direction": {
+              "type": "string",
+              "enum": [
+                "up",
+                "down"
+              ],
+              "description": "Direction to scroll"
+            }
+          },
+          "required": [
+            "direction"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_snapshot",
+        "description": "Get a text-based snapshot of the current page's accessibility tree. Returns interactive elements with ref IDs (like @e1, @e2) for browser_click and browser_type. full=false (default): compact view with interactive elements. full=true: complete page content. Snapshots over 8000 chars are truncated or LLM-summarized. Requires browser_navigate first. Note: browser_navigate already returns a compact snapshot — use this to refresh after interactions that change the page, or with full=true for complete content.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "full": {
+              "type": "boolean",
+              "description": "If true, returns complete page content. If false (default), returns compact view with interactive elements only.",
+              "default": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_type",
+        "description": "Type text into an input field identified by its ref ID. Clears the field first, then types the new text. Requires browser_navigate and browser_snapshot to be called first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ref": {
+              "type": "string",
+              "description": "The element reference from the snapshot (e.g., '@e3')"
+            },
+            "text": {
+              "type": "string",
+              "description": "The text to type into the field"
+            }
+          },
+          "required": [
+            "ref",
+            "text"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_vision",
+        "description": "Take a screenshot of the current page and analyze it with vision AI. Use this when you need to visually understand what's on the page - especially useful for CAPTCHAs, visual verification challenges, complex layouts, or when the text snapshot doesn't capture important visual information. Returns both the AI analysis and a screenshot_path that you can share with the user by including MEDIA:<screenshot_path> in your response. Requires browser_navigate to be called first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "question": {
+              "type": "string",
+              "description": "What you want to know about the page visually. Be specific about what you're looking for."
+            },
+            "annotate": {
+              "type": "boolean",
+              "default": false,
+              "description": "If true, overlay numbered [N] labels on interactive elements. Each [N] maps to ref @eN for subsequent browser commands. Useful for QA and spatial reasoning about page layout."
+            }
+          },
+          "required": [
+            "question"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "clarify",
+        "description": "Ask the user a question when you need clarification, feedback, or a decision before proceeding. Supports two modes:\n\n1. **Multiple choice** — provide up to 4 choices. The user picks one or types their own answer via a 5th 'Other' option.\n2. **Open-ended** — omit choices entirely. The user types a free-form response.\n\nUse this tool when:\n- The task is ambiguous and you need the user to choose an approach\n- You want post-task feedback ('How did that work out?')\n- You want to offer to save a skill or update memory\n- A decision has meaningful trade-offs the user should weigh in on\n\nDo NOT use this tool for simple yes/no confirmation of dangerous commands (the terminal tool handles that). Prefer making a reasonable default choice yourself when the decision is low-stakes.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "question": {
+              "type": "string",
+              "description": "The question to present to the user."
+            },
+            "choices": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 4,
+              "description": "Up to 4 answer choices. Omit this parameter entirely to ask an open-ended question. When provided, the UI automatically appends an 'Other (type your answer)' option."
+            }
+          },
+          "required": [
+            "question"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "cronjob",
+        "description": "Manage scheduled cron jobs with a single compressed tool.\n\nUse action='create' to schedule a new job from a prompt or one or more skills.\nUse action='list' to inspect jobs.\nUse action='update', 'pause', 'resume', 'remove', or 'run' to manage an existing job.\n\nTo stop a job the user no longer wants: first action='list' to find the job_id, then action='remove' with that job_id. Never guess job IDs — always list first.\n\nJobs run in a fresh session with no current-chat context, so prompts must be self-contained.\nIf skills are provided on create, the future cron run loads those skills in order, then follows the prompt as the task instruction.\nOn update, passing skills=[] clears attached skills.\n\nNOTE: The agent's final response is auto-delivered to the target. Put the primary\nuser-facing content in the final response. Cron jobs run autonomously with no user\npresent — they cannot ask questions or request clarification.\n\nImportant safety rule: cron-run sessions should not recursively schedule more cron jobs.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "One of: create, list, update, pause, resume, remove, run"
+            },
+            "job_id": {
+              "type": "string",
+              "description": "Required for update/pause/resume/remove/run"
+            },
+            "prompt": {
+              "type": "string",
+              "description": "For create: the full self-contained prompt. If skills are also provided, this becomes the task instruction paired with those skills."
+            },
+            "schedule": {
+              "type": "string",
+              "description": "For create/update: '30m', 'every 2h', '0 9 * * *', or ISO timestamp"
+            },
+            "name": {
+              "type": "string",
+              "description": "Optional human-friendly name"
+            },
+            "repeat": {
+              "type": "integer",
+              "description": "Optional repeat count. Omit for defaults (once for one-shot, forever for recurring)."
+            },
+            "deliver": {
+              "type": "string",
+              "description": "Omit this parameter to auto-deliver back to the current chat and topic (recommended). Auto-detection preserves thread/topic context. Only set explicitly when the user asks to deliver somewhere OTHER than the current conversation. Values: 'origin' (same as omitting), 'local' (no delivery, save only), 'all' (fan out to every connected home channel), or platform:chat_id:thread_id for a specific destination. Combine with comma: 'origin,all' delivers to the origin plus every other connected channel. Examples: 'telegram:-1001234567890:17585', 'discord:#engineering', 'sms:+15551234567', 'all'. WARNING: 'platform:chat_id' without :thread_id loses topic targeting. 'all' resolves at fire time, so a job created before a channel was wired up will pick it up automatically once connected."
+            },
+            "skills": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Optional ordered list of skill names to load before executing the cron prompt. On update, pass an empty array to clear attached skills."
+            },
+            "model": {
+              "type": "object",
+              "description": "Optional per-job model override. If provider is omitted, the current main provider is pinned at creation time so the job stays stable.",
+              "properties": {
+                "provider": {
+                  "type": "string",
+                  "description": "Provider name (e.g. 'openrouter', 'anthropic', or 'custom:<name>' for a provider defined in custom_providers config — always include the ':<name>' suffix, never pass the bare 'custom'). Omit to use and pin the current provider."
+                },
+                "model": {
+                  "type": "string",
+                  "description": "Model name (e.g. 'anthropic/claude-sonnet-4', 'claude-sonnet-4')"
+                }
+              },
+              "required": [
+                "model"
+              ]
+            },
+            "script": {
+              "type": "string",
+              "description": "Optional path to a script that runs each tick. In the default mode its stdout is injected into the agent's prompt as context (data-collection / change-detection pattern). With no_agent=True, the script IS the job and its stdout is delivered verbatim (classic watchdog pattern). Relative paths resolve under ~/./scripts/. ``.sh``/``.bash`` extensions run via bash, everything else via Python. On update, pass empty string to clear."
+            },
+            "no_agent": {
+              "type": "boolean",
+              "default": false,
+              "description": "Default: False (LLM-driven job — the agent runs the prompt each tick). Set True to skip the LLM entirely: the scheduler just runs ``script`` on schedule and delivers its stdout verbatim. No tokens, no agent loop, no model override honoured. \n\nREQUIREMENTS when True: ``script`` MUST be set (``prompt`` and ``skills`` are ignored). \n\nDELIVERY SEMANTICS when True: (a) non-empty stdout is sent verbatim as the message; (b) EMPTY stdout means SILENT — nothing is sent to the user and they won't see anything happened, so design your script to stay quiet when there's nothing to report (the watchdog pattern); (c) non-zero exit / timeout sends an error alert so a broken watchdog can't fail silently. \n\nWHEN TO USE True: recurring script-only pings where the script itself produces the exact message text (memory/disk/GPU watchdogs, threshold alerts, heartbeats, CI notifications, API pollers with a fixed output shape). WHEN TO USE False (default): anything that needs reasoning — summarize a feed, draft a daily briefing, pick interesting items, rephrase data for a human, follow conditional logic based on content."
+            },
+            "context_from": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Optional job ID or list of job IDs whose most recent completed output is injected into the prompt as context before each run. Use this to chain cron jobs: job A collects data, job B processes it. Each entry must be a valid job ID (from cronjob action='list'). Note: injects the most recent completed output — does not wait for upstream jobs running in the same tick. On update, pass an empty array to clear."
+            },
+            "enabled_toolsets": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Optional list of toolset names to restrict the job's agent to (e.g. [\"web\", \"terminal\", \"file\", \"delegation\"]). When set, only tools from these toolsets are loaded, significantly reducing input token overhead. When omitted, all default tools are loaded. Infer from the job's prompt — e.g. use \"web\" if it calls web_search, \"terminal\" if it runs scripts, \"file\" if it reads files, \"delegation\" if it calls delegate_task. On update, pass an empty array to clear."
+            },
+            "workdir": {
+              "type": "string",
+              "description": "Optional absolute path to run the job from. When set, AGENTS.md / CLAUDE.md / .cursorrules from that directory are injected into the system prompt, and the terminal/file/code_exec tools use it as their working directory — useful for running a job inside a specific project repo. Must be an absolute path that exists. When unset (default), preserves the original behaviour: no project context files, tools use the scheduler's cwd. On update, pass an empty string to clear. Jobs with workdir run sequentially (not parallel) to keep per-job directories isolated."
+            }
+          },
+          "required": [
+            "action"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "delegate_task",
+        "description": "Spawn one or more subagents to work on tasks in isolated contexts. Each subagent gets its own conversation, terminal session, and toolset. Only the final summary is returned -- intermediate tool results never enter your context window.\n\nTWO MODES (one of 'goal' or 'tasks' is required):\n1. Single task: provide 'goal' (+ optional context, toolsets)\n2. Batch (parallel): provide 'tasks' array with up to 3 items concurrently for this user (configured via delegation.max_concurrent_children in config.yaml). All run in parallel and results are returned together. Nested delegation is OFF for this user (max_spawn_depth=1): every child is a leaf and cannot delegate further. Raise delegation.max_spawn_depth in config.yaml to enable nesting.\n\nWHEN TO USE delegate_task:\n- Reasoning-heavy subtasks (debugging, code review, research synthesis)\n- Tasks that would flood your context with intermediate data\n- Parallel independent workstreams (research A and B simultaneously)\n\nWHEN NOT TO USE (use these instead):\n- Mechanical multi-step work with no reasoning needed -> use execute_code\n- Single tool call -> just call the tool directly\n- Tasks needing user interaction -> subagents cannot use clarify\n- Durable long-running work that must outlive the current turn -> use cronjob (action='create') or terminal(background=True, notify_on_complete=True) instead. delegate_task runs SYNCHRONOUSLY inside the parent turn: if the parent is interrupted (user sends a new message, /stop, /new) the child is cancelled with status='interrupted' and its work is discarded. Children cannot continue in the background.\n\nIMPORTANT:\n- Subagents have NO memory of your conversation. Pass all relevant info (file paths, error messages, constraints) via the 'context' field.\n- If the user is writing in a non-English language, or asked for output in a specific language / tone / style, say so in 'context' (e.g. \"respond in Chinese\", \"return output in Japanese\"). Otherwise subagents default to English and their summaries will contaminate your final reply with the wrong language.\n- Subagent summaries are SELF-REPORTS, not verified facts. A subagent that claims \"uploaded successfully\" or \"file written\" may be wrong. For operations with external side-effects (HTTP POST/PUT, remote writes, file creation at shared paths, publishing), require the subagent to return a verifiable handle (URL, ID, absolute path, HTTP status) and verify it yourself — fetch the URL, stat the file, read back the content — before telling the user the operation succeeded.\n- Leaf subagents (role='leaf', the default) CANNOT call: delegate_task, clarify, memory, send_message, execute_code.\n- Orchestrator subagents (role='orchestrator') retain delegate_task so they can spawn their own workers, but still cannot use clarify, memory, send_message, or execute_code. Orchestrators are bounded by max_spawn_depth=1 for this user and can be disabled globally via delegation.orchestrator_enabled=false.\n- Each subagent gets its own terminal session (separate working directory and state).\n- Results are always returned as an array, one entry per task.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "goal": {
+              "type": "string",
+              "description": "What the subagent should accomplish. Be specific and self-contained -- the subagent knows nothing about your conversation history."
+            },
+            "context": {
+              "type": "string",
+              "description": "Background information the subagent needs: file paths, error messages, project structure, constraints. The more specific you are, the better the subagent performs."
+            },
+            "toolsets": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Toolsets to enable for this subagent. Default: inherits your enabled toolsets. Available toolsets: 'browser', 'computer_use', 'cronjob', 'discord', 'discord_admin', 'feishu_doc', 'feishu_drive', 'file', 'homeassistant', 'image_gen', 'kanban', 'search', 'session_search', 'skills', 'spotify', 'terminal', 'todo', 'tts', 'video', 'video_gen', 'vision', 'web', 'x_search', 'yuanbao'. Common patterns: ['terminal', 'file'] for code work, ['web'] for research, ['browser'] for web interaction, ['terminal', 'file', 'web'] for full-stack tasks."
+            },
+            "tasks": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "goal": {
+                    "type": "string",
+                    "description": "Task goal"
+                  },
+                  "context": {
+                    "type": "string",
+                    "description": "Task-specific context"
+                  },
+                  "toolsets": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Toolsets for this specific task. Available: 'browser', 'computer_use', 'cronjob', 'discord', 'discord_admin', 'feishu_doc', 'feishu_drive', 'file', 'homeassistant', 'image_gen', 'kanban', 'search', 'session_search', 'skills', 'spotify', 'terminal', 'todo', 'tts', 'video', 'video_gen', 'vision', 'web', 'x_search', 'yuanbao'. Use 'web' for network access, 'terminal' for shell, 'browser' for web interaction."
+                  },
+                  "acp_command": {
+                    "type": "string",
+                    "description": "Per-task ACP command override (e.g. 'copilot'). Overrides the top-level acp_command for this task only. Do NOT set unless the user explicitly told you an ACP CLI is installed."
+                  },
+                  "acp_args": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Per-task ACP args override. Leave empty unless acp_command is set."
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "leaf",
+                      "orchestrator"
+                    ],
+                    "description": "Per-task role override. See top-level 'role' for semantics."
+                  }
+                },
+                "required": [
+                  "goal"
+                ]
+              },
+              "description": "Batch mode: tasks to run in parallel (up to 3 for this user, set via delegation.max_concurrent_children). Each gets its own subagent with isolated context and terminal session. When provided, top-level goal/context/toolsets are ignored."
+            },
+            "role": {
+              "type": "string",
+              "enum": [
+                "leaf",
+                "orchestrator"
+              ],
+              "description": "Role of the child agent. 'leaf' (default) = focused worker, cannot delegate further. 'orchestrator' = can use delegate_task to spawn its own workers. Nesting is OFF for this user (max_spawn_depth=1); 'orchestrator' is silently forced to 'leaf'. Raise delegation.max_spawn_depth in config.yaml to enable."
+            },
+            "acp_command": {
+              "type": "string",
+              "description": "Override ACP command for child agents (e.g. 'copilot'). When set, children use ACP subprocess transport instead of inheriting the parent's transport. Requires an ACP-compatible CLI (currently GitHub Copilot CLI via 'copilot --acp --stdio'). See agent/copilot_acp_client.py for the implementation. IMPORTANT: Do NOT set this unless the user has explicitly told you a specific ACP-compatible CLI is installed and configured. Leave empty to use the parent's default transport (Hermes subagents)."
+            },
+            "acp_args": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Arguments for the ACP command (default: ['--acp', '--stdio']). Only used when acp_command is set. Leave empty unless acp_command is explicitly provided."
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "discord",
+        "description": "Read and participate in a Discord server.\n\nAvailable actions:\n  search_members(guild_id, query)  — find members by name prefix\n  fetch_messages(channel_id)  — recent messages; optional before/after snowflakes\n  create_thread(channel_id, name)  — create a public thread; optional message_id anchor\n\nUse the channel_id from the current conversation context. Use search_members to look up user IDs by name prefix.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "search_members",
+                "fetch_messages",
+                "create_thread"
+              ]
+            },
+            "guild_id": {
+              "type": "string",
+              "description": "Discord server (guild) ID."
+            },
+            "channel_id": {
+              "type": "string",
+              "description": "Discord channel ID."
+            },
+            "user_id": {
+              "type": "string",
+              "description": "Discord user ID."
+            },
+            "role_id": {
+              "type": "string",
+              "description": "Discord role ID."
+            },
+            "message_id": {
+              "type": "string",
+              "description": "Discord message ID."
+            },
+            "query": {
+              "type": "string",
+              "description": "Member name prefix to search for (search_members)."
+            },
+            "name": {
+              "type": "string",
+              "description": "New thread name (create_thread)."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "description": "Max results (default 50). Applies to fetch_messages, search_members."
+            },
+            "before": {
+              "type": "string",
+              "description": "Snowflake ID for reverse pagination (fetch_messages)."
+            },
+            "after": {
+              "type": "string",
+              "description": "Snowflake ID for forward pagination (fetch_messages)."
+            },
+            "auto_archive_duration": {
+              "type": "integer",
+              "enum": [
+                60,
+                1440,
+                4320,
+                10080
+              ],
+              "description": "Thread archive duration in minutes (create_thread, default 1440)."
+            }
+          },
+          "required": [
+            "action"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "discord_admin",
+        "description": "Manage a Discord server via the REST API.\n\nAvailable actions:\n  list_guilds()  — list servers the bot is in\n  server_info(guild_id)  — server details + member counts\n  list_channels(guild_id)  — all channels grouped by category\n  channel_info(channel_id)  — single channel details\n  list_roles(guild_id)  — roles sorted by position\n  member_info(guild_id, user_id)  — lookup a specific member\n  list_pins(channel_id)  — pinned messages in a channel\n  pin_message(channel_id, message_id)  — pin a message\n  unpin_message(channel_id, message_id)  — unpin a message\n  delete_message(channel_id, message_id)  — delete a message\n  add_role(guild_id, user_id, role_id)  — assign a role\n  remove_role(guild_id, user_id, role_id)  — remove a role\n\nCall list_guilds first to discover guild_ids, then list_channels for channel_ids. Runtime errors will tell you if the bot lacks a specific per-guild permission (e.g. MANAGE_ROLES for add_role).",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "list_guilds",
+                "server_info",
+                "list_channels",
+                "channel_info",
+                "list_roles",
+                "member_info",
+                "list_pins",
+                "pin_message",
+                "unpin_message",
+                "delete_message",
+                "add_role",
+                "remove_role"
+              ]
+            },
+            "guild_id": {
+              "type": "string",
+              "description": "Discord server (guild) ID."
+            },
+            "channel_id": {
+              "type": "string",
+              "description": "Discord channel ID."
+            },
+            "user_id": {
+              "type": "string",
+              "description": "Discord user ID."
+            },
+            "role_id": {
+              "type": "string",
+              "description": "Discord role ID."
+            },
+            "message_id": {
+              "type": "string",
+              "description": "Discord message ID."
+            },
+            "query": {
+              "type": "string",
+              "description": "Member name prefix to search for (search_members)."
+            },
+            "name": {
+              "type": "string",
+              "description": "New thread name (create_thread)."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "description": "Max results (default 50). Applies to fetch_messages, search_members."
+            },
+            "before": {
+              "type": "string",
+              "description": "Snowflake ID for reverse pagination (fetch_messages)."
+            },
+            "after": {
+              "type": "string",
+              "description": "Snowflake ID for forward pagination (fetch_messages)."
+            },
+            "auto_archive_duration": {
+              "type": "integer",
+              "enum": [
+                60,
+                1440,
+                4320,
+                10080
+              ],
+              "description": "Thread archive duration in minutes (create_thread, default 1440)."
+            }
+          },
+          "required": [
+            "action"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "execute_code",
+        "description": "Run a Python script that can call Hermes tools programmatically. Use this when you need 3+ tool calls with processing logic between them, need to filter/reduce large tool outputs before they enter your context, need conditional branching (if X then Y else Z), or need to loop (fetch N pages, process N files, retry on failure).\n\nUse normal tool calls instead when: single tool call with no processing, you need to see the full result and apply complex reasoning, or the task requires interactive user input.\n\nAvailable via `from hermes_tools import ...`:\n\n  read_file(path: str, offset: int = 1, limit: int = 500) -> dict\n    Lines are 1-indexed. Returns {\"content\": \"...\", \"total_lines\": N}\n  write_file(path: str, content: str) -> dict\n    Always overwrites the entire file.\n  search_files(pattern: str, target=\"content\", path=\".\", file_glob=None, limit=50) -> dict\n    target: \"content\" (search inside files) or \"files\" (find files by name). Returns {\"matches\": [...]}\n  patch(path: str, old_string: str, new_string: str, replace_all: bool = False) -> dict\n    Replaces old_string with new_string in the file.\n  terminal(command: str, timeout=None, workdir=None) -> dict\n    Foreground only (no background/pty). Returns {\"output\": \"...\", \"exit_code\": N}\n\nLimits: 5-minute timeout, 50KB stdout cap, max 50 tool calls per script. terminal() is foreground-only (no background or pty).\n\nScripts run in the session's working directory with the active venv's python, so project deps (pandas, etc.) and relative paths work like in terminal().\n\nPrint your final result to stdout. Use Python stdlib (json, re, math, csv, datetime, collections, etc.) for processing between tool calls.\n\nAlso available (no import needed — built into hermes_tools):\n  json_parse(text: str) — json.loads with strict=False; use for terminal() output with control chars\n  shell_quote(s: str) — shlex.quote(); use when interpolating dynamic strings into shell commands\n  retry(fn, max_attempts=3, delay=2) — retry with exponential backoff for transient failures",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "Python code to execute. Import tools with `from hermes_tools import terminal, ...` and print your final result to stdout."
+            }
+          },
+          "required": [
+            "code"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "image_generate",
+        "description": "Generate high-quality images from text prompts. The underlying backend (FAL, OpenAI, etc.) and model are user-configured and not selectable by the agent. Returns either a URL or an absolute file path in the `image` field; display it with markdown ![description](url-or-path) and the gateway will deliver it.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "prompt": {
+              "type": "string",
+              "description": "The text prompt describing the desired image. Be detailed and descriptive."
+            },
+            "aspect_ratio": {
+              "type": "string",
+              "enum": [
+                "landscape",
+                "square",
+                "portrait"
+              ],
+              "description": "The aspect ratio of the generated image. 'landscape' is 16:9 wide, 'portrait' is 16:9 tall, 'square' is 1:1.",
+              "default": "landscape"
+            }
+          },
+          "required": [
+            "prompt"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "memory",
+        "description": "Save durable information to persistent memory that survives across sessions. Memory is injected into future turns, so keep it compact and focused on facts that will still matter later.\n\nWHEN TO SAVE (do this proactively, don't wait to be asked):\n- User corrects you or says 'remember this' / 'don't do that again'\n- User shares a preference, habit, or personal detail (name, role, timezone, coding style)\n- You discover something about the environment (OS, installed tools, project structure)\n- You learn a convention, API quirk, or workflow specific to this user's setup\n- You identify a stable fact that will be useful again in future sessions\n\nPRIORITY: User preferences and corrections > environment facts > procedural knowledge. The most valuable memory prevents the user from having to repeat themselves.\n\nDo NOT save task progress, session outcomes, completed-work logs, or temporary TODO state to memory; use session_search to recall those from past transcripts.\nIf you've discovered a new way to do something, solved a problem that could be necessary later, save it as a skill with the skill tool.\n\nTWO TARGETS:\n- 'user': who the user is -- name, role, preferences, communication style, pet peeves\n- 'memory': your notes -- environment facts, project conventions, tool quirks, lessons learned\n\nACTIONS: add (new entry), replace (update existing -- old_text identifies it), remove (delete -- old_text identifies it).\n\nSKIP: trivial/obvious info, things easily re-discovered, raw data dumps, and temporary task state.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "add",
+                "replace",
+                "remove"
+              ],
+              "description": "The action to perform."
+            },
+            "target": {
+              "type": "string",
+              "enum": [
+                "memory",
+                "user"
+              ],
+              "description": "Which memory store: 'memory' for personal notes, 'user' for user profile."
+            },
+            "content": {
+              "type": "string",
+              "description": "The entry content. Required for 'add' and 'replace'."
+            },
+            "old_text": {
+              "type": "string",
+              "description": "Short unique substring identifying the entry to replace or remove."
+            }
+          },
+          "required": [
+            "action",
+            "target"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "mixture_of_agents",
+        "description": "Route a hard problem through multiple frontier LLMs collaboratively. Makes 5 API calls (4 reference models + 1 aggregator) with maximum reasoning effort — use sparingly for genuinely difficult problems. Best for: complex math, advanced algorithms, multi-step analytical reasoning, problems benefiting from diverse perspectives.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "user_prompt": {
+              "type": "string",
+              "description": "The complex query or problem to solve using multiple AI models. Should be a challenging problem that benefits from diverse perspectives and collaborative reasoning."
+            }
+          },
+          "required": [
+            "user_prompt"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "patch",
+        "description": "Targeted find-and-replace edits in files. Use this instead of sed/awk in terminal. Uses fuzzy matching (9 strategies) so minor whitespace/indentation differences won't break it. Returns a unified diff. Auto-runs syntax checks after editing.\n\nREPLACE MODE (mode='replace', default): find a unique string and replace it. REQUIRED PARAMETERS: mode, path, old_string, new_string.\nPATCH MODE (mode='patch'): apply V4A multi-file patches for bulk changes. REQUIRED PARAMETERS: mode, patch.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": [
+                "replace",
+                "patch"
+              ],
+              "description": "Edit mode. 'replace' (default): requires path + old_string + new_string. 'patch': requires patch content only.",
+              "default": "replace"
+            },
+            "path": {
+              "type": "string",
+              "description": "REQUIRED when mode='replace'. File path to edit."
+            },
+            "old_string": {
+              "type": "string",
+              "description": "REQUIRED when mode='replace'. Exact text to find and replace. Must be unique in the file unless replace_all=true. Include surrounding context lines to ensure uniqueness."
+            },
+            "new_string": {
+              "type": "string",
+              "description": "REQUIRED when mode='replace'. Replacement text. Pass empty string '' to delete the matched text."
+            },
+            "replace_all": {
+              "type": "boolean",
+              "description": "Replace all occurrences instead of requiring a unique match (default: false)",
+              "default": false
+            },
+            "patch": {
+              "type": "string",
+              "description": "REQUIRED when mode='patch'. V4A format patch content. Format:\n*** Begin Patch\n*** Update File: path/to/file\n@@ context hint @@\n context line\n-removed line\n+added line\n*** End Patch"
+            }
+          },
+          "required": [
+            "mode"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "process",
+        "description": "Manage background processes started with terminal(background=true). Actions: 'list' (show all), 'poll' (check status + new output), 'log' (full output with pagination), 'wait' (block until done or timeout), 'kill' (terminate), 'write' (send raw stdin data without newline), 'submit' (send data + Enter, for answering prompts), 'close' (close stdin/send EOF).",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "list",
+                "poll",
+                "log",
+                "wait",
+                "kill",
+                "write",
+                "submit",
+                "close"
+              ],
+              "description": "Action to perform on background processes"
+            },
+            "session_id": {
+              "type": "string",
+              "description": "Process session ID (from terminal background output). Required for all actions except 'list'."
+            },
+            "data": {
+              "type": "string",
+              "description": "Text to send to process stdin (for 'write' and 'submit' actions)"
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Max seconds to block for 'wait' action. Returns partial output on timeout.",
+              "minimum": 1
+            },
+            "offset": {
+              "type": "integer",
+              "description": "Line offset for 'log' action (default: last 200 lines)"
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Max lines to return for 'log' action",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "action"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "read_file",
+        "description": "Read a text file with line numbers and pagination. Use this instead of cat/head/tail in terminal. Output format: 'LINE_NUM|CONTENT'. Suggests similar filenames if not found. Use offset and limit for large files. Reads exceeding ~100K characters are rejected; use offset and limit to read specific sections of large files. NOTE: Cannot read images or binary files — use vision_analyze for images.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "Path to the file to read (absolute, relative, or ~/path)"
+            },
+            "offset": {
+              "type": "integer",
+              "description": "Line number to start reading from (1-indexed, default: 1)",
+              "default": 1,
+              "minimum": 1
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Maximum number of lines to read (default: 500, max: 2000)",
+              "default": 500,
+              "maximum": 2000
+            }
+          },
+          "required": [
+            "path"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "search_files",
+        "description": "Search file contents or find files by name. Use this instead of grep/rg/find/ls in terminal. Ripgrep-backed, faster than shell equivalents.\n\nContent search (target='content'): Regex search inside files. Output modes: full matches with line numbers, file paths only, or match counts.\n\nFile search (target='files'): Find files by glob pattern (e.g., '*.py', '*config*'). Also use this instead of ls — results sorted by modification time.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "pattern": {
+              "type": "string",
+              "description": "Regex pattern for content search, or glob pattern (e.g., '*.py') for file search"
+            },
+            "target": {
+              "type": "string",
+              "enum": [
+                "content",
+                "files"
+              ],
+              "description": "'content' searches inside file contents, 'files' searches for files by name",
+              "default": "content"
+            },
+            "path": {
+              "type": "string",
+              "description": "Directory or file to search in (default: current working directory)",
+              "default": "."
+            },
+            "file_glob": {
+              "type": "string",
+              "description": "Filter files by pattern in grep mode (e.g., '*.py' to only search Python files)"
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Maximum number of results to return (default: 50)",
+              "default": 50
+            },
+            "offset": {
+              "type": "integer",
+              "description": "Skip first N results for pagination (default: 0)",
+              "default": 0
+            },
+            "output_mode": {
+              "type": "string",
+              "enum": [
+                "content",
+                "files_only",
+                "count"
+              ],
+              "description": "Output format for grep mode: 'content' shows matching lines with line numbers, 'files_only' lists file paths, 'count' shows match counts per file",
+              "default": "content"
+            },
+            "context": {
+              "type": "integer",
+              "description": "Number of context lines before and after each match (grep mode only)",
+              "default": 0
+            }
+          },
+          "required": [
+            "pattern"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "send_message",
+        "description": "Send a message to a connected messaging platform, or list available targets.\n\nIMPORTANT: When the user asks to send to a specific channel or person (not just a bare platform name), call send_message(action='list') FIRST to see available targets, then send to the correct one.\nIf the user just says a platform name like 'send to telegram', send directly to the home channel without listing first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "send",
+                "list"
+              ],
+              "description": "Action to perform. 'send' (default) sends a message. 'list' returns all available channels/contacts across connected platforms."
+            },
+            "target": {
+              "type": "string",
+              "description": "Delivery target. Format: 'platform' (uses home channel), 'platform:#channel-name', 'platform:chat_id', or 'platform:chat_id:thread_id' for Telegram topics and Discord threads. Examples: 'telegram', 'telegram:-1001234567890:17585', 'discord:999888777:555444333', 'discord:#bot-home', 'slack:#engineering', 'signal:+155****4567', 'matrix:!roomid:server.org', 'matrix:@user:server.org', 'yuanbao:direct:<account_id>' (DM), 'yuanbao:group:<group_code>' (group chat)"
+            },
+            "message": {
+              "type": "string",
+              "description": "The message text to send. To send an image or file, include MEDIA:<local_path> (e.g. 'MEDIA:/tmp/hermes/cache/img_xxx.jpg') in the message — the platform will deliver it as a native media attachment."
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "session_search",
+        "description": "Search your long-term memory of past conversations, or browse recent sessions. This is your recall -- every past session is searchable, and this tool summarizes what happened.\n\nTWO MODES:\n1. Recent sessions (no query): Call with no arguments to see what was worked on recently. Returns titles, previews, and timestamps. Zero LLM cost, instant. Start here when the user asks what were we working on or what did we do recently.\n2. Keyword search (with query): Search for specific topics across all past sessions. Returns LLM-generated summaries of matching sessions.\n\nUSE THIS PROACTIVELY when:\n- The user says 'we did this before', 'remember when', 'last time', 'as I mentioned'\n- The user asks about a topic you worked on before but don't have in current context\n- The user references a project, person, or concept that seems familiar but isn't in memory\n- You want to check if you've solved a similar problem before\n- The user asks 'what did we do about X?' or 'how did we fix Y?'\n\nDon't hesitate to search when it is actually cross-session -- it's fast and cheap. Better to search and confirm than to guess or ask the user to repeat themselves.\n\nSearch syntax: keywords joined with OR for broad recall (elevenlabs OR baseten OR funding), phrases for exact match (\"docker networking\"), boolean (python NOT java), prefix (deploy*). IMPORTANT: Use OR between keywords for best results — FTS5 defaults to AND which misses sessions that only mention some terms. If a broad OR query returns nothing, try individual keyword searches in parallel. Returns summaries of the top matching sessions.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Search query — keywords, phrases, or boolean expressions to find in past sessions. Omit this parameter entirely to browse recent sessions instead (returns titles, previews, timestamps with no LLM cost)."
+            },
+            "role_filter": {
+              "type": "string",
+              "description": "Optional: only search messages from specific roles (comma-separated). E.g. 'user,assistant' to skip tool outputs."
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Max sessions to summarize (default: 3, max: 5).",
+              "default": 3
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "skill_manage",
+        "description": "Manage skills (create, update, delete). Skills are your procedural memory — reusable approaches for recurring task types. New skills go to ~/./skills/; existing skills can be modified wherever they live.\n\nActions: create (full SKILL.md + optional category), patch (old_string/new_string — preferred for fixes), edit (full SKILL.md rewrite — major overhauls only), delete, write_file, remove_file.\n\nOn delete, pass `absorbed_into=<umbrella>` when you're merging this skill's content into another one, or `absorbed_into=\"\"` when you're pruning it with no forwarding target. This lets the curator tell consolidation from pruning without guessing, so downstream consumers (cron jobs that reference the old skill name, etc.) get updated correctly. The target you name in `absorbed_into` must already exist — create/patch the umbrella first, then delete.\n\nCreate when: complex task succeeded (5+ calls), errors overcome, user-corrected approach worked, non-trivial workflow discovered, or user asks you to remember a procedure.\nUpdate when: instructions stale/wrong, OS-specific failures, missing steps or pitfalls found during use. If you used a skill and hit issues not covered by it, patch it immediately.\n\nAfter difficult/iterative tasks, offer to save as a skill. Skip for simple one-offs. Confirm with user before creating/deleting.\n\nGood skills: trigger conditions, numbered steps with exact commands, pitfalls section, verification steps. Use skill_view() to see format examples.\n\nPinned skills are protected from deletion only — skill_manage(action='delete') will refuse with a message pointing the user to `hermes curator unpin <name>`. Patches and edits go through on pinned skills so you can still improve them as pitfalls come up; pin only guards against irrecoverable loss.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "create",
+                "patch",
+                "edit",
+                "delete",
+                "write_file",
+                "remove_file"
+              ],
+              "description": "The action to perform."
+            },
+            "name": {
+              "type": "string",
+              "description": "Skill name (lowercase, hyphens/underscores, max 64 chars). Must match an existing skill for patch/edit/delete/write_file/remove_file."
+            },
+            "content": {
+              "type": "string",
+              "description": "Full SKILL.md content (YAML frontmatter + markdown body). Required for 'create' and 'edit'. For 'edit', read the skill first with skill_view() and provide the complete updated text."
+            },
+            "old_string": {
+              "type": "string",
+              "description": "Text to find in the file (required for 'patch'). Must be unique unless replace_all=true. Include enough surrounding context to ensure uniqueness."
+            },
+            "new_string": {
+              "type": "string",
+              "description": "Replacement text (required for 'patch'). Can be empty string to delete the matched text."
+            },
+            "replace_all": {
+              "type": "boolean",
+              "description": "For 'patch': replace all occurrences instead of requiring a unique match (default: false)."
+            },
+            "category": {
+              "type": "string",
+              "description": "Optional category/domain for organizing the skill (e.g., 'devops', 'data-science', 'mlops'). Creates a subdirectory grouping. Only used with 'create'."
+            },
+            "file_path": {
+              "type": "string",
+              "description": "Path to a supporting file within the skill directory. For 'write_file'/'remove_file': required, must be under references/, templates/, scripts/, or assets/. For 'patch': optional, defaults to SKILL.md if omitted."
+            },
+            "file_content": {
+              "type": "string",
+              "description": "Content for the file. Required for 'write_file'."
+            },
+            "absorbed_into": {
+              "type": "string",
+              "description": "For 'delete' only — declares intent so the curator can tell consolidation from pruning without guessing. Pass the umbrella skill name when this skill's content was merged into another (the target must already exist). Pass an empty string when the skill is truly stale and being pruned with no forwarding target. Omitting the arg on delete is supported for backward compatibility but downstream tooling (e.g. cron-job skill reference rewriting) will have to guess at intent."
+            }
+          },
+          "required": [
+            "action",
+            "name"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "skill_view",
+        "description": "Skills allow for loading information about specific tasks and workflows, as well as scripts and templates. Load a skill's full content or access its linked files (references, templates, scripts). First call returns SKILL.md content plus a 'linked_files' dict showing available references/templates/scripts. To access those, call again with file_path parameter.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The skill name (use skills_list to see available skills). For plugin-provided skills, use the qualified form 'plugin:skill' (e.g. 'superpowers:writing-plans')."
+            },
+            "file_path": {
+              "type": "string",
+              "description": "OPTIONAL: Path to a linked file within the skill (e.g., 'references/api.md', 'templates/config.yaml', 'scripts/validate.py'). Omit to get the main SKILL.md content."
+            }
+          },
+          "required": [
+            "name"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "skills_list",
+        "description": "List available skills (name + description). Use skill_view(name) to load full content.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Optional category filter to narrow results"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "terminal",
+        "description": "Execute shell commands on a Linux environment. Filesystem usually persists between calls.\n\nDo NOT use cat/head/tail to read files — use read_file instead.\nDo NOT use grep/rg/find to search — use search_files instead.\nDo NOT use ls to list directories — use search_files(target='files') instead.\nDo NOT use sed/awk to edit files — use patch instead.\nDo NOT use echo/cat heredoc to create files — use write_file instead.\nReserve terminal for: builds, installs, git, processes, scripts, network, package managers, and anything that needs a shell.\n\nForeground (default): Commands return INSTANTLY when done, even if the timeout is high. Set timeout=300 for long builds/scripts — you'll still get the result in seconds if it's fast. Prefer foreground for short commands.\nBackground: Set background=true to get a session_id. Two patterns:\n  (1) Long-lived processes that never exit (servers, watchers).\n  (2) Long-running tasks with notify_on_complete=true — you can keep working on other things and the system auto-notifies you when the task finishes. Great for test suites, builds, deployments, or anything that takes more than a minute.\nFor servers/watchers, do NOT use shell-level background wrappers (nohup/disown/setsid/trailing '&') in foreground mode. Use background=true so Hermes can track lifecycle and output.\nAfter starting a server, verify readiness with a health check or log signal, then run tests in a separate terminal() call. Avoid blind sleep loops.\nUse process(action=\"poll\") for progress checks, process(action=\"wait\") to block until done.\nWorking directory: Use 'workdir' for per-command cwd.\nPTY mode: Set pty=true for interactive CLI tools (Codex, Claude Code, Python REPL).\n\nDo NOT use vim/nano/interactive tools without pty=true — they hang without a pseudo-terminal. Pipe git output to cat if it might page.\n",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "command": {
+              "type": "string",
+              "description": "The command to execute on the VM"
+            },
+            "background": {
+              "type": "boolean",
+              "description": "Run the command in the background. Two patterns: (1) Long-lived processes that never exit (servers, watchers). (2) Long-running tasks paired with notify_on_complete=true — you can keep working and get notified when the task finishes. For short commands, prefer foreground with a generous timeout instead.",
+              "default": false
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Max seconds to wait (default: 180, foreground max: 600). Returns INSTANTLY when command finishes — set high for long tasks, you won't wait unnecessarily. Foreground timeout above 600s is rejected; use background=true for longer commands.",
+              "minimum": 1
+            },
+            "workdir": {
+              "type": "string",
+              "description": "Working directory for this command (absolute path). Defaults to the session working directory."
+            },
+            "pty": {
+              "type": "boolean",
+              "description": "Run in pseudo-terminal (PTY) mode for interactive CLI tools like Codex, Claude Code, or Python REPL. Only works with local and SSH backends. Default: false.",
+              "default": false
+            },
+            "notify_on_complete": {
+              "type": "boolean",
+              "description": "When true (and background=true), you'll be automatically notified exactly once when the process finishes. **This is the right choice for almost every long-running task** — tests, builds, deployments, multi-item batch jobs, anything that takes over a minute and has a defined end. Use this and keep working on other things; the system notifies you on exit. MUTUALLY EXCLUSIVE with watch_patterns — when both are set, watch_patterns is dropped.",
+              "default": false
+            },
+            "watch_patterns": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Strings to watch for in background process output. HARD RATE LIMIT: at most 1 notification per 15 seconds per process — matches arriving inside the cooldown are dropped. After 3 consecutive 15-second windows with dropped matches, watch_patterns is automatically disabled for that process and promoted to notify_on_complete behavior (one notification on exit, no more mid-process spam). USE ONLY for truly rare, one-shot mid-process signals on LONG-LIVED processes that will never exit on their own — e.g. ['Application startup complete'] on a server so you know when to hit its endpoint, or ['migration done'] on a daemon. DO NOT use for: (1) end-of-run markers like 'DONE'/'PASS' — use notify_on_complete instead; (2) error patterns like 'ERROR'/'Traceback' in loops or multi-item batch jobs — they fire on every iteration and you'll hit the strike limit fast; (3) anything you'd ever combine with notify_on_complete. When in doubt, choose notify_on_complete. MUTUALLY EXCLUSIVE with notify_on_complete — set one, not both."
+            }
+          },
+          "required": [
+            "command"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "text_to_speech",
+        "description": "Convert text to speech audio. Returns a MEDIA: path that the platform delivers as native audio. Compatible providers render as a voice bubble on Telegram; otherwise audio is sent as a regular attachment. In CLI mode, saves to ~/voice-memos/. Voice and provider are user-configured (built-in providers like edge/openai or custom command providers under tts.providers.<name>), not model-selected.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "description": "The text to convert to speech. Provider-specific character caps apply and are enforced automatically (OpenAI 4096, xAI 15000, MiniMax 10000, ElevenLabs 5k-40k depending on model); over-long input is truncated."
+            },
+            "output_path": {
+              "type": "string",
+              "description": "Optional custom file path to save the audio. Defaults to ~/./audio_cache/<timestamp>.mp3"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "todo",
+        "description": "Manage your task list for the current session. Use for complex tasks with 3+ steps or when the user provides multiple tasks. Call with no parameters to read the current list.\n\nWriting:\n- Provide 'todos' array to create/update items\n- merge=false (default): replace the entire list with a fresh plan\n- merge=true: update existing items by id, add any new ones\n\nEach item: {id: string, content: string, status: pending|in_progress|completed|cancelled}\nList order is priority. Only ONE item in_progress at a time.\nMark items completed immediately when done. If something fails, cancel it and add a revised item.\n\nAlways returns the full current list.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "todos": {
+              "type": "array",
+              "description": "Task items to write. Omit to read current list.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "Unique item identifier"
+                  },
+                  "content": {
+                    "type": "string",
+                    "description": "Task description"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "pending",
+                      "in_progress",
+                      "completed",
+                      "cancelled"
+                    ],
+                    "description": "Current status"
+                  }
+                },
+                "required": [
+                  "id",
+                  "content",
+                  "status"
+                ]
+              }
+            },
+            "merge": {
+              "type": "boolean",
+              "description": "true: update existing items by id, add new ones. false (default): replace the entire list.",
+              "default": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "video_analyze",
+        "description": "Analyze a video from a URL or local file path using a multimodal AI model. Sends the video to a video-capable model (e.g. Gemini) for understanding. Use this for video files — for images, use vision_analyze instead. Supports mp4, webm, mov, avi, mkv, mpeg formats. Note: large videos (>20 MB) may be slow; max ~50 MB.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "video_url": {
+              "type": "string",
+              "description": "Video URL (http/https) or local file path to analyze."
+            },
+            "question": {
+              "type": "string",
+              "description": "Your specific question about the video. The AI will describe what happens in the video and answer your question."
+            }
+          },
+          "required": [
+            "video_url",
+            "question"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "vision_analyze",
+        "description": "Load an image into the conversation so you can see it. Accepts a URL, local file path, or data URL. When your active model has native vision, the image is attached to your context directly and you read the pixels yourself on the next turn — call this any time the user references an image (filepath in their message, URL in tool output, screenshot from the browser, etc.). For non-vision models, falls back to an auxiliary vision model that returns a text description.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "image_url": {
+              "type": "string",
+              "description": "Image URL (http/https), local file path, or data: URL to load."
+            },
+            "question": {
+              "type": "string",
+              "description": "Your specific question or request about the image. Optional context the model uses on the next turn after seeing the image."
+            }
+          },
+          "required": [
+            "image_url",
+            "question"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "write_file",
+        "description": "Write content to a file, completely replacing existing content. Use this instead of echo/cat heredoc in terminal. Creates parent directories automatically. OVERWRITES the entire file — use 'patch' for targeted edits. Auto-runs syntax checks on .py/.json/.yaml/.toml and other linted languages; only NEW errors introduced by this write are surfaced (pre-existing errors are filtered out).",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "Path to the file to write (will be created if it doesn't exist, overwritten if it does)"
+            },
+            "content": {
+              "type": "string",
+              "description": "Complete content to write to the file"
+            }
+          },
+          "required": [
+            "path",
+            "content"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "fact_store",
+        "description": "Deep structured memory with algebraic reasoning. Use alongside the memory tool — memory for always-on context, fact_store for deep recall and compositional queries.\n\nACTIONS (simple → powerful):\n• add — Store a fact the user would expect you to remember.\n• search — Keyword lookup ('editor config', 'deploy process').\n• probe — Entity recall: ALL facts about a person/thing.\n• related — What connects to an entity? Structural adjacency.\n• reason — Compositional: facts connected to MULTIPLE entities simultaneously.\n• contradict — Memory hygiene: find facts making conflicting claims.\n• update/remove/list — CRUD operations.\n\nIMPORTANT: Before answering questions about the user, ALWAYS probe or reason first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "add",
+                "search",
+                "probe",
+                "related",
+                "reason",
+                "contradict",
+                "update",
+                "remove",
+                "list"
+              ]
+            },
+            "content": {
+              "type": "string",
+              "description": "Fact content (required for 'add')."
+            },
+            "query": {
+              "type": "string",
+              "description": "Search query (required for 'search')."
+            },
+            "entity": {
+              "type": "string",
+              "description": "Entity name for 'probe'/'related'."
+            },
+            "entities": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Entity names for 'reason'."
+            },
+            "fact_id": {
+              "type": "integer",
+              "description": "Fact ID for 'update'/'remove'."
+            },
+            "category": {
+              "type": "string",
+              "enum": [
+                "user_pref",
+                "project",
+                "tool",
+                "general"
+              ]
+            },
+            "tags": {
+              "type": "string",
+              "description": "Comma-separated tags."
+            },
+            "trust_delta": {
+              "type": "number",
+              "description": "Trust adjustment for 'update'."
+            },
+            "min_trust": {
+              "type": "number",
+              "description": "Minimum trust filter (default: 0.3)."
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Max results (default: 10)."
+            }
+          },
+          "required": [
+            "action"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "fact_feedback",
+        "description": "Rate a fact after using it. Mark 'helpful' if accurate, 'unhelpful' if outdated. This trains the memory — good facts rise, bad facts sink.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "helpful",
+                "unhelpful"
+              ]
+            },
+            "fact_id": {
+              "type": "integer",
+              "description": "The fact ID to rate."
+            }
+          },
+          "required": [
+            "action",
+            "fact_id"
+          ]
+        }
+      }
+    }
+  ],
+  "message_count": 27,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Name search works perfect but I couldn't get images to scan. Solid data. The idea is to apply that to live video or recorded video and have it automatically apply the price as a filter that follows the card like the puppy dog ears style filter from snap chat. The value/ selling point of something like what you have here would be the ability to easily compare prices from multiple platforms."
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "call_QyeQPR3KQuZ3OAbsZsPswtEG",
+          "call_id": "call_QyeQPR3KQuZ3OAbsZsPswtEG",
+          "response_item_id": "fc_03024da83118ed50016a0fe31b645c8190942cbeec91350999",
+          "type": "function",
+          "function": {
+            "name": "session_search",
+            "arguments": "{\"query\":\"\\\"Name search\\\" OR \\\"images to scan\\\" OR \\\"price\\\" \\\"card\\\" OR \\\"card\\\" \\\"video\\\"\",\"limit\":3}"
+          }
+        }
+      ],
+      "finish_reason": "tool_calls",
+      "reasoning": "**Considering user feedback**\n\nI need to respond to the user's feedback or idea, and I might need to infer some context from prior projects. It sounds like the user is suggesting an architecture related to video or image scanning. There’s a mention of memory and their reference to “what you have here,” which suggests they’re looking for past context. I wonder if I should consider using session_search to pull this relevant information together.",
+      "reasoning_content": "**Considering user feedback**\n\nI need to respond to the user's feedback or idea, and I might need to infer some context from prior projects. It sounds like the user is suggesting an architecture related to video or image scanning. There’s a mention of memory and their reference to “what you have here,” which suggests they’re looking for past context. I wonder if I should consider using session_search to pull this relevant information together.",
+      "codex_reasoning_items": [
+        {
+          "type": "reasoning",
+          "encrypted_content": "gAAAAABqD-MbA8ow7KgfIC7BnmolfgGDZSyQ2iBrYUKnokOFnLp4D8TPXirMI1Bi-Qq8kcxhrGbtYF4LVYWygYQchCuylDRO4yo1f-A27f7UtMeG1rJXpVnuqMKtGE89_liPkkmRSjHjehkjNMt2XpY6Bo3O7aIe7zM1rzORQU9vPIwHdLl_8aq-YpaZzxtprBaTr-qT4y4CFmuWlDZQ1pEwhVyQOq6dkrcwGFTQLE3nkCOV81eIZPxVQpcoxyVRxVoxMm4Toc6BqCxi2opbEhuwqVi8DKCXDlyOA-vll2wFdW7F4c2sr_krUUl2E47ivlAMAv6TocxH_DNe_eFtOQE8AnwStScHU2dWe0CaTIroLLDHjr3_WJmEbDak3T3_rcQIAslim7_BdDGKGHu8dKp61DummbMlnwSNahG4Q6L5fpdabg12YZAFt_O5ZO9Ub5B21t8-P2xJi3bhdMdRFi1w1IgVfVLyIq3jYlu_ziQEKo8cmpVC273pf2fhMWtTyvH865frD72WIe7W1fUIwg4zgkBVogJhBcUHoDHV7E-_lhwgph7JbfyEYSrJX-694jglF0h_xHbQ5MgwUAIb7-584l2KJYxQtE8oGwZAT0LKOdmii_pIRCBVDa9X69NVS3Bcl75vpOPRb8D8DHgpTcl0xWHFnguQoAtQrlVG-kvQrApmQY1-qLAY43-TiYppNTVWbQEeOUIvGCv679MGJJ-dG0OWT20k0nYPOqB6v51-Z52THksy5SEODP90swExtM_5UDPmaLXQ6SWSINYyG8WKyWMIwqEUWUN1vROoI902N7O5L2WNgFm6kUXd7m7Ghd2KhZu65XS_LXYu7iuxskce1iOXeC04EU9Nu7gr_n6KY2uay9t5Bohi9scE1aPV2u4lr110BLdZrpgD9LyUwz5Ya6DUlkJvs8yZxyQaj6SfsrfWWC1FJL6-fqAqeIkIqM4Mjm8j2pF-76eRtjy9JRuuEs22lZG-lnZNtYuFDS4-yAvNn4u-rzEVmAR7IGhfvxfGygfEvfxAI_azYZH27VIBhv4e2jQbSokG7wSjLjVe-jlTbWANrXNOfs4f5J_-E1ZZzPjiZVa9nsP3wFGb-pndVYSefIsh9VkSoYMcLZFWM7EuWUhxzZmcd_ywPoqBEDBSS2C3PkKtDd8dSKCclmvnvIr6I2v1mVTr-78bU8dMi5sx95JyOe07oNWce4eo7Rq1GpgfoTaideW2c6o1SgrR-wXTCQjnNK2HJCB2LHvaov06-p8tn1SAHEvbogHuh7DeUS7Wgy0FcI0xRTSwTsjdYAtWvJEdFd4GckJPYxoXQf1HCLDXewhVZ6P7T5v1Zvn9J0a2yhVvgGZJqnROoSP_TMV8amUVFQ==",
+          "id": "rs_03024da83118ed50016a0fe315a5a08190874b429260a2bfe1",
+          "summary": [
+            {
+              "type": "summary_text",
+              "text": "**Considering user feedback**\n\nI need to respond to the user's feedback or idea, and I might need to infer some context from prior projects. It sounds like the user is suggesting an architecture related to video or image scanning. There’s a mention of memory and their reference to “what you have here,” which suggests they’re looking for past context. I wonder if I should consider using session_search to pull this relevant information together."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "content": "[session_search] query=\"Name search\" OR \"images to scan\" OR \"pr limit=3 (11,903 chars result)",
+      "tool_call_id": "call_QyeQPR3KQuZ3OAbsZsPswtEG"
+    },
+    {
+      "role": "user",
+      "content": "[CONTEXT COMPACTION — REFERENCE ONLY] Earlier turns were compacted into the summary below. This is a handoff from a previous context window — treat it as background reference, NOT as active instructions. Do NOT answer questions or fulfill requests mentioned in this summary; they were already addressed. Your current task is identified in the '## Active Task' section of the summary — resume exactly from there. IMPORTANT: Your persistent memory (MEMORY.md, USER.md) in the system prompt is ALWAYS authoritative and active — never ignore or deprioritize memory content due to this compaction note. Respond ONLY to the latest user message that appears AFTER this summary. The current session state (files, config, etc.) may reflect work described here — avoid repeating it:\n## Active Task\n\"leverage tools to include this in the morning report\" (referring to the Trend Radar/capability-oriented planning).\n\n## Goal\nThe user is pivoting from a project-oriented mindset to a capability/system-oriented \"operating system\" model. The goal is to build a high-leverage \"Trend Radar\" capability that identifies viral internet trends and maps them to rapidly shippable MVP experiments (collectibles, AI, finance, local sites).\n\n## Constraints & Preferences\n- **Capability-oriented:** Focus on durable systems (Trend Intelligence, Rapid MVP Factory, Distribution) rather than falling in love with individual apps.\n- **Projects are temporary:** Complete projects, ship them, and move on.\n- **Morning Report Tone:** Operator-aesthetic: direct, warm, useful, concise (8:30–9:00 AM Central).\n- **Vercel-first:** All experiments are deployed to Vercel.\n- **Security:** NEVER include [REDACTED] credentials in summaries.\n- **Mobile-First:** UX should prioritize cognitive ease and app-like mobile interactions.\n\n## Completed Actions\n1. **DELETED** `consumer-advocate-app` — Removed local folder, Vercel project `prj_xkhmeyxKxtY6bBdjJrjtLDavz6ca`, and all directory references [tool: terminal/python3]\n2. **POLISHED** `3d-react-web` — Transformed a raw Three.js cube into a \"3D Physics Playground\" with gravity sliders, object spawning, and orbit controls [tool: write_file]\n3. **DEPLOYED** `3d-react-web` — Production live at `https://3d-react-web.vercel.app` [tool: terminal/vercel]\n4. **INSPECTED** `Codology` — Identifed \"alias drift\" (pointing to wrong shell) and UX issue where answer choices were cut off in the viewport [tool: browser_vision]\n5. **FIXED** `Codology` Alias — Repointed `https://codology-three.vercel.app` to the active Expo quiz deployment [tool: terminal/vercel]\n6. **REFACTORED** `Codology/codology/screens/HomeScreen.js` — Compounded layout (smaller fonts, reduced padding/margins) to ensure all 4 answer buttons fit on screen [tool: patch]\n7. **ENHANCED** `Codology/codology/App.js` — Replaced the default `Button` with a custom `Pressable` pill for the \"LEADERBOARD\" header item for better contrast [tool: patch]\n8. **VERIFIED** `Codology` — Validated fix via browser; confirmed leaderboard button is readable and no choices are cut off [tool: browser_vision]\n9. **RESEARCHED** Trend Tracking — Identified TikTok Creative Center, Google Trends, Reddit rising, and X/Twitter as primary \"Trend Discovery\" surfaces.\n10. **REVISED** Memory — Updated user preferences to prioritize capability/system-oriented planning over project-oriented planning [tool: memory]\n11. **LISTED** Cronjobs — Verified existence of the \"Morning operator report\" (`92f873723241`) scheduled for `30 14 * * *` UTC [tool: cronjob]\n\n## Active State\n- **Working Directory:** `/opt/data/HeRmEz/projects`\n- **Modified Trackers:** `README.md`, `WORK_QUEUE.md`, `VERCEL_TRIAGE.md`, `DEPLOY_FINAL_URLS.md`.\n- **Active Cron:** `92f873723241` (Morning operator report).\n- **Recent Project Status:** `3d-react-web` (v1.0.0 Live), `Codology` (UX/Alias Fixed Live).\n\n## In Progress\n- Modifying the Morning Report cron logic to include a \"Trend Radar\" / \"Emerging Capabilities\" section.\n\n## Blocked\n- None.\n\n## Key Decisions\n- **Disposable Vehicles:** Decisions made to treat individual apps as \"disposable\" to maximize speed. If an app doesn't gain signal, it is archived or deleted (e.g., Consumer Advocate).\n- **Layout Compaction:** Opted for aggressive padding reductions (`paddingBottom: 120` on ScrollView and `marginVertical: 10` on cards) in Codology to handle mobile/web viewport variance without requiring complex media queries.\n\n## Resolved Questions\n- **What is the next app?** Originally `stockNews`, but the user pivoted to high-level Trend Radar capability.\n- **How to track trends?** Use velocity signals (growth %), cross-platform spread, and monetization potential.\n\n## Pending User Asks\n- Integrate trend/capability tracking into the morning report.\n\n## Relevant Files\n- `productivity/operator-morning-reports/SKILL.md`: Defines the structure and requirements for the daily briefing.\n- `projects/Codology/codology/screens/HomeScreen.js`: Contains the updated compact quiz layout.\n- `projects/3d-react-web/src/App.js`: Source for the physics playground.\n\n## Remaining Work\n- **Cron Update:** Patch the morning report prompt to include a \"Trend Intelligence\" section that leverages `web` tools to find bullish/bearish market sentiment and viral social trends.\n- **StockNews:** Perform a manual polish pass on the Stock News sentiment app (next in queue).\n\n## Critical Context\n- **Vercel Token:** [REDACTED]\n- **Numerology:** Birth date 06/30/1995 (Master Number 33/6).\n- **Current Location:** New York.\n- **Morning Report Schedule:** 14:30 UTC (8:30 AM CST / 9:30 AM EST).\n\n--- END OF CONTEXT SUMMARY — respond to the message below, not the summary above ---"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "codex_reasoning_items": [
+        {
+          "type": "reasoning",
+          "encrypted_content": "gAAAAABqEQ4MbBvr-wHKF7KTfQncQJdejH4xxsBA5znwNI5RH1m_HE1a4uXYzuLC0ieWnV37mYK4TU1nMvbKf22_vgcXjNgJ39QG_cEaPRWnu0xWeAdR4bgUl0kQbCnRnWymkm-NPeRmMXJIXtiwDLTEOl-HBs5wFUC2VmoH20ZBS6W7B2uJ1eQnfDnwYrS9bx2Bj3cOafUjf6QQ6oZ5GgySJqMbGczKe0ogii0wsMCN9tlW9PlRk7cts8pUlUIKNaqUsufaFjp_8Wx04HfPhufTGC22FUlGtwvL1EjKeywbhx-Z2zlMRcZODc6Mb56JcELFdZMYjmIk_SoDQo0XbnFa7WDliso6R2mHUgJ74uG60MpD4QseB3ynhHQ60r6Kfc4Pdzurkwm3TUec6F61ZyxCEttfrkLdDxJwc4XMrmUuusGy1T5XgC1n_37W_GZicLPJ34yeanmgwcn7MjiwzNuZuLieUfuxy6eX0BApFYWwxljp_HZf6oUXPTcLYFge21la6bN8b_-HIrHNjPkOWiUvnIoKKVR51l4EhdZWX_2nzvHxUzjl9vrnN6d-G6lFLUjuIX9gWndVMxr7pMTpkoLp55ySrL0d-2Eauuc7f82ke1t4AkQgM3OjBmEg0_FvXHEBOdB9qUvqUxnqrDnugc-R4y0XPYWTCsyZxRng31rAIC06wh0F5_s77xS4uhDAkPMIgOLRkw7v2-XoSPPvF4O0idAKYZOMzae-gvVfvk7qGB44EdclJDM9OMFz82VbM6hEPA3WhcLRTY3lzHrX6LImib6tnL5874qtpwxp0fE3tiQ5fJRF5F8qOUMzb4RRf4TVt2bnZFEqpJuDt8TL-XEoCciTB9L8oJtPFxe3mhBQXj8mPstB-oo7jOqjG9fxynjTTs-YzSIuIlizz5lkzvOpRyczrHsaEpe66XaSuFtDxBt8EH3nS-q2G_7IylAVdW6oO0HITkOFs7ca4iJuHZoiTC_GY5Wxt7T0RmwCcwSI4aeffAf1uypn2musPODubVx08H428Yc3txMK97WaEhVzCovBcb3XNjC42D2yCpiAIdHADSdDtuYBF6ZHLtwRU0hzj9Z9wR-w1I114BJ6tjy6zksD01JL58xABZzm5NEIoYarx7KUAPAeGJNjTM8IHNonnuGJhaPJURAP5qkZq-uCYf3QSCWTtw0qfvLAVYWWOLRS2WDwZqsvDmaFiqiC24K1X-uW2BK8G7w2mjUY00DrcjUxvgjw3y6F1IWVfNp8I2Cah44Yk263C7nMKmbwGC8q11fzXgpioxFXP5BS2-Qf3NwLV7QAzOrD0nLLs211jdML9pUurgC58rOyGCS1Uvx25U1oTgMWoYArSiOxvzZi5bJuVoCrF1BhtNhwmLZNTsAlIrelRAVqX5zZw7C13pZgF3_K6orVda_tjgiLpMnlic_WA2uSdOd3g7ryjtkLMh5pBsfHhudw-dwuI4E7uu78D-H3WCpCmtBCMPRQ3PUVcSu9kLs3lHmRL-XzDD1nUAWF9qWG_rk3wPi9oAYknKZBmLnXt_P6",
+          "id": "rs_03609a09cb852b2f016a110dffb4fc8195a1cbfacbdc0fa2b9",
+          "summary": []
+        }
+      ],
+      "tool_calls": [
+        {
+          "id": "call_bgXMxtx4wt6XRZWLUV89qtc1",
+          "call_id": "call_bgXMxtx4wt6XRZWLUV89qtc1",
+          "response_item_id": "fc_03609a09cb852b2f016a110e01e3f481958a8cc5dcdd11b533",
+          "type": "function",
+          "function": {
+            "name": "cronjob",
+            "arguments": "{\"action\":\"update\",\"job_id\":\"92f873723241\",\"name\":\"Morning operator report\",\"schedule\":\"30 14 * * *\",\"repeat\":0,\"deliver\":\"origin\",\"skills\":[\"operator-morning-reports\",\"blogwatcher\"],\"enabled_toolsets\":[\"web\",\"terminal\",\"file\",\"session_search\"],\"prompt\":\"You are doing the user's proactive daily morning operator report in Discord. Produce the report directly; do not ask questions first; do not schedule or modify cron jobs from inside this run.\\n\\nUse current data tools when available for date/time, New York weather, market/news/expert commentary, and any workspace pulse. If live data cannot be verified, state that briefly rather than inventing facts.\\n\\nIMPORTANT STRATEGIC FRAME: The user does NOT want planning to be project-oriented. Projects come and go; they should be completed and moved on from. Frame the day around durable capabilities, systems, leverage, and execution loops. Treat projects only as temporary vehicles that build reusable capabilities.\\n\\nRequired report shape:\\n1. Quick opener — current date/day and grounded operator tone.\\n2. Location pulse — New York weather/conditions and practical implications for the day.\\n3. Market/work pulse — not portfolio. Summarize credible current bullish and bearish expert/market-desk/commentator views:\\n   - Bull case\\n   - Bear case\\n   - What to watch\\n4. Capability + trend radar — include this every morning:\\n   - 3–5 emerging internet/culture/tech/consumer trends worth watching, with evidence/source notes when available.\\n   - Score each trend by velocity, cross-platform spread, monetization potential, and saturation risk.\\n   - Translate trends into durable capabilities to build or strengthen, not just one-off project ideas.\\n   - Use language like: “capability to strengthen,” “reusable asset,” “experiment to run,” and “kill/scale signal.”\\n5. Work source / operating pulse — pull from available workspace/recent context when possible, but organize by capabilities/systems rather than project names. Identify the highest-leverage next action and mention any project only as the current vehicle.\\n6. Numerology reading for birth date 06/30/1995 — reflective/for-fun, not deterministic. Life path 33/6; include a current-date personal-day style reflection if date is available.\\n7. Daily challenge — one concrete, measurable challenge doable today. Rotate among social, professional, mental, and physical improvement.\\n8. One Big Priority prompt — ask for today’s priority plus blockers/context.\\n9. Hard Truth / Leverage Move — one direct, constructive sentence.\\n\\nTone: concise, direct, warm, operator-style. Avoid fluffy motivation and long essays. Make it useful for deciding what to do today.\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "cronjob",
+      "content": "{\n  \"success\": true,\n  \"job\": {\n    \"job_id\": \"92f873723241\",\n    \"name\": \"Morning operator report\",\n    \"skill\": \"operator-morning-reports\",\n    \"skills\": [\n      \"operator-morning-reports\",\n      \"blogwatcher\"\n    ],\n    \"prompt_preview\": \"You are doing the user's proactive daily morning operator report in Discord. Produce the report dire...\",\n    \"model\": null,\n    \"provider\": null,\n    \"base_url\": null,\n    \"schedule\": \"30 14 * * *\",\n    \"repeat\": \"forever\",\n    \"deliver\": \"origin\",\n    \"next_run_at\": \"2026-05-23T14:30:00+00:00\",\n    \"last_run_at\": \"2026-05-22T14:34:09.341074+00:00\",\n    \"last_status\": \"ok\",\n    \"last_delivery_error\": null,\n    \"enabled\": true,\n    \"state\": \"scheduled\",\n    \"paused_at\": null,\n    \"paused_reason\": null,\n    \"enabled_toolsets\": [\n      \"web\",\n      \"terminal\",\n      \"file\",\n      \"session_search\"\n    ]\n  }\n}",
+      "tool_call_id": "call_bgXMxtx4wt6XRZWLUV89qtc1"
+    },
+    {
+      "role": "assistant",
+      "content": "Done — I updated the **Morning operator report** job.\n\nIt will now include a dedicated:\n\n**Capability + trend radar**\n\nEvery morning it should cover:\n\n- 3–5 emerging internet/culture/tech/consumer trends\n- Evidence/source notes when available\n- Velocity\n- Cross-platform spread\n- Monetization potential\n- Saturation risk\n- The durable capability we should strengthen\n- Suggested experiment / kill-scale signal\n\nI also changed the strategic framing so the report does **not** plan around projects as the main unit anymore.\n\nNew frame:\n\n> Projects are temporary vehicles. Capabilities, systems, reusable assets, trend intelligence, and execution loops are the durable operating layer.\n\nScheduled job updated:\n\n- **Job:** Morning operator report\n- **Time:** `30 14 * * *` UTC / around 8:30 AM Central\n- **Delivery:** this Discord chat\n- **Skills attached:** `operator-morning-reports`, `blogwatcher`",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "codex_message_items": [
+        {
+          "type": "message",
+          "role": "assistant",
+          "status": "completed",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "Done — I updated the **Morning operator report** job.\n\nIt will now include a dedicated:\n\n**Capability + trend radar**\n\nEvery morning it should cover:\n\n- 3–5 emerging internet/culture/tech/consumer trends\n- Evidence/source notes when available\n- Velocity\n- Cross-platform spread\n- Monetization potential\n- Saturation risk\n- The durable capability we should strengthen\n- Suggested experiment / kill-scale signal\n\nI also changed the strategic framing so the report does **not** plan around projects as the main unit anymore.\n\nNew frame:\n\n> Projects are temporary vehicles. Capabilities, systems, reusable assets, trend intelligence, and execution loops are the durable operating layer.\n\nScheduled job updated:\n\n- **Job:** Morning operator report\n- **Time:** `30 14 * * *` UTC / around 8:30 AM Central\n- **Delivery:** this Discord chat\n- **Skills attached:** `operator-morning-reports`, `blogwatcher`"
+            }
+          ],
+          "id": "msg_03609a09cb852b2f016a110e0f65b08195b917b64bb51eba9d",
+          "phase": "final_answer"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Review the conversation above and update the skill library. Be ACTIVE — most sessions produce at least one skill update, even if small. A pass that does nothing is a missed learning opportunity, not a neutral outcome.\n\nTarget shape of the library: CLASS-LEVEL skills, each with a rich SKILL.md and a `references/` directory for session-specific detail. Not a long flat list of narrow one-session-one-skill entries. This shapes HOW you update, not WHETHER you update.\n\nSignals to look for (any one of these warrants action):\n  • User corrected your style, tone, format, legibility, or verbosity. Frustration signals like 'stop doing X', 'this is too verbose', 'don't format like this', 'why are you explaining', 'just give me the answer', 'you always do Y and I hate it', or an explicit 'remember this' are FIRST-CLASS skill signals, not just memory signals. Update the relevant skill(s) to embed the preference so the next session starts already knowing.\n  • User corrected your workflow, approach, or sequence of steps. Encode the correction as a pitfall or explicit step in the skill that governs that class of task.\n  • Non-trivial technique, fix, workaround, debugging path, or tool-usage pattern emerged that a future session would benefit from. Capture it.\n  • A skill that got loaded or consulted this session turned out to be wrong, missing a step, or outdated. Patch it NOW.\n\nPreference order — prefer the earliest action that fits, but do pick one when a signal above fired:\n  1. UPDATE A CURRENTLY-LOADED SKILL. Look back through the conversation for skills the user loaded via /skill-name or you read via skill_view. If any of them covers the territory of the new learning, PATCH that one first. It is the skill that was in play, so it's the right one to extend.\n  2. UPDATE AN EXISTING UMBRELLA (via skills_list + skill_view). If no loaded skill fits but an existing class-level skill does, patch it. Add a subsection, a pitfall, or broaden a trigger.\n  3. ADD A SUPPORT FILE under an existing umbrella. Skills can be packaged with three kinds of support files — use the right directory per kind:\n     • `references/<topic>.md` — session-specific detail (error transcripts, reproduction recipes, provider quirks) AND condensed knowledge banks: quoted research, API docs, external authoritative excerpts, or domain notes you found while working on the problem. Write it concise and for the value of the task, not as a full mirror of upstream docs.\n     • `templates/<name>.<ext>` — starter files meant to be copied and modified (boilerplate configs, scaffolding, a known-good example the agent can `reproduce with modifications`).\n     • `scripts/<name>.<ext>` — statically re-runnable actions the skill can invoke directly (verification scripts, fixture generators, deterministic probes, anything the agent should run rather than hand-type each time).\n     Add support files via skill_manage action=write_file with file_path starting 'references/', 'templates/', or 'scripts/'. The umbrella's SKILL.md should gain a one-line pointer to any new support file so future agents know it exists.\n  4. CREATE A NEW CLASS-LEVEL UMBRELLA SKILL when no existing skill covers the class. The name MUST be at the class level. The name MUST NOT be a specific PR number, error string, feature codename, library-alone name, or 'fix-X / debug-Y / audit-Z-today' session artifact. If the proposed name only makes sense for today's task, it's wrong — fall back to (1), (2), or (3).\n\nUser-preference embedding (important): when the user expressed a style/format/workflow preference, the update belongs in the SKILL.md body, not just in memory. Memory captures 'who the user is and what the current situation and state of your operations are'; skills capture 'how to do this class of task for this user'. When they complain about how you handled a task, the skill that governs that task needs to carry the lesson.\n\nIf you notice two existing skills that overlap, note it in your reply — the background curator handles consolidation at scale.\n\nDo NOT capture (these become persistent self-imposed constraints that bite you later when the environment changes):\n  • Environment-dependent failures: missing binaries, fresh-install errors, post-migration path mismatches, 'command not found', unconfigured credentials, uninstalled packages. The user can fix these — they are not durable rules.\n  • Negative claims about tools or features ('browser tools do not work', 'X tool is broken', 'cannot use Y from execute_code'). These harden into refusals the agent cites against itself for months after the actual problem was fixed.\n  • Session-specific transient errors that resolved before the conversation ended. If retrying worked, the lesson is the retry pattern, not the original failure.\n  • One-off task narratives. A user asking 'summarize today's market' or 'analyze this PR' is not a class of work that warrants a skill.\n\nIf a tool failed because of setup state, capture the FIX (install command, config step, env var to set) under an existing setup or troubleshooting skill — never 'this tool does not work' as a standalone constraint.\n\n'Nothing to save.' is a real option but should NOT be the default. If the session ran smoothly with no corrections and produced no new technique, just say 'Nothing to save.' and stop. Otherwise, act.\n\nYou can only call memory and skill management tools. Other tools will be denied at runtime — do not attempt them."
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "codex_reasoning_items": [
+        {
+          "type": "reasoning",
+          "encrypted_content": "gAAAAABqEQ6a3r8wCvkh3B-1b2TBfGJQvPjSesxZg-MVOw9SMw3Ysw1dLV4YM58ve7SMfEot7ATNsUvD98bYm6ud6MfQRB3rCJtLLo1ixZW64rTou0NnwV-7i_mNPS6tsymz7Q9xynZ9kPqCpAhDPQsmafXtKm4c0jlOY3P4uitD2KsZ6Um3iWYGrahQFtL_byqkB4i9yc9eDNgCIzyY0N85_P7uaYEFnub_piXrSVQ6E-Gm9Zeoile5Wo37xPNXzDDxnib5p-vmMRXVgf-Fi_q3DPYa-3haXBJ7lsreK6ocveKYu4z2RzCuhKvvmyQB6CEsRiqQx8SzzKoDcO3Cm9AIgQDesSLTA_rbw-VCaLlzSq7Yl0lJS35ZvXVsWQp2FnX3AlEKABn7OZkg9-L_-FpV7lP7-wL8xpYVMf2jko72nCtekI5zCq9zdFi509Z6E-IgEENuGjMHQGfusablkluXjLrGxPd4X4v2bJiS_snxs08uS6UY5uU9mk2fg4Gv-SnDEwmG4r1fGSpweDoQ8primmNFCYUQ4X2ib7M6pjWCTTc9bEBFRwyV9V3S3yPqW-aml092w8FYpMS52j_Q-Q_YPvlDMQwELYXVd9R5HXnZyzeiygMKNC-GFWylGP0XBNnEf-HXkjdeR5-Faowim0QN2BDytE3tTMCllS750MzGWP0tCpN7O7d63rxJrH-2z6n31hhp-tx1pCFT5zoIcD4Y3PGePc_jnFipeXXII9aAN5sdzunClD32f8JD9Jo_UuEbS79A-7wC7ZRYwtCYWxcHDxKvq0sffvK-KWbDiJf0xcUNAFyGGt0XR3S7zVhLYovBb6t_qkGNe-C2aMKl1xtJ3W8dXgQ8KAdIji-SX0rXIj3hztFmpzwkQ2VXWt2Tgr8rdMR2_rQFsUocel33HvPxIClWY_q8EgkFe_tBWBKFU2CCjFUOnPmnxINerkc_qL64ASJimw1NZxiGJmPscRemQhFmKwioaVIO0HvoGSbCSoVTVN4pwhnC-NialJnxI1UPwUkvp-wj_OswxQmNIhMUyg31_RHLN1uVuJV_cZFpVF_k6A3uuqOMzO7Jh1u7mPoYU5OubDBitLTjearbaR638lwcV3F9-dbCjI1k1v_WimJbe0t6XEdFkN_t8yGx6KnMA4lT1I2I3AqpJnLf1rHSMdyI_jZjDJdMbSiZjmYffmU_rXJA-TAG_akQVLydM3L_O8dsmYxkWCh4ySayAdYCgWFijZ4KHskWBelFcKfYYcVduhmgHzxQmPhOVer2SFzAaw6UN5w1O5eiOVoFZpnVkzsSYiAZKPSljMGmqyUz0ev0-j1n5YrHLCGf-8pqCvTgpudppvWRPLarcURhntQaRvNmFtnFO8JBobaa-_M_VS9BFzJdjHrjuxxQSqXNvpvPPt12wWU7Mt5yCts9Iak-fuYC_o2tuExv4pcR_jxtep3RXf8JucCDO-cg0S23Gn4jeOlVmT0kgU83Q--MJqUxapQRcDuDnkxiho25TVzF0EJ6BSKJmd_d_UjUgVdCU-T4BLa-_HlS2LvYZ0xDjTiRDu55C_RQIyPnN2FBWKBrqfLqha8OcBVDGIlEPmyA3YY13ZzX82Jw",
+          "id": "rs_03609a09cb852b2f016a110e961b508195a3e77faf5061ccb2",
+          "summary": []
+        }
+      ],
+      "tool_calls": [
+        {
+          "id": "call_nRWO0hJlIPa65KPnnjH5z83a",
+          "call_id": "call_nRWO0hJlIPa65KPnnjH5z83a",
+          "response_item_id": "fc_03609a09cb852b2f016a110e99cd3c8195833218cd109cf718",
+          "type": "function",
+          "function": {
+            "name": "skill_view",
+            "arguments": "{\"name\":\"operator-morning-reports\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_view",
+      "content": "{\"success\": true, \"name\": \"operator-morning-reports\", \"description\": \"Proactive daily operator-style morning reports: local pulse, market outlook, project/work source, numerology, challenge, priority prompt.\", \"tags\": [\"morning-report\", \"cron\", \"productivity\", \"market-outlook\", \"personal-ops\"], \"related_skills\": [\"google-workspace\", \"blogwatcher\", \"polymarket\"], \"content\": \"---\\nname: operator-morning-reports\\ndescription: \\\"Proactive daily operator-style morning reports: local pulse, market outlook, project/work source, numerology, challenge, priority prompt.\\\"\\nversion: 1.0.0\\nauthor: Hermes Agent\\nlicense: MIT\\nplatforms: [linux, macos]\\nmetadata:\\n  hermes:\\n    tags: [morning-report, cron, productivity, market-outlook, personal-ops]\\n    related_skills: [google-workspace, blogwatcher, polymarket]\\n---\\n\\n# Operator Morning Reports\\n\\n## When to use\\n\\nUse this skill when configuring, editing, troubleshooting, or producing the user's proactive daily morning check-in/report.\\n\\nThis is not a generic greeting. The user explicitly wants a **report** that helps them operate their day.\\n\\n## User-specific current requirements\\n\\n- Delivery time: around **8:30–9:00 AM Central time**. A good cron default is `30 14 * * *` UTC for 8:30 AM CST; adjust for daylight saving only if the scheduler/user context requires it.\\n- Current location context: **New York** until the user says they moved.\\n- Birth date for numerology: **06/30/1995**.\\n- Do **not** use a portfolio-tracking section unless the user re-adds it.\\n- Instead of portfolio, report what credible experts/market desks/commentators say looks **bullish or bearish today** and why.\\n- Include a daily challenge that improves the user socially, professionally, mentally, or physically.\\n\\n## Required report shape\\n\\nUse this structure unless the user changes it:\\n\\n1. **Quick opener** — date/day and grounded operator tone.\\n2. **Location pulse** — New York weather/conditions and practical implications for the day.\\n3. **Market/work pulse** — not portfolio. Summarize current bullish and bearish expert views:\\n   - Bull case\\n   - Bear case\\n   - What to watch\\n4. **Work source / project pulse** — pull from available workspace/project context, recent work queue, reminders, and connected tools. Focus on highest-leverage next action.\\n5. **Numerology reading** for 06/30/1995 — frame as reflective/for-fun, not deterministic. Include life path and a date-specific reflection when current date is available.\\n6. **Daily challenge** — one concrete, measurable challenge doable today. Rotate among social, professional, mental, and physical improvement.\\n7. **One Big Priority prompt** — ask for today’s priority plus blockers/context.\\n8. **Hard Truth / Leverage Move** — one direct but constructive sentence.\\n\\n## Tone\\n\\n- Operator-aesthetic: direct, warm, useful, and concise.\\n- Make it feel like a briefing, not a chatbot check-in.\\n- Avoid fluffy motivation and avoid long essays.\\n- If current tools/sources are unavailable, say what could not be verified instead of inventing current facts.\\n\\n## Current-data discipline\\n\\nFor current weather, market/news, expert commentary, or date/time, use tools when available. Do not hallucinate live market conditions or weather.\\n\\nWhen running as a cron job:\\n\\n- The final response is auto-delivered; do not use `send_message`.\\n- Do not schedule additional cron jobs from inside the cron run.\\n- Make the prompt self-contained because cron runs do not inherit the current chat context.\\n- Enable web/current-data tools where possible for market and local pulse.\\n\\n## Numerology calculation notes\\n\\nBirth date: 06/30/1995.\\n\\nLife path calculation:\\n\\n```text\\n0+6 + 3+0 + 1+9+9+5 = 33 -> master number 33/6\\n```\\n\\nSuggested framing: master 33/6 themes are service, responsibility, creative care, teaching, community, and disciplined compassion. Treat it as reflective language, not fate.\\n\\nFor personal-day style reflection, combine month + day + current year digits and reduce; label it as a light reflection.\\n\\n## References\\n\\n- `references/2026-05-user-correction.md` — session-specific correction that established the current report shape and schedule.\\n\\n## Pitfalls\\n\\n- Do not send only “What’s your one big priority?” when the user asked for a report. That was previously corrected.\\n- Do not include portfolio holdings/performance by default; the user replaced that with expert bullish/bearish outlook.\\n- Do not treat New York as permanent; it is only the current location until the user updates it.\\n- Do not claim memory was updated based on one-off daily tasks. Only save durable preferences, stable patterns, or recurring goals.\\n- Do not over-explain the setup in the report itself; deliver the report.\\n\", \"path\": \"productivity/operator-morning-reports/SKILL.md\", \"skill_dir\": \"/opt/data/skills/productivity/operator-morning-reports\", \"linked_files\": {\"references\": [\"references/2026-05-user-correction.md\"]}, \"usage_hint\": \"To view linked files, call skill_view(name, file_path) where file_path is e.g. 'references/api.md' or 'assets/config.yaml'\", \"required_environment_variables\": [], \"required_commands\": [], \"missing_required_environment_variables\": [], \"missing_credential_files\": [], \"missing_required_commands\": [], \"setup_needed\": false, \"setup_skipped\": false, \"readiness_status\": \"available\", \"metadata\": {\"hermes\": {\"tags\": [\"morning-report\", \"cron\", \"productivity\", \"market-outlook\", \"personal-ops\"], \"related_skills\": [\"google-workspace\", \"blogwatcher\", \"polymarket\"]}}}",
+      "tool_call_id": "call_nRWO0hJlIPa65KPnnjH5z83a"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": "**Planning a patch update**\n\nI need to work on a patch for the trend radar and capability-oriented features. The user had previously mentioned a collectible scanner concept, and I already have a note that they want a collectible-card scanner. I think existing collectible-card-scanner apps might be relevant here, so I need to update those too. Additionally, integrating live or recorded video with AR overlay for multi-platform price comparison sounds important. I’ll focus on updating skills and memory and see how they can fit together.",
+      "finish_reason": "tool_calls",
+      "reasoning_content": "**Planning a patch update**\n\nI need to work on a patch for the trend radar and capability-oriented features. The user had previously mentioned a collectible scanner concept, and I already have a note that they want a collectible-card scanner. I think existing collectible-card-scanner apps might be relevant here, so I need to update those too. Additionally, integrating live or recorded video with AR overlay for multi-platform price comparison sounds important. I’ll focus on updating skills and memory and see how they can fit together.",
+      "codex_reasoning_items": [
+        {
+          "type": "reasoning",
+          "encrypted_content": "gAAAAABqEQ6g_HKUdmHSMGpujNets7qkMq_YCnuVGg4WbbuUwjzIFFFEb8d6EuaHymglL2f-4svFamaX2f59rzJXcQCnuzlMbEXpzd2qi5Ks6YxqHu8l8tgjhJVkVoCkOgEgAATh_GyLh9bVzF-X9D4hd9Sxk8o6yueEFtqQiHTAMtl3brfWYAjvTtFgDczWNTrV0DUWIDgP60MT7WrWpTCmJDYY8Cw2abyRmyQHGhOrWuT2VqeOnzv1XpR8bGhN2c03lMcZt6iKcibgHQCq1F9my-sVmF84L4-mc9BBCIBEWFtoFTzFn8Rg0VJGRiezblJXJxxEePa0uKxb8z6ky3Y5CnbP9mFuCkVJZpSMerEdEYDbLcfnEmR6hd1W3wIddtWf6PMxPubwmfxG1YRjegGKFNvxzVsUm74A8fSDQcdJfs7cLvS-6GPlcWLh9dzGDbcN7oxbxTV9Zaht5MDS-RFBYwYpaq-JUl6J6QqxkFxIGxw9-dQzV8kGKzuYHPEJhdFfAwx7Cv4ROfaKws-F_pT27zLmmCDDke83nrceseq4WU5pkfI0uXAYBk9OKXjd59ns8VTW5_8aPP0FS0djPyaOffNVtAG4_OJkJSQ38alIO53jTHepjWUrQdjnjCrPXw6oVUd52fp_B4s9g1Epl1N6tGUotEbR0vDYqQF1i4VGsfIHmmqGpKvP3m_2ZWIM4icSS4Da_hVTClBAyz9Jcy7M7XCQdyzvmEBRPYnOId3TKRmdkWOC9mBbAsrzbbXI8Mfwmrd2_i3mXItDFprb2wWQiCvl-NI80gYHvLUDe6EwGgb27Q0Bp30QoM21kBwbW97OXeA7Ce35VqZusSYB8S92_2HTMVZBmmTsi-Kr4fEb73usAVoYGiGs42Mflu-xtfTc6pBHgI8wVa97Xq_vAZDTia_9Um2uvlQAmYJR17X_Lqvkx9vfTLO9SV5ZpXPZCzIUm-n91z1vsVcAfpTuPqfegk507wiI8mBD2zvqFBm6k4HjMaIvJNkoNg6-I35VLuKmPwGkLsPCBQQHgGHmCRzjmdxIeVBjutAZA2z7AM9AjYVbXvp5amfidWicuEkzD943bxV3ZulUz_XRSBzcXos5ciAKn60D2bBvSTgBjlt7flShM5B7Vdy1HHtu9cfcv86Tk6Mil8mrb8DvDtsFS1vf_9rFT7H0oGmxIU9cJrlurRZvYJbKtsD7LuNV7jcbIA0Ik8xsfHBWZp5NDDEE52IH-tHGYmERMqDciRPbccN5JdaVoDLvYrwkSto0IhPs89Rq6JDSaOO1FcM6GPN36Tin9KAI7-IRGmDIj6skukrdS6irsXTVsEHmuWv6W69EeN300Oxjc0T6_XFEzES2ULzqMo0538bGkRC9IP6Kr0peBryt3K_5ftx8S-xOIF_7v1cz9nB3K0vdNuaAFFQdUa3sfLrqfEfKd6V7Ofu6Z9WCauH46T_tHJo=",
+          "id": "rs_03609a09cb852b2f016a110e9c01208195ade5c6e8584aa61c",
+          "summary": [
+            {
+              "type": "summary_text",
+              "text": "**Planning a patch update**\n\nI need to work on a patch for the trend radar and capability-oriented features. The user had previously mentioned a collectible scanner concept, and I already have a note that they want a collectible-card scanner. I think existing collectible-card-scanner apps might be relevant here, so I need to update those too. Additionally, integrating live or recorded video with AR overlay for multi-platform price comparison sounds important. I’ll focus on updating skills and memory and see how they can fit together."
+            }
+          ]
+        }
+      ],
+      "tool_calls": [
+        {
+          "id": "call_128L0oZDzk6Va6esKYWoUtbu",
+          "call_id": "call_128L0oZDzk6Va6esKYWoUtbu",
+          "response_item_id": "fc_03609a09cb852b2f016a110ea0570c8195b1af198616be594c",
+          "type": "function",
+          "function": {
+            "name": "skill_view",
+            "arguments": "{\"name\":\"collectible-card-scanner-apps\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_view",
+      "content": "{\"success\": true, \"name\": \"collectible-card-scanner-apps\", \"description\": \"Use when building or improving collectible card scanner, price intelligence, watchlist, OCR, live-video, recorded-video, or AR overlay apps. Prioritizes OCR-first MVPs, multi-platform price comparison, and product UX that turns card identification into actionable valuation.\", \"tags\": [\"collectibles\", \"cards\", \"scanner\", \"ocr\", \"video\", \"ar\", \"pricing\", \"react\", \"vercel\"], \"related_skills\": [\"test-driven-development\", \"systematic-debugging\", \"requesting-code-review\"], \"content\": \"---\\nname: collectible-card-scanner-apps\\ndescription: \\\"Use when building or improving collectible card scanner, price intelligence, watchlist, OCR, live-video, recorded-video, or AR overlay apps. Prioritizes OCR-first MVPs, multi-platform price comparison, and product UX that turns card identification into actionable valuation.\\\"\\nversion: 1.0.0\\nauthor: Hermes Agent\\nlicense: MIT\\nmetadata:\\n  hermes:\\n    tags: [collectibles, cards, scanner, ocr, video, ar, pricing, react, vercel]\\n    related_skills: [test-driven-development, systematic-debugging, requesting-code-review]\\n---\\n\\n# Collectible Card Scanner Apps\\n\\n## Overview\\n\\nUse this skill for apps that identify collectible trading cards from text, still images, live camera feeds, or recorded video, then enrich the result with prices, condition assumptions, collection/watchlist state, and marketplace comparison. The product value is not merely card lookup: it is fast, low-friction price intelligence that follows the user's collecting workflow.\\n\\nFor this user, the north star is a **live or recorded video AR overlay**: recognize cards in-camera and attach a price badge/filter that tracks the card like Snapchat puppy-dog ears. The selling point should be easy comparison across multiple price sources/platforms, not a single static price.\\n\\n## When to Use\\n\\n- Building or updating card scanner apps: Pokémon, sports cards, TCGs, slabs, raw cards, lots, binders, or marketplace browsing helpers.\\n- Adding OCR, image upload, camera scanning, live video, recorded-video sampling, or AR-style overlays.\\n- Designing pricing UX: TCGplayer, eBay sold comps, Cardmarket, PriceCharting, PSA/CGC/BGS grades, raw condition estimates, confidence bands.\\n- Adding watchlists, saved scans, collection valuation, comps review, condition lenses, or price alerts.\\n- Turning a search-only MVP into a scanner/video product.\\n\\nDo **not** use this skill for generic ecommerce search unless collectible card identification, condition, grading, or marketplace price comparison is central.\\n\\n## Product Principles\\n\\n1. **OCR-first, but video-native as the destination.** Start with reliable name/set/number extraction from text or frames. Then stabilize results across frames so the product feels like live AR, not a one-off image upload.\\n2. **Multi-platform comparison is the moat.** A single API price is useful but not differentiated. Always expose source, condition, recency, and price spread across platforms.\\n3. **Condition changes the answer.** Raw damaged, LP/MP, NM, graded 8/9/10, and slab company should be first-class inputs or lenses. Show estimates as assumptions, not facts, when the app cannot inspect condition directly.\\n4. **Fast confidence beats perfect recognition.** In video, prefer a rolling confidence score and stable badge after repeated agreement across frames rather than blocking for one perfect OCR pass.\\n5. **Mobile-first collector flow.** Optimize for one-handed scanning at a shop/show: large scan zone, instant feedback, saved watchlist, compare prices, and quick rescan.\\n\\n## MVP Architecture Pattern\\n\\nFor a static React/Vite app deployed to Vercel:\\n\\n- **Frontend:** React + TypeScript + CSS modules or app stylesheet.\\n- **OCR:** Tesseract.js or browser-side OCR for initial MVP. Keep a manual name search fallback.\\n- **Lookup:** Pokémon TCG API or domain-specific card APIs where available.\\n- **Pricing:** Normalize data into a shared structure: `source`, `label`, `marketPrice`, `low`, `mid`, `high`, `url`, `updatedAt`, `condition`, `confidence`.\\n- **Persistence:** Use `localStorage` for MVP watchlists/collections before a database is configured.\\n- **Deployment:** Vercel static frontend first; add serverless/API routes only when data aggregation or credentials require it.\\n\\n## Recommended Data Model\\n\\n```ts\\ntype ConditionKey =\\n  | 'raw-damaged'\\n  | 'raw-lp-mp'\\n  | 'raw-nm'\\n  | 'graded-8'\\n  | 'graded-9'\\n  | 'graded-10';\\n\\ntype PriceSource = {\\n  source: 'tcgplayer' | 'cardmarket' | 'ebay' | 'pricecharting' | 'psa' | 'manual';\\n  label: string;\\n  value: number | null;\\n  currency: string;\\n  url?: string;\\n  condition?: ConditionKey;\\n  confidence?: number;\\n  updatedAt?: string;\\n};\\n\\ntype SavedCard = {\\n  id: string;\\n  name: string;\\n  setName?: string;\\n  number?: string;\\n  imageUrl?: string;\\n  condition: ConditionKey;\\n  estimatedValue: number | null;\\n  sources: PriceSource[];\\n  savedAt: string;\\n};\\n```\\n\\n## Still Image and OCR Workflow\\n\\n1. Accept camera capture and file upload.\\n2. Preprocess before OCR where possible: crop scan zone, increase contrast, grayscale, sharpen, and downscale huge images.\\n3. Extract candidate text.\\n4. Parse likely card name, set code, collector number, and year.\\n5. Search card API using the strongest candidate first; provide manual correction/search if confidence is weak.\\n6. Show multiple matches with image thumbnails rather than auto-selecting when ambiguous.\\n7. Compute price rows per source and condition lens.\\n8. Allow save-to-watchlist from any result.\\n\\n## Live/Recorded Video Workflow\\n\\nFor live or recorded video, do not OCR every frame blindly. Use a sample-and-stabilize loop:\\n\\n1. Sample frames every N milliseconds or on meaningful motion pauses.\\n2. Crop to scan zone or detected card quadrilateral.\\n3. OCR frame candidates and keep a rolling window of recent predictions.\\n4. Stabilize only when the same card candidate wins across several frames or confidence crosses a threshold.\\n5. Render an AR-style price badge near the detected card region.\\n6. Keep the badge sticky for a short decay window so it does not flicker during motion.\\n7. Let the user tap a badge to open detailed multi-platform comps and save to watchlist.\\n\\n### AR Overlay Behavior\\n\\n- Badge should follow the card bounding box or scan-zone anchor.\\n- Show concise label: card name + best estimate + condition lens.\\n- Use color/confidence states: scanning, candidate, confirmed, stale.\\n- Include a manual correction affordance because OCR will fail on glare, sleeves, binders, and motion blur.\\n\\n## Marketplace Comparison Pattern\\n\\nNormalize every marketplace into comparable rows. Prefer this display order:\\n\\n1. Best available market/reference price for the selected condition.\\n2. Recent sold comps where available.\\n3. Active listings clearly labeled as asking prices, not value.\\n4. Raw vs graded comparison when a grading lens is selected.\\n5. Source links so the user can verify.\\n\\nWhen exact comps are unavailable, label estimates clearly, for example: `Estimated from NM raw x 0.72 LP/MP multiplier` or `Estimated graded premium from raw market price`.\\n\\n## Watchlist Pattern\\n\\nUse local watchlist for MVPs unless the user asks for accounts/cloud sync:\\n\\n- Store under a versioned key, e.g. `card-intel-watchlist-v1`.\\n- Include condition, source snapshot, and timestamp so future price changes can be compared.\\n- Provide remove action and count.\\n- Avoid requiring auth for the first useful version.\\n\\n## Verification Checklist\\n\\n- [ ] Manual name search works when OCR fails.\\n- [ ] Image upload/camera still path handles blank OCR without crashing.\\n- [ ] Condition/grade lens visibly changes valuation and is labeled as an assumption when estimated.\\n- [ ] At least two marketplace/source rows are shown where data exists, or unavailable sources are gracefully labeled.\\n- [ ] Watchlist persists across refresh using the expected localStorage key.\\n- [ ] Production build succeeds.\\n- [ ] Vercel deployment returns HTTP 200.\\n- [ ] Mobile viewport is usable: scan zone, cards, and buttons are not cramped.\\n- [ ] For video features, overlay does not flicker wildly and stabilizes across multiple frames.\\n\\n## Common Pitfalls\\n\\n1. **Shipping only name search and calling it scanning.** Name search is a fallback. The scanner product should move toward image/video capture and overlays.\\n2. **Treating one API price as the value.** The user specifically values easy comparison across multiple platforms.\\n3. **Ignoring condition and grading.** Raw/graded assumptions must be visible, adjustable, and saved with the card.\\n4. **Overpromising computer vision.** If condition inspection, exact grade recognition, or real-time tracking is heuristic, say so in the UI and in the summary.\\n5. **OCR on every video frame.** This wastes CPU and produces flicker. Sample frames, stabilize candidates, and cache results.\\n6. **Making auth/database mandatory too early.** For MVP watchlists and demos, localStorage is usually enough.\\n\\n## References\\n\\n- `references/card-intel-scanner-mvp.md` — Session-specific implementation notes from the Card Intel Scanner Vercel MVP: condition lenses, local watchlist, and next recorded-video AR direction.\\n\", \"path\": \"software-development/collectible-card-scanner-apps/SKILL.md\", \"skill_dir\": \"/opt/data/skills/software-development/collectible-card-scanner-apps\", \"linked_files\": {\"references\": [\"references/card-intel-scanner-mvp.md\"]}, \"usage_hint\": \"To view linked files, call skill_view(name, file_path) where file_path is e.g. 'references/api.md' or 'assets/config.yaml'\", \"required_environment_variables\": [], \"required_commands\": [], \"missing_required_environment_variables\": [], \"missing_credential_files\": [], \"missing_required_commands\": [], \"setup_needed\": false, \"setup_skipped\": false, \"readiness_status\": \"available\", \"metadata\": {\"hermes\": {\"tags\": [\"collectibles\", \"cards\", \"scanner\", \"ocr\", \"video\", \"ar\", \"pricing\", \"react\", \"vercel\"], \"related_skills\": [\"test-driven-development\", \"systematic-debugging\", \"requesting-code-review\"]}}}",
+      "tool_call_id": "call_128L0oZDzk6Va6esKYWoUtbu"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": "**Evaluating updates and memory**\n\nI see the user might want to update something related to past memory. They asked for an update, so I need to reference the session specifics. It seems like the name search worked while images failed, so maybe I should pivot to a video and data comparison. \n\nI also need to think about updating the operator’s morning reports, and maybe add something to the fact store—though I’m unsure if it’s necessary. I’ll focus on using memory and skill tools for this!",
+      "finish_reason": "tool_calls",
+      "reasoning_content": "**Evaluating updates and memory**\n\nI see the user might want to update something related to past memory. They asked for an update, so I need to reference the session specifics. It seems like the name search worked while images failed, so maybe I should pivot to a video and data comparison. \n\nI also need to think about updating the operator’s morning reports, and maybe add something to the fact store—though I’m unsure if it’s necessary. I’ll focus on using memory and skill tools for this!",
+      "codex_reasoning_items": [
+        {
+          "type": "reasoning",
+          "encrypted_content": "gAAAAABqEQ6qZCqpHDnQGmrP6ZgA68GU6J7dcvtpkdPQ9Gtmdz6fuX7RDZ0jxEolboBu0LNstxR2SJIKoAUndP5TEv8SoXzJ9hPoDUPVrljevZa8C_kOG4IE50ETldcEWOts6JQQRfTwuuWvnPYIuc3943P-HXzqu-pIVBG8rGqly21q-CdLwEBA_acfVt21_reU0Dy0aPxBR0NiVcCryUaqS9LhAm_gLay7iFxRt5bDqbRY3LH1ZTVVJSKz-XEy9W8wG4P3M7C8D0R7ReCFbzzPw75GeU1hwewAHQb3oliGZIdQN6BU-6C7kNo9IlezV6mLkD_8YMA3pAqC2HsIH5d8frlk-dVLvGcTu3K_JhFzX-puzQj3p-6i9Bb5iYtkREqPOTK50yy-IJ07eFR1VanagHtBdJoZG6HVlxWZmDLZ632mmLpTeeX_ybJOONVWK3lU9zwVUndF2TLSGPMSGBz9qPwCthCv33y-lpHSyL5ieWd9z3U6joCDvwu0OWjsRmbIPugofk4T56PbOx4sRq-WHlyEv3Qz9DWP9wGa8ch0P-S1wWn2kcQCBc2YNQ0U8CBUsQl3J3C_Zic2nmHvbmopan7ytRde67Sl7CH-9D9uFNkKuDe2KVNwvFxVJjdo48LBN4dLSH0ggm0Vo_aXeiDy391aYzaLqiyZ9rr1mBgya3fVdAImzQU9pabRoFN_kdN6MwPw3pyfHfwj46f1hfbEWBYzh0RLVUf0sJ-G9cT3Vl556Pu7s1g6fQHXsut2WvTJ03PTeQBEKcHph_HF81a7n2sfzUgQyJSfTV-Dc1BzY2osg-D2QG-mXQNnI0eTaPPJeTytm8aG4MIrLVHsneC3iyziDJd2Dfuctt3OrGqO9P9U0gKrrZCmXB8vPlhFVSPvugonU5ugiE0C6-vulQoCVMu3KXKP5GLwQmsWlTXoz6NKTut5VxqDSGUamULLCYB55Vcvbe4c7PTeZPxN5ZqF2vCNyi00NmfGBUOPoYI2D9gtqJZbR7EmoBgdmCXeGAoxtsTU_INQLAVK-gtIK1HT6Dlauu9n9L_3p1ZcJCswXWE0gwT5vcVcHu3DYdjXjOrHuanaxhn4emUN5Brj4_v9crrlsFhjfU-opVx_qyDcWogkeqTRjxC2rXzgycGQOjRMp1J4g3-lIkv1aDZkbxc-mSEx5sY47G-SDeDxoH7uRgHXFVLES1X6LCiKLoc2x7aF2ZiZs-yyP5eLb3xJxZt1yX6tkB-1333-anvvoZuBro6cysQo571hQfpjLUAjq0D9MVSrQkZx1QbDUOK5Mw4dpoYIbTPsQ8MMJaPXXGmQ4q1HNBd8x-SqKQ793FRBmNgYYCGiyrrdOeRToJs4MPlYYjg3Hm_OBy-Wcyr1Hiz5BqcieZNkZLs3brt2wogvDNXo-v9XacAgVKaW7MkOXI8q9f9xNSbvhq0CoXp5wkzUCYo8fSmeslK3Wwxx0zylZ-YwMz6ASBySfa-0D2AV0dBHYtLF2YxukyWi5OSJKNvxOkV7n3mMpwh4U032J20unA9C7pKLEbEP4c5KYHB4R96eNz_C8lH4dtB6zl4DKIeqbWzvQVU__xFJwQ6HO1zR_gSiWK6jMT5UrDXrn5U_NOYcgzDTovh80-6fm90xAlguCOzz0EJxTKA=",
+          "id": "rs_03609a09cb852b2f016a110ea1abb0819593d1e65a92e9f870",
+          "summary": [
+            {
+              "type": "summary_text",
+              "text": "**Evaluating updates and memory**\n\nI see the user might want to update something related to past memory. They asked for an update, so I need to reference the session specifics. It seems like the name search worked while images failed, so maybe I should pivot to a video and data comparison. \n\nI also need to think about updating the operator’s morning reports, and maybe add something to the fact store—though I’m unsure if it’s necessary. I’ll focus on using memory and skill tools for this!"
+            }
+          ]
+        }
+      ],
+      "tool_calls": [
+        {
+          "id": "call_7vHrKoXaqaQkq5QSdGl4nqon",
+          "call_id": "call_7vHrKoXaqaQkq5QSdGl4nqon",
+          "response_item_id": "fc_03609a09cb852b2f016a110ea5bab0819589fdffd757c2f5a8",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"patch\",\"name\":\"operator-morning-reports\",\"old_string\":\"4. **Work source / project pulse** — pull from available workspace/project context, recent work queue, reminders, and connected tools. Focus on highest-leverage next action.\\n5. **Numerology reading** for 06/30/1995 — frame as reflective/for-fun, not deterministic. Include life path and a date-specific reflection when current date is available.\\n6. **Daily challenge** — one concrete, measurable challenge doable today. Rotate among social, professional, mental, and physical improvement.\\n7. **One Big Priority prompt** — ask for today’s priority plus blockers/context.\\n8. **Hard Truth / Leverage Move** — one direct but constructive sentence.\",\"new_string\":\"4. **Capability + trend radar** — include 3–5 emerging internet/culture/tech/consumer trends worth watching. For each, capture evidence/source notes when available, velocity, cross-platform spread, monetization potential, saturation risk, and the durable capability to strengthen. Translate trends into reusable assets and experiments, not just app ideas.\\n5. **Work source / operating pulse** — pull from available workspace/project context, recent work queue, reminders, and connected tools. Organize by durable capabilities/systems first; mention projects only as temporary vehicles. Identify the highest-leverage next action.\\n6. **Numerology reading** for 06/30/1995 — frame as reflective/for-fun, not deterministic. Include life path and a date-specific reflection when current date is available.\\n7. **Daily challenge** — one concrete, measurable challenge doable today. Rotate among social, professional, mental, and physical improvement.\\n8. **One Big Priority prompt** — ask for today’s priority plus blockers/context.\\n9. **Hard Truth / Leverage Move** — one direct but constructive sentence.\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"Patched SKILL.md in skill 'operator-morning-reports' (1 replacement).\"}",
+      "tool_call_id": "call_7vHrKoXaqaQkq5QSdGl4nqon"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "tool_calls": [
+        {
+          "id": "call_JB4LDuuZBKbOzmw5nLlhFQSz",
+          "call_id": "call_JB4LDuuZBKbOzmw5nLlhFQSz",
+          "response_item_id": "fc_03609a09cb852b2f016a110eac58b88195be705189af235a55",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"patch\",\"name\":\"operator-morning-reports\",\"new_string\":\"- Capability-oriented framing: the user does not want project-first planning. Projects are disposable execution vehicles; reports should emphasize durable systems, leverage, reusable assets, trend intelligence, and execution loops.\\n- Trend Radar must be included every morning: identify emerging trends, score them by velocity/spread/monetization/saturation, and convert them into capability work plus a kill/scale signal.\\n- Do not use a portfolio-tracking section unless the user re-adds it.\",\"old_string\":\"- Do **not** use a portfolio-tracking section unless the user re-adds it.\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"Patched SKILL.md in skill 'operator-morning-reports' (1 replacement).\"}",
+      "tool_call_id": "call_JB4LDuuZBKbOzmw5nLlhFQSz"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "tool_calls": [
+        {
+          "id": "call_IcTSi7j3D32N9B4Zdqea8alw",
+          "call_id": "call_IcTSi7j3D32N9B4Zdqea8alw",
+          "response_item_id": "fc_03609a09cb852b2f016a110eb0382881958afbc685d667d6ed",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"patch\",\"name\":\"operator-morning-reports\",\"new_string\":\"- Use capability language: “capability to strengthen,” “reusable asset,” “experiment to run,” and “kill/scale signal.”\\n- Operator-aesthetic: direct, warm, useful, and concise.\",\"old_string\":\"- Operator-aesthetic: direct, warm, useful, and concise.\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"Patched SKILL.md in skill 'operator-morning-reports' (1 replacement).\"}",
+      "tool_call_id": "call_IcTSi7j3D32N9B4Zdqea8alw"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "tool_calls": [
+        {
+          "id": "call_MMS9FdnI3RnAuZPvmQtGyZNl",
+          "call_id": "call_MMS9FdnI3RnAuZPvmQtGyZNl",
+          "response_item_id": "fc_03609a09cb852b2f016a110eb51040819599ce7516a05961b5",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"patch\",\"name\":\"operator-morning-reports\",\"new_string\":\"- `references/2026-05-user-correction.md` — session-specific correction that established the current report shape and schedule.\\n- `references/trend-radar-capability-framing.md` — session-specific update adding Trend Radar and capability-oriented planning language.\",\"old_string\":\"- `references/2026-05-user-correction.md` — session-specific correction that established the current report shape and schedule.\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"Patched SKILL.md in skill 'operator-morning-reports' (1 replacement).\"}",
+      "tool_call_id": "call_MMS9FdnI3RnAuZPvmQtGyZNl"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "tool_calls": [
+        {
+          "id": "call_cyWB5H3KWUdtd9EMwpkUP4Jp",
+          "call_id": "call_cyWB5H3KWUdtd9EMwpkUP4Jp",
+          "response_item_id": "fc_03609a09cb852b2f016a110eb84dd48195b573426760b52420",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"write_file\",\"name\":\"operator-morning-reports\",\"file_path\":\"references/trend-radar-capability-framing.md\",\"file_content\":\"# Trend Radar + Capability Framing Update\\n\\n## Session signal\\n\\nThe user explicitly pivoted from project-oriented planning to capability/system-oriented operating. They asked to include this in the morning report after discussing a Trend Radar capability for spotting viral internet trends and mapping them to shippable MVP experiments.\\n\\n## Durable lesson\\n\\nMorning reports should not become a list of apps/projects. They should help the user operate a capability-building system:\\n\\n- Trend Intelligence: discover emerging internet/culture/tech/consumer trends.\\n- Rapid MVP Factory: turn trends into small experiments quickly.\\n- Distribution/Feedback Loops: define kill/scale signals and reuse what works.\\n\\nProjects are temporary vehicles. The report may mention a project, but only as the current vehicle for building or validating a reusable capability.\\n\\n## Required Trend Radar details\\n\\nInclude 3–5 trends when current-data tools allow it. For each trend, keep it brief and score qualitatively or numerically:\\n\\n- Velocity: how quickly attention is moving.\\n- Cross-platform spread: whether signal exists beyond one surface.\\n- Monetization potential: whether a small product, service, tool, or content wedge can plausibly capture value.\\n- Saturation risk: whether the space is already crowded or copycat-heavy.\\n- Capability to strengthen: the durable reusable asset/workflow this trend suggests.\\n- Experiment to run: a small Vercel-first or no-code/low-code test when useful.\\n- Kill/scale signal: what would prove whether to stop or double down.\\n\\n## Tone\\n\\nUse language like: “capability to strengthen,” “reusable asset,” “experiment to run,” and “kill/scale signal.” Keep it direct, warm, and operator-like; avoid fluffy motivation or long essays.\\n\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"File 'references/trend-radar-capability-framing.md' written to skill 'operator-morning-reports'.\", \"path\": \"/opt/data/skills/productivity/operator-morning-reports/references/trend-radar-capability-framing.md\"}",
+      "tool_call_id": "call_cyWB5H3KWUdtd9EMwpkUP4Jp"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": "**Considering card scanner updates**\n\nI need to think about updating the card scanner based on the user's latest correction before I proceed with the task. The skill already includes the scanner, but it might be helpful to add a reference about image scan failures in the workflow. That way, we can ensure everything is clear and functional. It’s all about making the process smoother for the user! I'll make sure to keep that in mind.",
+      "finish_reason": "tool_calls",
+      "reasoning_content": "**Considering card scanner updates**\n\nI need to think about updating the card scanner based on the user's latest correction before I proceed with the task. The skill already includes the scanner, but it might be helpful to add a reference about image scan failures in the workflow. That way, we can ensure everything is clear and functional. It’s all about making the process smoother for the user! I'll make sure to keep that in mind.",
+      "codex_reasoning_items": [
+        {
+          "type": "reasoning",
+          "encrypted_content": "gAAAAABqEQ7Mv8-hBeYJSAK6ifBnwkNvv3s03OX9tr2-X8pC-OlrRhOrnHppqdGks_aSj4tXhdkgT6ykOJmDYV9Dwa2MlvWbSpchT3dXuMZksb1s-qa3nY-Z8sV4HhgR1hnNgIxcLzL_zOpjyDxPDqvcfWh1kxdLYrdYuFjS4f_jg0FGI63R-_7JMVN7E2PVSXyj5uI3OUoS_ZPC__S66nANj0Y0o2sWcMG6CBOaj2tzeVmwfAFNKUZtAC1yBQJyG3FhBugIHsQI27_xmFiXBpzWTDA0aR_1DGeVKaeTlFQndEGBZCkLGoyLVxOxxdDLyxMG-kk73pN4l7rjwhk0zu0JShZSSEpo6sYC4ye3JGvyp0y2nPSjz8qN-i3RpvpnGCYUZUdPzo0vH_5G5oGbkFDbGxvo9vTgcX7SV4c0RRZfFCpj94nP_ihipUS4synnHOmx3DmgMCt07kW-iEllcWki_ttmXlRfiqVePoMq6LLu4Hdj6YLv-7zyyeCEtVhR1aaNVGAVmstESVhHHD4xirG5_9YbKGClvbDuZ5YqwwMlpI7VBm6JJbZhypNM-XSOBcwh4FvIqO7XaI-kb4KledYF6B4JiqYuykQgsJVwYPuQFmClFU3pENvC7mQP506QXzr2ge9aArseFAL_1pTQAjU9kMCb27Saq-GK3gG1aYtrItlORyXlFkkhRGLoao1U1gwUffjVEKCjwNnZq691SW4Csd0YkUAbzZHoDycQlKm0JVlYTpw2vhJ6sIbBvgUlY1zYH24V4n5yfVXOBKGRFaiXYCr4cTFSd9Rs--u9CZ5eI2BayzD_MTLY4cTcrIULq5RJsKpifxwQ2fWXcmGEF8wQiZQbFfqblPXuOOmj9qGD5XJIjQ_gkQkO1EW6Q17eUfpQcfcZNMSl7zuJMPVMj1BYhCjAqnhL8lah_kyVwkONTmWeX76eW4sQR-te8Lq56v8DEAaBAoeWkPACK0c-herLdtP8OOv-sZMNHtsAYnwG474jsFVUn3zFFz8mvuyJ3ZAVdJjeosO5H1oZoLqteqcq3H6TLnbtEQ46LVwcHFVuMEARhF4voVVCw2rrq8dKjS1HzssBbhUcUwD8Ao6uGrCyS5ZVbtvahXSvpC_wleJiEtf4645uwcw=",
+          "id": "rs_03609a09cb852b2f016a110ec0f73c819591cf2a782872c867",
+          "summary": [
+            {
+              "type": "summary_text",
+              "text": "**Considering card scanner updates**\n\nI need to think about updating the card scanner based on the user's latest correction before I proceed with the task. The skill already includes the scanner, but it might be helpful to add a reference about image scan failures in the workflow. That way, we can ensure everything is clear and functional. It’s all about making the process smoother for the user! I'll make sure to keep that in mind."
+            }
+          ]
+        }
+      ],
+      "tool_calls": [
+        {
+          "id": "call_RBOzM64dJt2HQ21w7YwJpANh",
+          "call_id": "call_RBOzM64dJt2HQ21w7YwJpANh",
+          "response_item_id": "fc_03609a09cb852b2f016a110ec460408195b83e182c22992f77",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"write_file\",\"file_content\":\"# Name Search Works, Image Scan Failed — Product Direction Note\\n\\n## Session signal\\n\\nThe user reported that manual/name search worked perfectly and produced solid data, but image scanning did not work. They clarified the strategic destination: apply the same pricing data to live or recorded video and automatically attach a price badge/filter that follows each card, similar to Snapchat puppy-dog-ear face filters.\\n\\n## Durable product lesson\\n\\nDo not treat a working name search as the final product. Name search validates the data layer and fallback UX. The differentiated product is video-native card intelligence:\\n\\n1. Detect/recognize a card in live or recorded video.\\n2. Stabilize recognition across frames.\\n3. Attach a tracking AR-style price overlay to the card.\\n4. Let the user compare prices across multiple platforms quickly.\\n\\n## Recommended next technical move when still-image scanning fails\\n\\n- Preserve manual search as the reliable fallback and demo path.\\n- Instrument the failed image path before rewriting it: capture OCR output, candidate parsing, image dimensions, preprocessing state, and error states.\\n- Improve still-image recognition only enough to feed the video pipeline: crop/contrast/grayscale/sharpen, then candidate matching.\\n- Move toward sample-and-stabilize video rather than OCR every frame.\\n- Cache successful card lookups so repeated frame recognition does not refetch pricing data.\\n\\n## UX direction\\n\\nThe overlay should behave like a social filter:\\n\\n- follows the card/scan region;\\n- shows a concise price badge;\\n- uses confidence states so it can say scanning/candidate/confirmed;\\n- allows tap/click to open multi-platform comparison;\\n- makes source comparison the selling point, not just card identification.\\n\\n## Kill/scale signal\\n\\nScale the video overlay direction if users can scan several cards in a binder/tabletop video and get stable, useful multi-source price badges with minimal manual correction. Kill or narrow the scope if recognition remains too unstable without controlled capture conditions.\\n\",\"file_path\":\"references/name-search-to-video-ar-overlay.md\",\"name\":\"collectible-card-scanner-apps\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"File 'references/name-search-to-video-ar-overlay.md' written to skill 'collectible-card-scanner-apps'.\", \"path\": \"/opt/data/skills/software-development/collectible-card-scanner-apps/references/name-search-to-video-ar-overlay.md\"}",
+      "tool_call_id": "call_RBOzM64dJt2HQ21w7YwJpANh"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "tool_calls": [
+        {
+          "id": "call_SOUrqJacdrcSzZZe1Lbz476F",
+          "call_id": "call_SOUrqJacdrcSzZZe1Lbz476F",
+          "response_item_id": "fc_03609a09cb852b2f016a110ece5d0c819585085ac956175b27",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"patch\",\"name\":\"collectible-card-scanner-apps\",\"new_string\":\"- `references/card-intel-scanner-mvp.md` — Session-specific implementation notes from the Card Intel Scanner Vercel MVP: condition lenses, local watchlist, and next recorded-video AR direction.\\n- `references/name-search-to-video-ar-overlay.md` — Product direction note from user feedback: name search/data layer worked, image scanning failed, next value is live/recorded video AR price overlays with multi-platform comparison.\",\"old_string\":\"- `references/card-intel-scanner-mvp.md` — Session-specific implementation notes from the Card Intel Scanner Vercel MVP: condition lenses, local watchlist, and next recorded-video AR direction.\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"Patched SKILL.md in skill 'collectible-card-scanner-apps' (1 replacement).\"}",
+      "tool_call_id": "call_SOUrqJacdrcSzZZe1Lbz476F"
+    },
+    {
+      "role": "assistant",
+      "content": "Updated the skill library.\n\nChanges made:\n\n1. **Patched `operator-morning-reports`**\n   - Added required **Capability + Trend Radar** section.\n   - Embedded the user’s preference for **capability/system-oriented planning over project-oriented planning**.\n   - Added language guidance: “capability to strengthen,” “reusable asset,” “experiment to run,” “kill/scale signal.”\n   - Added a reference file:\n     - `references/trend-radar-capability-framing.md`\n\n2. **Updated `collectible-card-scanner-apps`**\n   - Added a reference capturing the product lesson from the card scanner feedback:\n     - Name search/data layer worked.\n     - Image scanning failed.\n     - Strategic direction is **live/recorded video AR price overlays** that follow cards like Snapchat filters.\n     - Core selling point is **multi-platform price comparison**, not just recognition.\n   - Added reference file:\n     - `references/name-search-to-video-ar-overlay.md`\n   - Patched the SKILL.md references list to point future agents to it.\n\nNo obvious skill-overlap consolidation needed from this session.",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "codex_reasoning_items": [
+        {
+          "type": "reasoning",
+          "encrypted_content": "gAAAAABqEQ7XeKUopfanFJjw3F3GQrJlUUjXLRcuzQJNCdCmhAz5vqEUTl6riIlu6kB80uyDkrtFgz8Xb-WXq80FoHXxpjnZVXF-kOQ_V5l43PSe1_4JllhAoPUVfZjZU-E6fHrIu2PWUjMOeB4b_UsVjXeW6skkxXTQjlrbllUWjaYOMSXNS3p_25wfXVCHsR9FiWh5EkImlZNiHy3wnQ8H_DpHVAAj5dGwyGn8ssKuxeLUcuKumMW3heWEMVvCQvxgvyAGbnUTu-PF6NvX7i5OS6fhEmfKHeAw8-7DKXVG76r5veKkfS1tWzQ_07s7FIyjjHokYLsNqDBOj3hS-GGj8yYnNL35fifm6ttGLsEatf9KE3bgzclXvoDXB4ENFUZBQrwkIIg2BhBGUAINgebwX-xhDyxA1_bfbBlH9pbkxkbAhmT2e6XH-2sb4drtCeSnlRu2AONz6hqLuzu6hV-f0TO-arIulCEINouEHPvAKCXYdUjnX0R4dhevDcEoYZDA-zrVOV0EtlzbClNrqAHghVEBFcpimMZ-AADHds-p2F4Rm011TxOxrPTIKZ-aJStMiOgNlPX3rPE51lqlXFMTvHM8ZXXjsob3-Z2wrDrtNHTtChJ4JiefSVmbm54fNNw3t1xZv8Q9iD1YFYrniPlLFQBEMkHY7wmQRK2M-kbFlIvtHprklgxEQK2q28jz8B3HvNnGQK_lBsp9Ic_Ve_Bt05-xpRHt5q8rh8tEubYksJTrzdftpvX6Tf32cRdKmPDyE5giSJQkUgerYUyoPef7hWOvMEh3x_BKyyHii7hZTxNfSE4K7sHTBDrsgtGaXFMQQllooPR21AqXkDpdUqJJ9ioO2_59XAMLkJRXXFcj_ICZli9hkEXchrE-jqolpNi44btIWRkoHuEbeO8jqQ0VIDCNgdQw_mCfOjbFBC_6f1XuDKTFCzlo8Q9vRnrtCNeKlIHlg1IUxvSRcMiN7sb6qifnyKEyT2aCKoz7qx1eVGr6Z8o2VHSyd176ExUtwolZDVZZRGrmnSW6EbGa-o6-ArobGh2QAg==",
+          "id": "rs_03609a09cb852b2f016a110ed26cf8819584060557e724835b",
+          "summary": []
+        }
+      ],
+      "codex_message_items": [
+        {
+          "type": "message",
+          "role": "assistant",
+          "status": "completed",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "Updated the skill library.\n\nChanges made:\n\n1. **Patched `operator-morning-reports`**\n   - Added required **Capability + Trend Radar** section.\n   - Embedded the user’s preference for **capability/system-oriented planning over project-oriented planning**.\n   - Added language guidance: “capability to strengthen,” “reusable asset,” “experiment to run,” “kill/scale signal.”\n   - Added a reference file:\n     - `references/trend-radar-capability-framing.md`\n\n2. **Updated `collectible-card-scanner-apps`**\n   - Added a reference capturing the product lesson from the card scanner feedback:\n     - Name search/data layer worked.\n     - Image scanning failed.\n     - Strategic direction is **live/recorded video AR price overlays** that follow cards like Snapchat filters.\n     - Core selling point is **multi-platform price comparison**, not just recognition.\n   - Added reference file:\n     - `references/name-search-to-video-ar-overlay.md`\n   - Patched the SKILL.md references list to point future agents to it.\n\nNo obvious skill-overlap consolidation needed from this session."
+            }
+          ],
+          "id": "msg_03609a09cb852b2f016a110ed32dd48195a2e50f2ec6665003",
+          "phase": "final_answer"
+        }
+      ]
+    }
+  ]
+}

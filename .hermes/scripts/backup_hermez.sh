@@ -31,6 +31,14 @@ if command -v rsync >/dev/null 2>&1; then
     --include='/.env.*.template' \
     --exclude='/.git-credentials' \
     --exclude='/.gitconfig' \
+    --exclude='/.cache/***' \
+    --exclude='/.config/***' \
+    --exclude='/.npm/***' \
+    --exclude='/.local/share/pki/***' \
+    --exclude='/state.db' \
+    --exclude='**/*.db' \
+    --exclude='**/*.sqlite' \
+    --exclude='**/*.sqlite3' \
     --exclude='/auth.json' \
     --exclude='/auth.lock' \
     --exclude='**/*secret*' \
@@ -66,11 +74,11 @@ src = Path('/opt/data')
 dst = Path('/opt/data/HeRmEz/.hermes')
 
 exclude_exact = {'.env', '.git-credentials', '.gitconfig', 'auth.json', 'auth.lock'}
-exclude_dir_names = {'.git', '__pycache__', '.pytest_cache', '.mypy_cache', '.ruff_cache', 'node_modules'}
+exclude_dir_names = {'.git', '.cache', '.config', '.npm', '__pycache__', '.pytest_cache', '.mypy_cache', '.ruff_cache', 'node_modules'}
 exclude_file_globs = [
     '.env.*', '*secret*', '*token*', '*credential*', 'oauth*.json', 'keyring*',
     '*.pem', '*.key', '*.p12', '*.pfx', 'id_rsa*', 'id_ed25519*',
-    '*.lock', '*.pid', '*.sock', '.tick.lock',
+    '*.db', '*.sqlite', '*.sqlite3', '*.db-*', '*.lock', '*.pid', '*.sock', '.tick.lock',
 ]
 include_names = {'.env.discord.template'}
 
@@ -141,7 +149,7 @@ fi
 
 cd "$REPO"
 
-git add .gitignore README.md KANBAN.md .hermes projects scripts/backup_hermez.sh
+git add .gitignore .gitmodules README.md KANBAN.md .hermes projects scripts/backup_hermez.sh
 
 if git diff --cached --quiet; then
   echo "HeRmEz backup complete: no changes to commit at $STAMP"

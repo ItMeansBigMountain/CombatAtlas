@@ -1,0 +1,1723 @@
+{
+  "session_id": "20260524_134840_e8ee9e",
+  "model": "gpt-5.5",
+  "base_url": "https://chatgpt.com/backend-api/codex",
+  "platform": "discord",
+  "session_start": "2026-05-24T13:39:09.779632",
+  "last_updated": "2026-05-24T14:01:44.770662",
+  "system_prompt": "You are Hermes Agent, an intelligent AI assistant created by Nous Research. You are helpful, knowledgeable, and direct. You assist users with a wide range of tasks including answering questions, writing and editing code, analyzing information, creative work, and executing actions via your tools. You communicate clearly, admit uncertainty when appropriate, and prioritize being genuinely useful over being verbose unless otherwise directed below. Be targeted and efficient in your exploration and investigations.\n\nIf the user asks about configuring, setting up, or using Hermes Agent itself, load the `hermes-agent` skill with skill_view(name='hermes-agent') before answering. Docs: https://hermes-agent.nousresearch.com/docs\n\nYou have persistent memory across sessions. Save durable facts using the memory tool: user preferences, environment details, tool quirks, and stable conventions. Memory is injected into every turn, so keep it compact and focused on facts that will still matter later.\nPrioritize what reduces future user steering — the most valuable memory is one that prevents the user from having to correct or remind you again. User preferences and recurring corrections matter more than procedural task details.\nDo NOT save task progress, session outcomes, completed-work logs, or temporary TODO state to memory; use session_search to recall those from past transcripts. Specifically: do not record PR numbers, issue numbers, commit SHAs, 'fixed bug X', 'submitted PR Y', 'Phase N done', file counts, or any artifact that will be stale in 7 days. If a fact will be stale in a week, it does not belong in memory. If you've discovered a new way to do something, solved a problem that could be necessary later, save it as a skill with the skill tool.\nWrite memories as declarative facts, not instructions to yourself. 'User prefers concise responses' ✓ — 'Always respond concisely' ✗. 'Project uses pytest with xdist' ✓ — 'Run tests with pytest -n 4' ✗. Imperative phrasing gets re-read as a directive in later sessions and can cause repeated work or override the user's current request. Procedures and workflows belong in skills, not memory. When the user references something from a past conversation or you suspect relevant cross-session context exists, use session_search to recall it before asking them to repeat themselves. After completing a complex task (5+ tool calls), fixing a tricky error, or discovering a non-trivial workflow, save the approach as a skill with skill_manage so you can reuse it next time.\nWhen using a skill and finding it outdated, incomplete, or wrong, patch it immediately with skill_manage(action='patch') — don't wait to be asked. Skills that aren't maintained become liabilities.\n\n# Tool-use enforcement\nYou MUST use your tools to take action — do not describe what you would do or plan to do without actually doing it. When you say you will perform an action (e.g. 'I will run the tests', 'Let me check the file', 'I will create the project'), you MUST immediately make the corresponding tool call in the same response. Never end your turn with a promise of future action — execute it now.\nKeep working until the task is actually complete. Do not stop with a summary of what you plan to do next time. If you have tools available that can accomplish the task, use them instead of telling the user what you would do.\nEvery response should either (a) contain tool calls that make progress, or (b) deliver a final result to the user. Responses that only describe intentions without acting are not acceptable.\n\n# Execution discipline\n<tool_persistence>\n- Use tools whenever they improve correctness, completeness, or grounding.\n- Do not stop early when another tool call would materially improve the result.\n- If a tool returns empty or partial results, retry with a different query or strategy before giving up.\n- Keep calling tools until: (1) the task is complete, AND (2) you have verified the result.\n</tool_persistence>\n\n<mandatory_tool_use>\nNEVER answer these from memory or mental computation — ALWAYS use a tool:\n- Arithmetic, math, calculations → use terminal or execute_code\n- Hashes, encodings, checksums → use terminal (e.g. sha256sum, base64)\n- Current time, date, timezone → use terminal (e.g. date)\n- System state: OS, CPU, memory, disk, ports, processes → use terminal\n- File contents, sizes, line counts → use read_file, search_files, or terminal\n- Git history, branches, diffs → use terminal\n- Current facts (weather, news, versions) → use web_search\nYour memory and user profile describe the USER, not the system you are running on. The execution environment may differ from what the user profile says about their personal setup.\n</mandatory_tool_use>\n\n<act_dont_ask>\nWhen a question has an obvious default interpretation, act on it immediately instead of asking for clarification. Examples:\n- 'Is port 443 open?' → check THIS machine (don't ask 'open where?')\n- 'What OS am I running?' → check the live system (don't use user profile)\n- 'What time is it?' → run `date` (don't guess)\nOnly ask for clarification when the ambiguity genuinely changes what tool you would call.\n</act_dont_ask>\n\n<prerequisite_checks>\n- Before taking an action, check whether prerequisite discovery, lookup, or context-gathering steps are needed.\n- Do not skip prerequisite steps just because the final action seems obvious.\n- If a task depends on output from a prior step, resolve that dependency first.\n</prerequisite_checks>\n\n<verification>\nBefore finalizing your response:\n- Correctness: does the output satisfy every stated requirement?\n- Grounding: are factual claims backed by tool outputs or provided context?\n- Formatting: does the output match the requested format or schema?\n- Safety: if the next step has side effects (file writes, commands, API calls), confirm scope before executing.\n</verification>\n\n<missing_context>\n- If required context is missing, do NOT guess or hallucinate an answer.\n- Use the appropriate lookup tool when missing information is retrievable (search_files, web_search, read_file, etc.).\n- Ask a clarifying question only when the information cannot be retrieved by tools.\n- If you must proceed with incomplete information, label assumptions explicitly.\n</missing_context>\n\n## Skills (mandatory)\nBefore replying, scan the skills below. If a skill matches or is even partially relevant to your task, you MUST load it with skill_view(name) and follow its instructions. Err on the side of loading — it is always better to have context you don't need than to miss critical steps, pitfalls, or established workflows. Skills contain specialized knowledge — API endpoints, tool-specific commands, and proven workflows that outperform general-purpose approaches. Load the skill even if you think you could handle the task with basic tools like web_search or terminal. Skills also encode the user's preferred approach, conventions, and quality standards for tasks like code review, planning, and testing — load them even for tasks you already know how to do, because the skill defines how it should be done here.\nWhenever the user asks you to configure, set up, install, enable, disable, modify, or troubleshoot Hermes Agent itself — its CLI, config, models, providers, tools, skills, voice, gateway, plugins, or any feature — load the `hermes-agent` skill first. It has the actual commands (e.g. `hermes config set …`, `hermes tools`, `hermes setup`) so you don't have to guess or invent workarounds.\nIf a skill has issues, fix it with skill_manage(action='patch').\nAfter difficult/iterative tasks, offer to save as a skill. If a skill you loaded was missing steps, had wrong commands, or needed pitfalls you discovered, update it before finishing.\n\n<available_skills>\n  autonomous-ai-agents: Skills for spawning and orchestrating autonomous AI coding agents and multi-agent workflows — running independent agent processes, delegating tasks, and coordinating parallel workstreams.\n    - claude-code: Delegate coding to Claude Code CLI (features, PRs).\n    - codex: Delegate coding to OpenAI Codex CLI (features, PRs).\n    - hermes-agent: Configure, extend, or contribute to Hermes Agent.\n    - kanban-codex-lane: Use when a Hermes Kanban worker wants to run Codex CLI as...\n    - opencode: Delegate coding to OpenCode CLI (features, PR review).\n  creative: Creative content generation — ASCII art, hand-drawn style diagrams, and visual design tools.\n    - architecture-diagram: Dark-themed SVG architecture/cloud/infra diagrams as HTML.\n    - ascii-art: ASCII art: pyfiglet, cowsay, boxes, image-to-ascii.\n    - ascii-video: ASCII video: convert video/audio to colored ASCII MP4/GIF.\n    - baoyu-article-illustrator: Article illustrations: type × style × palette consistency.\n    - baoyu-comic: Knowledge comics (知识漫画): educational, biography, tutorial.\n    - baoyu-infographic: Infographics: 21 layouts x 21 styles (信息图, 可视化).\n    - claude-design: Design one-off HTML artifacts (landing, deck, prototype).\n    - comfyui: Generate images, video, and audio with ComfyUI — install,...\n    - design-md: Author/validate/export Google's DESIGN.md token spec files.\n    - excalidraw: Hand-drawn Excalidraw JSON diagrams (arch, flow, seq).\n    - humanizer: Humanize text: strip AI-isms and add real voice.\n    - ideation: Generate project ideas via creative constraints.\n    - manim-video: Manim CE animations: 3Blue1Brown math/algo videos.\n    - p5js: p5.js sketches: gen art, shaders, interactive, 3D.\n    - pixel-art: Pixel art w/ era palettes (NES, Game Boy, PICO-8).\n    - popular-web-designs: 54 real design systems (Stripe, Linear, Vercel) as HTML/CSS.\n    - pretext: Use when building creative browser demos with @chenglou/p...\n    - sketch: Throwaway HTML mockups: 2-3 design variants to compare.\n    - songwriting-and-ai-music: Songwriting craft and Suno AI music prompts.\n    - touchdesigner-mcp: Control a running TouchDesigner instance via twozero MCP ...\n  data-science: Skills for data science workflows — interactive exploration, Jupyter notebooks, data analysis, and visualization.\n    - jupyter-live-kernel: Iterative Python via live Jupyter kernel (hamelnb).\n  devops:\n    - cloud-provider-cli-setup: Use when installing, configuring, or verifying cloud prov...\n    - kanban-orchestrator: Decomposition playbook + anti-temptation rules for an orc...\n    - kanban-worker: Pitfalls, examples, and edge cases for Hermes Kanban work...\n    - vercel-app-deployments: Triage, deploy, and manually verify Vercel apps from exis...\n    - webhook-subscriptions: Webhook subscriptions: event-driven agent runs.\n  dogfood:\n    - dogfood: Exploratory QA of web apps: find bugs, evidence, reports.\n  email: Skills for sending, receiving, searching, and managing email from the terminal.\n    - himalaya: Himalaya CLI: IMAP/SMTP email from terminal.\n  gaming: Skills for setting up, configuring, and managing game servers, modpacks, and gaming-related infrastructure.\n    - minecraft-modpack-server: Host modded Minecraft servers (CurseForge, Modrinth).\n    - pokemon-player: Play Pokemon via headless emulator + RAM reads.\n  github: GitHub workflow skills for managing repositories, pull requests, code reviews, issues, and CI/CD pipelines using the gh CLI and git via terminal.\n    - codebase-inspection: Inspect codebases w/ pygount: LOC, languages, ratios.\n    - github-auth: GitHub auth setup: HTTPS tokens, SSH keys, gh CLI login.\n    - github-code-review: Review PRs: diffs, inline comments via gh or REST.\n    - github-issues: Create, triage, label, assign GitHub issues via gh or REST.\n    - github-pr-workflow: GitHub PR lifecycle: branch, commit, open, CI, merge.\n    - github-repo-management: Clone/create/fork repos; manage remotes, releases.\n  mcp: Skills for working with MCP (Model Context Protocol) servers, tools, and integrations. Documents the built-in native MCP client — configure servers in config.yaml for automatic tool discovery.\n    - native-mcp: MCP client: connect servers, register tools (stdio/HTTP).\n  media: Skills for working with media content — YouTube transcripts, GIF search, music generation, and audio visualization.\n    - gif-search: Search/download GIFs from Tenor via curl + jq.\n    - heartmula: HeartMuLa: Suno-like song generation from lyrics + tags.\n    - music-app-modernization: Modernize music apps: multi-provider OAuth, music APIs, u...\n    - songsee: Audio spectrograms/features (mel, chroma, MFCC) via CLI.\n    - spotify: Spotify: play, search, queue, manage playlists and devices.\n    - youtube-content: YouTube transcripts to summaries, threads, blogs.\n  mlops: Knowledge and Tools for Machine Learning Operations - tools and frameworks for training, fine-tuning, deploying, and optimizing ML/AI models\n    - huggingface-hub: HuggingFace hf CLI: search/download/upload models, datasets.\n  mlops/evaluation: Model evaluation benchmarks, experiment tracking, data curation, tokenizers, and interpretability tools.\n    - evaluating-llms-harness: lm-eval-harness: benchmark LLMs (MMLU, GSM8K, etc.).\n    - weights-and-biases: W&B: log ML experiments, sweeps, model registry, dashboards.\n  mlops/inference: Model serving, quantization (GGUF/GPTQ), structured output, inference optimization, and model surgery tools for deploying and running LLMs.\n    - llama-cpp: llama.cpp local GGUF inference + HF Hub model discovery.\n    - obliteratus: OBLITERATUS: abliterate LLM refusals (diff-in-means).\n    - outlines: Outlines: structured JSON/regex/Pydantic LLM generation.\n    - serving-llms-vllm: vLLM: high-throughput LLM serving, OpenAI API, quantization.\n  mlops/models: Specific model architectures and tools — image segmentation (Segment Anything / SAM) and audio generation (AudioCraft / MusicGen). Additional model skills (CLIP, Stable Diffusion, Whisper, LLaVA) are available as optional skills.\n    - audiocraft-audio-generation: AudioCraft: MusicGen text-to-music, AudioGen text-to-sound.\n    - segment-anything-model: SAM: zero-shot image segmentation via points, boxes, masks.\n  mlops/research: ML research frameworks for building and optimizing AI systems with declarative programming.\n    - dspy: DSPy: declarative LM programs, auto-optimize prompts, RAG.\n  mlops/training: Fine-tuning, RLHF/DPO/GRPO training, distributed training frameworks, and optimization tools for training LLMs and other models.\n    - axolotl: Axolotl: YAML LLM fine-tuning (LoRA, DPO, GRPO).\n    - fine-tuning-with-trl: TRL: SFT, DPO, PPO, GRPO, reward modeling for LLM RLHF.\n    - unsloth: Unsloth: 2-5x faster LoRA/QLoRA fine-tuning, less VRAM.\n  note-taking: Note taking skills, to save information, assist with research, and collab on multi-session planning and information sharing.\n    - obsidian: Read, search, create, and edit notes in the Obsidian vault.\n  productivity: Skills for document creation, presentations, spreadsheets, and other productivity workflows.\n    - airtable: Airtable REST API via curl. Records CRUD, filters, upserts.\n    - google-workspace: Gmail, Calendar, Drive, Docs, Sheets via gws CLI or Python.\n    - linear: Linear: manage issues, projects, teams via GraphQL + curl.\n    - maps: Geocode, POIs, routes, timezones via OpenStreetMap/OSRM.\n    - nano-pdf: Edit PDF text/typos/titles via nano-pdf CLI (NL prompts).\n    - notion: Notion API + ntn CLI: pages, databases, markdown, Workers.\n    - ocr-and-documents: Extract text from PDFs/scans (pymupdf, marker-pdf).\n    - operator-morning-reports: Proactive daily operator-style morning reports: local pul...\n    - powerpoint: Create, read, edit .pptx decks, slides, notes, templates.\n    - teams-meeting-pipeline: Operate the Teams meeting summary pipeline via Hermes CLI...\n  red-teaming:\n    - godmode: Jailbreak LLMs: Parseltongue, GODMODE, ULTRAPLINIAN.\n  research: Skills for academic research, paper discovery, literature review, domain reconnaissance, market data, content monitoring, and scientific knowledge retrieval.\n    - arxiv: Search arXiv papers by keyword, author, category, or ID.\n    - blogwatcher: Monitor blogs and RSS/Atom feeds via blogwatcher-cli tool.\n    - llm-wiki: Karpathy's LLM Wiki: build/query interlinked markdown KB.\n    - polymarket: Query Polymarket: markets, prices, orderbooks, history.\n  smart-home: Skills for controlling smart home devices — lights, switches, sensors, and home automation systems.\n    - openhue: Control Philips Hue lights, scenes, rooms via OpenHue CLI.\n  social-media: Skills for interacting with social platforms and social-media workflows — posting, reading, monitoring, and account operations.\n    - xurl: X/Twitter via xurl CLI: post, search, DM, media, v2 API.\n  software-development:\n    - client-editable-django-sites: Build dynamic, client-editable Django websites with admin...\n    - collectible-card-scanner-apps: Use when building or improving collectible card scanner, ...\n    - debugging-hermes-tui-commands: Debug Hermes TUI slash commands: Python, gateway, Ink UI.\n    - hermes-agent-skill-authoring: Author in-repo SKILL.md: frontmatter, validator, structure.\n    - node-inspect-debugger: Debug Node.js via --inspect + Chrome DevTools Protocol CLI.\n    - plan: Plan mode: write markdown plan to .hermes/plans/, no exec.\n    - python-debugpy: Debug Python: pdb REPL + debugpy remote (DAP).\n    - requesting-code-review: Pre-commit review: security scan, quality gates, auto-fix.\n    - spike: Throwaway experiments to validate an idea before build.\n    - subagent-driven-development: Execute plans via delegate_task subagents (2-stage review).\n    - systematic-debugging: 4-phase root cause debugging: understand bugs before fixing.\n    - test-driven-development: TDD: enforce RED-GREEN-REFACTOR, tests before code.\n    - writing-plans: Write implementation plans: bite-sized tasks, paths, code.\n  yuanbao:\n    - yuanbao: Yuanbao (元宝) groups: @mention users, query info/members.\n</available_skills>\n\nOnly proceed without loading a skill if genuinely none are relevant to the task.\n\nHost: Linux (6.8.0-111-generic)\nUser home directory: /opt/data\nCurrent working directory: /opt/hermes\n\nYou are in a Discord server or group chat communicating with your user. You can send media files natively: include MEDIA:/absolute/path/to/file in your response. Images (.png, .jpg, .webp) are sent as photo attachments, audio as file attachments. You can also include image URLs in markdown format ![alt](url) and they will be sent as attachments.\n\n══════════════════════════════════════════════\nMEMORY (your personal notes) [94% — 2,080/2,200 chars]\n══════════════════════════════════════════════\nThe user's primary Hermes workspace repo is /opt/data/HeRmEz, cloned from https://github.com/ItMeansBigMountain/HeRmEz.git. Future project folders should be created under /opt/data/HeRmEz/projects, and Hermes config terminal.cwd is set to /opt/data/HeRmEz.\n§\nA daily HeRmEz backup cron job exists: job_id cfcea697da5c, name \"Daily HeRmEz GitHub backup\", schedule \"0 3 * * *\", script backup_hermez.sh in /opt/data/scripts, no_agent true, backing up /opt/data into /opt/data/HeRmEz/.hermes and pushing to origin/main.\n§\nHermes Kanban board for the user's main workspace is slug \"hermez\" (display name \"HeRmEz Workspace\"), DB path /opt/data/kanban/boards/hermez/kanban.db, active-board file /opt/data/kanban/current set to hermez. Current known assignee profile is default.\n§\nGoogle Workspace service account credentials are stored at /opt/data/google_service_account.json with env GOOGLE_APPLICATION_CREDENTIALS=/opt/data/google_service_account.json; service account email is ai-service@gen-lang-client-0835809364.iam.gserviceaccount.com. Use the service-account route for Calendar automation unless user asks for personal OAuth.\n§\nCox Elementary PTA dynamic Django site is deployed at https://cox-elementary-pta.onrender.com from repo /opt/data/HeRmEz/projects/cox-elementary-pta.\n§\nCox Elementary PTA project backup is stored as a Git bundle at /opt/data/HeRmEz/projects/_backups/cox-elementary-pta/cox-elementary-pta.bundle with restore notes in that folder's README.md.\n§\nHermes external memory provider is configured as holographic in /opt/data/config.yaml, with plugin config under plugins.hermes-memory-store using $HERMES_HOME/memory_store.db, auto_extract false, default_trust 0.5, hrr_dim 1024.\n§\nstockNews legacy project is deployed with frontend at https://stocknews-sentiment.vercel.app and API at https://stocknews-api.vercel.app from /opt/data/HeRmEz/projects/stockNews. Demo uses localStorage portfolio data + Yahoo RSS heuristic sentiment. IBM Cloud CLI v2.43.0 is at /opt/data/bin/ibmcloud; NLU API key JSON is stored at /opt/data/credentials/ibm-nlu-api-key.json.\n\n══════════════════════════════════════════════\nUSER PROFILE (who the user is) [95% — 1,312/1,375 chars]\n══════════════════════════════════════════════\nUser prefers Discord bot conversations to be natural channel back-and-forth rather than automatic per-conversation threads.\n§\nUser wants apps/projects created with Hermes to live as project directories under /opt/data/HeRmEz/projects in the configured Git-backed workspace.\n§\nUser prefers client website projects to be deployed live first with Git-based auto-deploys, then handle Stripe/payment setup and custom domain attachment afterward.\n§\nUser prefers client/community websites to use psychology-driven, mobile-first UX: cognitive ease, low-friction actions, strong visual hierarchy, social proof, app-like mobile interactions, and warm community-centered copy.\n§\nUser wants project backups to live under /opt/data/HeRmEz/projects, specifically /opt/data/HeRmEz/projects/_backups for backup artifacts, rather than under /opt/data/HeRmEz/.hermes.\n§\nUser values rigorous, momentum-oriented operator work: first-principles/leverage thinking, ReAct loops, root-cause/risk analysis, capability/system framing over project-first planning. User prefers concise, list-first brainstorming and minimal Discord-readable morning report news bullets, not wordy replies.\n§\nUser wants collectible-card scanner products to become live/recorded video AR overlays that track cards and compare prices across multiple platforms.\n\n# Holographic Memory\nActive. 18 facts stored with entity resolution and trust scoring.\nUse fact_store to search, probe entities, reason across entities, or add facts.\nUse fact_feedback to rate facts after using them (trains trust scores).\n\nConversation started: Sunday, May 24, 2026 02:00 PM\nModel: gpt-5.5\nProvider: openai-codex",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_back",
+        "description": "Navigate back to the previous page in browser history. Requires browser_navigate to be called first.",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_click",
+        "description": "Click on an element identified by its ref ID from the snapshot (e.g., '@e5'). The ref IDs are shown in square brackets in the snapshot output. Requires browser_navigate and browser_snapshot to be called first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ref": {
+              "type": "string",
+              "description": "The element reference from the snapshot (e.g., '@e5', '@e12')"
+            }
+          },
+          "required": [
+            "ref"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_console",
+        "description": "Get browser console output and JavaScript errors from the current page. Returns console.log/warn/error/info messages and uncaught JS exceptions. Use this to detect silent JavaScript errors, failed API calls, and application warnings. Requires browser_navigate to be called first. When 'expression' is provided, evaluates JavaScript in the page context and returns the result — use this for DOM inspection, reading page state, or extracting data programmatically.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "clear": {
+              "type": "boolean",
+              "default": false,
+              "description": "If true, clear the message buffers after reading"
+            },
+            "expression": {
+              "type": "string",
+              "description": "JavaScript expression to evaluate in the page context. Runs in the browser like DevTools console — full access to DOM, window, document. Return values are serialized to JSON. Example: 'document.title' or 'document.querySelectorAll(\"a\").length'"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_get_images",
+        "description": "Get a list of all images on the current page with their URLs and alt text. Useful for finding images to analyze with the vision tool. Requires browser_navigate to be called first.",
+        "parameters": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_navigate",
+        "description": "Navigate to a URL in the browser. Initializes the session and loads the page. Must be called before other browser tools. For plain-text endpoints — URLs ending in .md, .txt, .json, .yaml, .yml, .csv, .xml, raw.githubusercontent.com, or any documented API endpoint — prefer curl via the terminal tool or web_extract; the browser stack is overkill and much slower for these. Use browser tools when you need to interact with a page (click, fill forms, dynamic content). Returns a compact page snapshot with interactive elements and ref IDs — no need to call browser_snapshot separately after navigating.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "The URL to navigate to (e.g., 'https://example.com')"
+            }
+          },
+          "required": [
+            "url"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_press",
+        "description": "Press a keyboard key. Useful for submitting forms (Enter), navigating (Tab), or keyboard shortcuts. Requires browser_navigate to be called first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "description": "Key to press (e.g., 'Enter', 'Tab', 'Escape', 'ArrowDown')"
+            }
+          },
+          "required": [
+            "key"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_scroll",
+        "description": "Scroll the page in a direction. Use this to reveal more content that may be below or above the current viewport. Requires browser_navigate to be called first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "direction": {
+              "type": "string",
+              "enum": [
+                "up",
+                "down"
+              ],
+              "description": "Direction to scroll"
+            }
+          },
+          "required": [
+            "direction"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_snapshot",
+        "description": "Get a text-based snapshot of the current page's accessibility tree. Returns interactive elements with ref IDs (like @e1, @e2) for browser_click and browser_type. full=false (default): compact view with interactive elements. full=true: complete page content. Snapshots over 8000 chars are truncated or LLM-summarized. Requires browser_navigate first. Note: browser_navigate already returns a compact snapshot — use this to refresh after interactions that change the page, or with full=true for complete content.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "full": {
+              "type": "boolean",
+              "description": "If true, returns complete page content. If false (default), returns compact view with interactive elements only.",
+              "default": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_type",
+        "description": "Type text into an input field identified by its ref ID. Clears the field first, then types the new text. Requires browser_navigate and browser_snapshot to be called first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "ref": {
+              "type": "string",
+              "description": "The element reference from the snapshot (e.g., '@e3')"
+            },
+            "text": {
+              "type": "string",
+              "description": "The text to type into the field"
+            }
+          },
+          "required": [
+            "ref",
+            "text"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "browser_vision",
+        "description": "Take a screenshot of the current page and analyze it with vision AI. Use this when you need to visually understand what's on the page - especially useful for CAPTCHAs, visual verification challenges, complex layouts, or when the text snapshot doesn't capture important visual information. Returns both the AI analysis and a screenshot_path that you can share with the user by including MEDIA:<screenshot_path> in your response. Requires browser_navigate to be called first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "question": {
+              "type": "string",
+              "description": "What you want to know about the page visually. Be specific about what you're looking for."
+            },
+            "annotate": {
+              "type": "boolean",
+              "default": false,
+              "description": "If true, overlay numbered [N] labels on interactive elements. Each [N] maps to ref @eN for subsequent browser commands. Useful for QA and spatial reasoning about page layout."
+            }
+          },
+          "required": [
+            "question"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "clarify",
+        "description": "Ask the user a question when you need clarification, feedback, or a decision before proceeding. Supports two modes:\n\n1. **Multiple choice** — provide up to 4 choices. The user picks one or types their own answer via a 5th 'Other' option.\n2. **Open-ended** — omit choices entirely. The user types a free-form response.\n\nUse this tool when:\n- The task is ambiguous and you need the user to choose an approach\n- You want post-task feedback ('How did that work out?')\n- You want to offer to save a skill or update memory\n- A decision has meaningful trade-offs the user should weigh in on\n\nDo NOT use this tool for simple yes/no confirmation of dangerous commands (the terminal tool handles that). Prefer making a reasonable default choice yourself when the decision is low-stakes.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "question": {
+              "type": "string",
+              "description": "The question to present to the user."
+            },
+            "choices": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "maxItems": 4,
+              "description": "Up to 4 answer choices. Omit this parameter entirely to ask an open-ended question. When provided, the UI automatically appends an 'Other (type your answer)' option."
+            }
+          },
+          "required": [
+            "question"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "cronjob",
+        "description": "Manage scheduled cron jobs with a single compressed tool.\n\nUse action='create' to schedule a new job from a prompt or one or more skills.\nUse action='list' to inspect jobs.\nUse action='update', 'pause', 'resume', 'remove', or 'run' to manage an existing job.\n\nTo stop a job the user no longer wants: first action='list' to find the job_id, then action='remove' with that job_id. Never guess job IDs — always list first.\n\nJobs run in a fresh session with no current-chat context, so prompts must be self-contained.\nIf skills are provided on create, the future cron run loads those skills in order, then follows the prompt as the task instruction.\nOn update, passing skills=[] clears attached skills.\n\nNOTE: The agent's final response is auto-delivered to the target. Put the primary\nuser-facing content in the final response. Cron jobs run autonomously with no user\npresent — they cannot ask questions or request clarification.\n\nImportant safety rule: cron-run sessions should not recursively schedule more cron jobs.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "One of: create, list, update, pause, resume, remove, run"
+            },
+            "job_id": {
+              "type": "string",
+              "description": "Required for update/pause/resume/remove/run"
+            },
+            "prompt": {
+              "type": "string",
+              "description": "For create: the full self-contained prompt. If skills are also provided, this becomes the task instruction paired with those skills."
+            },
+            "schedule": {
+              "type": "string",
+              "description": "For create/update: '30m', 'every 2h', '0 9 * * *', or ISO timestamp"
+            },
+            "name": {
+              "type": "string",
+              "description": "Optional human-friendly name"
+            },
+            "repeat": {
+              "type": "integer",
+              "description": "Optional repeat count. Omit for defaults (once for one-shot, forever for recurring)."
+            },
+            "deliver": {
+              "type": "string",
+              "description": "Omit this parameter to auto-deliver back to the current chat and topic (recommended). Auto-detection preserves thread/topic context. Only set explicitly when the user asks to deliver somewhere OTHER than the current conversation. Values: 'origin' (same as omitting), 'local' (no delivery, save only), 'all' (fan out to every connected home channel), or platform:chat_id:thread_id for a specific destination. Combine with comma: 'origin,all' delivers to the origin plus every other connected channel. Examples: 'telegram:-1001234567890:17585', 'discord:#engineering', 'sms:+15551234567', 'all'. WARNING: 'platform:chat_id' without :thread_id loses topic targeting. 'all' resolves at fire time, so a job created before a channel was wired up will pick it up automatically once connected."
+            },
+            "skills": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Optional ordered list of skill names to load before executing the cron prompt. On update, pass an empty array to clear attached skills."
+            },
+            "model": {
+              "type": "object",
+              "description": "Optional per-job model override. If provider is omitted, the current main provider is pinned at creation time so the job stays stable.",
+              "properties": {
+                "provider": {
+                  "type": "string",
+                  "description": "Provider name (e.g. 'openrouter', 'anthropic', or 'custom:<name>' for a provider defined in custom_providers config — always include the ':<name>' suffix, never pass the bare 'custom'). Omit to use and pin the current provider."
+                },
+                "model": {
+                  "type": "string",
+                  "description": "Model name (e.g. 'anthropic/claude-sonnet-4', 'claude-sonnet-4')"
+                }
+              },
+              "required": [
+                "model"
+              ]
+            },
+            "script": {
+              "type": "string",
+              "description": "Optional path to a script that runs each tick. In the default mode its stdout is injected into the agent's prompt as context (data-collection / change-detection pattern). With no_agent=True, the script IS the job and its stdout is delivered verbatim (classic watchdog pattern). Relative paths resolve under ~/./scripts/. ``.sh``/``.bash`` extensions run via bash, everything else via Python. On update, pass empty string to clear."
+            },
+            "no_agent": {
+              "type": "boolean",
+              "default": false,
+              "description": "Default: False (LLM-driven job — the agent runs the prompt each tick). Set True to skip the LLM entirely: the scheduler just runs ``script`` on schedule and delivers its stdout verbatim. No tokens, no agent loop, no model override honoured. \n\nREQUIREMENTS when True: ``script`` MUST be set (``prompt`` and ``skills`` are ignored). \n\nDELIVERY SEMANTICS when True: (a) non-empty stdout is sent verbatim as the message; (b) EMPTY stdout means SILENT — nothing is sent to the user and they won't see anything happened, so design your script to stay quiet when there's nothing to report (the watchdog pattern); (c) non-zero exit / timeout sends an error alert so a broken watchdog can't fail silently. \n\nWHEN TO USE True: recurring script-only pings where the script itself produces the exact message text (memory/disk/GPU watchdogs, threshold alerts, heartbeats, CI notifications, API pollers with a fixed output shape). WHEN TO USE False (default): anything that needs reasoning — summarize a feed, draft a daily briefing, pick interesting items, rephrase data for a human, follow conditional logic based on content."
+            },
+            "context_from": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Optional job ID or list of job IDs whose most recent completed output is injected into the prompt as context before each run. Use this to chain cron jobs: job A collects data, job B processes it. Each entry must be a valid job ID (from cronjob action='list'). Note: injects the most recent completed output — does not wait for upstream jobs running in the same tick. On update, pass an empty array to clear."
+            },
+            "enabled_toolsets": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Optional list of toolset names to restrict the job's agent to (e.g. [\"web\", \"terminal\", \"file\", \"delegation\"]). When set, only tools from these toolsets are loaded, significantly reducing input token overhead. When omitted, all default tools are loaded. Infer from the job's prompt — e.g. use \"web\" if it calls web_search, \"terminal\" if it runs scripts, \"file\" if it reads files, \"delegation\" if it calls delegate_task. On update, pass an empty array to clear."
+            },
+            "workdir": {
+              "type": "string",
+              "description": "Optional absolute path to run the job from. When set, AGENTS.md / CLAUDE.md / .cursorrules from that directory are injected into the system prompt, and the terminal/file/code_exec tools use it as their working directory — useful for running a job inside a specific project repo. Must be an absolute path that exists. When unset (default), preserves the original behaviour: no project context files, tools use the scheduler's cwd. On update, pass an empty string to clear. Jobs with workdir run sequentially (not parallel) to keep per-job directories isolated."
+            }
+          },
+          "required": [
+            "action"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "delegate_task",
+        "description": "Spawn one or more subagents to work on tasks in isolated contexts. Each subagent gets its own conversation, terminal session, and toolset. Only the final summary is returned -- intermediate tool results never enter your context window.\n\nTWO MODES (one of 'goal' or 'tasks' is required):\n1. Single task: provide 'goal' (+ optional context, toolsets)\n2. Batch (parallel): provide 'tasks' array with up to 3 items concurrently for this user (configured via delegation.max_concurrent_children in config.yaml). All run in parallel and results are returned together. Nested delegation is OFF for this user (max_spawn_depth=1): every child is a leaf and cannot delegate further. Raise delegation.max_spawn_depth in config.yaml to enable nesting.\n\nWHEN TO USE delegate_task:\n- Reasoning-heavy subtasks (debugging, code review, research synthesis)\n- Tasks that would flood your context with intermediate data\n- Parallel independent workstreams (research A and B simultaneously)\n\nWHEN NOT TO USE (use these instead):\n- Mechanical multi-step work with no reasoning needed -> use execute_code\n- Single tool call -> just call the tool directly\n- Tasks needing user interaction -> subagents cannot use clarify\n- Durable long-running work that must outlive the current turn -> use cronjob (action='create') or terminal(background=True, notify_on_complete=True) instead. delegate_task runs SYNCHRONOUSLY inside the parent turn: if the parent is interrupted (user sends a new message, /stop, /new) the child is cancelled with status='interrupted' and its work is discarded. Children cannot continue in the background.\n\nIMPORTANT:\n- Subagents have NO memory of your conversation. Pass all relevant info (file paths, error messages, constraints) via the 'context' field.\n- If the user is writing in a non-English language, or asked for output in a specific language / tone / style, say so in 'context' (e.g. \"respond in Chinese\", \"return output in Japanese\"). Otherwise subagents default to English and their summaries will contaminate your final reply with the wrong language.\n- Subagent summaries are SELF-REPORTS, not verified facts. A subagent that claims \"uploaded successfully\" or \"file written\" may be wrong. For operations with external side-effects (HTTP POST/PUT, remote writes, file creation at shared paths, publishing), require the subagent to return a verifiable handle (URL, ID, absolute path, HTTP status) and verify it yourself — fetch the URL, stat the file, read back the content — before telling the user the operation succeeded.\n- Leaf subagents (role='leaf', the default) CANNOT call: delegate_task, clarify, memory, send_message, execute_code.\n- Orchestrator subagents (role='orchestrator') retain delegate_task so they can spawn their own workers, but still cannot use clarify, memory, send_message, or execute_code. Orchestrators are bounded by max_spawn_depth=1 for this user and can be disabled globally via delegation.orchestrator_enabled=false.\n- Each subagent gets its own terminal session (separate working directory and state).\n- Results are always returned as an array, one entry per task.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "goal": {
+              "type": "string",
+              "description": "What the subagent should accomplish. Be specific and self-contained -- the subagent knows nothing about your conversation history."
+            },
+            "context": {
+              "type": "string",
+              "description": "Background information the subagent needs: file paths, error messages, project structure, constraints. The more specific you are, the better the subagent performs."
+            },
+            "toolsets": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Toolsets to enable for this subagent. Default: inherits your enabled toolsets. Available toolsets: 'browser', 'computer_use', 'cronjob', 'discord', 'discord_admin', 'feishu_doc', 'feishu_drive', 'file', 'homeassistant', 'image_gen', 'kanban', 'search', 'session_search', 'skills', 'spotify', 'terminal', 'todo', 'tts', 'video', 'video_gen', 'vision', 'web', 'x_search', 'yuanbao'. Common patterns: ['terminal', 'file'] for code work, ['web'] for research, ['browser'] for web interaction, ['terminal', 'file', 'web'] for full-stack tasks."
+            },
+            "tasks": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "goal": {
+                    "type": "string",
+                    "description": "Task goal"
+                  },
+                  "context": {
+                    "type": "string",
+                    "description": "Task-specific context"
+                  },
+                  "toolsets": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Toolsets for this specific task. Available: 'browser', 'computer_use', 'cronjob', 'discord', 'discord_admin', 'feishu_doc', 'feishu_drive', 'file', 'homeassistant', 'image_gen', 'kanban', 'search', 'session_search', 'skills', 'spotify', 'terminal', 'todo', 'tts', 'video', 'video_gen', 'vision', 'web', 'x_search', 'yuanbao'. Use 'web' for network access, 'terminal' for shell, 'browser' for web interaction."
+                  },
+                  "acp_command": {
+                    "type": "string",
+                    "description": "Per-task ACP command override (e.g. 'copilot'). Overrides the top-level acp_command for this task only. Do NOT set unless the user explicitly told you an ACP CLI is installed."
+                  },
+                  "acp_args": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Per-task ACP args override. Leave empty unless acp_command is set."
+                  },
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "leaf",
+                      "orchestrator"
+                    ],
+                    "description": "Per-task role override. See top-level 'role' for semantics."
+                  }
+                },
+                "required": [
+                  "goal"
+                ]
+              },
+              "description": "Batch mode: tasks to run in parallel (up to 3 for this user, set via delegation.max_concurrent_children). Each gets its own subagent with isolated context and terminal session. When provided, top-level goal/context/toolsets are ignored."
+            },
+            "role": {
+              "type": "string",
+              "enum": [
+                "leaf",
+                "orchestrator"
+              ],
+              "description": "Role of the child agent. 'leaf' (default) = focused worker, cannot delegate further. 'orchestrator' = can use delegate_task to spawn its own workers. Nesting is OFF for this user (max_spawn_depth=1); 'orchestrator' is silently forced to 'leaf'. Raise delegation.max_spawn_depth in config.yaml to enable."
+            },
+            "acp_command": {
+              "type": "string",
+              "description": "Override ACP command for child agents (e.g. 'copilot'). When set, children use ACP subprocess transport instead of inheriting the parent's transport. Requires an ACP-compatible CLI (currently GitHub Copilot CLI via 'copilot --acp --stdio'). See agent/copilot_acp_client.py for the implementation. IMPORTANT: Do NOT set this unless the user has explicitly told you a specific ACP-compatible CLI is installed and configured. Leave empty to use the parent's default transport (Hermes subagents)."
+            },
+            "acp_args": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Arguments for the ACP command (default: ['--acp', '--stdio']). Only used when acp_command is set. Leave empty unless acp_command is explicitly provided."
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "discord",
+        "description": "Read and participate in a Discord server.\n\nAvailable actions:\n  search_members(guild_id, query)  — find members by name prefix\n  fetch_messages(channel_id)  — recent messages; optional before/after snowflakes\n  create_thread(channel_id, name)  — create a public thread; optional message_id anchor\n\nUse the channel_id from the current conversation context. Use search_members to look up user IDs by name prefix.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "search_members",
+                "fetch_messages",
+                "create_thread"
+              ]
+            },
+            "guild_id": {
+              "type": "string",
+              "description": "Discord server (guild) ID."
+            },
+            "channel_id": {
+              "type": "string",
+              "description": "Discord channel ID."
+            },
+            "user_id": {
+              "type": "string",
+              "description": "Discord user ID."
+            },
+            "role_id": {
+              "type": "string",
+              "description": "Discord role ID."
+            },
+            "message_id": {
+              "type": "string",
+              "description": "Discord message ID."
+            },
+            "query": {
+              "type": "string",
+              "description": "Member name prefix to search for (search_members)."
+            },
+            "name": {
+              "type": "string",
+              "description": "New thread name (create_thread)."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "description": "Max results (default 50). Applies to fetch_messages, search_members."
+            },
+            "before": {
+              "type": "string",
+              "description": "Snowflake ID for reverse pagination (fetch_messages)."
+            },
+            "after": {
+              "type": "string",
+              "description": "Snowflake ID for forward pagination (fetch_messages)."
+            },
+            "auto_archive_duration": {
+              "type": "integer",
+              "enum": [
+                60,
+                1440,
+                4320,
+                10080
+              ],
+              "description": "Thread archive duration in minutes (create_thread, default 1440)."
+            }
+          },
+          "required": [
+            "action"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "discord_admin",
+        "description": "Manage a Discord server via the REST API.\n\nAvailable actions:\n  list_guilds()  — list servers the bot is in\n  server_info(guild_id)  — server details + member counts\n  list_channels(guild_id)  — all channels grouped by category\n  channel_info(channel_id)  — single channel details\n  list_roles(guild_id)  — roles sorted by position\n  member_info(guild_id, user_id)  — lookup a specific member\n  list_pins(channel_id)  — pinned messages in a channel\n  pin_message(channel_id, message_id)  — pin a message\n  unpin_message(channel_id, message_id)  — unpin a message\n  delete_message(channel_id, message_id)  — delete a message\n  add_role(guild_id, user_id, role_id)  — assign a role\n  remove_role(guild_id, user_id, role_id)  — remove a role\n\nCall list_guilds first to discover guild_ids, then list_channels for channel_ids. Runtime errors will tell you if the bot lacks a specific per-guild permission (e.g. MANAGE_ROLES for add_role).",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "list_guilds",
+                "server_info",
+                "list_channels",
+                "channel_info",
+                "list_roles",
+                "member_info",
+                "list_pins",
+                "pin_message",
+                "unpin_message",
+                "delete_message",
+                "add_role",
+                "remove_role"
+              ]
+            },
+            "guild_id": {
+              "type": "string",
+              "description": "Discord server (guild) ID."
+            },
+            "channel_id": {
+              "type": "string",
+              "description": "Discord channel ID."
+            },
+            "user_id": {
+              "type": "string",
+              "description": "Discord user ID."
+            },
+            "role_id": {
+              "type": "string",
+              "description": "Discord role ID."
+            },
+            "message_id": {
+              "type": "string",
+              "description": "Discord message ID."
+            },
+            "query": {
+              "type": "string",
+              "description": "Member name prefix to search for (search_members)."
+            },
+            "name": {
+              "type": "string",
+              "description": "New thread name (create_thread)."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "description": "Max results (default 50). Applies to fetch_messages, search_members."
+            },
+            "before": {
+              "type": "string",
+              "description": "Snowflake ID for reverse pagination (fetch_messages)."
+            },
+            "after": {
+              "type": "string",
+              "description": "Snowflake ID for forward pagination (fetch_messages)."
+            },
+            "auto_archive_duration": {
+              "type": "integer",
+              "enum": [
+                60,
+                1440,
+                4320,
+                10080
+              ],
+              "description": "Thread archive duration in minutes (create_thread, default 1440)."
+            }
+          },
+          "required": [
+            "action"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "execute_code",
+        "description": "Run a Python script that can call Hermes tools programmatically. Use this when you need 3+ tool calls with processing logic between them, need to filter/reduce large tool outputs before they enter your context, need conditional branching (if X then Y else Z), or need to loop (fetch N pages, process N files, retry on failure).\n\nUse normal tool calls instead when: single tool call with no processing, you need to see the full result and apply complex reasoning, or the task requires interactive user input.\n\nAvailable via `from hermes_tools import ...`:\n\n  read_file(path: str, offset: int = 1, limit: int = 500) -> dict\n    Lines are 1-indexed. Returns {\"content\": \"...\", \"total_lines\": N}\n  write_file(path: str, content: str) -> dict\n    Always overwrites the entire file.\n  search_files(pattern: str, target=\"content\", path=\".\", file_glob=None, limit=50) -> dict\n    target: \"content\" (search inside files) or \"files\" (find files by name). Returns {\"matches\": [...]}\n  patch(path: str, old_string: str, new_string: str, replace_all: bool = False) -> dict\n    Replaces old_string with new_string in the file.\n  terminal(command: str, timeout=None, workdir=None) -> dict\n    Foreground only (no background/pty). Returns {\"output\": \"...\", \"exit_code\": N}\n\nLimits: 5-minute timeout, 50KB stdout cap, max 50 tool calls per script. terminal() is foreground-only (no background or pty).\n\nScripts run in the session's working directory with the active venv's python, so project deps (pandas, etc.) and relative paths work like in terminal().\n\nPrint your final result to stdout. Use Python stdlib (json, re, math, csv, datetime, collections, etc.) for processing between tool calls.\n\nAlso available (no import needed — built into hermes_tools):\n  json_parse(text: str) — json.loads with strict=False; use for terminal() output with control chars\n  shell_quote(s: str) — shlex.quote(); use when interpolating dynamic strings into shell commands\n  retry(fn, max_attempts=3, delay=2) — retry with exponential backoff for transient failures",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "Python code to execute. Import tools with `from hermes_tools import terminal, ...` and print your final result to stdout."
+            }
+          },
+          "required": [
+            "code"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "image_generate",
+        "description": "Generate high-quality images from text prompts. The underlying backend (FAL, OpenAI, etc.) and model are user-configured and not selectable by the agent. Returns either a URL or an absolute file path in the `image` field; display it with markdown ![description](url-or-path) and the gateway will deliver it.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "prompt": {
+              "type": "string",
+              "description": "The text prompt describing the desired image. Be detailed and descriptive."
+            },
+            "aspect_ratio": {
+              "type": "string",
+              "enum": [
+                "landscape",
+                "square",
+                "portrait"
+              ],
+              "description": "The aspect ratio of the generated image. 'landscape' is 16:9 wide, 'portrait' is 16:9 tall, 'square' is 1:1.",
+              "default": "landscape"
+            }
+          },
+          "required": [
+            "prompt"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "memory",
+        "description": "Save durable information to persistent memory that survives across sessions. Memory is injected into future turns, so keep it compact and focused on facts that will still matter later.\n\nWHEN TO SAVE (do this proactively, don't wait to be asked):\n- User corrects you or says 'remember this' / 'don't do that again'\n- User shares a preference, habit, or personal detail (name, role, timezone, coding style)\n- You discover something about the environment (OS, installed tools, project structure)\n- You learn a convention, API quirk, or workflow specific to this user's setup\n- You identify a stable fact that will be useful again in future sessions\n\nPRIORITY: User preferences and corrections > environment facts > procedural knowledge. The most valuable memory prevents the user from having to repeat themselves.\n\nDo NOT save task progress, session outcomes, completed-work logs, or temporary TODO state to memory; use session_search to recall those from past transcripts.\nIf you've discovered a new way to do something, solved a problem that could be necessary later, save it as a skill with the skill tool.\n\nTWO TARGETS:\n- 'user': who the user is -- name, role, preferences, communication style, pet peeves\n- 'memory': your notes -- environment facts, project conventions, tool quirks, lessons learned\n\nACTIONS: add (new entry), replace (update existing -- old_text identifies it), remove (delete -- old_text identifies it).\n\nSKIP: trivial/obvious info, things easily re-discovered, raw data dumps, and temporary task state.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "add",
+                "replace",
+                "remove"
+              ],
+              "description": "The action to perform."
+            },
+            "target": {
+              "type": "string",
+              "enum": [
+                "memory",
+                "user"
+              ],
+              "description": "Which memory store: 'memory' for personal notes, 'user' for user profile."
+            },
+            "content": {
+              "type": "string",
+              "description": "The entry content. Required for 'add' and 'replace'."
+            },
+            "old_text": {
+              "type": "string",
+              "description": "Short unique substring identifying the entry to replace or remove."
+            }
+          },
+          "required": [
+            "action",
+            "target"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "mixture_of_agents",
+        "description": "Route a hard problem through multiple frontier LLMs collaboratively. Makes 5 API calls (4 reference models + 1 aggregator) with maximum reasoning effort — use sparingly for genuinely difficult problems. Best for: complex math, advanced algorithms, multi-step analytical reasoning, problems benefiting from diverse perspectives.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "user_prompt": {
+              "type": "string",
+              "description": "The complex query or problem to solve using multiple AI models. Should be a challenging problem that benefits from diverse perspectives and collaborative reasoning."
+            }
+          },
+          "required": [
+            "user_prompt"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "patch",
+        "description": "Targeted find-and-replace edits in files. Use this instead of sed/awk in terminal. Uses fuzzy matching (9 strategies) so minor whitespace/indentation differences won't break it. Returns a unified diff. Auto-runs syntax checks after editing.\n\nREPLACE MODE (mode='replace', default): find a unique string and replace it. REQUIRED PARAMETERS: mode, path, old_string, new_string.\nPATCH MODE (mode='patch'): apply V4A multi-file patches for bulk changes. REQUIRED PARAMETERS: mode, patch.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": [
+                "replace",
+                "patch"
+              ],
+              "description": "Edit mode. 'replace' (default): requires path + old_string + new_string. 'patch': requires patch content only.",
+              "default": "replace"
+            },
+            "path": {
+              "type": "string",
+              "description": "REQUIRED when mode='replace'. File path to edit."
+            },
+            "old_string": {
+              "type": "string",
+              "description": "REQUIRED when mode='replace'. Exact text to find and replace. Must be unique in the file unless replace_all=true. Include surrounding context lines to ensure uniqueness."
+            },
+            "new_string": {
+              "type": "string",
+              "description": "REQUIRED when mode='replace'. Replacement text. Pass empty string '' to delete the matched text."
+            },
+            "replace_all": {
+              "type": "boolean",
+              "description": "Replace all occurrences instead of requiring a unique match (default: false)",
+              "default": false
+            },
+            "patch": {
+              "type": "string",
+              "description": "REQUIRED when mode='patch'. V4A format patch content. Format:\n*** Begin Patch\n*** Update File: path/to/file\n@@ context hint @@\n context line\n-removed line\n+added line\n*** End Patch"
+            }
+          },
+          "required": [
+            "mode"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "process",
+        "description": "Manage background processes started with terminal(background=true). Actions: 'list' (show all), 'poll' (check status + new output), 'log' (full output with pagination), 'wait' (block until done or timeout), 'kill' (terminate), 'write' (send raw stdin data without newline), 'submit' (send data + Enter, for answering prompts), 'close' (close stdin/send EOF).",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "list",
+                "poll",
+                "log",
+                "wait",
+                "kill",
+                "write",
+                "submit",
+                "close"
+              ],
+              "description": "Action to perform on background processes"
+            },
+            "session_id": {
+              "type": "string",
+              "description": "Process session ID (from terminal background output). Required for all actions except 'list'."
+            },
+            "data": {
+              "type": "string",
+              "description": "Text to send to process stdin (for 'write' and 'submit' actions)"
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Max seconds to block for 'wait' action. Returns partial output on timeout.",
+              "minimum": 1
+            },
+            "offset": {
+              "type": "integer",
+              "description": "Line offset for 'log' action (default: last 200 lines)"
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Max lines to return for 'log' action",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "action"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "read_file",
+        "description": "Read a text file with line numbers and pagination. Use this instead of cat/head/tail in terminal. Output format: 'LINE_NUM|CONTENT'. Suggests similar filenames if not found. Use offset and limit for large files. Reads exceeding ~100K characters are rejected; use offset and limit to read specific sections of large files. NOTE: Cannot read images or binary files — use vision_analyze for images.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "Path to the file to read (absolute, relative, or ~/path)"
+            },
+            "offset": {
+              "type": "integer",
+              "description": "Line number to start reading from (1-indexed, default: 1)",
+              "default": 1,
+              "minimum": 1
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Maximum number of lines to read (default: 500, max: 2000)",
+              "default": 500,
+              "maximum": 2000
+            }
+          },
+          "required": [
+            "path"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "search_files",
+        "description": "Search file contents or find files by name. Use this instead of grep/rg/find/ls in terminal. Ripgrep-backed, faster than shell equivalents.\n\nContent search (target='content'): Regex search inside files. Output modes: full matches with line numbers, file paths only, or match counts.\n\nFile search (target='files'): Find files by glob pattern (e.g., '*.py', '*config*'). Also use this instead of ls — results sorted by modification time.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "pattern": {
+              "type": "string",
+              "description": "Regex pattern for content search, or glob pattern (e.g., '*.py') for file search"
+            },
+            "target": {
+              "type": "string",
+              "enum": [
+                "content",
+                "files"
+              ],
+              "description": "'content' searches inside file contents, 'files' searches for files by name",
+              "default": "content"
+            },
+            "path": {
+              "type": "string",
+              "description": "Directory or file to search in (default: current working directory)",
+              "default": "."
+            },
+            "file_glob": {
+              "type": "string",
+              "description": "Filter files by pattern in grep mode (e.g., '*.py' to only search Python files)"
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Maximum number of results to return (default: 50)",
+              "default": 50
+            },
+            "offset": {
+              "type": "integer",
+              "description": "Skip first N results for pagination (default: 0)",
+              "default": 0
+            },
+            "output_mode": {
+              "type": "string",
+              "enum": [
+                "content",
+                "files_only",
+                "count"
+              ],
+              "description": "Output format for grep mode: 'content' shows matching lines with line numbers, 'files_only' lists file paths, 'count' shows match counts per file",
+              "default": "content"
+            },
+            "context": {
+              "type": "integer",
+              "description": "Number of context lines before and after each match (grep mode only)",
+              "default": 0
+            }
+          },
+          "required": [
+            "pattern"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "send_message",
+        "description": "Send a message to a connected messaging platform, or list available targets.\n\nIMPORTANT: When the user asks to send to a specific channel or person (not just a bare platform name), call send_message(action='list') FIRST to see available targets, then send to the correct one.\nIf the user just says a platform name like 'send to telegram', send directly to the home channel without listing first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "send",
+                "list"
+              ],
+              "description": "Action to perform. 'send' (default) sends a message. 'list' returns all available channels/contacts across connected platforms."
+            },
+            "target": {
+              "type": "string",
+              "description": "Delivery target. Format: 'platform' (uses home channel), 'platform:#channel-name', 'platform:chat_id', or 'platform:chat_id:thread_id' for Telegram topics and Discord threads. Examples: 'telegram', 'telegram:-1001234567890:17585', 'discord:999888777:555444333', 'discord:#bot-home', 'slack:#engineering', 'signal:+155****4567', 'matrix:!roomid:server.org', 'matrix:@user:server.org', 'yuanbao:direct:<account_id>' (DM), 'yuanbao:group:<group_code>' (group chat)"
+            },
+            "message": {
+              "type": "string",
+              "description": "The message text to send. To send an image or file, include MEDIA:<local_path> (e.g. 'MEDIA:/tmp/hermes/cache/img_xxx.jpg') in the message — the platform will deliver it as a native media attachment."
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "session_search",
+        "description": "Search your long-term memory of past conversations, or browse recent sessions. This is your recall -- every past session is searchable, and this tool summarizes what happened.\n\nTWO MODES:\n1. Recent sessions (no query): Call with no arguments to see what was worked on recently. Returns titles, previews, and timestamps. Zero LLM cost, instant. Start here when the user asks what were we working on or what did we do recently.\n2. Keyword search (with query): Search for specific topics across all past sessions. Returns LLM-generated summaries of matching sessions.\n\nUSE THIS PROACTIVELY when:\n- The user says 'we did this before', 'remember when', 'last time', 'as I mentioned'\n- The user asks about a topic you worked on before but don't have in current context\n- The user references a project, person, or concept that seems familiar but isn't in memory\n- You want to check if you've solved a similar problem before\n- The user asks 'what did we do about X?' or 'how did we fix Y?'\n\nDon't hesitate to search when it is actually cross-session -- it's fast and cheap. Better to search and confirm than to guess or ask the user to repeat themselves.\n\nSearch syntax: keywords joined with OR for broad recall (elevenlabs OR baseten OR funding), phrases for exact match (\"docker networking\"), boolean (python NOT java), prefix (deploy*). IMPORTANT: Use OR between keywords for best results — FTS5 defaults to AND which misses sessions that only mention some terms. If a broad OR query returns nothing, try individual keyword searches in parallel. Returns summaries of the top matching sessions.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Search query — keywords, phrases, or boolean expressions to find in past sessions. Omit this parameter entirely to browse recent sessions instead (returns titles, previews, timestamps with no LLM cost)."
+            },
+            "role_filter": {
+              "type": "string",
+              "description": "Optional: only search messages from specific roles (comma-separated). E.g. 'user,assistant' to skip tool outputs."
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Max sessions to summarize (default: 3, max: 5).",
+              "default": 3
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "skill_manage",
+        "description": "Manage skills (create, update, delete). Skills are your procedural memory — reusable approaches for recurring task types. New skills go to ~/./skills/; existing skills can be modified wherever they live.\n\nActions: create (full SKILL.md + optional category), patch (old_string/new_string — preferred for fixes), edit (full SKILL.md rewrite — major overhauls only), delete, write_file, remove_file.\n\nOn delete, pass `absorbed_into=<umbrella>` when you're merging this skill's content into another one, or `absorbed_into=\"\"` when you're pruning it with no forwarding target. This lets the curator tell consolidation from pruning without guessing, so downstream consumers (cron jobs that reference the old skill name, etc.) get updated correctly. The target you name in `absorbed_into` must already exist — create/patch the umbrella first, then delete.\n\nCreate when: complex task succeeded (5+ calls), errors overcome, user-corrected approach worked, non-trivial workflow discovered, or user asks you to remember a procedure.\nUpdate when: instructions stale/wrong, OS-specific failures, missing steps or pitfalls found during use. If you used a skill and hit issues not covered by it, patch it immediately.\n\nAfter difficult/iterative tasks, offer to save as a skill. Skip for simple one-offs. Confirm with user before creating/deleting.\n\nGood skills: trigger conditions, numbered steps with exact commands, pitfalls section, verification steps. Use skill_view() to see format examples.\n\nPinned skills are protected from deletion only — skill_manage(action='delete') will refuse with a message pointing the user to `hermes curator unpin <name>`. Patches and edits go through on pinned skills so you can still improve them as pitfalls come up; pin only guards against irrecoverable loss.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "create",
+                "patch",
+                "edit",
+                "delete",
+                "write_file",
+                "remove_file"
+              ],
+              "description": "The action to perform."
+            },
+            "name": {
+              "type": "string",
+              "description": "Skill name (lowercase, hyphens/underscores, max 64 chars). Must match an existing skill for patch/edit/delete/write_file/remove_file."
+            },
+            "content": {
+              "type": "string",
+              "description": "Full SKILL.md content (YAML frontmatter + markdown body). Required for 'create' and 'edit'. For 'edit', read the skill first with skill_view() and provide the complete updated text."
+            },
+            "old_string": {
+              "type": "string",
+              "description": "Text to find in the file (required for 'patch'). Must be unique unless replace_all=true. Include enough surrounding context to ensure uniqueness."
+            },
+            "new_string": {
+              "type": "string",
+              "description": "Replacement text (required for 'patch'). Can be empty string to delete the matched text."
+            },
+            "replace_all": {
+              "type": "boolean",
+              "description": "For 'patch': replace all occurrences instead of requiring a unique match (default: false)."
+            },
+            "category": {
+              "type": "string",
+              "description": "Optional category/domain for organizing the skill (e.g., 'devops', 'data-science', 'mlops'). Creates a subdirectory grouping. Only used with 'create'."
+            },
+            "file_path": {
+              "type": "string",
+              "description": "Path to a supporting file within the skill directory. For 'write_file'/'remove_file': required, must be under references/, templates/, scripts/, or assets/. For 'patch': optional, defaults to SKILL.md if omitted."
+            },
+            "file_content": {
+              "type": "string",
+              "description": "Content for the file. Required for 'write_file'."
+            },
+            "absorbed_into": {
+              "type": "string",
+              "description": "For 'delete' only — declares intent so the curator can tell consolidation from pruning without guessing. Pass the umbrella skill name when this skill's content was merged into another (the target must already exist). Pass an empty string when the skill is truly stale and being pruned with no forwarding target. Omitting the arg on delete is supported for backward compatibility but downstream tooling (e.g. cron-job skill reference rewriting) will have to guess at intent."
+            }
+          },
+          "required": [
+            "action",
+            "name"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "skill_view",
+        "description": "Skills allow for loading information about specific tasks and workflows, as well as scripts and templates. Load a skill's full content or access its linked files (references, templates, scripts). First call returns SKILL.md content plus a 'linked_files' dict showing available references/templates/scripts. To access those, call again with file_path parameter.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The skill name (use skills_list to see available skills). For plugin-provided skills, use the qualified form 'plugin:skill' (e.g. 'superpowers:writing-plans')."
+            },
+            "file_path": {
+              "type": "string",
+              "description": "OPTIONAL: Path to a linked file within the skill (e.g., 'references/api.md', 'templates/config.yaml', 'scripts/validate.py'). Omit to get the main SKILL.md content."
+            }
+          },
+          "required": [
+            "name"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "skills_list",
+        "description": "List available skills (name + description). Use skill_view(name) to load full content.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Optional category filter to narrow results"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "terminal",
+        "description": "Execute shell commands on a Linux environment. Filesystem usually persists between calls.\n\nDo NOT use cat/head/tail to read files — use read_file instead.\nDo NOT use grep/rg/find to search — use search_files instead.\nDo NOT use ls to list directories — use search_files(target='files') instead.\nDo NOT use sed/awk to edit files — use patch instead.\nDo NOT use echo/cat heredoc to create files — use write_file instead.\nReserve terminal for: builds, installs, git, processes, scripts, network, package managers, and anything that needs a shell.\n\nForeground (default): Commands return INSTANTLY when done, even if the timeout is high. Set timeout=300 for long builds/scripts — you'll still get the result in seconds if it's fast. Prefer foreground for short commands.\nBackground: Set background=true to get a session_id. Two patterns:\n  (1) Long-lived processes that never exit (servers, watchers).\n  (2) Long-running tasks with notify_on_complete=true — you can keep working on other things and the system auto-notifies you when the task finishes. Great for test suites, builds, deployments, or anything that takes more than a minute.\nFor servers/watchers, do NOT use shell-level background wrappers (nohup/disown/setsid/trailing '&') in foreground mode. Use background=true so Hermes can track lifecycle and output.\nAfter starting a server, verify readiness with a health check or log signal, then run tests in a separate terminal() call. Avoid blind sleep loops.\nUse process(action=\"poll\") for progress checks, process(action=\"wait\") to block until done.\nWorking directory: Use 'workdir' for per-command cwd.\nPTY mode: Set pty=true for interactive CLI tools (Codex, Claude Code, Python REPL).\n\nDo NOT use vim/nano/interactive tools without pty=true — they hang without a pseudo-terminal. Pipe git output to cat if it might page.\n",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "command": {
+              "type": "string",
+              "description": "The command to execute on the VM"
+            },
+            "background": {
+              "type": "boolean",
+              "description": "Run the command in the background. Two patterns: (1) Long-lived processes that never exit (servers, watchers). (2) Long-running tasks paired with notify_on_complete=true — you can keep working and get notified when the task finishes. For short commands, prefer foreground with a generous timeout instead.",
+              "default": false
+            },
+            "timeout": {
+              "type": "integer",
+              "description": "Max seconds to wait (default: 180, foreground max: 600). Returns INSTANTLY when command finishes — set high for long tasks, you won't wait unnecessarily. Foreground timeout above 600s is rejected; use background=true for longer commands.",
+              "minimum": 1
+            },
+            "workdir": {
+              "type": "string",
+              "description": "Working directory for this command (absolute path). Defaults to the session working directory."
+            },
+            "pty": {
+              "type": "boolean",
+              "description": "Run in pseudo-terminal (PTY) mode for interactive CLI tools like Codex, Claude Code, or Python REPL. Only works with local and SSH backends. Default: false.",
+              "default": false
+            },
+            "notify_on_complete": {
+              "type": "boolean",
+              "description": "When true (and background=true), you'll be automatically notified exactly once when the process finishes. **This is the right choice for almost every long-running task** — tests, builds, deployments, multi-item batch jobs, anything that takes over a minute and has a defined end. Use this and keep working on other things; the system notifies you on exit. MUTUALLY EXCLUSIVE with watch_patterns — when both are set, watch_patterns is dropped.",
+              "default": false
+            },
+            "watch_patterns": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Strings to watch for in background process output. HARD RATE LIMIT: at most 1 notification per 15 seconds per process — matches arriving inside the cooldown are dropped. After 3 consecutive 15-second windows with dropped matches, watch_patterns is automatically disabled for that process and promoted to notify_on_complete behavior (one notification on exit, no more mid-process spam). USE ONLY for truly rare, one-shot mid-process signals on LONG-LIVED processes that will never exit on their own — e.g. ['Application startup complete'] on a server so you know when to hit its endpoint, or ['migration done'] on a daemon. DO NOT use for: (1) end-of-run markers like 'DONE'/'PASS' — use notify_on_complete instead; (2) error patterns like 'ERROR'/'Traceback' in loops or multi-item batch jobs — they fire on every iteration and you'll hit the strike limit fast; (3) anything you'd ever combine with notify_on_complete. When in doubt, choose notify_on_complete. MUTUALLY EXCLUSIVE with notify_on_complete — set one, not both."
+            }
+          },
+          "required": [
+            "command"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "text_to_speech",
+        "description": "Convert text to speech audio. Returns a MEDIA: path that the platform delivers as native audio. Compatible providers render as a voice bubble on Telegram; otherwise audio is sent as a regular attachment. In CLI mode, saves to ~/voice-memos/. Voice and provider are user-configured (built-in providers like edge/openai or custom command providers under tts.providers.<name>), not model-selected.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "description": "The text to convert to speech. Provider-specific character caps apply and are enforced automatically (OpenAI 4096, xAI 15000, MiniMax 10000, ElevenLabs 5k-40k depending on model); over-long input is truncated."
+            },
+            "output_path": {
+              "type": "string",
+              "description": "Optional custom file path to save the audio. Defaults to ~/./audio_cache/<timestamp>.mp3"
+            }
+          },
+          "required": [
+            "text"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "todo",
+        "description": "Manage your task list for the current session. Use for complex tasks with 3+ steps or when the user provides multiple tasks. Call with no parameters to read the current list.\n\nWriting:\n- Provide 'todos' array to create/update items\n- merge=false (default): replace the entire list with a fresh plan\n- merge=true: update existing items by id, add any new ones\n\nEach item: {id: string, content: string, status: pending|in_progress|completed|cancelled}\nList order is priority. Only ONE item in_progress at a time.\nMark items completed immediately when done. If something fails, cancel it and add a revised item.\n\nAlways returns the full current list.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "todos": {
+              "type": "array",
+              "description": "Task items to write. Omit to read current list.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "Unique item identifier"
+                  },
+                  "content": {
+                    "type": "string",
+                    "description": "Task description"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "pending",
+                      "in_progress",
+                      "completed",
+                      "cancelled"
+                    ],
+                    "description": "Current status"
+                  }
+                },
+                "required": [
+                  "id",
+                  "content",
+                  "status"
+                ]
+              }
+            },
+            "merge": {
+              "type": "boolean",
+              "description": "true: update existing items by id, add new ones. false (default): replace the entire list.",
+              "default": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "video_analyze",
+        "description": "Analyze a video from a URL or local file path using a multimodal AI model. Sends the video to a video-capable model (e.g. Gemini) for understanding. Use this for video files — for images, use vision_analyze instead. Supports mp4, webm, mov, avi, mkv, mpeg formats. Note: large videos (>20 MB) may be slow; max ~50 MB.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "video_url": {
+              "type": "string",
+              "description": "Video URL (http/https) or local file path to analyze."
+            },
+            "question": {
+              "type": "string",
+              "description": "Your specific question about the video. The AI will describe what happens in the video and answer your question."
+            }
+          },
+          "required": [
+            "video_url",
+            "question"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "vision_analyze",
+        "description": "Load an image into the conversation so you can see it. Accepts a URL, local file path, or data URL. When your active model has native vision, the image is attached to your context directly and you read the pixels yourself on the next turn — call this any time the user references an image (filepath in their message, URL in tool output, screenshot from the browser, etc.). For non-vision models, falls back to an auxiliary vision model that returns a text description.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "image_url": {
+              "type": "string",
+              "description": "Image URL (http/https), local file path, or data: URL to load."
+            },
+            "question": {
+              "type": "string",
+              "description": "Your specific question or request about the image. Optional context the model uses on the next turn after seeing the image."
+            }
+          },
+          "required": [
+            "image_url",
+            "question"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "write_file",
+        "description": "Write content to a file, completely replacing existing content. Use this instead of echo/cat heredoc in terminal. Creates parent directories automatically. OVERWRITES the entire file — use 'patch' for targeted edits. Auto-runs syntax checks on .py/.json/.yaml/.toml and other linted languages; only NEW errors introduced by this write are surfaced (pre-existing errors are filtered out).",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "Path to the file to write (will be created if it doesn't exist, overwritten if it does)"
+            },
+            "content": {
+              "type": "string",
+              "description": "Complete content to write to the file"
+            }
+          },
+          "required": [
+            "path",
+            "content"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "fact_store",
+        "description": "Deep structured memory with algebraic reasoning. Use alongside the memory tool — memory for always-on context, fact_store for deep recall and compositional queries.\n\nACTIONS (simple → powerful):\n• add — Store a fact the user would expect you to remember.\n• search — Keyword lookup ('editor config', 'deploy process').\n• probe — Entity recall: ALL facts about a person/thing.\n• related — What connects to an entity? Structural adjacency.\n• reason — Compositional: facts connected to MULTIPLE entities simultaneously.\n• contradict — Memory hygiene: find facts making conflicting claims.\n• update/remove/list — CRUD operations.\n\nIMPORTANT: Before answering questions about the user, ALWAYS probe or reason first.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "add",
+                "search",
+                "probe",
+                "related",
+                "reason",
+                "contradict",
+                "update",
+                "remove",
+                "list"
+              ]
+            },
+            "content": {
+              "type": "string",
+              "description": "Fact content (required for 'add')."
+            },
+            "query": {
+              "type": "string",
+              "description": "Search query (required for 'search')."
+            },
+            "entity": {
+              "type": "string",
+              "description": "Entity name for 'probe'/'related'."
+            },
+            "entities": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Entity names for 'reason'."
+            },
+            "fact_id": {
+              "type": "integer",
+              "description": "Fact ID for 'update'/'remove'."
+            },
+            "category": {
+              "type": "string",
+              "enum": [
+                "user_pref",
+                "project",
+                "tool",
+                "general"
+              ]
+            },
+            "tags": {
+              "type": "string",
+              "description": "Comma-separated tags."
+            },
+            "trust_delta": {
+              "type": "number",
+              "description": "Trust adjustment for 'update'."
+            },
+            "min_trust": {
+              "type": "number",
+              "description": "Minimum trust filter (default: 0.3)."
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Max results (default: 10)."
+            }
+          },
+          "required": [
+            "action"
+          ]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "fact_feedback",
+        "description": "Rate a fact after using it. Mark 'helpful' if accurate, 'unhelpful' if outdated. This trains the memory — good facts rise, bad facts sink.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "helpful",
+                "unhelpful"
+              ]
+            },
+            "fact_id": {
+              "type": "integer",
+              "description": "The fact ID to rate."
+            }
+          },
+          "required": [
+            "action",
+            "fact_id"
+          ]
+        }
+      }
+    }
+  ],
+  "message_count": 29,
+  "messages": [
+    {
+      "role": "user",
+      "content": "use vercel"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "call_ygIQLSY3ir4QYloVJ4cHsM8l",
+          "call_id": "call_ygIQLSY3ir4QYloVJ4cHsM8l",
+          "response_item_id": "fc_0233b6eff8734f33016a127b2e6c7c8195b811707fd7121d04",
+          "type": "function",
+          "function": {
+            "name": "skill_view",
+            "arguments": "{\"name\":\"vercel-app-deployments\"}"
+          }
+        }
+      ],
+      "finish_reason": "tool_calls",
+      "codex_reasoning_items": [
+        {
+          "type": "reasoning",
+          "encrypted_content": "gAAAAABqEnsuQ9o6W_Jj756wMtG_I1-NDRJllCH8UWjqnxbU89IFUh7n6oq5vgyqmc8Ji12Dt5slsIZ0GlbE-0G8ghT6O2Ms2aYAHngscwY12YCn0WvFQ4W284vi8KZV8dOmIjgFAgi6I7d_4gDnQ3_1V0alTSr0qQDcI6MKEZDFHCBB1J17pCR6ipmb3-kgHitWzYvJDPMG9WgewNcNZiCg64fJ_diNzTDwGPpwMpqlCrN5wA6R_hd6PgQSmMUQjK296Ji1FRx_1HzEDFSBSSSlm86e-9ELwL6cosVqxAVjgycMdATdFYAFH7ovxn-nU6C0khzhiOmaJ-nZub_U0RIb4sGXjC-RaapobRiZjdvuVK3g9jyF2c56rt3ITiK4901lqjO_rJDZRxidJK7xXLVyNATnws5mVtCTAyAqqHO600tsXs7gauui35WbHUoZmzt05ka2i0AYVy23fGXt8U7U6MDmIsYkuZOtS29WE9ztDiF2M94gzWng_eZo-lvknsbaYHuOCFYGS5DfuJOXoFZKORjlEwoAIzux-OcF9YlbtpdC8WU-PF21kDmpy7IxRu26MTHF-OUmWTpvEJK5vkDo9ITlKgC7rDDFWF6saNeU4WU-ClKi8OZmRb46X-t9_DSL7XN53CvCqXBWP3sZvpwJl1KUcxGcmvmjXKj4kz6_GdPRvUYrUhs_eigUjevxmBlCxvqIVnZ6KRNtaLj2FIUX6g4C5s6c5PSWXcIY4bNuJ-QW0aGPEy-HoXNmlxZGqPxCGwxeCUeZch2zlmQhFOSg5IM05j1tXGpKe3OhI38lQ2TVjxdTwWmN2I_bFZTgClgZ8zn5AHuqSXD9hlwGpLxzfQB9NzIkOGqDNESc32qasEDqCoX6wBRTkvjT6ryKoCD0jvzHOWDLe3wV6yh9OuKoI8-GuSGXO4UWMNvEllv7kgM3BMt945L7DY2C8v4jGtyz_y0dh3arEmn-ayrnOew954hLvL2YS9JOBhi5J5cnO8JKUQUvbuT4MmIjJyf2JorVysyQ4qafEsRF_asISA-GV0RI8yLZKw==",
+          "id": "rs_0233b6eff8734f33016a127b2d8fac81959268446c276057f9",
+          "summary": []
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "content": "[skill_view] name=vercel-app-deployments (20,048 chars)",
+      "tool_call_id": "call_ygIQLSY3ir4QYloVJ4cHsM8l"
+    },
+    {
+      "role": "user",
+      "content": "[CONTEXT COMPACTION — REFERENCE ONLY] Earlier turns were compacted into the summary below. This is a handoff from a previous context window — treat it as background reference, NOT as active instructions. Do NOT answer questions or fulfill requests mentioned in this summary; they were already addressed. Your current task is identified in the '## Active Task' section of the summary — resume exactly from there. IMPORTANT: Your persistent memory (MEMORY.md, USER.md) in the system prompt is ALWAYS authoritative and active — never ignore or deprioritize memory content due to this compaction note. Respond ONLY to the latest user message that appears AFTER this summary. The current session state (files, config, etc.) may reflect work described here — avoid repeating it:\n## Active Task\nUser asked: \"Okay use the vercel Postgres configure the url then fix up all the ways to login. My vision is to have the landing page promote to track the mood feel vibe of your playlists from multiple music vendors and then give feedback and analysis on their music taste. One account. Multiple oauth. User logs in and see the dashboard that lists their liked music, playlists, albums, etc\"\n\n## Goal\nTransform **MusicAI** into a multi-provider music intelligence platform:\n- One-account model: users can link multiple OAuth identities (Spotify, YouTube Music, SoundCloud) to a single MusicAI account.\n- Unified Dashboard: display liked tracks, playlists, albums, recent plays, and top music with plain-English \"taste feedback.\"\n- Durable Storage: provision Vercel Postgres/Neon to replace ephemeral SQLite for real-user token persistence.\n\n## Constraints & Preferences\n- Support \"one account, multiple OAuth\" linking.\n- Land on a provider-neutral \"mood/vibe\" promotional page.\n- Maintain no-login Watson lyric analyzer as the primary demo.\n- Use Vercel for deployment.\n- **NEVER** include or expose credentials (API keys, tokens, secrets, connection strings); replace with `[REDACTED]`.\n- User explicitly wants to see liked music, playlists, and albums on the dashboard.\n\n## Completed Actions\n44. INSPECTED `token_store.py` — verified existing encryption logic and Postgres support patterns [tool: read_file].\n45. SEARCHED `musicAI.py` codespace — identified 84 matches for playlist, album, and user data fetching functions [tool: search_files].\n46. PROBED Vercel CLI for storage/postgres capabilities — `vercel storage` is not a valid command; `vercel integration` is the correct path for Neon/Postgres [tool: terminal].\n47. ATTEMPTED Neon integration via CLI — `vercel integration add neon` triggered a terms acceptance requirement [tool: terminal].\n48. VISITED Vercel marketplace terms URL — navigated to terms acceptance page for Neon [tool: browser_navigate].\n49. REFACTORED `token_store.py` to `musicai_secure_store.py` — updated storage logic to support a `musicai_accounts` table, mapping various provider IDs to a single internal `account_id` [tool: patch, execute_code].\n50. UPDATED `musicAI.py` imports — switched from `token_store` to `musicai_secure_store` to avoid `.gitignore` collisions with generic names [tool: execute_code].\n51. UPDATED Spotify Scopes — expanded `scopes` to include `user-library-read`, `playlist-read-private`, `user-top-read`, and `user-read-recently-played` [tool: patch].\n52. IMPLEMENTED single-account linking in `musicAI.py` — Spotify callback now uses `token_store.resolve_account` to link or create a MusicAI account and sets `musicai_user_id` in the session [tool: patch].\n53. ADDED multi-provider routes — defined `/providers/spotify/connect`, `/providers/youtube_music/connect`, and `/providers/soundcloud/connect` with individual OAuth states [tool: patch].\n54. REWROTE `/Dashboard` — implemented comprehensive data fetching for Spotify (top tracks, recently played, liked tracks, playlists, albums) and integrated taste feedback generation [tool: patch].\n55. REWROTE `templates/homepage.html` — updated to a sleek, provider-neutral landing page highlighting cross-platform map/vibe tracking [tool: write_file].\n56. REWROTE `templates/user_dashboard.html` — created a multi-section dashboard with grid layouts for tracks/albums and status for multiple providers [tool: write_file].\n57. UPDATED `env.template` — added placeholders for `MUSICAI_DATABASE_URL`, `MUSICAI_TOKEN_DB` (Postgres alias), and `MUSICAI_SQLITE_PATH` [tool: patch].\n58. PERFORMED local route checks — verified `/`, `/healthz`, `/analyze-text`, and `/Dashboard` (with mock session) pass; confirmed Spotify connect redirects to accounts.spotify.com [tool: terminal].\n59. DEPLOYED MusicAI to production — `npx vercel deploy --prod` successful; live at `https://musicai-rouge.vercel.app` [tool: terminal].\n60. VERIFIED live deployment — confirmed `/healthz` reports `encrypted: True` and `/Dashboard` redirects to home when not logged in [tool: terminal].\n61. UPDATED `WORK_QUEUE.md` and `README.md` — reflected new dashboard and multi-OAuth status [tool: patch].\n\n## Active State\n- Working directory: `/opt/data/HeRmEz/projects/MusicAI`\n- Workspace root: `/opt/data/HeRmEz/projects`\n- Live URL: `https://musicai-rouge.vercel.app`\n- Test status: Local checks passed (checks_ok); live health endpoint operational.\n- Modified/created files:\n    - `MusicAI/musicAI.py`: Core logic for multi-auth/dashboard.\n    - `MusicAI/musicai_secure_store.py`: New durable-ready encrypted storage.\n    - `MusicAI/templates/homepage.html` & `user_dashboard.html`: New UI.\n    - `MusicAI/env.template` & `README.md`: Updated docs.\n- Environment: Deployed on Vercel; currently using ephemeral SQLite fallback.\n\n## In Progress\nNone. Task is awaiting the provisioning of the actual Postgres database (blocked by marketplace terms).\n\n## Blocked\n- **Vercel Postgres/Neon Provisioning**: CLI `integration add neon` requires manual terms acceptance in the user's browser context or a successful CLI `accept-terms` which was attempted but requires retry after the user confirms terms are accepted.\n- **Durable Storage**: Until `MUSICAI_DATABASE_URL` or `MUSICAI_TOKEN_DB` is set to a `postgres://` string in Vercel, the app falls back to ephemeral `/tmp` SQLite.\n\n## Key Decisions\n1. **Renamed token_store.py to musicai_secure_store.py**: The `.gitignore` was broadly ignoring `*token*`, causing the storage module to be untracked.\n2. **One-Account Architecture**: Created a `musicai_accounts` table to map multiple music provider IDs (e.g., Spotify ID, YouTube ID) to a single MusicAI `user_id` to allow data aggregation.\n3. **Implicit/Refreshable Split**: Kept the internal distinction in Spotify auth but defaulted the main flow to refreshable for dashboard persistence.\n4. **Mock Dashboard Access**: Implemented logic to allow the dashboard to render with placeholders if specific provider data is missing, ensuring a \"hub\" feel even with one provider connected.\n\n## Resolved Questions\n1. How to handle multi-OAuth?\n    - Answer: Use a resolution table (`musicai_accounts`) in the database that stores an internal `user_id` for each provider pair.\n2. What happens if Watson fails?\n    - Answer: A transparent local fallback analyzer provides sentiment/emotion analysis so the UI doesn't break.\n\n## Pending User Asks\nNone explicitly pending other than the fulfillment of the Postgres provisioning which requires account-level interaction.\n\n## Relevant Files\n- `MusicAI/musicAI.py`: Contains route logic for `/Dashboard`, `/providers/...`, and account linking.\n- `MusicAI/musicai_secure_store.py`: Implementation of encrypted Postgres/SQLite storage.\n- `MusicAI/templates/user_dashboard.html`: The multi-provider UI.\n- `MusicAI/WORK_QUEUE.md`: Updated with the new \"multi-OAuth hub\" milestones.\n\n## Remaining Work\n- Finalize Vercel Postgres/Neon setup and point `MUSICAI_DATABASE_URL` to the connection string.\n- Redeploy to confirm `/healthz` reports `durable: True`.\n- Implement YouTube Music and SoundCloud data fetching (currently defined as 503/placeholders).\n- Configure Spotify Developer Dashboard with the production callback: `https://musicai-rouge.vercel.app/login/`.\n\n## Critical Context\n- Current storage status (Live): `{'backend': 'sqlite', 'durable': False, 'encrypted': True, 'ready': True}`.\n- Credentials: All API keys for Spotify, Genius, and Watson are `[REDACTED]` in the environment.\n- The app uses `MUSICAI_TOKEN_SECRET` (derived from `FLASK_SECRET_KEY` if missing) for Fernet encryption of tokens at rest.\n\n--- END OF CONTEXT SUMMARY — respond to the message below, not the summary above ---"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "tool_calls": [
+        {
+          "id": "call_VsruwynS1QujfA2alwkTmQdo",
+          "call_id": "call_VsruwynS1QujfA2alwkTmQdo",
+          "response_item_id": "fc_0e0324400d39eadf016a1303d4dd74819598d43dc5e73b0748",
+          "type": "function",
+          "function": {
+            "name": "terminal",
+            "arguments": "{\"command\":\"git status --short --untracked-files=all MusicAI/musicai_secure_store.py MusicAI/token_store.py MusicAI/musicAI.py MusicAI/templates/homepage.html MusicAI/templates/user_dashboard.html MusicAI/README.md MusicAI/env.template WORK_QUEUE.md\",\"timeout\":60,\"workdir\":\"/opt/data/HeRmEz/projects\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "terminal",
+      "content": "{\"output\": \"M MusicAI/README.md\\n M MusicAI/env.template\\n M MusicAI/musicAI.py\\n M MusicAI/templates/homepage.html\\n M MusicAI/templates/user_dashboard.html\\n M WORK_QUEUE.md\\n?? MusicAI/musicai_secure_store.py\", \"exit_code\": 0, \"error\": null}",
+      "tool_call_id": "call_VsruwynS1QujfA2alwkTmQdo"
+    },
+    {
+      "role": "assistant",
+      "content": "Deployed the MusicAI multi-provider direction live:\n\nhttps://musicai-rouge.vercel.app\n\nWhat shipped:\n- New landing page around your vision: mood / feel / vibe tracking across music vendors.\n- One MusicAI account model with multi-OAuth provider linking.\n- Provider hub routes:\n  - Spotify: `/providers/spotify/connect`\n  - YouTube Music / Google: `/providers/youtube_music/connect`\n  - SoundCloud: `/providers/soundcloud/connect`\n  - Apple Music shown as planned.\n- Dashboard rebuilt to show:\n  - connected vendors\n  - Spotify liked tracks\n  - playlists\n  - saved albums\n  - recent plays\n  - top tracks/artists\n  - plain-English taste feedback / vibe tags\n- Secure token storage code moved into a non-ignored module: `musicai_secure_store.py`\n- Local checks passed, Vercel production deploy passed.\n- Live verified:\n  - `/` → 200\n  - `/healthz` → 200\n  - `/analyze-text` → 200\n  - `/api/analyze-text` → 200\n  - Spotify connect redirects to Spotify\n  - YouTube connect redirects to Google\n  - SoundCloud returns a clean config-needed page because SoundCloud creds are not set yet.\n\nBlocked piece:\n- Vercel Postgres/Neon cannot be provisioned until Vercel marketplace terms are accepted for Neon.\n- Vercel CLI returned `action_required` with “Accept marketplace terms for Neon.”\n- I did **not** accept legal/marketplace terms on your behalf.\n\nCurrent `/healthz` still reports:\n- storage backend: SQLite\n- durable: false\n- warning: ephemeral on Vercel\n\nNext required step for real users:\n1. You accept the Neon/Vercel Postgres marketplace terms, or tell me explicitly to run the CLI terms acceptance.\n2. I retry provisioning `musicai-postgres`.\n3. I set `MUSICAI_DATABASE_URL` / `MUSICAI_TOKEN_DB`.\n4. Redeploy.\n5. Verify `/healthz` reports durable Postgres.",
+      "reasoning": "**Configuring OAuth callbacks**\n\nI need to ensure that SoundCloud isn’t configured while the YouTube routes are set up correctly since the environment requires it. I have to check the Google OAuth console for the exact callback URLs for Spotify, YouTube, and SoundCloud. It's good to note that health storage is still ephemeral. Okay, let’s finalize my approach and make sure everything’s squared away!",
+      "finish_reason": "stop",
+      "reasoning_content": "**Configuring OAuth callbacks**\n\nI need to ensure that SoundCloud isn’t configured while the YouTube routes are set up correctly since the environment requires it. I have to check the Google OAuth console for the exact callback URLs for Spotify, YouTube, and SoundCloud. It's good to note that health storage is still ephemeral. Okay, let’s finalize my approach and make sure everything’s squared away!",
+      "codex_reasoning_items": [
+        {
+          "type": "reasoning",
+          "encrypted_content": "gAAAAABqEwPfrn8DvgZUpkqm6XVkSQAFAOaI9DFouKGu9yg5FZrD6gXzZjH775ZAFhZ6_vF9awr7IdLT4F-O4SdpVQPKKlYav2Tw4lMOqv9Y3rZ66VgjKkYBSpjETTVslGXH2jwjoVytQSyu1Xpc7W0ZVAVBS-A0AUIDesn9Z-Ozko9pX9m1k_dHoszUi4bsynLbLL8pkl0a8V6tnLTpDlQ7k8Rf6Fn4bRWtxPfs6vy8LRUNtNkniIULdf1zAJBxxFfPFnA4bNkXV7Vy9jik1oiLj5QycNebWPEyVli5soqawP65109TstymzXhEX5ULllLNFkewXs3x49EbmMyyXy0pnUItOHdNWKf4-UqvxHfjm0msqqiiOSm1I1fOsqQK4QcKs8kdco5Zl6cn86uQMvYc5Ek0HoGdPmQyzCu0BVwXrGQlmEoIiQ9YlwIyDuXa6ExpUsvY3OB_Vg-jfAQvpzAZWcVvDKx7DeQqTt9aX3lELOyfFj2_eIj4rCqMfWcbWV-PU_g5yvv1zjre0QCrPHqvzxfTeTcGq2iQFC736um50L2rsFhQbWRXdiWzRXzB6lbbRZNWLPIgv1b0M-y4m17CINu-FlUHK5qxqK1kY3MMMiqWgrf6nl4KeH393-rt7WoaPCnYzHxy6HgpG-0psouPnbck2L9iJMeK_Zg2wUm4bEOXXmDzZ6utolM_sRRoWbE0nwka5p3GRYag__vdJviEJOvFVnFUlae9FlXr1TZqeX2SiJnzi5kssNcH_FT9sTi-W90LZNsTFBgiRpvtM3_Vvoj9_yGM7IfkKZjjmQSxSAMiEK6eJvcz3GB-XXL9NB5F9f9ee2OWkPGuV9vFQwDNaRQ5SU1zIPGDI_L4d1FojtnjBYOofTa7t2HyOHIbERQk1Sdya9muSiZohAHwAno63a6IHBrcvXzSdQDbaJT0uVQzpTp5U6P8SWh1GtCq_HU-h9CLycbs3p-UBDC54THd1LIVknjfwjVPNNnaEwtMyyxbqnSs3rWRdtYVIZ7PnyDO9Px057eODhclrB7vZmDbZfjiRGa4ilJFu55iHsn0XFlTHiE5tqX33YQUauNYosyAoC33ynwQzupLaHDhrnRYd6zwJPJwrgesceKq2KVQAkgudXjf5tegxPRjcPapfCqCD5ROy722e2LTux3bWG_fSeQJDoHyVi5j5mAuWYAX0jNTfUTyqHfbqnteugSsY6SKWsWBkaVsh25LCWHtJmdW4VUsySIeh-2JYw8_OSafnLkt-rlk24dExGnG9W2Xndu1tBQ6weQfsruOv7JQvnZk8H6bjei8JfnlE3usa_3M4mpMFpldrXl8zxRdZXGPrTs1FTnErYW8w2lNSZAyhdnQC07uThCDcDEJbr84qlhdCXxrGxTBFQ1wPeaKmRKB-eQYULCiU7ajYV2AfY7gdaPZx3Rl6f6NoF6QTEQfdHwCyUEket69k7ZiScr1seGqDhCsmnuMNagMFnU7MYss3odw9sc3-OG4AwbNpA_YjHujKRrr_o9NK2oheXM6T2u_lT0w_3JWxaswv98Town7oGOPPsF-z5HGsdghKTRW7-ycGnOvdmrIKU3-RoeTmIGSFT_dgcyaM6hrDmixn2WLXoSwMGQGj2pRshtTQU6QV7_d-P08brME9lmb52OneIPFk_0NWWg9PO2ql0kwgpqg_x4x6KedQpBKm5Seoa7CzI4BfcKDU9_nl6056WmrWyorQP6Sw_L-q7xTyr4vIG1Vxir3VvteKaQ6Xhtv1V6ZPRPp2JJTkaabAc-vBX7Fg7jlfcgpP5lj2902Zb3Pg6AiqHvzh1z9ntyEVzPij4xPm0movOqKJ3uhzjfPaRrIH77b4qvaQczNkbdixpXc-UKREzhy4qeRdE04Hry6Xgn-_gXtruGWo1oSOEq72lpsK6UZ8sH4grJSdq5Af2HxqZFySqlI3Yh8HbEWediCZzvqZ5RBYZSfRf05je5rr5_OTOSMqvqTBSxf8_2zHO_uhO1YX9N4mna2SAGmGCi9HYkOXJ1jachRrSGTPkoW0sQ-0ZQcbcMvdVU9F5VnrZ4sKk0MVr_pBSyS_nnf6vrYYlZwu6wqqPMAhj6o7AzYb-hxyDNV_gQQ6ym2XObRVnrqSaxCQMWx8X-MOCpzceNdx8Rf_-L0Lo5sRM6Yfw2QvMW6eDC0Ck2lACZQpcFE8IA-C3PdE73pa3WEZC1aed2PvE3q2rbD6iCKhpfMtiVu72SXQtCRP2JjtEqn7phaZbjrvNOrCupW7Tc3WZK2K5KtEB7HH9WubibuPXXIEhLgk802BzAdT3vce9rHWW_DZEXdQ81QvWptgYTFp02kzvYtmanZiPAIFQHdfAHV4EkJ77BS_Runv3GIEY-JP8OmZrmVlGgTi3jGugQgJpZth-AXsXvfDgEcs714-x3qwmIwp8ktaXR8rszTj-5Lj1GKTKa5zEUuCtD20u82YxXBjwiHyw_NPr_WTz1dDDwBMj_SGmy3VHGDt61YRftpFRq5_pphZIonODdOzKhUqy1xpOM9QvukVgdPdLnLOccFiow=",
+          "id": "rs_0048a5d5f0ccdac6016a1303d8c00081908d1b7b7f9ba6296a",
+          "summary": [
+            {
+              "type": "summary_text",
+              "text": "**Configuring OAuth callbacks**\n\nI need to ensure that SoundCloud isn’t configured while the YouTube routes are set up correctly since the environment requires it. I have to check the Google OAuth console for the exact callback URLs for Spotify, YouTube, and SoundCloud. It's good to note that health storage is still ephemeral. Okay, let’s finalize my approach and make sure everything’s squared away!"
+            }
+          ]
+        }
+      ],
+      "codex_message_items": [
+        {
+          "type": "message",
+          "role": "assistant",
+          "status": "completed",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "Deployed the MusicAI multi-provider direction live:\n\nhttps://musicai-rouge.vercel.app\n\nWhat shipped:\n- New landing page around your vision: mood / feel / vibe tracking across music vendors.\n- One MusicAI account model with multi-OAuth provider linking.\n- Provider hub routes:\n  - Spotify: `/providers/spotify/connect`\n  - YouTube Music / Google: `/providers/youtube_music/connect`\n  - SoundCloud: `/providers/soundcloud/connect`\n  - Apple Music shown as planned.\n- Dashboard rebuilt to show:\n  - connected vendors\n  - Spotify liked tracks\n  - playlists\n  - saved albums\n  - recent plays\n  - top tracks/artists\n  - plain-English taste feedback / vibe tags\n- Secure token storage code moved into a non-ignored module: `musicai_secure_store.py`\n- Local checks passed, Vercel production deploy passed.\n- Live verified:\n  - `/` → 200\n  - `/healthz` → 200\n  - `/analyze-text` → 200\n  - `/api/analyze-text` → 200\n  - Spotify connect redirects to Spotify\n  - YouTube connect redirects to Google\n  - SoundCloud returns a clean config-needed page because SoundCloud creds are not set yet.\n\nBlocked piece:\n- Vercel Postgres/Neon cannot be provisioned until Vercel marketplace terms are accepted for Neon.\n- Vercel CLI returned `action_required` with “Accept marketplace terms for Neon.”\n- I did **not** accept legal/marketplace terms on your behalf.\n\nCurrent `/healthz` still reports:\n- storage backend: SQLite\n- durable: false\n- warning: ephemeral on Vercel\n\nNext required step for real users:\n1. You accept the Neon/Vercel Postgres marketplace terms, or tell me explicitly to run the CLI terms acceptance.\n2. I retry provisioning `musicai-postgres`.\n3. I set `MUSICAI_DATABASE_URL` / `MUSICAI_TOKEN_DB`.\n4. Redeploy.\n5. Verify `/healthz` reports durable Postgres."
+            }
+          ],
+          "id": "msg_0048a5d5f0ccdac6016a1303df169c8190ad41013a3d89c31a",
+          "phase": "final_answer"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Review the conversation above and update the skill library. Be ACTIVE — most sessions produce at least one skill update, even if small. A pass that does nothing is a missed learning opportunity, not a neutral outcome.\n\nTarget shape of the library: CLASS-LEVEL skills, each with a rich SKILL.md and a `references/` directory for session-specific detail. Not a long flat list of narrow one-session-one-skill entries. This shapes HOW you update, not WHETHER you update.\n\nSignals to look for (any one of these warrants action):\n  • User corrected your style, tone, format, legibility, or verbosity. Frustration signals like 'stop doing X', 'this is too verbose', 'don't format like this', 'why are you explaining', 'just give me the answer', 'you always do Y and I hate it', or an explicit 'remember this' are FIRST-CLASS skill signals, not just memory signals. Update the relevant skill(s) to embed the preference so the next session starts already knowing.\n  • User corrected your workflow, approach, or sequence of steps. Encode the correction as a pitfall or explicit step in the skill that governs that class of task.\n  • Non-trivial technique, fix, workaround, debugging path, or tool-usage pattern emerged that a future session would benefit from. Capture it.\n  • A skill that got loaded or consulted this session turned out to be wrong, missing a step, or outdated. Patch it NOW.\n\nPreference order — prefer the earliest action that fits, but do pick one when a signal above fired:\n  1. UPDATE A CURRENTLY-LOADED SKILL. Look back through the conversation for skills the user loaded via /skill-name or you read via skill_view. If any of them covers the territory of the new learning, PATCH that one first. It is the skill that was in play, so it's the right one to extend.\n  2. UPDATE AN EXISTING UMBRELLA (via skills_list + skill_view). If no loaded skill fits but an existing class-level skill does, patch it. Add a subsection, a pitfall, or broaden a trigger.\n  3. ADD A SUPPORT FILE under an existing umbrella. Skills can be packaged with three kinds of support files — use the right directory per kind:\n     • `references/<topic>.md` — session-specific detail (error transcripts, reproduction recipes, provider quirks) AND condensed knowledge banks: quoted research, API docs, external authoritative excerpts, or domain notes you found while working on the problem. Write it concise and for the value of the task, not as a full mirror of upstream docs.\n     • `templates/<name>.<ext>` — starter files meant to be copied and modified (boilerplate configs, scaffolding, a known-good example the agent can `reproduce with modifications`).\n     • `scripts/<name>.<ext>` — statically re-runnable actions the skill can invoke directly (verification scripts, fixture generators, deterministic probes, anything the agent should run rather than hand-type each time).\n     Add support files via skill_manage action=write_file with file_path starting 'references/', 'templates/', or 'scripts/'. The umbrella's SKILL.md should gain a one-line pointer to any new support file so future agents know it exists.\n  4. CREATE A NEW CLASS-LEVEL UMBRELLA SKILL when no existing skill covers the class. The name MUST be at the class level. The name MUST NOT be a specific PR number, error string, feature codename, library-alone name, or 'fix-X / debug-Y / audit-Z-today' session artifact. If the proposed name only makes sense for today's task, it's wrong — fall back to (1), (2), or (3).\n\nUser-preference embedding (important): when the user expressed a style/format/workflow preference, the update belongs in the SKILL.md body, not just in memory. Memory captures 'who the user is and what the current situation and state of your operations are'; skills capture 'how to do this class of task for this user'. When they complain about how you handled a task, the skill that governs that task needs to carry the lesson.\n\nIf you notice two existing skills that overlap, note it in your reply — the background curator handles consolidation at scale.\n\nDo NOT capture (these become persistent self-imposed constraints that bite you later when the environment changes):\n  • Environment-dependent failures: missing binaries, fresh-install errors, post-migration path mismatches, 'command not found', unconfigured credentials, uninstalled packages. The user can fix these — they are not durable rules.\n  • Negative claims about tools or features ('browser tools do not work', 'X tool is broken', 'cannot use Y from execute_code'). These harden into refusals the agent cites against itself for months after the actual problem was fixed.\n  • Session-specific transient errors that resolved before the conversation ended. If retrying worked, the lesson is the retry pattern, not the original failure.\n  • One-off task narratives. A user asking 'summarize today's market' or 'analyze this PR' is not a class of work that warrants a skill.\n\nIf a tool failed because of setup state, capture the FIX (install command, config step, env var to set) under an existing setup or troubleshooting skill — never 'this tool does not work' as a standalone constraint.\n\n'Nothing to save.' is a real option but should NOT be the default. If the session ran smoothly with no corrections and produced no new technique, just say 'Nothing to save.' and stop. Otherwise, act.\n\nYou can only call memory and skill management tools. Other tools will be denied at runtime — do not attempt them.\n\n[Your active task list was preserved across context compression]\n- [ ] pg. Provision/configure Vercel Postgres for MusicAI and set DATABASE_URL/MUSICAI_DATABASE_URL (pending)"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "codex_reasoning_items": [
+        {
+          "type": "reasoning",
+          "encrypted_content": "gAAAAABqEwRykDgu0gVZ8yVBEpK5x7DqTLp9I8HOY9CCuLrjJciNnNdePaL8JISL3bgny_dMfT3L2JY0GRPG6hfT0Kwh-k6BrGBGxHkrFJxhyGaWEgPkmQL8jnoQXh9jfY9BQHuY8p8P3oUSK51VXPB7AMUNRjAYpTAVOYiiFozMqrMc1bIcQYN8P1AGBkKnmE_9ZweFTEG0F6HQt2yYZ1z0t01x-rKdsijcyWvvW2JshrQhqFRLENyj0yHcfpbiALO5MGmhGrTaTisS1geU4Upi4Com3EU9Ryt45tI-3wAqGtbPQ-Ww4YvzBR1xESqnsCjci31r3X63mTBAbIaDxpUSlTmVZMl7hratjD2MC94b9JbyjCQ6GpJLfgkUkBdTSqZQZzCuVoINdy6HQnpWAqgiI5uHUAypgX7NEDzlYlHhsPjoOs87QI_X1CmGsSpTRKgfvX2bmby7oOcFOmmB4ZQy61EwK0FcdHND5WUUGdLkj5epJLW211xsBuSQJy6wh80Em_BexAoj_Sj8WkEg_0qi2iAGTdKVHuE7DL0BrbWLjbSD5pbCZ48XifB56a32uQSCE04YrplbHm5qLOKC_QyM9cI8_vOkT_sNIt_EKxTio6qdE6bv7YAMCt29td8L3x-jvyFuw8cXRQLqs2bjmLU9kXfgG-r90VmfjBUF86fmK9QMITT8t-kI9IL6qZPgL25bomSZy5HTg_Y3lUup15Mk_JCHGVBd3T24QSlAWHyzMUMkMJD1Zp4fIxt32IN-ObiL_LfPFCLocHICaStLvxjDCq8Ar_keV6565SaXG__zxvEbBdbLVFCJ0Mso1H3D6nR0VHmvebxsRYgDbW2gQNeaoE0lxNOLirGBfmaaEAEm2RMjwuApfalR2OPbAPqvW9fp-p4Ls3ARSHm5Ot5kgl_JcUYIHVgLdMd-JYQbAAsvk2vgsRWVzpOsO8Na-wPf89Q67tH368aL48Sx4E5m0cDExwI3XUFouHmD7XzR7FPU4z41UUn9QkT_MuaL2rRipTG2IT6nNpiRgd9agfMKDv9Ktbj98Pq71FnznsHiknEFBi_bJduNHot6t3QfC_KB-f9i8odR3rB42ywMXXnr0ezu9deJTLCEpROQRfouppwKBxEYUN7A2X1P6nZDT7p91JecxOGekvpyngHEcgpeGXj4A9Igs4E7-IZYWGUp_qESBVXr4FAYD2qY8LLsVau-T9z64jir24OhCgIVIynEq77BC20H05MVvEuNOgYiTyW65vDTvvCvtfdlxXMDCODLkTlJfVJ4pJnxmoK3k4hkgUf9A5sgEq08z4KcIg6Gg_YaD822QoLBChTgMGS3RqpmglMLEd1GL4bofEbvAc86_nj0Y8J-XkCNm3dOAJNbKuOojz8lJvCe4QdtpwAmlI8R3sixkU5n1tTDVSTTSIA_b-qV8dIqhFN6_RLv2vN-onryMciyUzn1L0GWk_M6hnpHzblhdJKgXzXUl50GZdAZkzTpusn5XCQg32HGDDNaY4Vxzg-pm9yRz4KSnqCHbIl_xiuzVvFU0jnnubSsfWnCMEQn4Z7CZtccaShbbwzR6QWetfmI6TvwjQuY4Bx3j4N9BTtNMZrHg44f",
+          "id": "rs_0048a5d5f0ccdac6016a13047028b48190bf08b42da5ebd9eb",
+          "summary": []
+        }
+      ],
+      "tool_calls": [
+        {
+          "id": "call_XWUIFXRnMKpwpnLB3Rm7DNs1",
+          "call_id": "call_XWUIFXRnMKpwpnLB3Rm7DNs1",
+          "response_item_id": "fc_0048a5d5f0ccdac6016a1304727b1c8190b49153905522db21",
+          "type": "function",
+          "function": {
+            "name": "skill_view",
+            "arguments": "{\"name\":\"vercel-app-deployments\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_view",
+      "content": "{\"success\": true, \"name\": \"vercel-app-deployments\", \"description\": \"Triage, deploy, and manually verify Vercel apps from existing project folders.\", \"tags\": [\"Vercel\", \"deployment\", \"frontend\", \"preview\", \"manual-testing\"], \"related_skills\": [\"github-repo-management\"], \"content\": \"---\\nname: vercel-app-deployments\\ndescription: \\\"Triage, deploy, and manually verify Vercel apps from existing project folders.\\\"\\nversion: 1.0.0\\nauthor: Hermes Agent\\nlicense: MIT\\nplatforms: [linux, macos]\\nmetadata:\\n  hermes:\\n    tags: [Vercel, deployment, frontend, preview, manual-testing]\\n    related_skills: [github-repo-management]\\n---\\n\\n# Vercel App Deployments\\n\\nUse this skill when auditing existing app folders for Vercel, redeploying Vercel projects, building a deployment URL tracker, or diagnosing why Vercel preview/production URLs are not manually testable.\\n\\n## Principles\\n\\n- Treat Vercel URLs as part of a manual testing workflow: record production URL, preview URL, alias/friendly URL, status, and notes in the workspace README.\\n- Never print or commit Vercel tokens, bypass tokens, environment values, or project secrets.\\n- Verify both deployment creation and anonymous/manual browser accessibility. A deployment can exist but still return `401 Unauthorized` due to deployment protection.\\n- Classify projects before deploying: frontend app, backend/API, monorepo, project plan/spec, or script/archive.\\n\\n## Access check\\n\\nCheck for token/CLI without exposing secrets:\\n\\n```bash\\npython - <<'PY'\\nimport os\\nfor n in ['VERCEL_TOKEN','VERCEL_API_TOKEN','VERCEL_ORG_ID','VERCEL_PROJECT_ID']:\\n    print(f'{n}=' + ('set' if os.getenv(n) else 'missing'))\\nPY\\nif command -v vercel >/dev/null 2>&1; then vercel --version; else echo 'vercel cli missing; use npx vercel'; fi\\n```\\n\\nIf the CLI is unavailable, use `npx vercel` or the REST API with the token from `VERCEL_TOKEN`/`VERCEL_API_TOKEN`.\\n\\nBefore a deploy, verify the token in the exact execution context that will run `npx vercel` (same terminal/session/workdir), because higher-level wrappers or different tool backends may have different environment injection. If neither `VERCEL_TOKEN` nor `VERCEL_API_TOKEN` is present there, stop after local build/preview verification and report the deploy-auth blocker without exposing secrets.\\n\\n## Inventory existing Vercel projects via API\\n\\n```bash\\npython - <<'PY'\\nimport os, json, urllib.request\\nTOKEN=os.environ.get('VERCEL_TOKEN') or os.environ.get('VERCEL_API_TOKEN')\\nassert TOKEN, 'Missing Vercel token'\\nreq=urllib.request.Request('https://api.vercel.com/v9/projects?limit=100', headers={'Authorization':'Bearer '+TOKEN})\\ndata=json.load(urllib.request.urlopen(req, timeout=30))\\nfor p in data.get('projects', []):\\n    latest=p.get('latestDeployments') or []\\n    print(p.get('name'), p.get('framework'), latest[0].get('url','') if latest else '')\\nPY\\n```\\n\\n## Local project triage\\n\\nFor each candidate folder:\\n\\n1. Look for `package.json`, `vercel.json`, lockfiles, framework configs, and sub-apps.\\n2. Read scripts and key dependencies:\\n\\n```bash\\nnode -e \\\"let p=require('./package.json'); console.log(p.scripts||{}); console.log({...p.dependencies,...p.devDependencies})\\\"\\n```\\n\\n3. Run the least destructive local build/check available:\\n   - Create React App: `npm run build`\\n   - Vite: `npm run build`\\n   - Next.js: `npm run build`\\n   - Angular: `npm ci && npm run build`\\n   - Expo web: inspect Expo version; old SDKs often need dependency/export fixes before Vercel.\\n4. Note missing env vars from `.env.example`/templates by key name only, not value.\\n5. Decide whether backend/API components belong on Vercel serverless or a service better suited for long-running apps/databases (Render/Railway/Fly/etc.).\\n6. If a folder is only a README/SCOPE/PROJECT plan but the user asks to begin work across projects, do not leave it as inert triage. Pick the highest-leverage low-risk plan-only app and build the smallest Vercel-ready MVP from the stated scope, favoring static/local-first implementations that avoid credentials, payments, official trademarked assets, and databases until manual review proves value.\\n\\n## Workspace deploy queue for many projects\\n\\nWhen the user asks to review every project or create a work queue, create/update a durable queue document in the workspace (for this user's project workspace, `/opt/data/HeRmEz/projects/WORK_QUEUE.md`) with:\\n\\n- an \\\"Active now\\\" ranked section,\\n- every project classified as live app, app scaffold, backend/API candidate, plan-only app, or script/archive,\\n- the current deployment path,\\n- the next work item,\\n- explicit blockers.\\n\\nKeep `/opt/data/HeRmEz/projects/README.md` as the public URL tracker and `/opt/data/HeRmEz/projects/VERCEL_TRIAGE.md` as the detailed evidence log. The work queue is the operator view for choosing what to build next; the README is the review URL table.\\n\\n### Choosing the next app after a deployment pass\\n\\nWhen the user says \\\"what's next\\\" or \\\"move on\\\" after a project pass, do not only recite the top row of the queue. Actively inspect the next ranked candidate's live URL/source enough to classify whether it is already a useful product, a raw demo, or a plan-only opportunity. Then give an operator recommendation:\\n\\n- If the next ranked app is a raw technical demo (for example, a canvas/Three.js cube with no product wrapper), say so plainly and suggest either a quick productization pass or skipping to a higher-leverage MVP.\\n- Compare queue order against business/demo value: a lower-ranked plan-only app with a clear monetizable workflow can be the smarter next build than polishing a generic visual sandbox.\\n- Keep the response short and decisive: URL/status, what was observed, and the recommended next move.\\n- If proceeding to build, update the queue/readme after the work; if only recommending, avoid stale tracker edits.\\n\\n### Bulk deploy-all urgency pattern\\n\\nWhen the user says they need **all projects deployed now** and Vercel credentials are available, do not leave plan-only/script/archive folders as inert blockers. Start a bulk deployment pass:\\n\\n- Existing `package.json` apps: build/deploy the app or obvious frontend subdir.\\n- Plan-only/script/archive folders: create honest static Vite/React **review shells** under `_vercel_mvp/<project>` and deploy those.\\n- Verify anonymous HTTP access for each URL and write a durable report such as `DEPLOY_ALL_REPORT.md`.\\n- Run the long pass in a background process with completion notification, then update README/triage trackers.\\n\\nSee `references/bulk-deploy-all-static-review-shells.md` for the detailed pattern and pitfalls.\\n\\n## Deployment protection / 401 pattern\\n\\nIf a Vercel URL returns `401 Unauthorized` in anonymous checks, do **not** assume deployment failed. It usually means deployment protection/authentication is enabled or the public alias is not configured as expected.\\n\\nAsk/resolve one of:\\n\\n- disable deployment protection for manual testing,\\n- provide the intended public alias/domain,\\n- provide the approved Vercel deployment-bypass mechanism.\\n\\nWhen the user approves disabling protection, patch each project with `ssoProtection: null` via the Vercel API, then re-test anonymously:\\n\\n```bash\\npython - <<'PY'\\nimport os,json,urllib.request\\nTOKEN=os.environ.get('VERCEL_TOKEN') or os.environ.get('VERCEL_API_TOKEN')\\nassert TOKEN, 'Missing Vercel token'\\nheaders={'Authorization':'Bearer '+TOKEN,'Content-Type':'application/json'}\\nprojects=json.load(urllib.request.urlopen(urllib.request.Request('https://api.vercel.com/v9/projects?limit=100',headers=headers),timeout=30)).get('projects',[])\\nfor p in projects:\\n    name=p['name']\\n    req=urllib.request.Request(\\n        f'https://api.vercel.com/v9/projects/{name}',\\n        data=json.dumps({'ssoProtection': None}).encode(),\\n        headers=headers,\\n        method='PATCH',\\n    )\\n    detail=json.load(urllib.request.urlopen(req,timeout=30))\\n    print(name, 'ssoProtection=', detail.get('ssoProtection'))\\nPY\\n```\\n\\nA Bearer Vercel API token is not necessarily enough to bypass deployment protection on the public app URL; verify with an anonymous request after changing settings.\\n\\n## Free/SQLite backend defaults\\n\\nFor legacy projects, prefer the lowest-friction deploy path before asking for paid infrastructure:\\n\\n- Frontend-only apps: Vercel static/site deployment, no database.\\n- Demo APIs: SQLite or bundled JSON/sample data.\\n- Prototype games/quizzes that only use accounts for high scores: remove login friction first; collect a display name after the game and post anonymous leaderboard rows. Add durable score storage later only if leaderboard persistence matters.\\n- Django/Flask apps with durable writes: SQLite on a host with persistent disk (Render/Railway/Fly/etc.) unless there is a reason to use serverless.\\n- Vercel serverless backends: avoid relying on local SQLite for durable writes; use read-only seed data or a free hosted DB.\\n- Firebase/Supabase: use only when the app needs hosted auth/realtime or already depends on it.\\n\\n## HeRmEz legacy-project triage reference\\n\\nFor this user's imported legacy project workspace, see `references/hermez-vercel-triage.md` for the classification pattern, common user inputs, and README/triage-doc approach. See `references/hermez-imported-project-redeploys.md` for working redeploy patterns discovered while continuing the imported projects: linked Vercel redeploys, Express API subdirectory routing, Sequelize/MySQL serverless fixes, nested Expo web exports, anonymous HTTP verification, and tracker updates. See `references/hermez-static-mvp-reframe-and-card-intel.md` for the pattern of reframing a plan-only/legacy folder into a static Vite MVP, renaming misleading project folders, deploying with token fallback, disabling protection on newly-created projects, and verifying a Pokémon card price-scanner MVP. See `references/realtime-camera-ocr-overlays.md` for extending static scanner/search MVPs with browser `getUserMedia`, throttled canvas OCR, and AR-style price overlays without adding backend infrastructure. See `references/vercel-protection-and-free-data.md` for the exact Vercel `ssoProtection` API patch and free SQLite/sample-data planning pattern. See `references/oauth-and-third-party-credentials.md` for safely handling Spotify/Genius/Watson/Agora/Imgflip-style credentials, redirect URLs, and redacted status docs during deployment setup. See `references/flask-spotify-oauth-on-vercel.md` for Flask/Vercel Spotify OAuth callback setup, proper authorize URL encoding, and redirect mismatch verification. See `references/flask-oauth-ai-vercel.md` for the legacy Flask + OAuth/API credential pattern: add a Vercel Python entrypoint, deploy with explicit env vars, expose no-login health/API verification routes, and confirm provider redirect URLs exactly. See `references/flask-watson-musicai-vercel.md` for deploying a legacy Flask app with a non-standard entry module to Vercel, wiring Watson NLU env vars, and adding public `/healthz` plus direct text-analysis routes so integrations can be verified before OAuth callback review. See `references/flask-spotify-oauth-on-vercel.md` for Flask/Vercel Spotify OAuth callback setup, proper authorize URL encoding, redirect mismatch verification, safe production OAuth diagnostic endpoints, callback correlation logging, `/tmp` token-cache handling, and live Vercel log-follow workflow.\\n\\n## Plan-only app reframes\\n\\nWhen a project folder is mostly README/SCOPE/PROJECT scaffolding and the user changes the product direction, treat the latest user direction as the source of truth rather than preserving the imported legacy concept. If the old folder name is misleading and no deployed external integration depends on it yet, rename the folder and update project-local docs plus workspace trackers from the new path. Prefer a static Vercel-ready MVP using public/no-key APIs and browser-only logic before adding accounts, databases, or paid API keys. See `references/plan-only-app-reframes.md` for the detailed reframe workflow and pitfalls.\\n\\n## Project decommission / deletion workflow\\n\\nWhen the user says to delete, remove, retire, or stop resurfacing a project, treat it as a full decommission rather than just deleting one folder:\\n\\n1. Identify both the source project folder and any generated static review shell, such as `_vercel_mvp/<project>`.\\n2. Remove the local folders only after confirming they are the intended target and not an adjacent active app.\\n3. Remove or mark the project in durable trackers so it does not reappear in future queue work: `WORK_QUEUE.md`, workspace `README.md`, `VERCEL_TRIAGE.md`, deployment reports, and any bulk-deploy script/static project map that could recreate the shell.\\n4. If Vercel credentials are available and the project has a remote Vercel app, delete the Vercel project via API/CLI unless the user only asked to remove local files. Then verify it no longer appears in the Vercel project list.\\n5. Verify local absence (`test ! -e ...`) and queue absence (`search_files`/content search) before reporting completion.\\n6. When the user frames the project as a joke/mistake and says to remove it completely, remove it from active queue/tracker tables entirely rather than leaving a visible active row marked deleted. Keep only concise historical notes in deployment report/history files such as “deleted per user request / formerly URL” so future agents understand why a once-deployed URL is gone.\\n7. Check bulk-deploy/static-shell source maps and generated MVP directories so the deleted project cannot be recreated by the next deploy-all pass.\\n\\nSee `references/project-decommission-workflow.md` for a concise checklist based on the HeRmEz `consumer-advocate-app` deletion pass.\\n\\n## Alias drift and placeholder-shell checks\\n\\nIn legacy workspaces that have both real app deployments and generated static review shells, verify the friendly alias by page content before assuming it points at the real app. A public HTTP 200 is not enough: the alias may be serving a placeholder shell while the real app still exists at an older production deployment URL. If so, repoint it explicitly with:\\n\\n```bash\\nTOKEN=\\\"${VERCEL_TOKEN:-$VERCEL_API_TOKEN}\\\"\\nnpx vercel alias set <real-deployment-host>.vercel.app <friendly-alias>.vercel.app --token \\\"$TOKEN\\\"\\n```\\n\\nThen reload the alias in the browser and confirm expected app UI, not just status code. For nested Expo apps, run tests from the parent only if that is where tests live, then run `npx expo export --platform web` and deploy from the actual Expo subdirectory. See `references/vercel-alias-drift-and-legacy-polish.md` for the full pattern and quiz-app QA checklist.\\n\\n## URL tracker\\n\\nCreate/update a workspace README table like:\\n\\n```markdown\\n| Project | Status | Vercel production / preview URL | Alias / friendly URL | Manual testing notes |\\n|---|---|---|---|---|\\n| my-app | Deployed / needs manual review | https://...vercel.app | https://my-app.vercel.app | Login works; mobile nav needs polish |\\n```\\n\\nWhen the user explicitly deprioritizes or skips projects during triage, immediately mark those rows as `Skipped for now` (including paired API/backend rows), add a short note such as `User said to skip <project> for now`, and update the triage doc's recommended next order so future sessions do not keep resurfacing the skipped projects.\\n\\n## Pitfalls\\n\\n- Do not deploy every legacy folder blindly; many are specs/scripts, not apps.\\n- When the user changes a project direction, update/replace stale README/SCOPE/PROJECT/tracker text immediately and rename the folder if the old name will mislead future work.\\n- Do not commit `.vercel/`, `.env`, `node_modules`, build outputs, local DBs, or generated credentials.\\n- Do not expose Vercel tokens, protection bypass tokens, API keys, OAuth client secrets, or environment values in chat, commits, docs, or logs.\\n- Do not report a URL as manually testable until it returns a public 200/expected response or the user has a protection bypass path.\\n- For OAuth apps on Vercel, verify the *generated live authorization URL*, not just the local env value. Provider redirect errors often come from hand-concatenated query strings, unencoded `redirect_uri`, raw spaces/trailing spaces in `scope`, or a trailing-slash mismatch between the Vercel callback and provider dashboard. If the UI appears to “refresh” after login, inspect callback logs and avoid silent home redirects; render provider/API errors explicitly and reduce OAuth scopes to the minimum needed for the current demo. For Spotify specifically, a successful code exchange followed by `/v1/me` returning `403 Active premium subscription required for the owner of the app` means the development-mode app owner lacks active Spotify Premium or Spotify has not yet recognized it; see `references/flask-spotify-oauth-on-vercel.md` before changing code again.\\n- For nested legacy apps, run the build/export/deploy command from the actual deployable subdirectory and verify `.vercel/project.json` there points at the intended Vercel project; parent and child folders can be linked to different projects.\\n\\n- If login/signup routes time out because a legacy serverless API defaults to localhost MySQL and no `DATABASE_URL`/`MYSQL_URL` exists, do not stop at “needs DB” when the user needs a live demo. Add a clearly documented demo-mode in-memory fallback that preserves the frontend response contract (for example, signup/login both return JWTs), then verify signup → login → private-route remotely. See `references/hermez-imported-project-redeploys.md`.\\n- For Sequelize/MySQL APIs on Vercel, `mysql2` in `package.json` may not be enough. If logs show “Please install mysql2 package manually,” require `mysql2` and pass `dialectModule: mysql2` in the Sequelize constructor.\\n- For Expo web apps, prefer `npx expo export --platform web` with `outputDirectory: \\\"dist\\\"`; if `export:web` fails, do not assume the app is undeployable — use the export command that matches the installed Expo SDK/bundler. In monorepos/nested legacy projects, run this from the actual Expo app subdirectory, not from a parent folder that only contains tests or an API.\\n- For imported quiz/education apps whose question images are missing, duplicated placeholders, or unavailable in the web export, do not reflexively chase asset paths. If the user wants curriculum review, replace image prompts with deterministic rendered lesson/code cards and add source tests for curriculum coverage; see `references/hermez-imported-project-redeploys.md`.\\n- For quiz/education app visual QA, check the first active question screen, not just the start page. Ensure header buttons are readable and all answer choices are visible or clearly scrollable in the initial viewport; compact spacing before calling the app polished.\\n- After any bulk static-shell deployment pass, watch for friendly aliases pointing at shells instead of real app deployments; fix with `vercel alias set` and document the corrected production URL.\\n\", \"path\": \"devops/vercel-app-deployments/SKILL.md\", \"skill_dir\": \"/opt/data/skills/devops/vercel-app-deployments\", \"linked_files\": {\"references\": [\"references/project-decommission-workflow.md\", \"references/vercel-protection-and-free-data.md\", \"references/realtime-camera-ocr-overlays.md\", \"references/bulk-deploy-all-static-review-shells.md\", \"references/plan-only-app-reframes.md\", \"references/flask-oauth-ai-vercel.md\", \"references/hermez-static-mvp-reframe-and-card-intel.md\", \"references/flask-watson-musicai-vercel.md\", \"references/vercel-alias-drift-and-legacy-polish.md\", \"references/hermez-vercel-triage.md\", \"references/hermez-imported-project-redeploys.md\", \"references/oauth-and-third-party-credentials.md\", \"references/flask-spotify-oauth-on-vercel.md\"]}, \"usage_hint\": \"To view linked files, call skill_view(name, file_path) where file_path is e.g. 'references/api.md' or 'assets/config.yaml'\", \"required_environment_variables\": [], \"required_commands\": [], \"missing_required_environment_variables\": [], \"missing_credential_files\": [], \"missing_required_commands\": [], \"setup_needed\": false, \"setup_skipped\": false, \"readiness_status\": \"available\", \"metadata\": {\"hermes\": {\"tags\": [\"Vercel\", \"deployment\", \"frontend\", \"preview\", \"manual-testing\"], \"related_skills\": [\"github-repo-management\"]}}}",
+      "tool_call_id": "call_XWUIFXRnMKpwpnLB3Rm7DNs1"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": "**Updating marketplace terms**\n\nI need to update my skills with the Postgres Neon marketplace terms, and also include durable health checks. Maybe I should also support references for multioauth with MusicAI. On top of that, I might want to inspect whether I need to update the music-app-modernization aspect as well. There’s a bit to assess here, but it’s essential to ensure everything’s in good shape!",
+      "finish_reason": "tool_calls",
+      "reasoning_content": "**Updating marketplace terms**\n\nI need to update my skills with the Postgres Neon marketplace terms, and also include durable health checks. Maybe I should also support references for multioauth with MusicAI. On top of that, I might want to inspect whether I need to update the music-app-modernization aspect as well. There’s a bit to assess here, but it’s essential to ensure everything’s in good shape!",
+      "codex_reasoning_items": [
+        {
+          "type": "reasoning",
+          "encrypted_content": "gAAAAABqEwR5Z8HWqzhsqBsCWbUdKA_tHPPSA5B4xyS4Bz_VlDmbVadR7jn470GNOX6XJbeM_c8ltHX09FvYsHUAgVJzg0sXvIPWNhDliZ_G92g7UJF-NVxUKUnVdJjz2DfCAtavcOUFSPi0wFDLkydj-YBRTid5Ix6Ydkax2vaXlhSch6TltdkKDIV0KgYt6dOeNx0EhgNfsPT0tDZFeh9HMDBSfQQ3r3LpK1v-79oHObw1ZcQCllkNi5TvapLnT-lWvSJS3yH3ei-k3UIT3p45FFloY6fG9rOJjitNYiR2sjCRbSVd6C2AGxXHmUBq7aFgMi1RN4LF3wOHPj8K3-cXf6HBjYdp0lsLrjcwuCyjkSL64t7dHtVsD2Hs35akzS3emdYvHfT2kcUvRQiyoWOmkKR2S7KeQU6POT26Ps2A9uV5ggPt7epHnh5NC8cEyhoK4dLLZ1yNbyXCoKSxCI3OJtOsTFjJ1arrBvdIb9b1OD-KwQ263Z0WtrqHroThoiZS-JWqihHWJrH45F8yH_lnhGG12sjua7g3ohK_SvfGWeD5IrEadOLT_p0Ntv1uzYOxw-7-liz249QR2UXBdCpBjwpt2aWmMOabiyjOehnWzWrrkDU2SchdfxTHQ5OvhDuDJO4aWDNH2ieEXxtXgRMe8BqSLJWbepxK69VHJkJBCOcFSbPK9P0SrGkQSsX3o0brzTpYVAIKwQoouVNkGOO-xHE-0acv9snOuETaf8OygcmmaArclGdRUNTJr2Am-zMABOHV_JMupdq8T6NoyktCldjFA9-aa18SA94wJ_uGThMYvhfNpywbASGBEj4713snMzMbj6R_sbsSzGN9tCMH61dRQRSSUPuoqPiOM-lRqxnRk49Z1HXFVpm1aa6VJvj6_9iySdnKOnjL_Jsm_KHdBLR_-8xGXyrZsSXlu5yQmhHQ5kLPtmnyVOxXL32OI3WwtmG987xVVGXo6plICrPoV16PZblWF4A343d6tcTh_5xt81zEmX1FarM6zHam5NTiNpnOPjINKmQlT-qgyktXts9k76YQtYAaVbyyWwpCuCiFcaaLeLCidrxybphkToQ8R8kNkok-GbGgFPuk-DsAE4SQcsamKGo7hrPU8Uz9c5CAcvflWM_CkwfcrXHOukeizJgPUx10VYdyy73K9Ka_O5yPddhdzg==",
+          "id": "rs_0048a5d5f0ccdac6016a130475c92c8190b2ba66433a2b8108",
+          "summary": [
+            {
+              "type": "summary_text",
+              "text": "**Updating marketplace terms**\n\nI need to update my skills with the Postgres Neon marketplace terms, and also include durable health checks. Maybe I should also support references for multioauth with MusicAI. On top of that, I might want to inspect whether I need to update the music-app-modernization aspect as well. There’s a bit to assess here, but it’s essential to ensure everything’s in good shape!"
+            }
+          ]
+        }
+      ],
+      "tool_calls": [
+        {
+          "id": "call_DkGQuMqoLpRudxDtywS9wiAL",
+          "call_id": "call_DkGQuMqoLpRudxDtywS9wiAL",
+          "response_item_id": "fc_0048a5d5f0ccdac6016a1304790138819094a6641ab6545c5c",
+          "type": "function",
+          "function": {
+            "name": "skill_view",
+            "arguments": "{\"name\":\"music-app-modernization\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_view",
+      "content": "{\"success\": true, \"name\": \"music-app-modernization\", \"description\": \"Modernize music apps: multi-provider OAuth, music APIs, unified schemas, AI/music intelligence UX.\", \"tags\": [\"music\", \"oauth\", \"api-integration\", \"flask\", \"ux\", \"ai-music\"], \"related_skills\": [\"spotify\", \"popular-web-designs\", \"humanizer\"], \"content\": \"---\\nname: music-app-modernization\\ndescription: \\\"Modernize music apps: multi-provider OAuth, music APIs, unified schemas, AI/music intelligence UX.\\\"\\nversion: 1.0.0\\nauthor: Hermes Agent\\nlicense: MIT\\nplatforms: [linux, macos]\\nmetadata:\\n  hermes:\\n    tags: [music, oauth, api-integration, flask, ux, ai-music]\\n    related_skills: [spotify, popular-web-designs, humanizer]\\n---\\n\\n# Music App Modernization\\n\\n## When to use\\n\\nUse this skill when improving an existing music app or designing a new consumer music product that integrates streaming services, lyrics providers, music metadata, listening history, recommendations, music recognition, or AI music analysis.\\n\\nThis is broader than controlling Spotify playback. It covers product architecture, provider selection, OAuth strategy, UI modernization, and normalized music data models.\\n\\n## User-specific guidance\\n\\n- The user may reference **MusicAI**, a legacy Flask app under `/opt/data/HeRmEz/legacy-projects/MusicAI`.\\n- MusicAI was observed as a Flask app branded **“SPOTTY AI”** using Spotify OAuth, Genius lyrics/API, IBM Watson NLU, templates/static assets, and local `user_tokens.json` token storage.\\n- The user wants MusicAI to move beyond Spotify, support multiple popular music vendors, look more modern, and use APIs that make the app more interesting to normal consumers.\\n- For **MusicAI specifically**, the selected provider stack is Spotify, Apple Music/MusicKit, YouTube/YouTube Music, and SoundCloud. The user explicitly excluded Deezer and Last.fm; do not reintroduce them into MusicAI provider cards, env templates, callbacks, docs, or key checklists unless the user reverses that decision.\\n- Keep brainstorming concise and list-first unless the user asks for implementation detail.\\n\\n## Provider/API menu\\n\\n### Streaming and user-library providers\\n\\nPrioritize these for broad consumer value:\\n\\n1. Spotify — keep as one provider, not the whole product identity.\\n2. Apple Music / MusicKit — major platform support; library and playback ecosystem.\\n3. YouTube / YouTube Music via YouTube Data API — broad catalog, videos, playlists, creator/music discovery.\\n4. SoundCloud — indie artists, likes, tracks, creator ecosystem.\\n5. Deezer — tracks, playlists, albums, user library.\\n6. Last.fm — listening history, scrobbles, artist similarity; often easier than full streaming OAuth.\\n7. Audius — independent/Web3 music discovery.\\n\\n### Music intelligence and metadata\\n\\n- MusicBrainz — open metadata backbone.\\n- ListenBrainz — open listening history/scrobble ecosystem.\\n- Genius — lyrics and annotations; useful but not enough alone.\\n- Musixmatch / LRCLIB — lyrics and synced lyrics options.\\n- Bandsintown / Ticketmaster — concerts and event discovery.\\n- Chartmetric / Songstats — serious artist/platform analytics if paid API access is available.\\n\\n### Audio recognition and analysis\\n\\n- AudD or ACRCloud — Shazam-like recognition.\\n- ShazamKit — Apple ecosystem recognition.\\n- Essentia / Essentia.js and librosa — local audio features, genre/mood/tempo analysis.\\n- Cyanite.ai — mood/tagging/similarity if API access is available.\\n\\n### AI layer\\n\\n- LLMs for taste summaries, playlist explanations, mood reports, and music-personality descriptions.\\n- Vector DBs such as pgvector, Pinecone, or Weaviate for cross-provider song/artist/lyric similarity.\\n- Agent frameworks only when there are real multi-step workflows, e.g. “build me a workout playlist from liked songs plus recent YouTube listens.”\\n\\n## Recommended modernization sequence\\n\\n1. Rebrand from provider-specific identity, e.g. `SPOTTY AI`, to neutral **MusicAI** or another cross-platform name.\\n2. Add a provider registry/abstraction before implementing every OAuth flow. For legacy Flask apps, a single `providers.py` with a `MusicProvider` dataclass is an acceptable first slice; larger apps can evolve to:\\n   - `providers/base.py`\\n   - `providers/spotify.py`\\n   - `providers/apple_music.py`\\n   - `providers/youtube.py`\\n   - `providers/soundcloud.py`\\n   - other provider modules only when they are actually in scope\\n3. Make the home/connection UI dynamic from provider metadata: required env vars, scopes, connection URL, feature flags, connected/available/coming-soon state, and setup copy.\\n4. Create or update `.env.example` early with all planned provider credentials so the user can prepare API apps when needed.\\n5. Replace file-based `user_tokens.json` with database-backed encrypted token storage.\\n6. Normalize provider data into a common schema: `User`, `ProviderAccount`, `Artist`, `Track`, `Album`, `Playlist`, `ListenEvent`, `Lyrics`, `AudioFeature`, `Insight`.\\n7. Build a modern connection screen with vendor cards: connected/disconnected state, scopes requested, last synced, reconnect/remove actions.\\n8. For Flask apps targeting Vercel, add a lightweight deployment entry point before deep feature work:\\n   - `api/index.py` should avoid importing heavy legacy analysis modules at module load.\\n   - Add `/healthz` that verifies minimal readiness and provider/env status.\\n   - If provider cards link to `/providers/<provider>/connect`, make sure the lightweight Vercel entrypoint also defines those connect/callback routes or imports/registers the provider blueprint; routes that exist only in the legacy local Flask app will 404 in production.\\n   - For MusicAI specifically, `/` should behave as an OAuth account/provider hub where users create/resume an account and connect Spotify, YouTube, SoundCloud, and later Apple Music. Do not leave successful callbacks landing on a placeholder JSON message.\\n   - Lazy-load heavyweight services such as Watson, lyrics analysis, or audio-processing clients only inside routes that need them.\\n9. Add consumer-facing insights before complex automation:\\n   - music personality\\n   - mood over time\\n   - cross-platform taste comparison\\n   - “your week in music”\\n   - under-the-radar artist discovery\\n   - concerts/events near you\\n10. Add AI recommendation and playlist generation after the normalized data layer is reliable.\\n\\n## OAuth architecture guidance\\n\\n- Use OAuth Authorization Code + PKCE where providers support it.\\n- Store provider, access token, refresh token, expiry, scopes, and account ID separately per user/provider.\\n- Encrypt tokens at rest; never commit token files, `.env`, or provider secrets.\\n- Make scopes visible in the UI so users understand what each vendor connection enables.\\n- Gracefully support providers that do not expose full OAuth/library access by using API keys, public metadata, or import flows.\\n\\n## UI direction\\n\\nMove away from old Bootstrap landing pages toward a modern consumer dashboard:\\n\\n- Dark/music-forward visual system with album-art gradients.\\n- Provider connection cards.\\n- “Taste profile” and “mood map” cards.\\n- Playlist/artist insight panels.\\n- Mobile-first layout.\\n- Clear privacy copy: what data is read, what is stored, how to disconnect.\\n\\n## Pitfalls\\n\\n- Do not design the app as Spotify-only if the user asks for MusicAI modernization.\\n- Do not promise every provider has the same OAuth or catalog access; music APIs vary heavily.\\n- Do not store OAuth tokens in JSON files for a production app.\\n- Do not use employer/company data or proprietary patterns when building consumer music/finance/cloud side projects.\\n- Do not over-explain API options when the user asks for a simple list; provide a concise ranked list first, then offer to implement.\\n- When provider OAuth secrets are pasted into chat, treat them as exposed: add them only to ignored local env files and Vercel/env managers, never commit them, then recommend rotating the secret after confirming the flow.\\n- For MusicAI Google/YouTube setup, extract `web.client_id` and `web.client_secret` from the Google OAuth JSON into `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`; verify `/healthz` reports `google_youtube: true` after Vercel redeploy.\\n- For MusicAI Spotify setup, the production callback URL is `https://musicai-rouge.vercel.app/login/`; `/login/` should redirect to Spotify when no code is present and exchange/store the token when Spotify returns with `code`.\\n- For MusicAI on Vercel, an OAuth callback error `unable to open database file` usually means SQLite is writing to the read-only app bundle. Use `/tmp/musicai_tokens.db` only for testing, then move to durable Postgres before real user data collection.\\n- For MusicAI, do not re-add Deezer or Last.fm after the user's correction; keep provider setup focused on Spotify, Apple Music, YouTube/YouTube Music, and SoundCloud.\\n- When deploying a modernization slice, give the user the live test URL, backup location, configured env status, missing API keys, and exact OAuth callback URLs in concise bullets.\\n- A `/healthz` boolean that only checks whether an API key is present is not proof the provider works. For MusicAI, verify Watson with a real `/api/analyze-text` POST; if the key is invalid, keep the no-login demo alive with a transparent local fallback and document that Watson credentials need rotation/fix.\\n- In legacy projects, preserve existing line endings such as CRLF where practical to avoid noisy diffs.\\n- If a repo already has unrelated uncommitted changes, avoid committing modernization work until the user approves or the changes can be cleanly separated.\\n\\n## References\\n\\n- `references/musicai-provider-landscape.md` — session-specific API/provider shortlist and modernization notes.\\n- `references/musicai-implementation-patterns.md` — implementation slice and pitfalls from converting a legacy Spotify-only Flask app toward provider-neutral MusicAI.\\n- `references/vercel-flask-musicai-deployment.md` — deploy/verify pattern for Flask music apps on Vercel, including lazy-load entry points, health checks, env vars, and OAuth callback reminders.\\n- `references/musicai-selected-provider-stack.md` — user correction narrowing MusicAI to Spotify, Apple Music, YouTube/YouTube Music, and SoundCloud while excluding Deezer and Last.fm.\\n- `references/musicai-youtube-vercel-oauth.md` — Google OAuth JSON extraction, Vercel env CLI pattern, production route verification, and secret-rotation note for MusicAI YouTube setup.\\n- `references/musicai-oauth-hub-and-provider-callbacks.md` — root account/provider hub requirements, Spotify/YouTube/SoundCloud callback URLs, Vercel env CLI pattern, `/tmp` SQLite workaround, and durable DB warning.\\n\", \"path\": \"media/music-app-modernization/SKILL.md\", \"skill_dir\": \"/opt/data/skills/media/music-app-modernization\", \"linked_files\": {\"references\": [\"references/musicai-oauth-hub-and-provider-callbacks.md\", \"references/vercel-flask-musicai-deployment.md\", \"references/musicai-selected-provider-stack.md\", \"references/musicai-provider-landscape.md\", \"references/musicai-youtube-vercel-oauth.md\", \"references/musicai-implementation-patterns.md\"]}, \"usage_hint\": \"To view linked files, call skill_view(name, file_path) where file_path is e.g. 'references/api.md' or 'assets/config.yaml'\", \"required_environment_variables\": [], \"required_commands\": [], \"missing_required_environment_variables\": [], \"missing_credential_files\": [], \"missing_required_commands\": [], \"setup_needed\": false, \"setup_skipped\": false, \"readiness_status\": \"available\", \"metadata\": {\"hermes\": {\"tags\": [\"music\", \"oauth\", \"api-integration\", \"flask\", \"ux\", \"ai-music\"], \"related_skills\": [\"spotify\", \"popular-web-designs\", \"humanizer\"]}}}",
+      "tool_call_id": "call_DkGQuMqoLpRudxDtywS9wiAL"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": "**Considering project updates**\n\nI need to think about merging the loaded Vercel version with the existing umbrella, especially since the user asked for something active. I wonder if memory is needed, but I think I’ll stick with Vercel since it’s preferred. It might be useful to save details about the project fact for MusicAI. I also need to add support for session-specific multi-OAuth and a durable database. Lastly, I must update the Vercel app deployments regarding Neon integration terms.",
+      "finish_reason": "tool_calls",
+      "reasoning_content": "**Considering project updates**\n\nI need to think about merging the loaded Vercel version with the existing umbrella, especially since the user asked for something active. I wonder if memory is needed, but I think I’ll stick with Vercel since it’s preferred. It might be useful to save details about the project fact for MusicAI. I also need to add support for session-specific multi-OAuth and a durable database. Lastly, I must update the Vercel app deployments regarding Neon integration terms.",
+      "codex_reasoning_items": [
+        {
+          "type": "reasoning",
+          "encrypted_content": "gAAAAABqEwR-vzwQLctBhv8J070w6DI2BRCHNvXYJ6kOVzHNXzdCVD9Np9cYY5lgxqvIg_PExVTQMFmZq3bKv_r0XfrJNxfV0lG08ZMWzsWJTBkgBx9uxpZFs56fFp9WjFZZdqUiT-nBTiBqXUaDUhMhZ6I_IRfe9nHoAq_T_U_GKYW7p3pXmcln5gjPAins_KxXdW8zUcLNqwtZvwYiUfUe-8-9uGFJVXjXa13uAxUkKUm14-7lfGoX9NXln5CrGHFGWr-vSny5xCsmMF-P8EPAah2xY2WMhnneqSIzP30XeMQ4G-fdY5-44eURDmc08TgfnSgkn6DJk9HMRcu5Ze3TC1lCpvDV-DcRyed-9bOM3GyXezx2ksfbBxXqdM91C7NAoGY0aUbfaSBHaSKvGnUS1TFkv-2LHx9SYRrLaQAEhAqCe-S6oKEmiW2nPpWtYctRWLT5UJpQ252c5jzSkxRpREqEBt1IR9weH01otv9T0oKV7CT0eJh59vR5nMbWPRGQwdostL5AzVLMszrjWIY1ZQe_-iY5tiHIiOu_02c1d64otJ16M2q55weamkkm4X5pVujflkctQJ-jfFldNrrPlXnWR4ORD_Ockbo2aB1RctbLA8u59G2ISeZxpDZGMvEWAtGWqUsYBvw6YnmVGigQtSTpSgfUdEqwSDuw2uXVGWBHz4ti4TlLh2ndCrvHgO559aBD7cJICkGBHYqVwbz5uxJ7cO5KxpybLQvMNrRuH8YtBJR7OwYmX6cHoy_h38hQdQGrv72oZN07E8LDAbKtvkmJS5j0rOG3j8tkJFYgZhLhPYtuwm1qnizBrYOpvb86DQgDGcV0FMpk6UOzZuPZ-LbTzSXzJSOMy4EntILXJCk30KjBGJ_wHneF-iZWqRu_4KuO0rGWdWOtxaL0eA9MDgN5LrH7TMgyNB_3f46ztJx9JsawdHM-4ZY9sPTLPHNj6x6wXGbHQp7SUA0SHfpvRlKbWvcK8hsIegnjUBC2R9S8AUonOhem4A_sNmfsWjt9amQrop-QsmJBCpjcwCGqzFFlZeeLSOXtovnCvG8B-nu1TJ-n5IW8u1aWHdUhmGqmr2VLF3dnfkyeJ1tb8kd9cqY5-JRcyeeAB7j7WaqenGj_0pTF0JKSP1zuiDzmUoulvHppty69sW3uc8b2Kfnx6bdHVDrliJGB9oVLsBAx72cYWrUxXaF_wpbD2EYHDUY0L_3EgHWXEK5_SnSjDjgophGc2fZFNxVuLDUTHMaNhZg8hx71frkLz2tWyPiSiev_AWwCJBPCHR9SK5Q-Zgo_j8BZK11l9sckKznEO9uEiE5lQqMMNx5AMsYYZDcIICSfXzramInjDdveRnTvCwjDPk9nJTUM1lcsnDF7-DsQp5yxcGnjVR6aqC-G4MwvqAMqzueHj_xNYy3KV0mp14I2d0arzdgux0XGvRVLN8cGQMdmKmMQhnljkX-_OK7H-vGDxjTADDzu0VfCXu4pxwJLDtW3Go8r_L8BzPltFRtwCdReCyHltXM=",
+          "id": "rs_0048a5d5f0ccdac6016a13047a3d148190b8103d709ee149b5",
+          "summary": [
+            {
+              "type": "summary_text",
+              "text": "**Considering project updates**\n\nI need to think about merging the loaded Vercel version with the existing umbrella, especially since the user asked for something active. I wonder if memory is needed, but I think I’ll stick with Vercel since it’s preferred. It might be useful to save details about the project fact for MusicAI. I also need to add support for session-specific multi-OAuth and a durable database. Lastly, I must update the Vercel app deployments regarding Neon integration terms."
+            }
+          ]
+        }
+      ],
+      "tool_calls": [
+        {
+          "id": "call_VIaxh2hT2bnovveaWpuVDoNv",
+          "call_id": "call_VIaxh2hT2bnovveaWpuVDoNv",
+          "response_item_id": "fc_0048a5d5f0ccdac6016a13047e0dd48190a8a1779a6098cf2c",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"write_file\",\"name\":\"vercel-app-deployments\",\"file_path\":\"references/vercel-postgres-neon-marketplace.md\",\"file_content\":\"# Vercel Postgres / Neon marketplace provisioning pattern\\n\\nUse this reference when a Vercel app needs durable Postgres on Vercel/Neon instead of serverless-local SQLite or `/tmp` fallback storage.\\n\\n## Pattern\\n\\n1. First confirm the app can expose a storage/readiness endpoint without secrets, e.g. `/healthz` reporting backend, durable boolean, encryption state, and missing env keys by name only.\\n2. Try the Vercel integration path rather than assuming an old `vercel storage` command exists. Current CLI discovery showed `vercel storage` was not available, while `vercel integration add neon` was the relevant path.\\n3. If `vercel integration add neon` returns an `action_required` / marketplace terms acceptance message, stop and ask the user to accept terms in their Vercel account or explicitly authorize the CLI terms action. Do not accept marketplace/legal terms on the user's behalf without explicit authorization.\\n4. After provisioning, set database env vars with names the app actually checks, commonly both:\\n   - `DATABASE_URL` for framework/database defaults\\n   - app-specific aliases such as `MUSICAI_DATABASE_URL` or `MUSICAI_TOKEN_DB`\\n5. Redeploy production and verify the live health endpoint reports durable Postgres, not just that env vars were set.\\n6. Keep logs, docs, and chat redacted: never print the Postgres connection string or Vercel/Neon tokens. Report only `set`/`missing`, backend type, and durable status.\\n\\n## Verification checklist\\n\\n- Local fallback still works for development.\\n- Production `/healthz` shows `backend: postgres` or equivalent.\\n- Production `/healthz` shows `durable: true`.\\n- Token/secret encryption remains enabled if the app stores OAuth tokens.\\n- OAuth callback and dashboard routes still work after redeploy.\\n\\n## Pitfalls\\n\\n- A Vercel serverless app writing SQLite under the project bundle will fail or be read-only; `/tmp` SQLite is acceptable only as a temporary demo fallback and is not durable.\\n- Do not conclude that durable storage is configured until the live deployed app reports the durable backend.\\n- Marketplace terms acceptance is an account/legal action, not a technical retry loop. Capture the blocker cleanly and resume once the user accepts/authorizes it.\\n\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"File 'references/vercel-postgres-neon-marketplace.md' written to skill 'vercel-app-deployments'.\", \"path\": \"/opt/data/skills/devops/vercel-app-deployments/references/vercel-postgres-neon-marketplace.md\"}",
+      "tool_call_id": "call_VIaxh2hT2bnovveaWpuVDoNv"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "tool_calls": [
+        {
+          "id": "call_E5HYlkNeVI3Ry0zBXbQ6ncTF",
+          "call_id": "call_E5HYlkNeVI3Ry0zBXbQ6ncTF",
+          "response_item_id": "fc_0048a5d5f0ccdac6016a1304875dd8819093e9cf117b41bd22",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"patch\",\"name\":\"vercel-app-deployments\",\"old_string\":\"## Free/SQLite backend defaults\\n\\nFor legacy projects, prefer the lowest-friction deploy path before asking for paid infrastructure:\",\"new_string\":\"## Vercel Postgres / Neon durable storage\\n\\nWhen a Vercel serverless app needs durable writes or OAuth token persistence, do not rely on SQLite in the deployed bundle. `/tmp` SQLite can keep a demo alive temporarily, but it is ephemeral and should be reported as non-durable.\\n\\nUse the Vercel integration path for Neon/Postgres and verify the exact CLI surface before assuming commands. If `vercel integration add neon` or equivalent returns a marketplace terms / `action_required` blocker, stop and ask the user to accept/authorize the terms; do not accept account/legal terms on their behalf without explicit approval. After provisioning, set both framework-standard and app-specific DB env vars when relevant (`DATABASE_URL`, plus aliases like `MUSICAI_DATABASE_URL`/`MUSICAI_TOKEN_DB`), redeploy, and verify the live `/healthz` or storage-status endpoint reports a durable Postgres backend. See `references/vercel-postgres-neon-marketplace.md`.\\n\\n## Free/SQLite backend defaults\\n\\nFor legacy projects, prefer the lowest-friction deploy path before asking for paid infrastructure:\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"Patched SKILL.md in skill 'vercel-app-deployments' (1 replacement).\"}",
+      "tool_call_id": "call_E5HYlkNeVI3Ry0zBXbQ6ncTF"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "tool_calls": [
+        {
+          "id": "call_D9jSTscMxA0WIVHZlwwMRjIs",
+          "call_id": "call_D9jSTscMxA0WIVHZlwwMRjIs",
+          "response_item_id": "fc_0048a5d5f0ccdac6016a13048f5c2081908190f22fc3e96d7f",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"patch\",\"name\":\"vercel-app-deployments\",\"old_string\":\"See `references/flask-spotify-oauth-on-vercel.md` for Flask/Vercel Spotify OAuth callback setup, proper authorize URL encoding, redirect mismatch verification, safe production OAuth diagnostic endpoints, callback correlation logging, `/tmp` token-cache handling, and live Vercel log-follow workflow.\",\"new_string\":\"See `references/flask-spotify-oauth-on-vercel.md` for Flask/Vercel Spotify OAuth callback setup, proper authorize URL encoding, redirect mismatch verification, safe production OAuth diagnostic endpoints, callback correlation logging, `/tmp` token-cache handling, and live Vercel log-follow workflow. See `references/vercel-postgres-neon-marketplace.md` for the Vercel Postgres/Neon marketplace terms blocker pattern, redacted env setup, and durable-storage health verification.\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"Patched SKILL.md in skill 'vercel-app-deployments' (1 replacement).\"}",
+      "tool_call_id": "call_D9jSTscMxA0WIVHZlwwMRjIs"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "tool_calls": [
+        {
+          "id": "call_D0ya4tZSAgkY8wp7mHSwVoMK",
+          "call_id": "call_D0ya4tZSAgkY8wp7mHSwVoMK",
+          "response_item_id": "fc_0048a5d5f0ccdac6016a1304943f248190ac3025af0a9d318c",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"write_file\",\"name\":\"music-app-modernization\",\"file_path\":\"references/musicai-one-account-multi-oauth-dashboard.md\",\"file_content\":\"# MusicAI one-account / multi-OAuth dashboard pattern\\n\\nSession learning from turning MusicAI from a Spotify-branded lyric analyzer into a provider-neutral music intelligence hub.\\n\\n## Product direction\\n\\n- Landing page should sell cross-provider music intelligence: track the mood, feel, and vibe of playlists across multiple vendors, then give feedback and analysis on the user's music taste.\\n- Preserve the no-login text/lyric analyzer as the lowest-friction demo while making account login the path to richer dashboard insights.\\n- Dashboard should make one MusicAI account feel like a hub: connected providers, liked music, playlists, albums, recent plays, top tracks/artists, and plain-English taste feedback.\\n- The user explicitly wants liked music, playlists, and albums visible on the dashboard.\\n\\n## Architecture pattern\\n\\n- Use an internal `musicai_accounts` table (or equivalent) where one `account_id` can map to multiple provider identities.\\n- Store provider tokens per `(account_id, provider)` with encrypted access/refresh tokens, expiry, scopes, and provider user ID.\\n- During each OAuth callback, resolve an existing internal account from the session if present; otherwise link/create based on provider ID.\\n- Session should carry the internal MusicAI account ID (e.g. `musicai_user_id`) rather than treating each provider login as a separate app user.\\n- Keep provider connect routes distinct, e.g. `/providers/spotify/connect`, `/providers/youtube_music/connect`, `/providers/soundcloud/connect`, and keep callback states provider-specific.\\n\\n## Spotify dashboard slice\\n\\nFor a first real dashboard, Spotify can populate most visible sections if scopes include:\\n\\n- `user-library-read` for liked tracks and albums\\n- `playlist-read-private` for playlists\\n- `user-top-read` for top tracks/artists\\n- `user-read-recently-played` for listening history\\n\\nUse these sections to generate a simple taste profile before building deeper ML: genre/artist clustering, vibe tags, recent mood, mainstream/indie balance, and playlist diversity.\\n\\n## Durable storage on Vercel\\n\\n- Encrypted SQLite in `/tmp` is only an ephemeral demo fallback on Vercel; use Vercel Postgres/Neon before real user token persistence.\\n- Health endpoints should expose redacted storage status: backend type, durable boolean, encryption readiness, and missing env keys by name only.\\n- Prefer app-specific env aliases alongside standard DB vars, e.g. `MUSICAI_DATABASE_URL`, `MUSICAI_TOKEN_DB`, and `DATABASE_URL`.\\n- Do not print or document connection strings, OAuth secrets, or API keys; use `[REDACTED]` in notes.\\n- If Neon provisioning is blocked by Vercel marketplace terms, treat it as an account/legal blocker and resume after the user accepts or explicitly authorizes terms acceptance.\\n\\n## File hygiene\\n\\n- Avoid generic token-module names if project `.gitignore` patterns ignore `*token*`; use a name like `musicai_secure_store.py` for durable storage logic.\\n- Keep token store modules out of tracked secret paths, but ensure the source code itself is tracked.\\n\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"File 'references/musicai-one-account-multi-oauth-dashboard.md' written to skill 'music-app-modernization'.\", \"path\": \"/opt/data/skills/media/music-app-modernization/references/musicai-one-account-multi-oauth-dashboard.md\"}",
+      "tool_call_id": "call_D0ya4tZSAgkY8wp7mHSwVoMK"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "tool_calls": [
+        {
+          "id": "call_t1QAnBu5qav6oMyPxSq4xfMj",
+          "call_id": "call_t1QAnBu5qav6oMyPxSq4xfMj",
+          "response_item_id": "fc_0048a5d5f0ccdac6016a1304a2908481909fb3a109b5a78308",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"patch\",\"name\":\"music-app-modernization\",\"old_string\":\"5. Replace file-based `user_tokens.json` with database-backed encrypted token storage.\\n6. Normalize provider data into a common schema: `User`, `ProviderAccount`, `Artist`, `Track`, `Album`, `Playlist`, `ListenEvent`, `Lyrics`, `AudioFeature`, `Insight`.\",\"new_string\":\"5. Replace file-based `user_tokens.json` with database-backed encrypted token storage. For Vercel demos, `/tmp` SQLite is only an ephemeral fallback; real OAuth token persistence should use durable Postgres/Neon or equivalent and a health endpoint that reports backend/durability without exposing secrets.\\n6. Normalize identity before normalizing music data: create one internal account ID that can link multiple provider identities, then store provider tokens per `(account_id, provider)`. Use session state for the internal MusicAI account ID, not a provider-specific user ID.\\n7. Normalize provider data into a common schema: `User`, `ProviderAccount`, `Artist`, `Track`, `Album`, `Playlist`, `ListenEvent`, `Lyrics`, `AudioFeature`, `Insight`.\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"Patched SKILL.md in skill 'music-app-modernization' (1 replacement).\"}",
+      "tool_call_id": "call_t1QAnBu5qav6oMyPxSq4xfMj"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "tool_calls": [
+        {
+          "id": "call_4YoWdyIcThoK2j7RT0VTcUMP",
+          "call_id": "call_4YoWdyIcThoK2j7RT0VTcUMP",
+          "response_item_id": "fc_0048a5d5f0ccdac6016a1304a98b388190a09c80c6583a8422",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"patch\",\"name\":\"music-app-modernization\",\"new_string\":\"## OAuth architecture guidance\\n\\n- Use a one-account/many-provider model for MusicAI-style apps: one internal app account links Spotify, YouTube/Google, SoundCloud, Apple Music, and future providers, instead of creating a separate app identity per OAuth provider.\\n- Use OAuth Authorization Code + PKCE where providers support it.\",\"old_string\":\"## OAuth architecture guidance\\n\\n- Use OAuth Authorization Code + PKCE where providers support it.\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"Patched SKILL.md in skill 'music-app-modernization' (1 replacement).\"}",
+      "tool_call_id": "call_4YoWdyIcThoK2j7RT0VTcUMP"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "tool_calls": [
+        {
+          "id": "call_m2Cfeyo91OLPnB15CzemTF33",
+          "call_id": "call_m2Cfeyo91OLPnB15CzemTF33",
+          "response_item_id": "fc_0048a5d5f0ccdac6016a1304b6f5e48190b0205f8e2ce98f8f",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"patch\",\"name\":\"music-app-modernization\",\"new_string\":\"## UI direction\\n\\nMove away from old Bootstrap landing pages toward a modern consumer dashboard:\\n\\n- Lead with provider-neutral positioning: track the mood, feel, and vibe of playlists/listening across multiple music vendors, then explain what the user's taste says about them.\\n- Keep a no-login lyric/text analyzer visible as the primary frictionless demo if the legacy app already has one.\\n- Dark/music-forward visual system with album-art gradients.\",\"old_string\":\"## UI direction\\n\\nMove away from old Bootstrap landing pages toward a modern consumer dashboard:\\n\\n- Dark/music-forward visual system with album-art gradients.\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"Patched SKILL.md in skill 'music-app-modernization' (1 replacement).\"}",
+      "tool_call_id": "call_m2Cfeyo91OLPnB15CzemTF33"
+    },
+    {
+      "role": "assistant",
+      "content": "",
+      "reasoning": null,
+      "finish_reason": "tool_calls",
+      "tool_calls": [
+        {
+          "id": "call_4kcHLMmuksOC5D1sZYpk2OAu",
+          "call_id": "call_4kcHLMmuksOC5D1sZYpk2OAu",
+          "response_item_id": "fc_0048a5d5f0ccdac6016a1304be95a08190acd7fe799ce3b8f9",
+          "type": "function",
+          "function": {
+            "name": "skill_manage",
+            "arguments": "{\"action\":\"patch\",\"name\":\"music-app-modernization\",\"new_string\":\"- `references/musicai-oauth-hub-and-provider-callbacks.md` — root account/provider hub requirements, Spotify/YouTube/SoundCloud callback URLs, Vercel env CLI pattern, `/tmp` SQLite workaround, and durable DB warning.\\n- `references/musicai-one-account-multi-oauth-dashboard.md` — one-account/multi-provider identity mapping, dashboard sections for liked music/playlists/albums/recent plays/top music, taste feedback, Vercel durable-storage notes, and token-store file hygiene.\\n\",\"old_string\":\"- `references/musicai-oauth-hub-and-provider-callbacks.md` — root account/provider hub requirements, Spotify/YouTube/SoundCloud callback URLs, Vercel env CLI pattern, `/tmp` SQLite workaround, and durable DB warning.\\n\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "skill_manage",
+      "content": "{\"success\": true, \"message\": \"Patched SKILL.md in skill 'music-app-modernization' (1 replacement).\"}",
+      "tool_call_id": "call_4kcHLMmuksOC5D1sZYpk2OAu"
+    },
+    {
+      "role": "assistant",
+      "content": "Updated the skill library.\n\nChanges made:\n- Patched loaded skill `vercel-app-deployments`\n  - Added a Vercel Postgres/Neon durable-storage section.\n  - Captured the marketplace terms blocker pattern.\n  - Added explicit guidance to verify durable storage via live `/healthz`, not just env setup.\n  - Added reference: `references/vercel-postgres-neon-marketplace.md`.\n\n- Patched existing umbrella skill `music-app-modernization`\n  - Added one-account/multiple-OAuth architecture guidance.\n  - Added MusicAI dashboard direction: liked music, playlists, albums, recent plays, top music, and taste feedback.\n  - Added Vercel durable Postgres guidance for OAuth token persistence.\n  - Added provider-neutral landing-page positioning around mood / feel / vibe.\n  - Added reference: `references/musicai-one-account-multi-oauth-dashboard.md`.\n\nNo new narrow one-off skill was created; the learning was folded into the existing class-level umbrellas.",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "codex_message_items": [
+        {
+          "type": "message",
+          "role": "assistant",
+          "status": "completed",
+          "content": [
+            {
+              "type": "output_text",
+              "text": "Updated the skill library.\n\nChanges made:\n- Patched loaded skill `vercel-app-deployments`\n  - Added a Vercel Postgres/Neon durable-storage section.\n  - Captured the marketplace terms blocker pattern.\n  - Added explicit guidance to verify durable storage via live `/healthz`, not just env setup.\n  - Added reference: `references/vercel-postgres-neon-marketplace.md`.\n\n- Patched existing umbrella skill `music-app-modernization`\n  - Added one-account/multiple-OAuth architecture guidance.\n  - Added MusicAI dashboard direction: liked music, playlists, albums, recent plays, top music, and taste feedback.\n  - Added Vercel durable Postgres guidance for OAuth token persistence.\n  - Added provider-neutral landing-page positioning around mood / feel / vibe.\n  - Added reference: `references/musicai-one-account-multi-oauth-dashboard.md`.\n\nNo new narrow one-off skill was created; the learning was folded into the existing class-level umbrellas."
+            }
+          ],
+          "id": "msg_0048a5d5f0ccdac6016a1304c33ee4819093ccade777a12884",
+          "phase": "final_answer"
+        }
+      ]
+    }
+  ]
+}

@@ -77,6 +77,17 @@ Branch naming conventions:
 
 ## 2. Making Commits
 
+### Dirty working tree / unrelated local changes
+
+When a repo already has unrelated uncommitted changes and the user asks to branch from `main`/`master` for a feature/update PR:
+
+1. Inspect `git status --short --branch` and `git branch --list main master` first.
+2. `git fetch origin`.
+3. Prefer `git switch -c <feature-branch> origin/main` or `origin/master` so the new branch is explicitly based on the remote base. This carries the current working tree forward without committing unrelated work.
+4. Stage only files that belong to the requested feature: `git add path1 path2 ...` — do **not** use `git add .` in a dirty repo.
+5. Run targeted validation for the staged feature.
+6. Commit and push the feature branch; leave unrelated pre-existing changes uncommitted and call that out in the summary.
+
 Use the agent's file tools (`write_file`, `patch`) to make changes, then commit:
 
 ```bash

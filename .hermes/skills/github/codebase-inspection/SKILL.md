@@ -24,6 +24,7 @@ Analyze repositories for lines of code, language breakdown, file counts, and cod
 - User asks about codebase size or composition
 - User wants code-vs-comment ratios
 - General "how big is this repo" questions
+- User asks to inventory/import all coding exercises, algorithms, or question-bank content from a repo, especially when they say to check every branch
 
 ## Prerequisites
 
@@ -92,7 +93,21 @@ pygount --format=json .
 pygount --format=summary . 2>/dev/null
 ```
 
-## 6. Interpreting Results
+## 6. Multi-Branch Exercise / Algorithm Inventory
+
+When importing algorithms or coding exercises into another app, do not inspect only the default branch. Fetch all branches and enumerate remote branch trees without changing the worktree:
+
+```bash
+git fetch --all --prune
+for branch in $(git branch -r --no-color | sed 's#^[[:space:]]*origin/##' | grep -v '^HEAD'); do
+  echo "=== $branch ==="
+  git ls-tree -r --name-only "origin/$branch"
+done
+```
+
+For generated question banks, preserve source traceability (`sourcePath`, `branches`, `language`, `category`, `difficulty`) and verify counts by branch and assessment. See `references/multi-branch-code-exercise-harvesting.md` for the full workflow and difficulty bucketing heuristics.
+
+## 7. Interpreting Results
 
 The summary table columns:
 - **Language** — detected programming language
@@ -114,3 +129,5 @@ Special pseudo-languages:
 2. **Markdown shows 0 code lines** — pygount classifies all Markdown content as comments, not code. This is expected behavior.
 3. **JSON files show low code counts** — pygount may count JSON lines conservatively. For accurate JSON line counts, use `wc -l` directly.
 4. **Large monorepos** — for very large repos, consider using `--suffix` to target specific languages rather than scanning everything.
+5. **Default-branch blind spots** — when the user asks for “all” algorithms/exercises or says “check all branches,” use `git fetch --all --prune` plus `git ls-tree -r --name-only origin/<branch>` before generating inventories. The default branch may not contain the whole corpus.
+6. **Dirty worktrees** — if converting an inventory into app changes, check `git status --short` first and avoid committing generated changes alongside unrelated existing modifications.

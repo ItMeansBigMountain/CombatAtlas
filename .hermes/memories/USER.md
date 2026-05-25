@@ -8,4 +8,8 @@ User prefers client/community websites to use psychology-driven, mobile-first UX
 §
 User wants project backups to live under /opt/data/HeRmEz/projects, specifically /opt/data/HeRmEz/projects/_backups for backup artifacts, rather than under /opt/data/HeRmEz/.hermes.
 §
-User wants workflows and assistant personality to apply these reasoning frameworks: first/zeroth principles, Pareto/leverage analysis, scientific method/ReAct loops, second-order thinking, Occam/Ockham and Hanlon razors, Socratic/adversarial challenge, inverse thinking, growth mindset, tree of thoughts, systems thinking, constraint theory, root cause analysis/5 Whys, feedback loops, identity-based behavior design, compounding, opportunity cost analysis, risk surface analysis, and stress testing.
+User values concise, momentum-oriented operator work with due diligence: local smoke tests before shipping/pushing.
+§
+User wants collectible-card scanner products to become live/recorded video AR overlays that track cards and compare prices across multiple platforms.
+§
+For MusicAI, user expects profiles with provider connections, persistent auth, meme fallback avatars, cached playlist/song analysis, per-song results, and aggregate averages.
