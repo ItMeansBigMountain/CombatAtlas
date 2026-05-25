@@ -22,6 +22,7 @@ from os.path import exists
 # debugging
 import time
 import pprint
+from datetime import timedelta
 
 # webcrawl lyrics
 import bs4
@@ -99,6 +100,9 @@ if missing_optional:
 application = flask.Flask(__name__ , static_url_path='', static_folder='static' , template_folder='templates')
 application.config["DEBUG"] = os.getenv('FLASK_DEBUG', 'false').lower() == 'true'
 application.secret_key = os.getenv('FLASK_SECRET_KEY', 'something secret')
+application.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=int(os.getenv('MUSICAI_SESSION_DAYS', '30')))
+application.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+application.config['SESSION_COOKIE_SECURE'] = bool(os.getenv('VERCEL'))
 
 # SPOTFIY INIT VARIABLES
 spotify_clientId = os.getenv('SPOTIFY_CLIENT_ID', '')
@@ -167,8 +171,10 @@ def _session_user_id():
 
 
 def _set_musicai_session(user_id, provider=None, display_name=None):
+    flask.session.permanent = True
     flask.session['musicai_user_id'] = user_id
     flask.session['user_id'] = user_id
+    flask.session['musicai_login_at'] = time.time()
     if provider:
         flask.session['last_provider'] = provider
     if display_name:
@@ -211,6 +217,55 @@ def _oauth_pkce_pair(provider):
 
 def _oauth_pkce_verifier(provider):
     return flask.session.pop(f'oauth_pkce_{provider}', None)
+
+
+def _refresh_youtube_token(refresh_token):
+    """Refresh a stored Google/YouTube access token without forcing OAuth again."""
+    client_id = os.getenv('GOOGLE_CLIENT_ID')
+    client_secret = os.getenv('GOOGLE_CLIENT_SECRET')
+    if not all([refresh_token, client_id, client_secret]):
+        return None
+    try:
+        response = requests.post('https://oauth2.googleapis.com/token', data={
+            'client_id': client_id,
+            'client_secret': client_secret,
+            'refresh_token': refresh_token,
+            'grant_type': 'refresh_token',
+        }, timeout=20)
+        if response.status_code >= 400:
+            print(f"ERROR: YouTube token refresh failed: {response.status_code} {response.text[:500]}")
+            return None
+        return response.json()
+    except Exception as exc:
+        print(f"ERROR: YouTube token refresh exception: {exc}")
+        return None
+
+
+def _ensure_youtube_token(user_id, youtube_token_data):
+    """Return a usable YouTube access token, refreshing/persisting it when possible."""
+    if not youtube_token_data:
+        return None, youtube_token_data or {}
+    access_token = youtube_token_data.get('access_token')
+    expires_at = youtube_token_data.get('expires_at')
+    if access_token and not is_token_expired(expires_at):
+        return access_token, youtube_token_data
+    refresh_token = youtube_token_data.get('refresh_token')
+    refreshed = _refresh_youtube_token(refresh_token)
+    if not refreshed:
+        return None, youtube_token_data
+    merged = dict(youtube_token_data)
+    merged.update(refreshed)
+    merged['refresh_token'] = refreshed.get('refresh_token') or refresh_token
+    merged['expires_at'] = time.time() + refreshed.get('expires_in', 3600)
+    token_store.save_provider_token(
+        user_id,
+        'youtube_music',
+        merged,
+        provider_account_id=youtube_token_data.get('provider_account_id'),
+        scopes=youtube_token_data.get('scope') or 'openid email profile youtube.readonly youtube.force-ssl',
+        expires_at=merged['expires_at'],
+    )
+    return merged.get('access_token'), merged
 
 
 # Token storage functions
@@ -494,11 +549,13 @@ def callback_youtube_music():
     if token_res.status_code >= 400:
         return flask.render_template('error.html', error_title='YouTube Token Exchange Failed', error_message='Google returned an OAuth token error.', error_details=token_res.text[:1000]), 502
     token_data = token_res.json()
+    token_data['expires_at'] = time.time() + token_data.get('expires_in', 3600)
     profile_res = requests.get('https://www.googleapis.com/oauth2/v3/userinfo', headers={'Authorization': 'Bearer ' + token_data['access_token']}, timeout=20)
     profile = profile_res.json() if profile_res.status_code == 200 else {}
     provider_account_id = profile.get('sub') or profile.get('email') or ('youtube_' + uuid.uuid4().hex)
+    token_data['provider_account_id'] = provider_account_id
     account_id = token_store.resolve_account('youtube_music', provider_account_id, profile=profile, preferred_user_id=_session_user_id())
-    token_store.save_provider_token(account_id, 'youtube_music', token_data, provider_account_id=provider_account_id, scopes='openid email profile youtube.readonly youtube.force-ssl', expires_at=time.time() + token_data.get('expires_in', 3600))
+    token_store.save_provider_token(account_id, 'youtube_music', token_data, provider_account_id=provider_account_id, scopes='openid email profile youtube.readonly youtube.force-ssl', expires_at=token_data['expires_at'])
     _set_musicai_session(account_id, provider='youtube_music', display_name=profile.get('name') or profile.get('email'))
     return flask.redirect('/Dashboard')
 
@@ -1042,7 +1099,7 @@ def youtube_playlist_analysis(playlist_id):
     if not user_id:
         return flask.redirect('/')
     youtube_token_data = token_store.load_provider_token(user_id, 'youtube_music') or {}
-    youtube_token = youtube_token_data.get('access_token')
+    youtube_token, youtube_token_data = _ensure_youtube_token(user_id, youtube_token_data)
     if not youtube_token:
         return flask.render_template('error.html',
                                      error_title='Connect YouTube first',
@@ -1064,7 +1121,7 @@ def api_youtube_playlist_analysis(playlist_id):
     if not user_id:
         return jsonify({'ok': False, 'error': 'not_authenticated'}), 401
     youtube_token_data = token_store.load_provider_token(user_id, 'youtube_music') or {}
-    youtube_token = youtube_token_data.get('access_token')
+    youtube_token, youtube_token_data = _ensure_youtube_token(user_id, youtube_token_data)
     if not youtube_token:
         return jsonify({'ok': False, 'error': 'youtube_not_connected'}), 403
     payload = flask.request.get_json(silent=True) or {}
@@ -1085,7 +1142,7 @@ def Dashboard():
     token_data = load_user_token(user_id) or {}
     youtube_token_data = token_store.load_provider_token(user_id, 'youtube_music') or {}
     spotify_token = token_data.get('spotify_token')
-    youtube_token = youtube_token_data.get('access_token')
+    youtube_token, youtube_token_data = _ensure_youtube_token(user_id, youtube_token_data)
 
     if spotify_token and is_token_expired(token_data.get('spotify_expires_at')):
         print(f"INFO: Spotify token expired for account {user_id}, attempting refresh...")
