@@ -34,6 +34,17 @@
 **/.tick.lock
 
 # Caches and transient build artifacts
+
+# Sanitized backup should not track local caches, browser binaries, package caches, or DB snapshots
+/.hermes/.cache/
+/.hermes/.config/
+/.hermes/.npm/
+/.hermes/.local/share/pki/
+/.hermes/state.db
+/.hermes/**/*.db
+/.hermes/**/*.sqlite
+/.hermes/**/*.sqlite3
+
 **/__pycache__/
 **/.pytest_cache/
 **/.mypy_cache/
@@ -52,9 +63,6 @@
 
 # Git internals from nested repos/backups
 **/.git/
-
-# Active nested project worktrees are backed up as Git bundles under /projects/_backups/
-/projects/cox-elementary-pta/
 
 # Original root-owned source copy after legacy project import; active copies live under /projects/
 /legacy-projects/

@@ -1,0 +1,8 @@
+[submodule "projects/algos"]
+	path = projects/algos
+	url = https://github.com/ItMeansBigMountain/algos.git
+	branch = main
+[submodule "projects/cox-elementary-pta"]
+	path = projects/cox-elementary-pta
+	url = https://github.com/ItMeansBigMountain/cox-elementary-pta.git
+	branch = main
