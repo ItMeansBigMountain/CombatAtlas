@@ -17,3 +17,5 @@
 - `tweetBetweenTheLines/MERGE_INTO_SOCIAL_MEDIA_ANALYSIS.md`
 - `twitter-therapy-app/MERGE_INTO_SOCIAL_MEDIA_ANALYSIS.md`
 - `wutHappened/PRODUCT_DIRECTION.md`
+- `coding-school-platform/CODERSCHOOL_CRM_RESEARCH_AND_PLAN.md`
+- `coding-school-platform/docs/plans/2026-05-26-coding-school-crm.md`
