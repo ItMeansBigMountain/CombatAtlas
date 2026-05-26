@@ -71,5 +71,7 @@
 /projects/legacy-src/
 
 # Nested standalone Git repos managed separately
+/projects/algos/
 /projects/az204/
+/projects/cox-elementary-pta/
 /projects/robinhood-daily-portfolio-report/

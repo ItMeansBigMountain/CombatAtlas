@@ -14,6 +14,8 @@ See the complete verified URL list: [`DEPLOY_FINAL_URLS.md`](./DEPLOY_FINAL_URLS
 
 Full project review sheet with tech stacks, legacy-modernization notes, consumer-psychology UX recommendations, and verified Vercel URLs: [`PROJECT_REVIEW_SHEET.md`](./PROJECT_REVIEW_SHEET.md) / [`PROJECT_REVIEW_SHEET.csv`](./PROJECT_REVIEW_SHEET.csv). Standing review goal: [`PROJECT_REVIEW_GOAL.md`](./PROJECT_REVIEW_GOAL.md).
 
+Portfolio-wide development plans are now complete for every active top-level project: [`PORTFOLIO_DEVELOPMENT_PLANS.md`](./PORTFOLIO_DEVELOPMENT_PLANS.md). Current Vercel review report: [`VERCEL_DEPLOYMENT_REVIEW_2026-05-26.md`](./VERCEL_DEPLOYMENT_REVIEW_2026-05-26.md).
+
 ## Vercel manual testing tracker
 
 Use this table as the single place to record Vercel preview/production URLs as projects are completed and deployed. Add notes after each manual test pass.

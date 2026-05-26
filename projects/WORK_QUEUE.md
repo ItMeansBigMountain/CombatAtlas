@@ -78,10 +78,6 @@ Last updated: 2026-05-26
 | `watsonAI` | Scripts/integration | Not Vercel as-is | Needs IBM credentials/demo shell |
 | `wutHappened` | Generation scripts | Not Vercel as-is | Convert into web app before deploy |
 
-## Bottleneck
+## Current operator status
 
-Vercel deployment cannot proceed in this shell until one of these is available:
-
-- `VERCEL_TOKEN` / `VERCEL_API_TOKEN` environment variable, or
-- existing `vercel login` credentials for `/opt/data`, or
-- GitHub-connected Vercel project for the target folder.
+Vercel credentials are available in the execution environment. The next bottleneck is not authentication; it is deciding which deployed demos should be promoted from static review shells into real product MVPs, and which merge/archive folders should stay out of the active build lane.

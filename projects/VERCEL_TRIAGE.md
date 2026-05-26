@@ -82,6 +82,11 @@ Verification after disabling:
   - alias returns HTTP 200.
   - deployed JS bundle contains TCGplayer, Cardmarket, and eBay pricing logic.
 
+## Full deployment review — 2026-05-26
+
+See [`VERCEL_DEPLOYMENT_REVIEW_2026-05-26.md`](./VERCEL_DEPLOYMENT_REVIEW_2026-05-26.md). Current pass found Vercel credentials available, 54 active Vercel projects after deleting obsolete `bitcoin-bike-startup`, and public HTTP responses for the tracked deployment set. The first pass found 401 protection on `algos`, `consumer-advocate-app`, and `legacy-src`; SSO protection was disabled for those projects and follow-up checks returned 200. Only `codology-api` latest root returns 404, while its tracked `/api/highscores` endpoint remains the manual-test target. Public 200 means deploy plumbing is healthy; many projects remain static review shells that need product MVP work from their `DEVELOPMENT_PLAN.md`.
+
+
 ## Immediate deploy/redeploy candidates
 
 | Project | Type | Current state | What is needed |
