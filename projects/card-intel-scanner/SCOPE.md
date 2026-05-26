@@ -13,6 +13,8 @@ Create a fast mobile-first web app that scans or searches Pokémon trading cards
 5. **Price Aggregation** – Show available TCGplayer and Cardmarket price signals.
 6. **Sold Comps Link** – Provide an eBay sold-comps query for reality-checking condition, grading, and hype.
 7. **Blended Signal** – Calculate a simple median from available numeric price points.
+8. **Condition / Grade Lens** – Let users switch between raw damaged, LP/MP, NM, and graded 8/9/10 assumptions.
+9. **Local Watchlist** – Save scanned cards, selected condition, source snapshot, and estimated value in browser storage.
 
 ## Constraints
 
@@ -25,14 +27,17 @@ Create a fast mobile-first web app that scans or searches Pokémon trading cards
 
 ## Next Steps
 
-- Deploy static app to Vercel after Vercel auth is restored.
-- Add condition selector: raw LP/NM/MP, graded PSA/BGS/CGC.
-- Add saved watchlist/local collection.
+- Mobile-test the live camera OCR + condition/watchlist flow on real cards.
+- Add recorded-video upload/frame sampling so users can price cards from existing clips.
+- Stabilize the AR badge across multiple frames and show confidence/decay states.
 - Add backend only if we need durable portfolio tracking, alerts, or paid marketplace APIs.
 
 ## Validation Method
 
 - `npm run build` passes.
 - Preview server returns HTTP 200.
+- Vercel production alias returns HTTP 200.
+- Condition selector visibly changes the estimate label/multiplier.
+- Watchlist persists under `card-intel-watchlist-v1`.
 - Built bundle contains scanner/pricing source logic.
 - Pokémon TCG API returns card metadata and pricing with browser-style request headers.

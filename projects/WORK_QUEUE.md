@@ -2,7 +2,7 @@
 
 Purpose: review every project, turn viable candidates into live Vercel demos, and keep non-deployable/script folders from stealing cycles.
 
-Last updated: 2026-05-21
+Last updated: 2026-05-26
 
 ## Operating rule
 
@@ -16,7 +16,7 @@ Last updated: 2026-05-21
 
 | Rank | Project | Status | Next action | Blocker |
 |---:|---|---|---|---|
-| 1 | `card-intel-scanner` | Deployed/public | Manual review on phone camera/OCR; next add condition/grading selector | none |
+| 1 | `card-intel-scanner` | Deployed/public; condition lens + local watchlist added | Mobile camera/OCR review on real cards; next add recorded-video sampling + stabilized AR confidence | none |
 | 2 | `3d-react-web` | Deployed/public | Browser visual pass + polish issues | none |
 | 3 | `Codology` | Deployed/public | Manual product review + durable leaderboard decision | optional DB only |
 | 4 | `stockNews` | Deployed/public | Manual product review + IBM Watson/Durable auth decision | optional credentials/DB |
@@ -53,7 +53,7 @@ Last updated: 2026-05-21
 | `music-mood-app` | Plan-only | Build MVP | Mood playlist UX shell; integrations later |
 | `networking` | Archive | Not Vercel as-is | No deploy priority |
 | `oyama-productions-legal` | Plan-only | Build MVP | Professional legal/production landing page |
-| `card-intel-scanner` | Static React/Vite card scanner MVP | Deployed/public | Manual review OCR on real card photos; next add condition/grading selector and saved watchlist |
+| `card-intel-scanner` | Static React/Vite card scanner MVP | Deployed/public | Condition/grading selector and local watchlist shipped; next real-card mobile review + recorded-video AR sampling |
 | `policy-pit-app` | Plan/continuation | Needs source inspection | Locate existing policy.pit.app repo/code before rebuild |
 | `portfolio-sentiment-subscription-app` | Plan + legacy source | Build MVP | Tie to `stockNews` or separate subscription shell |
 | `robinhood-email-reports` | Automation/reporting | Not Vercel as-is | Build reporting dashboard only after data path defined |

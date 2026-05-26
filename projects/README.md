@@ -38,7 +38,7 @@ Use this table as the single place to record Vercel preview/production URLs as p
 | music-mood-app | Needs triage | — | — | — |
 | MusicAI | Needs triage | — | — | — |
 | oyama-productions-legal | Needs triage | — | — | — |
-| card-intel-scanner | Deployed / publicly accessible | https://card-intel-scanner-dxz5ue8l2-itmeansbigmountains-projects.vercel.app | https://card-intel-scanner.vercel.app | Pokémon card scanner + price aggregator: upload/camera OCR, search Pokémon TCG API, aggregate TCGplayer + Cardmarket pricing and eBay sold-comps link. Anonymous HTTP checks return 200 for production and alias. |
+| card-intel-scanner | Deployed / publicly accessible | https://card-intel-scanner-rcos7zn54-itmeansbigmountains-projects.vercel.app | https://card-intel-scanner.vercel.app | Pokémon card scanner + price aggregator: live/upload OCR, Pokémon TCG API search, TCGplayer + Cardmarket pricing, eBay sold-comps link, condition/grade valuation lens, and local browser watchlist. Anonymous HTTP checks return 200 for production and alias. |
 | policy-pit-app | Needs triage | — | — | — |
 | portfolio-sentiment-subscription-app | Needs triage | — | — | — |
 | robinhood-email-reports | Needs triage | — | — | — |

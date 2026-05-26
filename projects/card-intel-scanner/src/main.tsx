@@ -38,8 +38,39 @@ type SourceRow = {
   url?: string;
 };
 
+type ConditionKey = 'raw-damaged' | 'raw-lp-mp' | 'raw-nm' | 'graded-8' | 'graded-9' | 'graded-10';
+
+type ConditionOption = {
+  key: ConditionKey;
+  label: string;
+  multiplier: number;
+  note: string;
+};
+
+type SavedCard = {
+  id: string;
+  name: string;
+  setName?: string;
+  number?: string;
+  imageUrl?: string;
+  condition: ConditionKey;
+  estimatedValue: number | null;
+  sources: SourceRow[];
+  savedAt: string;
+};
+
 const API = 'https://api.pokemontcg.io/v2/cards';
 const LIVE_SCAN_INTERVAL_MS = 3200;
+const WATCHLIST_KEY = 'card-intel-watchlist-v1';
+
+const CONDITION_OPTIONS: ConditionOption[] = [
+  { key: 'raw-damaged', label: 'Raw damaged', multiplier: 0.35, note: 'heavy wear / binder copy estimate' },
+  { key: 'raw-lp-mp', label: 'Raw LP/MP', multiplier: 0.72, note: 'light-to-moderate play estimate' },
+  { key: 'raw-nm', label: 'Raw near mint', multiplier: 1, note: 'baseline marketplace signal' },
+  { key: 'graded-8', label: 'Graded 8', multiplier: 1.6, note: 'estimated slab premium' },
+  { key: 'graded-9', label: 'Graded 9', multiplier: 2.6, note: 'estimated strong slab premium' },
+  { key: 'graded-10', label: 'Graded 10', multiplier: 5, note: 'estimated gem-mint premium' }
+];
 
 function money(value: number | null | undefined) {
   if (value === null || value === undefined || Number.isNaN(value)) return '—';
@@ -78,6 +109,15 @@ function priceRows(card: PokemonCard): SourceRow[] {
   return rows;
 }
 
+function conditionByKey(key: ConditionKey) {
+  return CONDITION_OPTIONS.find((option) => option.key === key) || CONDITION_OPTIONS[2];
+}
+
+function adjustForCondition(value: number | null, condition: ConditionKey) {
+  if (value === null) return null;
+  return value * conditionByKey(condition).multiplier;
+}
+
 function median(values: number[]) {
   if (!values.length) return null;
   const sorted = [...values].sort((a, b) => a - b);
@@ -106,6 +146,14 @@ function App() {
   const [cameraActive, setCameraActive] = useState(false);
   const [liveScanning, setLiveScanning] = useState(false);
   const [scanStatus, setScanStatus] = useState('Camera idle');
+  const [condition, setCondition] = useState<ConditionKey>('raw-nm');
+  const [watchlist, setWatchlist] = useState<SavedCard[]>(() => {
+    try {
+      return JSON.parse(localStorage.getItem(WATCHLIST_KEY) || '[]') as SavedCard[];
+    } catch {
+      return [];
+    }
+  });
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -116,7 +164,33 @@ function App() {
 
   const selected = useMemo(() => cards.find((card) => card.id === selectedId) || cards[0], [cards, selectedId]);
   const rows = selected ? priceRows(selected) : [];
-  const estimate = median(rows.map((row) => row.value).filter((value): value is number => typeof value === 'number'));
+  const baseEstimate = median(rows.map((row) => row.value).filter((value): value is number => typeof value === 'number'));
+  const estimate = adjustForCondition(baseEstimate, condition);
+  const conditionOption = conditionByKey(condition);
+
+  useEffect(() => {
+    localStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchlist));
+  }, [watchlist]);
+
+  function saveSelectedCard() {
+    if (!selected) return;
+    const saved: SavedCard = {
+      id: `${selected.id}-${condition}`,
+      name: selected.name,
+      setName: selected.set?.name,
+      number: selected.number,
+      imageUrl: selected.images?.small,
+      condition,
+      estimatedValue: estimate,
+      sources: rows,
+      savedAt: new Date().toISOString()
+    };
+    setWatchlist((current) => [saved, ...current.filter((item) => item.id !== saved.id)].slice(0, 24));
+  }
+
+  function removeSavedCard(id: string) {
+    setWatchlist((current) => current.filter((item) => item.id !== id));
+  }
 
   async function searchCards(searchTerm = query, silent = false) {
     const term = searchTerm.trim();
@@ -311,6 +385,23 @@ function App() {
           </div>
           <p className="status-line">{scanStatus}</p>
 
+          <div className="condition-panel">
+            <span>Condition / grade lens</span>
+            <div className="condition-grid">
+              {CONDITION_OPTIONS.map((option) => (
+                <button
+                  className={condition === option.key ? 'active' : ''}
+                  key={option.key}
+                  onClick={() => setCondition(option.key)}
+                  type="button"
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+            <small>{conditionOption.note}. This is an adjustable assumption until visual grading is added.</small>
+          </div>
+
           <label className="dropzone">
             <input type="file" accept="image/*" capture="environment" onChange={(event) => event.target.files?.[0] && scanImage(event.target.files[0])} />
             <span>{ocrLoading ? 'Scanning image…' : 'Upload / camera still'}</span>
@@ -348,10 +439,16 @@ function App() {
                   <h2>{selected.name}</h2>
                   <p>{selected.set?.name} · #{selected.number} · {selected.rarity || 'rarity unknown'}</p>
                   <div className="estimate">
-                    <span>blended signal</span>
+                    <span>{conditionOption.label} signal</span>
                     <strong>{money(estimate)}</strong>
+                    {baseEstimate !== null && condition !== 'raw-nm' && <small>Base raw NM: {money(baseEstimate)} × {conditionOption.multiplier}</small>}
                   </div>
                 </div>
+              </div>
+
+              <div className="result-actions">
+                <button onClick={saveSelectedCard} type="button">Save to watchlist</button>
+                <span>{conditionOption.label} · {conditionOption.note}</span>
               </div>
 
               <div className="price-table">
@@ -365,11 +462,38 @@ function App() {
               </div>
 
               <div className="operator-note">
-                <strong>Read:</strong> TCGplayer market is the US liquidity signal. Cardmarket is EU demand/trend. eBay sold comps validate reality for condition, grading, and hype spikes. Live scan OCR focuses on the yellow guide box; use bright, glare-free light for the best hit rate.
+                <strong>Read:</strong> TCGplayer market is the US liquidity signal. Cardmarket is EU demand/trend. eBay sold comps validate reality for condition, grading, and hype spikes. The condition lens adjusts the blended estimate as a visible assumption, not an automated grade. Live scan OCR focuses on the yellow guide box; use bright, glare-free light for the best hit rate.
               </div>
             </>
           )}
         </article>
+      </section>
+
+      <section className="panel watchlist">
+        <div className="section-head">
+          <div>
+            <p className="eyebrow">03 / saved comps</p>
+            <h2>Local watchlist</h2>
+          </div>
+          <span>{watchlist.length} saved</span>
+        </div>
+        {watchlist.length === 0 ? (
+          <p className="muted">Save cards after scanning/searching to compare condition assumptions across refreshes. Stored locally in this browser.</p>
+        ) : (
+          <div className="watch-grid">
+            {watchlist.map((item) => (
+              <article className="watch-card" key={item.id}>
+                {item.imageUrl && <img src={item.imageUrl} alt={item.name} />}
+                <div>
+                  <strong>{item.name}</strong>
+                  <span>{item.setName} #{item.number} · {conditionByKey(item.condition).label}</span>
+                  <em>{money(item.estimatedValue)} saved {new Date(item.savedAt).toLocaleDateString()}</em>
+                </div>
+                <button onClick={() => removeSavedCard(item.id)} type="button">Remove</button>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
 
       <section className="panel disclaimer">
