@@ -12,4 +12,4 @@ User values concise, momentum-oriented operator work with due diligence: local s
 §
 User wants collectible-card scanner products to become live/recorded video AR overlays that track cards and compare prices across multiple platforms.
 §
-For MusicAI, user expects profiles with provider connections, persistent auth, meme fallback avatars, cached playlist/song analysis, per-song results, and aggregate averages.
+For MusicAI, user expects profiles/connections, persistent auth, meme fallback avatars, cached playlist/song analysis with per-song+aggregate results, and lyrics-first Watson NLU showing topics/entities/keywords/relations.

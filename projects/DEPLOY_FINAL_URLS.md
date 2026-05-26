@@ -1,6 +1,6 @@
 # Final Vercel Deployment URLs
 
-Updated: 2026-05-22T14:14:07.812519+00:00
+Updated: 2026-05-25T06:00:55+00:00
 
 | Project | Type | HTTP | URL |
 |---|---|---:|---|
@@ -13,7 +13,7 @@ Updated: 2026-05-22T14:14:07.812519+00:00
 | `CloudAutomation` | static MVP shell | 200 | https://cloudautomation.vercel.app |
 | `coding-school-platform` | static MVP shell | 200 | https://coding-school-platform.vercel.app |
 | `Codology` | existing app | 200 | https://codology-three.vercel.app |
-| `CombatAtlas` | static MVP shell | 200 | https://combatatlas-flame.vercel.app |
+| `CombatAtlas` | complete React/Vite drill atlas | 200 | https://combatatlas-flame.vercel.app |
 | `consumer-advocate-app` | static MVP shell | 200 | https://consumer-advocate-app.vercel.app |
 | `cox-elementary-pta` | static MVP shell | 200 | https://cox-elementary-pta.vercel.app |
 | `deployment_docs` | static MVP shell | 200 | https://deploymentdocs.vercel.app |
@@ -55,4 +55,6 @@ Updated: 2026-05-22T14:14:07.812519+00:00
 | `WebCrawl` | static MVP shell | 200 | https://webcrawl-ochre.vercel.app |
 | `wutHappened` | static MVP shell | 200 | https://wuthappened.vercel.app |
 
+| `algos` | static MVP shell | 200 | https://algos-beta.vercel.app |
+| `legacy-src` | static MVP shell | 200 | https://legacy-src.vercel.app |
 Note: many legacy/script/plan-only folders are deployed as safe static review shells so they are visible and editable from a live baseline without secrets, accounts, payments, or paid integrations.

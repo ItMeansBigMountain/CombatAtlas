@@ -32,6 +32,17 @@ Analyze repositories for lines of code, language breakdown, file counts, and cod
 pip install --break-system-packages pygount 2>/dev/null || pip install pygount
 ```
 
+## Project Inventory Status Reports
+
+When the user asks for an inventory/status check across many project folders:
+
+1. Prefer an existing tracker first (`PROJECT_REVIEW_SHEET.md`, deployment URL lists, README inventories) before rescanning every directory.
+2. Verify the inventory count and live URLs with a lightweight scripted HTTP check when URLs are part of the status.
+3. Produce one bullet per project in the user’s requested length. If they request “10–20 words,” keep each bullet tight and avoid extra analysis paragraphs.
+4. Include operational facts only when verified: live status, stack/classification, modernization need, or recent known work.
+5. Don’t expose tokens, environment variable values, deployment logs, or secret-bearing command output in the status summary.
+6. If all URLs verify, state the aggregate once, then move directly into the bullets.
+
 ## 1. Basic Summary (Most Common)
 
 Get a full language breakdown with file counts, code lines, and comment lines:

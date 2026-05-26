@@ -361,6 +361,8 @@ Note: For secrets, `gh secret set` is dramatically simpler. If setting secrets i
 
 When a user wants an active project backed up inside a larger private workspace repo, first check whether the project is itself a Git repo. If it is nested inside the parent repo, prefer a **Git bundle** committed to the parent repo over trying to `git add` the nested worktree directly.
 
+If the user explicitly asks to make inner repos submodules, use real Git submodules instead of bundles: register each child path in `.gitmodules`, stage the child path as a `160000` gitlink, run `git submodule absorbgitdirs` for existing nested worktrees, and verify with `git submodule status` plus `git ls-files -s`. See `references/nested-repo-submodules-and-backup-cache-hygiene.md` for the command pattern and backup-cache cleanup checklist.
+
 Recommended sequence:
 
 1. In the child repo, verify status, remote, branch, and latest commit.
@@ -371,7 +373,7 @@ Recommended sequence:
 6. Commit and push only the bundle, README, and parent `.gitignore` change.
 7. Verify the parent remote with `git ls-remote origin refs/heads/main`.
 
-See `references/nested-repo-backup-bundles.md` for a concrete command template and restore verification pattern, including the user's preferred `/opt/data/HeRmEz/projects/_backups/` layout.
+See `references/nested-repo-backup-bundles.md` for a concrete command template and restore verification pattern, including the user's preferred `/opt/data/HeRmEz/projects/_backups/` layout. See `references/nested-repo-submodules-and-backup-cache-hygiene.md` when the user explicitly wants nested repos to remain live submodules and when backup scripts need cache/runtime exclusions.
 
 For broader imports of many unfinished legacy folders into the private workspace, use `references/legacy-project-imports.md` and treat the work as a secure migration: inventory, ignore runtime artifacts, remove nested git internals, secret-scan, create a deployment URL tracker, then commit/push.
 
@@ -380,6 +382,8 @@ For broader imports of many unfinished legacy folders into the private workspace
 - Do not assume `git add projects/foo/` is a safe backup if `projects/foo` is itself a Git repo; it can become submodule-like or miss the intended history.
 - A bundle captures committed Git history, not dirty working tree changes. If the child repo has uncommitted changes, commit them in the child first or explicitly tell the user what is not captured.
 - Do not bundle or track secrets, local SQLite DBs, uploaded media, caches, or environment files unless the user explicitly asks for a full machine/runtime snapshot and approves the security implications.
+- If a parent backup push is rejected for large `.hermes`/cache/runtime files, do not push harder or add Git LFS by default. Remove those artifacts from the index with `git rm --cached`, add ignore/exclude rules, verify no staged additions exceed 50MB, then recommit and rerun the backup script.
+- When converting existing nested worktrees to submodules, do not just edit `.gitmodules`; stage the child path as a gitlink and run `git submodule absorbgitdirs` so clones understand the submodule relationship.
 
 ## 9. Importing Legacy Project Collections into a Workspace
 

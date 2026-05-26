@@ -12,6 +12,8 @@ All deployable project folders now have a public Vercel URL verified with anonym
 
 See the complete verified URL list: [`DEPLOY_FINAL_URLS.md`](./DEPLOY_FINAL_URLS.md).
 
+Full project review sheet with tech stacks, legacy-modernization notes, consumer-psychology UX recommendations, and verified Vercel URLs: [`PROJECT_REVIEW_SHEET.md`](./PROJECT_REVIEW_SHEET.md) / [`PROJECT_REVIEW_SHEET.csv`](./PROJECT_REVIEW_SHEET.csv). Standing review goal: [`PROJECT_REVIEW_GOAL.md`](./PROJECT_REVIEW_GOAL.md).
+
 ## Vercel manual testing tracker
 
 Use this table as the single place to record Vercel preview/production URLs as projects are completed and deployed. Add notes after each manual test pass.
@@ -26,7 +28,7 @@ Use this table as the single place to record Vercel preview/production URLs as p
 | CloudAutomation | Needs triage | — | — | — |
 | coding-school-platform | Needs triage | — | — | — |
 | Codology | Redeployed frontend + API / Basic 13 no-login leaderboard flow | https://codology-ky38h3a53-itmeansbigmountains-projects.vercel.app | https://codology-three.vercel.app; API: https://codology-api.vercel.app/api/highscores | Frontend and API return anonymous HTTP 200. Login is removed. Game now reviews the Basic 13 in Python + JavaScript with code-card visuals instead of broken image assets; players enter a name after the game and submit to the leaderboard. API highscores run in demo-mode memory unless durable score storage is added. |
-| CombatAtlas | Needs triage | — | — | — |
+| CombatAtlas | Complete React/Vite drill atlas / publicly accessible | https://combatatlas-kogc89o9c-itmeansbigmountains-projects.vercel.app | https://combatatlas-flame.vercel.app | Full martial arts drill database: 22 arts, 882 searchable drills, art exploration, safety/contact/equipment filters, optional Wikipedia/Wikidata/Wikimedia/Kaggle/BJJ import hooks. Anonymous HTTP/browser checks return 200. |
 | consumer-advocate-app | Needs triage | — | — | — |
 | honda-tech-upgrade | Needs triage | — | — | — |
 | journal-ai | Needs triage | — | — | — |

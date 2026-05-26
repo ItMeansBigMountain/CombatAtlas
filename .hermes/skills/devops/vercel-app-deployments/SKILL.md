@@ -102,10 +102,12 @@ When the user says they need **all projects deployed now** and Vercel credential
 
 - Existing `package.json` apps: build/deploy the app or obvious frontend subdir.
 - Plan-only/script/archive folders: create honest static Vite/React **review shells** under `_vercel_mvp/<project>` and deploy those.
+- For static Vite/React review shells, always include a local `vercel.json` with `buildCommand: "npm run build"`, `outputDirectory: "dist"`, and `framework: "vite"`. This prevents linked/existing Vercel projects with stale settings from expecting an old `build` output directory and returning 404/build failures.
 - Verify anonymous HTTP access for each URL and write a durable report such as `DEPLOY_ALL_REPORT.md`.
+- If only a few URLs fail after the bulk pass, create a small `_vercel_mvp_fix/<project>` shell with explicit `vercel.json`, redeploy those targets, then re-run HTTP verification across the whole URL table.
 - Run the long pass in a background process with completion notification, then update README/triage trackers.
 
-See `references/bulk-deploy-all-static-review-shells.md` for the detailed pattern and pitfalls.
+See `references/bulk-deploy-all-static-review-shells.md` for the detailed pattern and pitfalls. See `references/static-review-shell-vercel-output-directory.md` for the recovery pattern when generated Vite shells deploy into linked Vercel projects whose stale settings expect a `build` output directory instead of Vite's `dist`, plus the workspace review-sheet artifacts to maintain.
 
 ## Deployment protection / 401 pattern
 
@@ -167,6 +169,10 @@ For this user's imported legacy project workspace, see `references/hermez-vercel
 ## Plan-only app reframes
 
 When a project folder is mostly README/SCOPE/PROJECT scaffolding and the user changes the product direction, treat the latest user direction as the source of truth rather than preserving the imported legacy concept. If the old folder name is misleading and no deployed external integration depends on it yet, rename the folder and update project-local docs plus workspace trackers from the new path. Prefer a static Vercel-ready MVP using public/no-key APIs and browser-only logic before adding accounts, databases, or paid API keys. See `references/plan-only-app-reframes.md` for the detailed reframe workflow and pitfalls.
+
+## Static data-atlas apps with optional enrichers
+
+When the user asks for a complete searchable/explorable database app but the desired domain has no reliable all-in-one public API, ship a credential-free bundled seed atlas first and make APIs import-time enrichers rather than runtime blockers. Add tests for data shape/search, create no-key import scripts where possible, include rate-limit fallbacks for public APIs, and clearly document seed coverage plus future licensed/keyed enrichers. See `references/static-data-atlas-with-api-ready-imports.md` for the CombatAtlas-derived pattern.
 
 ## Project decommission / deletion workflow
 

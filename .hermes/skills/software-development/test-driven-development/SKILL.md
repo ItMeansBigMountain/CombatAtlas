@@ -326,6 +326,18 @@ Bug found? Write failing test reproducing it. Follow TDD cycle. The test proves 
 
 Never fix bugs without a test.
 
+## Customer Experience Regression Tests
+
+For customer-facing redesigns, add a small automated test that encodes the user's UX correction before changing the UI. Useful assertions include:
+
+- The public UI contains the simplified primary action/copy the user requested (for example a universal search placeholder).
+- Developer/internal copy is absent from customer-facing source (`API`, `Vercel`, `seed`, `developer`, `credentials`, `source panel`, etc.) unless the product is for developers.
+- Core navigation helpers exist for the new information architecture (for example universal search across top-level objects and child items).
+- Media helpers produce non-empty `imageUrl`/`imageAlt` values for every customer-visible card/detail.
+- External enrichment links resolve to safe, customer-facing search/result URLs when exact licensed assets are unavailable.
+
+Keep these tests behavior-focused. Do not overfit to class names or DOM structure; test the public promise and durable content constraints.
+
 ## Testing Anti-Patterns
 
 - **Testing mock behavior instead of real behavior** — mocks should verify interactions, not replace the system under test

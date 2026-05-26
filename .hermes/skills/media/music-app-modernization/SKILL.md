@@ -102,8 +102,10 @@ Prioritize these for broad consumer value:
 11. Add a durable profile and manual song-scanner layer alongside provider playlists:
    - profile card with connected providers and provider avatar/meme fallback,
    - public or logged-in `/analyze-song` flow that accepts YouTube URLs or song names,
-   - shared cached analysis infrastructure for manual song scans and playlist item scans.
-   - See `references/musicai-profile-meme-and-song-analysis.md`.
+   - for MusicAI, preserve the legacy lyrics-first pipeline where possible: resolve song/artist, fetch lyrics through Genius or a fallback lyrics API, run lyrics through Watson NLU, and expose legacy frequency buckets for topics/entities/keywords/concepts/subjects/relations,
+   - shared cached analysis infrastructure for manual song scans and playlist item scans,
+   - analyzer normalization that keeps sparse song-title scans from caching/rendering all-zero emotion bars.
+   - See `references/musicai-profile-meme-and-song-analysis.md`, `references/musicai-short-title-analysis-normalization.md`, and `references/musicai-lyrics-first-watson-insights.md`.
 12. Add consumer-facing insights before complex automation:
    - music personality
    - mood over time
@@ -130,7 +132,7 @@ Move away from old Bootstrap landing pages toward a modern consumer dashboard:
 
 - Lead with provider-neutral positioning: track the mood, feel, and vibe of playlists/listening across multiple music vendors, then explain what the user's taste says about them.
 - Keep a no-login lyric/text analyzer visible as the primary frictionless demo if the legacy app already has one.
-- Keep a single-song analyzer available for users who want to paste a YouTube URL or type a song name and scan songs one by one; share cache logic with playlist analysis.
+- Keep a single-song analyzer available for users who want to paste a YouTube URL or type a song name and scan songs one by one; share cache logic with playlist analysis. For MusicAI, this should be lyrics-first when possible: fetch lyrics, run Watson NLU, and show topics/entities/keywords/concepts/subjects/relations rather than only title metadata.
 - Treat profiles as part of the core product: show provider connections, account identity, and a profile picture. Use provider avatars when available, but preserve the fun meme-generator fallback so profiles do not feel empty.
 - Dark/music-forward visual system with album-art gradients.
 - Provider connection cards.
@@ -161,6 +163,8 @@ Move away from old Bootstrap landing pages toward a modern consumer dashboard:
 - For MusicAI YouTube auth, durable token storage is not enough if Flask uses a non-permanent browser session. Set a permanent session for the internal account ID, store/refresh Google token expiry metadata in the durable token store, and call a refresh guard from dashboard/playlist routes. See `references/musicai-persistent-youtube-auth.md`.
 - For MusicAI profiles, do not remove the funny meme-generator experience during modernization. Use provider profile images when present, but fall back to a generated meme/avatar if no image is available or the external meme API fails.
 - For MusicAI manual analysis, keep a direct `/analyze-song` style flow that accepts YouTube URLs or plain song names, analyzes one song at a time, and reuses the same cache/analyzer infrastructure as playlist item scans. See `references/musicai-profile-meme-and-song-analysis.md`.
+- For MusicAI song analysis, do not regress from the legacy lyrics→Watson behavior to title-only metadata scans. Resolve artist/title, fetch lyrics via Genius and a fallback lyrics API when needed, run the lyric text through Watson, expose the legacy topic/entity/keyword/concept/subject/relation frequency buckets, and clearly label any metadata-only fallback. See `references/musicai-lyrics-first-watson-insights.md`.
+- For MusicAI song-title or playlist-item analysis, do not treat a successfully rendered page as proof the analyzer worked. Assert non-zero/meaningful emotion payloads; short titles can make Watson omit optional fields and can otherwise cache all-zero fallback rows. Normalize sparse title analysis and bump the analyzer cache version after fixing. See `references/musicai-short-title-analysis-normalization.md`.
 - A `/healthz` boolean that only checks whether an API key is present is not proof the provider works. For MusicAI, verify Watson with a real `/api/analyze-text` POST; if the key is invalid, keep the no-login demo alive with a transparent local fallback and document that Watson credentials need rotation/fix.
 - In legacy projects, preserve existing line endings such as CRLF where practical to avoid noisy diffs.
 - If a repo already has unrelated uncommitted changes, avoid committing modernization work until the user approves or the changes can be cleanly separated.
@@ -180,3 +184,5 @@ Move away from old Bootstrap landing pages toward a modern consumer dashboard:
 - `references/youtube-playlist-analysis-cache.md` — implement per-song YouTube playlist analysis, playlist-level aggregation, and durable cache keys to avoid repeated Watson/LLM analyzer calls.
 - `references/musicai-persistent-youtube-auth.md` — persistent Flask app sessions plus Google/YouTube access-token refresh using durable encrypted provider-token storage.
 - `references/musicai-profile-meme-and-song-analysis.md` — profile/provider connection card, meme-avatar fallback, manual `/analyze-song` flow, shared cache strategy, and verification checklist.
+- `references/musicai-short-title-analysis-normalization.md` — prevent short song-title scans and stale cached fallback rows from rendering all-zero emotion fields; includes Watson optional-field parsing and regression checks.
+- `references/musicai-lyrics-first-watson-insights.md` — restore/preserve MusicAI's legacy lyrics-first analysis pipeline: Genius/fallback lyrics API → Watson NLU → emotion/topic/entity/keyword/concept/subject/relation UI and verification checks.

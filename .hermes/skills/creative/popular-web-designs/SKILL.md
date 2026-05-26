@@ -199,6 +199,30 @@ those carry more visual identity than the specific font face.
 | `spotify.md` | Spotify | Vibrant green on dark, bold type, album-art-driven |
 | `uber.md` | Uber | Bold black and white, tight type, urban energy |
 
+## Customer-facing simplification pattern
+
+When a user says the UI is cluttered, jumbled, too data-heavy, or too developer-facing, apply the `references/customer-facing-minimal-apps.md` pattern before choosing visual flourishes:
+
+- Put the user's primary action first (often one universal search bar).
+- Show a clean primary object list on the landing page.
+- Use progressive disclosure: landing → selected object → detail view.
+- Remove customer-visible implementation language such as API readiness, Vercel, seed data, import hooks, credentials, developer panels, or source notes.
+- Keep cards low-density: image, title, one short supporting line.
+- Verify in-browser that media loads; if remote images break, use bundled/static/generated fallback illustrations rather than shipping broken alt-text boxes.
+
+## Customer Product Simplification Pattern
+
+When a user says a page is cluttered, jumbled, or “too much data,” simplify before adding visual polish:
+
+1. **Reduce the first screen to one primary action** — usually a search bar, picker, or CTA.
+2. **Hide developer-facing content** from public/customer pages: API readiness, seed database counts, deployment notes, source panels, implementation caveats, and technical filters belong in docs/admin screens, not the customer UI.
+3. **Use progressive disclosure** — landing page → category/detail list → focused detail page. Avoid showing all filters, data, stats, and details on one screen.
+4. **Prefer customer language** (“Watch a demonstration,” “Choose a martial art”) over implementation language (“external sources,” “Vercel build,” “seed drills”).
+5. **Media must actually render** — if remote stock image providers fail or are unreliable, use local/generated SVG placeholders or bundled assets rather than broken image alt text.
+6. **Verify visually after simplification** with browser/screenshot inspection, checking for broken images, awkward wrapping, and whether the page still feels calm.
+
+Good default for searchable catalog apps: brand + universal search bar + simple category cards on the homepage; category pages list items; item pages contain instructions/media/actions.
+
 ## Choosing a Design
 
 Match the design to the content:
