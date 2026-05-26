@@ -13,3 +13,7 @@
 - `RTS-JS-ChatRooms/PRODUCT_DIRECTION.md`
 - `social-media-analysis/DATA_FREEDOM_DIRECTION.md`
 - `WebCrawl/DATA_FREEDOM_DIRECTION.md`
+- `social-media-analysis/PRODUCT_DIRECTION.md`
+- `tweetBetweenTheLines/MERGE_INTO_SOCIAL_MEDIA_ANALYSIS.md`
+- `twitter-therapy-app/MERGE_INTO_SOCIAL_MEDIA_ANALYSIS.md`
+- `wutHappened/PRODUCT_DIRECTION.md`

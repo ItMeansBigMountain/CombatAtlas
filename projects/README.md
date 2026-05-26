@@ -46,7 +46,7 @@ Use this table as the single place to record Vercel preview/production URLs as p
 | RTS-JS-ChatRooms | Needs triage | — | — | — |
 | scraper-project | Needs triage | — | — | — |
 | sleep-dream-app | Needs triage | — | — | — |
-| social-media-analysis | Needs triage | — | — | — |
+| social-media-analysis | Merge target / product direction set | https://social-media-analysis-five.vercel.app | — | Personal presence intelligence app combining social imports, uploaded user data archives, topic/mood/sentiment/communication insights, tweetBetweenTheLines, and twitter-therapy-app. |
 | stockNews | Deployed / needs manual browser review | https://stock-news-frontend-norfaejlp-itmeansbigmountains-projects.vercel.app | https://stocknews-sentiment.vercel.app | Angular demo dashboard uses local browser portfolio storage and calls Django API at https://stocknews-api.vercel.app for latest Yahoo Finance RSS + heuristic sentiment. |
 | store-code-content-studio | Needs triage | — | — | — |
 | survey-analytics-website | Needs triage | — | — | — |
@@ -57,11 +57,11 @@ Use this table as the single place to record Vercel preview/production URLs as p
 | tournament-wager-app | Needs triage | — | — | — |
 | tutoring.Repl | Needs triage | — | — | — |
 | tweet_video_generator | Needs triage | — | — | — |
-| tweetBetweenTheLines | Needs triage | — | — | — |
-| twitter-therapy-app | Needs triage | — | — | — |
+| tweetBetweenTheLines | Merge into social-media-analysis | https://tweetbetweenthelines.vercel.app | — | Keep Twitter/X parsing, topic, trend, and mood scripts as import modules. |
+| twitter-therapy-app | Merge into social-media-analysis | https://twitter-therapy-app.vercel.app | — | Keep reflection and non-diagnostic mental-health-adjacent insight layer. |
 | watsonAI | Needs triage | — | — | — |
 | WebCrawl | Needs triage | — | — | — |
-| wutHappened | Needs triage | — | — | — |
+| wutHappened | Product direction set | https://wuthappened.vercel.app | — | Portfolio-aware news intelligence: import holdings and explain relevant stock/news/sentiment changes. |
 
 ## Already deployed legacy URLs found
 
