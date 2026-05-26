@@ -7,7 +7,6 @@ Updated: 2026-05-25T06:00:55+00:00
 | `3d-react-web` | existing app | 200 | https://3d-react-web.vercel.app |
 | `addictive-mobile-games` | static MVP shell | 200 | https://addictive-mobile-games.vercel.app |
 | `api.requests` | static MVP shell | 200 | https://api-requests-one.vercel.app |
-| `bitcoin-bike-startup` | static MVP shell | 200 | https://bitcoin-bike-startup.vercel.app |
 | `card-intel-scanner` | existing app | 200 | https://card-intel-scanner.vercel.app |
 | `cellphone_scripts` | static MVP shell | 200 | https://cellphonescripts.vercel.app |
 | `CloudAutomation` | static MVP shell | 200 | https://cloudautomation.vercel.app |

@@ -23,7 +23,7 @@ Use this table as the single place to record Vercel preview/production URLs as p
 | 3d-react-web | Redeployed / publicly accessible | https://3d-react-2ghv4m4c9-itmeansbigmountains-projects.vercel.app | https://3d-react-web.vercel.app | Build passes; anonymous HTTP check returns 200 for production and alias. Browser visual review still pending because Chrome is not installed in this container. |
 | addictive-mobile-games | Needs triage | — | — | — |
 | api.requests | Needs triage | — | — | — |
-| bitcoin-bike-startup | Needs triage | — | — | — |
+| az204 | Active study/reference repo | local clone | https://github.com/ItMeansBigMountain/az204 | AZ-204 certification practice repo; Function App lab reviewed for daily portfolio reporting architecture. |
 | cellphone_scripts | Needs triage | — | — | — |
 | CloudAutomation | Needs triage | — | — | — |
 | coding-school-platform | Needs triage | — | — | — |
@@ -42,6 +42,7 @@ Use this table as the single place to record Vercel preview/production URLs as p
 | policy-pit-app | Needs triage | — | — | — |
 | portfolio-sentiment-subscription-app | Needs triage | — | — | — |
 | robinhood-email-reports | Needs triage | — | — | — |
+| robinhood-daily-portfolio-report | New standalone repo scaffold | local / GitHub | https://github.com/ItMeansBigMountain/robinhood-daily-portfolio-report | Lightweight daily portfolio report generator created after reviewing az204 Function App pattern. |
 | RTS-JS-ChatRooms | Needs triage | — | — | — |
 | scraper-project | Needs triage | — | — | — |
 | sleep-dream-app | Needs triage | — | — | — |

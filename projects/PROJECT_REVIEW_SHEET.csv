@@ -3,7 +3,6 @@ Project,Classification,Tech stack,Live Vercel URL,HTTP now,Modernization / consu
 addictive-mobile-games,Plan/spec folder with static review shell,Static Vercel review shell / product plan,https://addictive-mobile-games.vercel.app,200,Convert shell into focused MVP with one high-friction user outcome
 algos,Legacy scripts/archive or docs,Legacy files/scripts,https://algos-beta.vercel.app,200,Wrap reusable scripts in a guided web UI/API; isolate credentials and rate limits
 api.requests,Legacy scripts/archive or docs,Legacy files/scripts,https://api-requests-one.vercel.app,200,Wrap reusable scripts in a guided web UI/API; isolate credentials and rate limits
-bitcoin-bike-startup,Plan/spec folder with static review shell,Static Vercel review shell / product plan,https://bitcoin-bike-startup.vercel.app,200,Convert shell into focused MVP with one high-friction user outcome
 card-intel-scanner,Vite/React app,"React, Vite, Vite React, TypeScript, Tesseract OCR",https://card-intel-scanner.vercel.app,200,"Audit dependencies, add smoke tests, improve mobile UX hierarchy and empty states"
 cellphone_scripts,Legacy scripts/archive or docs,Static Vercel review shell / product plan,https://cellphonescripts.vercel.app,200,Wrap reusable scripts in a guided web UI/API; isolate credentials and rate limits
 CloudAutomation,Legacy scripts/archive or docs,Legacy files/scripts,https://cloudautomation.vercel.app,200,Wrap reusable scripts in a guided web UI/API; isolate credentials and rate limits

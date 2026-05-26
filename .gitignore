@@ -69,3 +69,7 @@
 
 # Imported raw aggregate archive; active project copies live in top-level /projects folders
 /projects/legacy-src/
+
+# Nested standalone Git repos managed separately
+/projects/az204/
+/projects/robinhood-daily-portfolio-report/

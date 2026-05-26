@@ -1,8 +1,8 @@
 # Project Review Sheet
 
-Updated: 2026-05-25T05:58:56+00:00
+Updated: 2026-05-25T12:50:00+00:00
 
-This sheet inventories every top-level project folder, its detected tech stack, current live Vercel review URL, and modernization opportunities with a consumer-psychology lens.
+This sheet inventories active top-level project folders, its detected tech stack, current live Vercel review URL, and modernization opportunities with a consumer-psychology lens.
 
 | Project | Classification | Tech stack | Live Vercel URL | HTTP now | Modernization / smoother-functionality opportunities |
 |---|---|---|---|---:|---|
@@ -10,7 +10,7 @@ This sheet inventories every top-level project folder, its detected tech stack, 
 | `addictive-mobile-games` | Plan/spec folder with static review shell | Static Vercel review shell / product plan | https://addictive-mobile-games.vercel.app | 200 | Convert shell into focused MVP with one high-friction user outcome |
 | `algos` | Legacy scripts/archive or docs | Legacy files/scripts | https://algos-beta.vercel.app | 200 | Wrap reusable scripts in a guided web UI/API; isolate credentials and rate limits |
 | `api.requests` | Legacy scripts/archive or docs | Legacy files/scripts | https://api-requests-one.vercel.app | 200 | Wrap reusable scripts in a guided web UI/API; isolate credentials and rate limits |
-| `bitcoin-bike-startup` | Plan/spec folder with static review shell | Static Vercel review shell / product plan | https://bitcoin-bike-startup.vercel.app | 200 | Convert shell into focused MVP with one high-friction user outcome |
+| `az204` | Azure certification lab repo | Azure Functions, App Service, Containers, Terraform, GitHub Actions | local only | n/a | Study repo for AZ-204 and future cloud architect path; Function App daily portfolio pattern reviewed for Robinhood report project. |
 | `card-intel-scanner` | Vite/React app | React, Vite, Vite React, TypeScript, Tesseract OCR | https://card-intel-scanner.vercel.app | 200 | Audit dependencies, add smoke tests, improve mobile UX hierarchy and empty states |
 | `cellphone_scripts` | Legacy scripts/archive or docs | Static Vercel review shell / product plan | https://cellphonescripts.vercel.app | 200 | Wrap reusable scripts in a guided web UI/API; isolate credentials and rate limits |
 | `CloudAutomation` | Legacy scripts/archive or docs | Legacy files/scripts | https://cloudautomation.vercel.app | 200 | Wrap reusable scripts in a guided web UI/API; isolate credentials and rate limits |
@@ -36,6 +36,7 @@ This sheet inventories every top-level project folder, its detected tech stack, 
 | `policy-pit-app` | Plan/spec folder with static review shell | Static Vercel review shell / product plan | https://policy-pit-app.vercel.app | 200 | Convert shell into focused MVP with one high-friction user outcome |
 | `portfolio-sentiment-subscription-app` | Plan/spec folder with static review shell | Static Vercel review shell / product plan | https://portfolio-sentiment-subscription-ap.vercel.app | 200 | Convert shell into focused MVP with one high-friction user outcome |
 | `robinhood-email-reports` | Plan/spec folder with static review shell | Static Vercel review shell / product plan | https://robinhood-email-reports.vercel.app | 200 | Convert shell into focused MVP with one high-friction user outcome |
+| `robinhood-daily-portfolio-report` | New standalone repo | Python, local JSON portfolio reports, future Azure Functions | GitHub repo | n/a | New lightweight portfolio-report repo created from AZ204 Function App lessons; next: market data/email automation. |
 | `RTS-JS-ChatRooms` | Python/Flask/scripts | Flask | https://rts-js-chatrooms.vercel.app | 200 | Harden OAuth callbacks, add public health/demo mode, durable token storage; Wrap reusable scripts in a guided web UI/API; isolate credentials and rate limits |
 | `school` | Legacy scripts/archive or docs | Legacy files/scripts | https://school-plum-beta.vercel.app | 200 | Wrap reusable scripts in a guided web UI/API; isolate credentials and rate limits |
 | `scraper-project` | Plan/spec folder with static review shell | Static Vercel review shell / product plan | https://scraper-project-five.vercel.app | 200 | Convert shell into focused MVP with one high-friction user outcome |

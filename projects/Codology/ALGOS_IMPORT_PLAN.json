@@ -1,0 +1,1205 @@
+{
+  "sourceRepo": "/opt/data/HeRmEz/projects/algos",
+  "branches": [
+    "java",
+    "main",
+    "pi",
+    "school"
+  ],
+  "exerciseCount": 112,
+  "exercises": [
+    {
+      "title": "Linked List",
+      "sourcePath": "FreeCodeCamp/LinkedList.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Merge Sort",
+      "sourcePath": "FreeCodeCamp/MergeSort.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Binary Search",
+      "sourcePath": "FreeCodeCamp/binary_search.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Linear Search",
+      "sourcePath": "FreeCodeCamp/linear_search.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Recursive Binary Search",
+      "sourcePath": "FreeCodeCamp/recursiveBinarySearch.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Affans Selection Sort",
+      "sourcePath": "affansSelectionSort.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Append List",
+      "sourcePath": "appendList.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Binary Search",
+      "sourcePath": "binarySearch.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Bubble Sort",
+      "sourcePath": "bubbleSort.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Complete Word",
+      "sourcePath": "completeWord.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Factorials",
+      "sourcePath": "factorials.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Homework March",
+      "sourcePath": "homeworkMarch.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Insertion Sort",
+      "sourcePath": "insertionSort.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Linear Search",
+      "sourcePath": "linearSearch.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Longest Common Prefix",
+      "sourcePath": "longestCommonPrefix.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Merge Sort",
+      "sourcePath": "mergeSort.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Pi",
+      "sourcePath": "pi.py",
+      "branches": [
+        "pi"
+      ],
+      "language": "py",
+      "category": "algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Recursive Addition",
+      "sourcePath": "recursiveAddition.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Recursive Binary Search",
+      "sourcePath": "recursiveBinarySearch.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Recursive Multiplication",
+      "sourcePath": "recursiveMultiplication.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Selection Sort",
+      "sourcePath": "selectionSort.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Shell Sort",
+      "sourcePath": "shellSort.py",
+      "branches": [
+        "school"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "algos repo"
+    },
+    {
+      "title": "Check For Even",
+      "sourcePath": "genSpark/section2/CheckForEven.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Check For Palindrome",
+      "sourcePath": "genSpark/section2/CheckForPalindrome.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Checking A Grade",
+      "sourcePath": "genSpark/section2/CheckingAGrade.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Counter For Loop",
+      "sourcePath": "genSpark/section2/CounterForLoop.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "First And Last",
+      "sourcePath": "genSpark/section2/FirstAndLast.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Fizz Buzz Baz",
+      "sourcePath": "genSpark/section2/FizzBuzzBaz.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Human Goblin",
+      "sourcePath": "genSpark/section2/HumanGoblin.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Increment While Loop",
+      "sourcePath": "genSpark/section2/IncrementWhileLoop.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Lesser Number",
+      "sourcePath": "genSpark/section2/LesserNumber.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Longest String",
+      "sourcePath": "genSpark/section2/LongestString.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Max Number",
+      "sourcePath": "genSpark/section2/MaxNumber.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Mean Median",
+      "sourcePath": "genSpark/section2/MeanMedian.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Reverse A String For Loop",
+      "sourcePath": "genSpark/section2/ReverseAStringForLoop.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Reverse A String While Loop",
+      "sourcePath": "genSpark/section2/ReverseAStringWhileLoop.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Reverse An Integer",
+      "sourcePath": "genSpark/section2/ReverseAnInteger.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Switch It Up",
+      "sourcePath": "genSpark/section2/SwitchItUp.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Triple Shot",
+      "sourcePath": "genSpark/section2/TripleShot.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Triple Shot Again",
+      "sourcePath": "genSpark/section2/TripleShotAgain.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Type Conversion",
+      "sourcePath": "genSpark/section2/TypeConversion.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Divide By Zero",
+      "sourcePath": "genSpark/section3/DivideByZero.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Index Out Bounds",
+      "sourcePath": "genSpark/section3/IndexOutBounds.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Parsing An Integer",
+      "sourcePath": "genSpark/section3/ParsingAnInteger.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Anagram Computation",
+      "sourcePath": "genSpark/section4/AnagramComputation.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Array Contains Number",
+      "sourcePath": "genSpark/section4/ArrayContainsNumber.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Factorial Computation",
+      "sourcePath": "genSpark/section4/FactorialComputation.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Find Max Min Array",
+      "sourcePath": "genSpark/section4/FindMaxMinArray.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Find Missing Integer",
+      "sourcePath": "genSpark/section4/FindMissingInteger.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Find Sublist From Range",
+      "sourcePath": "genSpark/section4/FindSublistFromRange.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Insert Element Array List",
+      "sourcePath": "genSpark/section4/InsertElementArrayList.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Iterate Through Array List",
+      "sourcePath": "genSpark/section4/IterateThroughArrayList.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Retrieve Specified Element",
+      "sourcePath": "genSpark/section4/RetrieveSpecifiedElement.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Reverse Array List",
+      "sourcePath": "genSpark/section4/ReverseArrayList.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Reverse Positive Integer",
+      "sourcePath": "genSpark/section4/ReversePositiveInteger.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Sum The Array",
+      "sourcePath": "genSpark/section4/SumTheArray.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Update Specific Element",
+      "sourcePath": "genSpark/section4/UpdateSpecificElement.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Add One To Array List",
+      "sourcePath": "genSpark/section5/AddOneToArrayList.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Anagram With Sets",
+      "sourcePath": "genSpark/section5/AnagramWithSets.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Count Duplicates With Map",
+      "sourcePath": "genSpark/section5/CountDuplicatesWithMap.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Create A Human",
+      "sourcePath": "genSpark/section5/CreateAHuman.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Delete Middle Of Stack",
+      "sourcePath": "genSpark/section5/DeleteMiddleOfStack.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Even After Odds",
+      "sourcePath": "genSpark/section5/EvenAfterOdds.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Find Missing Nums",
+      "sourcePath": "genSpark/section5/FindMissingNums.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Last Index Found",
+      "sourcePath": "genSpark/section5/LastIndexFound.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Map Return Keys",
+      "sourcePath": "genSpark/section5/MapReturnKeys.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Max Sub Array",
+      "sourcePath": "genSpark/section5/MaxSubArray.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Nth Row Pascal",
+      "sourcePath": "genSpark/section5/NthRowPascal.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Organize The Stack",
+      "sourcePath": "genSpark/section5/OrganizeTheStack.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Parenthesis Balance",
+      "sourcePath": "genSpark/section5/ParenthesisBalance.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Queue Hot Dog Stand",
+      "sourcePath": "genSpark/section5/QueueHotDogStand.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Remove Duplicates From Array",
+      "sourcePath": "genSpark/section5/RemoveDuplicatesFromArray.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Retrieve Value From Given Key",
+      "sourcePath": "genSpark/section5/RetrieveValueFromGivenKey.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Reverse String Stack",
+      "sourcePath": "genSpark/section5/ReverseStringStack.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Set Contains Letter",
+      "sourcePath": "genSpark/section5/SetContainsLetter.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Sort Array List Ascending",
+      "sourcePath": "genSpark/section5/SortArrayListAscending.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Sort Array List Descending",
+      "sourcePath": "genSpark/section5/SortArrayListDescending.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Filter Map",
+      "sourcePath": "genSpark/section7/FilterMap.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Increment The Data",
+      "sourcePath": "genSpark/section7/IncrementTheData.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Map Reduce",
+      "sourcePath": "genSpark/section7/MapReduce.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Query The File",
+      "sourcePath": "genSpark/section7/QueryTheFile.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Remove Odds From Array",
+      "sourcePath": "genSpark/section7/RemoveOddsFromArray.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Remove The Odd Balls",
+      "sourcePath": "genSpark/section7/RemoveTheOddBalls.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Reverse A String Reduce",
+      "sourcePath": "genSpark/section7/ReverseAStringReduce.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Squaring An Array",
+      "sourcePath": "genSpark/section7/SquaringAnArray.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Sum An Array",
+      "sourcePath": "genSpark/section7/SumAnArray.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "genSpark curriculum"
+    },
+    {
+      "title": "Frequency Counter",
+      "sourcePath": "leetCode/FrequencyCounter.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "leetCode practice"
+    },
+    {
+      "title": "Roman To  I N T",
+      "sourcePath": "leetCode/Roman_to_INT.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "leetCode practice"
+    },
+    {
+      "title": "Valid Brackets",
+      "sourcePath": "leetCode/ValidBrackets.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "leetCode practice"
+    },
+    {
+      "title": "Longest Common Prefix",
+      "sourcePath": "leetCode/longestCommonPrefix.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "leetCode practice"
+    },
+    {
+      "title": "Most Frequent I N T",
+      "sourcePath": "leetCode/mostFrequentINT.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "leetCode practice"
+    },
+    {
+      "title": "No N E Warr S W A P",
+      "sourcePath": "leetCode/noNEWarrSWAP.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "leetCode practice"
+    },
+    {
+      "title": "Search",
+      "sourcePath": "leetCode/search.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "leetCode practice"
+    },
+    {
+      "title": "Sorting Arr",
+      "sourcePath": "leetCode/sortingArr.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "data-structures-algorithms",
+      "source": "leetCode practice"
+    },
+    {
+      "title": "Two Sum",
+      "sourcePath": "leetCode/twoSum.java",
+      "branches": [
+        "java",
+        "main"
+      ],
+      "language": "java",
+      "category": "algorithms",
+      "source": "leetCode practice"
+    },
+    {
+      "title": "Affans Selection Sort",
+      "sourcePath": "school/affansSelectionSort.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Append List",
+      "sourcePath": "school/appendList.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Binary Search",
+      "sourcePath": "school/binarySearch.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Bubble Sort",
+      "sourcePath": "school/bubbleSort.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Complete Word",
+      "sourcePath": "school/completeWord.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Factorials",
+      "sourcePath": "school/factorials.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Homework March",
+      "sourcePath": "school/homeworkMarch.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Insertion Sort",
+      "sourcePath": "school/insertionSort.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Linear Search",
+      "sourcePath": "school/linearSearch.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Longest Common Prefix",
+      "sourcePath": "school/longestCommonPrefix.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Merge Sort",
+      "sourcePath": "school/mergeSort.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Pi",
+      "sourcePath": "school/pi.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Recursive Addition",
+      "sourcePath": "school/recursiveAddition.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Recursive Binary Search",
+      "sourcePath": "school/recursiveBinarySearch.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Recursive Multiplication",
+      "sourcePath": "school/recursiveMultiplication.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Selection Sort",
+      "sourcePath": "school/selectionSort.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "school exercises"
+    },
+    {
+      "title": "Shell Sort",
+      "sourcePath": "school/shellSort.py",
+      "branches": [
+        "main"
+      ],
+      "language": "py",
+      "category": "data-structures-algorithms",
+      "source": "school exercises"
+    }
+  ]
+}
