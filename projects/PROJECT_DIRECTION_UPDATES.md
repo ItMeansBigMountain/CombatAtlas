@@ -19,3 +19,5 @@
 - `wutHappened/PRODUCT_DIRECTION.md`
 - `coding-school-platform/CODERSCHOOL_CRM_RESEARCH_AND_PLAN.md`
 - `coding-school-platform/docs/plans/2026-05-26-coding-school-crm.md`
+- `stockNews/PRODUCT_DIRECTION.md`
+- `wutHappened/MERGE_INTO_STOCKNEWS.md`

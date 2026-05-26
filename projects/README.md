@@ -104,3 +104,9 @@ Credential status / missing tokens: [`CREDENTIALS_STATUS.md`](./CREDENTIALS_STAT
 - The old `legacy-projects` source folder was root-owned in this environment, so its contents were copied into this workspace instead of deleted from the original location.
 - Local `.env` files and nested `.git` internals are ignored by the HeRmEz parent repo and should not be committed.
 - Cox Elementary PTA is tracked separately and deployed on Render, not Vercel.
+
+
+## Recent consolidation notes
+
+- `stockNews` is the active merged project for `stockNews` + `wutHappened`; see `stockNews/PRODUCT_DIRECTION.md`.
+- `wutHappened` is now a merge/source archive; see `wutHappened/MERGE_INTO_STOCKNEWS.md`.

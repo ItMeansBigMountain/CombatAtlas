@@ -136,11 +136,13 @@ This application allows users to log in, manage their stock portfolio, and get s
    - Prepare for deployment to cloud services
    - Create documentation for setup and usage
 
+## Consolidation Note
+`stockNews` and `wutHappened` are the same project. Treat `stockNews` as the active deployed codebase and `wutHappened` as a merge/source archive for portfolio-aware news explanation, daily recap, and generated script/video ideas. See `PRODUCT_DIRECTION.md`.
+
 ## Integration Opportunities
 This project could integrate with:
 - Local Meeting Transcriber for analyzing transcripts of financial discussions
 - MusicAI for analyzing music industry stock sentiment
-- WattHappened for financial news aggregation
 - Coding School Platform for teaching investment concepts
 - Journal AI for analyzing investment-related journal entries
 
