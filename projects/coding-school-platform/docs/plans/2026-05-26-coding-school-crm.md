@@ -103,9 +103,51 @@ Expected: data integrity tests prove each scheduled session links to a valid tea
 
 ---
 
-### Task 4: Add AI notes parser interface
+### Task 4: Add AI entitlement and local tag parser
 
-**Objective:** Teacher can paste Zoom after-meeting notes and receive suggested tags/summary.
+**Objective:** Save API tokens by allowing only entitled accounts to use AI note extraction, while every teacher still gets fast local tag entry/parsing.
+
+**Files:**
+- Create: `src/lib/tagParser.js`
+- Create: `src/lib/aiEntitlements.js`
+- Test: `tests/tag-parser.test.js`
+- Test: `tests/ai-entitlements.test.js`
+
+**Tag parser requirements:**
+
+- Accept tags one per line.
+- Accept comma-separated tags.
+- Accept space-separated tags.
+- Accept mixed comma/newline/space input.
+- Normalize to lowercase.
+- Trim whitespace.
+- Deduplicate.
+- Preserve useful multi-word tags when entered on their own line or comma-separated, e.g. `problem solving` → `problem-solving`.
+
+**Example:**
+
+```js
+parseTags(`python, loops\nconditionals debugging\nproblem solving`)
+// ["python", "loops", "conditionals", "debugging", "problem-solving"]
+```
+
+**Entitlement requirements:**
+
+- `canUseAiNotes(account)` returns true only when the account has `ai_notes_enabled === true` and quota remains.
+- Non-entitled accounts route to local tag extraction.
+- AI output must always be human-reviewed before saving.
+
+**Acceptance criteria:**
+
+- Tests prove non-AI tag parsing handles commas, spaces, and lines.
+- Tests prove non-entitled account cannot call AI extraction path.
+- UI can display: “AI notes unavailable for this account; use tags/keyword extraction instead.”
+
+---
+
+### Task 5: Add AI notes parser interface
+
+**Objective:** Teacher can paste Zoom after-meeting notes and receive suggested tags/summary only when account entitlements allow it.
 
 **Files:**
 - Create: `src/lib/aiNoteParser.js`
@@ -114,6 +156,13 @@ Expected: data integrity tests prove each scheduled session links to a valid tea
 **Implementation:**
 
 Start deterministic/local, no API key required. Use keyword extraction and simple rules first. Later replace with LLM provider.
+
+**Provider strategy:**
+
+- Default path: local parser, free.
+- AI path: OpenRouter-compatible interface.
+- Prefer free OpenRouter models for low-value note parsing.
+- Track model failures and fall back to local parsing rather than blocking teacher check-in.
 
 **Output schema:**
 
@@ -139,7 +188,7 @@ Start deterministic/local, no API key required. Use keyword extraction and simpl
 
 ---
 
-### Task 5: Build student progress graph
+### Task 6: Build student progress graph
 
 **Objective:** Show progress by concept/tag over time.
 
@@ -160,7 +209,7 @@ Start deterministic/local, no API key required. Use keyword extraction and simpl
 
 ---
 
-### Task 6: Build parent dashboard
+### Task 7: Build parent dashboard
 
 **Objective:** Parents can see their child’s weekly notes and progress without overwhelming technical detail.
 
@@ -176,7 +225,7 @@ Start deterministic/local, no API key required. Use keyword extraction and simpl
 
 ---
 
-### Task 7: Link Codology lessons into the CRM
+### Task 8: Link Codology lessons into the CRM
 
 **Objective:** The CRM can recommend Codology practice based on tags and progress gaps.
 
@@ -193,7 +242,7 @@ Start deterministic/local, no API key required. Use keyword extraction and simpl
 
 ---
 
-### Task 8: Add admin queue and reports
+### Task 9: Add admin queue and reports
 
 **Objective:** Admin can review missing check-ins, inactive students, and progress/report health.
 
@@ -213,9 +262,9 @@ The first shippable vertical slice should be:
 1. Demo teacher login.
 2. Teacher today schedule.
 3. Click student.
-4. Paste Zoom note.
-5. AI suggests tags.
-6. Teacher saves note.
+4. Paste Zoom note or enter tags line-by-line/comma/space separated.
+5. If entitled, AI suggests tags; otherwise local parser extracts tags.
+6. Teacher reviews and saves note.
 7. Student progress graph updates.
 8. Parent dashboard shows a clean weekly summary.
 
@@ -226,4 +275,6 @@ The first shippable vertical slice should be:
 - No proprietary branding copied.
 - No real student data committed.
 - Demo data only.
-- AI extraction works without external API keys.
+- AI extraction is gated by account entitlement and quota.
+- Non-entitled accounts can still parse manual/freeform tags without external API keys.
+- AI extraction failures fall back to local tag extraction.

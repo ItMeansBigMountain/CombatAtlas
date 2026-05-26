@@ -108,7 +108,9 @@ Codology becomes the learning/practice engine. The CRM becomes the operational l
 - [ ] Attendance and after-class check-in.
 - [ ] Weekly notes to parent.
 - [ ] AI paste/upload Zoom notes parser.
-- [ ] Human-review queue for AI-extracted tags.
+- [ ] AI-note account entitlements so only approved/paid/internal accounts can spend AI tokens.
+- [ ] Non-AI tag parser supporting one-tag-per-line, comma-separated tags, space-separated tags, and local keyword extraction from notes.
+- [ ] Human-review queue for AI-extracted or locally parsed tags.
 - [ ] Tags for languages, concepts, projects, soft skills, blockers, homework, and mastery.
 - [ ] Progress graph by tags/concepts over time.
 - [ ] Points/badges/accomplishments system inspired by Coder Points.
@@ -121,9 +123,50 @@ Codology becomes the learning/practice engine. The CRM becomes the operational l
 - [ ] Admin dashboard.
 - [ ] Exportable progress report.
 
-## AI note extraction
+## AI note extraction and account gating
 
-Input examples:
+To save AI/API tokens, not every account should get full AI note extraction.
+
+### Entitlement levels
+
+- `ai_notes_enabled=true`: account can use AI-assisted Zoom/meeting-note parsing.
+- `ai_notes_enabled=false`: account gets deterministic/local tag extraction only.
+- Future: quota fields like `ai_notes_monthly_limit`, `ai_notes_used_this_month`, and `preferred_ai_provider`.
+
+### Non-AI fallback
+
+Every teacher should still be able to add tags quickly without AI:
+
+- One tag per line.
+- Comma-separated tags.
+- Space-separated tags.
+- Mixed input should be normalized into clean lowercase tags.
+- Freeform notes can still run through a local keyword/tag parser.
+
+Example inputs:
+
+```text
+python, loops, conditionals
+```
+
+```text
+python
+loops
+conditionals
+problem solving
+```
+
+```text
+python loops conditionals debugging
+```
+
+Expected normalized tags:
+
+```json
+["python", "loops", "conditionals", "debugging", "problem-solving"]
+```
+
+Input examples for AI-enabled accounts:
 
 - Pasted Zoom after-meeting notes.
 - Teacher freeform note.

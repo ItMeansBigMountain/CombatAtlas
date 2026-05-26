@@ -26,8 +26,9 @@ Build functional parity with the useful parts of a coding-school customer/teache
 - Students already assigned to teachers.
 - After-class check-in from each scheduled student session.
 - Teacher notes, attendance, homework, concepts, blockers, and confidence ratings.
-- AI parser for pasted Zoom after-meeting notes.
-- Human-reviewed AI tags for languages, concepts, skills, projects, blockers, and mastery evidence.
+- AI parser for pasted Zoom after-meeting notes, gated to entitled accounts/quotas to save API tokens.
+- Non-AI tag parser for accounts without AI access: one tag per line, comma-separated, space-separated, and local keyword extraction.
+- Human-reviewed AI/local tags for languages, concepts, skills, projects, blockers, and mastery evidence.
 - Parent dashboard with weekly notes and plain-English progress.
 - Student dashboard with accomplishments, learning journey, projects, and Codology practice.
 - Progress graph powered by tags and evidence over time.
