@@ -42,6 +42,7 @@ When the user asks for an inventory/status check across many project folders:
 4. Include operational facts only when verified: live status, stack/classification, modernization need, or recent known work.
 5. Don’t expose tokens, environment variable values, deployment logs, or secret-bearing command output in the status summary.
 6. If all URLs verify, state the aggregate once, then move directly into the bullets.
+7. If the inventory turns into project retirement, consolidation, tracker updates, or product roadmapping, switch to or also load `project-portfolio-roadmapping`; this skill covers inspection, while that one governs durable direction docs and repo/tracker changes.
 
 ## 1. Basic Summary (Most Common)
 

@@ -297,3 +297,7 @@ RUST_LOG=trace RUST_BACKTRACE=1 himalaya envelope list
 - Message IDs are relative to the current folder; re-list after folder changes.
 - For composing rich emails with attachments, use MML syntax (see `references/message-composition.md`).
 - Store passwords securely using `pass`, system keyring, or a command that outputs the password.
+
+## Pitfalls & Notes
+
+- **Gmail authentication**: Himalaya uses IMAP/SMTP, which requires either an **App Password** (2FA must be enabled, then generate in Google Account → Security) or OAuth setup. A Google **service account** (`google-creds.json`) cannot be used directly with IMAP — it's designed for Google Workspace domain-wide delegation, not personal Gmail. If you have a service account and want to access personal Gmail, you need a separate OAuth client ID or App Password for IMAP.

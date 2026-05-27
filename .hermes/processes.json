@@ -28,13 +28,15 @@
     "started_at": 1779712054.7861657,
     "task_id": "default",
     "session_key": "agent:main:discord:group:1499990220077137943:219376861866754049",
-    "watcher_platform": "",
-    "watcher_chat_id": "",
-    "watcher_user_id": "",
-    "watcher_user_name": "",
+    "watcher_platform": "discord",
+    "watcher_chat_id": "1499990220077137943",
+    "watcher_user_id": "219376861866754049",
+    "watcher_user_name": "T.zdbd",
     "watcher_thread_id": "",
     "watcher_interval": 0,
     "notify_on_complete": false,
-    "watch_patterns": []
+    "watch_patterns": [
+      "Local:"
+    ]
   }
 ]

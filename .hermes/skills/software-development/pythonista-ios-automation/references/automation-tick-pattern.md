@@ -1,62 +1,75 @@
-# Pythonista Automation Tick Pattern
+# Pythonista Automation Tick Implementation Pattern
 
-Use this when a user asks for Pythonista software that is "always running", "constantly tracking", or "autonomous" on iPhone.
+Use this when the user wants “autonomous” iPhone software that tracks things without manually opening Pythonista.
 
-## Reality Check
+## Durable iOS constraint
 
-Pythonista scripts cannot run as permanent background daemons on iOS. Do not promise a 24/7 process. iOS may suspend apps quickly and background execution is limited to system-approved capabilities.
+Pythonista cannot run as a permanent silent background daemon on normal iOS. The practical architecture is a fast one-shot script launched by Siri Shortcuts Automations, URL schemes, Share Sheet, or manual launcher.
 
-## Durable Workaround
-
-Build a **one-shot agent tick** script and have Siri Shortcuts / iOS Automations launch it at useful trigger points. Each run should:
-
-1. Import iOS-only modules lazily so desktop tests still run.
-2. Read local JSON state.
-3. Capture quick context, e.g. location, clipboard, timestamp, battery/focus if available.
-4. Evaluate reminders/rules/geofences.
-5. Write local JSON state.
-6. Notify only when useful.
-7. Exit quickly.
-
-Good trigger ideas:
-
-- Time of day / hourly-ish schedule
-- Arrive at or leave a location
-- CarPlay/Bluetooth connect or disconnect
-- Focus Mode changes
-- Charger connect/disconnect
-- Action Button, Back Tap, widget, or manual launcher
-- Share Sheet captures for explicit user-provided input
-
-## Recommended File Shape
+## Recommended shape
 
 ```text
-toolkit/
-  agent_tick.py              # one-shot automation entrypoint
-  launcher.py                # manual menu
-  lib/
-    storage.py               # JSON persistence
-    ios_runtime.py           # lazy wrappers for location/clipboard/notification
-  tools/
-    where_was_i.py
-    clipboard_history.py
-    location_reminders.py
-  data/
-    *.json                   # local/private state; gitignored if personal
+cellphone_scripts/
+  toolkit/
+    agent_tick.py
+    launcher.py
+    lib/
+      storage.py
+      ios_runtime.py
+    tools/
+      where_was_i.py
+      clipboard_history.py
+      location_reminders.py
+    data/
+      *.json
 ```
 
-## Testing Pattern
+## `agent_tick.py` responsibilities
 
-Keep pure logic testable on desktop:
+Each tick should:
 
-- Use dependency injection for providers such as current location, clipboard text, and current time.
-- Lazy-import `location`, `clipboard`, and `notification` in wrapper functions instead of at module import time.
-- Store state in local JSON files and allow test-specific temp storage paths.
-- Unit-test deduplication, geofence distance, and state updates without requiring iOS.
+1. Capture current location if available.
+2. Read clipboard if available and store only new values.
+3. Check location reminders against the latest location.
+4. Append to local JSON stores.
+5. Return/print a short summary for Shortcuts logs.
+6. Exit quickly.
+
+Do not pretend it is always running. Phrase it as “autonomous-ish” or “Shortcuts-triggered.”
+
+## Testability pattern
+
+Separate iOS runtime wrappers from pure logic:
+
+- `ios_runtime.py` lazily imports Pythonista modules (`location`, `clipboard`, etc.).
+- Tool classes accept injected providers for location/clipboard in tests.
+- JSON persistence uses small stdlib-only helpers.
+- Desktop tests validate storage, dedupe, geofence math, and tick orchestration without Pythonista installed.
+
+## Good first tools
+
+- `where_was_i.py`: private location timeline with note + map link.
+- `clipboard_history.py`: local clipboard snapshots with dedupe/search/classification.
+- `location_reminders.py`: reminder records with radius checks.
+
+## Shortcuts setup notes
+
+Create iOS Automations for:
+
+- Time of day.
+- Arrive/leave locations.
+- Focus Mode changes.
+- Bluetooth/CarPlay connect/disconnect.
+- Action Button or Back Tap.
+
+Each automation runs/open Pythonista URL such as:
+
+```text
+pythonista3://toolkit/agent_tick.py?action=run
+```
 
 ## Pitfalls
 
-- Do not frame the workaround as truly continuous background execution.
-- Do not create infinite loops or sleep-based daemons for Pythonista; they will be unreliable and battery-hostile.
-- Do not log secrets, tokens, or sensitive clipboard content to external services.
-- Do not require non-stdlib packages unless the user confirms Pythonista has them installed.
+- Do not auto-send safety/emergency messages from a tick; prepare drafts only.
+- Do not store more clipboard/location history than the user understands; document local JSON files and privacy.
+- Avoid third-party packages so scripts remain Pythonista-compatible.

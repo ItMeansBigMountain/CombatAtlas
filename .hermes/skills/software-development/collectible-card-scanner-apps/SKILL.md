@@ -130,6 +130,8 @@ Use local watchlist for MVPs unless the user asks for accounts/cloud sync:
 
 - Store under a versioned key, e.g. `card-intel-watchlist-v1`.
 - Include condition, source snapshot, and timestamp so future price changes can be compared.
+- Use an id that combines the card id and selected condition when the same card may be saved under raw/graded assumptions.
+- Cap the list for no-backend MVPs (for example, newest 24) so localStorage stays lightweight.
 - Provide remove action and count.
 - Avoid requiring auth for the first useful version.
 
@@ -138,10 +140,12 @@ Use local watchlist for MVPs unless the user asks for accounts/cloud sync:
 - [ ] Manual name search works when OCR fails.
 - [ ] Image upload/camera still path handles blank OCR without crashing.
 - [ ] Condition/grade lens visibly changes valuation and is labeled as an assumption when estimated.
+- [ ] When condition is not raw-NM, the UI shows the base value and multiplier rather than implying automated grading.
 - [ ] At least two marketplace/source rows are shown where data exists, or unavailable sources are gracefully labeled.
-- [ ] Watchlist persists across refresh using the expected localStorage key.
+- [ ] Watchlist persists across refresh using the expected localStorage key and stores condition + source snapshot.
 - [ ] Production build succeeds.
-- [ ] Vercel deployment returns HTTP 200.
+- [ ] Local preview smoke test covers search, condition selection, and watchlist save/remove.
+- [ ] Vercel deployment returns HTTP 200 for both deployment URL and friendly alias when present.
 - [ ] Mobile viewport is usable: scan zone, cards, and buttons are not cramped.
 - [ ] For video features, overlay does not flicker wildly and stabilizes across multiple frames.
 
@@ -158,3 +162,4 @@ Use local watchlist for MVPs unless the user asks for accounts/cloud sync:
 
 - `references/card-intel-scanner-mvp.md` — Session-specific implementation notes from the Card Intel Scanner Vercel MVP: condition lenses, local watchlist, and next recorded-video AR direction.
 - `references/name-search-to-video-ar-overlay.md` — Product direction note from user feedback: name search/data layer worked, image scanning failed, next value is live/recorded video AR price overlays with multi-platform comparison.
+- `references/card-scanner-condition-watchlist-2026-05.md` — Concrete React/Vite pattern for adding condition multipliers, localStorage watchlists, UX copy, and Vercel verification after OCR/search already works.

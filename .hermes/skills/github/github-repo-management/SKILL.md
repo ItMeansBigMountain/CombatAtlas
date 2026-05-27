@@ -377,6 +377,8 @@ See `references/nested-repo-backup-bundles.md` for a concrete command template a
 
 For broader imports of many unfinished legacy folders into the private workspace, use `references/legacy-project-imports.md` and treat the work as a secure migration: inventory, ignore runtime artifacts, remove nested git internals, secret-scan, create a deployment URL tracker, then commit/push.
 
+When the user asks to create a **new standalone repo after reviewing an existing workspace project/lab**, use `references/standalone-repo-from-workspace.md`: review source architecture, scaffold a tested MVP, publish the child repo, ignore the child worktree in the parent repo unless a submodule/bundle is intended, then commit parent trackers separately.
+
 ### Pitfalls
 
 - Do not assume `git add projects/foo/` is a safe backup if `projects/foo` is itself a Git repo; it can become submodule-like or miss the intended history.

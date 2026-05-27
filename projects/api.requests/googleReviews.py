@@ -56,7 +56,7 @@ search_q = input("Please input business name (caps is important): ")
 
 
 # data init
-api_key = ""
+api_key = None  # disabled – only service account auth is used
 url = f"https://serpapi.com/search.json?engine=google_maps&q={search_q}&type=search&api_key={api_key}"
 
 

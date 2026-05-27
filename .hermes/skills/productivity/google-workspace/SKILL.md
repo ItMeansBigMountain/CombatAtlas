@@ -25,6 +25,7 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 
 - `references/gmail-search-syntax.md` — Gmail search operators (is:unread, from:, newer_than:, etc.)
 - `references/calendar-service-account.md` — service-account setup for Calendar automation when the user shares calendars with the service account.
+- `references/credential-requirements.md` — required Google credential files and setup verification
 
 ## Scripts
 

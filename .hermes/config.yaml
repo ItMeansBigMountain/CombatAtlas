@@ -7,13 +7,7 @@ fallback_providers:
 - provider: openrouter
   model: openrouter/free
 - provider: openrouter
-  model: qwen/qwen3-coder:free
-- provider: openrouter
-  model: deepseek/deepseek-v4-flash:free
-- provider: openrouter
   model: openai/gpt-oss-120b:free
-- provider: openrouter
-  model: nousresearch/hermes-3-llama-3.1-405b:free
 credential_pool_strategies: {}
 toolsets:
 - hermes-cli

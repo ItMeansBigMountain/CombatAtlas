@@ -139,6 +139,12 @@ Read and understand:
 - Acceptance criteria
 - Constraints
 
+When the plan is for "replicate/compete with/build like <existing product>", do lightweight public research before writing tasks:
+- Inspect official public pages, login/portal landing pages, docs, pricing/features pages, and user-provided operational knowledge.
+- Separate verified public claims from user-provided insider workflow notes.
+- Replicate functional patterns, not branding, copy, proprietary naming, or private implementation.
+- Add the research notes to the project as a durable artifact when they will guide implementation.
+
 ### Step 2: Explore the Codebase
 
 Use Hermes tools to understand the project:
@@ -181,6 +187,17 @@ For each task, include:
 - **Complete code examples** (not "add validation" but the actual code)
 - **Exact commands** with expected output
 - **Verification steps** that prove the task works
+
+For CRM/portal/product-parity plans, include:
+- Role matrix (admin/staff/customer/student/parent/etc.)
+- Core workflow as an end-to-end vertical slice
+- Data model entities and relationships
+- AI/human-review boundaries when extraction or summarization is involved
+- AI entitlement/quota boundaries when LLM features consume paid or rate-limited tokens
+- Deterministic/local fallback paths so non-entitled accounts can still complete the workflow
+- Input normalization rules for manual fallbacks (for example one-item-per-line, comma-separated, and space-separated tag entry)
+- Safety/privacy/legal boundaries, especially for education, finance, health-adjacent, or child data
+- Original product naming if inspired by a competitor
 
 ### Step 6: Review the Plan
 

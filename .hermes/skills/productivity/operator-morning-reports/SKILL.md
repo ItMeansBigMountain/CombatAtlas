@@ -27,6 +27,8 @@ This is not a generic greeting. The user explicitly wants a **report** that help
 - Capability-oriented framing: the user does not want project-first planning. Projects are disposable execution vehicles; reports should emphasize durable systems, leverage, reusable assets, trend intelligence, and execution loops.
 - Trend Radar must be included every morning: identify emerging trends, score them by velocity/spread/monetization/saturation, and convert them into capability work plus a kill/scale signal.
 - Include **Google Search pulse** every morning: latest top searched words/phrases from Google Trends / Daily Trends / credible trend recaps, with what changed and why it matters.
+- Include **Google Workspace data** in the morning report: upcoming calendar events, planned activities, and relevant Gmail messages. Requires Google token and client secret files in `/opt/data/credentials/`.
+- **Always ask for approval before deleting anything from Google Workspace** (Gmail, Calendar, Drive). This is a hard requirement enforced at the skill level.
 - Include **game-changing AI + coding news** every morning, but keep it minimalistic and Discord-readable: model releases, developer tools, agent frameworks, coding platforms, major product launches, policy/platform shifts, and practical opportunities.
 - Include **social conversation pulse** every morning: top topics being discussed across major social platforms/communities when verifiable, with source/context notes and a signal/noise read. Present as simplified bullets, not Markdown tables or paragraphs.
 - Do not use a portfolio-tracking section unless the user re-adds it.
