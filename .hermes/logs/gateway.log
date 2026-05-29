@@ -1520,3 +1520,688 @@ WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=Thr
 🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
 WARNING run_agent: Tool read_file returned error (0.57s): {"content": "", "total_lines": 0, "file_size": 0, "truncated": false, "is_binary": false, "is_image": false, "error": "File not found: /opt/data/credentials/", "similar_files": ["/opt/data/credentials
 ⚠️  Unknown tool 'web_search' — sending error to model for self-correction (1/3)
+2026-05-28 12:02:59,209 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (219 chars)
+2026-05-28 12:02:59,686 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Don’t mix up google api with runelite.   We have runelite plugins. We have Googl'
+WARNING run_agent: API call failed (attempt 1/3) error_type=BadRequestError thread=asyncio_0:136218054620864 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary=HTTP 400: Invalid 'input[150].name': string does not match pattern. Expected a string that matches the pattern '^[a-zA-Z0-9_-]+$'.
+⚠️  API call failed (attempt 1/3): BadRequestError [HTTP 400]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 400: Invalid 'input[150].name': string does not match pattern. Expected a string that matches the pattern '^[a-zA-Z0-9_-]+$'.
+   📋 Details: {'message': "Invalid 'input[150].name': string does not match pattern. Expected a string that matches the pattern '^[a-zA-Z0-9_-]+$'.", 'type': 'invalid_request_error', 'param': 'input[150].name', 'code': 'invalid_value'}
+   ⏱️  Elapsed: 0.90s  Context: 270 msgs, ~101,034 tokens
+⚠️ Non-retryable error (HTTP 400) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-28 12:04:38,725 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=99.0s api_calls=3 response=2016 chars
+2026-05-28 12:04:38,749 INFO gateway.platforms.base: [Discord] Sending response (2016 chars) to 1499990220077137943
+2026-05-28 12:08:25,803 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (151 chars)
+2026-05-28 12:08:26,253 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Add another plugin that places a timer on the person you just ice barraged or  t'
+WARNING run_agent: API call failed (attempt 1/3) error_type=BadRequestError thread=asyncio_2:136217933481664 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary=HTTP 400: Invalid 'input[150].name': string does not match pattern. Expected a string that matches the pattern '^[a-zA-Z0-9_-]+$'.
+2026-05-28 12:10:40,101 INFO gateway.platforms.discord: [Discord] slash '/steer use this git wiki https://github.com/runelite/runelite/wiki/Information-about-the-Plugin-Hub' invoked by user=sosai id=219376861866754049 channel=1499990220077137943 guild=1499990218890154135
+2026-05-28 12:11:04,109 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=157.9s api_calls=7 response=931 chars
+2026-05-28 12:11:04,116 INFO gateway.platforms.base: [Discord] Sending response (931 chars) to 1499990220077137943
+WARNING run_agent: Tool memory returned error (0.01s): {"success": false, "error": "Memory at 1,344/1,375 chars. Adding this entry (1080 chars) would exceed the limit. Replace or remove existing entries first.", "current_entries": ["User prefers Discord b
+2026-05-28 12:12:56,500 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (208 chars)
+2026-05-28 12:12:56,978 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Option a. Please understand how to make Osrs plug ins. You can take a look at my'
+WARNING run_agent: Tool memory returned error (0.00s): {"success": false, "error": "Replacement would put memory at 1,517/1,375 chars. Shorten the new content or remove other entries first."}
+  💾 Self-improvement review: User profile updated
+WARNING root: Failed to generate context summary: 'NoneType' object is not iterable. Further summary attempts paused for 60 seconds.
+⚠ Compression summary failed: 'NoneType' object is not iterable. Inserted a fallback context marker.
+WARNING run_agent: API call failed (attempt 1/3) error_type=BadRequestError thread=asyncio_3:136217652520640 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary=HTTP 400: Invalid 'input[100].name': string does not match pattern. Expected a string that matches the pattern '^[a-zA-Z0-9_-]+$'.
+⚠️  API call failed (attempt 1/3): BadRequestError [HTTP 400]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 400: Invalid 'input[100].name': string does not match pattern. Expected a string that matches the pattern '^[a-zA-Z0-9_-]+$'.
+   📋 Details: {'message': "Invalid 'input[100].name': string does not match pattern. Expected a string that matches the pattern '^[a-zA-Z0-9_-]+$'.", 'type': 'invalid_request_error', 'param': 'input[100].name', 'code': 'invalid_value'}
+   ⏱️  Elapsed: 0.48s  Context: 261 msgs, ~81,539 tokens
+⚠️ Non-retryable error (HTTP 400) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+WARNING run_agent: Tool execute_code returned error (3.28s): {"status": "error", "output": "\n--- stderr ---\n  File \"/tmp/hermes_sandbox_4b2rvg4t/script.py\", line 1\n    find /opt/data/HeRmEz/projects -type d -name \"*dmm*\" -o -name \"*DMM*\" 2>/dev/null\n 
+WARNING run_agent: Tool read_file returned error (0.50s): {"content": "", "total_lines": 0, "file_size": 0, "truncated": false, "is_binary": false, "is_image": false, "error": "File not found: /opt/data/HeRmEz/projects/osrs-plugins/osrs-plugins-boilerplate/s
+⚠️  Unknown tool 'find' — sending error to model for self-correction (1/3)
+⚠️ Model returned empty after tool calls — nudging to continue
+WARNING run_agent: Tool read_file returned error (0.50s): {"content": "", "total_lines": 0, "file_size": 0, "truncated": false, "is_binary": false, "is_image": false, "error": "File not found: /opt/data/HeRmEz/projects/osrs-plugins/IceBarrageTimer/src/main/j
+WARNING hermes.lint.lsp: lsp[jdtls] server unavailable: jdtls not found (install via `hermes lsp install <id>` or set lsp.servers.<id>.command)
+2026-05-28 12:22:57,844 INFO [20260526_143653_36ea66] gateway.run: Session split detected: 20260526_143653_36ea66 → 20260528_121440_ef6994 (compression)
+2026-05-28 12:22:57,890 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=600.9s api_calls=12 response=3171 chars
+2026-05-28 12:22:57,915 INFO gateway.platforms.base: [Discord] Sending response (3171 chars) to 1499990220077137943
+WARNING run_agent: Turn ended with pending tool result (agent may appear stuck). Turn ended: reason=fallback_prior_turn_content model=openrouter/free api_calls=3/16 budget=3/16 tool_turns=66 last_msg_role=tool response_len=88 session=20260528_121440_ef6994 last_tool=skill_manage
+  💾 Self-improvement review: Skill 'osrs-plugin-development' created.
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=ThreadPoolExecutor-83_0:136216656701120 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 9.69s  Context: 2 msgs, ~5,608 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  Response truncated (finish_reason='length') - model hit max output tokens
+↻ Requesting continuation (1/3)...
+⚠️ Model returned empty after tool calls — nudging to continue
+WARNING run_agent: Tool read_file returned error (0.50s): {"content": "", "total_lines": 0, "file_size": 0, "truncated": false, "is_binary": false, "is_image": false, "error": "File not found: /opt/data/credentials", "similar_files": ["/opt/data/credentials"
+⚠️  Unknown tool 'web_search' — sending error to model for self-correction (1/3)
+⚠️ Model returned empty after tool calls — nudging to continue
+⚠️  Response truncated (finish_reason='length') - model hit max output tokens
+↻ Requesting continuation (2/3)...
+2026-05-28 15:00:15,565 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (255 chars)
+2026-05-28 15:00:18,307 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='I want you to take a look at gm financial Texas job listings and look for my rol'
+WARNING run_agent: API call failed (attempt 1/3) error_type=BadRequestError thread=asyncio_1:136217941874368 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary=HTTP 400: Invalid 'input[100].name': string does not match pattern. Expected a string that matches the pattern '^[a-zA-Z0-9_-]+$'.
+⚠️  API call failed (attempt 1/3): BadRequestError [HTTP 400]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 400: Invalid 'input[100].name': string does not match pattern. Expected a string that matches the pattern '^[a-zA-Z0-9_-]+$'.
+   📋 Details: {'message': "Invalid 'input[100].name': string does not match pattern. Expected a string that matches the pattern '^[a-zA-Z0-9_-]+$'.", 'type': 'invalid_request_error', 'param': 'input[100].name', 'code': 'invalid_value'}
+   ⏱️  Elapsed: 0.56s  Context: 285 msgs, ~91,395 tokens
+⚠️ Non-retryable error (HTTP 400) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+WARNING run_agent: Tool memory returned error (0.00s): {"error": "Unknown action 'search'. Use: add, replace, remove", "success": false}
+WARNING run_agent: Tool memory returned error (0.00s): {"error": "Unknown action 'search'. Use: add, replace, remove", "success": false}
+2026-05-28 15:02:38,639 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=140.3s api_calls=5 response=528 chars
+2026-05-28 15:02:38,644 INFO gateway.platforms.base: [Discord] Sending response (528 chars) to 1499990220077137943
+2026-05-28 15:44:46,973 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (205 chars)
+2026-05-28 15:44:47,743 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Look up public job listings at gm financial Texas   Remember that my current rol'
+WARNING run_agent: API call failed (attempt 1/3) error_type=BadRequestError thread=asyncio_3:136217652520640 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary=HTTP 400: Invalid 'input[100].name': string does not match pattern. Expected a string that matches the pattern '^[a-zA-Z0-9_-]+$'.
+⚠️  API call failed (attempt 1/3): BadRequestError [HTTP 400]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 400: Invalid 'input[100].name': string does not match pattern. Expected a string that matches the pattern '^[a-zA-Z0-9_-]+$'.
+   📋 Details: {'message': "Invalid 'input[100].name': string does not match pattern. Expected a string that matches the pattern '^[a-zA-Z0-9_-]+$'.", 'type': 'invalid_request_error', 'param': 'input[100].name', 'code': 'invalid_value'}
+   ⏱️  Elapsed: 0.69s  Context: 295 msgs, ~97,263 tokens
+⚠️ Non-retryable error (HTTP 400) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+  ⟳ compacting context…
+🗜️ Compacting context — summarizing earlier conversation so I can continue...
+2026-05-28 15:46:57,633 INFO [20260528_121440_ef6994] gateway.run: Session split detected: 20260528_121440_ef6994 → 20260528_154624_59d731 (compression)
+2026-05-28 15:46:57,684 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=129.9s api_calls=9 response=8772 chars
+2026-05-28 15:46:57,698 INFO gateway.platforms.base: [Discord] Sending response (8772 chars) to 1499990220077137943
+2026-05-28 15:49:21,461 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (84 chars)
+2026-05-28 15:49:21,942 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='How much are they offering, what are others looking for similar experience offer'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_1:136217941874368 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 6.68s  Context: 200 msgs, ~60,282 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-28 15:50:11,145 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=49.2s api_calls=1 response=4233 chars
+2026-05-28 15:50:11,149 INFO gateway.platforms.base: [Discord] Sending response (4233 chars) to 1499990220077137943
+2026-05-28 15:52:31,354 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (84 chars)
+2026-05-28 15:52:31,819 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Okay create a skill for professional work whenever I ask you questions about my '
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_3:136217652520640 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 5.78s  Context: 202 msgs, ~61,843 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-28 15:54:21,385 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=109.6s api_calls=3 response=866 chars
+2026-05-28 15:54:21,390 INFO gateway.platforms.base: [Discord] Sending response (866 chars) to 1499990220077137943
+2026-05-28 15:56:35,285 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (43 chars)
+2026-05-28 15:56:35,840 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='I’m currently entering that mid level range'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_1:136217941874368 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 2.44s  Context: 208 msgs, ~63,964 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-28 15:57:58,327 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=82.5s api_calls=2 response=4379 chars
+2026-05-28 15:57:58,341 INFO gateway.platforms.base: [Discord] Sending response (4379 chars) to 1499990220077137943
+WARNING run_agent: Tool memory returned error (0.00s): {"success": false, "error": "Memory at 1,309/1,375 chars. Adding this entry (322 chars) would exceed the limit. Replace or remove existing entries first.", "current_entries": ["User prefers Discord bo
+2026-05-28 16:16:51,720 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (820 chars)
+2026-05-28 16:16:52,325 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='My full name is Affan fareed   Gmfinancial actually prefers  Azure full Microsof'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_2:136217933481664 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 4.24s  Context: 212 msgs, ~66,545 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+WARNING run_agent: Tool memory returned error (0.01s): {"success": false, "error": "Memory at 1,309/1,375 chars. Adding this entry (461 chars) would exceed the limit. Replace or remove existing entries first.", "current_entries": ["User prefers Discord bo
+2026-05-28 16:17:28,774 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=36.4s api_calls=2 response=306 chars
+2026-05-28 16:17:28,779 INFO gateway.platforms.base: [Discord] Sending response (306 chars) to 1499990220077137943
+2026-05-28 16:22:27,218 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (40 chars)
+2026-05-28 16:22:27,711 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Well it should be saved in longer memory'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_2:136217933481664 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 6.08s  Context: 216 msgs, ~67,246 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️ Model returned empty after tool calls — nudging to continue
+2026-05-28 16:24:04,391 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=96.7s api_calls=3 response=3400 chars
+2026-05-28 16:24:04,396 INFO gateway.platforms.base: [Discord] Sending response (3400 chars) to 1499990220077137943
+2026-05-28 16:41:54,360 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (170 chars)
+2026-05-28 16:41:55,078 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='No I was just sharing some information with you about my job. Sometimes when you'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_1:136217941874368 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 7.64s  Context: 220 msgs, ~68,501 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-28 16:42:11,889 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=16.8s api_calls=1 response=531 chars
+2026-05-28 16:42:11,895 INFO gateway.platforms.base: [Discord] Sending response (531 chars) to 1499990220077137943
+2026-05-28 19:58:49,549 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (113 chars)
+2026-05-28 19:58:50,040 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Review the Osrs plugins. Make sure they are up to standard with the other exampl'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_0:136218054620864 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 6.79s  Context: 222 msgs, ~68,808 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️ Model returned empty after tool calls — nudging to continue
+WARNING run_agent: Tool execute_code returned error (0.00s): {"error": "No code provided."}
+WARNING run_agent: Tool read_file returned error (0.51s): {"content": "", "total_lines": 0, "file_size": 0, "truncated": false, "is_binary": false, "is_image": false, "error": "File not found: /opt/data/HeRmEz/projects/osrs-plugins/RivalRadar/src/main/java/c
+2026-05-28 20:03:05,771 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=255.7s api_calls=8 response=11373 chars
+2026-05-28 20:03:05,777 INFO gateway.platforms.base: [Discord] Sending response (11373 chars) to 1499990220077137943
+2026-05-28 20:14:02,152 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (188 chars)
+2026-05-28 20:14:02,704 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='osrs-plugins osrs-plugins-beers osrs-plugins-boilerplate   root@Trapistan:/docke'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_0:136218054620864 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 2.72s  Context: 238 msgs, ~77,750 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-28 20:14:12,968 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=10.3s api_calls=1 response=190 chars
+2026-05-28 20:14:12,972 INFO gateway.platforms.base: [Discord] Sending response (190 chars) to 1499990220077137943
+2026-05-28 20:23:40,864 INFO gateway.platforms.discord: [Discord] slash '/retry' invoked by user=sosai id=219376861866754049 channel=1499990220077137943 guild=1499990218890154135
+2026-05-28 20:23:41,326 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='osrs-plugins osrs-plugins-beers osrs-plugins-boilerplate   root@Trapistan:/docke'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_1:136217941874368 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 4.68s  Context: 238 msgs, ~77,750 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️ Model returned empty after tool calls — nudging to continue
+⚠️ Model returned empty after tool calls — nudging to continue
+2026-05-28 20:25:26,939 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=105.6s api_calls=8 response=1350 chars
+2026-05-28 20:25:26,945 INFO gateway.platforms.base: [Discord] Sending response (1279 chars) to 1499990220077137943
+2026-05-28 20:39:18,146 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (73 chars)
+2026-05-28 20:39:18,631 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Can you generate an icon for each ? Check dmm timers plugin for reference'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_2:136217933481664 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 4.39s  Context: 254 msgs, ~81,094 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+WARNING run_agent: Tool execute_code returned error (0.00s): {"error": "No code provided."}
+ERROR tools.image_generation_tool: Error generating image: Image generation is unavailable in this environment.
+
+Missing requirements:
+  - FAL_KEY environment variable is not set
+
+To enable image generation, do one of:
+  1. Get a free API key at https://fal.ai and set FAL_KEY=<your-key> (then restart the session)
+  3. Configure a different image_gen provider via `hermes tools` → Image Generation (run `hermes plugins list` to see installed backends)
+Traceback (most recent call last):
+  File "/opt/hermes/tools/image_generation_tool.py", line 701, in image_generate_tool
+    raise ValueError(_build_no_backend_setup_message())
+ValueError: Image generation is unavailable in this environment.
+
+Missing requirements:
+  - FAL_KEY environment variable is not set
+
+To enable image generation, do one of:
+  1. Get a free API key at https://fal.ai and set FAL_KEY=<your-key> (then restart the session)
+  3. Configure a different image_gen provider via `hermes tools` → Image Generation (run `hermes plugins list` to see installed backends)
+WARNING run_agent: Tool image_generate returned error (0.02s): {
+  "success": false,
+  "image": null,
+  "error": "Image generation is unavailable in this environment.\n\nMissing requirements:\n  - FAL_KEY environment variable is not set\n\nTo enable image generat
+2026-05-28 20:40:17,437 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=58.8s api_calls=4 response=783 chars
+2026-05-28 20:40:17,443 INFO gateway.platforms.base: [Discord] Sending response (783 chars) to 1499990220077137943
+2026-05-28 20:43:55,775 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (542 chars)
+2026-05-28 20:43:56,253 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Don’t worry about gmfinancial at the moment. Make sure the Osrs plugins don’t ha'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_3:136217652520640 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 6.15s  Context: 262 msgs, ~83,985 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  Unknown tool 'web_search' — sending error to model for self-correction (1/3)
+2026-05-28 20:44:45,477 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=49.2s api_calls=3 response=3245 chars
+2026-05-28 20:44:45,511 INFO gateway.platforms.base: [Discord] Sending response (3245 chars) to 1499990220077137943
+WARNING run_agent: Tool memory returned error (0.01s): {"success": false, "error": "Memory at 1,309/1,375 chars. Adding this entry (479 chars) would exceed the limit. Replace or remove existing entries first.", "current_entries": ["User prefers Discord bo
+WARNING run_agent: Tool memory returned error (0.00s): {"success": false, "error": "Memory at 1,309/1,375 chars. Adding this entry (343 chars) would exceed the limit. Replace or remove existing entries first.", "current_entries": ["User prefers Discord bo
+WARNING run_agent: Tool memory returned error (0.00s): {"success": false, "error": "Replacement would put memory at 1,430/1,375 chars. Shorten the new content or remove other entries first."}
+
+[Tool loop warning: same_tool_failure_warning; count=3; memory
+2026-05-28 21:15:59,043 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (3 chars)
+2026-05-28 21:15:59,592 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Yes'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_1:136217941874368 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 8.20s  Context: 268 msgs, ~87,008 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+WARNING run_agent: Tool execute_code returned error (3.26s): {"status": "error", "output": "\n--- stderr ---\nTraceback (most recent call last):\n  File \"/tmp/hermes_sandbox_nafj6d40/script.py\", line 7, in <module>\n    plugin_names = [d.name for d in plugins
+WARNING run_agent: Unrepairable tool_call arguments for execute_code — replaced with empty object (was: {"code":"import os\nfrom pathlib import Path\n\nbase = Path('/opt/data/HeRmEz/pr)
+⚠️  Response truncated (finish_reason='length') - model hit max output tokens
+⚠️  Truncated tool call detected — retrying API call...
+2026-05-28 21:19:35,872 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=216.3s api_calls=5 response=3578 chars
+2026-05-28 21:19:35,878 INFO gateway.platforms.base: [Discord] Sending response (3578 chars) to 1499990220077137943
+2026-05-28 21:35:45,328 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (296 chars)
+2026-05-28 21:35:45,837 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Now that everything is scaffolded and set up. Let’s get into actually writing th'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_2:136217933481664 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 3.53s  Context: 278 msgs, ~96,231 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-28 21:36:03,159 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=17.3s api_calls=1 response=38 chars
+2026-05-28 21:36:03,164 INFO gateway.platforms.base: [Discord] Sending response (38 chars) to 1499990220077137943
+2026-05-28 21:52:27,534 INFO gateway.platforms.discord: [Discord] slash '/retry' invoked by user=sosai id=219376861866754049 channel=1499990220077137943 guild=1499990218890154135
+2026-05-28 21:52:28,073 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Now that everything is scaffolded and set up. Let’s get into actually writing th'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_0:136218054620864 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 7.49s  Context: 278 msgs, ~96,231 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+  ⟳ compacting context…
+🗜️ Compacting context — summarizing earlier conversation so I can continue...
+⚠️ Model returned empty after tool calls — nudging to continue
+WARNING run_agent: Tool terminal returned error (0.25s): {"output": "/usr/bin/bash: line 4: dependency:list: command not found\n/usr/bin/bash: line 4: javac: command not found", "exit_code": 127, "error": null}
+WARNING run_agent: Tool execute_code returned error (0.00s): {"error": "No code provided."}
+WARNING run_agent: Stream stale for 240s (threshold 240s) — no chunks received. model=openrouter/free context=~51,079 tokens. Killing connection.
+⚠️ No response from provider for 240s (model: openrouter/free, context: ~51,079 tokens). Reconnecting...
+WARNING run_agent: API call failed (attempt 1/3) error_type=ReadError thread=asyncio_0:136218054620864 provider=openrouter base_url=https://openrouter.ai/api/v1/ model=openrouter/free summary=[Errno 9] Bad file descriptor
+⚠️  API call failed (attempt 1/3): ReadError
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: [Errno 9] Bad file descriptor
+   ⏱️  Elapsed: 245.77s  Context: 106 msgs, ~51,461 tokens
+⏳ Retrying in 2.2s (attempt 1/3)...
+WARNING run_agent: Retrying API call in 2.193119279835482s (attempt 1/3) thread=asyncio_0:136218054620864 provider=openrouter base_url=https://openrouter.ai/api/v1/ model=openrouter/free error=[Errno 9] Bad file descriptor
+WARNING run_agent: Tool terminal returned error (0.27s): {"output": "", "exit_code": 1, "error": null}
+⚠️ Model returned empty after tool calls — nudging to continue
+2026-05-28 22:05:21,525 INFO [20260528_154624_59d731] gateway.run: Session split detected: 20260528_154624_59d731 → 20260528_215546_c688c6 (compression)
+2026-05-28 22:05:21,560 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=773.5s api_calls=18 response=15971 chars
+2026-05-28 22:05:21,594 INFO gateway.platforms.base: [Discord] Sending response (15900 chars) to 1499990220077137943
+WARNING run_agent: Unrepairable tool_call arguments for skill_manage — replaced with empty object (was: {"action":"patch","name":"osrs-plugin-development","old_string":"## References\n)
+WARNING run_agent: Unrepairable tool_call arguments for skill_manage — replaced with empty object (was: {"action":"patch","name":"osrs-plugin-development","old_string":"## References",)
+2026-05-28 22:09:22,788 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (226 chars)
+2026-05-28 22:09:23,453 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='If you take a look at other popular Osrs plugins on GitHub and the plugin hub re'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_3:136217652520640 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 3.71s  Context: 120 msgs, ~66,487 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️ Model returned empty after tool calls — nudging to continue
+⚠️  Unknown tool 'click' — sending error to model for self-correction (1/3)
+⚠️ Model returned empty after tool calls — nudging to continue
+2026-05-28 22:16:02,064 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=398.6s api_calls=20 response=1343 chars
+2026-05-28 22:16:02,082 INFO gateway.platforms.base: [Discord] Sending response (1343 chars) to 1499990220077137943
+WARNING run_agent: Tool memory returned error (0.00s): {"success": false, "error": "Memory at 1,309/1,375 chars. Adding this entry (957 chars) would exceed the limit. Replace or remove existing entries first.", "current_entries": ["User prefers Discord bo
+WARNING run_agent: Tool memory returned error (0.00s): {"success": false, "error": "No entry matched 'User prefers Discord bot conversations to be natural channel back-and-forth rather than automatic per-conversation threads.'."}
+WARNING run_agent: Tool skill_manage returned error (0.00s): {"success": false, "error": "SKILL.md must start with YAML frontmatter (---). See existing skills for format."}
+WARNING run_agent: Tool skill_manage returned error (0.01s): {"success": false, "error": "Skill '' not found. Create it first with action='create'."}
+WARNING run_agent: Turn ended with pending tool result (agent may appear stuck). Turn ended: reason=fallback_prior_turn_content model=openrouter/free api_calls=9/16 budget=9/16 tool_turns=59 last_msg_role=tool response_len=12 session=20260528_215546_c688c6 last_tool=skill_manage
+  💾 Self-improvement review: Skill 'osrs-plugins' created.
+2026-05-28 23:33:09,849 INFO gateway.platforms.discord: [Discord] slash '/goal get rival radar ready' invoked by user=sosai id=219376861866754049 channel=1499990220077137943 guild=1499990218890154135
+2026-05-28 23:33:10,034 INFO gateway.platforms.base: [Discord] Sending response (206 chars) to 1499990220077137943
+2026-05-28 23:33:10,248 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='get rival radar ready'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_1:136217941874368 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 5.31s  Context: 160 msgs, ~88,445 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  Response truncated (finish_reason='length') - model hit max output tokens
+↻ Requesting continuation (1/3)...
+2026-05-28 23:34:59,822 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=109.6s api_calls=2 response=12581 chars
+2026-05-28 23:35:05,123 INFO gateway.platforms.base: [Discord] Sending response (12581 chars) to 1499990220077137943
+/opt/hermes/gateway/platforms/base.py:2371: RuntimeWarning: coroutine 'GatewayRunner._defer_goal_status_notice_after_delivery.<locals>._deliver' was never awaited
+  _new()
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+2026-05-28 23:35:11,509 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='[Continuing toward your standing goal] Goal: get rival radar ready  Continue wor'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_0:136218054620864 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 5.05s  Context: 164 msgs, ~91,846 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+WARNING run_agent: Tool execute_code returned error (3.26s): {"status": "error", "output": "\n--- stderr ---\n  File \"/tmp/hermes_sandbox_a0v1b2ec/script.py\", line 7\n    return False, f\"Mismatched braces: {{ {content.count('{') }} vs }} {content.count('}')}
+⚠️  Response truncated (finish_reason='length') - model hit max output tokens
+↻ Requesting continuation (1/3)...
+2026-05-28 23:36:26,155 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=74.6s api_calls=4 response=3138 chars
+2026-05-28 23:36:27,641 INFO gateway.platforms.base: [Discord] Sending response (3138 chars) to 1499990220077137943
+2026-05-28 23:36:28,139 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='[Continuing toward your standing goal] Goal: get rival radar ready  Continue wor'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_1:136217941874368 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 6.53s  Context: 172 msgs, ~94,325 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+WARNING run_agent: Tool execute_code returned error (0.00s): {"error": "No code provided."}
+WARNING run_agent: Tool execute_code returned error (0.00s): {"error": "No code provided."}
+⚠️ Model returned empty after tool calls — nudging to continue
+WARNING run_agent: Tool execute_code returned error (0.00s): {"error": "No code provided."}
+
+[Tool loop warning: same_tool_failure_warning; count=3; execute_code has failed 3 times this turn. This looks like a loop; change approach before retrying.]
+2026-05-28 23:39:03,256 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=155.1s api_calls=7 response=1622 chars
+2026-05-28 23:39:06,606 INFO gateway.platforms.base: [Discord] Sending response (1622 chars) to 1499990220077137943
+2026-05-28 23:39:06,798 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='[Continuing toward your standing goal] Goal: get rival radar ready  Continue wor'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_3:136217652520640 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 8.05s  Context: 186 msgs, ~96,509 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+WARNING run_agent: Tool execute_code returned error (0.00s): {"error": "No code provided."}
+⚠️ Model returned empty after tool calls — nudging to continue
+⚠️  Response truncated (finish_reason='length') - model hit max output tokens
+↻ Requesting continuation (1/3)...
+2026-05-28 23:40:39,201 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=92.4s api_calls=6 response=3321 chars
+2026-05-28 23:40:41,598 INFO gateway.platforms.base: [Discord] Sending response (3321 chars) to 1499990220077137943
+2026-05-28 23:40:41,902 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='[Continuing toward your standing goal] Goal: get rival radar ready  Continue wor'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_1:136217941874368 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 6.74s  Context: 198 msgs, ~100,482 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  Unknown tool 'str_replace' — sending error to model for self-correction (1/3)
+⚠️  Unknown tool 'str_replace' — sending error to model for self-correction (1/3)
+  ⟳ compacting context…
+🗜️ Compacting context — summarizing earlier conversation so I can continue...
+WARNING run_agent: Tool terminal returned error (16.26s): {"output": "/usr/bin/bash: line 3: javac: command not found", "exit_code": 127, "error": null}
+2026-05-28 23:45:55,135 INFO [20260528_215546_c688c6] gateway.run: Session split detected: 20260528_215546_c688c6 → 20260528_234417_3fcb3c (compression)
+2026-05-28 23:45:55,139 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=313.2s api_calls=9 response=2037 chars
+2026-05-28 23:45:55,150 INFO gateway.platforms.base: [Discord] Sending response (2037 chars) to 1499990220077137943
+2026-05-29 02:23:06,212 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (56 chars)
+2026-05-29 02:23:06,864 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Awh shit   this my mf day one dawg <@***>'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_0:136218054620864 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 4.39s  Context: 150 msgs, ~62,079 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-29 02:23:23,050 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=16.2s api_calls=1 response=207 chars
+2026-05-29 02:23:23,061 INFO gateway.platforms.base: [Discord] Sending response (207 chars) to 1499990220077137943
+2026-05-29 02:23:56,574 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (41 chars)
+2026-05-29 02:23:57,019 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Pause fam u said what’s hitting the spot?'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_1:136217941874368 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 3.19s  Context: 152 msgs, ~62,158 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-29 02:24:03,683 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=6.7s api_calls=1 response=79 chars
+2026-05-29 02:24:03,688 INFO gateway.platforms.base: [Discord] Sending response (79 chars) to 1499990220077137943
+2026-05-29 02:24:35,920 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:353725233578115072 (6 chars)
+2026-05-29 02:24:36,354 INFO gateway.run: inbound message: platform=discord user=twizz chat=1499990220077137943 msg='😂😂😂😂😂😂'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_2:136217933481664 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 1.36s  Context: 2 msgs, ~6,038 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-29 02:24:44,110 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=7.8s api_calls=1 response=53 chars
+2026-05-29 02:24:44,118 INFO gateway.platforms.base: [Discord] Sending response (53 chars) to 1499990220077137943
+2026-05-29 02:25:03,516 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:353725233578115072 (24 chars)
+2026-05-29 02:25:03,993 INFO gateway.run: inbound message: platform=discord user=twizz chat=1499990220077137943 msg='Velox, you’re a real one'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_0:136218054620864 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 1.68s  Context: 4 msgs, ~6,074 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-29 02:25:08,310 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=4.3s api_calls=1 response=48 chars
+2026-05-29 02:25:08,315 INFO gateway.platforms.base: [Discord] Sending response (48 chars) to 1499990220077137943
+2026-05-29 02:25:50,502 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:353725233578115072 (88 chars)
+2026-05-29 02:25:50,995 INFO gateway.run: inbound message: platform=discord user=twizz chat=1499990220077137943 msg='I’m trying to get a twisted bow on old school runescape, you feel me? That’s pri'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_2:136217933481664 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 5.52s  Context: 6 msgs, ~6,139 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  Unknown tool 'web_search' — sending error to model for self-correction (1/3)
+WARNING run_agent: Streaming failed after partial delivery, not retrying: Upstream error from Nvidia: EngineCore encountered an issue. See stack trace (above) for the root cause.
+WARNING run_agent: Partial stream delivered before error; returning stub response with 0 chars of recovered content to prevent duplicate messages: Upstream error from Nvidia: EngineCore encountered an issue. See stack trace (above) for the root cause.
+⚠️ Model returned empty after tool calls — nudging to continue
+WARNING run_agent: Tool browser_navigate returned error (0.83s): {"success": false, "error": "Navigation failed: net::ERR_NAME_NOT_RESOLVED"}
+2026-05-29 02:28:18,324 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=147.3s api_calls=6 response=420 chars
+2026-05-29 02:28:18,330 INFO gateway.platforms.base: [Discord] Sending response (420 chars) to 1499990220077137943
+2026-05-29 02:29:50,303 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (121 chars)
+2026-05-29 02:29:50,797 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='We’re going to make RuneScape bot projects. Make sure to not look up any RuneSca'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_2:136217933481664 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 7.97s  Context: 154 msgs, ~62,419 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-29 02:30:20,074 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=29.3s api_calls=1 response=621 chars
+2026-05-29 02:30:20,079 INFO gateway.platforms.base: [Discord] Sending response (621 chars) to 1499990220077137943
+2026-05-29 02:30:50,897 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (31 chars)
+2026-05-29 02:30:51,386 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Does openrouter have Venice ai?'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_1:136217941874368 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 4.17s  Context: 156 msgs, ~62,849 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-29 02:31:16,237 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=24.9s api_calls=1 response=498 chars
+2026-05-29 02:31:16,242 INFO gateway.platforms.base: [Discord] Sending response (498 chars) to 1499990220077137943
+2026-05-29 02:32:20,719 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (145 chars)
+2026-05-29 02:32:21,236 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Look up how to get multiple agents to talk to using hermes and discord so that I'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_3:136217652520640 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 4.91s  Context: 158 msgs, ~63,255 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+WARNING run_agent: Tool skill_view returned error (0.05s): {"success": false, "error": "Skill 'autonomous-ai-agents' not found.", "available_skills": ["dogfood", "yuanbao", "claude-code", "codex", "hermes-agent", "kanban-codex-lane", "opencode", "architecture
+2026-05-29 02:33:09,521 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=48.3s api_calls=4 response=4467 chars
+2026-05-29 02:33:09,527 INFO gateway.platforms.base: [Discord] Sending response (4467 chars) to 1499990220077137943
+2026-05-29 02:38:42,729 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (398 chars)
+2026-05-29 02:38:43,186 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='Write up a step by step command plan and then execute it   VENICE_ADMIN_KEY_pbCB'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_1:136217941874368 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 7.99s  Context: 166 msgs, ~92,247 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+  ⟳ compacting context…
+🗜️ Compacting context — summarizing earlier conversation so I can continue...
+2026-05-29 02:39:27,380 INFO [20260528_234417_3fcb3c] gateway.run: Session split detected: 20260528_234417_3fcb3c → 20260529_023911_47952e (compression)
+2026-05-29 02:39:27,410 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=44.2s api_calls=2 response=3793 chars
+2026-05-29 02:39:27,422 INFO gateway.platforms.base: [Discord] Sending response (3793 chars) to 1499990220077137943
+2026-05-29 02:42:37,150 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (110 chars)
+2026-05-29 02:42:37,630 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='You have discord set up and you’re able to run these commands. Make sure you ref'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_0:136218054620864 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 8.29s  Context: 158 msgs, ~60,425 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-29 02:42:59,731 INFO gateway.run: Received SIGTERM as a planned gateway stop — exiting cleanly
+2026-05-29 02:42:59,731 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=yes parent_pid=1 parent_name=ttyd loadavg_1m=0.11 parent_cmdline='ttyd --port 4860 -c oyama:***REMOVED*** -W -t titleFixed Hermes Agent -t disableResizeOverlay true /hermes.sh'
+WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=yes parent_pid=1 parent_name=ttyd loadavg_1m=0.11 parent_cmdline='ttyd --port 4860 -c oyama:***REMOVED*** -W -t titleFixed Hermes Agent -t disableResizeOverlay true /hermes.sh'
+2026-05-29 02:42:59,733 INFO gateway.run: Stopping gateway...
+2026-05-29 02:42:59,921 INFO gateway.run: Sent shutdown notification to active chat discord:1499990220077137943
+2026-05-29 02:42:59,922 INFO gateway.run: Shutdown phase: notify_active_sessions done at +0.19s
+2026-05-29 02:43:18,535 INFO gateway.run: Starting Hermes Gateway...
+2026-05-29 02:43:18,535 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-29 02:43:18,537 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-29 02:43:18,537 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-29 02:43:18,547 INFO gateway.run: Recovered 2 background process(es) from previous run
+2026-05-29 02:43:18,549 INFO gateway.run: Marked 1 in-flight session(s) as resumable from previous run
+2026-05-29 02:43:19,024 INFO gateway.run: Connecting to discord...
+2026-05-29 02:43:19,053 ERROR gateway.platforms.base: [Discord] Discord bot token already in use (PID 11). Stop the other gateway first.
+2026-05-29 02:43:19,055 WARNING gateway.run: ✗ discord failed to connect
+2026-05-29 02:43:19,055 INFO gateway.platforms.discord: [Discord] Disconnected
+2026-05-29 02:43:19,056 ERROR gateway.run: Gateway hit a non-retryable startup conflict: discord: Discord bot token already in use (PID 11). Stop the other gateway first.
+2026-05-29 02:43:19,058 ERROR gateway.run: Gateway exiting cleanly: discord: Discord bot token already in use (PID 11). Stop the other gateway first.
+┌─────────────────────────────────────────────────────────┐
+│           ⚕ Hermes Gateway Starting...                 │
+├─────────────────────────────────────────────────────────┤
+│  Messaging platforms + cron scheduler                    │
+│  Press Ctrl+C to stop                                   │
+└─────────────────────────────────────────────────────────┘
+
+2026-05-29 02:53:58,340 INFO gateway.run: Starting Hermes Gateway...
+2026-05-29 02:53:58,340 INFO gateway.run: Session storage: /opt/data/sessions
+2026-05-29 02:53:58,343 INFO gateway.run: Agent budget: max_iterations=90 (agent.max_turns from config.yaml, or HERMES_MAX_ITERATIONS from .env, or default 90)
+2026-05-29 02:53:58,344 INFO gateway.run: Secret redaction: ENABLED (tool output, logs, and chat responses are scrubbed before delivery)
+2026-05-29 02:53:59,208 INFO gateway.run: Connecting to discord...
+2026-05-29 02:53:59,766 INFO gateway.platforms.discord: [Discord] Registered /skill command with 99 skill(s) via autocomplete
+2026-05-29 02:54:02,522 INFO gateway.platforms.discord: [Discord] Connected as Velox#6418
+2026-05-29 02:54:02,525 INFO gateway.run: ✓ discord connected
+2026-05-29 02:54:02,526 INFO gateway.run: Gateway running with 1 platform(s)
+2026-05-29 02:54:02,531 INFO gateway.run: Channel directory built: 5 target(s)
+2026-05-29 02:54:02,532 INFO gateway.platforms.discord: [Discord] Skipping Discord slash command sync: same slash-command fingerprint already synced
+2026-05-29 02:54:03,136 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1509751204953985054:219376861866754049 (24 chars)
+2026-05-29 02:54:03,533 INFO gateway.run: Scheduled auto-resume for 1 restart-interrupted session(s)
+2026-05-29 02:54:03,534 INFO gateway.run: Press Ctrl+C to stop
+2026-05-29 02:54:03,568 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg=''
+2026-05-29 02:54:03,694 INFO gateway.run: Cron ticker started (interval=60s)
+2026-05-29 02:54:04,418 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1509751204953985054 msg='250 is like 150 in bonds'
+WARNING plugins.memory: Memory provider 'holographic' loaded but no provider instance found
+2026-05-29 02:54:08,536 INFO gateway.run: kanban dispatcher: embedded in gateway (interval=60.0s)
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_1:132458667308736 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 6.83s  Context: 2 msgs, ~6,043 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_0:132458924963520 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 14.52s  Context: 158 msgs, ~60,467 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-29 02:54:35,086 INFO gateway.run: response ready: platform=discord chat=1509751204953985054 time=30.7s api_calls=1 response=1482 chars
+2026-05-29 02:54:35,113 INFO gateway.platforms.base: [Discord] Sending response (1482 chars) to 1509751204953985054
+2026-05-29 02:54:39,138 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=35.6s api_calls=1 response=4571 chars
+2026-05-29 02:54:39,145 INFO gateway.platforms.base: [Discord] Sending response (4571 chars) to 1499990220077137943
+2026-05-29 02:54:40,871 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1509751204953985054:353725233578115072 (117 chars)
+2026-05-29 02:54:41,389 INFO gateway.run: inbound message: platform=discord user=twizz chat=1509751204953985054 msg='I swooped most of it, but I ended up leaving a few things. I also reorganized th'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_3:132458616960704 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 3.66s  Context: 2 msgs, ~6,066 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-29 02:54:52,795 INFO gateway.run: response ready: platform=discord chat=1509751204953985054 time=11.4s api_calls=1 response=485 chars
+2026-05-29 02:54:52,801 INFO gateway.platforms.base: [Discord] Sending response (485 chars) to 1509751204953985054
+2026-05-29 02:55:46,408 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (158 chars)
+2026-05-29 02:55:46,829 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='So just to confirm the general chat is where I’m gonna talk to the orchestrate a'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_2:132458625353408 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 10.85s  Context: 160 msgs, ~63,086 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️ Model returned empty after tool calls — nudging to continue
+2026-05-29 02:56:05,647 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1509751204953985054:353725233578115072 (70 chars)
+2026-05-29 02:56:06,096 INFO gateway.run: inbound message: platform=discord user=twizz chat=1509751204953985054 msg='But yeah man it’s still a come up. I was hoping it would have more ngl'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_0:132458924963520 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 3.53s  Context: 4 msgs, ~6,272 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-29 02:56:21,333 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1509751204953985054:353725233578115072 (45 chars)
+⚡ Interrupted during API call.
+2026-05-29 02:56:27,206 INFO gateway.run: response ready: platform=discord chat=1499990220077137943 time=40.4s api_calls=2 response=2227 chars
+2026-05-29 02:56:27,212 INFO gateway.platforms.base: [Discord] Sending response (2227 chars) to 1499990220077137943
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_3:132458616960704 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 9.00s  Context: 7 msgs, ~9,334 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-29 02:56:35,302 INFO gateway.run: response ready: platform=discord chat=1509751204953985054 time=29.2s api_calls=1 response=936 chars
+2026-05-29 02:56:35,307 INFO gateway.platforms.base: [Discord] Sending response (936 chars) to 1509751204953985054
+2026-05-29 02:56:39,564 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1509751204953985054:353725233578115072 (10 chars)
+2026-05-29 02:56:39,994 INFO gateway.run: inbound message: platform=discord user=twizz chat=1509751204953985054 msg='*kree’arra'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_0:132458924963520 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 5.56s  Context: 9 msgs, ~9,994 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+2026-05-29 02:57:01,629 INFO gateway.run: response ready: platform=discord chat=1509751204953985054 time=21.6s api_calls=1 response=716 chars
+2026-05-29 02:57:01,634 INFO gateway.platforms.base: [Discord] Sending response (716 chars) to 1509751204953985054
+2026-05-29 02:58:37,645 INFO gateway.platforms.discord: [Discord] Flushing text batch agent:main:discord:group:1499990220077137943:219376861866754049 (34 chars)
+2026-05-29 02:58:38,088 INFO gateway.run: inbound message: platform=discord user=T.zdbd chat=1499990220077137943 msg='I called it <#1509751204953985054>'
+WARNING run_agent: API call failed (attempt 1/3) error_type=TypeError thread=asyncio_3:132458616960704 provider=openai-codex base_url=https://chatgpt.com/backend-api/codex model=gpt-5.5 summary='NoneType' object is not iterable
+⚠️  API call failed (attempt 1/3): TypeError
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: 'NoneType' object is not iterable
+   ⏱️  Elapsed: 11.87s  Context: 162 msgs, ~63,687 tokens
+⚠️ Non-retryable error (HTTP None) — trying fallback...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter

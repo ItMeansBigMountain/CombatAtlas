@@ -1,0 +1,13 @@
+{
+  "name": "AchievementGapFinder",
+  "version": "1.0.0",
+  "description": "identifies missing achievements compared to a target player",
+  "author": "Affan Fareed",
+  "tags": [
+    "osrs",
+    "runelite",
+    "plugin",
+    "achievementgapfinder"
+  ],
+  "min_engine_version": "3.0.0"
+}

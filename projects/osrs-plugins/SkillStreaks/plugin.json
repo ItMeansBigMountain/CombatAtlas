@@ -1,0 +1,13 @@
+{
+  "name": "SkillStreaks",
+  "version": "1.0.0",
+  "description": "monitors streak length for XP gains in selected skills",
+  "author": "Affan Fareed",
+  "tags": [
+    "osrs",
+    "runelite",
+    "plugin",
+    "skillstreaks"
+  ],
+  "min_engine_version": "3.0.0"
+}

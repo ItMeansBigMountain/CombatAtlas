@@ -1,0 +1,13 @@
+{
+  "name": "SkillNemesis",
+  "version": "1.0.0",
+  "description": "displays skill level comparisons with rivals",
+  "author": "Affan Fareed",
+  "tags": [
+    "osrs",
+    "runelite",
+    "plugin",
+    "skillnemesis"
+  ],
+  "min_engine_version": "3.0.0"
+}

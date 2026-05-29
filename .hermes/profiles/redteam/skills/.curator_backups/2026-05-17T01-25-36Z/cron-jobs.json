@@ -1,0 +1,42 @@
+{
+  "jobs": [
+    {
+      "id": "cfcea697da5c",
+      "name": "Daily HeRmEz GitHub backup",
+      "prompt": "",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "backup_hermez.sh",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 3 * * *",
+        "display": "0 3 * * *"
+      },
+      "schedule_display": "0 3 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 2
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-05-14T06:28:44.368316+00:00",
+      "next_run_at": "2026-05-17T03:00:00+00:00",
+      "last_run_at": "2026-05-16T03:00:33.789666+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null
+    }
+  ],
+  "updated_at": "2026-05-16T03:00:33.790176+00:00"
+}

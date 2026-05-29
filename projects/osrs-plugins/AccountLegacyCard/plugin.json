@@ -1,0 +1,13 @@
+{
+  "name": "AccountLegacyCard",
+  "version": "1.0.0",
+  "description": "generates a legacy summary card for your account",
+  "author": "Affan Fareed",
+  "tags": [
+    "osrs",
+    "runelite",
+    "plugin",
+    "accountlegacycard"
+  ],
+  "min_engine_version": "3.0.0"
+}

@@ -1,10 +1,16 @@
 {
-  "updated_at": "2026-05-28T02:56:56.439692",
+  "updated_at": "2026-05-29T02:58:03.855610",
   "platforms": {
     "discord": [
       {
         "id": "1499990220077137943",
         "name": "general",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1509751204953985054",
+        "name": "red-team",
         "guild": "TRAPISTAN",
         "type": "channel"
       },
@@ -23,6 +29,12 @@
       {
         "id": "1499990220077137943",
         "name": "TRAPISTAN / #general",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "1509751204953985054",
+        "name": "TRAPISTAN / #red-team",
         "type": "group",
         "thread_id": null
       }

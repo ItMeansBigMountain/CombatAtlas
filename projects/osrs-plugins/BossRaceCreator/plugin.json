@@ -1,0 +1,13 @@
+{
+  "name": "BossRaceCreator",
+  "version": "1.0.0",
+  "description": "creates boss kill competitions between players or clans",
+  "author": "Affan Fareed",
+  "tags": [
+    "osrs",
+    "runelite",
+    "plugin",
+    "bossracecreator"
+  ],
+  "min_engine_version": "3.0.0"
+}

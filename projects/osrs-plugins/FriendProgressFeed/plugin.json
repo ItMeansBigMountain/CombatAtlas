@@ -1,0 +1,13 @@
+{
+  "name": "FriendProgressFeed",
+  "version": "1.0.0",
+  "description": "shows XP gains from your friends in real time",
+  "author": "Affan Fareed",
+  "tags": [
+    "osrs",
+    "runelite",
+    "plugin",
+    "friendprogressfeed"
+  ],
+  "min_engine_version": "3.0.0"
+}

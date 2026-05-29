@@ -1,0 +1,13 @@
+{
+  "name": "GroupIronProgressBoard",
+  "version": "1.0.0",
+  "description": "tracks Group Ironman progress for teams",
+  "author": "Affan Fareed",
+  "tags": [
+    "osrs",
+    "runelite",
+    "plugin",
+    "groupironprogressboard"
+  ],
+  "min_engine_version": "3.0.0"
+}

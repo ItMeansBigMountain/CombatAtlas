@@ -157,6 +157,10 @@
       1778573798000000000,
       6559
     ],
+    "gaming/osrs-plugin-development/SKILL.md": [
+      1779971037478134699,
+      1821
+    ],
     "gaming/pokemon-player/SKILL.md": [
       1778573798000000000,
       8709
@@ -305,6 +309,10 @@
       1778573798000000000,
       9298
     ],
+    "productivity/professional-work/SKILL.md": [
+      1779983600454660420,
+      3445
+    ],
     "productivity/teams-meeting-pipeline/SKILL.md": [
       1778573798000000000,
       6867
@@ -360,6 +368,10 @@
     "software-development/node-inspect-debugger/SKILL.md": [
       1778573798000000000,
       10929
+    ],
+    "software-development/osrs-plugins/SKILL.md": [
+      1780006643567387320,
+      4375
     ],
     "software-development/plan/SKILL.md": [
       1778573798000000000,
@@ -1154,6 +1166,19 @@
       }
     },
     {
+      "skill_name": "osrs-plugin-development",
+      "category": "gaming",
+      "frontmatter_name": "osrs-plugin-development",
+      "description": "Develop Runelite plugins for Old School RuneScape using t...",
+      "platforms": [],
+      "conditions": {
+        "fallback_for_toolsets": [],
+        "requires_toolsets": [],
+        "fallback_for_tools": [],
+        "requires_tools": []
+      }
+    },
+    {
       "skill_name": "pokemon-player",
       "category": "gaming",
       "frontmatter_name": "pokemon-player",
@@ -1763,6 +1788,19 @@
       }
     },
     {
+      "skill_name": "professional-work",
+      "category": "productivity",
+      "frontmatter_name": "professional-work",
+      "description": "Provides guidance, research, and actionable advice for th...",
+      "platforms": [],
+      "conditions": {
+        "fallback_for_toolsets": [],
+        "requires_toolsets": [],
+        "fallback_for_tools": [],
+        "requires_tools": []
+      }
+    },
+    {
       "skill_name": "teams-meeting-pipeline",
       "category": "productivity",
       "frontmatter_name": "teams-meeting-pipeline",
@@ -1985,6 +2023,19 @@
         "macos",
         "windows"
       ],
+      "conditions": {
+        "fallback_for_toolsets": [],
+        "requires_toolsets": [],
+        "fallback_for_tools": [],
+        "requires_tools": []
+      }
+    },
+    {
+      "skill_name": "osrs-plugins",
+      "category": "software-development",
+      "frontmatter_name": "osrs-plugins",
+      "description": "OSRS RuneLite plugin development guide covering project s...",
+      "platforms": [],
       "conditions": {
         "fallback_for_toolsets": [],
         "requires_toolsets": [],

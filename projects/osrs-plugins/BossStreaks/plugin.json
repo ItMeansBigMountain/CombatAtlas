@@ -1,0 +1,13 @@
+{
+  "name": "BossStreaks",
+  "version": "1.0.0",
+  "description": "tracks consecutive days of boss kill activities",
+  "author": "Affan Fareed",
+  "tags": [
+    "osrs",
+    "runelite",
+    "plugin",
+    "bossstreaks"
+  ],
+  "min_engine_version": "3.0.0"
+}
