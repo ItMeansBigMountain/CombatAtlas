@@ -72,9 +72,16 @@ HERMES_KANBAN_BOARD=hermez hermes kanban tail <task_id>
 
 Current known assignee profiles:
 
-- `default`
+- `default` — general operator / implementation
+- `researcher` — discovery, docs, market/source research
+- `reviewer` — code/work review and validation
+- `designer` — UI/UX, visual direction, product polish
+- `editor` — writing/editing/polish
+- `director` — planning, decomposition, orchestration
+- `animator` — animation/video/visual motion tasks
+- `redteam` — adversarial testing/security-style review
 
-More specialist profiles can be added later with `hermes profile create <name>` and then used as Kanban assignees.
+Use only assignee names that appear in `hermes profile list` / `hermes kanban assignees`; invented names will not be picked up by the dispatcher.
 
 ## Dispatcher
 
