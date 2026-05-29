@@ -1,0 +1,5 @@
+# Each child directory here is an independent RuneLite plugin git repo.
+# Do not track plugin internals in the parent HeRmEz workspace repository.
+*/
+!.gitignore
+!README.md
