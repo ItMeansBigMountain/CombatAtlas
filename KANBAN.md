@@ -1,21 +1,19 @@
 # HeRmEz Kanban Board
 
-This workspace has a dedicated Hermes Kanban board for durable multi-step work.
+This workspace uses the canonical Hermes `default` Kanban board for durable multi-step work.
 
 ## Board
 
-- Slug: `hermez`
-- Name: `HeRmEz Workspace`
-- DB path: `/opt/data/kanban/boards/hermez/kanban.db`
+- Slug: `default`
+- Name: `Default`
+- DB path: `/opt/data/kanban.db`
 - Workspace repo: `/opt/data/HeRmEz`
 
-Because this current chat session was started before the board was switched, shell commands in this session inherit `HERMES_KANBAN_BOARD=default`. To target the HeRmEz board from this session, prefix commands with:
+All older project/demo boards were consolidated or removed on 2026-05-29:
 
-```bash
-HERMES_KANBAN_BOARD=hermez hermes kanban ...
-```
-
-New Hermes sessions should use the active board file at `/opt/data/kanban/current`, which is set to `hermez`.
+- `hermez` was copied into `default`, then deleted.
+- `nous-kanban-demo` was deleted.
+- Pre-consolidation backup: `/opt/data/HeRmEz/projects/_backups/kanban-consolidation-20260529T053711Z`
 
 ## Useful commands
 
@@ -31,16 +29,16 @@ Show current board:
 hermes kanban boards current
 ```
 
-List tasks on this board:
+List tasks:
 
 ```bash
-HERMES_KANBAN_BOARD=hermez hermes kanban list
+hermes kanban list
 ```
 
 Create a triage task:
 
 ```bash
-HERMES_KANBAN_BOARD=hermez hermes kanban create \
+hermes kanban create \
   --triage \
   --created-by user \
   "Plan my next project"
@@ -49,7 +47,7 @@ HERMES_KANBAN_BOARD=hermez hermes kanban create \
 Create a worker task for the default profile:
 
 ```bash
-HERMES_KANBAN_BOARD=hermez hermes kanban create \
+hermes kanban create \
   --assignee default \
   --workspace dir:/opt/data/HeRmEz \
   --body "Do the requested work in /opt/data/HeRmEz and summarize results." \
@@ -59,13 +57,13 @@ HERMES_KANBAN_BOARD=hermez hermes kanban create \
 Watch stats:
 
 ```bash
-HERMES_KANBAN_BOARD=hermez hermes kanban stats
+hermes kanban stats
 ```
 
 Follow a task:
 
 ```bash
-HERMES_KANBAN_BOARD=hermez hermes kanban tail <task_id>
+hermes kanban tail <task_id>
 ```
 
 ## Profiles
