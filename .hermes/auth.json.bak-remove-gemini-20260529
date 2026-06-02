@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "providers": {
+    "openai-codex": {
+      "tokens": {
+        "access_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjE5MzQ0ZTY1LWJiYzktNDRkMS1hOWQwLWY5NTdiMDc5YmQwZSIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiaHR0cHM6Ly9hcGkub3BlbmFpLmNvbS92MSJdLCJjbGllbnRfaWQiOiJhcHBfRU1vYW1FRVo3M2YwQ2tYYVhwN2hyYW5uIiwiZXhwIjoxNzgwMTA0NDY2LCJodHRwczovL2FwaS5vcGVuYWkuY29tL2F1dGgiOnsiYW1yIjpbIm90cCIsIm1mYSIsInNtcyJdLCJjaGF0Z3B0X2FjY291bnRfaWQiOiJmYzU3ZWFjNS0xZmEyLTQ3ZTItYWIxZi1jOGY5NzA3ZWE4Y2QiLCJjaGF0Z3B0X2FjY291bnRfdXNlcl9pZCI6InVzZXItSlJDdG5KZGpFN0M4QmxPRXlxdnV4NlpnX19mYzU3ZWFjNS0xZmEyLTQ3ZTItYWIxZi1jOGY5NzA3ZWE4Y2QiLCJjaGF0Z3B0X2NvbXB1dGVfcmVzaWRlbmN5Ijoibm9fY29uc3RyYWludCIsImNoYXRncHRfcGxhbl90eXBlIjoicGx1cyIsImNoYXRncHRfdXNlcl9pZCI6InVzZXItSlJDdG5KZGpFN0M4QmxPRXlxdnV4NlpnIiwidXNlcl9pZCI6InVzZXItSlJDdG5KZGpFN0M4QmxPRXlxdnV4NlpnIn0sImh0dHBzOi8vYXBpLm9wZW5haS5jb20vbWZhIjp7InJlcXVpcmVkIjoieWVzIn0sImh0dHBzOi8vYXBpLm9wZW5haS5jb20vcHJvZmlsZSI6eyJlbWFpbCI6ImFmZmFuLmZhcmVlZEBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZX0sImlhdCI6MTc3OTI0MDQ2NSwiaXNzIjoiaHR0cHM6Ly9hdXRoLm9wZW5haS5jb20iLCJqdGkiOiI3ZmE3ZjYxZi0wZDlmLTQzYTEtOWEwYS0yZmE0ZDEwMTkyYWMiLCJuYmYiOjE3NzkyNDA0NjUsInB3ZF9hdXRoX3RpbWUiOjE3NzgzNzI3NjgyMDAsInNjcCI6WyJvcGVuaWQiLCJwcm9maWxlIiwiZW1haWwiLCJvZmZsaW5lX2FjY2VzcyJdLCJzZXNzaW9uX2lkIjoiYXV0aHNlc3NfQ25rTUd5WFFBSDBUcHQ5MnpqRUNIa0NrIiwic2wiOnRydWUsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTEwOTQ1NzY1MDIyMDg3NDc3NDkxIn0.pRGUq-D0WmOA5qPw17Ml47R4TxGw6QFaVg61qJKgWltyfxLaXj_QiO3W6svJNu0T1CZMR_hBWSPXuVHwQbkSqaV8xvDVzSPMq89alyblrlMthneV7CeQP8k0Ctia5W3OVKgEb-fxjgkRuapnOetuEBfVstXx9gnZxVsk-2VFsi6WHZL3JiQ5DuqoRumduC5evhUlt71qILC4mVK6EsMKLQe8wBdxpMW4hqWoeq60oQZpahQBbJLGiouzefCJ1ooLTSwshmj-LORbn62pbYPgzRbdj8ot70iZ14aNvCNxi8wro3bsrg3G5wc-8a4paLArvFjJsYiWwfrwbamSkMGqrjKR9oTAUPDRYXXLYnSW3ghkSqtFZ9edsuV0E1wRce-295eXTAKDMiZUNt9Xr8wPoisRuKaiOheETfxjOX4-NB0g9NFbv_gQUSmTBo5oTkv8AoSpSDYIPUOzt6ab6iWkw5M3rNbvvPyo6AgdyH_JC9JHpicOIgKY4TMPttfcopy_XJDmeXbfZSCkEgZX1P32T8kPV39aCztA3sP_GLqXhSL5ShhFkiYxkBZcci1Ao9ykXsD34L7__58RZuKZ5l_cLTABXazupeE5nhHpyngYenjH5gW-fUUtwU8qRnTrDLsmtlnSAvIji6WFvPnNtM7LvBpPv7-r5gT84uD2P-VL3C4",
+        "refresh_token": "rt_1a1D_WCtNDar4m5ZqgAtL1zUHWzFEfz2xtjlVaD4_PA.B4pt8BRMVPz_gfidLRUF7M26orrWrBVEpX7KqdqEOuc"
+      },
+      "last_refresh": "2026-05-20T01:27:46.015321Z",
+      "auth_mode": "chatgpt"
+    }
+  },
+  "active_provider": "openai-codex",
+  "updated_at": "2026-05-29T04:30:12.971455+00:00",
+  "credential_pool": {
+    "openai-codex": [
+      {
+        "id": "efdb2a",
+        "label": "device_code",
+        "auth_type": "oauth",
+        "priority": 0,
+        "source": "device_code",
+        "access_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjE5MzQ0ZTY1LWJiYzktNDRkMS1hOWQwLWY5NTdiMDc5YmQwZSIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiaHR0cHM6Ly9hcGkub3BlbmFpLmNvbS92MSJdLCJjbGllbnRfaWQiOiJhcHBfRU1vYW1FRVo3M2YwQ2tYYVhwN2hyYW5uIiwiZXhwIjoxNzgwMTA0NDY2LCJodHRwczovL2FwaS5vcGVuYWkuY29tL2F1dGgiOnsiYW1yIjpbIm90cCIsIm1mYSIsInNtcyJdLCJjaGF0Z3B0X2FjY291bnRfaWQiOiJmYzU3ZWFjNS0xZmEyLTQ3ZTItYWIxZi1jOGY5NzA3ZWE4Y2QiLCJjaGF0Z3B0X2FjY291bnRfdXNlcl9pZCI6InVzZXItSlJDdG5KZGpFN0M4QmxPRXlxdnV4NlpnX19mYzU3ZWFjNS0xZmEyLTQ3ZTItYWIxZi1jOGY5NzA3ZWE4Y2QiLCJjaGF0Z3B0X2NvbXB1dGVfcmVzaWRlbmN5Ijoibm9fY29uc3RyYWludCIsImNoYXRncHRfcGxhbl90eXBlIjoicGx1cyIsImNoYXRncHRfdXNlcl9pZCI6InVzZXItSlJDdG5KZGpFN0M4QmxPRXlxdnV4NlpnIiwidXNlcl9pZCI6InVzZXItSlJDdG5KZGpFN0M4QmxPRXlxdnV4NlpnIn0sImh0dHBzOi8vYXBpLm9wZW5haS5jb20vbWZhIjp7InJlcXVpcmVkIjoieWVzIn0sImh0dHBzOi8vYXBpLm9wZW5haS5jb20vcHJvZmlsZSI6eyJlbWFpbCI6ImFmZmFuLmZhcmVlZEBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZX0sImlhdCI6MTc3OTI0MDQ2NSwiaXNzIjoiaHR0cHM6Ly9hdXRoLm9wZW5haS5jb20iLCJqdGkiOiI3ZmE3ZjYxZi0wZDlmLTQzYTEtOWEwYS0yZmE0ZDEwMTkyYWMiLCJuYmYiOjE3NzkyNDA0NjUsInB3ZF9hdXRoX3RpbWUiOjE3NzgzNzI3NjgyMDAsInNjcCI6WyJvcGVuaWQiLCJwcm9maWxlIiwiZW1haWwiLCJvZmZsaW5lX2FjY2VzcyJdLCJzZXNzaW9uX2lkIjoiYXV0aHNlc3NfQ25rTUd5WFFBSDBUcHQ5MnpqRUNIa0NrIiwic2wiOnRydWUsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTEwOTQ1NzY1MDIyMDg3NDc3NDkxIn0.pRGUq-D0WmOA5qPw17Ml47R4TxGw6QFaVg61qJKgWltyfxLaXj_QiO3W6svJNu0T1CZMR_hBWSPXuVHwQbkSqaV8xvDVzSPMq89alyblrlMthneV7CeQP8k0Ctia5W3OVKgEb-fxjgkRuapnOetuEBfVstXx9gnZxVsk-2VFsi6WHZL3JiQ5DuqoRumduC5evhUlt71qILC4mVK6EsMKLQe8wBdxpMW4hqWoeq60oQZpahQBbJLGiouzefCJ1ooLTSwshmj-LORbn62pbYPgzRbdj8ot70iZ14aNvCNxi8wro3bsrg3G5wc-8a4paLArvFjJsYiWwfrwbamSkMGqrjKR9oTAUPDRYXXLYnSW3ghkSqtFZ9edsuV0E1wRce-295eXTAKDMiZUNt9Xr8wPoisRuKaiOheETfxjOX4-NB0g9NFbv_gQUSmTBo5oTkv8AoSpSDYIPUOzt6ab6iWkw5M3rNbvvPyo6AgdyH_JC9JHpicOIgKY4TMPttfcopy_XJDmeXbfZSCkEgZX1P32T8kPV39aCztA3sP_GLqXhSL5ShhFkiYxkBZcci1Ao9ykXsD34L7__58RZuKZ5l_cLTABXazupeE5nhHpyngYenjH5gW-fUUtwU8qRnTrDLsmtlnSAvIji6WFvPnNtM7LvBpPv7-r5gT84uD2P-VL3C4",
+        "refresh_token": "rt_1a1D_WCtNDar4m5ZqgAtL1zUHWzFEfz2xtjlVaD4_PA.B4pt8BRMVPz_gfidLRUF7M26orrWrBVEpX7KqdqEOuc",
+        "last_status": "ok",
+        "last_status_at": null,
+        "last_error_code": null,
+        "last_error_reason": null,
+        "last_error_message": null,
+        "last_error_reset_at": null,
+        "base_url": "https://chatgpt.com/backend-api/codex",
+        "last_refresh": "2026-05-20T01:27:46.015321Z",
+        "request_count": 0
+      }
+    ],
+    "openrouter": [
+      {
+        "id": "85c1e7",
+        "label": "OPENROUTER_API_KEY",
+        "auth_type": "api_key",
+        "priority": 0,
+        "source": "env:OPENROUTER_API_KEY",
+        "access_token": "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",
+        "last_status": null,
+        "last_status_at": null,
+        "last_error_code": null,
+        "last_error_reason": null,
+        "last_error_message": null,
+        "last_error_reset_at": null,
+        "base_url": "https://openrouter.ai/api/v1",
+        "request_count": 0
+      }
+    ],
+    "gemini": [
+      {
+        "id": "e7999a",
+        "label": "GOOGLE_API_KEY",
+        "auth_type": "api_key",
+        "priority": 0,
+        "source": "env:GOOGLE_API_KEY",
+        "access_token": "AIzaSyAqdFAB2nCo_3ksoNsAzmYZICIbNvNpL7o",
+        "last_status": null,
+        "last_status_at": null,
+        "last_error_code": null,
+        "last_error_reason": null,
+        "last_error_message": null,
+        "last_error_reset_at": null,
+        "base_url": "https://generativelanguage.googleapis.com/v1beta",
+        "request_count": 0
+      },
+      {
+        "id": "5a9f20",
+        "label": "GEMINI_API_KEY",
+        "auth_type": "api_key",
+        "priority": 1,
+        "source": "env:GEMINI_API_KEY",
+        "access_token": "AIzaSyAqdFAB2nCo_3ksoNsAzmYZICIbNvNpL7o",
+        "last_status": null,
+        "last_status_at": null,
+        "last_error_code": null,
+        "last_error_reason": null,
+        "last_error_message": null,
+        "last_error_reset_at": null,
+        "base_url": "https://generativelanguage.googleapis.com/v1beta",
+        "request_count": 0
+      }
+    ]
+  }
+}

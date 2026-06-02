@@ -1,6 +1,0 @@
-
-=== hermes update started 2026-05-20T01:29:53 ===
-⚕ Updating Hermes Agent...
-
-✗ Not a git repository. Please reinstall:
-  curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash

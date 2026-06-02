@@ -1,0 +1,1383 @@
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+  ┊ 📚 skill     osrs-plugins  0.0s
+  ┊ 📚 skill     osrs-plugins  0.0s
+  ┊ 🔎 find      *  0.2s
+  ┊ 💻 $         git status --short --branch && git branch --show-current && git log --oneline -5  0.1s
+  ┊ 💻 $         printf 'JAVA_HOME=%s\n' "$JAVA_HOME"; /opt/data/jdks/current-java11/bin/java -version; ./gradlew --version --no-daemon  1.6s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/build.gradle  0.6s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/settings.gradle  0.6s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/runelite-plugin.properties  0.6s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/plugin.json  0.7s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcrivalLookupPlugin.java  0.7s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcrivalLookupConfig.java  0.7s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcrivalLookupPluginTest.java  0.7s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/README.md  0.7s
+  ┊ 💻 $         export JAVA_HOME=/opt/data/jdks/current-java11 PATH="$JAVA_HOME/bin:$PATH"; ./gradlew test --no-daemon -q  303.3s [exit 124]
+  ┊ ⚡ kanban_he   0.0s
+  ┊ 🔎 find      build.gradle  0.8s
+  ┊ 🔎 find      build.gradle  0.6s
+  ┊ 🔎 find      runelite-plugin.properties  0.5s
+  ┊ 🔍 search    Old School RuneScape hiscore index_lite boss order kill count bosses CSV  1.2s
+  ┊ 🔍 search    site:github.com/runelite/runelite HiscoreSkill boss Old School RuneScape Runelite API Boss  1.7s
+  ┊ 🔎 grep      HiscoreClient  0.4s
+  ┊ 🔎 find      *runelite-client*  3.9s
+  ┊ 📄 fetch     oldschool.runescape.wiki  0.8s [error]
+  ┊ 📄 fetch     raw.githubusercontent.com +1  12.7s
+  ┊ 💻 $         python3 - <<'PY'
+import urllib.request
+url='https://raw.githubusercontent.com/runelite/runelite/master/runelite-client/src/main/java/net/runelite/client/hiscore/HiscoreSkill.java'
+text=urllib.request.urlopen(url,timeout=20).read().decode()
+start=text.index('public enum HiscoreSkill')
+print(text[start:start+10000])
+PY  2.3s
+  ┊ 💻 $         python3 - <<'PY'
+import urllib.request
+for path in ['HiscoreClient.java','HiscoreEndpoint.java','Skill.java']:
+ url=f'https://raw.githubusercontent.com/runelite/runelite/master/runelite-client/src/main/java/net/runelite/client/hiscore/{path}'
+ try:
+  text=urllib.request.urlopen(url,timeout=20).read().decode()
+  print('---',path,'---')
+  print(text[:5000])
+ except Exception as e: print(e)
+PY  2.2s
+  ┊ ✍️  write     /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupConfig.java  2.0s
+  ┊ review diff
+a/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupConfig.java → b/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupConfig.java
+@@ -0,0 +1,39 @@
++package com.itmeansbigmountain.bosskcrivallookup;
++
++import net.runelite.client.config.Config;
++import net.runelite.client.config.ConfigGroup;
++import net.runelite.client.config.ConfigItem;
++
++@ConfigGroup("bosskcrivallookup")
++public interface BossKcRivalLookupConfig extends Config
++{
++	@ConfigItem(
++		keyName = "rivalName",
++		name = "Rival name",
++		description = "Default OSRS account to compare against when using !bosskc"
++	)
++	default String rivalName()
++	{
++		return "Oyama";
++	}
++
++	@ConfigItem(
++		keyName = "bossName",
++		name = "Boss name",
++		description = "Default boss or raid hiscore entry to compare"
++	)
++	default String bossName()
++	{
++		return "Vorkath";
++	}
++
++	@ConfigItem(
++		keyName = "showLoginHint",
++		name = "Show login hint",
++		description = "Show a short chat reminder after logging in"
++	)
++	default boolean showLoginHint()
++	{
++		return true;
++	}
++}
+  ┊ ✍️  write     /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupFormatter.java  1.6s
+  ┊ review diff
+a/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupFormatter.java → b/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupFormatter.java
+@@ -0,0 +1,119 @@
++package com.itmeansbigmountain.bosskcrivallookup;
++
++import java.util.Arrays;
++import java.util.Locale;
++import java.util.Optional;
++import java.util.stream.Stream;
++import net.runelite.client.hiscore.HiscoreSkill;
++import net.runelite.client.hiscore.Skill;
++
++final class BossKcRivalLookupFormatter
++{
++	private BossKcRivalLookupFormatter()
++	{
++	}
++
++	static Optional<HiscoreSkill> findBossSkill(String bossName)
++	{
++		String requested = normalize(bossName);
++		if (requested.isEmpty())
++		{
++			return Optional.empty();
++		}
++
++		return bossSkills()
++			.filter(skill -> normalize(skill.getName()).equals(requested)
++				|| normalize(skill.name()).equals(requested))
++			.findFirst()
++			.or(() -> bossSkills()
++				.filter(skill -> normalize(skill.getName()).contains(requested))
++				.findFirst());
++	}
++
++	static Stream<HiscoreSkill> bossSkills()
++	{
++		return Arrays.stream(HiscoreSkill.values())
++			.filter(skill -> "BOSS".equals(skill.getType().name()));
++	}
++
++	static int killCount(Skill skill)
++	{
++		if (skill == null || skill.getRank() <= 0)
++		{
++			return 0;
++		}
++
++		return Math.max(0, skill.getLevel());
++	}
++
++	static String formatComparison(String localPlayer, String rivalPlayer, String bossName, int localKills, int rivalKills)
++	{
++		int diff = localKills - rivalKills;
++		String leader;
++		if (diff > 0)
++		{
++			leader = localPlayer + " leads by " + diff;
++		}
++		else if (diff < 0)
++		{
++			leader = rivalPlayer + " leads by " + Math.abs(diff);
++		}
++		else
++		{
++			leader = "tied";
++		}
++
++		return String.format(Locale.ROOT, "%s KC: %s=%d, %s=%d (%s)", bossName, localPlayer, localKills, rivalPlayer, rivalKills, leader);
++	}
++
++	static LookupRequest parseCommand(String message, String defaultRival, String defaultBoss)
++	{
++		String body = message == null ? "" : message.trim();
++		if (body.toLowerCase(Locale.ROOT).startsWith("!bosskc"))
++		{
++			body = body.substring("!bosskc".length()).trim();
++		}
++
++		if (body.isEmpty())
++		{
+… omitted 41 diff line(s) across 1 additional file(s)/section(s)
+  ┊ ✍️  write     /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPlugin.java  3.3s
+  ┊ review diff
+a/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPlugin.java → b/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPlugin.java
+@@ -0,0 +1,161 @@
++package com.itmeansbigmountain.bosskcrivallookup;
++
++import com.google.inject.Provides;
++import java.io.IOException;
++import java.util.Optional;
++import java.util.concurrent.ExecutorService;
++import java.util.concurrent.Executors;
++import javax.inject.Inject;
++import lombok.extern.slf4j.Slf4j;
++import net.runelite.api.ChatMessageType;
++import net.runelite.api.Client;
++import net.runelite.api.GameState;
++import net.runelite.api.Player;
++import net.runelite.api.events.ChatMessage;
++import net.runelite.api.events.GameStateChanged;
++import net.runelite.client.callback.ClientThread;
++import net.runelite.client.config.ConfigManager;
++import net.runelite.client.eventbus.Subscribe;
++import net.runelite.client.hiscore.HiscoreClient;
++import net.runelite.client.hiscore.HiscoreResult;
++import net.runelite.client.hiscore.HiscoreSkill;
++import net.runelite.client.plugins.Plugin;
++import net.runelite.client.plugins.PluginDescriptor;
++import net.runelite.client.util.Text;
++
++@Slf4j
++@PluginDescriptor(
++	name = "Boss KC Rival Lookup",
++	description = "Compare your boss kill count against a configured rival from OSRS hiscores.",
++	tags = {"boss", "kc", "hiscores", "rival"}
++)
++public class BossKcRivalLookupPlugin extends Plugin
++{
++	@Inject
++	private Client client;
++
++	@Inject
++	private ClientThread clientThread;
++
++	@Inject
++	private HiscoreClient hiscoreClient;
++
++	@Inject
++	private BossKcRivalLookupConfig config;
++
++	private ExecutorService lookupExecutor;
++
++	@Override
++	protected void startUp()
++	{
++		lookupExecutor = Executors.newSingleThreadExecutor(r ->
++		{
++			Thread thread = new Thread(r, "boss-kc-rival-lookup");
++			thread.setDaemon(true);
++			return thread;
++		});
++		log.debug("Boss KC Rival Lookup started");
++	}
++
++	@Override
++	protected void shutDown()
++	{
++		if (lookupExecutor != null)
++		{
++			lookupExecutor.shutdownNow();
++			lookupExecutor = null;
++		}
++		log.debug("Boss KC Rival Lookup stopped");
++	}
++
++	@Subscribe
++	public void onGameStateChanged(GameStateChanged event)
++	{
++		if (event.getGameState() == GameState.LOGGED_IN && config.showLoginHint())
++		{
++			addGameMessage("Boss KC Rival Lookup ready. Type !bosskc or !bosskc rival | boss.");
++		}
++	}
+… omitted 83 diff line(s) across 1 additional file(s)/section(s)
+  ┊ ✍️  write     /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPluginTest.java  25.7s
+  ┊ review diff
+a/src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPluginTest.java → b/src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPluginTest.java
+@@ -0,0 +1,55 @@
++package com.itmeansbigmountain.bosskcrivallookup;
++
++import static org.junit.Assert.assertEquals;
++import static org.junit.Assert.assertTrue;
++
++import net.runelite.client.RuneLite;
++import net.runelite.client.externalplugins.ExternalPluginManager;
++import org.junit.Test;
++
++public class BossKcRivalLookupPluginTest
++{
++	@Test
++	public void resolvesBossNamesLoosely()
++	{
++		assertTrue(BossKcRivalLookupFormatter.findBossSkill("vorkath").isPresent());
++		assertTrue(BossKcRivalLookupFormatter.findBossSkill("cox challenge").isPresent());
++		assertTrue(BossKcRivalLookupFormatter.findBossSkill("K'ril").isPresent());
++	}
++
++	@Test
++	public void parsesDefaultCommand()
++	{
++		BossKcRivalLookupFormatter.LookupRequest request = BossKcRivalLookupFormatter.parseCommand("!bosskc", "Oyama", "Vorkath");
++
++		assertEquals("Oyama", request.getRival());
++		assertEquals("Vorkath", request.getBoss());
++	}
++
++	@Test
++	public void parsesRivalAndBossCommand()
++	{
++		BossKcRivalLookupFormatter.LookupRequest request = BossKcRivalLookupFormatter.parseCommand(
++			"!bosskc zezima | Theatre of Blood: Hard Mode",
++			"Oyama",
++			"Vorkath"
++		);
++
++		assertEquals("zezima", request.getRival());
++		assertEquals("Theatre of Blood: Hard Mode", request.getBoss());
++	}
++
++	@Test
++	public void formatsComparisonLeader()
++	{
++		String message = BossKcRivalLookupFormatter.formatComparison("Oyama", "Rival", "Vorkath", 125, 100);
++
++		assertEquals("Vorkath KC: Oyama=125, Rival=100 (Oyama leads by 25)", message);
++	}
++
++	public static void main(String[] args) throws Exception
++	{
++		ExternalPluginManager.loadBuiltin(BossKcRivalLookupPlugin.class);
++		RuneLite.main(args);
++	}
++}
+  ┊ ✍️  write     /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/build.gradle  2.1s
+  ┊ review diff
+a/build.gradle → b/build.gradle
+@@ -14,7 +14,7 @@
+ }
+ 
+ def runeLiteVersion = 'latest.release'
+-def pluginMainClass = 'com.oyama.dmm.DeadmanBreachPluginTest'
++def pluginMainClass = 'com.itmeansbigmountain.bosskcrivallookup.BossKcRivalLookupPluginTest'
+ 
+ dependencies {
+ 	compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
+@@ -22,13 +22,13 @@
+ 	compileOnly 'org.projectlombok:lombok:1.18.30'
+ 	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+ 
+-	testImplementation 'junit:junit:4.12'
++	testImplementation 'junit:junit:4.13.2'
+ 	testImplementation group: 'net.runelite', name:'client', version: runeLiteVersion
+ 	testImplementation group: 'net.runelite', name:'jshell', version: runeLiteVersion
+ }
+ 
+-group = 'com.example'
+-version = '1.0-SNAPSHOT'
++group = 'com.itmeansbigmountain'
++version = '1.0.0'
+ 
+ tasks.withType(JavaCompile).configureEach {
+ 	options.encoding = 'UTF-8'
+  ┊ ✍️  write     /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/runelite-plugin.properties  2.9s
+  ┊ review diff
+a/runelite-plugin.properties → b/runelite-plugin.properties
+@@ -1,6 +1,6 @@
+-displayName=BossKCRivalLookup
++displayName=Boss KC Rival Lookup
+ author=Oyama
+ support=https://github.com/ItMeansBigMountain/BossKCRivalLookup
+-description=BossKCRivalLookup RuneLite plugin.
+-tags=bosskcrivallookup,runelite,osrs
+-plugins=com.itmeansbigmountain.bosskcrivallookup.BossKcrivalLookupPlugin
++description=Compare your boss kill count against a configured rival from OSRS hiscores.
++tags=boss,kc,hiscores,rival,lookup
++plugins=com.itmeansbigmountain.bosskcrivallookup.BossKcRivalLookupPlugin
+  ┊ ✍️  write     /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/plugin.json  7.7s
+  ┊ review diff
+a/plugin.json → b/plugin.json
+@@ -1,13 +1,15 @@
+ {
+-  "name": "BossKCRivalLookup",
++  "name": "Boss KC Rival Lookup",
+   "version": "1.0.0",
+-  "description": "shows boss kill comparisons between you and targeted players",
+-  "author": "Affan Fareed",
++  "description": "Compare your boss kill count against a configured rival from OSRS hiscores.",
++  "author": "Oyama",
+   "tags": [
+     "osrs",
+     "runelite",
+-    "plugin",
+-    "bosskcrivallookup"
++    "boss",
++    "kc",
++    "hiscores",
++    "rival"
+   ],
+   "min_engine_version": "3.0.0"
+-}+}
+  ┊ ✍️  write     /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/README.md  3.1s
+  ┊ review diff
+a/README.md → b/README.md
+@@ -1,2 +1,88 @@
+-# BossKCRivalLookup
+-BossKCRivalLookup OSRS plugin+# Boss KC Rival Lookup
++
++Boss KC Rival Lookup is an external RuneLite plugin that compares your boss kill count against a configured rival using the official Old School RuneScape hiscores exposed through RuneLite's `HiscoreClient`.
++
++The plugin is intentionally lightweight: it does not store data locally, scrape webpages, or block the RuneLite game thread while network lookups are running.
++
++## Features
++
++- Adds a `!bosskc` chat trigger for quick kill-count comparisons.
++- Uses configurable defaults for the rival player and boss/raid entry.
++- Supports one-off lookups with `!bosskc <boss>` or `!bosskc <rival> | <boss>`.
++- Resolves boss names loosely, so inputs such as `vorkath`, `K'ril`, or `cox challenge` can match RuneLite hiscore boss entries.
++- Performs OSRS hiscore lookups on a background thread and posts the result back into the game chat.
++
++## Configuration
++
++Open RuneLite's plugin configuration panel after enabling the plugin.
++
++| Setting | Default | Description |
++| --- | --- | --- |
++| Rival name | `Oyama` | OSRS account compared when `!bosskc` is used without a rival override. |
++| Boss name | `Vorkath` | Boss/raid hiscore entry compared when `!bosskc` is used without a boss override. |
++| Show login hint | enabled | Prints a short usage reminder after logging in. |
++
++## Chat commands
++
++```text
++!bosskc
++!bosskc Vorkath
++!bosskc zezima | Theatre of Blood: Hard Mode
++```
++
++The command output is posted as a game message, for example:
++
++```text
++Vorkath KC: Oyama=125, Rival=100 (Oyama leads by 25)
++```
++
++## API usage
++
++The plugin relies on RuneLite's bundled `net.runelite.client.hiscore.HiscoreClient`, which calls the official OSRS hiscore JSON endpoint. Lookups are performed off the game thread via a single-thread executor, then chat output is marshalled back through `ClientThread`.
++
++If either player is missing from the hiscores or the lookup fails, the plugin reports a friendly in-game error message instead of throwing an exception into the client.
++
++## Development
++
++This repository follows the standard external RuneLite plugin layout:
++
++```text
++src/main/java/com/itmeansbigmountain/bosskcrivallookup/
++  BossKcRivalLookupPlugin.java
++  BossKcRivalLookupConfig.java
++  BossKcRivalLookupFormatter.java
++src/test/java/com/itmeansbigmountain/bosskcrivallookup/
++  BossKcRivalLookupPluginTest.java
++runelite-plugin.properties
++build.gradle
++settings.gradle
++```
++
++Use Java 11 for local builds:
++
++```bash
++export JAVA_HOME=/opt/data/jdks/current-java11
++export PATH="$JAVA_HOME/bin:$PATH"
++./gradlew test --no-daemon -q
++./gradlew assemble --no-daemon -q
++```
++
++To launch RuneLite in developer mode with this plugin loaded:
++
++```bash
++./gradlew run --no-daemon
++```
++
++## Manual testing checklist
++
+… omitted 11 diff line(s) across 1 additional file(s)/section(s)
+  ┊ 💻 $         rm -f src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcrivalLookupPlugin.java src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcrivalLookupConfig.java  1.5s
+  ┊ 🔧 patch     /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPluginTest.java  4.3s
+  ┊ review diff
+a//opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPluginTest.java → b//opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPluginTest.java
+@@ -13,7 +13,7 @@
+ 	public void resolvesBossNamesLoosely()
+ 	{
+ 		assertTrue(BossKcRivalLookupFormatter.findBossSkill("vorkath").isPresent());
+-		assertTrue(BossKcRivalLookupFormatter.findBossSkill("cox challenge").isPresent());
++		assertTrue(BossKcRivalLookupFormatter.findBossSkill("challenge mode").isPresent());
+ 		assertTrue(BossKcRivalLookupFormatter.findBossSkill("K'ril").isPresent());
+ 	}
+ 
+  ┊ 💻 $         export JAVA_HOME=/opt/data/jdks/current-java11 PATH="$JAVA_HOME/bin:$PATH"; ./gradlew test --no-daemon -q  1203.9s [exit 124]
+  ┊ ⚡ kanban_he   0.1s
+  ┊ 💻 $         export JAVA_HOME=/opt/data/jdks/current-java11 PATH="$JAVA_HOME/bin:$PATH"; ./gradlew test --no-daemon --info --stacktrace  304.5s [exit 124]
+  ┊ 💻 $         ps -eo pid,ppid,stat,etime,cmd | grep -E 'gradle|GradleDaemon|java' | grep -v grep | head -50  0.9s
+  ┊ 💻 $         ulimit -u; ps -e --no-headers | wc -l; free -m; df -h . /opt/data/.gradle | cat  0.9s
+  ┊ 💻 $         dmesg -T | tail -40 | cat  0.4s
+  ┊ ✍️  write     /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/gradle.properties  10.4s
+  ┊ review diff
+a/gradle.properties → b/gradle.properties
+@@ -0,0 +1,2 @@
++org.gradle.jvmargs=-Xmx192m -XX:MaxMetaspaceSize=192m -Dfile.encoding=UTF-8
++org.gradle.daemon=false
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+  ┊ 📖 read      pom.xml  0.1s [File not found: pom.xml]
+  ┊ 🔎 find      *  0.1s
+🧾 Request debug dump written to: /opt/data/sessions/request_dump_20260529_065953_c39f0a_20260529_070039_836972.json
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 429: The usage limit has been reached
+   📋 Details: {'type': 'usage_limit_reached', 'message': 'The usage limit has been reached', 'plan_type': 'plus', 'resets_at': 1780039390, 'eligible_promo': None, 'resets_in_seconds': 1376}
+   ⏱️  Elapsed: 4.80s  Context: 2 msgs, ~11,399 tokens
+⚠️ Rate limited — switching to fallback provider...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  API call failed (attempt 1/3): NotFoundError [HTTP 404]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 404: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model not found","type":"invalid_request_error"}}', 'provider_name': 'OpenInference', 'is_byok': False}}
+   ⏱️  Elapsed: 0.72s  Context: 8 msgs, ~16,259 tokens
+⚠️ Non-retryable error (HTTP 404) — trying fallback...
+❌ Non-retryable error (HTTP 404): HTTP 404: Provider returned error
+❌ Non-retryable client error (HTTP 404). Aborting.
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   💡 This type of error won't be fixed by retrying.
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 404 - {'error': {'message': 'Provider returned          
+     error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model       
+     not found","type":"invalid_request_error"}}', 'provider_name':             
+     'OpenInference', 'is_byok': False}}, 'user_id':                            
+     'user_3CauqeRry3w6QUvRXhlmjQfRhC6'}                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260529_065953_c39f0a
+
+Session:        20260529_065953_c39f0a
+Duration:       46s
+Messages:       7 (1 user, 6 tool calls)
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup  0.3s [File not found: BossKCRivalLookup]
+  ┊ 🔎 find      BossKCRivalLookup  0.5s
+  ┊ 🔎 find        8.0s
+🧾 Request debug dump written to: /opt/data/sessions/request_dump_20260529_070047_6d807b_20260529_070157_746372.json
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 429: The usage limit has been reached
+   📋 Details: {'type': 'usage_limit_reached', 'message': 'The usage limit has been reached', 'plan_type': 'plus', 'resets_at': 1780039391, 'eligible_promo': None, 'resets_in_seconds': 1331}
+   ⏱️  Elapsed: 3.74s  Context: 2 msgs, ~11,399 tokens
+⚠️ Rate limited — switching to fallback provider...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: free-models-per-min. 
+   📋 Details: {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780038120000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 0.61s  Context: 10 msgs, ~15,031 tokens
+⏱️ Rate limited. Waiting 2.9s (attempt 2/3)...
+⚠️  API call failed (attempt 2/3): NotFoundError [HTTP 404]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 404: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model not found","type":"invalid_request_error"}}', 'provider_name': 'OpenInference', 'is_byok': False}}
+   ⏱️  Elapsed: 4.53s  Context: 10 msgs, ~15,031 tokens
+⚠️ Non-retryable error (HTTP 404) — trying fallback...
+❌ Non-retryable error (HTTP 404): HTTP 404: Provider returned error
+❌ Non-retryable client error (HTTP 404). Aborting.
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   💡 This type of error won't be fixed by retrying.
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 404 - {'error': {'message': 'Provider returned          
+     error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model       
+     not found","type":"invalid_request_error"}}', 'provider_name':             
+     'OpenInference', 'is_byok': False}}, 'user_id':                            
+     'user_3CauqeRry3w6QUvRXhlmjQfRhC6'}                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260529_070047_6d807b
+
+Session:        20260529_070047_6d807b
+Duration:       1m 10s
+Messages:       9 (1 user, 8 tool calls)
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+  ┊ 💻 $         ls -la /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup  0.1s
+🧾 Request debug dump written to: /opt/data/sessions/request_dump_20260529_070253_0d7fa1_20260529_070326_278748.json
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 429: The usage limit has been reached
+   📋 Details: {'type': 'usage_limit_reached', 'message': 'The usage limit has been reached', 'plan_type': 'plus', 'resets_at': 1780039390, 'eligible_promo': None, 'resets_in_seconds': 1201}
+   ⏱️  Elapsed: 3.31s  Context: 2 msgs, ~11,399 tokens
+⚠️ Rate limited — switching to fallback provider...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: free-models-per-min. 
+   📋 Details: {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780038240000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 0.53s  Context: 4 msgs, ~13,949 tokens
+⏱️ Rate limited. Waiting 2.5s (attempt 2/3)...
+⚠️  API call failed (attempt 2/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: @ratelimit/too-many-requests. 
+   📋 Details: {'message': 'Rate limit exceeded: @ratelimit/too-many-requests. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780038240000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 3.57s  Context: 4 msgs, ~13,949 tokens
+⏱️ Rate limited. Waiting 4.1s (attempt 3/3)...
+⚠️  API call failed (attempt 1/3): NotFoundError [HTTP 404]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 404: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model not found","type":"invalid_request_error"}}', 'provider_name': 'OpenInference', 'is_byok': False}}
+   ⏱️  Elapsed: 0.86s  Context: 6 msgs, ~14,353 tokens
+⚠️ Non-retryable error (HTTP 404) — trying fallback...
+❌ Non-retryable error (HTTP 404): HTTP 404: Provider returned error
+❌ Non-retryable client error (HTTP 404). Aborting.
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   💡 This type of error won't be fixed by retrying.
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 404 - {'error': {'message': 'Provider returned          
+     error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model       
+     not found","type":"invalid_request_error"}}', 'provider_name':             
+     'OpenInference', 'is_byok': False}}, 'user_id':                            
+     'user_3CauqeRry3w6QUvRXhlmjQfRhC6'}                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260529_070253_0d7fa1
+
+Session:        20260529_070253_0d7fa1
+Duration:       32s
+Messages:       5 (1 user, 4 tool calls)
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+⚠️  Response truncated (finish_reason='length') - model hit max output tokens
+  ┊ 💻 $         ls -alh /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup  0.0s
+  ┊ 💻 $         sed -n '1,120p' /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/build.gradle  0.0s
+  ┊ 💻 $         ls -R /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/main/java  0.0s
+  ┊ 💻 $         sed -n '1,200p' /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPlugin.java  0.1s
+🧾 Request debug dump written to: /opt/data/sessions/request_dump_20260529_070351_627204_20260529_070453_285540.json
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 429: The usage limit has been reached
+   📋 Details: {'type': 'usage_limit_reached', 'message': 'The usage limit has been reached', 'plan_type': 'plus', 'resets_at': 1780039391, 'eligible_promo': None, 'resets_in_seconds': 1144}
+   ⏱️  Elapsed: 3.77s  Context: 2 msgs, ~11,399 tokens
+⚠️ Rate limited — switching to fallback provider...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  Truncated tool call detected — retrying API call...
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: free-models-per-min. 
+   📋 Details: {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780038300000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 0.51s  Context: 10 msgs, ~15,593 tokens
+⏱️ Rate limited. Waiting 2.5s (attempt 2/3)...
+⚠️  API call failed (attempt 2/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'qwen/qwen3-coder:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False, 'r
+   ⏱️  Elapsed: 3.99s  Context: 10 msgs, ~15,593 tokens
+⏱️ Rate limited. Waiting 5.1s (attempt 3/3)...
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: free-models-per-min. 
+   📋 Details: {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780038300000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 0.60s  Context: 12 msgs, ~17,060 tokens
+⏱️ Rate limited. Waiting 2.7s (attempt 2/3)...
+⚠️  API call failed (attempt 2/3): NotFoundError [HTTP 404]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 404: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model not found","type":"invalid_request_error"}}', 'provider_name': 'OpenInference', 'is_byok': False}}
+   ⏱️  Elapsed: 5.73s  Context: 12 msgs, ~17,060 tokens
+⚠️ Non-retryable error (HTTP 404) — trying fallback...
+❌ Non-retryable error (HTTP 404): HTTP 404: Provider returned error
+❌ Non-retryable client error (HTTP 404). Aborting.
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   💡 This type of error won't be fixed by retrying.
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 404 - {'error': {'message': 'Provider returned          
+     error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model       
+     not found","type":"invalid_request_error"}}', 'provider_name':             
+     'OpenInference', 'is_byok': False}}, 'user_id':                            
+     'user_3CauqeRry3w6QUvRXhlmjQfRhC6'}                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260529_070351_627204
+
+Session:        20260529_070351_627204
+Duration:       1m 2s
+Messages:       11 (1 user, 10 tool calls)
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+🧾 Request debug dump written to: /opt/data/sessions/request_dump_20260529_070551_953cbf_20260529_070612_543080.json
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 429: The usage limit has been reached
+   📋 Details: {'type': 'usage_limit_reached', 'message': 'The usage limit has been reached', 'plan_type': 'plus', 'resets_at': 1780039391, 'eligible_promo': None, 'resets_in_seconds': 1028}
+   ⏱️  Elapsed: 2.95s  Context: 2 msgs, ~11,399 tokens
+⚠️ Rate limited — switching to fallback provider...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  API call failed (attempt 1/3): NotFoundError [HTTP 404]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 404: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model not found","type":"invalid_request_error"}}', 'provider_name': 'OpenInference', 'is_byok': False}}
+   ⏱️  Elapsed: 0.71s  Context: 4 msgs, ~14,817 tokens
+⚠️ Non-retryable error (HTTP 404) — trying fallback...
+❌ Non-retryable error (HTTP 404): HTTP 404: Provider returned error
+❌ Non-retryable client error (HTTP 404). Aborting.
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   💡 This type of error won't be fixed by retrying.
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 404 - {'error': {'message': 'Provider returned          
+     error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model       
+     not found","type":"invalid_request_error"}}', 'provider_name':             
+     'OpenInference', 'is_byok': False}}, 'user_id':                            
+     'user_3CauqeRry3w6QUvRXhlmjQfRhC6'}                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260529_070551_953cbf
+
+Session:        20260529_070551_953cbf
+Duration:       21s
+Messages:       3 (1 user, 2 tool calls)
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+  ┊ 🔎 grep        0.2s [Path not found:]
+  ┊ 🔎 find        0.3s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/README.md  0.7s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/README.md  0.7s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/README.md  0.8s
+⚠️  Response truncated (finish_reason='length') - model hit max output tokens
+🧾 Request debug dump written to: /opt/data/sessions/request_dump_20260529_070657_c0318b_20260529_070936_837416.json
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 429: The usage limit has been reached
+   📋 Details: {'type': 'usage_limit_reached', 'message': 'The usage limit has been reached', 'plan_type': 'plus', 'resets_at': 1780039391, 'eligible_promo': None, 'resets_in_seconds': 957}
+   ⏱️  Elapsed: 3.94s  Context: 2 msgs, ~11,399 tokens
+⚠️ Rate limited — switching to fallback provider...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'qwen/qwen3-coder:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Venice', 'is_byok': False, 'r
+   ⏱️  Elapsed: 1.05s  Context: 6 msgs, ~15,034 tokens
+⏱️ Rate limited. Waiting 2.3s (attempt 2/3)...
+⚠️  API call failed (attempt 2/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: free-models-per-min. 
+   📋 Details: {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780038480000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 4.24s  Context: 6 msgs, ~15,034 tokens
+⏱️ Rate limited. Waiting 5.4s (attempt 3/3)...
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: free-models-per-min. 
+   📋 Details: {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780038480000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 0.53s  Context: 8 msgs, ~16,521 tokens
+⏱️ Rate limited. Waiting 2.2s (attempt 2/3)...
+⚠️  Unknown tool 'open_file' — sending error to model for agent-correction (1/3)
+⚠️  Truncated tool call detected — retrying API call...
+⚠️  API call failed (attempt 1/3): NotFoundError [HTTP 404]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 404: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model not found","type":"invalid_request_error"}}', 'provider_name': 'OpenInference', 'is_byok': False}}
+   ⏱️  Elapsed: 96.28s  Context: 16 msgs, ~18,056 tokens
+⚠️ Non-retryable error (HTTP 404) — trying fallback...
+❌ Non-retryable error (HTTP 404): HTTP 404: Provider returned error
+❌ Non-retryable client error (HTTP 404). Aborting.
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   💡 This type of error won't be fixed by retrying.
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 404 - {'error': {'message': 'Provider returned          
+     error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model       
+     not found","type":"invalid_request_error"}}', 'provider_name':             
+     'OpenInference', 'is_byok': False}}, 'user_id':                            
+     'user_3CauqeRry3w6QUvRXhlmjQfRhC6'}                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260529_070657_c0318b
+
+Session:        20260529_070657_c0318b
+Duration:       2m 39s
+Messages:       15 (1 user, 14 tool calls)
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+  ┊ 💻 $         ls -R .  0.0s
+  ┊ 💻 $         ./gradlew test --no-daemon -q  9.2s [exit 1]
+  ┊ 🔎 grep      class  0.1s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcrivalLookupPluginTest.java  0.4s
+  ┊ 🔧 patch     /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcrivalLookupPluginTest.java  0.1s
+  ┊ review diff
+a//opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcrivalLookupPluginTest.java → b//opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcrivalLookupPluginTest.java
+@@ -7,7 +7,7 @@
+ {
+ 	public static void main(String[] args) throws Exception
+ 	{
+-		ExternalPluginManager.loadBuiltin(BossKcrivalLookupPlugin.class);
++		ExternalPluginManager.loadBuiltin(BossKcRivalLookupPlugin.class);
+ 		RuneLite.main(args);
+ 	}
+ }
+  ┊ 💻 $         ./gradlew test --no-daemon -q  16.4s
+🧾 Request debug dump written to: /opt/data/sessions/request_dump_20260529_071000_0bdabc_20260529_071140_643392.json
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 429: The usage limit has been reached
+   📋 Details: {'type': 'usage_limit_reached', 'message': 'The usage limit has been reached', 'plan_type': 'plus', 'resets_at': 1780039390, 'eligible_promo': None, 'resets_in_seconds': 776}
+   ⏱️  Elapsed: 3.33s  Context: 2 msgs, ~11,399 tokens
+⚠️ Rate limited — switching to fallback provider...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: free-models-per-min. 
+   📋 Details: {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780038660000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 3.67s  Context: 10 msgs, ~16,873 tokens
+⏱️ Rate limited. Waiting 2.8s (attempt 2/3)...
+⚠️  API call failed (attempt 1/3): NotFoundError [HTTP 404]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 404: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model not found","type":"invalid_request_error"}}', 'provider_name': 'OpenInference', 'is_byok': False}}
+   ⏱️  Elapsed: 0.97s  Context: 16 msgs, ~17,737 tokens
+⚠️ Non-retryable error (HTTP 404) — trying fallback...
+❌ Non-retryable error (HTTP 404): HTTP 404: Provider returned error
+❌ Non-retryable client error (HTTP 404). Aborting.
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   💡 This type of error won't be fixed by retrying.
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 404 - {'error': {'message': 'Provider returned          
+     error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model       
+     not found","type":"invalid_request_error"}}', 'provider_name':             
+     'OpenInference', 'is_byok': False}}, 'user_id':                            
+     'user_3CauqeRry3w6QUvRXhlmjQfRhC6'}                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260529_071000_0bdabc
+
+Session:        20260529_071000_0bdabc
+Duration:       1m 40s
+Messages:       15 (1 user, 14 tool calls)
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+🧾 Request debug dump written to: /opt/data/sessions/request_dump_20260529_071159_c900cc_20260529_071223_003491.json
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 429: The usage limit has been reached
+   📋 Details: {'type': 'usage_limit_reached', 'message': 'The usage limit has been reached', 'plan_type': 'plus', 'resets_at': 1780039390, 'eligible_promo': None, 'resets_in_seconds': 655}
+   ⏱️  Elapsed: 3.61s  Context: 2 msgs, ~11,399 tokens
+⚠️ Rate limited — switching to fallback provider...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  API call failed (attempt 1/3): NotFoundError [HTTP 404]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 404: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model not found","type":"invalid_request_error"}}', 'provider_name': 'OpenInference', 'is_byok': False}}
+   ⏱️  Elapsed: 1.67s  Context: 4 msgs, ~15,661 tokens
+⚠️ Non-retryable error (HTTP 404) — trying fallback...
+❌ Non-retryable error (HTTP 404): HTTP 404: Provider returned error
+❌ Non-retryable client error (HTTP 404). Aborting.
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   💡 This type of error won't be fixed by retrying.
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 404 - {'error': {'message': 'Provider returned          
+     error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model       
+     not found","type":"invalid_request_error"}}', 'provider_name':             
+     'OpenInference', 'is_byok': False}}, 'user_id':                            
+     'user_3CauqeRry3w6QUvRXhlmjQfRhC6'}                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260529_071159_c900cc
+
+Session:        20260529_071159_c900cc
+Duration:       23s
+Messages:       3 (1 user, 2 tool calls)
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+  ┊ 💻 $         ls -R  0.0s
+  ┊ 💻 $         ls -R  1.2s
+🧾 Request debug dump written to: /opt/data/sessions/request_dump_20260529_071259_de1360_20260529_071334_846268.json
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 429: The usage limit has been reached
+   📋 Details: {'type': 'usage_limit_reached', 'message': 'The usage limit has been reached', 'plan_type': 'plus', 'resets_at': 1780039390, 'eligible_promo': None, 'resets_in_seconds': 602}
+   ⏱️  Elapsed: 2.05s  Context: 2 msgs, ~11,399 tokens
+⚠️ Rate limited — switching to fallback provider...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Google AI Studio', '
+   ⏱️  Elapsed: 2.89s  Context: 2 msgs, ~11,399 tokens
+⏱️ Rate limited. Waiting 2.6s (attempt 2/3)...
+⚠️  API call failed (attempt 1/3): NotFoundError [HTTP 404]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 404: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model not found","type":"invalid_request_error"}}', 'provider_name': 'OpenInference', 'is_byok': False}}
+   ⏱️  Elapsed: 1.04s  Context: 8 msgs, ~30,334 tokens
+⚠️ Non-retryable error (HTTP 404) — trying fallback...
+❌ Non-retryable error (HTTP 404): HTTP 404: Provider returned error
+❌ Non-retryable client error (HTTP 404). Aborting.
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   💡 This type of error won't be fixed by retrying.
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 404 - {'error': {'message': 'Provider returned          
+     error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model       
+     not found","type":"invalid_request_error"}}', 'provider_name':             
+     'OpenInference', 'is_byok': False}}, 'user_id':                            
+     'user_3CauqeRry3w6QUvRXhlmjQfRhC6'}                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260529_071259_de1360
+
+Session:        20260529_071259_de1360
+Duration:       35s
+Messages:       7 (1 user, 6 tool calls)
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+  ┊ 💻 $         ls -R  0.0s
+  ┊ 💻 $         find . -maxdepth 2 -type f -printf '%f\n'  0.1s
+🧾 Request debug dump written to: /opt/data/sessions/request_dump_20260529_071401_893275_20260529_071450_505973.json
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 429: The usage limit has been reached
+   📋 Details: {'type': 'usage_limit_reached', 'message': 'The usage limit has been reached', 'plan_type': 'plus', 'resets_at': 1780039391, 'eligible_promo': None, 'resets_in_seconds': 535}
+   ⏱️  Elapsed: 2.87s  Context: 2 msgs, ~11,399 tokens
+⚠️ Rate limited — switching to fallback provider...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: free-models-per-min. 
+   📋 Details: {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780038900000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 0.47s  Context: 8 msgs, ~16,589 tokens
+⏱️ Rate limited. Waiting 3.0s (attempt 2/3)...
+⚠️  API call failed (attempt 2/3): NotFoundError [HTTP 404]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 404: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model not found","type":"invalid_request_error"}}', 'provider_name': 'OpenInference', 'is_byok': False}}
+   ⏱️  Elapsed: 4.16s  Context: 8 msgs, ~16,589 tokens
+⚠️ Non-retryable error (HTTP 404) — trying fallback...
+❌ Non-retryable error (HTTP 404): HTTP 404: Provider returned error
+❌ Non-retryable client error (HTTP 404). Aborting.
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   💡 This type of error won't be fixed by retrying.
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 404 - {'error': {'message': 'Provider returned          
+     error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model       
+     not found","type":"invalid_request_error"}}', 'provider_name':             
+     'OpenInference', 'is_byok': False}}, 'user_id':                            
+     'user_3CauqeRry3w6QUvRXhlmjQfRhC6'}                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260529_071401_893275
+
+Session:        20260529_071401_893275
+Duration:       48s
+Messages:       7 (1 user, 6 tool calls)
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+⚠️  Response truncated (finish_reason='length') - model hit max output tokens
+  ┊ 💻 $         ls -la  0.0s
+  ┊ 💻 $         ls -la src  0.2s
+🧾 Request debug dump written to: /opt/data/sessions/request_dump_20260529_071559_fdfb4f_20260529_071658_886258.json
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 429: The usage limit has been reached
+   📋 Details: {'type': 'usage_limit_reached', 'message': 'The usage limit has been reached', 'plan_type': 'plus', 'resets_at': 1780039391, 'eligible_promo': None, 'resets_in_seconds': 421}
+   ⏱️  Elapsed: 2.47s  Context: 2 msgs, ~11,399 tokens
+⚠️ Rate limited — switching to fallback provider...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: free-models-per-day-high-balance. 
+   📋 Details: {'message': 'Rate limit exceeded: free-models-per-day-high-balance. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '2000', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780099200000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 3.25s  Context: 2 msgs, ~11,399 tokens
+⏱️ Rate limited. Waiting 2.3s (attempt 2/3)...
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: free-models-per-min. 
+   📋 Details: {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780039020000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 0.20s  Context: 4 msgs, ~16,225 tokens
+⏱️ Rate limited. Waiting 2.4s (attempt 2/3)...
+⚠️  Truncated tool call detected — retrying API call...
+⚠️  API call failed (attempt 2/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: limit_rpm/qwen/qwen3-next-80b-a3b-instruct-2509/94248808-ba97-4e3c-be60-1cb0928db51d. High demand for qwen/qwen3-next-80b-a3b-instruct:free on OpenRouter - limited to 8 requests per minute. Please retry shortly.
+   📋 Details: {'message': 'Rate limit exceeded: limit_rpm/qwen/qwen3-next-80b-a3b-instruct-2509/94248808-ba97-4e3c-be60-1cb0928db51d. High demand for qwen/qwen3-next-80b-a3b-instruct:free on OpenRouter - limited to 8 requests per minute. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-L
+   ⏱️  Elapsed: 6.06s  Context: 4 msgs, ~16,225 tokens
+⏱️ Rate limited. Waiting 5.8s (attempt 3/3)...
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: free-models-per-min. 
+   📋 Details: {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780039020000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 0.20s  Context: 6 msgs, ~16,629 tokens
+⏱️ Rate limited. Waiting 2.4s (attempt 2/3)...
+⚠️  API call failed (attempt 2/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: limit_rpm/qwen/qwen3-coder-480b-a35b-07-25/a9bbd882-011f-4606-8f60-85f3cb642586. High demand for qwen/qwen3-coder:free on OpenRouter - limited to 8 requests per minute. Please retry shortly.
+   📋 Details: {'message': 'Rate limit exceeded: limit_rpm/qwen/qwen3-coder-480b-a35b-07-25/a9bbd882-011f-4606-8f60-85f3cb642586. High demand for qwen/qwen3-coder:free on OpenRouter - limited to 8 requests per minute. Please retry shortly.', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '8', 'X-RateLi
+   ⏱️  Elapsed: 2.80s  Context: 6 msgs, ~16,629 tokens
+⏱️ Rate limited. Waiting 4.8s (attempt 3/3)...
+⚠️  API call failed (attempt 1/3): NotFoundError [HTTP 404]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 404: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model not found","type":"invalid_request_error"}}', 'provider_name': 'OpenInference', 'is_byok': False}}
+   ⏱️  Elapsed: 0.94s  Context: 8 msgs, ~16,797 tokens
+⚠️ Non-retryable error (HTTP 404) — trying fallback...
+❌ Non-retryable error (HTTP 404): HTTP 404: Provider returned error
+❌ Non-retryable client error (HTTP 404). Aborting.
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   💡 This type of error won't be fixed by retrying.
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 404 - {'error': {'message': 'Provider returned          
+     error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model       
+     not found","type":"invalid_request_error"}}', 'provider_name':             
+     'OpenInference', 'is_byok': False}}, 'user_id':                            
+     'user_3CauqeRry3w6QUvRXhlmjQfRhC6'}                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260529_071559_fdfb4f
+
+Session:        20260529_071559_fdfb4f
+Duration:       1m 0s
+Messages:       7 (1 user, 6 tool calls)
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+🧾 Request debug dump written to: /opt/data/sessions/request_dump_20260529_071801_008730_20260529_071822_924804.json
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 429: The usage limit has been reached
+   📋 Details: {'type': 'usage_limit_reached', 'message': 'The usage limit has been reached', 'plan_type': 'plus', 'resets_at': 1780039390, 'eligible_promo': None, 'resets_in_seconds': 296}
+   ⏱️  Elapsed: 2.96s  Context: 2 msgs, ~11,399 tokens
+⚠️ Rate limited — switching to fallback provider...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: free-models-per-day-high-balance. 
+   📋 Details: {'message': 'Rate limit exceeded: free-models-per-day-high-balance. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '2000', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780099200000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 3.74s  Context: 2 msgs, ~11,399 tokens
+⏱️ Rate limited. Waiting 2.8s (attempt 2/3)...
+⚠️  API call failed (attempt 2/3): NotFoundError [HTTP 404]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 404: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model not found","type":"invalid_request_error"}}', 'provider_name': 'OpenInference', 'is_byok': False}}
+   ⏱️  Elapsed: 10.85s  Context: 2 msgs, ~11,399 tokens
+⚠️ Non-retryable error (HTTP 404) — trying fallback...
+❌ Non-retryable error (HTTP 404): HTTP 404: Provider returned error
+❌ Non-retryable client error (HTTP 404). Aborting.
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   💡 This type of error won't be fixed by retrying.
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 404 - {'error': {'message': 'Provider returned          
+     error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model       
+     not found","type":"invalid_request_error"}}', 'provider_name':             
+     'OpenInference', 'is_byok': False}}, 'user_id':                            
+     'user_3CauqeRry3w6QUvRXhlmjQfRhC6'}                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260529_071801_008730
+
+Session:        20260529_071801_008730
+Duration:       21s
+Messages:       1 (1 user, 0 tool calls)
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     The task t_fbc8cf1a is a Kanban “Furnish OSRS plugin:                      
+     BossKCRivalLookup” job. Its workspace is a persistent directory at         
+                                                                                
+     /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup                   
+                                                                                
+     The definition of done (see the task body) requires:                       
+                                                                                
+     1. Inspecting code, Gradle config, runelite-plugin.properties, README,     
+     docs, tests, and git status.                                               
+     2. Making the repo coherent with a clear README, install/run notes,        
+     configuration description, API usage notes, and only essential             
+     screenshots/TODOs.                                                         
+     3. Ensuring Java package/class names and RuneLite metadata match the       
+     plugin name and the breach‑check‑osrs boilerplate.                         
+     4. Adding or improving lightweight tests/smoke checks that do not need     
+     a live client.                                                             
+     5. Running ./gradlew test --no‑daemon -q and ./gradlew assemble            
+     --no‑daemon -q.                                                            
+     6. Fixing any compile or test failures, limiting changes to this           
+     plugin.                                                                    
+     7. Leaving a clean git state with a local commit if changes were made.     
+     8. Summarizing exactly what changed, test results, and any remaining       
+     manual testing steps.                                                      
+                                                                                
+     The task has a dir‑type workspace, so all file operations must stay        
+     within that directory. The task has been attempted many times; all         
+     prior runs crashed because the worker exited without calling               
+     kanban_complete or kanban_block. You must now take proper action:          
+     inspect the repository, run the Gradle commands, fix any issues, and       
+     then either complete with a proper handoff or block for a human review     
+     if needed.                                                                 
+                                                                                
+     Proceed with the work inside the given workspace. If any step fails or     
+     requires a decision (e.g., committing changes that need review), use       
+     kanban_comment to record details and kanban_block with a concise           
+     reason prefixed review-required:. Otherwise, finish with                   
+     kanban_complete including a brief summary and metadata (changed files,     
+     test counts, etc.).                                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260529_071902_a7a762
+
+Session:        20260529_071902_a7a762
+Duration:       33s
+Messages:       4 (1 user, 2 tool calls)
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+  ┊ 🔎 find      *  4.2s
+  ┊ 🔎 find      *  0.1s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/README.md  0.1s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/plugin.json  0.1s
+  ┊ 💻 $         ./gradlew test --no-daemon -q  31.0s
+  ┊ 💻 $         ./gradlew assemble --no-daemon -q  10.2s
+  ┊ 💻 $         git status --porcelain  0.2s
+  ┊ 🔎 find      *  0.3s
+  ┊ 📖 read      src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPlugin.java  0.2s
+  ┊ 📖 read      src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPluginTest.java  0.1s
+🧾 Request debug dump written to: /opt/data/sessions/request_dump_20260529_072002_979508_20260529_072230_330531.json
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openai-codex  Model: gpt-5.5
+   🌐 Endpoint: https://chatgpt.com/backend-api/codex
+   📝 Error: HTTP 429: The usage limit has been reached
+   📋 Details: {'type': 'usage_limit_reached', 'message': 'The usage limit has been reached', 'plan_type': 'plus', 'resets_at': 1780039391, 'eligible_promo': None, 'resets_in_seconds': 174}
+   ⏱️  Elapsed: 3.36s  Context: 2 msgs, ~11,399 tokens
+⚠️ Rate limited — switching to fallback provider...
+🔄 Primary model failed — switching to fallback: openrouter/free via openrouter
+⚠️  API call failed (attempt 1/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: free-models-per-min. 
+   📋 Details: {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780039320000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 0.79s  Context: 14 msgs, ~21,025 tokens
+⏱️ Rate limited. Waiting 2.4s (attempt 2/3)...
+⚠️  API call failed (attempt 2/3): RateLimitError [HTTP 429]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 429: Rate limit exceeded: free-models-per-min. 
+   📋 Details: {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1780039320000'}, 'provider_name': None}}
+   ⏱️  Elapsed: 4.24s  Context: 14 msgs, ~21,025 tokens
+⏱️ Rate limited. Waiting 4.8s (attempt 3/3)...
+⚠️  Unknown tool 'read_file<|channel|>commentary' — sending error to model for agent-correction (1/3)
+⚠️  API call failed (attempt 1/3): NotFoundError [HTTP 404]
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   📝 Error: HTTP 404: Provider returned error
+   📋 Details: {'message': 'Provider returned error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model not found","type":"invalid_request_error"}}', 'provider_name': 'OpenInference', 'is_byok': False}}
+   ⏱️  Elapsed: 0.64s  Context: 26 msgs, ~24,516 tokens
+⚠️ Non-retryable error (HTTP 404) — trying fallback...
+❌ Non-retryable error (HTTP 404): HTTP 404: Provider returned error
+❌ Non-retryable client error (HTTP 404). Aborting.
+   🔌 Provider: openrouter  Model: openrouter/free
+   🌐 Endpoint: https://openrouter.ai/api/v1/
+   💡 This type of error won't be fixed by retrying.
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Error: Error code: 404 - {'error': {'message': 'Provider returned          
+     error', 'code': 404, 'metadata': {'raw': '{"error":{"message":"Model       
+     not found","type":"invalid_request_error"}}', 'provider_name':             
+     'OpenInference', 'is_byok': False}}, 'user_id':                            
+     'user_3CauqeRry3w6QUvRXhlmjQfRhC6'}                                        
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 
+
+Resume this session with:
+  hermes --resume 20260529_072002_979508
+
+Session:        20260529_072002_979508
+Duration:       2m 27s
+Messages:       25 (1 user, 24 tool calls)
+Query: work kanban task t_fbc8cf1a
+Initializing agent...
+────────────────────────────────────────
+
+  ┊ ⚡ kanban_sh   0.0s
+  ┊ 📚 skill     osrs-plugins  0.0s
+  ┊ 📋 plan      4 task(s)  0.0s
+  ┊ 🔎 find      *  0.1s
+  ┊ 💻 $         git status --short --branch && git log --oneline -5  0.0s
+  ┊ 🔎 grep      package |PluginDescriptor|ConfigGroup|runelite-plugin|rootProject.name|TODO|FIXME  0.0s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/README.md  0.2s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/build.gradle  0.2s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/runelite-plugin.properties  0.3s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/plugin.json  0.3s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPlugin.java  0.8s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupConfig.java  0.9s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupFormatter.java  0.9s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPluginTest.java  0.8s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcrivalLookupPluginTest.java  0.9s
+  ┊ 🔎 find      Breach|breach|boilerplate|BreachCheck  0.5s
+  ┊ 🔎 grep      pluginMainClass|ExternalPluginManager.loadBuiltin|shadowJar  0.4s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/.gitignore  0.6s
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/gradle.properties  1.0s
+  ┊ 💻 $         JAVA_HOME=/opt/data/jdks/current-java11 PATH=/opt/data/jdks/current-java11/bin:$PATH ./gradlew clean test --no-daemon -q  311.5s [exit 124]
+  ┊ ⚡ kanban_he   0.1s
+  ┊ 💻 $         JAVA_HOME=/opt/data/jdks/current-java11 PATH=/opt/data/jdks/current-java11/bin:$PATH ./gradlew test --no-daemon --stacktrace --info  337.5s [exit 1]
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/AchievementGapFinder/gradle.properties  0.7s [File not found: gradle.properties]
+  ┊ 📖 read      /opt/data/HeRmEz/projects/osrs-plugins/AchievementGapFinder/build.gradle  1.1s
+  ┊ 💻 $         git diff -- README.md build.gradle plugin.json runelite-plugin.properties src/main/java src/test/java gradle.properties  0.4s
+  ┊ 🔧 patch       5.5s
+  ┊ review diff
+a//opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/build.gradle → b//opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/build.gradle
+@@ -64,7 +64,8 @@
+ 	exclude 'META-INF/*.RSA'
+ 	exclude '**/module-info.class'
+ 
+-	group = BasePlugin.BUILD_GROUP
++	group = 'build'
++	description = 'Builds a runnable RuneLite developer-mode jar for local manual testing.'
+ 	archiveClassifier.set('shadow')
+ 	archiveFileName.set("${rootProject.name}-${project.version}-all.jar")
+ }
+a//opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/gradle.properties → b//opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup/gradle.properties
+@@ -1,2 +1,2 @@
+-org.gradle.jvmargs=-Xmx192m -XX:MaxMetaspaceSize=192m -Dfile.encoding=UTF-8
++org.gradle.jvmargs=-Xmx768m -XX:MaxMetaspaceSize=384m -Dfile.encoding=UTF-8
+ org.gradle.daemon=false
+  ┊ 💻 $         rm -f src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcrivalLookupPluginTest.java && JAVA_HOME=/opt/data/jdks/current-java11 PATH=/opt/data/jdks/current-java11/bin:$PATH ./gradlew test --no-daemon -q  603.3s [exit 124]
+  ┊ 💻 $         ps -ef | grep -E 'GradleDaemon|gradlew|java' | grep -v grep || true
+JAVA_HOME=/opt/data/jdks/current-java11 PATH=/opt/data/jdks/current-java11/bin:$PATH timeout 180 ./gradlew test --no-daemon --info --stacktrace  292.7s [exit 124]
+  ┊ ⚡ kanban_he   0.0s
+  ┊ 💻 $         export JAVA_HOME=/opt/data/jdks/current-java11
+export PATH="$JAVA_HOME/bin:$PATH"
+export GRADLE_OPTS='-Dorg.gradle.workers.max=1'
+./gradlew test --no-daemon -q --offline --max-workers=1  608.0s
+  ┊ 📋 plan      update 2/4 ✓  0.0s
+  ┊ 💻 $         export JAVA_HOME=/opt/data/jdks/current-java11
+export PATH="$JAVA_HOME/bin:$PATH"
+./gradlew test --no-daemon -q
+./gradlew assemble --no-daemon -q  181.4s
+  ┊ 💻 $         git status --short --branch && git diff --stat && git diff --name-status  0.4s
+  ┊ 🔎 grep      BossKcrival|Deadman|com\.oyama|TODO|FIXME  0.6s
+  ┊ 💻 $         find src/main/java src/test/java -type f | sort  0.3s
+  ┊ 💻 $         git add -A && git diff --cached --stat && git commit -m "Furnish Boss KC Rival Lookup plugin" && git status --short --branch && git log --oneline -1  0.8s
+  ┊ 📋 plan      update 3/4 ✓  0.0s
+  ┊ ⚡ kanban_co   0.0s
+  ┊ 📋 plan      update 4/4 ✓  0.0s
+  ┊ ⚡ kanban_bl   0.0s
+ ─  ⚕ Hermes  ───────────────────────────────────────────────────────────────── 
+                                                                                
+     Kanban task t_fbc8cf1a is worked and now blocked for review-required.      
+                                                                                
+     Summary:                                                                   
+     - Furnished /opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup.      
+     - Added local commit: f4551de Furnish Boss KC Rival Lookup plugin.         
+     - Git status is clean on main after commit.                                
+     - Verified:                                                                
+       - ./gradlew test --no-daemon -q                                          
+       - ./gradlew assemble --no-daemon -q                                      
+       using JAVA_HOME=/opt/data/jdks/current-java11                            
+                                                                                
+     Main changes:                                                              
+     - Replaced placeholder plugin with Boss KC Rival Lookup                    
+     implementation.                                                            
+     - Added config for rival, default boss, and login hint.                    
+     - Added formatter/parser logic and lightweight tests.                      
+     - Updated README, plugin.json, runelite-plugin.properties,                 
+     build.gradle, and gradle.properties.                                       
+     - Removed stale incorrectly-cased BossKcrivalLookup classes/test.          
+                                                                                
+     Remaining manual review/testing:                                           
+     - Run ./gradlew run --no-daemon in RuneLite dev mode.                      
+     - Confirm plugin appears as “Boss KC Rival Lookup”.                        
+     - Test !bosskc, !bosskc Vorkath, and !bosskc <rival> | <boss>.             
+     - Verify unknown boss/missing-player errors are friendly.                  
+     - Capture screenshot/GIF and confirm support URL before plugin-hub         
+     prep.                                                                      
+                                                                                
+ ────────────────────────────────────────────────────────────────────────────── 

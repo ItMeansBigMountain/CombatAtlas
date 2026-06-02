@@ -1,0 +1,51 @@
+# Workflow Specification: Deploying a New Client Website
+
+## Overview
+This workflow describes the end-to-end process of taking a client's requirements and delivering a live, professional website with integrated payments and custom domain configuration.
+
+## 1. Starting Trigger
+- Project initiation: Client agreement signed and project kick-off.
+
+## 2. Required Inputs
+- **Client Requirements:** Goals, target audience, site map, and content.
+- **Branding Assets:** Logo, color palette, fonts, and images.
+- **Technical Requirements:** Desired features (e.g., CMS, contact forms).
+- **Payment/Domain Info:** Stripe account access and desired domain names.
+
+## 3. Expected Final Deliverables
+- **Live Production Site:** Fully functional site deployed to a production environment (e.g., Render, Vercel).
+- **Source Code:** Git repository with a clean commit history.
+- **Integrated Payments:** Fully configured Stripe integration.
+- **Custom Domain:** Domain pointed and SSL certificates active.
+- **Handover Documentation:** Brief guide for the client on managing the site.
+
+## 4. Major Phases
+1. **Setup:** Repository initialization, environment configuration, and basic project structure.
+2. **Development:** Building the site based on mobile-first, psychology-driven UX principles.
+3. **Testing:** Local smoke tests, cross-browser verification, and UAT.
+4. **Deployment:** Setting up the CI/CD pipeline and deploying to the live server.
+5. **Payment Setup:** Integrating Stripe and verifying payment flow.
+6. **Custom Domain:** DNS configuration and SSL verification.
+
+## 5. Constraints & User Preferences
+- **UX Principles:** Mobile-first design, cognitive ease, low-friction actions, strong visual hierarchy, and warm community-centered copy.
+- **Deployment Strategy:** Live deployment via Git-based auto-deploys *first*, followed by Stripe/payment setup and custom domain attachment.
+- **Code Management:** Projects should live under `/opt/data/HeRmEz/projects`.
+
+## 6. Assumptions
+- The user has access to the necessary deployment platforms (e.g., Render/Vercel).
+- The client is responsive and provides required assets in a timely manner.
+- Standard Git-based deployment workflows are compatible with the target hosting.
+
+## 7. Risks
+- **DNS Propagation:** Delay in domain mapping which can impact the launch timeline.
+- **Payment Approval:** Potential delays in Stripe account verification.
+- **Scope Creep:** Changes to requirements during the development phase.
+
+## 8. Success Criteria for Hermes Decomposition
+A successful decomposition of this workflow into Hermes Kanban tasks should include:
+- **Granularity:** 6-10 child tasks that break down the major phases.
+- **Routing:** Tasks assigned to appropriate specialist profiles (e.g., `web-worker` for development, `devops-worker` for deployment/DNS, `reviewer` for QA).
+- **Dependencies:** Clear parent-child links ensuring that development happens before deployment, and deployment before payment/domain setup.
+- **Review Gates:** At least one `review-required` block before the final "Complete" status of the overall project.
+- **Verification:** Measurable outcomes (e.g., "Site accessible via URL", "Stripe test payment successful").

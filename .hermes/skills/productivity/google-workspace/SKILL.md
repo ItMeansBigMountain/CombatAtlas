@@ -26,6 +26,10 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 - `references/gmail-search-syntax.md` — Gmail search operators (is:unread, from:, newer_than:, etc.)
 - `references/calendar-service-account.md` — service-account setup for Calendar automation when the user shares calendars with the service account.
 - `references/credential-requirements.md` — required Google credential files and setup verification
+- `references/google-credential-inventory-pattern.md` — safe workflow for inventorying Google credential files by project/purpose without exposing secrets
+- `references/google-project-api-permissions-probe.md` — safe command/API probe pattern for producing enabled-API and permission/access tables per Google project
+- `references/drive-service-account-cache.md` — Drive-backed cache pattern for service-account writable folders/Shared Drives, MP4 backup manifests, and safe local deletion after confirmed upload
+- `references/drive-cache-memory-extension.md` — Google Drive as a durable Hermes cache / memory-extension pattern, including OAuth vs service-account pitfalls
 
 ## Scripts
 
@@ -35,6 +39,18 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 ### Service-account Calendar route
 
 If the user provides a Google Cloud **service-account JSON** and wants Calendar automation without personal OAuth, use the service-account route in `references/calendar-service-account.md` instead of the OAuth setup below. Save the JSON as a credentials file with mode `600`, set `GOOGLE_APPLICATION_CREDENTIALS` in the Hermes env file, and have the user share the target calendar with the service account's `client_email`. A successful auth check may still show zero calendars until the user shares a calendar. Continue to use personal OAuth for Gmail/Drive/Docs/Sheets as a Google user, or when the user wants Hermes to act exactly as their account.
+
+### Credential inventory and project organization
+
+When the user asks to find, identify, or organize Google credentials across the workspace, use `references/google-credential-inventory-pattern.md`. Inventory only safe metadata: path, credential type, project ID, service-account email or redacted OAuth client ID, file mode, duplicate paths, active env references, and known purpose. Never paste private keys, client secrets, access tokens, refresh tokens, or full API keys into docs or chat. Group duplicate credentials by project/principal, tighten credential file modes to `600` when safe, and do not move/delete/rename credentials until env/app references are updated in the same change.
+
+When the user asks for enabled APIs, permissions, or a table of Google projects, use `references/google-project-api-permissions-probe.md`. Actively run safe read-only probes instead of guessing from credential filenames: Service Usage for enabled APIs, Cloud Resource Manager/IAM policy where available, and harmless product endpoint probes for Calendar, Drive, Gmail, Sheets, Docs, and YouTube. If the user explicitly asks for a table, provide a compact Markdown table even if the user's normal Discord preference is bullet-style replies.
+
+Keep Google Workspace service-account credentials separate from YouTube OAuth credentials: Workspace/personal-assistant automation can use service accounts when resources are shared/delegated, while YouTube channel uploads/analytics/private reads generally require user OAuth. Public YouTube metadata reads may use an API key or service-account credential when `youtube.googleapis.com` is enabled for the project; verify with a live `videos?chart=mostPopular` probe before reporting readiness.
+
+### Drive service-account cache route
+
+When the user wants Hermes to use Google Drive as durable cache/backing storage for generated files, especially MP4s, use `references/drive-service-account-cache.md`. Important pitfall: service accounts do not have normal personal Drive storage quota, so uploads to service-account-owned My Drive can fail even when auth works. Prefer a service-account-writable Shared Drive or shared folder ID, set it as the Drive cache parent, pass `supportsAllDrives=True` / `includeItemsFromAllDrives=True`, and delete local media only after Drive confirms the upload and a manifest has been written.
 
 ## First-Time Setup
 

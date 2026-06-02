@@ -56,6 +56,29 @@ Use this skill when the user is steering a workspace containing many apps/repos 
    - Commit and push when the user asked for repo/workspace updates.
    - Final response should include commit IDs, created/updated files, and concise next steps.
 
+## Content / audience project scaffold pattern
+
+When the user asks to create a project for managing a content channel, personal brand, offer validation, or YouTube/TikTok/Instagram system, do not create only a blank repo. Create an operating system folder with strategy, story bank, storyboard templates, scripts, calendar, and offer hypotheses.
+
+Useful shape:
+
+```text
+README.md
+PRODUCT_DIRECTION.md
+STORY_BANK/
+CHANNEL_STRATEGY/
+STORYBOARDS/
+VIDEO_SCRIPTS/
+OFFER/
+CONTENT_CALENDAR/
+EPISODES/
+scripts/new_episode.py
+```
+
+For story-driven channels, include flowchart-style storyboards because they make narrative sequence obvious and easy to film.
+
+See `references/youtube-high-ticket-leverage-project-pattern.md` for a concrete scaffold pattern from a YouTube + high-ticket offer project.
+
 ## Tracker Update Pattern
 
 When a project direction changes, update the same set consistently:
@@ -122,3 +145,17 @@ When the user asks to replicate another business/app's customer portal or workfl
 - `references/hermez-portfolio-2026-05.md` — session-specific example of retiring a project, merging apps, importing exercises from all branches, and creating a new standalone portfolio-report repo.
 - `references/coding-school-crm-portal-research-2026-05.md` — research-backed product-parity pattern for a coding-school CRM with teacher schedules, AI lesson-note tagging, and parent/student progress dashboards.
 - `references/hermez-consolidation-patterns-2026-05.md` — condensed merge/retire/new-repo patterns from the HeRmEz project-direction session, including stockNews+wutHappened and social-media app consolidation.
+- `references/clipcurrent-api-vs-browser-strategy-2026-05.md` — strategy pattern for turning a new social/video trend-clipping idea into a code-first platform with browser automation only as fallback, including OpusClip API and YouTube credential caveats.
+
+RuneLite/plugin-hub procedure that used to live here has been copied into the `osrs-plugins` umbrella as `references/runelite-plugin-hub-workflow.md`; use that skill for OSRS/RuneLite implementation details.
+
+
+When the user is comparing “write code that uses APIs” vs “have Hermes click through websites in the browser” for a repeatable business workflow:
+
+- Prefer a durable code-first pipeline for recurring/high-volume work: APIs, database state, job queues, retries, reports, and approval steps.
+- Use browser automation for setup, first validation, dashboards, UI-only tools, visual QA, or fallback when no API exists.
+- Explicitly compare credential safety, brittleness, scaling, state tracking, cost/quota, and future productization.
+- If the workflow touches copyrighted or platform-controlled media, include a human review gate and risk/attribution notes before publishing.
+- Capture the recommendation in a project-local strategy doc, not only in chat.
+
+RuneLite/plugin-hub procedure that used to live here has been copied into the `osrs-plugins` umbrella as `references/runelite-plugin-hub-workflow.md`; use that skill for OSRS/RuneLite implementation details.

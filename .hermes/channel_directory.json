@@ -1,16 +1,10 @@
 {
-  "updated_at": "2026-05-29T02:58:03.855610",
+  "updated_at": "2026-06-02T02:56:22.737445",
   "platforms": {
     "discord": [
       {
         "id": "1499990220077137943",
         "name": "general",
-        "guild": "TRAPISTAN",
-        "type": "channel"
-      },
-      {
-        "id": "1509751204953985054",
-        "name": "red-team",
         "guild": "TRAPISTAN",
         "type": "channel"
       },
@@ -60,6 +54,7 @@
     "google_chat": [],
     "irc": [],
     "line": [],
+    "ntfy": [],
     "simplex": [],
     "teams": []
   }

@@ -366,6 +366,36 @@ git push -u origin HEAD
 # 8. Merge when green (see Section 6)
 ```
 
+## 8. Backing Up Nested Repositories Without a Remote
+
+When a project lives as a nested git repo inside the user's main workspace and has no configured remote, do not assume `git push` from inside the nested repo will work. Back it up with a git bundle, then commit that bundle in the parent workspace if the user asked to back up the whole workspace.
+
+```bash
+# inside nested repo
+PROJECT=$(basename "$PWD")
+BACKUP_DIR=/opt/data/HeRmEz/projects/_backups/$PROJECT
+mkdir -p "$BACKUP_DIR"
+git bundle create "$BACKUP_DIR/$PROJECT.bundle" --all
+git bundle verify "$BACKUP_DIR/$PROJECT.bundle"
+cat > "$BACKUP_DIR/README.md" <<EOF
+# $PROJECT backup
+
+Restore:
+
+\`\`\`bash
+git clone $BACKUP_DIR/$PROJECT.bundle $PROJECT-restored
+\`\`\`
+EOF
+
+# parent workspace
+cd /opt/data/HeRmEz
+git add "projects/_backups/$PROJECT/$PROJECT.bundle" "projects/_backups/$PROJECT/README.md"
+git commit -m "chore: back up $PROJECT repo"
+git push origin main
+```
+
+Before bundling media-heavy projects, commit only code/manifests/metadata in the nested repo and keep generated media ignored. If local artifact cleanup is requested, verify the bundle first, then remove disposable ignored media directories.
+
 ## Useful PR Commands Reference
 
 | Action | gh | git + curl |

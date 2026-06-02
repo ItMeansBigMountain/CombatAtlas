@@ -1,9 +1,0 @@
-{
-  "slug": "nous-kanban-demo",
-  "name": "Nous Kanban Demo",
-  "description": "Multi-agent Hermes Kanban board modeled on the NousResearch v0.12.0 announcement video: director decomposes a creative brief into parallel research/design/script/animation/edit/review lanes with dependency handoffs.",
-  "icon": "⚕",
-  "color": "#f59e0b",
-  "created_at": 1778741682,
-  "archived": false
-}

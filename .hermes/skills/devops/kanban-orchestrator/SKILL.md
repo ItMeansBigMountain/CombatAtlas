@@ -42,6 +42,29 @@ Create Kanban tasks when any of these are true:
 
 If *none* of those apply — it's a small one-shot reasoning task — use `delegate_task` instead or answer the user directly.
 
+### Turning Kanban from passive to active
+
+When the user says they want to actively start using Kanban for a workspace, do more than explain the feature:
+
+1. Switch or confirm the intended workspace board as active (`hermes kanban boards switch <slug>`), then verify with an explicit `HERMES_KANBAN_BOARD=<slug> hermes kanban boards current` call if the current session may be env-pinned to another board.
+2. Discover valid assignees with `hermes profile list` and `hermes kanban assignees`; summarize only real profile names.
+3. Confirm dispatcher readiness (`kanban.dispatch_in_gateway`, gateway status, diagnostics) so ready cards will actually be picked up.
+4. Create at least one low-risk intake/triage card for the next likely workflow instead of leaving the board empty. Use `--triage` when the user has not yet approved a concrete worker task.
+5. If the workspace is Git-backed, update its Kanban operating note (for example `KANBAN.md`) with the active board slug, assignees, dispatcher behavior, and env-pin caveat, then commit/push that documentation.
+6. Tell the user the new operating convention: future multi-step work gets a durable card, simple one-offs stay in chat.
+
+### Consolidating boards back to one default board
+
+When a user decides they do not want multiple boards or demo boards, consolidate deliberately instead of just deleting slugs:
+
+1. Audit first: `hermes kanban boards list`, then list each non-default board with `HERMES_KANBAN_BOARD=<slug> hermes kanban list` so you know what will be preserved or discarded.
+2. Create a pre-change backup under the user's project backup area when one exists. Copy `/opt/data/kanban.db` plus the relevant `/opt/data/kanban/boards/<slug>/` directories before destructive changes. If the user explicitly says demo boards are not needed, omit or prune bulky demo workspaces from the retained backup.
+3. If the canonical target is `default`, copy the keeper board's SQLite DB into `/opt/data/kanban.db` using SQLite's backup API rather than a blind copy while processes may be active. Also carry over useful `logs/` and `workspaces/` from the keeper board to `/opt/data/kanban/`.
+4. Set `/opt/data/kanban/current` and run `hermes kanban boards switch default`; then verify with `HERMES_KANBAN_BOARD=default hermes kanban boards current` and `hermes kanban list`.
+5. Remove unwanted boards with `hermes kanban boards rm <slug> --delete` only after backup and verification. Use archive instead of `--delete` when the user did not explicitly ask to remove them.
+6. Update any workspace documentation that referenced old board slugs or `HERMES_KANBAN_BOARD=<slug>` overrides. The final docs should show plain `hermes kanban ...` commands when `default` is the only active board.
+7. Final verification should show exactly one board in `hermes kanban boards list`, no active diagnostics, and expected task counts on `default`.
+
 ## The anti-temptation rules
 
 Your job description says "route, don't execute." The rules that enforce that:
@@ -153,7 +176,7 @@ Tell them what you created in plain prose, naming the actual profiles you used:
 
 **Pipeline with gates:** `planner → implementer → reviewer`. Each stage's `parents=[previous_task]`. Reviewer blocks or completes; if reviewer blocks, the operator unblocks with feedback and respawns.
 
-**Same-profile queue:** N tasks, all assigned to the same profile, no dependencies between them. Dispatcher serializes — that profile processes them in priority order, accumulating experience in its own memory.
+**Same-profile queue / bulk seeding:** N tasks can all be assigned to the same profile with no dependencies. On some gateway dispatcher configurations, multiple tasks for the same profile may be claimed at once rather than strictly serialized, so large batches can create many concurrent workers. This is useful when the user wants to see the board fully populated, but add idempotency keys, set realistic `--max-runtime`, and monitor diagnostics/resource pressure for heavy builds.
 
 **Human-in-the-loop:** Any task can `kanban_block()` to wait for input. Dispatcher respawns after `/unblock`. The comment thread carries the full context.
 
@@ -176,6 +199,19 @@ Tell them what you created in plain prose, naming the actual profiles you used:
 **Don't pre-create the whole graph if the shape depends on intermediate findings.** If T3's structure depends on what T1 and T2 find, let T3 exist as a "synthesize findings" task whose own first step is to read parent handoffs and plan the rest. Orchestrators can spawn orchestrators.
 
 **Tenant inheritance.** If `HERMES_TENANT` is set in your env, pass `tenant=os.environ.get("HERMES_TENANT")` on every `kanban_create` call so child tasks stay in the same namespace.
+
+## Reconciling stale boards against newer context
+
+When the user asks to "review all Kanban tasks" and says the current chat has newer information than the board, do a reconciliation pass rather than blindly respawning workers:
+
+1. Audit the active board and inspect every non-`done` task's comments/events/runs.
+2. Treat explicit newer user direction as authoritative over stale task bodies.
+3. Complete `review-required` blocked cards only when their handoffs already contain evidence such as passing tests/builds, clean git status, commits, or pushed remotes.
+4. Re-run verification for cards blocked by transient conditions before closing them.
+5. Annotate obsolete/rejected ideas so future agents do not recreate them.
+6. Remember CLI shape: `hermes kanban complete` can bulk-close multiple task IDs with `--result`, but `--summary` and `--metadata` are per-task only.
+
+See `references/board-reconciliation.md` for the detailed reconciliation checklist and pitfalls.
 
 ## Recovering stuck workers
 

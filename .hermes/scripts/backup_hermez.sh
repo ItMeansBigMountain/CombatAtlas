@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Ensure git uses the hermes user's persisted credential store in this container.
+export HOME="/opt/data"
+
 REPO="/opt/data/HeRmEz"
 SRC="/opt/data"
 BACKUP_DIR="$REPO/.hermes"
