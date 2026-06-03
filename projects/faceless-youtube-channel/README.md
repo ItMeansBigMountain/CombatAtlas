@@ -6,6 +6,12 @@ Project workspace for building a faceless YouTube channel using Hermes as the AI
 
 Create a repeatable system for ideating, scripting, producing, publishing, and improving faceless YouTube videos under the same YouTube/Google account.
 
+## Live MVP
+
+- Public URL: https://faceless-youtube-channel-beta.vercel.app
+- Purpose: lightweight landing/dashboard for the cheap/free trend-to-video automation pipeline.
+- Vercel project: `faceless-youtube-channel`
+
 ## Starting Assumption
 
 The user has an existing YouTube account and wants to add a faceless channel/project to it. If a specific guide is provided later, paste or upload it here and Hermes will adapt this workspace to match it step-by-step.
