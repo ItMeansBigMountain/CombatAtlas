@@ -49,11 +49,15 @@ YOUTUBE_COOKIES=/opt/data/secrets/youtube-cookies.txt
 ## Practical strategy
 
 1. Build local clipping/rendering first so final MP4 artifacts exist independent of any platform.
-2. Start with YouTube private upload via OAuth because it is the most direct API path.
-3. Treat Opus browser automation as a pilot, not the primary production mechanism, unless API access is available.
-4. Add Instagram/TikTok via official APIs or a reputable social-posting broker if multi-platform scheduling is the goal.
-5. For browser-based login attempts, ask the user to complete login/2FA/captcha in-session; never ask for or store account passwords.
-6. Keep all social publishing tests private/unlisted/draft until the user verifies output quality and platform compliance.
+2. If YouTube is the current blocker, do **not** keep centering YouTube or Zapier. Pivot to TikTok/Instagram upload pilots while keeping YouTube private upload as an optional fallback.
+3. TikTok is often the cleaner first non-YouTube pilot because the Content Posting API supports `FILE_UPLOAD` from a rendered MP4; use `SELF_ONLY` until app audit/approval is complete and query creator info before execution.
+4. Instagram Reels is a strong second pilot, but requires an Instagram professional account plus a public `video_url` reachable by Meta unless a resumable-upload path is implemented.
+5. Treat Opus browser automation as a pilot, not the primary production mechanism, unless API access is available.
+6. Add a third-party social-posting broker only if direct TikTok/Instagram OAuth/API setup is too slow or unreliable. If the user explicitly drops a broker/Zapier idea, remove it from the plan instead of continuing to recommend it.
+7. For browser-based login attempts, ask the user to complete login/2FA/captcha in-session; never ask for or store account passwords.
+8. Keep all social publishing tests private/unlisted/draft/self-only until the user verifies output quality and platform compliance.
+
+See also `references/tiktok-instagram-native-upload-pivot.md` for the session-specific native TikTok/Instagram pivot pattern, credential handling, and dry-run script shape.
 
 ## Third-party broker option
 

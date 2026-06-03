@@ -4,7 +4,7 @@ A daily HeRmEz backup cron job exists: job_id cfcea697da5c, name "Daily HeRmEz G
 §
 Hermes Kanban is consolidated to the canonical default board for the user's main workspace. DB path is /opt/data/kanban.db; current-board file is /opt/data/kanban/current with value "default". Use the default board for active HeRmEz project work; old hermez and nous-kanban-demo boards were removed after backup.
 §
-Google project model: Hermes base project is Hermes / airy-sled-497503-r8 for Hermes itself. App-specific projects/service accounts are separate: veo3 / gen-lang-client-0835809364, musicAI / musicai-497302, videoGeneration / videogeneration-463702, ticRate / ticrate. Inventory: /opt/data/HeRmEz/projects/_ops/google-credentials-inventory.md.
+Google ops: use google-creds.json as main Hermes service account. Hermes base project is Hermes / airy-sled-497503-r8; app-specific projects/accounts separate. Inventory: /opt/data/HeRmEz/projects/_ops/google-credentials-inventory.md.
 §
 Cox Elementary PTA dynamic Django site is deployed at https://cox-elementary-pta.onrender.com from repo /opt/data/HeRmEz/projects/cox-elementary-pta.
 §

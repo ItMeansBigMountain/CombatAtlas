@@ -20,17 +20,17 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 17
+        "completed": 18
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-06-03T03:00:00+00:00",
-      "last_run_at": "2026-06-01T03:02:31.646107+00:00",
+      "next_run_at": "2026-06-04T03:00:00+00:00",
+      "last_run_at": "2026-06-02T03:01:54.925538+00:00",
       "last_status": "error",
-      "last_error": "Script timed out after 120s: /opt/data/scripts/backup_hermez.sh",
+      "last_error": "Script exited with code 1\nstderr:\nwarning: adding embedded git repository: projects/viral-clip-radar\nhint: You've added another git repository inside your current repository.\nhint: Clones of the outer repository will not contain the contents of\nhint: the embedded repository and will not know how to obtain it.\nhint: If you meant to add a submodule, use:\nhint:\nhint: \tgit submodule add <url> projects/viral-clip-radar\nhint:\nhint: If you added this path by mistake, you can remove it from the\nhint: index with:\nhint:\nhint: \tgit rm --cached projects/viral-clip-radar\nhint:\nhint: See \"git help submodule\" for more information.\nhint: Disable this message with \"git config advice.addEmbeddedRepo false\"\nwarning: adding embedded git repository: projects/youtube-high-ticket-leverage\nwarning: exhaustive rename detection was skipped due to too many files.\nwarning: you may want to set your diff.renameLimit variable to at least 25670 and retry the command.\nremote: warning: File .hermes/jdks/jdk-11.0.31+11/lib/src.zip is 55.71 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        \nremote: warning: File .hermes/.gradle/wrapper/dists/gradle-8.10-all/3ym48ijgw9iixtry4iwty4ydy/gradle-8.10/lib/kotlin-compiler-embeddable-1.9.24.jar is 57.39 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        \nremote: error: Trace: 4e2d963e824427073daf2ebd77b9f13b625fe4b60ae111847139499ace35bcd2        \nremote: error: See https://gh.io/lfs for more information.        \nremote: error: File .hermes/jdks/jdk-11.0.31+11/lib/modules is 136.36 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: File .hermes/jdks/temurin11.tar.gz is 186.58 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        \nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [remote rejected]   main -> main (pre-receive hook declined)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'",
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": null,
@@ -60,15 +60,15 @@
       "schedule_display": "30 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 14
+        "completed": 15
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-06-02T14:30:00+00:00",
-      "last_run_at": "2026-06-01T14:34:20.885126+00:00",
+      "next_run_at": "2026-06-03T14:30:00+00:00",
+      "last_run_at": "2026-06-02T14:33:11.223354+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -89,5 +89,5 @@
       "workdir": null
     }
   ],
-  "updated_at": "2026-06-02T03:00:22.745249+00:00"
+  "updated_at": "2026-06-03T03:00:13.090064+00:00"
 }

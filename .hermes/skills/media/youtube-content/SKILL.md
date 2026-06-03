@@ -92,6 +92,12 @@ When the user asks for proof that we can clip and upload from a supplied video, 
 
 When the user asks to automate posting clips through YouTube, Opus Clip, Instagram, TikTok, or a shared Gmail login, use `references/social-platform-upload-automation.md`. Prefer revocable OAuth/API credentials over stored passwords, treat browser login as a supervised pilot path, and test with private/unlisted/draft uploads before promising autonomous public publishing.
 
+If YouTube is blocking the clipping project and the user wants TikTok/Instagram instead — especially if they explicitly drop Zapier/broker tooling — use `references/tiktok-instagram-upload-pivot-2026-06.md`: render MP4s first, pilot TikTok native `FILE_UPLOAD` with `SELF_ONLY`, then Instagram Reels via public `video_url`, and keep YouTube/brokers as fallback only.
+
+### Zapier-free clip review bridge
+
+When Zapier webhooks are unavailable, credentials are not ready, or the user is just exploring automation, do not block the clipping project on Zapier. Use `references/zapier-free-clip-review-bridge.md`: generate local JSON/CSV/Markdown review packets from rendered MP4s so the user can import to Notion/Sheets, paste to Discord/email, or manually upload while the clip pipeline matures.
+
 ### VPS download + manual-upload clipping delivery
 
 When the user asks for finished clip files but will upload manually, use `references/vps-youtube-clipping-delivery.md`. It captures the proven workflow: use a legitimate Internet Archive mirror when direct YouTube downloads are bot-blocked, extract transcript-driven segments, render captioned 9:16 MP4s from a manifest when available, verify with `ffprobe` and preview frames, clean disposable local media after backing up metadata, then deliver `MEDIA:/absolute/path.mp4` files.

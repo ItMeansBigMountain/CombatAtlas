@@ -4,7 +4,7 @@ User wants apps/projects created with Hermes to live as project directories unde
 §
 User prefers client website projects to be deployed live first with Git-based auto-deploys, then handle Stripe/payment setup and custom domain attachment afterward.
 §
-Cloud Engineer (mid-level) at GM Financial, TX. Wants side panel with right-click player lookup via Wise Old Man/TempleOSRS APIs, concise Discord replies.
+Cloud Engineer (mid-level) at GM Financial, TX. Wants concise Discord replies and concrete app/setup deliverables: copy-paste fields, generated assets, smoke-tested next steps.
 §
 User wants project backups to live under /opt/data/HeRmEz/projects, specifically /opt/data/HeRmEz/projects/_backups for backup artifacts, rather than under /opt/data/HeRmEz/.hermes.
 §
