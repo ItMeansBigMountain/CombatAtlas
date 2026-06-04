@@ -146,6 +146,7 @@ When the user asks to replicate another business/app's customer portal or workfl
 - `references/coding-school-crm-portal-research-2026-05.md` — research-backed product-parity pattern for a coding-school CRM with teacher schedules, AI lesson-note tagging, and parent/student progress dashboards.
 - `references/hermez-consolidation-patterns-2026-05.md` — condensed merge/retire/new-repo patterns from the HeRmEz project-direction session, including stockNews+wutHappened and social-media app consolidation.
 - `references/clipcurrent-api-vs-browser-strategy-2026-05.md` — strategy pattern for turning a new social/video trend-clipping idea into a code-first platform with browser automation only as fallback, including OpusClip API and YouTube credential caveats.
+- `references/youtube-automation-portfolio-organization-2026-06.md` — portfolio pattern for organizing multiple YouTube automation projects into lanes, centralizing shared OAuth upload tooling, adding per-project upload logs, and keeping private-first publishing rules.
 
 RuneLite/plugin-hub procedure that used to live here has been copied into the `osrs-plugins` umbrella as `references/runelite-plugin-hub-workflow.md`; use that skill for OSRS/RuneLite implementation details.
 

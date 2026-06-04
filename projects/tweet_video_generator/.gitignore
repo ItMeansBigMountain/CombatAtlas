@@ -1,4 +1,10 @@
 *.mp4
 *.jpg
+*.png
+*.mp3
+*.wav
 /clips
 /tweet_media
+/output_render/
+__pycache__/
+.env

@@ -27,8 +27,10 @@ pytubefix.exceptions.BotDetection: This request was detected as a bot
 
 Fix pattern:
 
-- First try current `yt-dlp` plus PO-token provider/plugin if available (`bgutil-ytdlp-pot-provider`) and `--extractor-args 'youtube:player_client=mweb'`.
+- First install/update the free downloader stack when using uv-managed tools: `uv tool install yt-dlp --force --with bgutil-ytdlp-pot-provider`. Verify with `yt-dlp -v URL` that bgutil PO-token providers appear.
+- First try current `yt-dlp` plus PO-token provider/plugin (`bgutil-ytdlp-pot-provider`), a JS runtime (`--js-runtimes node:/usr/local/bin/node` when Node exists), and `--extractor-args 'youtube:player_client=mweb;youtubepot-bgutilscript:server_home=/opt/data/bgutil-ytdlp-pot-provider/server'`.
 - Try `pytubefix` as the maintained pytube-style replacement, but know that cloud IPs can still trigger BotDetection even with `client='WEB'` / automatic node PO token.
+- If a rights-safe official media mirror exists (NASA/Wikimedia/Internet Archive/creator download page), use it as a fallback after logging the YouTube block; preserve the original YouTube URL and attribution in metadata.
 - Use `yt-dlp --cookies /path/to/youtube-cookies.txt ...`, or
 - use `yt-dlp --cookies-from-browser chrome ...` when a browser profile is available, or
 - use a residential proxy if the blocker is cloud-IP reputation, or

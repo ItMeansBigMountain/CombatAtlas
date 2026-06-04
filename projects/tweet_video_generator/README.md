@@ -1,25 +1,58 @@
-﻿# tweet_video_generator
+# tweet_video_generator
 
-## Overview
-This repository contains the tweet_video_generator project, which creates a video of a collection of tweets with speech to text.
+Tweet-to-video automation project.
 
-## Source
-- **Remote URL:** https://github.com/ItMeansBigMountain/tweet_video_generator.git
-- **Default Branch:** main
+## Role in YouTube automation portfolio
 
-## Recent Commits
-67a74d8 hashtags generator link 352460f final 0c1a4e7 test google auth files de30406 create OAuth google json d1d0edd google api credentials
+This is now an **active repair lane** rather than just a credential archive.
 
-## Structure
-(To be filled in after examining the codebase)
+Goal:
 
-## Dependencies
-(To be filled in)
+```text
+Tweet/X source material → generated tweet-card video → shared YouTube uploader → private review upload
+```
 
-## Current Functionality
-(To be filled in after examining the codebase)
+## Current repair status
 
-## Next Steps
-- Examine the codebase in detail to understand the functionality.
-- Identify any required updates or improvements.
-- Consider integration with other projects or updating to use the latest technologies.
+- Old local YouTube pickle token is no longer trusted because it failed with Google's `deleted_client` error.
+- YouTube uploads now route through the canonical shared HeRmEz uploader:
+
+```text
+/opt/data/HeRmEz/projects/_ops/youtube-automation/scripts/upload_youtube.py
+```
+
+- Local wrapper:
+
+```bash
+python3 upload_output_to_youtube.py output.mp4 \
+  --title "Top Tweets from @handle" \
+  --description "Private tweet video for review" \
+  --privacy private
+```
+
+- Upload logs write to:
+
+```text
+UPLOADS/youtube_uploads.jsonl
+```
+
+## Credential rule
+
+Twitter/X credentials must come from environment variables, not hardcoded source:
+
+```bash
+export TWITTER_CONSUMER_KEY="..."
+export TWITTER_CONSUMER_SECRET="..."
+export TWITTER_ACCESS_KEY="..."
+export TWITTER_ACCESS_SECRET="..."
+```
+
+YouTube OAuth credentials/tokens live outside this repo under:
+
+```text
+/opt/data/secrets/youtube-main/
+```
+
+## Private upload policy
+
+Private YouTube uploads do not need an additional approval step. The user will review in YouTube Studio and manually make videos public if desired.

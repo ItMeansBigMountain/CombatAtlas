@@ -110,5 +110,6 @@ Credential status / missing tokens: [`CREDENTIALS_STATUS.md`](./CREDENTIALS_STAT
 
 ## Recent consolidation notes
 
+- YouTube automation projects are organized in [`YOUTUBE_AUTOMATION_PORTFOLIO.md`](./YOUTUBE_AUTOMATION_PORTFOLIO.md). Shared upload method and scripts live in [`_ops/youtube-automation/YOUTUBE_UPLOAD_METHOD.md`](./_ops/youtube-automation/YOUTUBE_UPLOAD_METHOD.md); first uploads remain private by default.
 - `stockNews` is the active merged project for `stockNews` + `wutHappened`; see `stockNews/PRODUCT_DIRECTION.md`.
 - `wutHappened` is now a merge/source archive; see `wutHappened/MERGE_INTO_STOCKNEWS.md`.

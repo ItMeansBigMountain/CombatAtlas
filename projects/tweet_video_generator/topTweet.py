@@ -51,11 +51,23 @@ import shutil
 
 
 # GLOBAL VARIABLES
-consumer_key = "wt6Nq4RTTHUXsyEaWcl8b9p2m" 
-consumer_secret = "goZiuvzsv3KsDpAZun0nn6Xo0nvFszq9P5pxTXQrgMgfLKC7LQ"
-access_key = "444144269-s9agQgdQujtygHUPn1x5KfkLzn6YquTIeQgoGhXf"
-access_secret = "CeC6W0j5Md5dYgZ3wx88PqEgQWZd7HtlcyOrSxpaG5mZq"
+consumer_key = os.getenv("TWITTER_CONSUMER_KEY", "")
+consumer_secret = os.getenv("TWITTER_CONSUMER_SECRET", "")
+access_key = os.getenv("TWITTER_ACCESS_KEY", "")
+access_secret = os.getenv("TWITTER_ACCESS_SECRET", "")
 
+
+def require_twitter_credentials():
+    missing = [
+        name for name, value in {
+            "TWITTER_CONSUMER_KEY": consumer_key,
+            "TWITTER_CONSUMER_SECRET": consumer_secret,
+            "TWITTER_ACCESS_KEY": access_key,
+            "TWITTER_ACCESS_SECRET": access_secret,
+        }.items() if not value
+    ]
+    if missing:
+        raise RuntimeError("Missing Twitter/X credentials in environment: " + ", ".join(missing))
 
 
 # TWITTER EXTRACT TWEETS
@@ -268,6 +280,8 @@ def concat_videos(path):
 
 def main():
 
+    require_twitter_credentials()
+
     # INIT MP3 & PNG FOLDER
     if not os.path.exists('tweet_media'):
         os.makedirs('tweet_media')
@@ -351,8 +365,22 @@ def main():
 
 
 
-    # PROGROMATICALLY UPLOAD YOUTUBE VIDEO
-    ...
+    # PROGRAMMATICALLY UPLOAD YOUTUBE VIDEO
+    if os.path.exists("output.mp4"):
+        import subprocess, sys
+        subprocess.check_call([
+            sys.executable,
+            "upload_output_to_youtube.py",
+            "output.mp4",
+            "--title",
+            f"Top Tweets from @{screen_name}",
+            "--description",
+            f"Private tweet video generated from @{screen_name}. Review before making public.",
+            "--tags",
+            "tweets,automation,social media",
+            "--privacy",
+            "private",
+        ])
 
 
 

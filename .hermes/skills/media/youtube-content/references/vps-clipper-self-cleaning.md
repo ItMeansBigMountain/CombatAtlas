@@ -4,9 +4,9 @@ Use this when setting up YouTube/video download + clipping on a small VPS where 
 
 ## Default retention model
 
-- Keep code, clip manifests, transcripts, subtitle files, metadata, and final clips intended for user delivery.
-- Treat downloaded source videos, temporary transcodes, partial downloads, logs, and scratch frames as disposable.
-- Delete downloaded sources automatically after all requested clips render and pass verification.
+- Keep code, clip manifests, transcripts, subtitle files, metadata, and upload logs.
+- Treat downloaded source videos, temporary transcodes, partial downloads, logs, scratch frames, and final rendered clips as disposable once YouTube upload succeeds.
+- Delete downloaded sources automatically after all requested clips render and pass verification; delete final rendered exports after the YouTube API returns a private upload ID unless the user explicitly asks to keep local files.
 - Never delete arbitrary user-supplied paths. Only auto-delete files under known project cache directories such as `SOURCES/`, `TMP/`, `DOWNLOADS/`, `RAW_VIDEO/`, `LOGS/`, and `.ytvenv/`.
 - Provide a `--keep-source` or `--no-cleanup` escape hatch for debugging.
 
@@ -63,6 +63,6 @@ For Discord-style handoffs, be concise and state the safety guarantee:
 
 - downloader/clipping is set up;
 - clips are verified before reporting success;
+- uploader/deploy scripts delete final rendered clips after successful YouTube upload;
 - sources in scratch folders are auto-deleted after successful renders;
-- finished clips remain for manual upload;
 - `--keep-source` exists for debugging.

@@ -26,12 +26,28 @@ The user has an existing YouTube account and wants to add a faceless channel/pro
 - `scripts/` — future automation scripts.
 - `videos/` — per-video workspaces.
 
+## Canonical YouTube Upload Method
+
+This project now uses the shared HeRmEz YouTube upload method:
+
+```text
+/opt/data/HeRmEz/projects/_ops/youtube-automation/YOUTUBE_UPLOAD_METHOD.md
+```
+
+Current upload status:
+
+- OAuth token verified with `youtube.upload` scope.
+- Private API smoke-test upload succeeded.
+- All generated videos should be uploaded as `private` first unless explicitly approved otherwise.
+
 ## First Milestone
 
-Pick a niche and create the first 3-video pilot package:
+Build the first one-command pilot:
 
-1. Channel concept + audience promise.
-2. 30 title ideas.
-3. 3 scripts.
-4. Thumbnail concepts.
-5. Upload checklist.
+1. Trend idea.
+2. Script.
+3. TTS voiceover.
+4. Kinetic FFmpeg render.
+5. Dry-run upload.
+6. Private YouTube upload.
+7. Upload record in `UPLOADS/youtube_uploads.jsonl`.

@@ -92,6 +92,16 @@ When the user asks for proof that we can clip and upload from a supplied video, 
 
 When the user asks to automate posting clips through YouTube, Opus Clip, Instagram, TikTok, or a shared Gmail login, use `references/social-platform-upload-automation.md`. Prefer revocable OAuth/API credentials over stored passwords, treat browser login as a supervised pilot path, and test with private/unlisted/draft uploads before promising autonomous public publishing.
 
+### Faceless timestamp-to-image workflow
+
+When the user wants to reproduce a Claude Code/Higgsfield faceless YouTube workflow using Hermes instead, use `references/faceless-timestamp-image-higgsfield.md`. The core pattern is human voiceover → timestamped transcript → one MS-Paint-style image prompt per timestamp → Higgsfield generation → local images named by timestamp for timeline syncing.
+
+### Faceless YouTube automation on VPS
+
+When the user wants to build a faceless channel rather than summarize a supplied video, use `references/faceless-youtube-automation-vps.md`. Default to a headless VPS pipeline with a Vercel dashboard, cheap/free kinetic text and diagrams, private-first YouTube uploads, and user OAuth for `youtube.upload`. If a stored YouTube token fails with Google's `deleted_client`, do not keep retrying the old token; create/provide a replacement OAuth client with YouTube Data API v3 enabled and `http://localhost:5000/` as an authorized redirect URI, then run a fresh one-time OAuth flow.
+
+For the user's HeRmEz workspace, also use `references/hermez-shared-youtube-upload-method-2026-06.md`: it captures the canonical shared OAuth/upload scripts, secrets path, headless PKCE verifier persistence, private-first upload rule, no-wait private upload preference, production-over-setup proof requirements, upload log locations, and the current YouTube automation project lanes.
+
 If YouTube is blocking the clipping project and the user wants TikTok/Instagram instead — especially if they explicitly drop Zapier/broker tooling — use `references/tiktok-instagram-upload-pivot-2026-06.md`: render MP4s first, pilot TikTok native `FILE_UPLOAD` with `SELF_ONLY`, then Instagram Reels via public `video_url`, and keep YouTube/brokers as fallback only.
 
 ### Zapier-free clip review bridge

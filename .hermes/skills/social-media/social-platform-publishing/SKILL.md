@@ -14,7 +14,8 @@ Use this skill when implementing or troubleshooting automated publishing/upload 
 3. **Keep credentials out of git.** Store secrets in a gitignored `.env` or an external path such as `/opt/data/secrets/<project>.env`; copy into the project runtime env only when needed; use restrictive permissions such as `chmod 600`.
 4. **Build dry-run first.** Upload helpers should print the endpoint, needed token/scope, and payload without exposing secrets. Only call external APIs after verifying credentials and scopes.
 5. **Smoke-test with a generated fixture.** Use a tiny generated MP4 to validate CLI payload construction and endpoint selection before using real clips.
-6. **Make app-review language explicit.** Provide concise text explaining exactly how every requested product/scope is used and emphasize user review/consent for draft flows.
+6. **For headless OAuth/PKCE flows, persist pending verifier state.** If an OAuth helper generates the auth URL in one process and exchanges the returned code in another, save the pending `state`, redirect URI, token path, client path, and any PKCE `code_verifier` to a chmod `600` secrets file outside the repo, then restore it before token exchange. `InvalidGrantError: Missing code verifier` means the auth URL/code pair must be regenerated after fixing verifier persistence.
+7. **Make app-review language explicit.** Provide concise text explaining exactly how every requested product/scope is used and emphasize user review/consent for draft flows.
 
 ## TikTok Content Posting API quick guide
 
