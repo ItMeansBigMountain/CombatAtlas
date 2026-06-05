@@ -385,6 +385,7 @@ When the user asks to create a **new standalone repo after reviewing an existing
 - A bundle captures committed Git history, not dirty working tree changes. If the child repo has uncommitted changes, commit them in the child first or explicitly tell the user what is not captured.
 - Do not bundle or track secrets, local SQLite DBs, uploaded media, caches, or environment files unless the user explicitly asks for a full machine/runtime snapshot and approves the security implications.
 - If a parent backup push is rejected for large `.hermes`/cache/runtime files, do not push harder or add Git LFS by default. Remove those artifacts from the index with `git rm --cached`, add ignore/exclude rules, verify no staged additions exceed 50MB, then recommit and rerun the backup script.
+- If the push is still rejected after `git rm --cached`, inspect whether the large blobs live in earlier local commits that are ahead of the remote. For unpublished commits only, create a local backup branch, rewrite `origin/main..main` with an index-filter that removes the generated/cache paths, verify `git rev-list --objects origin/main..HEAD` contains no objects over 50MB, then push and manually run the backup script once. See `references/backup-cache-history-cleanup.md`.
 - When converting existing nested worktrees to submodules, do not just edit `.gitmodules`; stage the child path as a gitlink and run `git submodule absorbgitdirs` so clones understand the submodule relationship.
 
 ## 9. Importing Legacy Project Collections into a Workspace
