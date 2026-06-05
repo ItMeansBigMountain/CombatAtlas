@@ -95,13 +95,13 @@
     "created_at": "2026-05-29T04:28:02.991198+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-06-03T04:22:21.154213+00:00",
-    "last_viewed_at": "2026-06-03T04:22:21.152327+00:00",
+    "last_used_at": "2026-06-05T14:37:41.198470+00:00",
+    "last_viewed_at": "2026-06-05T14:37:41.195494+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 10,
-    "view_count": 10
+    "use_count": 11,
+    "view_count": 11
   },
   "hermes-agent-skill-authoring": {
     "archived_at": null,
@@ -160,12 +160,12 @@
     "created_at": "2026-05-22T13:56:28.500384+00:00",
     "created_by": "agent",
     "last_patched_at": "2026-05-26T06:20:33.323550+00:00",
-    "last_used_at": "2026-06-04T14:30:12.935301+00:00",
+    "last_used_at": "2026-06-05T14:30:32.387172+00:00",
     "last_viewed_at": "2026-05-31T01:47:04.742803+00:00",
     "patch_count": 22,
     "pinned": false,
     "state": "active",
-    "use_count": 27,
+    "use_count": 28,
     "view_count": 14
   },
   "osrs-plugins": {

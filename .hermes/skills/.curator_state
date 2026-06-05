@@ -3,7 +3,7 @@
   "last_run_at": "2026-05-31T01:46:49.188313+00:00",
   "last_run_duration_seconds": 219.588742,
   "last_run_summary": "auto: no changes; llm: Consolidation pass completed.\n\nProcessed the full 12-skill candidate set and found one obvious prefix/domain cluster that was still split into narrow sibling skills:\n\n- **OSRS / RuneLite plugin cluster**\n  - Umbrella retained: `osrs-plugins…\narchived 3 skill(s):\n  • osrs-plugin-development → osrs-plugins\n  • osrs-plugin-scaffolding → osrs-plugins\n  • runelite-plugin-development → osrs-plugins\nfull report: hermes curator status\nkeep an umbrella stable: hermes curator pin osrs-plugins",
-  "last_run_summary_shown_at": "2026-05-24T01:35:15.676597+00:00",
+  "last_run_summary_shown_at": "2026-05-31T01:46:49.188313+00:00",
   "paused": false,
   "run_count": 3
 }
