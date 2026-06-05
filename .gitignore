@@ -35,15 +35,41 @@
 
 # Caches and transient build artifacts
 
-# Sanitized backup should not track local caches, browser binaries, package caches, or DB snapshots
+# Sanitized backup should not track local caches, browser binaries, package caches, SDKs, session logs, or DB snapshots
 /.hermes/.cache/
 /.hermes/.config/
 /.hermes/.npm/
-/.hermes/.local/share/pki/
+/.hermes/.gradle/
+/.hermes/.local/
+/.hermes/.expo/
+/.hermes/jdks/
+/.hermes/tmp/
+/.hermes/bin/
+/.hermes/cache/
+/.hermes/lsp/
+/.hermes/logs/
+/.hermes/sessions/
+/.hermes/audio_cache/
+/.hermes/state-snapshots/
+/.hermes/ibmcloud-cli/
+/.hermes/hermes-agent/
+/.hermes/credentials/
+/.hermes/secrets/
+/.hermes/models_dev_cache.json
 /.hermes/state.db
 /.hermes/**/*.db
 /.hermes/**/*.sqlite
 /.hermes/**/*.sqlite3
+/.hermes/**/.venv/
+/.hermes/**/venv/
+/.hermes/**/node_modules/
+/.hermes/**/dist/
+/.hermes/**/build/
+/.hermes/**/web_dist/
+/.hermes/**/.next/
+/.hermes/**/.nuxt/
+/.hermes/**/__pycache__/
+/.hermes/**/*.egg-info/
 
 **/__pycache__/
 **/.pytest_cache/
