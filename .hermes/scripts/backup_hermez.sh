@@ -37,7 +37,23 @@ if command -v rsync >/dev/null 2>&1; then
     --exclude='/.cache/***' \
     --exclude='/.config/***' \
     --exclude='/.npm/***' \
-    --exclude='/.local/share/pki/***' \
+    --exclude='/.gradle/***' \
+    --exclude='/.local/***' \
+    --exclude='/.expo/***' \
+    --exclude='/jdks/***' \
+    --exclude='/tmp/***' \
+    --exclude='/bin/***' \
+    --exclude='/cache/***' \
+    --exclude='/lsp/***' \
+    --exclude='/logs/***' \
+    --exclude='/sessions/***' \
+    --exclude='/audio_cache/***' \
+    --exclude='/state-snapshots/***' \
+    --exclude='/ibmcloud-cli/***' \
+    --exclude='/hermes-agent/***' \
+    --exclude='/credentials/***' \
+    --exclude='/secrets/***' \
+    --exclude='/models_dev_cache.json' \
     --exclude='/state.db' \
     --exclude='**/*.db' \
     --exclude='**/*.sqlite' \
@@ -63,7 +79,15 @@ if command -v rsync >/dev/null 2>&1; then
     --exclude='**/.pytest_cache/***' \
     --exclude='**/.mypy_cache/***' \
     --exclude='**/.ruff_cache/***' \
+    --exclude='**/.venv/***' \
+    --exclude='**/venv/***' \
+    --exclude='**/*.egg-info/***' \
     --exclude='**/node_modules/***' \
+    --exclude='**/dist/***' \
+    --exclude='**/build/***' \
+    --exclude='**/.next/***' \
+    --exclude='**/.nuxt/***' \
+    --exclude='**/.expo/***' \
     --exclude='**/.git/***' \
     "$SRC/" "$BACKUP_DIR/"
 else
@@ -77,9 +101,15 @@ src = Path('/opt/data')
 dst = Path('/opt/data/HeRmEz/.hermes')
 
 exclude_exact = {'.env', '.git-credentials', '.gitconfig', 'auth.json', 'auth.lock'}
-exclude_dir_names = {'.git', '.cache', '.config', '.npm', '__pycache__', '.pytest_cache', '.mypy_cache', '.ruff_cache', 'node_modules'}
+exclude_dir_names = {
+    '.git', '.cache', '.config', '.npm', '.gradle', '.local', '.expo', 'jdks', 'tmp',
+    'bin', 'cache', 'lsp', 'logs', 'sessions', 'audio_cache', 'state-snapshots',
+    'ibmcloud-cli', 'hermes-agent', 'credentials', 'secrets', '__pycache__',
+    '.pytest_cache', '.mypy_cache', '.ruff_cache', '.venv', 'venv', 'node_modules',
+    'dist', 'build', 'web_dist', '.next', '.nuxt',
+}
 exclude_file_globs = [
-    '.env.*', '*secret*', '*token*', '*credential*', 'oauth*.json', 'keyring*',
+    '.env.*', 'models_dev_cache.json', '*secret*', '*token*', '*credential*', 'oauth*.json', 'keyring*',
     '*.pem', '*.key', '*.p12', '*.pfx', 'id_rsa*', 'id_ed25519*',
     '*.db', '*.sqlite', '*.sqlite3', '*.db-*', '*.lock', '*.pid', '*.sock', '.tick.lock',
 ]
@@ -134,7 +164,7 @@ This is a sanitized snapshot. Excluded intentionally:
 - OAuth/keyring files
 - files whose names contain secret, token, or credential
 - private key material (*.pem, *.key, *.p12, *.pfx, id_rsa*, id_ed25519*)
-- runtime locks, pids, sockets, and common cache/build directories
+- runtime locks, pids, sockets, common cache/build directories, session logs, local SDKs/CLIs, and generated installs
 - nested .git directories
 
 Future project folders should live under /opt/data/HeRmEz/projects.

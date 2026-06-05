@@ -20,7 +20,7 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 20
+        "completed": 21
       },
       "enabled": true,
       "state": "scheduled",
@@ -28,9 +28,9 @@
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
       "next_run_at": "2026-06-06T03:00:00+00:00",
-      "last_run_at": "2026-06-04T03:02:04.362129+00:00",
+      "last_run_at": "2026-06-05T03:01:29.954880+00:00",
       "last_status": "error",
-      "last_error": "Script exited with code 1\nstderr:\nremote: warning: File .hermes/.gradle/wrapper/dists/gradle-8.10-all/3ym48ijgw9iixtry4iwty4ydy/gradle-8.10/lib/kotlin-compiler-embeddable-1.9.24.jar is 57.39 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        \nremote: warning: File .hermes/jdks/jdk-11.0.31+11/lib/src.zip is 55.71 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        \nremote: error: Trace: e0e9b0e5e92ee376547bc130ad9587b1d281f0a48ec4704f04f5bdface84f8a2        \nremote: error: See https://gh.io/lfs for more information.        \nremote: error: File .hermes/jdks/jdk-11.0.31+11/lib/modules is 136.36 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: File .hermes/jdks/temurin11.tar.gz is 186.58 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        \nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [remote rejected]   main -> main (pre-receive hook declined)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'",
+      "last_error": "Script exited with code 1\nstderr:\nremote: warning: File .hermes/.gradle/wrapper/dists/gradle-8.10-all/3ym48ijgw9iixtry4iwty4ydy/gradle-8.10/lib/kotlin-compiler-embeddable-1.9.24.jar is 57.39 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        \nremote: warning: File .hermes/jdks/jdk-11.0.31+11/lib/src.zip is 55.71 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        \nremote: error: Trace: 4982bf045fb80355747582b423b8e6b14f2b55deced7f372e4428839ecf4a25c        \nremote: error: See https://gh.io/lfs for more information.        \nremote: error: File .hermes/jdks/jdk-11.0.31+11/lib/modules is 136.36 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: File .hermes/jdks/temurin11.tar.gz is 186.58 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        \nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [remote rejected]   main -> main (pre-receive hook declined)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'",
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": null,
@@ -224,5 +224,5 @@
       "profile": null
     }
   ],
-  "updated_at": "2026-06-05T03:00:08.442755+00:00"
+  "updated_at": "2026-06-05T03:01:29.955471+00:00"
 }

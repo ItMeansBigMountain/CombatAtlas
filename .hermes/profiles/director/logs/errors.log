@@ -1,1 +1,0 @@
-2026-05-14 06:55:25,823 WARNING [20260514_065512_b73d2b] run_agent: Tool terminal returned error (0.47s): {"output": "/usr/bin/bash: line 3: hermes: command not found", "exit_code": 127, "error": null}
