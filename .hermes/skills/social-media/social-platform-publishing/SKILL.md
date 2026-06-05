@@ -17,6 +17,18 @@ Use this skill when implementing or troubleshooting automated publishing/upload 
 6. **For headless OAuth/PKCE flows, persist pending verifier state.** If an OAuth helper generates the auth URL in one process and exchanges the returned code in another, save the pending `state`, redirect URI, token path, client path, and any PKCE `code_verifier` to a chmod `600` secrets file outside the repo, then restore it before token exchange. `InvalidGrantError: Missing code verifier` means the auth URL/code pair must be regenerated after fixing verifier persistence.
 7. **Make app-review language explicit.** Provide concise text explaining exactly how every requested product/scope is used and emphasize user review/consent for draft flows.
 
+## Practical content-automation publishing pattern
+
+When social publishing is part of a viral content automation project, require the project to carry platform timing metadata and cleanup state:
+
+- planned platform, local timezone, and publish window/cohort;
+- private/draft/self-only first upload mode unless public posting is explicitly approved;
+- upload log with returned platform ID/URL before cleanup;
+- generated media cleanup after confirmed upload, restricted to allowlisted project cache/output folders;
+- preserved metadata, manifests, subtitles, source attribution, review notes, and logs.
+
+For upload timing/frequency and free Opus-like clipping strategy, see the `youtube-content` skill reference `references/viral-growth-content-automation-2026-06.md`.
+
 ## TikTok Content Posting API quick guide
 
 - Read-only scopes like `user.info.profile`, `user.info.stats`, and `video.list` do **not** permit uploads.

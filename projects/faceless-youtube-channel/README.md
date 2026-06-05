@@ -22,6 +22,7 @@ The user has an existing YouTube account and wants to add a faceless channel/pro
 - `docs/hermes-youtube-workflow.md` — how Hermes replaces the Claude steps in the guide.
 - `docs/production-sop.md` — repeatable video creation workflow.
 - `docs/content-pipeline.md` — idea backlog and status workflow.
+- `docs/viral-production-system.md` — viral posting cadence, faceless graphic system, and cleanup rules.
 - `assets/` — brand visuals, generated images, thumbnails, audio, exports.
 - `scripts/` — future automation scripts.
 - `videos/` — per-video workspaces.
@@ -39,6 +40,7 @@ Current upload status:
 - OAuth token verified with `youtube.upload` scope.
 - Private API smoke-test upload succeeded.
 - All generated videos should be uploaded as `private` first unless explicitly approved otherwise.
+- Successful uploads delete generated local video/workspace assets by default; pass `--keep-workspace` only for debugging.
 
 ## First Milestone
 
@@ -51,3 +53,7 @@ Build the first one-command pilot:
 5. Dry-run upload.
 6. Private YouTube upload.
 7. Upload record in `UPLOADS/youtube_uploads.jsonl`.
+
+## Viral cadence default
+
+Run a 30-day Shorts sprint: **1 private-reviewed Short/day**, scheduled for **2–4 PM** or **8–10 PM Central**. Reuse the same render for TikTok at **7–9 PM** and Instagram Reels at **11 AM–1 PM** or **7–9 PM** once those tokens are connected.

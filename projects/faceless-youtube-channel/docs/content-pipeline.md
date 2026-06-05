@@ -13,6 +13,12 @@
 - `published`
 - `reviewed`
 
+## Growth System
+
+Use `docs/viral-production-system.md` plus the shared `/opt/data/HeRmEz/projects/_ops/social-growth/VIRAL_GROWTH_PLAYBOOK.md` for current upload windows, visual rules, and cleanup policy.
+
+Default sprint rule: produce 1 short/day, upload private first, then schedule/publish in the best tested Central-time window: YouTube Shorts **2–4 PM** or **8–10 PM**.
+
 ## Pilot Ideas
 
 ### 1. I Escaped Without College — But Nobody Tells You the Cost

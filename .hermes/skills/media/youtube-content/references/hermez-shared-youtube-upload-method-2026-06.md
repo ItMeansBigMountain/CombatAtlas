@@ -55,13 +55,21 @@ For web OAuth clients, `google-auth-oauthlib` can generate a PKCE `code_verifier
 
 Restore `flow.code_verifier` before `fetch_token()`. If the exchange fails with `InvalidGrantError: Missing code verifier`, regenerate a new auth URL after adding this persistence; old auth codes cannot be reused.
 
-## Private-first upload rule
+## Visibility rule
 
 For the user's YouTube automation projects, upload as `private` by default unless they explicitly approve `unlisted` or `public`.
 
+As of 2026-06-04, the user explicitly approved public uploads for the Shorts automation lanes. Daily faceless Shorts and Viral Clip Radar cron uploads should use `--privacy public` and still keep cleanup gated on a returned YouTube video ID. Scheduled backlog releases still use YouTube's `publishAt` mechanism, which requires `privacyStatus=private` until the scheduled public release time.
+
 Important user preference: **do not wait for per-upload approval when the target privacy is `private`**. Produce the artifact, upload it privately, log the result, and report the video ID/URL. The user will review in YouTube Studio and manually switch winners to public.
 
+## Scheduled backlog release rule
+
+When the user explicitly asks to build a backlog that releases over time, the shared uploader supports `--publish-at RFC3339_UTC`. It sends YouTube `status.privacyStatus=private` plus `status.publishAt=<UTC timestamp>`, so videos remain private until YouTube's scheduled release time. Log `publish_at` in each lane's `UPLOADS/youtube_uploads.jsonl`, delete generated media only after the returned video ID, and preserve a calendar under `/opt/data/HeRmEz/projects/_ops/social-growth/backlog/`.
+
 ## Shorts classification checklist
+
+Official docs do **not** expose a separate `youtube.shorts.insert` endpoint or a `shorts=true` flag in the YouTube Data API. Upload Shorts through the normal YouTube Data API `videos.insert` endpoint with OAuth scope `https://www.googleapis.com/auth/youtube.upload`, `part=snippet,status`, and a regular video resource. YouTube classifies qualifying videos as Shorts based on the file/metadata. Keep our lane default as: 9:16 or square/taller-than-wide video, 3 minutes or less, `#Shorts` in title/description, `private` or scheduled-private first. Google documents that Shorts up to three minutes can be uploaded via YouTube Studio/app; for 1-3 minute Shorts, any active Content ID claim can globally block the Short, so prefer claim-safe/royalty-free audio and transformed source material.
 
 For YouTube Shorts lanes, do not just upload a small/vertical-looking video. Verify the rendered MP4 before upload:
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Faceless channel: better voice + real graphic scenes + private upload + cleanup.
+"""Faceless channel: better voice + real graphic scenes + public Shorts upload + cleanup.
 
 Uses ElevenLabs when ELEVENLABS_API_KEY is available in env or /opt/data/.env.
 Renders vertical Shorts-style kinetic scenes with diagram/B-roll style graphics.
@@ -195,7 +195,7 @@ def render(work: Path, scenes: list[dict]) -> Path:
 
 
 def upload(video: Path, title: str, description: str) -> dict:
-    raw = sh(["python3", str(SHARED_UPLOADER), str(video), "--title", title, "--description", description, "--tags", "discipline,self improvement,AI,faceless shorts", "--privacy", "private", "--project", PROJECT, "--log-jsonl", str(UPLOAD_LOG), "--delete-after-upload"])
+    raw = sh(["python3", str(SHARED_UPLOADER), str(video), "--title", title, "--description", description, "--tags", "discipline,self improvement,AI,faceless shorts", "--privacy", "public", "--project", PROJECT, "--log-jsonl", str(UPLOAD_LOG), "--delete-after-upload"])
     return json.loads(raw)
 
 
@@ -216,7 +216,7 @@ def main() -> int:
     probe = json.loads(sh(["ffprobe", "-v", "error", "-show_entries", "stream=width,height", "-show_entries", "format=duration,size", "-of", "json", str(video)]))
     result = {"workspace": str(work), "video": str(video), "probe": probe, "uploaded": False, "elevenlabs_key_present": bool(os.getenv("ELEVENLABS_API_KEY") or os.getenv("XI_API_KEY") or os.getenv("ELEVEN_API_KEY"))}
     if args.upload:
-        result["upload"] = upload(video, "AI Did Not Make You Lazy — It Exposed You", "Private faceless channel upload with ElevenLabs voice and graphic/diagram scenes. Topic: " + args.topic)
+        result["upload"] = upload(video, "AI Did Not Make You Lazy — It Exposed You", "Public faceless Shorts upload with ElevenLabs voice and graphic/diagram scenes. Topic: " + args.topic + "\n\n#Shorts")
         result["uploaded"] = True
         if not args.keep_workspace:
             shutil.rmtree(work, ignore_errors=True)

@@ -20,17 +20,17 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 19
+        "completed": 20
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-06-05T03:00:00+00:00",
-      "last_run_at": "2026-06-03T03:01:33.333422+00:00",
+      "next_run_at": "2026-06-06T03:00:00+00:00",
+      "last_run_at": "2026-06-04T03:02:04.362129+00:00",
       "last_status": "error",
-      "last_error": "Script exited with code 1\nstderr:\nremote: warning: File .hermes/.gradle/wrapper/dists/gradle-8.10-all/3ym48ijgw9iixtry4iwty4ydy/gradle-8.10/lib/kotlin-compiler-embeddable-1.9.24.jar is 57.39 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        \nremote: warning: File .hermes/jdks/jdk-11.0.31+11/lib/src.zip is 55.71 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        \nremote: error: Trace: 3a39d323134562ad2c8deff0ade5863712a61a19f6aebb76e301dba612d38fa5        \nremote: error: See https://gh.io/lfs for more information.        \nremote: error: File .hermes/jdks/temurin11.tar.gz is 186.58 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: File .hermes/jdks/jdk-11.0.31+11/lib/modules is 136.36 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        \nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [remote rejected]   main -> main (pre-receive hook declined)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'",
+      "last_error": "Script exited with code 1\nstderr:\nremote: warning: File .hermes/.gradle/wrapper/dists/gradle-8.10-all/3ym48ijgw9iixtry4iwty4ydy/gradle-8.10/lib/kotlin-compiler-embeddable-1.9.24.jar is 57.39 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        \nremote: warning: File .hermes/jdks/jdk-11.0.31+11/lib/src.zip is 55.71 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        \nremote: error: Trace: e0e9b0e5e92ee376547bc130ad9587b1d281f0a48ec4704f04f5bdface84f8a2        \nremote: error: See https://gh.io/lfs for more information.        \nremote: error: File .hermes/jdks/jdk-11.0.31+11/lib/modules is 136.36 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: File .hermes/jdks/temurin11.tar.gz is 186.58 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        \nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [remote rejected]   main -> main (pre-receive hook declined)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'",
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": null,
@@ -60,15 +60,15 @@
       "schedule_display": "30 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 16
+        "completed": 17
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-06-04T14:30:00+00:00",
-      "last_run_at": "2026-06-03T14:34:36.540354+00:00",
+      "next_run_at": "2026-06-05T14:30:00+00:00",
+      "last_run_at": "2026-06-04T14:34:03.600027+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -108,16 +108,106 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 0
+        "completed": 4
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-06-04T08:32:26.430232+00:00",
-      "last_run_at": null,
-      "last_status": null,
+      "next_run_at": "2026-06-05T08:35:08.375736+00:00",
+      "last_run_at": "2026-06-05T02:35:08.375736+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "workdir": "/opt/data/HeRmEz/projects/viral-clip-radar",
+      "profile": null
+    },
+    {
+      "id": "c9e81ae638fe",
+      "name": "Daily faceless YouTube public Shorts pipeline",
+      "prompt": "Script-only cron job: run the faceless-youtube-channel public Shorts upload pipeline. The script renders one vertical Short, uploads it public, logs the YouTube video ID/URL, and deletes generated workspace assets only after a confirmed upload ID.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "faceless_daily_upload.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "45 19 * * *",
+        "display": "45 19 * * *"
+      },
+      "schedule_display": "45 19 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 2
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-04T12:55:03.480224+00:00",
+      "next_run_at": "2026-06-05T19:45:00+00:00",
+      "last_run_at": "2026-06-04T19:45:05.740599+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "workdir": "/opt/data/HeRmEz/projects/faceless-youtube-channel",
+      "profile": null
+    },
+    {
+      "id": "bce8ebabac36",
+      "name": "Daily Viral Radar public Shorts pipeline",
+      "prompt": "Script-only cron job: run the viral-clip-radar public Shorts upload pipeline. The script downloads/restores the reviewed source if needed, renders vertical captioned Shorts, uploads them public, logs returned YouTube IDs/URLs, and deletes generated media only after confirmed upload IDs.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "viral_radar_daily_upload.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 0 * * *",
+        "display": "15 0 * * *"
+      },
+      "schedule_display": "15 0 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 1
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-04T12:58:58.087889+00:00",
+      "next_run_at": "2026-06-06T00:15:00+00:00",
+      "last_run_at": "2026-06-05T00:15:07.467845+00:00",
+      "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
       "deliver": "origin",
@@ -134,5 +224,5 @@
       "profile": null
     }
   ],
-  "updated_at": "2026-06-04T03:00:38.539417+00:00"
+  "updated_at": "2026-06-05T03:00:08.442755+00:00"
 }

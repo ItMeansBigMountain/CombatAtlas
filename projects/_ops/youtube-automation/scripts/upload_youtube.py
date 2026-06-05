@@ -25,6 +25,7 @@ def main():
     ap.add_argument('--description', default='')
     ap.add_argument('--tags', default='', help='comma-separated')
     ap.add_argument('--privacy', choices=['private','unlisted','public'], default='private')
+    ap.add_argument('--publish-at', default='', help='Optional RFC3339/ISO UTC timestamp for scheduled public release. YouTube expects privacyStatus=private with publishAt.')
     ap.add_argument('--category-id', default='22')
     ap.add_argument('--token', default=os.getenv('YOUTUBE_UPLOAD_TOKEN') or DEFAULT_TOKEN)
     ap.add_argument('--project', default=os.getenv('YOUTUBE_UPLOAD_PROJECT') or '')
@@ -38,6 +39,9 @@ def main():
       'snippet': {'title': args.title, 'description': args.description, 'tags': [t.strip() for t in args.tags.split(',') if t.strip()], 'categoryId': args.category_id},
       'status': {'privacyStatus': args.privacy, 'selfDeclaredMadeForKids': False}
     }
+    if args.publish_at:
+        body['status']['privacyStatus'] = 'private'
+        body['status']['publishAt'] = args.publish_at
     if args.dry_run:
         print(json.dumps({'mode':'dry-run','video':str(video),'bytes':video.stat().st_size,'body':body,'token_present':pathlib.Path(args.token).exists()}, indent=2)); return
     creds=load_token(args.token)
@@ -49,7 +53,9 @@ def main():
         status, response=req.next_chunk()
         if status: print(json.dumps({'upload_progress': int(status.progress()*100)}))
     video_id=response['id']
-    result={'status':'UPLOADED','video_id':video_id,'url':f'https://youtu.be/{video_id}','privacy':args.privacy}
+    result={'status':'UPLOADED','video_id':video_id,'url':f'https://youtu.be/{video_id}','privacy':body['status']['privacyStatus']}
+    if args.publish_at:
+        result['publish_at'] = args.publish_at
     if args.log_jsonl:
         log_path=pathlib.Path(args.log_jsonl)
         log_path.parent.mkdir(parents=True, exist_ok=True)
@@ -60,7 +66,8 @@ def main():
             'title': args.title,
             'description': args.description,
             'tags': body['snippet']['tags'],
-            'privacy': args.privacy,
+            'privacy': body['status']['privacyStatus'],
+            'publish_at': args.publish_at or None,
             'video_id': video_id,
             'url': result['url'],
             'method': str(pathlib.Path(__file__).resolve()),
