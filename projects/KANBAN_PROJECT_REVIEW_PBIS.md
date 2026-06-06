@@ -148,3 +148,15 @@ Updated: 2026-06-06T02:05:29Z
 - `t_cf3e50b0` — **WebCrawl** — triage — `researcher`
 - `t_495fdc0f` — **wutHappened** — triage — `default`
 - `t_4629da33` — **youtube-high-ticket-leverage** — triage — `researcher`
+
+## Vercel free-plan throttling note
+
+Updated: 2026-06-06T02:11:15Z
+
+The automatic Kanban dispatcher cron (`6265cf005534`) is paused and the recovery controller (`t_d328547f`) is blocked because the user clarified the sweep must respect Vercel/free-plan constraints. Future progress should be manually orchestrated in small batches by the default agent:
+
+- Prefer reviewing/redeploying existing Vercel projects before creating new Vercel projects.
+- Avoid stampeding all apps at once; work one app or one small batch at a time.
+- For plan-only/archive folders, do not create new Vercel review shells unless the user explicitly wants that project surfaced.
+- Record existing Vercel project count and reuse aliases/deployments where possible.
+- Keep browser smoke testing and tracker updates, but only after a deployment is actually available.
