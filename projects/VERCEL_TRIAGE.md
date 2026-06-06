@@ -185,3 +185,12 @@ Things I can handle without more user input:
 - Run local builds and fix dependency/build errors.
 - Update `/projects/README.md` with live URLs after deploys.
 - Create clean starter implementations for the project-plan folders.
+
+## Manual smoke test — 3d-react-web — 2026-06-06T02:14:56Z
+
+- Vercel free-plan mode: reused existing deployments; did not create a new Vercel project.
+- Latest deployment from API: `3d-react-4olrp2xq4-itmeansbigmountains-projects.vercel.app` reported `readyState=BLOCKED` and browser showed “Deployment is building”.
+- Prior production deployment: `https://3d-react-qx0wr2973-itmeansbigmountains-projects.vercel.app` reported `readyState=READY` and loaded successfully.
+- Browser smoke test performed: opened page, verified nav/buttons visible, clicked `Add object`, clicked `Plasma`, checked console after navigation/interactions.
+- Console result: no JavaScript errors observed during this smoke pass.
+- Current note: keep using the READY prior deployment for review until the blocked/latest Vercel deployment resolves or is redeployed deliberately.
