@@ -27,7 +27,7 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-06-06T03:00:00+00:00",
+      "next_run_at": "2026-06-07T03:00:00+00:00",
       "last_run_at": "2026-06-05T03:01:29.954880+00:00",
       "last_status": "error",
       "last_error": "Script exited with code 1\nstderr:\nremote: warning: File .hermes/.gradle/wrapper/dists/gradle-8.10-all/3ym48ijgw9iixtry4iwty4ydy/gradle-8.10/lib/kotlin-compiler-embeddable-1.9.24.jar is 57.39 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        \nremote: warning: File .hermes/jdks/jdk-11.0.31+11/lib/src.zip is 55.71 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        \nremote: error: Trace: 4982bf045fb80355747582b423b8e6b14f2b55deced7f372e4428839ecf4a25c        \nremote: error: See https://gh.io/lfs for more information.        \nremote: error: File .hermes/jdks/jdk-11.0.31+11/lib/modules is 136.36 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: File .hermes/jdks/temurin11.tar.gz is 186.58 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        \nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [remote rejected]   main -> main (pre-receive hook declined)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'",
@@ -108,15 +108,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 6
+        "completed": 8
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-06-05T20:35:59.222418+00:00",
-      "last_run_at": "2026-06-05T14:35:59.222418+00:00",
+      "next_run_at": "2026-06-06T08:36:55.216484+00:00",
+      "last_run_at": "2026-06-06T02:36:55.216484+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -153,15 +153,15 @@
       "schedule_display": "45 19 * * *",
       "repeat": {
         "times": null,
-        "completed": 2
+        "completed": 3
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:55:03.480224+00:00",
-      "next_run_at": "2026-06-05T19:45:00+00:00",
-      "last_run_at": "2026-06-04T19:45:05.740599+00:00",
+      "next_run_at": "2026-06-06T19:45:00+00:00",
+      "last_run_at": "2026-06-05T19:45:37.766327+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -198,15 +198,15 @@
       "schedule_display": "15 0 * * *",
       "repeat": {
         "times": null,
-        "completed": 1
+        "completed": 2
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-06-06T00:15:00+00:00",
-      "last_run_at": "2026-06-05T00:15:07.467845+00:00",
+      "next_run_at": "2026-06-07T00:15:00+00:00",
+      "last_run_at": "2026-06-06T00:16:54.196824+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -222,7 +222,52 @@
       ],
       "workdir": "/opt/data/HeRmEz/projects/viral-clip-radar",
       "profile": null
+    },
+    {
+      "id": "6265cf005534",
+      "name": "HeRmEz Kanban project sweep dispatcher nudge",
+      "prompt": "Silent watchdog that nudges the HeRmEz Kanban project sweep dispatcher. The script appends dispatch output to /opt/data/HeRmEz/projects/KANBAN_SWEEP_DISPATCH.log and prints nothing so routine ticks are silent.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "kanban_dispatch_hermez_sweep.sh",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "interval",
+        "minutes": 10,
+        "display": "every 10m"
+      },
+      "schedule_display": "every 10m",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": false,
+      "state": "paused",
+      "paused_at": "2026-06-06T02:10:28.674909+00:00",
+      "paused_reason": null,
+      "created_at": "2026-06-06T02:05:15.742685+00:00",
+      "next_run_at": "2026-06-06T02:15:15.742728+00:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "workdir": null,
+      "profile": null
     }
   ],
-  "updated_at": "2026-06-05T14:35:59.222606+00:00"
+  "updated_at": "2026-06-06T03:00:55.284687+00:00"
 }

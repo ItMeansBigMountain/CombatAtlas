@@ -87,6 +87,8 @@ When the user asks to review every project or create a work queue, create/update
 
 Keep `/opt/data/HeRmEz/projects/README.md` as the public URL tracker and `/opt/data/HeRmEz/projects/VERCEL_TRIAGE.md` as the detailed evidence log. The work queue is the operator view for choosing what to build next; the README is the review URL table.
 
+For full-workspace sweeps where the user wants every project tested/deployed/smoke-tested with agents, use the Kanban portfolio-sweep pattern in `references/kanban-portfolio-sweep.md`: seed one durable PBI per project, create a controller card, run small dispatcher batches, require local build/test + Vercel deploy + anonymous HTTP + browser click-through evidence, and create child fix PBIs until each project is shippable or externally blocked.
+
 ### Choosing the next app after a deployment pass
 
 When the user says "what's next" or "move on" after a project pass, do not only recite the top row of the queue. Actively inspect the next ranked candidate's live URL/source enough to classify whether it is already a useful product, a raw demo, or a plan-only opportunity. Then give an operator recommendation:

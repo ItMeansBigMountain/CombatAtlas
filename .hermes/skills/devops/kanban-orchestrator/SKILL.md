@@ -186,6 +186,8 @@ Tell them what you created in plain prose, naming the actual profiles you used:
 
 **Inventing profile names that don't exist.** The dispatcher silently fails to spawn unknown assignees — the card just sits in `ready` forever. Always assign to a profile from your Step 0 discovery; ask the user if you're unsure.
 
+**Force-loading skills workers cannot see.** Worker profiles can have a different available-skill namespace from the parent chat. If a card crashes with `Unknown skill(s): ...`, do not keep retrying unchanged. Remove optional skill preloads from the affected cards, embed the necessary instructions directly in the task body, or create a no-skill recovery controller that continues from the seeded specs. For large portfolio sweeps, make task bodies self-contained so orchestration survives profile/skill drift.
+
 **Bundling independent lanes into one card.** If the user asks for two independent outcomes, create two cards. Example: "fix blockers and check model variants" is not one fixer task; create a fixer/engineer card for the fixes and an explorer/researcher card for the variant check, then optionally gate review on both.
 
 **Over-linking because of wording.** "Finally check X" may still be parallel with implementation if X is static config, docs, or source discovery. Link it after implementation only when the check depends on the implementation result.

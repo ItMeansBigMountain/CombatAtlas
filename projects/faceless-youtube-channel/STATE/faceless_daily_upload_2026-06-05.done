@@ -1,0 +1,34 @@
+{
+  "completed_at": "2026-06-05T19:45:37.387478+00:00",
+  "topic": "Food, weed, and scrolling are symptoms of a missing system",
+  "result": {
+    "workspace": "/opt/data/HeRmEz/projects/faceless-youtube-channel/videos/20260605-194500-food-weed-and-scrolling-are-symptoms-of-a-missing-system",
+    "video": "/opt/data/HeRmEz/projects/faceless-youtube-channel/videos/20260605-194500-food-weed-and-scrolling-are-symptoms-of-a-missing-system/final.mp4",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1080,
+          "height": 1920
+        },
+        {}
+      ],
+      "format": {
+        "duration": "42.988231",
+        "size": "683627"
+      }
+    },
+    "uploaded": true,
+    "elevenlabs_key_present": true,
+    "upload": {
+      "status": "UPLOADED",
+      "video_id": "kHcw-YFppiY",
+      "url": "https://youtu.be/kHcw-YFppiY",
+      "privacy": "public",
+      "log_jsonl": "/opt/data/HeRmEz/projects/faceless-youtube-channel/UPLOADS/youtube_uploads.jsonl",
+      "deleted_after_upload": "/opt/data/HeRmEz/projects/faceless-youtube-channel/videos/20260605-194500-food-weed-and-scrolling-are-symptoms-of-a-missing-system/final.mp4"
+    },
+    "workspace_deleted_after_upload": "/opt/data/HeRmEz/projects/faceless-youtube-channel/videos/20260605-194500-food-weed-and-scrolling-are-symptoms-of-a-missing-system"
+  }
+}
