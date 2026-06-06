@@ -31,7 +31,9 @@
 *.lock
 *.pid
 *.sock
+*.log
 **/.tick.lock
+/projects/KANBAN_SWEEP_DISPATCH.log
 
 # Caches and transient build artifacts
 
