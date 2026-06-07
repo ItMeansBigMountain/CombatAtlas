@@ -1,0 +1,7 @@
+title: "Honda Tech Upgrade"
+description: "Official Honda vehicle technology specifications and upgrade programs."
+accessibility:
+  focus_outline: true
+  aria_labels:
+    - element: "demo-form"
+      label: "Honda upgrade demo"

@@ -16,11 +16,23 @@ Local Meeting Transcriber is a cross-platform, privacy-first AI meeting assistan
 
 ### Backend (ASP.NET Core Web API)
 - **Location**: `/Backend/src/api`
-- **Technology**: .NET 8, ASP.NET Core Web API
+- **Technology**: .NET 9, ASP.NET Core Web API
 - **Features**:
   - API endpoints for audio upload, transcription, diarization, and summarization
   - JWT authentication
   - Services for handling AI processing (WhisperX, pyannote.audio, Ollama)
+
+#### Local backend configuration
+1. Copy `Backend/src/api/appsettings.example.json` to `Backend/src/api/appsettings.Development.json` for local development.
+2. Keep `ConnectionStrings:Default` pointed at a local SQLite file, for example `Data Source=local-meeting-transcriber.db`.
+3. Set `Jwt:Key` to a local-only secret value at least 32 characters long, and keep `Jwt:Issuer` / `Jwt:Audience` aligned with your client configuration.
+4. Do not commit real secrets or production connection strings.
+
+#### Local backend validation
+```bash
+dotnet restore local-meeting-transcriber.sln
+dotnet build local-meeting-transcriber.sln --no-restore
+```
 
 ### Frontend (React Native)
 - **Location**: `/Frontend`

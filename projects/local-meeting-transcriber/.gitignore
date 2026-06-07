@@ -108,6 +108,10 @@ recordings/
 **/*.m4a
 **/*.flac
 **/*.json
+!**/appsettings.example.json
+!Frontend/package.json
+!Frontend/package-lock.json
+!Frontend/tsconfig.json
 **/*.txt
 
 # ======================

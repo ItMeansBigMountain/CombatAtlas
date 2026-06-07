@@ -23,8 +23,8 @@ High
 
 ## Development phases
 
-1. Create notebook index by domain: market data, TA, stats, bot research.
-2. Add reproducible environment files and sample datasets.
+1. Create notebook index by domain: market data, TA, stats, bot research. *(README index added.)*
+2. Add reproducible environment files and sample datasets. *(`requirements.txt`, `.env.example`, and offline fixture helpers added.)*
 3. Write first notebooks for trend plotting/backtest skeletons.
 4. Optionally publish a static dashboard from notebooks.
 
@@ -34,8 +34,8 @@ Not direct Vercel app unless exporting dashboard/docs.
 
 ## Review checklist
 
-- [ ] Local build/test or deterministic script check passes.
-- [ ] No secrets, tokens, private data, or real student/customer records committed.
+- [x] Local build/test or deterministic script check passes.
+- [x] No secrets, tokens, private data, or real student/customer records committed.
 - [ ] Public demo has clear empty/loading/error states.
 - [ ] Mobile-first layout is reviewed.
-- [ ] README / workspace trackers updated with live URL and blockers.
+- [x] README / workspace trackers updated with live URL and blockers.

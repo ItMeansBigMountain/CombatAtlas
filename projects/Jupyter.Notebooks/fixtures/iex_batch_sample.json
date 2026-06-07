@@ -1,0 +1,77 @@
+{
+  "AAPL": {
+    "price": 190.12,
+    "quote": {"latestPrice": 190.12, "marketCap": 2950000000000, "peRatio": 29.4},
+    "advanced-stats": {
+      "year1ChangePercent": 0.18,
+      "month6ChangePercent": 0.07,
+      "month3ChangePercent": 0.035,
+      "month1ChangePercent": 0.012,
+      "priceToBook": 42.1,
+      "priceToSales": 7.4,
+      "enterpriseValue": 3010000000000,
+      "EBITDA": 130000000000,
+      "grossProfit": 170000000000
+    }
+  },
+  "MSFT": {
+    "price": 420.55,
+    "quote": {"latestPrice": 420.55, "marketCap": 3120000000000, "peRatio": 36.2},
+    "advanced-stats": {
+      "year1ChangePercent": 0.24,
+      "month6ChangePercent": 0.11,
+      "month3ChangePercent": 0.052,
+      "month1ChangePercent": 0.018,
+      "priceToBook": 13.5,
+      "priceToSales": 12.2,
+      "enterpriseValue": 3150000000000,
+      "EBITDA": 120000000000,
+      "grossProfit": 150000000000
+    }
+  },
+  "GOOGL": {
+    "price": 175.34,
+    "quote": {"latestPrice": 175.34, "marketCap": 2160000000000, "peRatio": 25.1},
+    "advanced-stats": {
+      "year1ChangePercent": 0.21,
+      "month6ChangePercent": 0.09,
+      "month3ChangePercent": 0.041,
+      "month1ChangePercent": 0.01,
+      "priceToBook": 7.2,
+      "priceToSales": 6.3,
+      "enterpriseValue": 2100000000000,
+      "EBITDA": 105000000000,
+      "grossProfit": 175000000000
+    }
+  },
+  "AMZN": {
+    "price": 185.75,
+    "quote": {"latestPrice": 185.75, "marketCap": 1930000000000, "peRatio": 52.0},
+    "advanced-stats": {
+      "year1ChangePercent": 0.31,
+      "month6ChangePercent": 0.14,
+      "month3ChangePercent": 0.067,
+      "month1ChangePercent": 0.022,
+      "priceToBook": 8.8,
+      "priceToSales": 3.4,
+      "enterpriseValue": 1980000000000,
+      "EBITDA": 95000000000,
+      "grossProfit": 270000000000
+    }
+  },
+  "TSLA": {
+    "price": 180.22,
+    "quote": {"latestPrice": 180.22, "marketCap": 575000000000, "peRatio": 46.5},
+    "advanced-stats": {
+      "year1ChangePercent": -0.12,
+      "month6ChangePercent": -0.04,
+      "month3ChangePercent": 0.015,
+      "month1ChangePercent": -0.02,
+      "priceToBook": 9.1,
+      "priceToSales": 5.6,
+      "enterpriseValue": 590000000000,
+      "EBITDA": 16000000000,
+      "grossProfit": 18000000000
+    }
+  }
+}

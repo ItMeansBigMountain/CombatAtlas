@@ -56,8 +56,13 @@ def main() -> int:
             "override": "set FORCE_UPLOAD=1 to bypass",
         }, indent=2))
         return 0
+    researched_topic = os.getenv("FACELESS_TOPIC", "").strip()
     idx = dt.datetime.now(dt.UTC).toordinal() % len(TOPICS)
-    topic = TOPICS[idx]
+    topic = researched_topic or TOPICS[idx]
+    research_json = os.getenv("FACELESS_RESEARCH_JSON", "").strip()
+    if research_json:
+        (ROOT / "STATE").mkdir(parents=True, exist_ok=True)
+        (ROOT / "STATE" / f"research_{local_day}.json").write_text(research_json, encoding="utf-8")
     cmd = [sys.executable, str(SCRIPT), "--topic", topic, "--upload"]
     proc = run(cmd)
     if proc.returncode != 0:

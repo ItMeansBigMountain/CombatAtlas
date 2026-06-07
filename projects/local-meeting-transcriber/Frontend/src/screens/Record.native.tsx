@@ -2,11 +2,13 @@
 import { useState } from "react";
 import { View, Button, Alert, Platform, StyleSheet, Text } from "react-native";
 import { Audio } from "expo-av";
-import * as FileSystem from "expo-file-system";
+import * as FileSystem from "expo-file-system/legacy";
 import { Storage } from "../utils/storage";
 import { API_BASE } from "../config/api";
 
 export default function Record({ navigation }: any) {
+    const errorMessage = (err: unknown) => err instanceof Error ? err.message : String(err);
+
     async function clearRecordings() {
         try {
             console.log("🗑️ Starting clear recordings process...");
@@ -47,7 +49,7 @@ export default function Record({ navigation }: any) {
             
         } catch (err) {
             console.error("❌ Clear Recordings Error:", err);
-            Alert.alert("Error", `Failed to clear recordings: ${err?.message || String(err)}`);
+            Alert.alert("Error", `Failed to clear recordings: ${errorMessage(err)}`);
         }
     }
     const [recording, setRecording] = useState<Audio.Recording | null>(null);
@@ -95,7 +97,7 @@ export default function Record({ navigation }: any) {
             
         } catch (err) {
             console.error("❌ Recording Error:", err);
-            Alert.alert("Recording Error", `Failed to start recording: ${err?.message || String(err)}`);
+            Alert.alert("Recording Error", `Failed to start recording: ${errorMessage(err)}`);
         }
     }
 
@@ -159,7 +161,7 @@ export default function Record({ navigation }: any) {
             }
         } catch (err) {
             console.error("❌ Stop Recording Error:", err);
-            Alert.alert("Stop Recording Error", `Failed to stop recording: ${err?.message || String(err)}`);
+            Alert.alert("Stop Recording Error", `Failed to stop recording: ${errorMessage(err)}`);
         }
     }
 
@@ -199,7 +201,7 @@ export default function Record({ navigation }: any) {
             
         } catch (err) {
             console.error("❌ Playback Error:", err);
-            Alert.alert("Playback Error", `Failed to play recording: ${err?.message || String(err)}`);
+            Alert.alert("Playback Error", `Failed to play recording: ${errorMessage(err)}`);
         }
     }
     async function stopRec() {
@@ -225,7 +227,7 @@ export default function Record({ navigation }: any) {
             
         } catch (err) {
             console.error("❌ Stop Recording Error:", err);
-            Alert.alert("Stop Recording Error", `Failed to stop recording: ${err?.message || String(err)}`);
+            Alert.alert("Stop Recording Error", `Failed to stop recording: ${errorMessage(err)}`);
         }
     }
 

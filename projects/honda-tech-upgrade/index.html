@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Honda Tech Upgrade</title>
+<meta name="description" content="Honda Tech Upgrade demo shows vehicle maintenance suggestions based on mileage and service history.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Honda Tech Upgrade Demo</h1>
+<div id="form">
+  <label>Vehicle Type:
+    <select id="vehicle">
+      <option value="Civic">Civic</option>
+      <option value="Accord">Accord</option>
+      <option value="CRV">CRV</option>
+    </select>
+  </label>
+  <label>Mileage (mi):
+    <input type="number" id="mileage" min="0" value="0">
+  </label>
+  <label>Last Service (mi):
+    <input type="number" id="lastService" min="0" value="0">
+  </label>
+  <button id="submit" aria-label="Get Suggestion">Get Suggestion</button>
+    <button id="reset" aria-label="Reset to Sample">Reset to Sample</button>
+</div>
+<div id="output"></div>
+<script src="app.js"></script>
+</body>
+</html>

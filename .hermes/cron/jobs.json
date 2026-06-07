@@ -20,17 +20,17 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 21
+        "completed": 22
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-06-07T03:00:00+00:00",
-      "last_run_at": "2026-06-05T03:01:29.954880+00:00",
-      "last_status": "error",
-      "last_error": "Script exited with code 1\nstderr:\nremote: warning: File .hermes/.gradle/wrapper/dists/gradle-8.10-all/3ym48ijgw9iixtry4iwty4ydy/gradle-8.10/lib/kotlin-compiler-embeddable-1.9.24.jar is 57.39 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        \nremote: warning: File .hermes/jdks/jdk-11.0.31+11/lib/src.zip is 55.71 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        \nremote: error: Trace: 4982bf045fb80355747582b423b8e6b14f2b55deced7f372e4428839ecf4a25c        \nremote: error: See https://gh.io/lfs for more information.        \nremote: error: File .hermes/jdks/jdk-11.0.31+11/lib/modules is 136.36 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: File .hermes/jdks/temurin11.tar.gz is 186.58 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        \nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [remote rejected]   main -> main (pre-receive hook declined)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'",
+      "next_run_at": "2026-06-08T03:00:00+00:00",
+      "last_run_at": "2026-06-06T03:01:00.076097+00:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": null,
@@ -67,7 +67,7 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-06-06T14:30:00+00:00",
+      "next_run_at": "2026-06-07T14:30:00+00:00",
       "last_run_at": "2026-06-05T14:33:58.717203+00:00",
       "last_status": "ok",
       "last_error": null,
@@ -90,8 +90,8 @@
     },
     {
       "id": "6355d735bb4a",
-      "name": "Huberman Viral Radar watchlist",
-      "prompt": "Run the Huberman Lab watchlist monitor for Viral Radar. The script prints only when new videos are found; deliver that output to the origin chat. Do not schedule additional cron jobs.",
+      "name": "Huberman discovery feeder for Viral Radar",
+      "prompt": "Run the Huberman Lab watchlist monitor for Viral Radar. This job is discovery-only: it should identify new Huberman/source opportunities and print only when new videos are found. It does not generate or upload videos. The Daily Viral Radar / Huberman full video generation + upload cron consumes this job's latest output as context and performs the render/upload pipeline.",
       "skills": [],
       "skill": null,
       "model": null,
@@ -108,15 +108,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 8
+        "completed": 9
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-06-06T08:36:55.216484+00:00",
-      "last_run_at": "2026-06-06T02:36:55.216484+00:00",
+      "next_run_at": "2026-06-07T06:37:02.589156+00:00",
+      "last_run_at": "2026-06-06T23:42:02.158514+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -135,22 +135,79 @@
     },
     {
       "id": "c9e81ae638fe",
-      "name": "Daily faceless YouTube public Shorts pipeline",
-      "prompt": "Script-only cron job: run the faceless-youtube-channel public Shorts upload pipeline. The script renders one vertical Short, uploads it public, logs the YouTube video ID/URL, and deletes generated workspace assets only after a confirmed upload ID.",
-      "skills": [],
-      "skill": null,
+      "name": "Daily faceless YouTube full video generation + upload",
+      "prompt": "You are running the user's Daily Faceless YouTube full video generation + upload pipeline. This job is NOT a research-only report. The run is incomplete until you have generated a new MP4 and attempted a real YouTube upload.\n\nRequired full loop every run:\n1. Run `python3 /opt/data/scripts/youtube_metrics_monitor.py --json` and read `/opt/data/HeRmEz/projects/_ops/social-growth/PERFORMANCE_LEARNINGS.md` if it exists. Use it to avoid duplicate hooks/titles and bias toward winning topics.\n2. Research current viral/self-improvement/AI-discipline/no-degree-cloud/fatherless-men/dopamine angles using web search. Favor angles that fit the user's brand: fatherlessness, Pakistani/Muslim-American identity conflict, no-college tech escape, discipline, dopamine/food/weed struggles, remote-work travel, and mentoring under-guided first-gen men.\n3. Pick one fresh Shorts topic/hook that is not already in `/opt/data/HeRmEz/projects/faceless-youtube-channel/UPLOADS/youtube_uploads.jsonl`.\n4. Build a compact JSON research brief, then run the actual generator/uploader command:\n   `FACELESS_TOPIC='<chosen topic>' FACELESS_RESEARCH_JSON='<json brief>' FORCE_UPLOAD=1 python3 /opt/data/scripts/faceless_daily_upload.py`\n   This script must render fresh graphic/TTS scenes, create a vertical MP4, upload it to YouTube public, log the upload, and clean up generated workspace assets after confirmed upload.\n5. Verify the script returned JSON with `status: ok`, `uploaded: true` or upload details, plus a real `video_id`/`url`. If upload fails, report the blocker and stdout/stderr tail. Do not claim success without a real upload ID/URL.\n6. Final Discord response: concise bullets with topic/hook, video URL/video_id, metrics monitor status, and what learning/research informed it.\n\nTiming context: this job is scheduled for 8:45 PM America/Chicago, inside the 8-10 PM YouTube Shorts evening test window.",
+      "skills": [
+        "social-video-cron-growth-loop",
+        "youtube-automation-with-tts",
+        "social-platform-publishing"
+      ],
+      "skill": "social-video-cron-growth-loop",
       "model": null,
       "provider": null,
       "base_url": null,
-      "script": "faceless_daily_upload.py",
-      "no_agent": true,
+      "script": null,
+      "no_agent": false,
       "context_from": null,
       "schedule": {
         "kind": "cron",
-        "expr": "45 19 * * *",
-        "display": "45 19 * * *"
+        "expr": "45 1 * * *",
+        "display": "45 1 * * *"
       },
-      "schedule_display": "45 19 * * *",
+      "schedule_display": "45 1 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 5
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-04T12:55:03.480224+00:00",
+      "next_run_at": "2026-06-08T01:45:00+00:00",
+      "last_run_at": "2026-06-07T01:45:25.993171+00:00",
+      "last_status": "error",
+      "last_error": "Blocked: prompt matches threat pattern 'deception_hide'. Cron prompts must not contain injection or exfiltration payloads.",
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "web",
+        "terminal",
+        "file"
+      ],
+      "workdir": "/opt/data/HeRmEz/projects/faceless-youtube-channel",
+      "profile": null
+    },
+    {
+      "id": "bce8ebabac36",
+      "name": "Daily Viral Radar / Huberman full video generation + upload",
+      "prompt": "You are running the user's Daily Viral Radar / Huberman full video generation + upload pipeline. This job is NOT a research-only report. The run is incomplete until you have rendered a new vertical MP4 from a reviewed/fresh clip and attempted a real YouTube upload.\n\nRelationship between jobs: the Huberman watchlist is a discovery feeder only. Use its injected latest output if present, but this Viral Radar job is the one that must generate/render/upload the YouTube Short.\n\nRequired full loop every run:\n1. Run `python3 /opt/data/scripts/youtube_metrics_monitor.py --json` and read `/opt/data/HeRmEz/projects/_ops/social-growth/PERFORMANCE_LEARNINGS.md` if it exists. Use it to avoid duplicate hooks/titles and bias toward stronger topics.\n2. Review the injected Huberman watchlist context if present. Also research what is currently catching virality for short-form educational/viral-analysis clips.\n3. Inspect `/opt/data/HeRmEz/projects/viral-clip-radar/CLIP_PLANS/*/clip_manifest.json` and `/opt/data/HeRmEz/projects/viral-clip-radar/UPLOADS/youtube_uploads.jsonl`. Pick one fresh reviewed clip not already publicly uploaded. Huberman clips should be preferred when fresh and reviewed, but do not publish duplicates.\n4. Run the actual generator/uploader command:\n   `FORCE_UPLOAD=1 python3 /opt/data/scripts/viral_radar_daily_upload.py`\n   This script must select one fresh reviewed manifest clip, restore/download source media from fallback/archive when needed, render a vertical captioned/contextual MP4, upload it to YouTube public, log the upload, and safely clean generated assets.\n5. If the script reports `no fresh reviewed manifest clips available`, do not publish duplicates. Create a research/discovery note under `OUTPUTS/` with top candidate sources and report that a reviewed clip plan is needed before public upload.\n6. Verify the script returned JSON with `status: ok`, rendered_count > 0, and a real upload URL/video_id. If upload fails, report the blocker and stdout/stderr/error. Do not claim success without a real upload ID/URL.\n7. Final Discord response: concise bullets with chosen clip/hook, video URL/video_id, metrics monitor status, and any Huberman/watchlist/research signal used.\n\nTiming context: this job is scheduled for 3:15 PM America/Chicago, inside the 2-4 PM YouTube Shorts afternoon test window.",
+      "skills": [
+        "social-video-cron-growth-loop",
+        "youtube-automation-with-tts",
+        "social-platform-publishing"
+      ],
+      "skill": "social-video-cron-growth-loop",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": [
+        "6355d735bb4a"
+      ],
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 20 * * *",
+        "display": "15 20 * * *"
+      },
+      "schedule_display": "15 20 * * *",
       "repeat": {
         "times": null,
         "completed": 3
@@ -159,54 +216,9 @@
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
-      "created_at": "2026-06-04T12:55:03.480224+00:00",
-      "next_run_at": "2026-06-06T19:45:00+00:00",
-      "last_run_at": "2026-06-05T19:45:37.766327+00:00",
-      "last_status": "ok",
-      "last_error": null,
-      "last_delivery_error": null,
-      "deliver": "origin",
-      "origin": {
-        "platform": "discord",
-        "chat_id": "1499990220077137943",
-        "chat_name": "TRAPISTAN / #general",
-        "thread_id": null
-      },
-      "enabled_toolsets": [
-        "terminal"
-      ],
-      "workdir": "/opt/data/HeRmEz/projects/faceless-youtube-channel",
-      "profile": null
-    },
-    {
-      "id": "bce8ebabac36",
-      "name": "Daily Viral Radar public Shorts pipeline",
-      "prompt": "Script-only cron job: run the viral-clip-radar public Shorts upload pipeline. The script downloads/restores the reviewed source if needed, renders vertical captioned Shorts, uploads them public, logs returned YouTube IDs/URLs, and deletes generated media only after confirmed upload IDs.",
-      "skills": [],
-      "skill": null,
-      "model": null,
-      "provider": null,
-      "base_url": null,
-      "script": "viral_radar_daily_upload.py",
-      "no_agent": true,
-      "context_from": null,
-      "schedule": {
-        "kind": "cron",
-        "expr": "15 0 * * *",
-        "display": "15 0 * * *"
-      },
-      "schedule_display": "15 0 * * *",
-      "repeat": {
-        "times": null,
-        "completed": 2
-      },
-      "enabled": true,
-      "state": "scheduled",
-      "paused_at": null,
-      "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-06-07T00:15:00+00:00",
-      "last_run_at": "2026-06-06T00:16:54.196824+00:00",
+      "next_run_at": "2026-06-07T20:15:00+00:00",
+      "last_run_at": "2026-06-07T00:16:25.294829+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -218,7 +230,9 @@
         "thread_id": null
       },
       "enabled_toolsets": [
-        "terminal"
+        "web",
+        "terminal",
+        "file"
       ],
       "workdir": "/opt/data/HeRmEz/projects/viral-clip-radar",
       "profile": null
@@ -267,7 +281,53 @@
       ],
       "workdir": null,
       "profile": null
+    },
+    {
+      "id": "184d6fe792e3",
+      "name": "Daily social video metrics learning loop",
+      "prompt": "Collect YouTube upload metrics and update social-growth performance learnings for future faceless YouTube and Viral Radar cron runs.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "youtube_metrics_monitor.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 14 * * *",
+        "display": "0 14 * * *"
+      },
+      "schedule_display": "0 14 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-07T00:27:10.163742+00:00",
+      "next_run_at": "2026-06-07T14:00:00+00:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "terminal",
+        "file"
+      ],
+      "workdir": null,
+      "profile": null
     }
   ],
-  "updated_at": "2026-06-06T03:00:55.284687+00:00"
+  "updated_at": "2026-06-07T03:00:26.857262+00:00"
 }

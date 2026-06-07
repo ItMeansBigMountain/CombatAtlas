@@ -1,0 +1,78 @@
+---
+name: github-workflows
+description: "Use when operating GitHub from Hermes: authentication, issues, pull requests, code review, repository setup, releases, and API/gh fallbacks. Provides one class-level workflow with support for templates and scripts."
+version: 1.0.0
+author: Hermes Agent
+license: MIT
+metadata:
+  hermes:
+    tags: [github, gh, git, issues, pull-requests, review, auth]
+    related_skills: [requesting-code-review]
+---
+
+# GitHub Workflows
+
+## Overview
+
+This umbrella covers GitHub work across authentication, issue management, PR lifecycle, reviews, repository administration, and REST/GraphQL fallbacks. Prefer `gh` when available, but keep git-only and curl/API paths in mind.
+
+## When to Use
+
+- Authenticate git/gh/API access.
+- Create, triage, label, assign, or search issues.
+- Review local diffs or GitHub pull requests.
+- Create branches, commits, PRs, monitor CI, merge, or manage repositories.
+
+## Capability Map
+
+### Authentication
+
+1. Check `gh auth status` and `git remote -v`.
+2. If `gh` is unavailable, use git credential/token or SSH key flows.
+3. For API-only tasks, use a token with curl and report permission failures explicitly.
+
+### Issues
+
+- Search before creating duplicates.
+- Use bug/feature templates when available.
+- Include reproduction steps, expected behavior, actual behavior, labels, and assignees when known.
+
+### Pull Requests and CI
+
+- Create a clean branch, commit focused changes, push, and open a PR with a test plan.
+- Monitor CI status and fetch logs before changing code.
+- Do not merge until checks and requested reviews are satisfied unless the user explicitly directs otherwise.
+
+### Code Review
+
+- Review local changes before push and PR diffs after push.
+- Prioritize correctness, security, data loss, race conditions, migrations, tests, and user-visible regressions.
+- Provide file/line findings with severity and minimal fix suggestions.
+
+### Repository Management
+
+- Clone/create/fork repositories, manage remotes, releases, branch protection, and secrets.
+- Be careful with destructive settings changes; confirm scope first.
+
+## Fallback Ladder
+
+1. `gh` CLI for high-level GitHub operations.
+2. `git` for local repository and transport operations.
+3. REST/GraphQL API with curl for unsupported or automation-heavy paths.
+4. Browser only when authentication/UI state cannot be handled otherwise.
+
+## Common Pitfalls
+
+1. **Assuming `gh` auth implies git push auth.** Check both when push/pull fails.
+2. **Creating duplicate issues.** Search first.
+3. **Reviewing only generated summaries.** Inspect the actual diff.
+4. **Ignoring CI logs.** Fetch failing logs before guessing a fix.
+5. **Dropping templates.** Preserve repository issue/PR templates when present.
+
+## Verification Checklist
+
+- [ ] Correct owner/repo confirmed.
+- [ ] Authentication and permissions verified for the chosen operation.
+- [ ] State-changing operation produced a URL, ID, or status.
+- [ ] CI/review status checked when relevant.
+- [ ] User-facing report includes links/IDs and tests run.

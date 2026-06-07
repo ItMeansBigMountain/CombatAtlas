@@ -1,0 +1,21 @@
+{
+  "name": "honda-tech-upgrade",
+  "version": "1.0.0",
+  "description": "A credential-free demo workflow for Honda maintenance/upgrade planning",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "vercel-build": "echo 'No build step required'"
+  },
+  "keywords": [
+    "honda",
+    "maintenance",
+    "demo"
+  ],
+  "author": "Hermes Agent",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

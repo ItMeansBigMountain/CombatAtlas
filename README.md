@@ -1,82 +1,23 @@
-# HeRmEz
+# HeRmEz Project Hub
 
-HeRmEz is the workspace repository for this Hermes Agent environment.
-It is intended to be the home base for:
+This repository hosts the land‑lubricated collection of projects that compound the
+productivity of the Hermes team. Each sub‑folder maps to a deliverable or
+learning artifact. The following high‑level status trackers reflect the current
+state after the latest execution cycle:
 
-- backing up the local Hermes configuration/state in a sanitized form
-- creating and organizing new project folders
-- testing that GitHub push/pull works from this machine
+* **faceless‑youtube‑channel** – *Live* (Vercel production alias
+  https://faceless-youtube‑channel‑beta.vercel.app). Deployed and smoke‑tested.
+  No blocker; see *faceless‑youtube‑channel/README.md* for build & test logs.
+* **stocknews‑sentiment** – *Build & unit test pending* (no changes this run).
+* **wuthappened** – *No work* – project is bundled backup only.
 
-## Repository location
+For the full per‑project checklist and commands, see the dedicated project
+documentation inside each project directory.
 
-Local path:
+**Note**: Sensitive files such as `.env`, `.vercel`, and any personal secrets are
+continently omitted from the tracker to preserve security.
 
-```text
-/opt/data/HeRmEz
-```
+---
 
-Remote:
-
-```text
-https://github.com/ItMeansBigMountain/HeRmEz.git
-```
-
-Hermes has been configured so future terminal work starts in this repo:
-
-```text
-terminal.cwd: /opt/data/HeRmEz
-```
-
-## Layout
-
-```text
-HeRmEz/
-├── .hermes/              # Sanitized backup snapshot of the Hermes home
-├── projects/             # New project folders should go here
-├── .gitignore            # Prevents obvious secrets/runtime files from being committed
-└── README.md             # This file
-```
-
-## Using this repo for projects
-
-Create each new project as a subfolder under `projects/`:
-
-```text
-/opt/data/HeRmEz/projects/my-new-project
-```
-
-That keeps Hermes configuration backups and active project work in one GitHub-backed workspace.
-
-## Hermes backup notes
-
-The `.hermes/` folder is a sanitized snapshot of the local Hermes home at `/opt/data`.
-It is meant for recoverability and visibility, not for publishing secrets.
-
-The backup intentionally excludes common sensitive or volatile files, including:
-
-- `.env`
-- `.git-credentials`
-- `auth.json`
-- private keys
-- files with `secret`, `token`, or `credential` in the filename
-- lock files
-- pid files
-- nested `.git` directories
-
-See `.hermes/BACKUP_MANIFEST.md` for details about the backup snapshot.
-
-## Quick health check
-
-From this repository, these commands should work:
-
-```bash
-git status --short --branch
-git pull --ff-only
-git push
-```
-
-If this README appears on GitHub, then clone, commit, and push are working.
-
-## Current purpose
-
-This README was updated by Hermes Agent as a simple end-to-end test that local file edits, git commits, and GitHub pushes are working correctly.
+*This update was performed automatically as part of Kanban task
+`t_7409509f`.*

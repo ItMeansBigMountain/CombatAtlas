@@ -52,31 +52,67 @@ def fftext(path: Path) -> str:
     return str(path).replace("\\", "/").replace(":", "\\:").replace("'", "\\'")
 
 
+def title_case_short(text: str, limit: int = 74) -> str:
+    cleaned = re.sub(r"\s+", " ", text.strip(" .!?—-"))
+    words = cleaned.split()
+    out = []
+    for w in words:
+        trial = " ".join(out + [w])
+        if len(trial) > limit:
+            break
+        out.append(w)
+    return (" ".join(out) or "Build The System").title()
+
+
 def build_scenes(topic: str) -> list[dict]:
+    """Build a fresh faceless Short around the researched topic.
+
+    The old renderer used the same AI-laziness script for every upload. Cron now
+    passes a researched topic each run, so keep the durable visual system but make
+    the hook/body/title specific to that topic.
+    """
+    topic_clean = re.sub(r"\s+", " ", topic.strip()) or "Build a discipline system before motivation fades"
+    upper_topic = title_case_short(topic_clean, 38).upper()
+    lower = topic_clean.lower()
+    if "father" in lower or "fatherless" in lower:
+        mechanism = "When nobody hands you structure, you have to build rules before confidence shows up."
+        rule = "Write the standard, prove it once today, then repeat it until identity catches up."
+    elif "dopamine" in lower or "weed" in lower or "food" in lower or "scroll" in lower:
+        mechanism = "The craving is not the enemy. The empty system after stress is the enemy."
+        rule = "Replace the first hit with one proof task: walk, pray, lift, write, or ship before consuming."
+    elif "degree" in lower or "cloud" in lower or "career" in lower:
+        mechanism = "Credentials help, but public receipts change the conversation faster than excuses."
+        rule = "Ship one visible lab, diagram, script, or writeup before asking the market to believe you."
+    elif "ai" in lower:
+        mechanism = "AI multiplies the standard you already had. Chaos gets faster; discipline gets leverage."
+        rule = "Use the tool for one avoided deliverable, then close the tab and show the receipt."
+    else:
+        mechanism = "The hidden pattern is simple: comfort wins when the day starts without a standard."
+        rule = "Pick one boring rule and finish it before your phone gets a vote."
     return [
         {
-            "title": "AI DIDN'T MAKE YOU LAZY",
-            "body": "It exposed the system you already had. If your day had no rules, faster tools only make the chaos move faster.",
+            "title": upper_topic,
+            "body": f"This is the quiet problem behind today's trend: {topic_clean}.",
             "visual": "phone_scroll",
         },
         {
-            "title": "TOOLS MULTIPLY DISCIPLINE",
-            "body": "A builder gets leverage from AI. A consumer gets another dopamine slot machine. Same tool. Different standard.",
+            "title": "THE HIDDEN MECHANISM",
+            "body": mechanism,
             "visual": "leverage",
         },
         {
-            "title": "THE REAL FILTER IS OUTPUT",
-            "body": "Don't measure prompts. Measure shipped work. Did you publish, apply, train, write, or build something that can be seen?",
+            "title": "PROOF BEATS INTENTIONS",
+            "body": "Do not measure motivation. Measure visible evidence: the thing built, written, trained, shipped, or repaired.",
             "visual": "output_meter",
         },
         {
-            "title": "BUILD A BORING RULE",
-            "body": "Before you open the internet, write the single deliverable for the day. One sentence. One target. One finish line.",
+            "title": "THE BORING RULE",
+            "body": rule,
             "visual": "checklist",
         },
         {
             "title": "TODAY'S STANDARD",
-            "body": "Use AI for one hard thing you were avoiding. Then close it. The win is not using the tool. The win is having evidence.",
+            "body": "Comment the one proof task you are finishing today. Not a dream. Not a mood. One receipt.",
             "visual": "evidence",
         },
     ]
@@ -216,7 +252,8 @@ def main() -> int:
     probe = json.loads(sh(["ffprobe", "-v", "error", "-show_entries", "stream=width,height", "-show_entries", "format=duration,size", "-of", "json", str(video)]))
     result = {"workspace": str(work), "video": str(video), "probe": probe, "uploaded": False, "elevenlabs_key_present": bool(os.getenv("ELEVENLABS_API_KEY") or os.getenv("XI_API_KEY") or os.getenv("ELEVEN_API_KEY"))}
     if args.upload:
-        result["upload"] = upload(video, "AI Did Not Make You Lazy — It Exposed You", "Public faceless Shorts upload with ElevenLabs voice and graphic/diagram scenes. Topic: " + args.topic + "\n\n#Shorts")
+        upload_title = title_case_short(args.topic, 64) + " #Shorts"
+        result["upload"] = upload(video, upload_title, "Public faceless Shorts upload with ElevenLabs voice and graphic/diagram scenes. Topic: " + args.topic + "\n\n#Shorts")
         result["uploaded"] = True
         if not args.keep_workspace:
             shutil.rmtree(work, ignore_errors=True)
