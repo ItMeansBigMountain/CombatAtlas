@@ -15,6 +15,9 @@
 **/*secret*
 **/*token*
 **/*credential*
+**/*service_account*.json
+**/google_service_account.json
+**/cred.json
 **/auth.json
 **/auth.lock
 **/auth-*.json
