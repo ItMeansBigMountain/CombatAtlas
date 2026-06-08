@@ -27,14 +27,21 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 - `references/calendar-service-account.md` — service-account setup for Calendar automation when the user shares calendars with the service account.
 - `references/credential-requirements.md` — required Google credential files and setup verification
 - `references/google-credential-inventory-pattern.md` — safe workflow for inventorying Google credential files by project/purpose without exposing secrets
+- `references/durable-google-secret-storage.md` — durable non-git storage pattern for Google secrets/tokens with env path references, permission locking, git untracking, and verification
 - `references/google-project-api-permissions-probe.md` — safe command/API probe pattern for producing enabled-API and permission/access tables per Google project
 - `references/drive-service-account-cache.md` — Drive-backed cache pattern for service-account writable folders/Shared Drives, MP4 backup manifests, and safe local deletion after confirmed upload
 - `references/drive-cache-memory-extension.md` — Google Drive as a durable Hermes cache / memory-extension pattern, including OAuth vs service-account pitfalls
+- `references/multi-profile-google-oauth.md` — Profile-scoped OAuth for managing multiple Gmail/Workspace identities with separate tokens, PKCE pending state, action policies, browser/redirect pitfalls, and smoke tests.
+- `references/google-oauth-scope-reauth-matrix.md` — Decide whether enabling additional Google APIs requires OAuth reauth; includes Workspace baseline scopes, YouTube upload/private-data scope guidance, API-key distinction, and verification probes.
 
 ## Scripts
 
 - `scripts/setup.py` — OAuth2 setup (run once to authorize)
 - `scripts/google_api.py` — compatibility wrapper CLI. It prefers `gws` for operations when available, while preserving Hermes' existing JSON output contract.
+
+### Multi-account / profile-scoped OAuth
+
+When the user wants Hermes to manage multiple Gmail or Google Workspace accounts, do **not** run the single-token setup repeatedly into `google_token.json`; that overwrites the previous account. Use the profile-scoped pattern in `references/multi-profile-google-oauth.md`: maintain a profile registry, generate one auth URL per profile with `login_hint`, store pending PKCE state separately per profile, exchange callbacks as `<profile>: <redirect URL>`, and save tokens under `/opt/data/google_profiles/<profile>/google_token.json` (or the profile-specific equivalent). Make users confirm the consent-screen email because `login_hint` is not an account lock. For read-only daily briefing use cases, prefer a pre-run collector script that reads each named token, summarizes Gmail/Calendar/Drive signals, strips invisible Gmail tracking characters, and hides credential/recovery-looking Drive filenames before the LLM sees the context.
 
 ### Service-account Calendar route
 
@@ -44,7 +51,13 @@ If the user provides a Google Cloud **service-account JSON** and wants Calendar 
 
 When the user asks to find, identify, or organize Google credentials across the workspace, use `references/google-credential-inventory-pattern.md`. Inventory only safe metadata: path, credential type, project ID, service-account email or redacted OAuth client ID, file mode, duplicate paths, active env references, and known purpose. Never paste private keys, client secrets, access tokens, refresh tokens, or full API keys into docs or chat. Group duplicate credentials by project/principal, tighten credential file modes to `600` when safe, and do not move/delete/rename credentials until env/app references are updated in the same change.
 
+When the user wants credentials to survive VPS/container restarts without being backed up by Git, use `references/durable-google-secret-storage.md`: copy credentials into a persistent non-repo secrets tree, expose only stable path references through `.env`, lock modes to `700`/`600`, update `.gitignore`, remove any already-tracked credential files with `git rm --cached --force`, verify with `git ls-files` and `git check-ignore --no-index`, and remind the user that untracking does not erase old Git history if secrets were previously pushed.
+
+When the user wants Hermes to manage multiple Gmail/Google Workspace accounts as separate internet identities or project lanes, use `references/multiple-google-account-profiles.md`. Keep each account isolated with a named credential directory and a per-command `HERMES_HOME` override; maintain a non-secret profile inventory under the user's workspace; never mix tokens between identities.
+
 When the user asks for enabled APIs, permissions, or a table of Google projects, use `references/google-project-api-permissions-probe.md`. Actively run safe read-only probes instead of guessing from credential filenames: Service Usage for enabled APIs, Cloud Resource Manager/IAM policy where available, and harmless product endpoint probes for Calendar, Drive, Gmail, Sheets, Docs, and YouTube. If the user explicitly asks for a table, provide a compact Markdown table even if the user's normal Discord preference is bullet-style replies.
+
+When the user enables additional Google APIs and asks whether OAuth must be redone, use `references/google-oauth-scope-reauth-matrix.md`. Key rule: API enablement is project-side, OAuth scopes are token-side. If the token already has the needed scope, just smoke-test again; if the action needs a new scope (for example YouTube upload), generate fresh OAuth URLs and reauth the relevant profile(s).
 
 Keep Google Workspace service-account credentials separate from YouTube OAuth credentials: Workspace/personal-assistant automation can use service accounts when resources are shared/delegated, while YouTube channel uploads/analytics/private reads generally require user OAuth. Public YouTube metadata reads may use an API key or service-account credential when `youtube.googleapis.com` is enabled for the project; verify with a live `videos?chart=mostPopular` probe before reporting readiness.
 
@@ -141,16 +154,13 @@ explicit (for example `~/Downloads/hermes-google-client-secret.json`), then run
 Use the service set chosen in Step 1. Examples:
 
 ```bash
-$GSETUP --auth-url --services email,calendar --format json
-$GSETUP --auth-url --services calendar,drive,sheets,docs --format json
-$GSETUP --auth-url --services all --format json
+$GSETUP --auth-url
 ```
 
-This returns JSON with an `auth_url` field and also saves the exact URL to
-`~/.hermes/google_oauth_last_url.txt`.
+On this installation, the setup script emits the exact authorization URL as plain text and requests the full Workspace scope set by default: Gmail read/send/modify, Calendar, Drive, Contacts readonly, Sheets, and Docs. It does not currently support `--services` or `--format` flags.
 
 Agent rules for this step:
-- Extract the `auth_url` field and send that exact URL to the user as a single line.
+- Send that exact URL to the user as a single line.
 - Tell the user that the browser will likely fail on `http://localhost:1` after approval, and that this is expected.
 - Tell them to copy the ENTIRE redirected URL from the browser address bar.
 - If the user gets `Error 403: access_denied`, send them directly to `https://console.cloud.google.com/auth/audience` to add themselves as a test user.

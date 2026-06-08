@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "notes": "Named Google/Gmail profiles for Hermes. Do not store passwords here. OAuth tokens should be stored separately per profile with chmod 600.",
+  "profiles": {
+    "hermes-agent": {
+      "email": "trapiistan@gmail.com",
+      "role": "Hermes-owned/on-behalf account",
+      "allowed_uses": ["gmail", "calendar", "drive", "docs", "sheets", "youtube_upload", "faceless_youtube", "viral_radar", "google_related_agent_work"],
+      "send_email_policy": "allowed_when_task_requires_it_or_user_approves",
+      "upload_policy": "primary_uploading_account"
+    },
+    "personal-main": {
+      "email": "Affan.fareed@gmail.com",
+      "role": "User personal main account",
+      "allowed_uses": ["gmail_read", "calendar_read", "drive_read_optional"],
+      "send_email_policy": "do_not_send_on_user_behalf_without_explicit_per_message_approval",
+      "upload_policy": "not_default"
+    },
+    "personal-secondary": {
+      "email": "fareed320@gmail.com",
+      "role": "User secondary personal account",
+      "allowed_uses": ["gmail_read", "calendar_read", "drive_read_optional"],
+      "send_email_policy": "do_not_send_on_user_behalf_without_explicit_per_message_approval",
+      "upload_policy": "not_default"
+    },
+    "classicalechos": {
+      "email": "classicalechos@gmail.com",
+      "role": "Classy/high-ticket content account",
+      "allowed_uses": ["content_upload", "gmail", "calendar", "drive", "docs", "sheets"],
+      "send_email_policy": "review_required",
+      "upload_policy": "niche_dependent_review_required"
+    },
+    "burner": {
+      "email": "laflametoast@gmail.com",
+      "role": "Burner/miscellaneous account",
+      "allowed_uses": ["free_trials", "misc_tasks", "low_stakes_signups"],
+      "send_email_policy": "avoid_sending_unless_explicitly_requested",
+      "upload_policy": "not_default"
+    }
+  }
+}

@@ -19,6 +19,7 @@ Use this skill when a cron job must create and publish a new social video every 
 2. **Research the current opportunity**
    - Faceless lane: research current self-improvement, AI, dopamine, discipline, no-degree/cloud-career, fatherless-men, first-gen-men angles.
    - Viral Radar lane: research current viral discourse and/or use the project watchlist/clip manifests.
+   - Creator examples currently useful to the user: Andrew Huberman for science-backed protocols and Hamza for raw self-improvement/discipline/social-confidence language. Treat both as inspiration/source material for transformative clips, not raw-reupload material.
    - Write the research brief into the project `STATE/`, `OUTPUTS/`, or equivalent durable folder.
 
 3. **Generate or accumulate assets**
@@ -67,6 +68,7 @@ python3 /opt/data/scripts/youtube_metrics_monitor.py --json
 - The learning source of truth is `/opt/data/HeRmEz/projects/_ops/social-growth/PERFORMANCE_LEARNINGS.md`.
 - Future automation should add retention/watch-time if YouTube Analytics OAuth scopes are configured; Data API statistics alone cover views/likes/comments, not retention.
 - For the concrete cron conversion pattern, timing defaults, duplicate guard, and verification rules, see `references/cron-full-pipeline-and-metrics-loop.md`.
+- For the current creator-source expansion, see `references/creator-source-expansion-huberman-hamza-2026-06.md`: Huberman and Hamza are both useful source examples, but clips must be transformed with hook/context/captions/analysis and attribution.
 
 ## Pitfalls
 

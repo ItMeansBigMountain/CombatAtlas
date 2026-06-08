@@ -20,15 +20,15 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 22
+        "completed": 23
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-06-08T03:00:00+00:00",
-      "last_run_at": "2026-06-06T03:01:00.076097+00:00",
+      "next_run_at": "2026-06-09T03:00:00+00:00",
+      "last_run_at": "2026-06-07T03:02:04.391385+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -40,35 +40,36 @@
     {
       "id": "92f873723241",
       "name": "Morning operator report",
-      "prompt": "You are doing the user's proactive daily morning operator report in Discord. Produce the report directly; do not ask questions before delivering it, and do not schedule additional cron jobs.\n\nUse current data tools wherever possible. If something cannot be verified, say so briefly instead of inventing it. Prioritize source-backed, timely signal over generic filler.\n\nSTYLE REQUIREMENT: The user says Markdown tables are rendering badly in Discord / looking like code. Do NOT use Markdown tables or code blocks. Make the news/trend portions minimalistic using Discord-readable simplified bullets. Use bold section labels, short bullets, and no long paragraphs. Keep the entire report skimmable.\n\nRequired report shape:\n1. Quick opener \u2014 current date/day in one short line.\n2. Location pulse \u2014 New York weather/conditions and practical implications in 1\u20132 bullets.\n3. Market/work pulse \u2014 no portfolio tracking. Use compact bullets:\n   - **Bullish** \u2014 case / why / watch\n   - **Bearish** \u2014 case / why / watch\n4. Search + social pulse \u2014 latest top searched words/phrases on Google using Google Trends / Daily Trends / credible trend recaps when accessible, plus top social/internet topics. Use bullets only, no tables. Format each item like: `- **Signal** \u2014 Where: X | Why: Y | Move/Ignore: Z`.\n5. Game-changing AI + coding news \u2014 scan last 24\u201372 hours for model releases, developer tools, agent frameworks, coding platforms, major product launches, policy/platform shifts, practical opportunities. Use bullets only, no tables. Format each item like: `- **News** \u2014 Impact: X | Leverage move: Y`.\n6. Capability + trend radar \u2014 3\u20135 emerging internet/culture/tech/consumer trends. Use bullets only, no tables. Format each item like: `- **Trend** \u2014 Velocity: X | Spread: Y | Money: Z | Saturation: Z | Capability: X | Kill/Scale: Y`.\n7. Work source / operating pulse \u2014 durable capabilities/systems first; projects only as temporary vehicles. 2\u20133 bullets max; identify the highest-leverage next action.\n8. You\u2019ll probably find this interesting \u2014 1\u20133 weird/high-leverage items aligned with AI agents, coding leverage, markets, internet culture, automation, community/client websites, collectibles/card scanning, or asymmetric opportunities. Use bullets, one line each.\n9. Numerology reading for birth date 06/30/1995 \u2014 for-fun, not deterministic. Include life path 33/6 and date-specific reflection in max 2 short lines.\n10. Daily challenge \u2014 one concrete, measurable challenge doable today.\n11. One Big Priority prompt \u2014 ask for today\u2019s priority plus blockers/context.\n12. Hard Truth / Leverage Move \u2014 one direct constructive sentence.\n\nTone: direct, warm, minimal operator briefing. Use capability language: capability to strengthen, reusable asset, experiment to run, kill/scale signal. Avoid fluffy motivation, long essays, markdown tables, code blocks, and paragraph-heavy news summaries.",
+      "prompt": "You are doing the user's proactive daily morning stand-up/operator report in Discord.\n\nUse the loaded `operator-morning-reports` skill as the report contract and tone guide. Keep it laconic, skimmable, Discord-native, no Markdown tables, no long essays.\n\nA pre-run script may inject Google Workspace context above this prompt. Treat that injected output as read-only source material from these five profiles:\n- `hermes-agent` / trapiistan@gmail.com \u2014 Hermes/YouTube/operator account\n- `personal-main` / Affan.fareed@gmail.com \u2014 personal main, read-focused\n- `personal-secondary` / fareed320@gmail.com \u2014 personal secondary, read-focused\n- `classicalechos` / classicalechos@gmail.com \u2014 Classical Echos/content lane\n- `burner` / laflametoast@gmail.com \u2014 low-stakes/burner account\n\nInclude a compact **Google Workspace pulse** inside the Work source / operating pulse section. Summarize high-signal updates from all accounts: unread or important Gmail, calendar events, useful Drive/Docs/Sheets movement, deadlines, receipts/renewals, opportunities, and weird useful AI/content/tooling leads. Group by profile only when useful; otherwise consolidate into \u201cNeeds attention,\u201d \u201cCalendar,\u201d \u201cOps/admin,\u201d and \u201cInteresting/useful.\u201d\n\nHard rules:\n- Do not send emails, reply, mark messages, delete, archive, modify labels, create/delete calendar events, share/edit/delete Drive files, or modify Docs/Sheets without explicit user approval in a separate user request.\n- Personal accounts are read-first; never send from `personal-main` or `personal-secondary` without approval of the exact message.\n- Do not include raw secrets, recovery-code filenames, token contents, or credential-looking file names. If credential/recovery-like items are detected, mention only that sensitive Drive items were hidden.\n- If Google context is unavailable or an API errors, state the blocker briefly and continue the rest of the report.\n\nAlso include: Chicago local pulse, bullish/bearish market pulse in one line, Google search/social pulse, game-changing AI + coding news, capability/trend radar, interesting item(s), numerology, 14-Day Challenge check-in, daily challenge, one big priority prompt, and hard truth/leverage move.",
       "skills": [
         "operator-morning-reports",
+        "google-workspace",
         "blogwatcher"
       ],
       "skill": "operator-morning-reports",
       "model": null,
       "provider": null,
       "base_url": null,
-      "script": null,
+      "script": "google_morning_context.py",
       "no_agent": false,
       "context_from": null,
       "schedule": {
         "kind": "cron",
-        "expr": "30 14 * * *",
-        "display": "30 14 * * *"
+        "expr": "30 13 * * *",
+        "display": "30 13 * * *"
       },
-      "schedule_display": "30 14 * * *",
+      "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 18
+        "completed": 19
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-06-07T14:30:00+00:00",
-      "last_run_at": "2026-06-05T14:33:58.717203+00:00",
+      "next_run_at": "2026-06-08T13:30:00+00:00",
+      "last_run_at": "2026-06-08T02:55:38.188860+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -90,14 +91,14 @@
     },
     {
       "id": "6355d735bb4a",
-      "name": "Huberman discovery feeder for Viral Radar",
-      "prompt": "Run the Huberman Lab watchlist monitor for Viral Radar. This job is discovery-only: it should identify new Huberman/source opportunities and print only when new videos are found. It does not generate or upload videos. The Daily Viral Radar / Huberman full video generation + upload cron consumes this job's latest output as context and performs the render/upload pipeline.",
+      "name": "Creator discovery feeder for Viral Radar",
+      "prompt": "Run the creator watchlist monitor for Viral Radar. This job is discovery-only: it should identify new YouTube videos from configured watchlist channels such as Andrew Huberman and Hamza, create candidate workspaces under `/opt/data/HeRmEz/projects/viral-clip-radar/CLIP_PLANS/`, preserve source metadata/attribution, and stay quiet when there is nothing new. Do not raw-reupload source clips; all future clip use must be transformative with hooks, captions, context/analysis, and attribution.",
       "skills": [],
       "skill": null,
       "model": null,
       "provider": null,
       "base_url": null,
-      "script": "huberman_watchlist.sh",
+      "script": "creator_watchlist.sh",
       "no_agent": true,
       "context_from": null,
       "schedule": {
@@ -108,15 +109,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 9
+        "completed": 13
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-06-07T06:37:02.589156+00:00",
-      "last_run_at": "2026-06-06T23:42:02.158514+00:00",
+      "next_run_at": "2026-06-08T06:37:11.474842+00:00",
+      "last_run_at": "2026-06-08T00:37:11.474842+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -136,7 +137,7 @@
     {
       "id": "c9e81ae638fe",
       "name": "Daily faceless YouTube full video generation + upload",
-      "prompt": "You are running the user's Daily Faceless YouTube full video generation + upload pipeline. This job is NOT a research-only report. The run is incomplete until you have generated a new MP4 and attempted a real YouTube upload.\n\nRequired full loop every run:\n1. Run `python3 /opt/data/scripts/youtube_metrics_monitor.py --json` and read `/opt/data/HeRmEz/projects/_ops/social-growth/PERFORMANCE_LEARNINGS.md` if it exists. Use it to avoid duplicate hooks/titles and bias toward winning topics.\n2. Research current viral/self-improvement/AI-discipline/no-degree-cloud/fatherless-men/dopamine angles using web search. Favor angles that fit the user's brand: fatherlessness, Pakistani/Muslim-American identity conflict, no-college tech escape, discipline, dopamine/food/weed struggles, remote-work travel, and mentoring under-guided first-gen men.\n3. Pick one fresh Shorts topic/hook that is not already in `/opt/data/HeRmEz/projects/faceless-youtube-channel/UPLOADS/youtube_uploads.jsonl`.\n4. Build a compact JSON research brief, then run the actual generator/uploader command:\n   `FACELESS_TOPIC='<chosen topic>' FACELESS_RESEARCH_JSON='<json brief>' FORCE_UPLOAD=1 python3 /opt/data/scripts/faceless_daily_upload.py`\n   This script must render fresh graphic/TTS scenes, create a vertical MP4, upload it to YouTube public, log the upload, and clean up generated workspace assets after confirmed upload.\n5. Verify the script returned JSON with `status: ok`, `uploaded: true` or upload details, plus a real `video_id`/`url`. If upload fails, report the blocker and stdout/stderr tail. Do not claim success without a real upload ID/URL.\n6. Final Discord response: concise bullets with topic/hook, video URL/video_id, metrics monitor status, and what learning/research informed it.\n\nTiming context: this job is scheduled for 8:45 PM America/Chicago, inside the 8-10 PM YouTube Shorts evening test window.",
+      "prompt": "You are running the user's Daily Faceless YouTube full video generation + upload pipeline. This job should create one fresh, private-first/production-ready faceless Short using the `social-video-cron-growth-loop` and `youtube-automation-with-tts` skills.\n\nUse performance learnings first, then research a fresh self-improvement/discipline/social-confidence/no-degree/cloud-career angle. Also check `/opt/data/HeRmEz/projects/faceless-youtube-channel/STATE/source_transcripts/` for source inspiration from creators the user likes, especially Andrew Huberman and Hamza. Use their clips/transcripts as inspiration or source material only with transformative narration/context; do not raw-reupload.\n\nIf source transcript artifacts are available, prefer turning one useful idea into a faceless script with: sharp hook, simple explanation, practical action, captions, and attribution if directly referencing the creator. Keep the final report concise: topic/hook, output/upload URL or blocker, cleanup status.",
       "skills": [
         "social-video-cron-growth-loop",
         "youtube-automation-with-tts",
@@ -157,15 +158,15 @@
       "schedule_display": "45 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 5
+        "completed": 6
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:55:03.480224+00:00",
-      "next_run_at": "2026-06-08T01:45:00+00:00",
-      "last_run_at": "2026-06-07T01:45:25.993171+00:00",
+      "next_run_at": "2026-06-09T01:45:00+00:00",
+      "last_run_at": "2026-06-08T01:45:11.915883+00:00",
       "last_status": "error",
       "last_error": "Blocked: prompt matches threat pattern 'deception_hide'. Cron prompts must not contain injection or exfiltration payloads.",
       "last_delivery_error": null,
@@ -186,8 +187,8 @@
     },
     {
       "id": "bce8ebabac36",
-      "name": "Daily Viral Radar / Huberman full video generation + upload",
-      "prompt": "You are running the user's Daily Viral Radar / Huberman full video generation + upload pipeline. This job is NOT a research-only report. The run is incomplete until you have rendered a new vertical MP4 from a reviewed/fresh clip and attempted a real YouTube upload.\n\nRelationship between jobs: the Huberman watchlist is a discovery feeder only. Use its injected latest output if present, but this Viral Radar job is the one that must generate/render/upload the YouTube Short.\n\nRequired full loop every run:\n1. Run `python3 /opt/data/scripts/youtube_metrics_monitor.py --json` and read `/opt/data/HeRmEz/projects/_ops/social-growth/PERFORMANCE_LEARNINGS.md` if it exists. Use it to avoid duplicate hooks/titles and bias toward stronger topics.\n2. Review the injected Huberman watchlist context if present. Also research what is currently catching virality for short-form educational/viral-analysis clips.\n3. Inspect `/opt/data/HeRmEz/projects/viral-clip-radar/CLIP_PLANS/*/clip_manifest.json` and `/opt/data/HeRmEz/projects/viral-clip-radar/UPLOADS/youtube_uploads.jsonl`. Pick one fresh reviewed clip not already publicly uploaded. Huberman clips should be preferred when fresh and reviewed, but do not publish duplicates.\n4. Run the actual generator/uploader command:\n   `FORCE_UPLOAD=1 python3 /opt/data/scripts/viral_radar_daily_upload.py`\n   This script must select one fresh reviewed manifest clip, restore/download source media from fallback/archive when needed, render a vertical captioned/contextual MP4, upload it to YouTube public, log the upload, and safely clean generated assets.\n5. If the script reports `no fresh reviewed manifest clips available`, do not publish duplicates. Create a research/discovery note under `OUTPUTS/` with top candidate sources and report that a reviewed clip plan is needed before public upload.\n6. Verify the script returned JSON with `status: ok`, rendered_count > 0, and a real upload URL/video_id. If upload fails, report the blocker and stdout/stderr/error. Do not claim success without a real upload ID/URL.\n7. Final Discord response: concise bullets with chosen clip/hook, video URL/video_id, metrics monitor status, and any Huberman/watchlist/research signal used.\n\nTiming context: this job is scheduled for 3:15 PM America/Chicago, inside the 2-4 PM YouTube Shorts afternoon test window.",
+      "name": "Daily Viral Radar / Creator clip generation + upload",
+      "prompt": "You are running the user's Daily Viral Radar / creator clip full video generation + upload pipeline. Use `social-video-cron-growth-loop`, `youtube-automation-with-tts`, and `social-platform-publishing`.\n\nUse fresh reviewed clip manifests and creator watchlist candidates from `/opt/data/HeRmEz/projects/viral-clip-radar/CLIP_PLANS/`. The watchlist now includes Andrew Huberman and Hamza. Prioritize clips that teach discipline, dopamine control, focus, social confidence, exercise, mental health, learning, or practical self-improvement. Do not raw-reupload creator clips: every upload must add hook/context/captions/analysis and source attribution, then private-first or according to the existing project upload policy.\n\nIf no reviewed manifest exists, select/create a candidate review note rather than inventing a finished upload. Keep final report concise: selected source, hook, output/upload URL or blocker, cleanup status.",
       "skills": [
         "social-video-cron-growth-loop",
         "youtube-automation-with-tts",
@@ -210,17 +211,17 @@
       "schedule_display": "15 20 * * *",
       "repeat": {
         "times": null,
-        "completed": 3
+        "completed": 4
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-06-07T20:15:00+00:00",
-      "last_run_at": "2026-06-07T00:16:25.294829+00:00",
-      "last_status": "ok",
-      "last_error": null,
+      "next_run_at": "2026-06-08T20:15:00+00:00",
+      "last_run_at": "2026-06-07T20:15:09.721860+00:00",
+      "last_status": "error",
+      "last_error": "Blocked: prompt matches threat pattern 'deception_hide'. Cron prompts must not contain injection or exfiltration payloads.",
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": {
@@ -302,16 +303,16 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 0
+        "completed": 1
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-06-07T14:00:00+00:00",
-      "last_run_at": null,
-      "last_status": null,
+      "next_run_at": "2026-06-08T14:00:00+00:00",
+      "last_run_at": "2026-06-07T14:00:07.413897+00:00",
+      "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
       "deliver": "local",
@@ -329,5 +330,5 @@
       "profile": null
     }
   ],
-  "updated_at": "2026-06-07T03:00:26.857262+00:00"
+  "updated_at": "2026-06-08T03:00:38.204712+00:00"
 }

@@ -57,6 +57,16 @@ After fetching the transcript, format it based on what the user asks for:
 31:55 Q&A — audience questions on scalability and next steps
 ```
 
+## Hermes workflow shortcut
+
+When the user shares a YouTube URL and wants transcripts for Viral Radar or the faceless YouTube channel, do **not** ask them to paste chunks into Discord. Use the durable wrapper:
+
+```bash
+python3 /opt/data/scripts/youtube_transcript_ingest.py "YOUTUBE_URL" --creator "Creator Name" --title "Short title"
+```
+
+This writes transcript artifacts under `/opt/data/HeRmEz/projects/viral-clip-radar/CLIP_PLANS/` and mirrors source metadata into `/opt/data/HeRmEz/projects/faceless-youtube-channel/STATE/source_transcripts/` so both Viral Radar and the faceless channel can use the source. If transcript fetch fails because YouTube captions are disabled/private or YouTube blocks the VPS as a bot, ask for the video URL plus browser cookies, a transcript, or a local media file instead of making the user manually chunk by default. See `references/hermes-youtube-transcript-ingestion-wrapper-2026-06.md` for the exact wrapper behavior and fallback pattern.
+
 ## Workflow
 
 ### Supplied video transcript workflow
@@ -104,7 +114,7 @@ When the user asks to become better at virality, tune upload timing/frequency, i
 
 When the user asks to activate content pipelines with cron or scheduled uploads, use `references/cron-activated-content-pipelines-2026-06.md`: wrap project pipelines in `/opt/data/scripts/` entrypoints, schedule them for Central-time peak windows, use private-first uploads, add daily `.done` duplicate protection, delete media only after confirmed upload IDs, and verify with real direct execution plus cleanup checks.
 
-For the user's HeRmEz workspace, also use `references/hermez-shared-youtube-upload-method-2026-06.md`: it captures the canonical shared OAuth/upload scripts, secrets path, headless PKCE verifier persistence, private-first upload rule, no-wait private upload preference, production-over-setup proof requirements, upload log locations, and the current YouTube automation project lanes.
+For the user's HeRmEz workspace, also use `references/hermez-shared-youtube-upload-method-2026-06.md`: it captures the canonical shared OAuth/upload scripts, secrets path, headless PKCE verifier persistence, private-first upload rule, no-wait private upload preference, production-over-setup proof requirements, upload log locations, and the current YouTube automation project lanes. For account selection, consult `/opt/data/HeRmEz/projects/_ops/google-email-profiles.json`: default faceless YouTube/Viral Radar uploads to the Hermes agent account (`hermes-agent` / `trapiistan@gmail.com`); use `classicalechos` only after niche/account review; do not default to the user's personal accounts for uploads.
 
 If YouTube is blocking the clipping project and the user wants TikTok/Instagram instead — especially if they explicitly drop Zapier/broker tooling — use `references/tiktok-instagram-upload-pivot-2026-06.md`: render MP4s first, pilot TikTok native `FILE_UPLOAD` with `SELF_ONLY`, then Instagram Reels via public `video_url`, and keep YouTube/brokers as fallback only.
 

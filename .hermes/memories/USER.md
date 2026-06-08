@@ -8,12 +8,12 @@ Cloud Engineer (mid-level) at GM Financial, TX. Wants concise Discord replies an
 §
 User wants project backups to live under /opt/data/HeRmEz/projects, specifically /opt/data/HeRmEz/projects/_backups for backup artifacts, rather than under /opt/data/HeRmEz/.hermes.
 §
-User prefers laconic Discord replies: no tables; bold bullets/italics. Ask less; smoke-test.
+User prefers laconic, skimmable Discord replies/morning reports: no tables; bold/italics + bullets; avoid wordy explanations; ask less, smoke-test.
 §
 For MusicAI, user expects persistent profiles/connections, meme fallback avatars, cached song/playlist analysis, and lyrics-first Watson NLU outputs.
-§
-User is a Cloud Engineer at GM Financial, currently in the mid-level range (2-5 years experience), based in Texas.
 §
 User's OSRS username is Oyama; use OSRS Wiki only.
 §
 User wants step-by-step interviews to develop $3k+ digital offers from personal experience.
+§
+Google: trapiistan=Hermes/YT; Affan+fareed320=RO; classicalechos=review; laflametoast=burner; AM report uses all.
