@@ -14,4 +14,4 @@ Hermes external memory provider is configured as holographic in /opt/data/config
 §
 stockNews and wutHappened are same project; stockNews deploys at https://stocknews-sentiment.vercel.app with API https://stocknews-api.vercel.app; wutHappened is source/archive material.
 §
-Personal-brand/content lane: user's story centers on fatherlessness, Pakistani/Muslim-American identity conflict, no-college tech escape, discipline, dopamine/food/weed struggles, remote-work travel, and mentoring under-guided first-gen men; faceless YouTube should use current trends for stoic masculine discipline/self-improvement.
+User has five Google Workspace email profiles: personal-main (primary personal), personal-secondary (backup/restricted), hermes-agent (Hermes automation/account-linked communications), burner (temporary/disposable sending), classicalechos (archive/curated content sending).

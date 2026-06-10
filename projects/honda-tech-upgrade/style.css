@@ -1,68 +1,203 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f3f5f9;
+  color: #162033;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  max-width: 800px;
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(218, 41, 28, 0.16), transparent 32rem),
+    linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+}
+
+.app-shell {
+  width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 20px;
-  background-color: #f5f5f5;
+  padding: 48px 0;
 }
+
+.hero {
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #b51f16;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: .78rem;
+}
+
+h1,
+h2 {
+  margin: 0 0 12px;
+  line-height: 1.05;
+}
+
 h1 {
-  color: #333;
-  text-align: center;
+  max-width: 780px;
+  font-size: clamp(2.25rem, 7vw, 5rem);
+  letter-spacing: -0.055em;
 }
-#form {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+h2 {
+  font-size: 1.55rem;
 }
+
+.lead {
+  max-width: 720px;
+  color: #536175;
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.workflow {
+  display: grid;
+  grid-template-columns: minmax(300px, 420px) 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.card,
+.results {
+  background: rgba(255, 255, 255, .92);
+  border: 1px solid rgba(22, 32, 51, .08);
+  border-radius: 24px;
+  box-shadow: 0 24px 70px rgba(22, 32, 51, .12);
+}
+
+.card {
+  padding: 24px;
+}
+
 label {
   display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
+  margin: 18px 0 7px;
+  color: #2b3648;
+  font-weight: 800;
 }
-input, select {
+
+input,
+select {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 13px 14px;
+  border: 1px solid #cdd6e3;
+  border-radius: 14px;
+  background: #fff;
+  color: #162033;
+  font: inherit;
 }
-button {
-  padding: 10px 20px;
-  margin-right: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-button:focus {
-  outline: 2px solid #ffbf00;
+
+input:focus,
+select:focus,
+button:focus-visible {
+  outline: 3px solid rgba(218, 41, 28, .3);
   outline-offset: 2px;
 }
-#reset {
-  background-color: #6c757d;
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
 }
-#reset:hover {
-  background-color: #545b62;
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 16px;
+  background: #da291c;
+  color: white;
+  font-weight: 850;
+  cursor: pointer;
 }
-#output {
-  margin-top: 20px;
-  padding: 15px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+button:hover {
+  transform: translateY(-1px);
 }
-#output h2 {
-  color: #333;
-  margin-top: 0;
+
+button.secondary {
+  background: #162033;
 }
-#output p {
-  margin: 10px 0;
+
+button.ghost {
+  background: transparent;
+  color: #162033;
+  border: 1px solid #cdd6e3;
 }
-#output .warning {
-  color: #dc3545;
+
+.results {
+  min-height: 360px;
+  padding: 24px;
 }
-#output .info {
-  color: #17a2b8;
+
+.result-card {
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #fff5f4, #ffffff);
+  border: 1px solid rgba(218, 41, 28, .12);
+}
+
+.timeline {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  margin: 18px 0;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 92px minmax(130px, 180px) 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1px solid #e5eaf1;
+}
+
+.badge {
+  display: inline-flex;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: .75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.badge.overdue {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.badge.soon {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+.badge.planned {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.saved-note {
+  color: #64748b;
+  font-size: .9rem;
+}
+
+@media (max-width: 850px) {
+  .workflow,
+  .timeline li {
+    grid-template-columns: 1fr;
+  }
 }

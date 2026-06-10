@@ -90,6 +90,18 @@ When a project direction changes, update the same set consistently:
 - Aggregate direction/update log, if present.
 - `.gitignore` for nested standalone repos that should not be swallowed by the parent repo.
 
+## Static Review Shell / Plan-Only Classification Pattern
+
+When classifying a portfolio project that may be a live app, scaffold, backend/API candidate, plan-only shell, or archive:
+
+1. Inventory local files and framework markers before trying installs: check for package manifests, lockfiles, Vite/Next configs, `src/`, `app/`, `pages/`, `public/`, `index.html`, `vercel.json`, Python manifests, and backend entrypoints.
+2. Read project-local `README.md`, `PRODUCT_DIRECTION.md`, `DEVELOPMENT_PLAN.md`, and any `NEXT_IMPLEMENTATION_SLICE.md` before concluding status; these often explicitly say whether source is missing or implementation has not started.
+3. Search central trackers (`PROJECT_REVIEW_SHEET.md/.csv`, `WORK_QUEUE.md`, deploy reports, portfolio plans) for the project row and preserve the existing classification/deploy URL evidence in the handoff.
+4. Check git from the project path and parent repo. Distinguish project-specific cleanliness from unrelated workspace dirt, nested repo modifications, and ignored local files.
+5. For public Vercel URLs that return HTTP 200, treat HTTP 200 as deployment plumbing only. Fetch the HTML and, if needed, bundled JS/CSS assets to see whether the deployed app is a real product UI or a static review shell embedding markdown/project docs.
+6. Do not run `npm install`, local builds, tests, or Vercel redeploys when there is no manifest/source tree. Recommend restore original source or scaffold the documented MVP first.
+7. For env files, report names, ignored/tracked status, byte counts, and variable names only; never print `.env` values. `.env.example` may be tracked if it contains placeholders/commented future variable names only.
+
 ## Product Direction File Shape
 
 Use this default structure unless the project needs something else:

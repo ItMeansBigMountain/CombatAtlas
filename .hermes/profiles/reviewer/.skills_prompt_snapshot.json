@@ -6,8 +6,8 @@
       2169
     ],
     "apple/apple-reminders/SKILL.md": [
-      1778239059000000000,
-      2530
+      1780670270931830904,
+      3606
     ],
     "apple/findmy/SKILL.md": [
       1778239059000000000,
@@ -26,12 +26,16 @@
       34288
     ],
     "autonomous-ai-agents/codex/SKILL.md": [
-      1778573798000000000,
-      4557
+      1780922864000000000,
+      5386
     ],
     "autonomous-ai-agents/hermes-agent/SKILL.md": [
       1778740460396098388,
       42860
+    ],
+    "autonomous-ai-agents/kanban-codex-lane/SKILL.md": [
+      1779240620899959271,
+      12774
     ],
     "autonomous-ai-agents/opencode/SKILL.md": [
       1778573798000000000,
@@ -49,6 +53,10 @@
       1778573798000000000,
       14864
     ],
+    "creative/baoyu-article-illustrator/SKILL.md": [
+      1779240620901959276,
+      10131
+    ],
     "creative/baoyu-comic/SKILL.md": [
       1778573798000000000,
       14621
@@ -62,8 +70,8 @@
       19859
     ],
     "creative/comfyui/SKILL.md": [
-      1778239059000000000,
-      23856
+      1779240620908959294,
+      24287
     ],
     "creative/creative-ideation/SKILL.md": [
       1778573798000000000,
@@ -122,8 +130,8 @@
       13882
     ],
     "devops/kanban-worker/SKILL.md": [
-      1778573798000000000,
-      10030
+      1780670270932830907,
+      10979
     ],
     "devops/webhook-subscriptions/SKILL.md": [
       1778573798000000000,
@@ -254,7 +262,7 @@
       11302
     ],
     "productivity/google-workspace/SKILL.md": [
-      1778573798000000000,
+      1779240620933959357,
       13411
     ],
     "productivity/linear/SKILL.md": [
@@ -262,7 +270,7 @@
       14782
     ],
     "productivity/maps/SKILL.md": [
-      1778573798000000000,
+      1779240620934959360,
       6726
     ],
     "productivity/nano-pdf/SKILL.md": [
@@ -270,11 +278,11 @@
       1414
     ],
     "productivity/notion/SKILL.md": [
-      1778573798000000000,
-      5236
+      1779240620935959362,
+      14597
     ],
     "productivity/ocr-and-documents/SKILL.md": [
-      1778573798000000000,
+      1779240620935959362,
       5280
     ],
     "productivity/powerpoint/SKILL.md": [
@@ -286,11 +294,11 @@
       6867
     ],
     "red-teaming/godmode/SKILL.md": [
-      1778573798000000000,
-      20059
+      1780670270934830911,
+      20044
     ],
     "research/arxiv/SKILL.md": [
-      1778573798000000000,
+      1779240620942959380,
       10085
     ],
     "research/blogwatcher/SKILL.md": [
@@ -306,7 +314,7 @@
       2985
     ],
     "research/research-paper-writing/SKILL.md": [
-      1778239059000000000,
+      1779240620943959383,
       103375
     ],
     "smart-home/openhue/SKILL.md": [
@@ -314,8 +322,8 @@
       2713
     ],
     "social-media/xurl/SKILL.md": [
-      1778239059000000000,
-      13993
+      1780670270934830911,
+      15518
     ],
     "software-development/debugging-hermes-tui-commands/SKILL.md": [
       1778573798000000000,
@@ -325,13 +333,17 @@
       1778573798000000000,
       7618
     ],
+    "software-development/hermes-s6-container-supervision/SKILL.md": [
+      1780028164101097442,
+      11474
+    ],
     "software-development/node-inspect-debugger/SKILL.md": [
       1778573798000000000,
       10929
     ],
     "software-development/plan/SKILL.md": [
-      1778573798000000000,
-      2016
+      1780670270935830914,
+      8974
     ],
     "software-development/python-debugpy/SKILL.md": [
       1778573798000000000,
@@ -341,21 +353,25 @@
       1778573798000000000,
       8483
     ],
+    "software-development/simplify-code/SKILL.md": [
+      1780922864000000000,
+      8505
+    ],
     "software-development/spike/SKILL.md": [
-      1778573798000000000,
-      8753
+      1780670270935830914,
+      8730
     ],
     "software-development/subagent-driven-development/SKILL.md": [
       1778573798000000000,
       10742
     ],
     "software-development/systematic-debugging/SKILL.md": [
-      1778573798000000000,
-      10480
+      1780670270935830914,
+      10471
     ],
     "software-development/test-driven-development/SKILL.md": [
-      1778573798000000000,
-      9573
+      1780670270935830914,
+      9564
     ],
     "software-development/writing-plans/SKILL.md": [
       1778573798000000000,
@@ -454,7 +470,7 @@
       114
     ],
     "productivity/ocr-and-documents/DESCRIPTION.md": [
-      1778573798000000000,
+      1779240620935959362,
       147
     ],
     "research/DESCRIPTION.md": [
@@ -594,6 +610,19 @@
       }
     },
     {
+      "skill_name": "kanban-codex-lane",
+      "category": "autonomous-ai-agents",
+      "frontmatter_name": "kanban-codex-lane",
+      "description": "Use when a Hermes Kanban worker wants to run Codex CLI as...",
+      "platforms": [],
+      "conditions": {
+        "fallback_for_toolsets": [],
+        "requires_toolsets": [],
+        "fallback_for_tools": [],
+        "requires_tools": []
+      }
+    },
+    {
       "skill_name": "opencode",
       "category": "autonomous-ai-agents",
       "frontmatter_name": "opencode",
@@ -649,6 +678,23 @@
       "category": "creative",
       "frontmatter_name": "ascii-video",
       "description": "ASCII video: convert video/audio to colored ASCII MP4/GIF.",
+      "platforms": [
+        "linux",
+        "macos",
+        "windows"
+      ],
+      "conditions": {
+        "fallback_for_toolsets": [],
+        "requires_toolsets": [],
+        "fallback_for_tools": [],
+        "requires_tools": []
+      }
+    },
+    {
+      "skill_name": "baoyu-article-illustrator",
+      "category": "creative",
+      "frontmatter_name": "baoyu-article-illustrator",
+      "description": "Article illustrations: type × style × palette consistency.",
       "platforms": [
         "linux",
         "macos",
@@ -1581,7 +1627,7 @@
       "skill_name": "notion",
       "category": "productivity",
       "frontmatter_name": "notion",
-      "description": "Notion API via curl: pages, databases, blocks, search.",
+      "description": "Notion API + ntn CLI: pages, databases, markdown, Workers.",
       "platforms": [
         "linux",
         "macos",
@@ -1813,6 +1859,19 @@
       }
     },
     {
+      "skill_name": "hermes-s6-container-supervision",
+      "category": "software-development",
+      "frontmatter_name": "hermes-s6-container-supervision",
+      "description": "Modify, debug, or extend the s6-overlay supervision tree ...",
+      "platforms": [],
+      "conditions": {
+        "fallback_for_toolsets": [],
+        "requires_toolsets": [],
+        "fallback_for_tools": [],
+        "requires_tools": []
+      }
+    },
+    {
       "skill_name": "node-inspect-debugger",
       "category": "software-development",
       "frontmatter_name": "node-inspect-debugger",
@@ -1833,7 +1892,7 @@
       "skill_name": "plan",
       "category": "software-development",
       "frontmatter_name": "plan",
-      "description": "Plan mode: write markdown plan to .hermes/plans/, no exec.",
+      "description": "Plan mode: write an actionable markdown plan to .hermes/p...",
       "platforms": [
         "linux",
         "macos",
@@ -1867,6 +1926,23 @@
       "category": "software-development",
       "frontmatter_name": "requesting-code-review",
       "description": "Pre-commit review: security scan, quality gates, auto-fix.",
+      "platforms": [
+        "linux",
+        "macos",
+        "windows"
+      ],
+      "conditions": {
+        "fallback_for_toolsets": [],
+        "requires_toolsets": [],
+        "fallback_for_tools": [],
+        "requires_tools": []
+      }
+    },
+    {
+      "skill_name": "simplify-code",
+      "category": "software-development",
+      "frontmatter_name": "simplify-code",
+      "description": "Parallel 3-agent cleanup of recent code changes.",
       "platforms": [
         "linux",
         "macos",

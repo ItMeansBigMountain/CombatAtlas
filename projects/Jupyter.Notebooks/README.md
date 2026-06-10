@@ -39,7 +39,7 @@ Install dependencies:
 
 ```bash
 cd /opt/data/HeRmEz/projects/Jupyter.Notebooks
-uv venv .venv --python python3
+uv venv --clear .venv --python python3
 uv pip install --python .venv/bin/python -r requirements.txt
 .venv/bin/python -m ipykernel install --user --name jupyter-notebooks --display-name "Python (Jupyter.Notebooks)"
 ```
@@ -66,7 +66,7 @@ These commands are deterministic and do not execute notebook cells or call exter
 
 ```bash
 cd /opt/data/HeRmEz/projects/Jupyter.Notebooks
-uv venv .venv --python python3
+uv venv --clear .venv --python python3
 uv pip install --python .venv/bin/python -r requirements.txt
 .venv/bin/python - <<'PY'
 from pathlib import Path

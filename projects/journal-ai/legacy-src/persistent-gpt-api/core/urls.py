@@ -7,6 +7,7 @@ from django.http import HttpResponse
 urlpatterns = [
     # Root URL configuration
     path("", lambda r : HttpResponse("Welcome to the Chat GPT persistent data API!"), name='home'),
+    path('healthz/', views.health_check, name='health-check'),
 
     # REST Framework auth URLs
     path('api-auth/', include('rest_framework.urls')),

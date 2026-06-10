@@ -1,5 +1,5 @@
 # Reproducible notebook environment for Jupyter.Notebooks
-# Install with: uv venv .venv --python python3 && uv pip install --python .venv/bin/python -r requirements.txt
+# Install with: uv venv --clear .venv --python python3 && uv pip install --python .venv/bin/python -r requirements.txt
 
 ipykernel==6.29.5
 jupyterlab==4.4.3

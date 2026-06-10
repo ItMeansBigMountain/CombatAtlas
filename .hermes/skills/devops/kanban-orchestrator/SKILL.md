@@ -215,6 +215,10 @@ When the user asks to "review all Kanban tasks" and says the current chat has ne
 
 See `references/board-reconciliation.md` for the detailed reconciliation checklist and pitfalls.
 
+## Recovering a Kanban DB index integrity error
+
+If `hermes kanban ...` refuses to initialize because SQLite `PRAGMA integrity_check` reports index-only corruption such as `wrong # of entries in index idx_events_run` or `idx_events_task`, do not treat the board as lost. Back up `/opt/data/kanban.db`, run `REINDEX` on the named indexes, verify `PRAGMA integrity_check` returns `ok`, then retry the Kanban command. See `references/kanban-sqlite-index-repair.md` for the exact recovery snippet and guardrails.
+
 ## Recovering stuck workers
 
 When a worker profile keeps crashing, hallucinating, or getting blocked by its own mistakes (usually: wrong model, missing skill, broken credential), the kanban dashboard flags the task with a ⚠ badge and opens a **Recovery** section in the drawer. Three primary actions:

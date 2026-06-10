@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "vercel-build": "echo 'No build step required'"
+    "test": "node --test app.test.js",
+    "build": "npm test",
+    "vercel-build": "npm test"
   },
   "keywords": [
     "honda",

@@ -20,15 +20,15 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 23
+        "completed": 24
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-06-09T03:00:00+00:00",
-      "last_run_at": "2026-06-07T03:02:04.391385+00:00",
+      "next_run_at": "2026-06-11T03:00:00+00:00",
+      "last_run_at": "2026-06-08T03:00:56.017221+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -40,7 +40,7 @@
     {
       "id": "92f873723241",
       "name": "Morning operator report",
-      "prompt": "You are doing the user's proactive daily morning stand-up/operator report in Discord.\n\nUse the loaded `operator-morning-reports` skill as the report contract and tone guide. Keep it laconic, skimmable, Discord-native, no Markdown tables, no long essays.\n\nA pre-run script may inject Google Workspace context above this prompt. Treat that injected output as read-only source material from these five profiles:\n- `hermes-agent` / trapiistan@gmail.com \u2014 Hermes/YouTube/operator account\n- `personal-main` / Affan.fareed@gmail.com \u2014 personal main, read-focused\n- `personal-secondary` / fareed320@gmail.com \u2014 personal secondary, read-focused\n- `classicalechos` / classicalechos@gmail.com \u2014 Classical Echos/content lane\n- `burner` / laflametoast@gmail.com \u2014 low-stakes/burner account\n\nInclude a compact **Google Workspace pulse** inside the Work source / operating pulse section. Summarize high-signal updates from all accounts: unread or important Gmail, calendar events, useful Drive/Docs/Sheets movement, deadlines, receipts/renewals, opportunities, and weird useful AI/content/tooling leads. Group by profile only when useful; otherwise consolidate into \u201cNeeds attention,\u201d \u201cCalendar,\u201d \u201cOps/admin,\u201d and \u201cInteresting/useful.\u201d\n\nHard rules:\n- Do not send emails, reply, mark messages, delete, archive, modify labels, create/delete calendar events, share/edit/delete Drive files, or modify Docs/Sheets without explicit user approval in a separate user request.\n- Personal accounts are read-first; never send from `personal-main` or `personal-secondary` without approval of the exact message.\n- Do not include raw secrets, recovery-code filenames, token contents, or credential-looking file names. If credential/recovery-like items are detected, mention only that sensitive Drive items were hidden.\n- If Google context is unavailable or an API errors, state the blocker briefly and continue the rest of the report.\n\nAlso include: Chicago local pulse, bullish/bearish market pulse in one line, Google search/social pulse, game-changing AI + coding news, capability/trend radar, interesting item(s), numerology, 14-Day Challenge check-in, daily challenge, one big priority prompt, and hard truth/leverage move.",
+      "prompt": "You are doing the user's proactive daily morning stand-up/operator report in Discord.\n\nUse the loaded `operator-morning-reports` skill as the report contract and tone guide. Keep it laconic, skimmable, Discord-native, no Markdown tables, no long essays.\n\nA pre-run script may inject Google Workspace context above this prompt. Treat that injected output as read-only source material from these five profiles:\n- `hermes-agent` / trapiistan@gmail.com \u2014 Hermes/YouTube/operator account\n- `personal-main` / Affan.fareed@gmail.com \u2014 personal main, read-focused\n- `personal-secondary` / fareed320@gmail.com \u2014 personal secondary, read-focused\n- `classicalechos` / classicalechos@gmail.com \u2014 Classical Echos/content lane\n- `burner` / laflametoast@gmail.com \u2014 low-stakes/burner account\n\nInclude a compact **Google Workspace pulse** inside the Work source / operating pulse section. Summarize high-signal updates from all accounts: unread or important Gmail, calendar events, useful Drive/Docs/Sheets movement, deadlines, receipts/renewals, opportunities, and weird useful AI/content/tooling leads. Group by profile only when useful; otherwise consolidate into \u201cNeeds attention,\u201d \u201cCalendar,\u201d \u201cOps/admin,\u201d \u201cInteresting/source material,\u201d and \u201cEmail cleanup candidates.\u201d\n\nEmail-specific rules for the report:\n- Prioritize billing/charges/receipts, Chase, Apple receipts/Card, cloud services, AI APIs, Robinhood, Landing, Ticketmaster ticket/venue info, myQ/Chamberlain garage alerts, GitGuardian/security, official/vehicle renewal notices, and similar life/admin signals.\n- TLDR is useful for latest news, but only use/keep the feed from `fareed320@gmail.com`; TLDR on other accounts is duplicate cleanup candidate.\n- Kino Body and Daily Stoic are interesting: summarize useful ideas in the morning report, then list them as post-review cleanup candidates if appropriate.\n- Grammarly Insights is interesting self-metrics/profile data: summarize what it says about the user's writing/communication habits and connect it to his personal operating profile.\n- For TLDR, Kino Body, Daily Stoic, and Grammarly Insights: summarize through the lens of the user's known interests/profile, draw appealing personal insights, then list each as a newsletter cleanup candidate with sender, category, and title. Ask if the user wants those reviewed newsletter emails cleaned up.\n- Junk categories include FoundersCard, Yieldi, Crunch, Higgsfield, Fundrise, Kling AI, Instagram notifications, Lumen marketing, Chess.com nags, YEEZY, City Experiences, LELO, GNC, and generic consumer sales/promotional emails.\n- Include an **Email priority + cleanup** mini-section every morning with concise bullets: \u201cpriority emails,\u201d \u201cinteresting/source emails,\u201d \u201ccleanup candidates,\u201d and \u201cneeds review.\u201d Do not bury important billing/finance/security/venue items inside generic unread lists.\n- Do not actually unsubscribe, report spam, archive, trash, delete, mark read, or modify labels during the morning report. Only propose cleanup bullets and wait for the user to approve actions conversationally.\n\nHard rules:\n- Do not send emails, reply, mark messages, delete, archive, modify labels, create/delete calendar events, share/edit/delete Drive files, or modify Docs/Sheets without explicit user approval in a separate user request.\n- Personal accounts are read-first; never send from `personal-main` or `personal-secondary` without approval of the exact message.\n- Do not include raw secrets, recovery-code filenames, token contents, or credential-looking file names. If credential/recovery-like items are detected, mention only that sensitive Drive items were hidden.\n- If Google context is unavailable or an API errors, state the blocker briefly and continue the rest of the report.\n\nAlso include: Chicago local pulse, bullish/bearish market pulse in one line, Google search/social pulse, game-changing AI + coding news, capability/trend radar, interesting item(s), numerology, 14-Day Challenge check-in, daily challenge, one big priority prompt, and hard truth/leverage move.",
       "skills": [
         "operator-morning-reports",
         "google-workspace",
@@ -61,15 +61,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 19
+        "completed": 22
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-06-08T13:30:00+00:00",
-      "last_run_at": "2026-06-08T02:55:38.188860+00:00",
+      "next_run_at": "2026-06-10T13:30:00+00:00",
+      "last_run_at": "2026-06-09T13:33:13.116745+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -109,15 +109,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 13
+        "completed": 21
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-06-08T06:37:11.474842+00:00",
-      "last_run_at": "2026-06-08T00:37:11.474842+00:00",
+      "next_run_at": "2026-06-10T06:40:54.220969+00:00",
+      "last_run_at": "2026-06-10T00:40:54.220969+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -158,15 +158,15 @@
       "schedule_display": "45 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 6
+        "completed": 8
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:55:03.480224+00:00",
-      "next_run_at": "2026-06-09T01:45:00+00:00",
-      "last_run_at": "2026-06-08T01:45:11.915883+00:00",
+      "next_run_at": "2026-06-11T01:45:00+00:00",
+      "last_run_at": "2026-06-10T01:45:53.342959+00:00",
       "last_status": "error",
       "last_error": "Blocked: prompt matches threat pattern 'deception_hide'. Cron prompts must not contain injection or exfiltration payloads.",
       "last_delivery_error": null,
@@ -211,15 +211,15 @@
       "schedule_display": "15 20 * * *",
       "repeat": {
         "times": null,
-        "completed": 4
+        "completed": 6
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-06-08T20:15:00+00:00",
-      "last_run_at": "2026-06-07T20:15:09.721860+00:00",
+      "next_run_at": "2026-06-10T20:15:00+00:00",
+      "last_run_at": "2026-06-09T20:15:52.588463+00:00",
       "last_status": "error",
       "last_error": "Blocked: prompt matches threat pattern 'deception_hide'. Cron prompts must not contain injection or exfiltration payloads.",
       "last_delivery_error": null,
@@ -303,15 +303,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 1
+        "completed": 3
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-06-08T14:00:00+00:00",
-      "last_run_at": "2026-06-07T14:00:07.413897+00:00",
+      "next_run_at": "2026-06-10T14:00:00+00:00",
+      "last_run_at": "2026-06-09T14:00:51.041559+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -330,5 +330,5 @@
       "profile": null
     }
   ],
-  "updated_at": "2026-06-08T03:00:38.204712+00:00"
+  "updated_at": "2026-06-10T03:00:53.219183+00:00"
 }

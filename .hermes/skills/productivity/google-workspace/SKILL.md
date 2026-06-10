@@ -24,6 +24,8 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 ## References
 
 - `references/gmail-search-syntax.md` — Gmail search operators (is:unread, from:, newer_than:, etc.)
+- `references/gmail-inbox-audit-and-cleanup.md` — multi-profile Gmail Inbox audit/cleanup pattern, exact Inbox counting via `labelIds=['INBOX']`, approval-first cleanup workflow, and current user email triage policy.
+- `references/gmail-inbox-audit-pattern.md` — read-only Gmail inbox/subscription audit workflow, real Inbox counting pattern, classification/reporting guidance, and destructive-action confirmation rules.
 - `references/calendar-service-account.md` — service-account setup for Calendar automation when the user shares calendars with the service account.
 - `references/credential-requirements.md` — required Google credential files and setup verification
 - `references/google-credential-inventory-pattern.md` — safe workflow for inventorying Google credential files by project/purpose without exposing secrets
@@ -230,6 +232,17 @@ $GAPI gmail labels
 $GAPI gmail modify MESSAGE_ID --add-labels LABEL_ID
 $GAPI gmail modify MESSAGE_ID --remove-labels UNREAD
 ```
+
+#### Gmail audits and subscription cleanup
+
+When auditing email, subscriptions, billing notices, newsletters, or junk mail, use the read-only workflows in `references/gmail-inbox-audit-and-cleanup.md` and `references/gmail-inbox-audit-pattern.md` before proposing cleanup. Key rules:
+
+- Audit first; do not delete, spam-report, archive, unsubscribe, or modify labels during discovery.
+- For multi-profile setups under `/opt/data/google_profiles/<profile>/google_token.json`, iterate each profile and use harmless Gmail probes (`users.getProfile`, `labels.list`, metadata-only message reads).
+- Count the *actual Inbox* by iterating `messages.list(labelIds=["INBOX"])`; do not treat `users.getProfile().messagesTotal` or broad `resultSizeEstimate` as Inbox counts.
+- Classify results as: confirmed important/priority, interesting or morning-report source, known junk, likely junk/consumer marketing, and needs review.
+- Broad keyword searches can false-positive on newsletter text; follow up high-value categories with exact `from:` probes before reporting them as important.
+- Before any cleanup, show the exact account/profile, sender, message count, proposed action, and examples for approval.
 
 ### Calendar
 

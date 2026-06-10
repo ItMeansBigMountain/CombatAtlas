@@ -26,8 +26,8 @@
       34288
     ],
     "autonomous-ai-agents/codex/SKILL.md": [
-      1778573798000000000,
-      4557
+      1780922864000000000,
+      5386
     ],
     "autonomous-ai-agents/hermes-agent/SKILL.md": [
       1778740460396098388,
@@ -130,8 +130,8 @@
       13882
     ],
     "devops/kanban-worker/SKILL.md": [
-      1780056611000000000,
-      10956
+      1780922864000000000,
+      10979
     ],
     "devops/webhook-subscriptions/SKILL.md": [
       1778573798000000000,
@@ -262,7 +262,7 @@
       11302
     ],
     "productivity/google-workspace/SKILL.md": [
-      1780056611000000000,
+      1780420799000000000,
       13411
     ],
     "productivity/linear/SKILL.md": [
@@ -294,8 +294,8 @@
       6867
     ],
     "red-teaming/godmode/SKILL.md": [
-      1780056611000000000,
-      20059
+      1780922864000000000,
+      20044
     ],
     "research/arxiv/SKILL.md": [
       1779240620942959380,
@@ -322,8 +322,8 @@
       2713
     ],
     "social-media/xurl/SKILL.md": [
-      1780056611000000000,
-      14977
+      1780922864000000000,
+      15518
     ],
     "software-development/debugging-hermes-tui-commands/SKILL.md": [
       1778573798000000000,
@@ -342,8 +342,8 @@
       10929
     ],
     "software-development/plan/SKILL.md": [
-      1780056611000000000,
-      2016
+      1780922864000000000,
+      8974
     ],
     "software-development/python-debugpy/SKILL.md": [
       1778573798000000000,
@@ -353,21 +353,25 @@
       1778573798000000000,
       8483
     ],
+    "software-development/simplify-code/SKILL.md": [
+      1780922864000000000,
+      8505
+    ],
     "software-development/spike/SKILL.md": [
-      1780056611000000000,
-      8753
+      1780922864000000000,
+      8730
     ],
     "software-development/subagent-driven-development/SKILL.md": [
       1778573798000000000,
       10742
     ],
     "software-development/systematic-debugging/SKILL.md": [
-      1780056611000000000,
-      10480
+      1780922864000000000,
+      10471
     ],
     "software-development/test-driven-development/SKILL.md": [
-      1780056611000000000,
-      9573
+      1780922864000000000,
+      9564
     ],
     "software-development/writing-plans/SKILL.md": [
       1778573798000000000,
@@ -1888,7 +1892,7 @@
       "skill_name": "plan",
       "category": "software-development",
       "frontmatter_name": "plan",
-      "description": "Plan mode: write markdown plan to .hermes/plans/, no exec.",
+      "description": "Plan mode: write an actionable markdown plan to .hermes/p...",
       "platforms": [
         "linux",
         "macos",
@@ -1922,6 +1926,23 @@
       "category": "software-development",
       "frontmatter_name": "requesting-code-review",
       "description": "Pre-commit review: security scan, quality gates, auto-fix.",
+      "platforms": [
+        "linux",
+        "macos",
+        "windows"
+      ],
+      "conditions": {
+        "fallback_for_toolsets": [],
+        "requires_toolsets": [],
+        "fallback_for_tools": [],
+        "requires_tools": []
+      }
+    },
+    {
+      "skill_name": "simplify-code",
+      "category": "software-development",
+      "frontmatter_name": "simplify-code",
+      "description": "Parallel 3-agent cleanup of recent code changes.",
       "platforms": [
         "linux",
         "macos",

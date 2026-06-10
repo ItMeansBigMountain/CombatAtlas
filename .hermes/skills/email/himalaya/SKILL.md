@@ -101,6 +101,16 @@ folder.aliases.trash = "Trash"
 - Use `--output json` for structured output that's easier to parse programmatically
 - The `himalaya account configure` wizard requires interactive input — use PTY mode: `terminal(command="himalaya account configure", pty=true)`
 
+## Email safety discipline
+
+For user mailboxes, treat delete/move/archive/report-spam/unsubscribe as destructive or semi-destructive actions.
+
+- Default to read-only scans and summaries first.
+- Before destructive actions, present the exact scope for approval: account, folder/query, sender/category, estimated count, and intended action.
+- If the user explicitly labels a sender/category as junk or says it can be deleted, that approval applies only to that named scope; do not broaden it to adjacent senders or all newsletters without asking.
+- When cleaning junk, the preferred action sequence is: unsubscribe when practical, report as spam when appropriate, then delete/trash.
+- Re-list or otherwise verify the affected mailbox after action, and summarize what changed.
+
 ## Common Operations
 
 ### List Folders

@@ -6,6 +6,8 @@ Last updated: 2026-05-26
 
 Plan-only/static review shell needing focused MVP.
 
+2026-06-09 review update: initial inspection found only docs/specs, but the working tree now contains a credential-free Honda maintenance planner scaffold. Local validation passes with `npm run vercel-build` (3/3 Node tests) and local Express HTTP 200; public Vercel still needs redeploy + smoke test before the live URL can be marked as the new MVP.
+
 ## Portfolio priority
 
 Medium

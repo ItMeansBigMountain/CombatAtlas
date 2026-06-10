@@ -17,6 +17,10 @@ from datetime import datetime
 import json
 
 
+def health_check(request):
+    return JsonResponse({"status": "ok", "service": "journal-ai-api"})
+
+
 # Custom User Views
 # @api_view(['GET', 'POST'])
 # @permission_classes([permissions.IsAuthenticated])

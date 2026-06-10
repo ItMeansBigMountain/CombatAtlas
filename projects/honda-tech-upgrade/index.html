@@ -1,31 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Honda Tech Upgrade</title>
-<meta name="description" content="Honda Tech Upgrade demo shows vehicle maintenance suggestions based on mileage and service history.">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Honda Tech Upgrade</title>
+  <meta name="description" content="Credential-free Honda owner demo that suggests next maintenance from vehicle, mileage, and service history.">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Honda Tech Upgrade Demo</h1>
-<div id="form">
-  <label>Vehicle Type:
-    <select id="vehicle">
-      <option value="Civic">Civic</option>
-      <option value="Accord">Accord</option>
-      <option value="CRV">CRV</option>
-    </select>
-  </label>
-  <label>Mileage (mi):
-    <input type="number" id="mileage" min="0" value="0">
-  </label>
-  <label>Last Service (mi):
-    <input type="number" id="lastService" min="0" value="0">
-  </label>
-  <button id="submit" aria-label="Get Suggestion">Get Suggestion</button>
-    <button id="reset" aria-label="Reset to Sample">Reset to Sample</button>
-</div>
-<div id="output"></div>
-<script src="app.js"></script>
+  <main class="app-shell">
+    <section class="hero">
+      <p class="eyebrow">Honda owner workflow · local demo</p>
+      <h1>Plan the next maintenance move for your Honda</h1>
+      <p class="lead">Pick a sample Honda, enter mileage and a recent service event, then get a browser-only ownership plan. Nothing leaves this device.</p>
+    </section>
+
+    <section class="workflow" aria-label="Honda owner maintenance planner">
+      <form id="ownerForm" class="card">
+        <h2>Vehicle snapshot</h2>
+        <label for="vehicle">Vehicle</label>
+        <select id="vehicle" name="vehicle">
+          <option value="Civic">Honda Civic</option>
+          <option value="Accord">Honda Accord</option>
+          <option value="CR-V">Honda CR-V</option>
+        </select>
+
+        <label for="mileage">Current mileage</label>
+        <input type="number" id="mileage" name="mileage" min="0" step="100" inputmode="numeric" placeholder="68400">
+
+        <label for="serviceEvent">Recent service event</label>
+        <select id="serviceEvent" name="serviceEvent">
+          <option value="Oil Change">Oil Change</option>
+          <option value="Tire Rotation">Tire Rotation</option>
+          <option value="Brake Inspection">Brake Inspection</option>
+          <option value="Transmission Fluid">Transmission Fluid</option>
+          <option value="Coolant Flush">Coolant Flush</option>
+        </select>
+
+        <label for="serviceMileage">Mileage at that service</label>
+        <input type="number" id="serviceMileage" name="serviceMileage" min="0" step="100" inputmode="numeric" placeholder="60000">
+
+        <div class="actions">
+          <button type="submit">Build maintenance plan</button>
+          <button type="button" id="sampleData" class="secondary">Load sample data</button>
+          <button type="button" id="clearDemo" class="ghost">Reset blank</button>
+        </div>
+      </form>
+
+      <section id="output" aria-live="polite" class="results"></section>
+    </section>
+  </main>
+  <script src="app.js"></script>
 </body>
 </html>

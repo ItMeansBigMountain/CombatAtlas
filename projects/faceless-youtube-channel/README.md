@@ -12,6 +12,14 @@ Create a repeatable system for ideating, scripting, producing, publishing, and i
 - Purpose: lightweight landing/dashboard for the cheap/free trend-to-video automation pipeline.
 - Vercel project: `faceless-youtube-channel`
 
+## Review/deploy/smoke evidence
+
+- Classification: live Vite + React frontend/dashboard with supporting Python YouTube automation scripts. No `PRODUCT_DIRECTION.md` is present; README/docs are the current product direction source.
+- Local validation: `npm ls --depth=0` clean; `npm run build` passes (`vite v8.0.16`, production assets built under `dist/`). No `test` or `lint` script is defined in `package.json`.
+- Deployment: production Vercel project `faceless-youtube-channel` is Ready. Public alias `https://faceless-youtube-channel-beta.vercel.app` returns anonymous HTTP 200; the unique deployment URL may be Vercel-protected and return 401.
+- Smoke test: anonymous page load and in-page CTA navigation were browser-tested with no JS console errors observed. Invalid route returns 404 as expected.
+- Follow-up PBI: `t_f8df6c43` tracks a low-severity direct hash deep-link scroll issue reported by the dogfood pass; current root PBI should stay open until that child is resolved or explicitly waived.
+
 ## Starting Assumption
 
 The user has an existing YouTube account and wants to add a faceless channel/project to it. If a specific guide is provided later, paste or upload it here and Hermes will adapt this workspace to match it step-by-step.
