@@ -356,6 +356,9 @@ All commands return JSON. Parse with `jq` or read directly. Key fields:
 
 ## Rules
 
+- **Never perform destructive actions (delete, trash, label as spam, unsubscribe) without explicit user approval.**
+- **When multiple OAuth profile tokens exist, always prompt the user to select the target profile before any Gmail/Calendar/Drive operation.**
+
 1. **Never send email, create/delete calendar events, delete Drive files, share files, or modify Docs/Sheets without confirming with the user first.** Show what will be done (recipients, file IDs, content, share role) and ask for approval. For `drive delete`, prefer the default trash (reversible) over `--permanent`.
 2. **Check auth before first use** — run `setup.py --check`. If it fails, guide the user through setup.
 3. **Use the Gmail search syntax reference** for complex queries — load it with `skill_view("google-workspace", file_path="references/gmail-search-syntax.md")`.

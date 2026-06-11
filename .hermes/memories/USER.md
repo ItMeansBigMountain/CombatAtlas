@@ -10,10 +10,8 @@ User wants project backups to live under /opt/data/HeRmEz/projects, specifically
 §
 User prefers laconic, skimmable Discord replies/morning reports: no tables; bold/italics + bullets; avoid wordy explanations; ask less, smoke-test.
 §
-For MusicAI, user expects persistent profiles/connections, meme fallback avatars, cached song/playlist analysis, and lyrics-first Watson NLU outputs.
-§
-User's OSRS username is Oyama; use OSRS Wiki only.
-§
-User wants step-by-step interviews to develop $3k+ digital offers from personal experience.
+User wants cron jobs refined and verified until perfectly working - this is a standing preference for system reliability.
 §
 Google: trapiistan=Hermes/YT; Affan+fareed320=RO; classicalechos=review; laflametoast=burner; AM report uses all.
+§
+User prefers to review a list of junk/spam emails before deletion; present the list for confirmation before performing any email deletions.

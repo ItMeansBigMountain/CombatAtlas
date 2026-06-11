@@ -42,6 +42,15 @@ Use this skill when a cron job must create and publish a new social video every 
 
 ## Current local commands
 
+---
+**User style preferences (embedded from session)**
+- Use concise bullet lists, no tables, short sentences.
+- Keep responses terse and informal.
+- Remember to embed these preferences in all future cron‑job communications.
+---
+
+## Current local commands
+
 Faceless fresh-topic upload:
 
 ```bash
@@ -69,6 +78,7 @@ python3 /opt/data/scripts/youtube_metrics_monitor.py --json
 - Future automation should add retention/watch-time if YouTube Analytics OAuth scopes are configured; Data API statistics alone cover views/likes/comments, not retention.
 - For the concrete cron conversion pattern, timing defaults, duplicate guard, and verification rules, see `references/cron-full-pipeline-and-metrics-loop.md`.
 - For the current creator-source expansion, see `references/creator-source-expansion-huberman-hamza-2026-06.md`: Huberman and Hamza are both useful source examples, but clips must be transformed with hook/context/captions/analysis and attribution.
+- For the script path fix used in the daily faceless YouTube cron job, see `references/script-path-fix.md`.
 
 ## Pitfalls
 

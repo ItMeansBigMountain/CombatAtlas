@@ -149,7 +149,7 @@ def upload(video: Path, title: str, description: str, tags: str, dry_run: bool) 
         '--title', title,
         '--description', description,
         '--tags', tags,
-        '--privacy', 'private',
+        '--privacy', 'public',
         '--project', PROJECT,
         '--log-jsonl', str(UPLOAD_LOG),
         '--delete-after-upload',
