@@ -9,7 +9,7 @@ User tightened the morning report format:
 - Market pulse should be a single directional read: **Bullish** or **Bearish**, one reason why, and at most one thing to watch. Do not present separate bull/bear arguments unless asked.
 - Search/social/trend/news bulletins should be: **word/phrase/headline** + one small sentence explaining why it is trending/newsworthy and what it means to the user.
 - Avoid velocity/spread/money/saturation scoring in the default report; only use deeper scoring if requested.
-- The report should lead with execution signal: local, calendar/inbox, market direction, compact pulses, operating next move, challenge tracking.
+- The report should lead with execution signal: local, calendar/inbox, market direction, compact pulses, operating next move, and a single daily challenge.
 
 Preferred compact shape:
 
@@ -40,9 +40,8 @@ Preferred compact shape:
 - **Capability** — {one durable skill/system to strengthen}.
 - **Next move** — {one highest-leverage action}.
 
-**14-Day Challenge — Day {X}/14**
-- **Status** — {tracked progress/streak}.
-- **Boxes** — Meditation / Gratitude / Exercise / Learning / Social.
-- **Tiny floor** — {one one-second-rule action}.
-- Reply: `done: meditation gratitude exercise learning social`
+**Daily Challenge**
+- **One rep** — {one measurable social/professional/physical/mental action for today}.
 ```
+
+Do not include the removed 14-Day Challenge section, habit boxes, or `done: meditation...` reply prompt.

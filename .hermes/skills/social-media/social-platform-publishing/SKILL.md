@@ -95,4 +95,5 @@ Requested scopes:
   - expected endpoint,
   - expected required scope,
   - valid file metadata for local uploads.
+- For YouTube OAuth/metadata-edit failures, see `references/youtube-oauth-metadata-pitfalls.md`: `deleted_client` requires switching to a live OAuth client, and upload-only scope may not be enough to update titles/descriptions.
 - If code changed, run syntax/lint checks or a smoke command that exercises the changed path.

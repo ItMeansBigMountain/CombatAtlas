@@ -16,6 +16,7 @@ import subprocess
 import textwrap
 import urllib.request
 from pathlib import Path
+from creator_links import support_block
 
 PROJECT = "faceless-youtube-channel"
 ROOT = Path(__file__).resolve().parents[1]
@@ -231,7 +232,7 @@ def render(work: Path, scenes: list[dict]) -> Path:
 
 
 def upload(video: Path, title: str, description: str) -> dict:
-    raw = sh(["python3", str(SHARED_UPLOADER), str(video), "--title", title, "--description", description, "--tags", "discipline,self improvement,AI,faceless shorts", "--privacy", "public", "--project", PROJECT, "--log-jsonl", str(UPLOAD_LOG), "--delete-after-upload"])
+    raw = sh(["python3", str(SHARED_UPLOADER), str(video), "--title", title, "--description", description, "--tags", "discipline,self improvement,motivation,shorts", "--privacy", "public", "--project", PROJECT, "--log-jsonl", str(UPLOAD_LOG), "--delete-after-upload"])
     return json.loads(raw)
 
 
@@ -253,7 +254,7 @@ def main() -> int:
     result = {"workspace": str(work), "video": str(video), "probe": probe, "uploaded": False, "elevenlabs_key_present": bool(os.getenv("ELEVENLABS_API_KEY") or os.getenv("XI_API_KEY") or os.getenv("ELEVEN_API_KEY"))}
     if args.upload:
         upload_title = title_case_short(args.topic, 64) + " #Shorts"
-        result["upload"] = upload(video, upload_title, "Public faceless Shorts upload with ElevenLabs voice and graphic/diagram scenes. Topic: " + args.topic + "\n\n#Shorts")
+        result["upload"] = upload(video, upload_title, "My read: " + args.topic + "\n\nBuild one proof today. Don't wait for motivation to make it pretty." + support_block() + "\n\n#Shorts")
         result["uploaded"] = True
         if not args.keep_workspace:
             shutil.rmtree(work, ignore_errors=True)

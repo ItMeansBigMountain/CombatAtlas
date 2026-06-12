@@ -25,6 +25,7 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 
 - `references/gmail-search-syntax.md` — Gmail search operators (is:unread, from:, newer_than:, etc.)
 - `references/gmail-inbox-audit-and-cleanup.md` — multi-profile Gmail Inbox audit/cleanup pattern, exact Inbox counting via `labelIds=['INBOX']`, approval-first cleanup workflow, and current user email triage policy.
+- `references/junk-cleanup-newsletter-deletion-boundary.md` — user-specific boundary: known junk/spam cleanup is pre-approved, but newsletter/source emails are deleted only after use/verified YouTube upload.
 - `references/gmail-inbox-audit-pattern.md` — read-only Gmail inbox/subscription audit workflow, real Inbox counting pattern, classification/reporting guidance, and destructive-action confirmation rules.
 - `references/calendar-service-account.md` — service-account setup for Calendar automation when the user shares calendars with the service account.
 - `references/credential-requirements.md` — required Google credential files and setup verification

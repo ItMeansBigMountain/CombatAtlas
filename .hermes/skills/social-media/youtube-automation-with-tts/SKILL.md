@@ -11,12 +11,21 @@ tags: ["youtube", "automation", "tts", "elevenlabs", "faceless-channel"]
 ## Overview
 Automated YouTube video creation pipeline with ElevenLabs voice-over integration for faceless channels and viral radar content. Ensures professional-quality narration on all videos.
 
+For newsletter-driven videos (TLDR, Daily Stoic, Kino Body, similar), follow `references/faceless-newsletter-quality-gate.md`: **one email = one video**, use the actual email content, require realistic ElevenLabs narration plus relevant AI-generated B-roll, and do not upload static text-slide placeholders.
+
+For YouTube OAuth, channel-token selection, or public metadata cleanup after an upload, follow `references/youtube-oauth-metadata-cleanup.md`.
+
+For auditing/rebuilding the user's faceless/newsletter pipeline after quality issues, follow `references/faceless-youtube-audit-lessons-2026-06.md`: key presence is not readiness; provider checks must be live where possible; renderer must actually generate realistic voice + relevant B-roll; otherwise stop at storyboard-only and keep upload crons paused.
+
 ## Triggers
 - Manual request: "Generate YouTube video about [topic]"
 - Batch processing: "Create 10 videos for my YouTube channel"
 - Social media upload: "Upload to YouTube/Instagram/TikTok"
 
 ## Configuration Requirements
+
+For the user's newsletter-driven faceless channel, also load `references/faceless-newsletter-quality-gate.md`. That reference captures the current bar: one real video per newsletter email, actual TLDR/Daily Stoic/Kino Body content, realistic voiceover, relevant AI B-roll, motivational pacing, and public metadata that does **not** disclose AI/faceless automation.
+
 ### ElevenLabs Setup
 ```yaml
 elevenlabs:
@@ -44,6 +53,7 @@ viral_radar_script:
 ## Execution Flow
 1. **Content Analysis**
    - Parse user request for topic/theme
+   - For newsletter/email-driven videos, follow `references/newsletter-email-to-youtube-pipeline.md` and `references/faceless-newsletter-quality-gate.md`: audit source emails, make **one video per email**, use the actual newsletter content, generate relevant B-roll/voiceover, upload only after the quality gate passes, then trash the source email only after YouTube returns a verified `video_id`.
    - For scheduled/cron runs, load `social-video-cron-growth-loop` and run the metrics monitor before choosing the next topic.
    - Identify appropriate B-roll terminology
    - Generate script based on video type
@@ -78,6 +88,8 @@ viral_radar_script:
    - Title/description optimization
    - Thumbnail generation
    - Cross-platform posting
+   - If editing existing YouTube metadata, first verify the OAuth token owns the target channel; `youtube.upload` alone is insufficient for metadata updates, and wrong-channel tokens return `403 forbidden`.
+   - If Google consent shows `deleted_client`, switch to a current OAuth client secret and regenerate the auth URL instead of retrying the stale URL.
 
 ## B-Roll Terminology Mapping
 - Motivational: "motivational B-roll", "cinematic stock footage"
@@ -90,6 +102,11 @@ viral_radar_script:
 - Voice-over validation
 - Content licensing compliance
 - Platform optimization
+- For the user's faceless newsletter channel, run the `faceless-newsletter-quality-gate` reference before upload: no static text-slide placeholders, no generic filler script, one email per video, relevant AI B-roll, realistic voiceover, and no public disclosure of AI/faceless automation in metadata.
+- YouTube metadata validation: strip emoji/control-ish Unicode from upload title/description if the API returns `invalidDescription`; keep richer source metadata locally.
+- Public metadata should reword the email idea in the user's voice and include the configured support URLs when available (Linktree, Buy Me a Coffee, Cash App, Venmo); affiliate links are added later only after the user approves the video quality.
+- For email/newsletter sources, verify upload with a returned YouTube `video_id` before trashing the Gmail message.
+- For the user's faceless newsletter channel, load `references/faceless-newsletter-quality-gate.md` before scripting/rendering/uploading. Key corrections: one email = one video; actual TLDR/Daily Stoic/Kino Body content drives the video; public metadata must hide AI/faceless/automation/source-email details; descriptions include the user's support URLs.
 
 ## Example Usage
 ```bash

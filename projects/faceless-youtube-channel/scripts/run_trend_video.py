@@ -17,11 +17,27 @@ import textwrap
 import shutil
 import urllib.request
 from pathlib import Path
+from creator_links import support_block
 
 PROJECT = 'faceless-youtube-channel'
 ROOT = Path(__file__).resolve().parents[1]
 SHARED_UPLOADER = Path('/opt/data/HeRmEz/projects/_ops/youtube-automation/scripts/upload_youtube.py')
 UPLOAD_LOG = ROOT / 'UPLOADS' / 'youtube_uploads.jsonl'
+
+
+def load_dotenv(path: Path = Path('/opt/data/.env')) -> None:
+    if not path.exists():
+        return
+    for line in path.read_text(errors='ignore').splitlines():
+        if '=' in line and not line.strip().startswith('#'):
+            k, v = line.split('=', 1)
+            os.environ.setdefault(k.strip(), v.strip().strip('\"').strip("'"))
+
+
+def quality_provider_ready() -> bool:
+    voice = bool(os.getenv('ELEVENLABS_API_KEY') or os.getenv('XI_API_KEY') or os.getenv('ELEVEN_API_KEY'))
+    video = any(os.getenv(k) for k in ['COMFY_CLOUD_API_KEY','FAL_KEY','FAL_API_KEY','REPLICATE_API_TOKEN','RUNWAY_API_KEY','PIKA_API_KEY','LUMA_API_KEY'])
+    return voice and video
 
 
 def sh(cmd: list[str], *, cwd: Path | None = None) -> str:
@@ -164,11 +180,14 @@ def upload(video: Path, title: str, description: str, tags: str, dry_run: bool) 
 
 
 def main() -> int:
+    load_dotenv()
     p = argparse.ArgumentParser()
     p.add_argument('--topic', default='')
     p.add_argument('--upload', action='store_true', help='Upload private to YouTube after rendering')
     p.add_argument('--dry-run-upload', action='store_true')
     args = p.parse_args()
+    if args.upload and not quality_provider_ready():
+        raise SystemExit('Refusing upload: quality gate requires ElevenLabs plus an AI video/B-roll provider. Static/flite placeholder uploads are disabled.')
 
     source = {'source': 'manual', 'title': args.topic, 'url': ''} if args.topic else fetch_hn_trend()
     topic = args.topic or source['title']
@@ -183,12 +202,14 @@ def main() -> int:
 
     title = 'Stop Letting Trends Steal Your Discipline'
     description = (
-        'Private faceless automation pilot. Built from a live trend signal and reframed as a discipline/self-improvement lesson.\n\n'
-        f"Source signal: {source.get('title','manual')}\n{source.get('url','')}"
+        f"{source.get('title','')}.\n\n"
+        "My read: the internet is loud, but the move is simple — pull one useful signal from the noise and turn it into visible proof today."
+        f"{support_block()}\n\n"
+        "#Shorts"
     )
     result = {'workspace': str(work), 'video': str(video), 'uploaded': False}
     if args.upload or args.dry_run_upload:
-        result['upload'] = upload(video, title, description, 'discipline,self improvement,faceless youtube,focus', args.dry_run_upload)
+        result['upload'] = upload(video, title, description, 'discipline,self improvement,motivation,focus', args.dry_run_upload)
         result['uploaded'] = not args.dry_run_upload
         if args.upload and not args.dry_run_upload:
             shutil.rmtree(work, ignore_errors=True)

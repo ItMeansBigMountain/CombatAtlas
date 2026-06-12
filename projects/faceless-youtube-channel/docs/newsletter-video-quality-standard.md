@@ -1,0 +1,47 @@
+# Newsletter Video Quality Standard
+
+This is the required bar for the faceless YouTube channel.
+
+## Non-negotiables
+
+- **One email = one video.** Do not combine TLDR, Daily Stoic, Kino Body, or other newsletters into a generic upload.
+- **Use the actual newsletter.** The subject, core points, and body excerpt must drive the hook, script, b-roll prompts, and metadata.
+- **No static text-slide placeholders.** If AI video/B-roll generation is unavailable, produce only a script/storyboard package and do not upload.
+- **Public metadata must hide the production method.** Titles/descriptions/tags must not say AI-generated, automation, faceless, ElevenLabs, pipeline, source email, source profile, or similar behind-the-scenes wording.
+- **Description style:** reword the email in the user's voice. Keep it natural, motivational, and opinionated. Include the configured public support links (Linktree, Buy Me a Coffee, Cash App, Venmo); affiliate links come later after video quality is approved.
+- **Relevant B-roll required.** Use AI video generation internally for shots that match the specific email topic, but do not disclose that in public metadata.
+- **Upload only after quality gate passes.** Then trash the source Gmail message only after YouTube returns a verified `video_id`.
+
+## Visual style target
+
+- Vertical 9:16 Shorts/Reels format.
+- Dark/high-contrast cinematic grade.
+- Fast but readable pacing: 1.5–3.5 second shots.
+- Kinetic captions: short phrases, not paragraphs.
+- B-roll examples:
+  - TLDR AI: servers, terminal screens, AI agents, policy hearing rooms, phone bots, payment rails, futuristic city/workflow shots.
+  - TLDR Dev/InfoSec: code, dashboards, security operations center, exploit visualizations, engineers shipping under pressure.
+  - Daily Stoic: lone runner at dawn, notebook, cold street walk, boxing/gym reps, ancient-statue-inspired imagery, disciplined solitude.
+  - Kino Body: cinematic gym, meal prep, morning sunlight, physique transformation, scale/tape measure, discipline lifestyle shots.
+
+## Required artifact package per email
+
+- `source_email.json` — profile, message id, sender, subject, date, excerpt.
+- `script.md` — hook, narration, captions, CTA.
+- `broll_prompts.json` — one AI video prompt per shot, with mood/camera/style.
+- `voiceover.mp3` — ElevenLabs output.
+- `final.mp4` — assembled video.
+- `result.json` — upload result, YouTube URL, source email trash verification.
+
+## Quality gate before upload
+
+A video must pass all checks:
+
+1. Actual source email content is clearly reflected.
+2. One email only.
+3. ElevenLabs audio present.
+4. AI-generated relevant B-roll present.
+5. Captions are punchy and readable.
+6. No generic discipline filler replacing the newsletter.
+7. Final MP4 exists, 9:16, plays with audio.
+8. YouTube upload returns `video_id` before Gmail source is trashed.

@@ -4,7 +4,11 @@ Use this reference when converting social-video cron jobs from simple upload scr
 
 ## Pattern learned
 
-Script-only cron (`no_agent=true`) is good for deterministic watchdogs, but it is the wrong shape when every run must make creative decisions. For content generation, update the cron job to `no_agent=false`, attach the relevant skills, enable at least `web`, `terminal`, and `file`, and keep the prompt self-contained.
+Script-only cron (`no_agent=true`) is good for deterministic watchdogs, but it is the wrong shape when every run must make creative decisions. For content generation, update the cron job to `no_agent=false`, attach the relevant skills, enable at least `web`, `terminal`, and `file`, and make the prompt self-contained.
+
+## Faceless/video quality pause rule
+
+If a video cron has produced low-quality/static/generic uploads, pause it immediately and keep it paused until one manually reviewed sample proves the full path works: realistic voice, relevant B-roll, clean public metadata, upload verification, and safe cleanup. Do not resume a daily social-video cron just because OAuth works or a renderer script exits successfully.
 
 The job prompt should require:
 
