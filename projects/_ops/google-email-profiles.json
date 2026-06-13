@@ -1,41 +1,62 @@
 {
-  "version": 1,
-  "notes": "Named Google/Gmail profiles for Hermes. Do not store passwords here. OAuth tokens should be stored separately per profile with chmod 600.",
-  "profiles": {
-    "hermes-agent": {
-      "email": "trapiistan@gmail.com",
-      "role": "Hermes-owned/on-behalf account",
-      "allowed_uses": ["gmail", "calendar", "drive", "docs", "sheets", "youtube_upload", "faceless_youtube", "viral_radar", "google_related_agent_work"],
-      "send_email_policy": "allowed_when_task_requires_it_or_user_approves",
-      "upload_policy": "primary_uploading_account"
-    },
-    "personal-main": {
-      "email": "Affan.fareed@gmail.com",
-      "role": "User personal main account",
-      "allowed_uses": ["gmail_read", "calendar_read", "drive_read_optional"],
-      "send_email_policy": "do_not_send_on_user_behalf_without_explicit_per_message_approval",
-      "upload_policy": "not_default"
-    },
+  "last_verified_utc": "2026-06-12T00:00:00Z",
+  "rules": {
+    "no_tables_in_discord_reports": true,
+    "youtube_upload_default": "public",
+    "affan_fareed_policy": "read_only",
+    "newsletter_source_profile": "personal-secondary",
+    "newsletter_source_email": "fareed320@gmail.com",
+    "calendar_profile": "trapiistan",
+    "calendar_email": "trapiistan@gmail.com",
+    "faceless_youtube_default_profile": "classicalechos",
+    "viral_clip_default_profile": "classicalechos"
+  },
+  "workspace_profiles": {
     "personal-secondary": {
       "email": "fareed320@gmail.com",
-      "role": "User secondary personal account",
-      "allowed_uses": ["gmail_read", "calendar_read", "drive_read_optional"],
-      "send_email_policy": "do_not_send_on_user_behalf_without_explicit_per_message_approval",
-      "upload_policy": "not_default"
+      "access": "full_workspace",
+      "token_path": "/opt/data/google_profiles/personal-secondary/google_token.json",
+      "uses": ["newsletter inbox", "email sorting", "delete processed newsletter emails", "source content"]
+    },
+    "trapiistan": {
+      "email": "trapiistan@gmail.com",
+      "access": "full_workspace",
+      "token_path": "/opt/data/google_profiles/trapiistan/google_token.json",
+      "uses": ["Hermes main workspace", "content calendar", "automation docs", "reports"]
     },
     "classicalechos": {
       "email": "classicalechos@gmail.com",
-      "role": "Classy/high-ticket content account",
-      "allowed_uses": ["content_upload", "gmail", "calendar", "drive", "docs", "sheets"],
-      "send_email_policy": "review_required",
-      "upload_policy": "niche_dependent_review_required"
+      "access": "full_workspace",
+      "token_path": "/opt/data/google_profiles/classicalechos/google_token.json",
+      "uses": ["content channel workspace", "review/archive sending"]
     },
     "burner": {
       "email": "laflametoast@gmail.com",
-      "role": "Burner/miscellaneous account",
-      "allowed_uses": ["free_trials", "misc_tasks", "low_stakes_signups"],
-      "send_email_policy": "avoid_sending_unless_explicitly_requested",
-      "upload_policy": "not_default"
+      "access": "full_workspace",
+      "token_path": "/opt/data/google_profiles/burner/google_token.json",
+      "uses": ["burner/disposable sending", "temporary automation"]
+    },
+    "personal-main": {
+      "email": "affan.fareed@gmail.com",
+      "access": "read_only_workspace",
+      "token_path": "/opt/data/google_profiles/personal-main/google_token.json",
+      "uses": ["read-only personal context only"]
+    }
+  },
+  "youtube_profiles": {
+    "trapiistan": {
+      "email": "trapiistan@gmail.com",
+      "channel_title": "Sosai Oyama",
+      "channel_id": "UCsxzQlusqwmMUdjMvKAJDfA",
+      "token_path": "/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json",
+      "scopes": ["youtube.upload", "youtube.force-ssl", "youtube.readonly", "yt-analytics.readonly"]
+    },
+    "classicalechos": {
+      "email": "classicalechos@gmail.com",
+      "channel_title": "Classical Echos",
+      "channel_id": "UCcIpxiU2CLEsBdHcc7_lcyA",
+      "token_path": "/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json",
+      "scopes": ["youtube.upload", "youtube.force-ssl", "youtube.readonly", "yt-analytics.readonly"]
     }
   }
 }

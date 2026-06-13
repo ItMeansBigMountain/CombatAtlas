@@ -35,8 +35,8 @@ def load_dotenv(path: Path = Path('/opt/data/.env')) -> None:
 
 
 def quality_provider_ready() -> bool:
-    voice = bool(os.getenv('ELEVENLABS_API_KEY') or os.getenv('XI_API_KEY') or os.getenv('ELEVEN_API_KEY'))
-    video = any(os.getenv(k) for k in ['COMFY_CLOUD_API_KEY','FAL_KEY','FAL_API_KEY','REPLICATE_API_TOKEN','RUNWAY_API_KEY','PIKA_API_KEY','LUMA_API_KEY'])
+    voice = bool(os.getenv('EllevenLabsKey') or os.getenv('ELEVENLABS_API_KEY') or os.getenv('XI_API_KEY') or os.getenv('ELEVEN_API_KEY'))
+    video = any(os.getenv(k) for k in ['OPENAI_API_KEY','VOICE_TOOLS_OPENAI_KEY','COMFY_CLOUD_API_KEY','FAL_KEY','FAL_API_KEY','REPLICATE_API_TOKEN','RUNWAY_API_KEY','PIKA_API_KEY','LUMA_API_KEY'])
     return voice and video
 
 

@@ -12,8 +12,13 @@ def load_dotenv(path=Path('/opt/data/.env')):
 
 def has_any(keys): return any(os.getenv(k) for k in keys)
 
+def elevenlabs_key():
+    # Prefer the user's current Hermes env alias. Older ELEVENLABS_API_KEY
+    # values may exist in /opt/data/.env with restricted scopes.
+    return os.getenv('EllevenLabsKey') or os.getenv('ELEVENLABS_API_KEY') or os.getenv('XI_API_KEY') or os.getenv('ELEVEN_API_KEY')
+
 def elevenlabs_check():
-    key=os.getenv('ELEVENLABS_API_KEY') or os.getenv('XI_API_KEY') or os.getenv('ELEVEN_API_KEY')
+    key=elevenlabs_key()
     if not key: return {'configured':False,'ok':False,'error':'missing key'}
     req=urllib.request.Request('https://api.elevenlabs.io/v1/user', headers={'xi-api-key':key})
     try:
@@ -29,7 +34,7 @@ def cmd(command):
 
 def main():
     load_dotenv()
-    provider_keys=['COMFY_CLOUD_API_KEY','FAL_KEY','FAL_API_KEY','REPLICATE_API_TOKEN','RUNWAY_API_KEY','PIKA_API_KEY','LUMA_API_KEY']
+    provider_keys=['OPENAI_API_KEY','VOICE_TOOLS_OPENAI_KEY','COMFY_CLOUD_API_KEY','FAL_KEY','FAL_API_KEY','REPLICATE_API_TOKEN','RUNWAY_API_KEY','PIKA_API_KEY','LUMA_API_KEY']
     report={
         'ffmpeg': bool(shutil.which('ffmpeg')),
         'ffprobe': bool(shutil.which('ffprobe')),
@@ -50,7 +55,7 @@ def main():
     blockers=[]
     if not report['ffmpeg'] or not report['ffprobe']: blockers.append('ffmpeg/ffprobe missing')
     if not report['elevenlabs']['ok']: blockers.append('ElevenLabs not usable: '+report['elevenlabs'].get('error','unknown'))
-    if not report['ai_video_provider_key_present'] and report['higgsfield_status']['exit_code'] != 0: blockers.append('No usable AI video/B-roll provider configured/authenticated')
+    if not report['ai_video_provider_key_present'] and report['higgsfield_status']['exit_code'] != 0: blockers.append('No usable AI video/B-roll provider configured/authenticated; preferred path is OPENAI_API_KEY with Sora Videos API access')
     if not report['buy_me_a_coffee_url_present']: blockers.append('BUY_ME_A_COFFEE_URL not set; descriptions will omit support link')
     report['quality_gate_ready'] = not any(b for b in blockers if not b.startswith('BUY_ME_A_COFFEE_URL'))
     report['blockers']=blockers

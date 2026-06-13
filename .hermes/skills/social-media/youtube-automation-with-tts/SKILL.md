@@ -11,9 +11,17 @@ tags: ["youtube", "automation", "tts", "elevenlabs", "faceless-channel"]
 ## Overview
 Automated YouTube video creation pipeline with ElevenLabs voice-over integration for faceless channels and viral radar content. Ensures professional-quality narration on all videos.
 
-For newsletter-driven videos (TLDR, Daily Stoic, Kino Body, similar), follow `references/faceless-newsletter-quality-gate.md`: **one email = one video**, use the actual email content, require realistic ElevenLabs narration plus relevant AI-generated B-roll, and do not upload static text-slide placeholders.
+For newsletter-driven videos (TLDR, Daily Stoic, Kino Body, Robinhood Snacks, similar), follow `references/faceless-newsletter-quality-gate.md`: **one email = one video**, use the actual email content, require realistic ElevenLabs narration plus relevant Pexels stock footage/images or Hugging Face visuals, and upload public by default unless the user explicitly requests private/unlisted review mode.
 
-For YouTube OAuth, channel-token selection, or public metadata cleanup after an upload, follow `references/youtube-oauth-metadata-cleanup.md`.
+For the user's Hermes-level email sorting agent, Gmail source labels/folders, the `EllevenLabsKey` env alias, and the dark monochrome particle-video visual direction from the user's screenshots, follow `references/email-sorting-agent-and-particle-video-style.md`.
+
+For the current faceless newsletter pipeline, use Pexels stock footage/images first and Hugging Face visuals as the AI fallback. Sora is no longer the default path because the user called out cost concerns; only revisit `references/openai-sora-video-gen-provider.md` if the user explicitly asks to use Sora or another text-to-video provider.
+
+For YouTube OAuth, channel-token selection, public/default upload behavior, and account-specific content rules, follow `references/youtube-oauth-metadata-cleanup.md` and `references/content-creation-account-and-upload-rules-2026-06.md`.
+
+For the user's current content-creation system, account mapping, upload visibility, calendar/cron contract, and faceless-vs-Viral-Clip-Radar boundaries, follow `references/content-creation-account-and-upload-rules-2026-06.md`: read newsletter emails from fareed320/personal-secondary, upload/manage calendar as trapiistan, keep affan.fareed@gmail.com read-only, use public YouTube uploads by default, and do not add stock footage to clipping videos.
+
+For OpenAI Sora as the preferred AI B-roll/video backend, follow `references/openai-sora-video-gen-provider.md`: ChatGPT UI access is not enough for cron automation; configure a Hermes `video_gen` provider (`openai-sora`) with `OPENAI_API_KEY` Videos/Sora API access, and treat Higgsfield/FAL/etc. as fallbacks.
 
 For auditing/rebuilding the user's faceless/newsletter pipeline after quality issues, follow `references/faceless-youtube-audit-lessons-2026-06.md`: key presence is not readiness; provider checks must be live where possible; renderer must actually generate realistic voice + relevant B-roll; otherwise stop at storyboard-only and keep upload crons paused.
 
@@ -26,16 +34,29 @@ For auditing/rebuilding the user's faceless/newsletter pipeline after quality is
 
 For the user's newsletter-driven faceless channel, also load `references/faceless-newsletter-quality-gate.md`. That reference captures the current bar: one real video per newsletter email, actual TLDR/Daily Stoic/Kino Body content, realistic voiceover, relevant AI B-roll, motivational pacing, and public metadata that does **not** disclose AI/faceless automation.
 
-### ElevenLabs Setup
+### Visual provider priority
+
+For this user's newsletter/faceless pipeline, use **Pexels first** for stock footage/images and **Hugging Face** as the AI visual fallback. Sora/text-to-video is not the default because of cost; only use it if explicitly requested for a special video.
+
+```yaml
+visuals:
+  primary: pexels
+  fallback: huggingface
+  avoid_by_default: sora
+```
+
+Keep Viral-Clip Radar separate: it clips creator long-form source videos into 9:16 captioned shorts and does **not** need stock footage by default.
 ```yaml
 elevenlabs:
-  api_key: "[YOUR_ELEVENLABS_API_KEY]"
+  api_key_env: "EllevenLabsKey"  # also accept ELEVENLABS_API_KEY, XI_API_KEY, ELEVEN_API_KEY
   voice: "Adam"  # Professional male voice
   speed: 1.0
   pitch: 0.0
   emphasis: 0.5
   model: "eleven_monolingual_v1"
 ```
+
+Always run a live ElevenLabs probe before upload; key presence alone is not readiness. For 401/402/auth/scope/voice issues, follow `references/elevenlabs-auth-and-free-tier-probe.md`: use the exact `xi-api-key` header, prefer `EllevenLabsKey` before legacy env aliases, probe `/v1/user` and `/v1/user/subscription`, and fall back to a verified free-tier voice/model before declaring the key broken.
 
 ## Script Templates
 ```yaml

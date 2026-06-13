@@ -15,7 +15,11 @@ from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 
-SCOPE = "https://www.googleapis.com/auth/youtube.upload"
+SCOPES = [
+    "https://www.googleapis.com/auth/youtube.upload",
+    "https://www.googleapis.com/auth/youtube.force-ssl",
+]
+SCOPE = " ".join(SCOPES)
 DEFAULT_CLIENT = "/opt/data/secrets/youtube-main/youtube_client_secret.json"
 DEFAULT_TOKEN = "/opt/data/secrets/youtube-main/youtube_upload_token.json"
 PENDING = "/opt/data/secrets/youtube-main/youtube_oauth_pending.json"
@@ -44,7 +48,7 @@ def client_metadata(path: pathlib.Path):
 
 def make_flow(client: pathlib.Path, redirect_uri: str | None = None):
     meta = client_metadata(client)
-    flow = Flow.from_client_secrets_file(str(client), scopes=[SCOPE])
+    flow = Flow.from_client_secrets_file(str(client), scopes=SCOPES)
     flow.redirect_uri = redirect_uri or meta["redirect_uri"] or "http://localhost:5000/"
     return flow
 
@@ -52,7 +56,7 @@ def make_flow(client: pathlib.Path, redirect_uri: str | None = None):
 def load_creds(token: pathlib.Path):
     if not token.exists():
         return None
-    return Credentials.from_authorized_user_file(str(token), scopes=[SCOPE])
+    return Credentials.from_authorized_user_file(str(token), scopes=SCOPES)
 
 
 def save_creds(creds, token: pathlib.Path):

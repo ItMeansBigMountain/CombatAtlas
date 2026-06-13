@@ -20,15 +20,15 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 26
+        "completed": 27
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-06-13T03:00:00+00:00",
-      "last_run_at": "2026-06-11T03:01:14.607878+00:00",
+      "next_run_at": "2026-06-14T03:00:00+00:00",
+      "last_run_at": "2026-06-12T03:00:23.193110+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -61,15 +61,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 24
+        "completed": 25
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-06-12T13:30:00+00:00",
-      "last_run_at": "2026-06-11T13:32:39.338091+00:00",
+      "next_run_at": "2026-06-13T13:30:00+00:00",
+      "last_run_at": "2026-06-12T13:31:48.501798+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -109,15 +109,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 29
+        "completed": 33
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-06-12T06:43:01.022149+00:00",
-      "last_run_at": "2026-06-12T00:43:01.022149+00:00",
+      "next_run_at": "2026-06-13T06:44:36.056279+00:00",
+      "last_run_at": "2026-06-13T00:44:36.056279+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -303,15 +303,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 5
+        "completed": 6
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-06-12T14:00:00+00:00",
-      "last_run_at": "2026-06-11T14:00:59.054794+00:00",
+      "next_run_at": "2026-06-13T14:00:00+00:00",
+      "last_run_at": "2026-06-12T14:00:34.689836+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -328,7 +328,148 @@
       ],
       "workdir": null,
       "profile": null
+    },
+    {
+      "id": "920d68fd715e",
+      "name": "Morning email sorting agent",
+      "prompt": "Run the Hermes email sorting agent before the morning operator report. It should sort known source newsletters (TLDR, Daily Stoic, Kino Body) into Hermes Gmail labels/folders and remove them from Inbox while preserving them for video generation. The wrapper stays silent when there is nothing to sort.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "email_sorting_agent_apply.sh",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 13 * * *",
+        "display": "15 13 * * *"
+      },
+      "schedule_display": "15 13 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 1
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-12T04:20:40.734347+00:00",
+      "next_run_at": "2026-06-13T13:15:00+00:00",
+      "last_run_at": "2026-06-12T13:15:45.657005+00:00",
+      "last_status": "error",
+      "last_error": "Script exited with code 1\nstderr:\nFile \"<string>\", line 2\n    [print(f\"- **{p[\\\"profile\\\"]}**: {p.get(\\\"match_count\\\",0)}\") for p in d.get(\"profiles\",[]) if p.get(\"match_count\",0)]\n                                                                                                                          ^\nSyntaxError: unexpected character after line continuation character",
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "workdir": null,
+      "profile": null
+    },
+    {
+      "id": "df35199a8b51",
+      "name": "Post-morning Agentic portfolio market scan",
+      "prompt": "Run the user's post-morning Agentic portfolio market scan for Robinhood Agentic account 433711041 / account ending 1041. This job runs after the Morning operator report. It is primarily research/reporting unless a separate active autonomous trading policy is clearly present in /opt/data/HeRmEz/projects/trading-journal/playbook/autonomous-policy.md AND current account/broker state is certain. Do not ask questions; final response is delivered to Discord.\n\nRequired workflow:\n1. Inspect live Robinhood account state using available Robinhood MCP tools if present: portfolio/buying power, equity positions, option positions if any, open equity orders, recent orders. If MCP tools are unavailable in this cron environment, state that clearly and continue with market/news research only.\n2. Inspect broad market: SPY, QQQ, IWM quotes and recent historicals when available. Summarize bullish/bearish/neutral in one line.\n3. Scan candidates beyond stale user watchlists. Use: recent source/newsletter signals from routed Gmail labels when accessible (TLDR, Robinhood Snacks, Daily Stoic/Kino Body only if relevant to markets/health stocks), web/news search, Robinhood popular/daily movers if tools are available, and live quotes/historicals/tradability.\n4. Produce technical analysis for top candidates: price, daily move, trend vs recent moving averages if available, volume/ATR if available, support/resistance/invalidation, setup quality.\n5. Produce lightweight fundamental/catalyst analysis: what changed, earnings/news/sector narrative, why it matters, and what would disconfirm it.\n6. Update the local trading journal under /opt/data/HeRmEz/projects/trading-journal/YYYY-MM-DD/post-morning-market-scan.md with the account state, candidate list, best setup(s), and any tool failures/upgrades needed.\n7. Include a small 'Tool / system upgrades' section: what data source, scanner, script, or MCP/tool improvement would make future scans better. Do not modify tools unless it is a harmless local journal/runbook update.\n8. If no clean setup exists, say no trade; do not force a trade.\n9. Never trade options unless explicitly authorized. Never trade non-Agentic accounts. Stop all trading consideration if account value is below $10, broker state is uncertain, or risk cannot be calculated.\n10. If an autonomous policy is active and a trade is placed within policy, use review before placement when possible, journal the preview and execution, and report the exact order/result. Otherwise, do NOT place orders; only provide setups.\n\nOutput style: concise Discord bullets, no Markdown tables. Sections: Decision, Agentic Portfolio, Market Read, Top Candidates, Best Setup, Risk / Invalidation, Tool Upgrades, Journal.",
+      "skills": [
+        "robinhood-trading-operator",
+        "google-workspace"
+      ],
+      "skill": "robinhood-trading-operator",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "50 13 * * 1-5",
+        "display": "50 13 * * 1-5"
+      },
+      "schedule_display": "50 13 * * 1-5",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-12T15:48:08.357771+00:00",
+      "next_run_at": "2026-06-15T13:50:00+00:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null,
+      "profile": null
+    },
+    {
+      "id": "f02334d43494",
+      "name": "Daily Content Backlog Processor",
+      "prompt": "Process all unread emails in the fareed320 Gmail profile, generate a faceless YouTube video for each using the updated newsletter pipeline that pulls stock footage from Pexels, uploads to YouTube, adds a Calendar event to https://www.google.com/calendar/calendar/embedded?src=trapi-3226%40group.calendar.google.com for scheduled release, then deletes the email and local video files to maintain a clean backlog. Use google-workspace skill for Calendar integration and Gmail access. Ensure the job respects the user\u2019s preference for daily batch processing and never exceeds the $2 per-transaction risk limit. Log success/failure in /opt/data/HeRmEz/projects/CONTENT_STRATEGY.md.",
+      "skills": [
+        "google-workspace",
+        "process_newsletters_for_videos"
+      ],
+      "skill": "google-workspace",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * *",
+        "display": "0 9 * * *"
+      },
+      "schedule_display": "0 9 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-12T17:32:19.594106+00:00",
+      "next_run_at": "2026-06-13T09:00:00+00:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "web",
+        "terminal",
+        "file"
+      ],
+      "workdir": null,
+      "profile": null
     }
   ],
-  "updated_at": "2026-06-12T03:00:01.180927+00:00"
+  "updated_at": "2026-06-13T03:00:35.266592+00:00"
 }

@@ -25,6 +25,7 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 
 - `references/gmail-search-syntax.md` — Gmail search operators (is:unread, from:, newer_than:, etc.)
 - `references/gmail-inbox-audit-and-cleanup.md` — multi-profile Gmail Inbox audit/cleanup pattern, exact Inbox counting via `labelIds=['INBOX']`, approval-first cleanup workflow, and current user email triage policy.
+- `references/gmail-email-sorting-agent-rules.md` — Hermes-level deterministic Gmail sorting rules and labels, including the Robinhood account-vs-Robinhood Snacks newsletter split.
 - `references/junk-cleanup-newsletter-deletion-boundary.md` — user-specific boundary: known junk/spam cleanup is pre-approved, but newsletter/source emails are deleted only after use/verified YouTube upload.
 - `references/gmail-inbox-audit-pattern.md` — read-only Gmail inbox/subscription audit workflow, real Inbox counting pattern, classification/reporting guidance, and destructive-action confirmation rules.
 - `references/calendar-service-account.md` — service-account setup for Calendar automation when the user shares calendars with the service account.
@@ -36,6 +37,7 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 - `references/drive-cache-memory-extension.md` — Google Drive as a durable Hermes cache / memory-extension pattern, including OAuth vs service-account pitfalls
 - `references/multi-profile-google-oauth.md` — Profile-scoped OAuth for managing multiple Gmail/Workspace identities with separate tokens, PKCE pending state, action policies, browser/redirect pitfalls, and smoke tests.
 - `references/google-oauth-scope-reauth-matrix.md` — Decide whether enabling additional Google APIs requires OAuth reauth; includes Workspace baseline scopes, YouTube upload/private-data scope guidance, API-key distinction, and verification probes.
+- `references/user-google-account-scope-map-2026-06.md` — User-specific account aliases, full/read-only scope policy, mass OAuth refresh workflow, and Discord bullet-format reporting preference for Google account status.
 
 ## Scripts
 
@@ -56,7 +58,9 @@ When the user asks to find, identify, or organize Google credentials across the 
 
 When the user wants credentials to survive VPS/container restarts without being backed up by Git, use `references/durable-google-secret-storage.md`: copy credentials into a persistent non-repo secrets tree, expose only stable path references through `.env`, lock modes to `700`/`600`, update `.gitignore`, remove any already-tracked credential files with `git rm --cached --force`, verify with `git ls-files` and `git check-ignore --no-index`, and remind the user that untracking does not erase old Git history if secrets were previously pushed.
 
-When the user wants Hermes to manage multiple Gmail/Google Workspace accounts as separate internet identities or project lanes, use `references/multiple-google-account-profiles.md`. Keep each account isolated with a named credential directory and a per-command `HERMES_HOME` override; maintain a non-secret profile inventory under the user's workspace; never mix tokens between identities.
+When the user wants Hermes to manage multiple Gmail/Google Workspace accounts as separate internet identities or project lanes, use `references/multiple-google-account-profiles.md
+  - path: references/user-google-account-scope-map-2026-06.md
+    description: User-specific Google account aliases, scope policy, and content automation account split.`. Keep each account isolated with a named credential directory and a per-command `HERMES_HOME` override; maintain a non-secret profile inventory under the user's workspace; never mix tokens between identities.
 
 When the user asks for enabled APIs, permissions, or a table of Google projects, use `references/google-project-api-permissions-probe.md`. Actively run safe read-only probes instead of guessing from credential filenames: Service Usage for enabled APIs, Cloud Resource Manager/IAM policy where available, and harmless product endpoint probes for Calendar, Drive, Gmail, Sheets, Docs, and YouTube. If the user explicitly asks for a table, provide a compact Markdown table even if the user's normal Discord preference is bullet-style replies.
 

@@ -15,6 +15,10 @@ metadata:
 
 Hermes Agent has a built-in MCP client that connects to MCP servers at startup, discovers their tools, and makes them available as first-class tools the agent can call directly. No bridge CLI needed -- tools from MCP servers appear alongside built-in tools like `terminal`, `read_file`, etc.
 
+## References
+
+- `references/remote-oauth-mcp.md` — OAuth/PKCE setup for remote HTTP MCP servers, headless callback handling, timeout workaround, and Robinhood Trading MCP notes.
+
 ## When to Use
 
 Use this whenever you want to:
@@ -23,6 +27,9 @@ Use this whenever you want to:
 - Run local stdio-based MCP servers (npx, uvx, or any command)
 - Connect to remote HTTP/StreamableHTTP MCP servers
 - Have MCP tools auto-discovered and available in every conversation
+
+User/project-specific references:
+- `references/robinhood-trading-mcp.md` — Robinhood Trading MCP endpoint, expected 401-before-auth behavior, supported-client first-auth flow, and read/analyze-first trading safety policy.
 
 For ad-hoc, one-off MCP tool calls from the terminal without configuring anything, see the `mcporter` skill instead.
 
@@ -202,7 +209,27 @@ If an MCP tool call fails, any credential-like patterns in the error message are
 - Bearer tokens
 - Generic `token=`, `key=`, `API_KEY=`, `password=`, `secret=` patterns
 
+## OAuth remote MCPs
+
+For remote HTTP MCP servers that require OAuth, prefer the CLI setup flow instead of manually adding only a URL:
+
+```bash
+hermes mcp add <name> --url <endpoint> --auth oauth
+hermes mcp login <name>
+hermes mcp test <name>
+```
+
+In headless/Discord/SSH contexts, the OAuth flow prints a browser URL and waits for a callback. The user may need to open the URL locally, authorize, then paste the final `http://127.0.0.1:<port>/callback?code=...&state=...` URL back into the waiting process. See `references/remote-oauth-mcp-robinhood.md` for the Robinhood Trading MCP pattern and trading safety boundary.
+
+## References
+
+- `references/remote-mcp-oauth.md` — remote HTTP MCP OAuth/PKCE setup, headless callback handling, stale-code pitfalls, and long-timeout login probe pattern for providers like Robinhood Agentic Trading.
+
 ## Troubleshooting
+
+### Remote HTTP OAuth in headless/gateway sessions
+
+For OAuth-based remote MCP servers, configure `auth: oauth` and run `hermes mcp login <name>`. In headless or Discord sessions, the provider will redirect the user's browser to a broken `127.0.0.1:<port>/callback` page; this is expected. Have the user copy the final callback URL and verify it contains `code=...` plus the exact current `state=...` before submitting it to the waiting PTY process. OAuth callbacks from older timed-out attempts are unusable because they are bound to that attempt's PKCE verifier, port, and state. If the CLI's default probe timeout is too short for user-in-the-loop auth, use the long-timeout probe in `references/remote-mcp-oauth.md`.
 
 ### "MCP SDK not available -- skipping MCP tool discovery"
 

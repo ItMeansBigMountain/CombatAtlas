@@ -10,8 +10,8 @@ No uploads unless the output passes the newsletter video quality standard:
 - description sounds like Affan's voice, not a bot disclosure
 - include all support links when configured: Linktree, Buy Me a Coffee, Cash App, Venmo
 - no affiliate links until Affan likes the videos
-- ElevenLabs voiceover required
-- relevant AI-generated video/B-roll required
+- ElevenLabs voiceover required; accepted env names are `ELEVENLABS_API_KEY`, `XI_API_KEY`, `ELEVEN_API_KEY`, or the user's current `EllevenLabsKey`.
+- relevant AI-generated video/B-roll required; preferred provider is Hermes `video_generate` with `video_gen.provider: openai-sora` backed by `OPENAI_API_KEY` with Sora Videos API access. Higgsfield/FAL/etc. are fallback paths only.
 
 ## Commands
 
@@ -38,9 +38,9 @@ The full pipeline refuses to upload if ElevenLabs or an AI video/B-roll provider
 
 ## Current blockers from preflight
 
-- ElevenLabs configured but not usable right now: API returned auth/payment errors during live checks.
-- No AI video provider key detected: `COMFY_CLOUD_API_KEY`, `FAL_KEY`, `FAL_API_KEY`, `REPLICATE_API_TOKEN`, `RUNWAY_API_KEY`, `PIKA_API_KEY`, `LUMA_API_KEY` all absent.
-- Higgsfield CLI exists but is not authenticated: `/opt/data/.local/bin/higgsfield account status` returns `Not authenticated`.
+- ElevenLabs must pass live preflight. The current user-provided env key name is `EllevenLabsKey`.
+- No preferred AI video provider key detected until `OPENAI_API_KEY` is set with Sora Videos API access. Fallback providers are `COMFY_CLOUD_API_KEY`, `FAL_KEY`, `FAL_API_KEY`, `REPLICATE_API_TOKEN`, `RUNWAY_API_KEY`, `PIKA_API_KEY`, `LUMA_API_KEY`.
+- Higgsfield is no longer the primary path; ignore it unless OpenAI/Sora is unavailable and the user explicitly wants that fallback.
 - Support URLs are configured in `/opt/data/.env`: Linktree, Buy Me a Coffee, Cash App, Venmo.
 - Existing bad upload descriptions need YouTube reauth with broader `youtube` scope; upload-only token cannot update metadata.
 

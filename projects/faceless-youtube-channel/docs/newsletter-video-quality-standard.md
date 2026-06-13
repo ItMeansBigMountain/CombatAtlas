@@ -18,6 +18,8 @@ This is the required bar for the faceless YouTube channel.
 - Dark/high-contrast cinematic grade.
 - Fast but readable pacing: 1.5–3.5 second shots.
 - Kinetic captions: short phrases, not paragraphs.
+- Snapshot-inspired style: black background, bright white particle/digital-sand forms, lone figure/tunnel/silhouette imagery, bold white top hook, small centered emotional caption, intense masculine/motivational tone.
+- Prompt texture words: monochrome, high contrast, particle storm, light rain, digital sand, glowing points, void, tunnel, lone warrior silhouette, transformation, emergence, disciplined solitude.
 - B-roll examples:
   - TLDR AI: servers, terminal screens, AI agents, policy hearing rooms, phone bots, payment rails, futuristic city/workflow shots.
   - TLDR Dev/InfoSec: code, dashboards, security operations center, exploit visualizations, engineers shipping under pressure.

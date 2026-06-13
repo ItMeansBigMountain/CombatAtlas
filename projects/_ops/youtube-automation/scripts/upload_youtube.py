@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Upload an MP4 to YouTube using stored OAuth token. Private-first by default."""
+"""Upload an MP4 to YouTube using stored OAuth token. Defaults to public for approved automation lanes."""
 from __future__ import annotations
 import argparse, json, mimetypes, os, pathlib, datetime, shutil
 from google.oauth2.credentials import Credentials
@@ -24,7 +24,7 @@ def main():
     ap.add_argument('--title', required=True)
     ap.add_argument('--description', default='')
     ap.add_argument('--tags', default='', help='comma-separated')
-    ap.add_argument('--privacy', choices=['private','unlisted','public'], default='private')
+    ap.add_argument('--privacy', choices=['private','unlisted','public'], default='public')
     ap.add_argument('--publish-at', default='', help='Optional RFC3339/ISO UTC timestamp for scheduled public release. YouTube expects privacyStatus=private with publishAt.')
     ap.add_argument('--category-id', default='22')
     ap.add_argument('--token', default=os.getenv('YOUTUBE_UPLOAD_TOKEN') or DEFAULT_TOKEN)

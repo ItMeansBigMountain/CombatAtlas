@@ -70,9 +70,12 @@ gmail.users().messages().trash(userId="me", id=message_id).execute()
 
 Current user preference for email triage:
 
-- Priority: billing/charges/receipts, Chase, Apple receipts/Card, cloud services, AI APIs, Robinhood, Landing, Ticketmaster ticket/venue info, myQ/Chamberlain garage alerts, GitGuardian/security, official/vehicle notices.
+- Priority: billing/charges/receipts, Chase, Apple receipts/Card, cloud services, AI APIs, Robinhood account/transaction/brokerage/security mail, Landing, Ticketmaster ticket/venue info, myQ/Chamberlain garage alerts, GitGuardian/security, official/vehicle notices.
+- Priority: billing/charges/receipts, Chase, Apple receipts/Card, cloud services, AI APIs, Robinhood account/transaction mail, Landing, Ticketmaster ticket/venue info, myQ/Chamberlain garage alerts, GitGuardian/security, official/vehicle notices.
 - TLDR: source only from `fareed320@gmail.com`; TLDR on other accounts is duplicate cleanup.
-- Interesting/source then cleanup: Kino Body, Daily Stoic.
+- Source/newsletter: Kino Body, Daily Stoic, and Robinhood Snacks (`hello@snacks.robinhood.com`) are content sources, not account/finance mail.
+- Priority/finance: Robinhood account/transaction emails go to finance/review; do not group Robinhood Snacks with these.
+- Junk: FoundersCard, Yieldi, Crunch, Higgsfield, Fundrise, Kling AI, Instagram notifications, Lumen marketing, Chess.com nags, YEEZY, City Experiences, LELO, GNC, generic consumer sales/promotional emails.
 - Junk: FoundersCard, Yieldi, Crunch, Higgsfield, Fundrise, Kling AI, Instagram notifications, Lumen marketing, Chess.com nags, YEEZY, City Experiences, LELO, GNC, generic consumer sales/promotional emails.
 - Unity is fine/keep.
 - Always confirm before destructive email actions unless the user has explicitly approved that sender/category in the current cleanup request.

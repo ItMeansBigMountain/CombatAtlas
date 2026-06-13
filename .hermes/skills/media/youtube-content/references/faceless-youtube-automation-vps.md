@@ -18,7 +18,7 @@ For automated YouTube uploads, service accounts are usually not the right creden
 Recommended helper scripts:
 
 - `scripts/youtube_oauth.py` — generate auth URL, exchange returned code/redirect URL, and check token validity.
-- `scripts/upload_youtube.py` — upload MP4s with privacy defaulting to `private`, auto-refreshing the stored token.
+- `scripts/upload_youtube.py` — upload MP4s with privacy defaulting to `public` for approved automation lanes; private/unlisted only when explicitly requested or required by YouTube/API compliance.
 
 Recommended token location pattern:
 

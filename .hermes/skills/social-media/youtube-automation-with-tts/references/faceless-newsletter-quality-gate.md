@@ -51,6 +51,8 @@ A final video may be uploaded only if all are true:
 2. The actual email content is visible in the hook, narration, captions, and b-roll prompts.
 3. Voiceover is realistic ElevenLabs or equivalent quality.
 4. B-roll is relevant to the email's topic and not a static text placeholder.
-5. Metadata hides production details and includes the user's support links.
-6. The final MP4 is 9:16, plays with audio, and passes a quick local probe.
-7. Source Gmail message is trashed only after YouTube returns a verified `video_id`.
+5. **Classical Echos faceless newsletter videos should be about 2 minutes long** (target ~120 seconds, minimum 110 seconds) unless the user explicitly requests a shorter Short.
+6. **Use multiple relevant stock clips** matched to script beats; do not upload a one-clip video or black/static fallback. A normal 2-minute render should use at least 6 distinct relevant Pexels/Hugging Face visual segments.
+7. Metadata hides production details and includes the user's support links.
+8. The final MP4 is 9:16, plays with audio, and passes a quick local probe.
+9. Source Gmail message is trashed only after YouTube returns a verified `video_id`.

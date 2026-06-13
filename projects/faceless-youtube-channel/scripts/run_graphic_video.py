@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Faceless channel: better voice + real graphic scenes + public Shorts upload + cleanup.
 
-Uses ElevenLabs when ELEVENLABS_API_KEY is available in env or /opt/data/.env.
+Uses ElevenLabs when ELEVENLABS_API_KEY, XI_API_KEY, ELEVEN_API_KEY, or
+EllevenLabsKey is available in env or /opt/data/.env.
 Renders vertical Shorts-style kinetic scenes with diagram/B-roll style graphics.
 """
 from __future__ import annotations
@@ -22,7 +23,7 @@ PROJECT = "faceless-youtube-channel"
 ROOT = Path(__file__).resolve().parents[1]
 SHARED_UPLOADER = Path("/opt/data/HeRmEz/projects/_ops/youtube-automation/scripts/upload_youtube.py")
 UPLOAD_LOG = ROOT / "UPLOADS" / "youtube_uploads.jsonl"
-DEFAULT_VOICE = os.getenv("ELEVENLABS_VOICE_ID") or "21m00Tcm4TlvDq8ikWAM"  # Rachel
+DEFAULT_VOICE = os.getenv("ELEVENLABS_VOICE_ID") or "CwhRBWXzGAHq8TQ4Fs17"  # Roger - free-tier friendly
 
 
 def load_dotenv(path: Path = Path("/opt/data/.env")) -> None:
@@ -43,6 +44,12 @@ def sh(cmd: list[str]) -> str:
     if proc.returncode:
         raise RuntimeError(f"Command failed: {' '.join(cmd)}\nSTDOUT:\n{proc.stdout}\nSTDERR:\n{proc.stderr}")
     return proc.stdout.strip()
+
+
+def elevenlabs_key() -> str | None:
+    # Prefer the user's current Hermes env alias. Older ELEVENLABS_API_KEY
+    # values may exist in /opt/data/.env with restricted scopes.
+    return os.getenv("EllevenLabsKey") or os.getenv("ELEVENLABS_API_KEY") or os.getenv("XI_API_KEY") or os.getenv("ELEVEN_API_KEY")
 
 
 def slugify(text: str) -> str:
@@ -120,28 +127,32 @@ def build_scenes(topic: str) -> list[dict]:
 
 
 def elevenlabs_tts(text: str, out: Path) -> bool:
-    key = os.getenv("ELEVENLABS_API_KEY") or os.getenv("XI_API_KEY") or os.getenv("ELEVEN_API_KEY")
+    key = elevenlabs_key()
     if not key:
         return False
-    url = f"https://api.elevenlabs.io/v1/text-to-speech/{DEFAULT_VOICE}"
-    payload = json.dumps({
-        "text": text,
-        "model_id": "eleven_multilingual_v2",
-        "voice_settings": {"stability": 0.42, "similarity_boost": 0.75, "style": 0.35, "use_speaker_boost": True},
-    }).encode()
-    req = urllib.request.Request(
-        url,
-        data=payload,
-        headers={"xi-api-key": key, "Content-Type": "application/json", "Accept": "audio/mpeg"},
-        method="POST",
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            out.write_bytes(resp.read())
-        return out.exists() and out.stat().st_size > 1000
-    except Exception as exc:
-        (out.parent / "elevenlabs_error.txt").write_text(str(exc), encoding="utf-8")
-        return False
+    errors = []
+    for voice_id in [DEFAULT_VOICE, "CwhRBWXzGAHq8TQ4Fs17"]:
+        url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
+        payload = json.dumps({
+            "text": text,
+            "model_id": "eleven_flash_v2_5",
+            "voice_settings": {"stability": 0.42, "similarity_boost": 0.75, "style": 0.2, "use_speaker_boost": True},
+        }).encode()
+        req = urllib.request.Request(
+            url,
+            data=payload,
+            headers={"xi-api-key": key, "Content-Type": "application/json", "Accept": "audio/mpeg"},
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                out.write_bytes(resp.read())
+            return out.exists() and out.stat().st_size > 1000
+        except Exception as exc:
+            errors.append(f"{voice_id}: {exc}")
+            continue
+    (out.parent / "elevenlabs_error.txt").write_text("\n".join(errors), encoding="utf-8")
+    return False
 
 
 def fallback_tts(text: str, out: Path) -> None:
@@ -251,7 +262,7 @@ def main() -> int:
     (work / "script.json").write_text(json.dumps({"topic": args.topic, "scenes": scenes}, indent=2), encoding="utf-8")
     video = render(work, scenes)
     probe = json.loads(sh(["ffprobe", "-v", "error", "-show_entries", "stream=width,height", "-show_entries", "format=duration,size", "-of", "json", str(video)]))
-    result = {"workspace": str(work), "video": str(video), "probe": probe, "uploaded": False, "elevenlabs_key_present": bool(os.getenv("ELEVENLABS_API_KEY") or os.getenv("XI_API_KEY") or os.getenv("ELEVEN_API_KEY"))}
+    result = {"workspace": str(work), "video": str(video), "probe": probe, "uploaded": False, "elevenlabs_key_present": bool(elevenlabs_key())}
     if args.upload:
         upload_title = title_case_short(args.topic, 64) + " #Shorts"
         result["upload"] = upload(video, upload_title, "My read: " + args.topic + "\n\nBuild one proof today. Don't wait for motivation to make it pretty." + support_block() + "\n\n#Shorts")

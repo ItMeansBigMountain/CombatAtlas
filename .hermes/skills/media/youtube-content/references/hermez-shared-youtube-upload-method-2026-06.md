@@ -41,7 +41,7 @@ OAUTHLIB_INSECURE_TRANSPORT=1 python3 youtube_oauth.py exchange 'FULL_LOCALHOST_
 ```
 
 7. Verify with `youtube_oauth.py check`.
-8. Upload private-first with `upload_youtube.py`.
+8. Upload public by default with `upload_youtube.py` for approved automation lanes; use private/unlisted only when the user explicitly requests review mode or when YouTube/API compliance forces it.
 
 ## Headless PKCE pitfall
 
@@ -57,15 +57,15 @@ Restore `flow.code_verifier` before `fetch_token()`. If the exchange fails with 
 
 ## Visibility rule
 
-For the user's YouTube automation projects, upload as `private` by default unless they explicitly approve `unlisted` or `public`.
+Current user preference: **do not upload YouTube automation videos as private by default.** For the user's approved automation lanes, especially faceless newsletter videos and Viral Clip Radar, upload as `public` unless the user explicitly asks for `private`, `unlisted`, or a scheduled YouTube `publishAt` release.
 
-As of 2026-06-04, the user explicitly approved public uploads for the Shorts automation lanes. Daily faceless Shorts and Viral Clip Radar cron uploads should use `--privacy public` and still keep cleanup gated on a returned YouTube video ID. Scheduled backlog releases still use YouTube's `publishAt` mechanism, which requires `privacyStatus=private` until the scheduled public release time.
+Daily faceless Shorts and Viral Clip Radar cron uploads should use `--privacy public` and still keep cleanup gated on a returned YouTube video ID.
 
-Important user preference: **do not wait for per-upload approval when the target privacy is `private`**. Produce the artifact, upload it privately, log the result, and report the video ID/URL. The user will review in YouTube Studio and manually switch winners to public.
+Do not wait for per-upload approval for approved automation lanes. Produce the artifact, upload it publicly, log the result, and report the video ID/URL.
 
 ## Scheduled backlog release rule
 
-When the user explicitly asks to build a backlog that releases over time, the shared uploader supports `--publish-at RFC3339_UTC`. It sends YouTube `status.privacyStatus=private` plus `status.publishAt=<UTC timestamp>`, so videos remain private until YouTube's scheduled release time. Log `publish_at` in each lane's `UPLOADS/youtube_uploads.jsonl`, delete generated media only after the returned video ID, and preserve a calendar under `/opt/data/HeRmEz/projects/_ops/social-growth/backlog/`.
+Current user preference is **not** to upload backlog videos as private. Prefer immediate `--privacy public` uploads for approved backlog items. If the user explicitly asks for YouTube scheduled release via `publishAt`, note that YouTube's API requires `status.privacyStatus=private` with `publishAt` until release time; otherwise avoid `publishAt` and use Calendar/cron scheduling to upload publicly at the target time. Log each upload in the lane's `UPLOADS/youtube_uploads.jsonl`, delete generated media only after the returned video ID, and update Google Calendar with release/upload timing.
 
 ## Shorts classification checklist
 
@@ -104,10 +104,10 @@ The workspace portfolio doc is:
 
 Current lanes:
 
-- `faceless-youtube-channel`: original faceless trend → script → flite TTS → FFmpeg kinetic video → private upload; script lives at `scripts/run_trend_video.py`.
-- `viral-clip-radar`: transformative clipping/radar lane; private-first pilot uploads are allowed without waiting for user approval, but real clips still need added commentary/context/captions/analysis rather than raw reuploads. Viral Radar defaults to YouTube Shorts: render/verify full-frame 1080x1920 9:16 square-pixel MP4s and add Shorts metadata; use an explicit longform opt-out only when requested. User specifically wants Andrew Huberman / Huberman Lab watched for new clip candidates because the content is personally useful.
-- `youtube-high-ticket-leverage`: personal story/authority/future offer channel; can use shared headless text-video renderer for private origin drafts.
-- `tweet_video_generator`: active repair lane, not just archive. Route final `output.mp4` through the canonical shared private uploader; remove hardcoded Twitter/X credentials in favor of environment variables.
+- `faceless-youtube-channel`: newsletter email → script → ElevenLabs voice → Pexels/Hugging Face visuals → public YouTube/social upload; do not default to private.
+- `viral-clip-radar`: transformative creator-video clipping/radar lane; scout long-form creators such as Andrew Huberman, clip the source video, render full-frame 1080x1920 9:16 square-pixel MP4s with transcription/captions, and upload public unless private/unlisted review is explicitly requested. Do **not** add stock footage by default; this lane clips source videos.
+- `youtube-high-ticket-leverage`: personal story/authority/future offer channel; can use shared headless text-video renderer for origin drafts.
+- `tweet_video_generator`: active repair lane, not just archive. Route final `output.mp4` through the canonical shared public uploader unless a private/unlisted review mode is explicitly requested; remove hardcoded Twitter/X credentials in favor of environment variables.
 
 ## Canonical pilot upload evidence from the setup session
 

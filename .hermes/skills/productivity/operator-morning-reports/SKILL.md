@@ -33,11 +33,12 @@ This is not a generic greeting. The user explicitly wants a **report** that help
 - Known junk/spam cleanup is approved for recurring operation without per-item review. For newsletter/source emails, summarize/use them first and delete only after the requested YouTube video upload is verified. For ambiguous or important Google Workspace actions (Gmail non-junk, Calendar, Drive), still ask before destructive changes.
 - Include **game-changing AI + coding news** every morning, but keep it minimalistic and Discord-readable: model releases, developer tools, agent frameworks, coding platforms, major product launches, policy/platform shifts, and practical opportunities.
 - Include **social conversation pulse** every morning: top topics being discussed across major social platforms/communities when verifiable, with source/context notes and a signal/noise read. Present as simplified bullets, not Markdown tables or paragraphs.
-- Do not use a portfolio-tracking section unless the user re-adds it.
+- Do not use a portfolio-tracking section inside the morning report itself unless the user re-adds it. The user now wants a **separate post-morning Agentic portfolio market scan** after the morning report, covering Robinhood Agentic account updates, market scan, technical/fundamental analysis, and tool/system upgrades. Keep the morning report concise; let the separate scan do trading depth.
 - Instead of portfolio, report whether the day looks **bullish or bearish** in one compact line and the primary reason why. Do not present separate bull-case/bear-case arguments unless the user asks.
 - Include a short **“You’ll probably find this interesting”** section for weird/high-leverage items that match the user's tastes: AI agents, coding leverage, markets, internet culture, automation, community/client websites, collectibles/card scanning, and asymmetric opportunities.
 - Include a daily challenge that improves the user socially, professionally, mentally, or physically.
 - When Google Workspace OAuth is connected, use the `google-workspace` skill's named-profile pattern for Gmail/Calendar inputs. Keep morning-review mail/calendar output grouped by account/profile, summarize only high-signal items, and do not take write actions (send email, create/delete events, share/edit/delete files) without explicit confirmation.
+- Include a **Portfolio heartbeat** section for all Robinhood accounts: account value, cash/buying power, positions, and 24h gain/loss. Also surface relevant news for any stock the user owns. Keep this section brief; detailed analysis lives in the separate post-morning Agentic portfolio market scan.
 - Do **not** include the old 14-Day Self-Improvement Challenge check-in, habit boxes, one-second-rule tracker, or `done: meditation...` reply prompt. The user explicitly removed that recurring section on 2026-06-11.
 
 ## Required report shape
@@ -47,16 +48,15 @@ Use this structure unless the user changes it:
 1. **Quick opener** — date/day and grounded operator tone.
 2. **Location pulse** — Chicago weather/conditions and practical implications for the day.
 3. **Market pulse** — not portfolio. Say only whether today looks **bullish** or **bearish**, plus one concise reason why and one thing to watch. No pro/con argument format.
-4. **Search + social pulse** — latest top searched Google words/phrases and top social topics. Each bullet should be the trending word/phrase plus one small sentence explaining why it is moving and what it means for the user. No tables, no long source notes.
-5. **Game-changing AI + coding news** — compact bullets only. Each bullet is a small headline plus one short sentence explaining the news and practical implication.
-6. **Capability + trend radar** — 3–5 emerging internet/culture/tech/consumer trends worth watching. Each bullet should be the word/phrase plus one short sentence explaining why it matters and the capability/reusable asset angle. No velocity/spread/money/saturation scoring unless requested.
-7. **Work source / operating pulse** — pull from available workspace/project context, recent work queue, reminders, and connected tools. Organize by durable capabilities/systems first; mention projects only as temporary vehicles. Identify the highest-leverage next action.
-8. **You’ll probably find this interesting** — 1–3 odd/high-leverage items aligned with AI agents, coding leverage, markets, internet culture, automation, community/client websites, collectibles/card scanning, or asymmetric opportunities.
-9. **Numerology reading** for 06/30/1995 — frame as reflective/for-fun, not deterministic. Include life path and a date-specific reflection when current date is available.
-10. **Daily challenge** — one concrete, measurable challenge doable today; align it with one of the five challenge habits when possible.
-11. **One Big Priority prompt** — ask for today's priority plus blockers/context.
-12. **Hard Truth / Leverage Move** — one direct but constructive sentence.
-12. **One Big Priority prompt** — ask for today’s priority plus blockers/context.
+4. **Portfolio heartbeat** — all Robinhood accounts: account value, cash/buying power, positions, 24h gain/loss, and relevant news for owned stocks. Keep brief.
+5. **Search + social pulse** — latest top searched Google words/phrases and top social topics. Each bullet should be the trending word/phrase plus one small sentence explaining why it is moving and what it means for the user. No tables, no long source notes.
+6. **Game-changing AI + coding news** — compact bullets only. Each bullet is a small headline plus one short sentence explaining the news and practical implication.
+7. **Capability + trend radar** — 3–5 emerging internet/culture/tech/consumer trends worth watching. Each bullet should be the word/phrase plus one short sentence explaining why it matters and the capability/reusable asset angle. No velocity/spread/money/saturation scoring unless requested.
+8. **Work source / operating pulse** — pull from available workspace/project context, recent work queue, reminders, and connected tools. Organize by durable capabilities/systems first; mention projects only as temporary vehicles. Identify the highest-leverage next action.
+9. **You'll probably find this interesting** — 1–3 odd/high-leverage items aligned with AI agents, coding leverage, markets, internet culture, automation, community/client websites, collectibles/card scanning, or asymmetric opportunities.
+10. **Numerology reading** for 06/30/1995 — frame as reflective/for-fun, not deterministic. Include life path and a date-specific reflection when current date is available.
+11. **Daily challenge** — one concrete, measurable challenge doable today; align it with one of the five challenge habits when possible.
+12. **One Big Priority prompt** — ask for today's priority plus blockers/context.
 13. **Hard Truth / Leverage Move** — one direct but constructive sentence.
 
 ## Tone
@@ -96,6 +96,7 @@ Suggested framing: master 33/6 themes are service, responsibility, creative care
 For personal-day style reflection, combine month + day + current year digits and reduce; label it as a light reflection.
 
 ## References
+- portfolio-heartbeat.md — script that generates the portfolio heartbeat data for the morning report.
 
 - `references/2026-05-user-correction.md` — session-specific correction that established the current report shape and schedule.
 - `references/trend-radar-capability-framing.md` — session-specific update adding Trend Radar and capability-oriented planning language.
