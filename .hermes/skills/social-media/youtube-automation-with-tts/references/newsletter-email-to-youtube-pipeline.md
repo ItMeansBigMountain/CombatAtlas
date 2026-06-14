@@ -2,7 +2,7 @@
 
 Use when the user asks to turn Gmail newsletters (TLDR, Daily Stoic, Kino Body, similar source emails) into faceless YouTube videos and then clean up the source emails.
 
-For the current channel quality bar, also load `references/faceless-newsletter-quality-gate.md`. The key correction is: **one email = one video**, actual newsletter content must drive the video, and uploadable outputs require ElevenLabs plus relevant AI-generated B-roll.
+For the current channel quality bar, also load `references/faceless-newsletter-quality-gate.md`. The key correction is: **one email = one video**, actual newsletter content must drive the video, and uploadable outputs require realistic voiceover plus relevant stock/API-sourced visual assets — not generic text slides.
 
 ## Proven workflow
 
@@ -18,7 +18,7 @@ For the current channel quality bar, also load `references/faceless-newsletter-q
    - Store artifacts under `/opt/data/HeRmEz/projects/faceless-youtube-channel/videos/<timestamp-slug>/`.
    - Preserve non-secret source metadata in `source_email.json` or equivalent: profile, message id, sender, subject, date, excerpt.
    - Required style: motivational faceless-video vibe — cinematic, emotionally paced, high-contrast, relevant B-roll, punchy captions, realistic ElevenLabs narration.
-   - Required assets: realistic ElevenLabs voiceover plus relevant AI-generated B-roll/video clips for the email's specific topic. Static text-slide videos are not acceptable for the faceless channel.
+   - Required assets: realistic voiceover (ElevenLabs preferred when credits are healthy; Google Cloud TTS approved for the current faceless catch-up lane) plus relevant visuals for the email's specific topic. Prefer real stock footage/photos from APIs over abstract slides: derive per-beat visual queries from the source subject/body/script, fetch Pexels/Pixabay assets when keys are configured, and save a `visual_manifest.json` for QA. Static text-slide videos are not acceptable for the faceless channel.
    - Public YouTube metadata must hide production details: never mention AI-generated, faceless automation, ElevenLabs, source email/profile, pipeline, or similar behind-the-scenes wording.
    - Reword the email idea in the user's voice for title/description. Include the configured public support links (Linktree, Buy Me a Coffee, Cash App, Venmo); add affiliate links later only after the user likes the videos.
    - If no AI video/B-roll provider is configured, create a script/storyboard only and do **not** upload a low-quality placeholder.

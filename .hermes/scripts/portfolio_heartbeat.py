@@ -180,24 +180,24 @@ def main():
     quotes = get_quotes(symbols_list) if symbols_list else {}
     
     # Fetch news for owned symbols
-        news = {}
-        try:
-            from hermes_tools import web_search
-            for symbol in symbols_list:
-                try:
-                    results = web_search(query=f"{symbol} stock news", limit=2)
-                    news_items = []
-                    for r in results.get('data', {}).get('web', []):
-                        news_items.append({
-                            'title': r.get('title', ''),
-                            'url': r.get('url', ''),
-                            'snippet': r.get('description', '')[:200]
-                        })
-                    news[symbol] = news_items
-                except Exception:
-                    pass
-        except Exception:
-            pass
+    news = {}
+    try:
+        from hermes_tools import web_search
+        for symbol in symbols_list:
+            try:
+                results = web_search(query=f"{symbol} stock news", limit=2)
+                news_items = []
+                for r in results.get('data', {}).get('web', []):
+                    news_items.append({
+                        'title': r.get('title', ''),
+                        'url': r.get('url', ''),
+                        'snippet': r.get('description', '')[:200]
+                    })
+                news[symbol] = news_items
+            except Exception:
+                pass
+    except Exception:
+        pass
     
     # Format output
     output = []

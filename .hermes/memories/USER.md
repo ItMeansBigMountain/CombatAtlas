@@ -12,8 +12,8 @@ User prefers laconic Discord replies/reports: no tables; bold bullets; ask less;
 §
 User wants cron jobs refined and verified until perfectly working - this is a standing preference for system reliability.
 §
-Google: fareed320=personal-secondary inbox; trapiistan=Hermes/YT+calendar; affan.fareed@gmail.com read-only; others full access.
+Google: fareed320=personal-secondary inbox; trapiistan=Hermes workspace/Sosai YT+calendar; classicalechos=Classical Echos YT; affan read-only.
 §
 User allows known junk/spam email cleanup without per-item review; newsletter/source emails delete only after verified YouTube upload.
 §
-Faceless: one video/newsletter; actual TLDR/Daily Stoic/Kino Body content; Pexels/HF visuals; ElevenLabs voice; public uploads unless told private.
+Faceless/Classical Echos: one video/newsletter; ~2min; multi relevant clips; ElevenLabs voice; public unless told private.

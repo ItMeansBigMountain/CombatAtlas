@@ -15,15 +15,29 @@ For newsletter-driven videos (TLDR, Daily Stoic, Kino Body, Robinhood Snacks, si
 
 For the user's Hermes-level email sorting agent, Gmail source labels/folders, the `EllevenLabsKey` env alias, and the dark monochrome particle-video visual direction from the user's screenshots, follow `references/email-sorting-agent-and-particle-video-style.md`.
 
-For the current faceless newsletter pipeline, use Pexels stock footage/images first and Hugging Face visuals as the AI fallback. Sora is no longer the default path because the user called out cost concerns; only revisit `references/openai-sora-video-gen-provider.md` if the user explicitly asks to use Sora or another text-to-video provider.
+For the current faceless newsletter pipeline, use **Pexels stock footage/images first** and **stock/manual fallback clips such as Mixkit-style sources next**. Higgsfield/Sora/text-to-video is not a hard requirement and must not block production when stock visuals are available. Only use Sora/Higgsfield/Hugging Face visuals if explicitly requested or needed for a special video; see `references/google-tts-and-stock-visual-fallbacks-2026-06.md`.
 
-For YouTube OAuth, channel-token selection, public/default upload behavior, and account-specific content rules, follow `references/youtube-oauth-metadata-cleanup.md` and `references/content-creation-account-and-upload-rules-2026-06.md`.
+For stock/API visual selection and QA, also follow `references/stock-visuals-for-faceless-newsletters.md`: derive per-scene visual queries from the actual script/email topic, prefer Pexels/Pixabay footage/photos, use Shutterstock previews only according to the account/license state, save `visual_manifest.json`, and treat all-dynamic/text fallback renders as draft quality unless explicitly approved.
+
+For YouTube OAuth, channel-token selection, public/default upload behavior, and account-specific content rules, follow `references/youtube-oauth-metadata-cleanup.md`, `references/content-creation-account-and-upload-rules-2026-06.md`, and `references/google-tts-stock-youtube-oauth-fallbacks-2026-06.md`. The last reference captures the current Google TTS fallback, stock-visual gate, and OAuth channel-identity verification lessons.
 
 For the user's current content-creation system, account mapping, upload visibility, calendar/cron contract, and faceless-vs-Viral-Clip-Radar boundaries, follow `references/content-creation-account-and-upload-rules-2026-06.md`: read newsletter emails from fareed320/personal-secondary, upload/manage calendar as trapiistan, keep affan.fareed@gmail.com read-only, use public YouTube uploads by default, and do not add stock footage to clipping videos.
 
 For OpenAI Sora as the preferred AI B-roll/video backend, follow `references/openai-sora-video-gen-provider.md`: ChatGPT UI access is not enough for cron automation; configure a Hermes `video_gen` provider (`openai-sora`) with `OPENAI_API_KEY` Videos/Sora API access, and treat Higgsfield/FAL/etc. as fallbacks.
 
+For Google Cloud Text-to-Speech as the production fallback when ElevenLabs credits are low/exhausted, follow `references/google-cloud-tts-fallback.md`: verify the API with a live `text:synthesize` call, use `GOOGLE_APPLICATION_CREDENTIALS` or `GOOGLE_TTS_CREDENTIALS`, default to `en-US-Neural2-J`, and keep local `flite`/edge-style narration review-only unless the user explicitly approves it.
+
 For auditing/rebuilding the user's faceless/newsletter pipeline after quality issues, follow `references/faceless-youtube-audit-lessons-2026-06.md`: key presence is not readiness; provider checks must be live where possible; renderer must actually generate realistic voice + relevant B-roll; otherwise stop at storyboard-only and keep upload crons paused.
+
+For hands-on Classical Echos/newsletter backlog operations, follow `references/newsletter-video-ops-lessons-2026-06.md`: no Markdown tables in Discord reports, target ~2-minute multi-clip videos, separate review fallback renders from final ElevenLabs uploads, search labeled newsletters outside Inbox, use Mixkit-style fallback only with source manifests, and handle YouTube `uploadLimitExceeded` with pending manifests plus resume jobs.
+
+For the current faceless newsletter catch-up lane, follow `references/faceless-newsletter-batch-upload-2026-06.md`: Google TTS is an approved fallback/equivalent when ElevenLabs credits are low, Higgsfield/Sora auth is not required, use Pexels or stock/dynamic visual fallback, upload with the explicit faceless/Sosai Oyama token, and trash each source email only after a verified YouTube `video_id`.
+
+For Classical Echos newsletter-video rendering after the user's 2-minute quality correction, follow `references/newsletter-video-rendering-provider-fallbacks-2026-06.md`: target ~120 seconds, require multiple relevant visual clips, use Mixkit as a vetted stock fallback when Pexels is blocked, and treat edge-tts as review-only unless explicitly approved.
+
+For Google TTS fallback and the user's corrected stock-visual workflow, follow `references/google-tts-and-stock-visual-fallbacks-2026-06.md`: Pexels/stock fallback is the intended visual path; Higgsfield/Sora auth must not block stock-first newsletter videos, and ElevenLabs should be skipped when low credits would be burned by smoke tests.
+
+For Google Cloud TTS fallback and stock-visual quality-gate rules, follow `references/google-tts-and-stock-visual-fallbacks-2026-06.md`: ElevenLabs is preferred but must be skipped when credits are low, Google TTS is the production fallback, and Higgsfield/Sora/AI-video auth must not block newsletter videos when Pexels or vetted stock fallback visuals are available.
 
 ## Triggers
 - Manual request: "Generate YouTube video about [topic]"
@@ -36,27 +50,36 @@ For the user's newsletter-driven faceless channel, also load `references/faceles
 
 ### Visual provider priority
 
-For this user's newsletter/faceless pipeline, use **Pexels first** for stock footage/images and **Hugging Face** as the AI visual fallback. Sora/text-to-video is not the default because of cost; only use it if explicitly requested for a special video.
+For this user's newsletter/faceless pipeline, use live-probed stock APIs before any AI-video dependency. Prefer **Pexels** when `PEXELS_API_KEY` is active, but **Pixabay** (`PIXABAY_API_KEY`) is fully approved as the current primary when Pexels is missing/403. Then use Pexels photos, Shutterstock preview/search coverage as license-appropriate, Storyblocks only after HMAC signing is wired, and finally vetted no-key stock/image fallbacks. Do **not** require Higgsfield/Sora/AI-video auth for the normal stock-footage path. Use Hugging Face or other AI visuals only as an optional fallback when stock footage cannot satisfy the quality gate. Sora/text-to-video is not the default because of cost; only use it if explicitly requested for a special video.
 
 ```yaml
 visuals:
-  primary: pexels
-  fallback: huggingface
+  primary_when_active: pexels
+  current_free_stock_primary: pixabay
+  photo_fallback: pexels_photos
+  preview_search_fallback: shutterstock_preview_video
+  needs_hmac_before_ready: storyblocks
+  final_fallback: vetted_no_key_stock_or_dynamic_draft
+  optional_ai_fallback: huggingface
   avoid_by_default: sora
+  not_required_for_standard_path: higgsfield
 ```
 
 Keep Viral-Clip Radar separate: it clips creator long-form source videos into 9:16 captioned shorts and does **not** need stock footage by default.
 ```yaml
 elevenlabs:
   api_key_env: "EllevenLabsKey"  # also accept ELEVENLABS_API_KEY, XI_API_KEY, ELEVEN_API_KEY
-  voice: "Adam"  # Professional male voice
-  speed: 1.0
-  pitch: 0.0
-  emphasis: 0.5
-  model: "eleven_monolingual_v1"
+  voice_id: "CwhRBWXzGAHq8TQ4Fs17"  # Roger - free-tier friendly fallback
+  model: "eleven_flash_v2_5"
+
+google_tts_fallback:
+  credentials_env: "GOOGLE_APPLICATION_CREDENTIALS"  # or GOOGLE_TTS_CREDENTIALS
+  language: "en-US"
+  voice: "en-US-Neural2-J"
+  speaking_rate: 1.0
 ```
 
-Always run a live ElevenLabs probe before upload; key presence alone is not readiness. For 401/402/auth/scope/voice issues, follow `references/elevenlabs-auth-and-free-tier-probe.md`: use the exact `xi-api-key` header, prefer `EllevenLabsKey` before legacy env aliases, probe `/v1/user` and `/v1/user/subscription`, and fall back to a verified free-tier voice/model before declaring the key broken.
+Always run live TTS probes before upload; key presence alone is not readiness. For 401/402/auth/scope/voice issues, follow `references/elevenlabs-auth-and-free-tier-probe.md`: use the exact `xi-api-key` header, prefer `EllevenLabsKey` before legacy env aliases, probe `/v1/user` and `/v1/user/subscription`, and fall back to a verified free-tier voice/model before declaring the key broken. If ElevenLabs is exhausted, use the Google Cloud TTS fallback in `references/google-cloud-tts-fallback.md` instead of blocking on ElevenLabs alone.
 
 ## Script Templates
 ```yaml
@@ -80,21 +103,31 @@ viral_radar_script:
    - Generate script based on video type
 
 2. **Voice-Over Generation**
-   ```python
-   def generate_tts(script, voice="Adam", api_key="YOUR_KEY"):
-       headers = {"Authorization": f"Bearer {api_key}"}
-       response = requests.post(
-           "https://api.elevenlabs.io/v1/text-to-speech/{voice}",
-           headers=headers,
-           json={
-               "text": script,
-               "model_id": "eleven_monolingual_v1",
-               "voice_settings": {
-                   "stability": 0.5,
-                   "similarity_boost": 0.8
-               }
-           }
-       )
+   - Prefer ElevenLabs when live subscription/character checks show enough credits.
+   - Use the REST header `xi-api-key`, not `Authorization: Bearer`, for ElevenLabs.
+   ### Voice-Over Generation
+      ```python
+      def generate_elevenlabs_tts(script, voice_id="CwhRBWXzGAHq8TQ4Fs17", api_key="YOUR_KEY"):
+          # ElevenLabs REST auth uses xi-api-key, not Authorization: Bearer.
+          headers = {"xi-api-key": api_key, "Content-Type": "application/json", "Accept": "audio/mpeg"}
+          response = requests.post(
+              f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}",
+              headers=headers,
+              json={
+                  "text": script,
+                  "model_id": "eleven_flash_v2_5",
+                  "voice_settings": {
+                      "stability": 0.42,
+                      "similarity_boost": 0.75
+                  }
+              },
+              timeout=60,
+          )
+          response.raise_for_status()
+          return response.content
+      ```
+      When ElevenLabs credits are low or unavailable, use the Google TTS fallback described in `references/google-tts-stock-youtube-oauth-fallbacks-2026-06.md` before falling back to local review-only voices.
+       response.raise_for_status()
        return response.content
    ```
 

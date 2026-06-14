@@ -43,3 +43,16 @@
 - **Faceless Channel:** Transitioning from Sora to Pexels API. Pipeline needs update to replace Sora calls with Pexels stock search.
 - **Viral-Clip Radar:** Data-collection pipeline is ready; needs the clipping/portrait-formatting/transcription automation loop.
 - **Pexels API:** Token is saved in `/opt/data/HeRmEz/projects/faceless-youtube-channel/.env.pexels`.
+
+
+## Newsletter video cron run — 2026-06-13T09:02:24.008022+00:00
+
+- Notice: requested skill `process_newsletters_for_videos` was not installed, so I used the available Google Workspace tooling and existing newsletter/Pexels pipeline artifacts.
+- Gmail profile checked: `fareed320` via `/opt/data/google_profiles/fareed320/google_token.json`.
+- Unread messages found: at least 100 (`gmail search is:unread --max 100` returned 100).
+- Latest unread examples: Chess.com streak, PayPal Microsoft receipt, TLDR, Daily Stoic, TLDR InfoSec/Fintech/Crypto/IT/Dev/Marketing, Robinhood Snacks.
+- Preflight: ElevenLabs is configured and live, but free tier is nearly exhausted (9,341 / 10,000 characters used). No paid overage detected (`current_overage.amount=0`), respecting the <$2 per-transaction risk limit.
+- Upload status: no new uploads attempted after detecting YouTube `uploadLimitExceeded` in the latest batch summary. Existing batch summary shows 8 uploaded and 22 failed due to YouTube daily/video upload limit.
+- Calendar/email cleanup: no new Calendar events were created and no unread emails were deleted this run, because deletion is only safe after confirmed upload + calendar scheduling.
+- Local cleanup: retained failed local MP4s so they can be retried after YouTube upload limit resets; uploaded batch records already used delete-after-upload where successful.
+- Result: BLOCKED by YouTube upload limit and missing requested skill. Next safe retry: after YouTube upload limit resets; process a smaller daily batch to avoid quota exhaustion.

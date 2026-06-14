@@ -18,9 +18,12 @@ Session learning: the user explicitly activated no-per-trade-approval autonomous
 - Stop if risk cannot be calculated from live account + market data.
 - Stop if no clean setup exists.
 - Prefer starter positions around `$25-$50`.
+- Do not deploy more than 60% of account value across open positions unless a written trade plan justifies it.
 - Target max risk per trade: about `$2` unless the user changes it.
 - Target aggregate planned open risk: about `$6` unless the user changes it.
 - Minimum R:R: `1.5:1`; prefer `2:1+`.
+- If account is down 5%+ in one day or 10%+ from recent high, pause new entries and write a review before resuming.
+- If a position loses ~8% from entry or breaches thesis/invalidation, review for exit rather than adding.
 
 ## Workflow correction
 
@@ -40,6 +43,15 @@ The active policy file lives at:
 
 `/opt/data/HeRmEz/projects/trading-journal/playbook/autonomous-policy.md`
 
-Journal every autonomous preview, placement, management action, exit, and post-trade review under:
+Journal every autonomous preview, placement, management action, exit, post-trade review, no-trade decision, and tool failure under:
 
 `/opt/data/HeRmEz/projects/trading-journal/YYYY-MM-DD/`
+
+## Research-informed operating lessons
+
+- Robinhood provides the MCP connector, not a full trading strategy. Hermes must explicitly run the saved policy/playbook each scan.
+- Treat the agent like an employee: exact task, scope, risk limits, reporting cadence, and escalation rules.
+- Keep beta capital small and isolated; do not treat autonomous trading as an income system.
+- Avoid over-deploying cash early; leave buying power for risk control and cleaner entries.
+- Options are rolling out and remain disabled here unless separately authorized.
+- If model/platform/tool capability is uncertain, pause rather than infer autonomy.

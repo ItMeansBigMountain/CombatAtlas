@@ -1,49 +1,56 @@
-# User Google account scope map and mass OAuth refresh — 2026-06
+# User Google account scope map and OAuth refresh pattern (2026-06)
 
-Use this reference when the user asks to refresh Google tokens, map accounts, or avoid repeated re-auth prompts across Gmail/Calendar/Drive/Docs/Sheets/YouTube automation.
+Use this reference when managing the user's Google Workspace, Gmail, Calendar, Drive/Docs/Sheets, and YouTube OAuth tokens.
 
-## User communication preference
+## Reporting style for this user
 
-- In Discord replies, do **not** present account/scope status as Markdown tables. The user explicitly said tables look terrible/unreadable in Discord.
-- Use bold bullets and short nested bullets instead.
-- Be concrete: account → purpose → scopes/token path → next action.
+- In Discord, do **not** present Google/OAuth/account status as Markdown tables.
+- Use compact bold bullets grouped by account.
+- Keep secrets out of chat: never print refresh tokens, access tokens, client secrets, or raw credential JSON.
+- It is fine to report non-secret facts: account email, profile name, token path, scopes by short name, channel title, channel ID, and live verification status.
 
-## Account map
+## Canonical account map
 
-- **personal-secondary = fareed320@gmail.com**
-  - Full Workspace automation.
-  - Source inbox for newsletters and faceless YouTube scripts.
-  - Can read, label, archive/trash processed source emails, send if needed, and use Calendar/Drive/Docs/Sheets.
-  - Canonical token: `/opt/data/google_profiles/personal-secondary/google_token.json`.
-  - Legacy alias may exist: `/opt/data/google_profiles/fareed320 -> /opt/data/google_profiles/personal-secondary`.
+- **personal-secondary**
+  - Email: `fareed320@gmail.com`
+  - Access policy: full Workspace automation.
+  - Uses: newsletter source inbox, email sorting, label/archive/trash after verified video upload, content source extraction.
+  - Token path: `/opt/data/google_profiles/personal-secondary/google_token.json`
+  - Legacy alias: `/opt/data/google_profiles/fareed320` may symlink here.
 
-- **trapiistan = trapiistan@gmail.com**
-  - Hermes main Workspace account.
-  - Owns/updates the content calendar for video schedules and automation reports.
-  - Also has YouTube OAuth for the **Sosai Oyama** channel.
-  - Workspace token: `/opt/data/google_profiles/trapiistan/google_token.json`.
-  - YouTube token: `/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json`.
+- **trapiistan**
+  - Email: `trapiistan@gmail.com`
+  - Access policy: full Workspace automation.
+  - Uses: Hermes main Gmail/workspace account, content calendar, automation docs/reports.
+  - Workspace token path: `/opt/data/google_profiles/trapiistan/google_token.json`
+  - YouTube channel observed: `Sosai Oyama`, channel ID `UCsxzQlusqwmMUdjMvKAJDfA`.
+  - YouTube token path: `/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json`
 
-- **classicalechos = classicalechos@gmail.com**
-  - Content/channel account.
-  - Owns the **Classical Echos** YouTube channel and recent faceless uploads.
-  - Workspace token: `/opt/data/google_profiles/classicalechos/google_token.json`.
-  - YouTube token: `/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json`.
-  - Current shared default YouTube uploader token may be copied from this token when Classical Echos is the active channel.
+- **classicalechos**
+  - Email: `classicalechos@gmail.com`
+  - Access policy: full Workspace automation.
+  - Uses: Classical Echos content/channel operations.
+  - Workspace token path: `/opt/data/google_profiles/classicalechos/google_token.json`
+  - YouTube channel observed: `Classical Echos`, channel ID `UCcIpxiU2CLEsBdHcc7_lcyA`.
+  - YouTube token path: `/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json`
 
-- **burner = laflametoast@gmail.com**
-  - Burner/disposable Google account.
-  - Full Workspace automation allowed.
-  - Token: `/opt/data/google_profiles/burner/google_token.json`.
+- **burner**
+  - Email: `laflametoast@gmail.com`
+  - Access policy: full Workspace automation.
+  - Uses: burner/disposable sending and temporary automation.
+  - Token path: `/opt/data/google_profiles/burner/google_token.json`
 
-- **personal-main = affan.fareed@gmail.com**
-  - Read-only only.
-  - Do not request or use write scopes for this account unless the user explicitly changes the policy.
-  - Token: `/opt/data/google_profiles/personal-main/google_token.json`.
+- **personal-main**
+  - Email: `affan.fareed@gmail.com`
+  - Access policy: read-only only.
+  - Uses: read-only personal context.
+  - Token path: `/opt/data/google_profiles/personal-main/google_token.json`
 
-## Workspace scopes
+## Scope bundles
 
-For full automation accounts, request:
+### Full Workspace automation
+
+Use when the user grants full access to an automation identity other than `affan.fareed@gmail.com`.
 
 - `https://www.googleapis.com/auth/gmail.readonly`
 - `https://www.googleapis.com/auth/gmail.modify`
@@ -55,44 +62,41 @@ For full automation accounts, request:
 - `https://www.googleapis.com/auth/spreadsheets`
 - `https://www.googleapis.com/auth/contacts.readonly`
 
-For `personal-main` / `affan.fareed@gmail.com`, request read-only equivalents only:
+### Personal-main read-only
 
-- `gmail.readonly`
-- `calendar.readonly`
-- `drive.readonly`
-- `documents.readonly`
-- `spreadsheets.readonly`
-- `contacts.readonly`
+Use for `affan.fareed@gmail.com` unless the user explicitly changes the policy.
 
-## YouTube scopes
+- `https://www.googleapis.com/auth/gmail.readonly`
+- `https://www.googleapis.com/auth/calendar.readonly`
+- `https://www.googleapis.com/auth/drive.readonly`
+- `https://www.googleapis.com/auth/documents.readonly`
+- `https://www.googleapis.com/auth/spreadsheets.readonly`
+- `https://www.googleapis.com/auth/contacts.readonly`
 
-For YouTube automation accounts, request:
+### YouTube automation
 
-- `https://www.googleapis.com/auth/youtube.upload` — upload videos.
-- `https://www.googleapis.com/auth/youtube.force-ssl` — edit video metadata/status/privacy/captions/comments; required to change existing videos from private to public.
-- `https://www.googleapis.com/auth/youtube.readonly` — verify channel/video ownership and public/private status.
-- `https://www.googleapis.com/auth/yt-analytics.readonly` — performance loop and self-improving content analytics.
+Use per YouTube channel/account. Normal user-specific YouTube channel actions require user OAuth, not a service account.
 
-Do not rely on `youtube.upload` alone if the workflow needs to edit privacy/metadata after upload.
+- `https://www.googleapis.com/auth/youtube.upload`
+- `https://www.googleapis.com/auth/youtube.force-ssl`
+- `https://www.googleapis.com/auth/youtube.readonly`
+- `https://www.googleapis.com/auth/yt-analytics.readonly`
 
 ## Mass refresh workflow
 
-1. Generate one auth URL per identity and token family; never overwrite all accounts into a single token.
-2. Store Workspace pending state under `/opt/data/google_profiles/<profile>/google_oauth_pending.json`.
-3. Store YouTube pending state under `/opt/data/secrets/youtube-<profile>/youtube_oauth_pending.json`.
-4. Include `login_hint`, but still tell the user to verify the selected consent-screen account/channel; `login_hint` is not a hard lock.
-5. Ask the user to return the full localhost redirect URLs labeled by account.
-6. Exchange redirects into their dedicated token paths.
-7. Verify live, without printing secrets:
-   - Gmail: `users.getProfile` returns expected email.
-   - Calendar: list a small sample of calendars.
-   - YouTube: `channels.list(mine=true)` returns expected channel title and ID.
-   - YouTube video correction: `videos.list(part=snippet,status,id=...)` can see target videos before attempting updates.
-8. Write/update a non-secret account map in the workspace, e.g. `/opt/data/HeRmEz/projects/_ops/google-email-profiles.json`.
+- Generate one OAuth URL per profile with `login_hint` and `prompt=consent`.
+- Store pending PKCE state separately for each account/channel; never overwrite one profile's pending state with another.
+- Exchange redirects into dedicated token paths.
+- Verify live identity after exchange:
+  - Gmail: `users.getProfile(userId='me')` returns the expected email.
+  - Calendar: `calendarList.list` succeeds for Workspace tokens.
+  - YouTube: `channels.list(mine=True)` returns the expected channel title/ID.
+- Write or update the non-secret map at `/opt/data/HeRmEz/projects/_ops/google-email-profiles.json`.
+- For shared/default YouTube upload scripts, point `/opt/data/secrets/youtube-main/youtube_upload_token.json` at the intended channel token deliberately; do not assume the previous default is correct.
 
-## Operational pitfalls
+## Pitfalls captured
 
-- YouTube uploads are channel-specific. If a token can upload but cannot see/edit an existing video ID, the user likely authenticated the wrong channel/account. Re-auth with the owning channel selected.
-- YouTube `publishAt` represents a scheduled future public release as `privacyStatus=private` until publish time. The user prefers not to upload as private by default, so prefer cron/calendar-triggered public uploads unless native YouTube scheduled release is explicitly requested.
-- Gmail `gmail.modify` lets the agent trash messages after verified processing; permanent deletion requires broader Gmail scope and is usually unnecessary.
-- For newsletter video source cleanup, delete/trash only after a verified YouTube `video_id` is returned.
+- `fareed320` is not a separate canonical profile; it is the user's `personal-secondary` account.
+- `trapiistan` is the Hermes main Gmail/workspace account, but Classical Echos may own the content channel for current uploads.
+- Wrong-channel YouTube OAuth can successfully authenticate but still be unable to see or edit videos uploaded by another channel.
+- YouTube `youtube.upload` alone may not be enough to modify existing video status/metadata; include `youtube.force-ssl` for privacy/status updates and `youtube.readonly` for ownership verification.

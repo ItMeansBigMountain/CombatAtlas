@@ -18,6 +18,8 @@ from googleapiclient.discovery import build
 SCOPES = [
     "https://www.googleapis.com/auth/youtube.upload",
     "https://www.googleapis.com/auth/youtube.force-ssl",
+    "https://www.googleapis.com/auth/youtube.readonly",
+    "https://www.googleapis.com/auth/yt-analytics.readonly",
 ]
 SCOPE = " ".join(SCOPES)
 DEFAULT_CLIENT = "/opt/data/secrets/youtube-main/youtube_client_secret.json"

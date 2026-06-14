@@ -8,6 +8,7 @@ Renders vertical Shorts-style kinetic scenes with diagram/B-roll style graphics.
 from __future__ import annotations
 
 import argparse
+import base64
 import datetime as dt
 import json
 import os
@@ -50,6 +51,10 @@ def elevenlabs_key() -> str | None:
     # Prefer the user's current Hermes env alias. Older ELEVENLABS_API_KEY
     # values may exist in /opt/data/.env with restricted scopes.
     return os.getenv("EllevenLabsKey") or os.getenv("ELEVENLABS_API_KEY") or os.getenv("XI_API_KEY") or os.getenv("ELEVEN_API_KEY")
+
+
+def google_tts_credentials_path() -> str | None:
+    return os.getenv("GOOGLE_APPLICATION_CREDENTIALS") or os.getenv("GOOGLE_TTS_CREDENTIALS")
 
 
 def slugify(text: str) -> str:
@@ -126,9 +131,24 @@ def build_scenes(topic: str) -> list[dict]:
     ]
 
 
+def elevenlabs_remaining_chars(key: str) -> int | None:
+    try:
+        req = urllib.request.Request("https://api.elevenlabs.io/v1/user/subscription", headers={"xi-api-key": key})
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            data = json.loads(resp.read().decode())
+        return int(data.get("character_limit", 0)) - int(data.get("character_count", 0))
+    except Exception:
+        return None
+
+
 def elevenlabs_tts(text: str, out: Path) -> bool:
     key = elevenlabs_key()
     if not key:
+        return False
+    remaining = elevenlabs_remaining_chars(key)
+    reserve = int(os.getenv("ELEVENLABS_MIN_REMAINING_CHARS", "500"))
+    if remaining is not None and remaining < len(text) + reserve:
+        (out.parent / "elevenlabs_skipped_low_credits.txt").write_text(f"remaining={remaining} text_chars={len(text)} reserve={reserve}\n", encoding="utf-8")
         return False
     errors = []
     for voice_id in [DEFAULT_VOICE, "CwhRBWXzGAHq8TQ4Fs17"]:
@@ -153,6 +173,46 @@ def elevenlabs_tts(text: str, out: Path) -> bool:
             continue
     (out.parent / "elevenlabs_error.txt").write_text("\n".join(errors), encoding="utf-8")
     return False
+
+
+def google_tts(text: str, out: Path) -> bool:
+    """Synthesize narration with Google Cloud Text-to-Speech using ADC/service account."""
+    creds_path = google_tts_credentials_path()
+    if not creds_path or not Path(creds_path).exists():
+        return False
+    try:
+        from google.oauth2 import service_account
+        from google.auth.transport.requests import Request
+
+        creds = service_account.Credentials.from_service_account_file(
+            creds_path,
+            scopes=["https://www.googleapis.com/auth/cloud-platform"],
+        )
+        creds.refresh(Request())
+        voice_name = os.getenv("GOOGLE_TTS_VOICE", "en-US-Neural2-J")
+        language = os.getenv("GOOGLE_TTS_LANGUAGE", "en-US")
+        payload = json.dumps({
+            "input": {"text": text},
+            "voice": {"languageCode": language, "name": voice_name},
+            "audioConfig": {
+                "audioEncoding": "MP3",
+                "speakingRate": float(os.getenv("GOOGLE_TTS_SPEAKING_RATE", "1.0")),
+                "pitch": float(os.getenv("GOOGLE_TTS_PITCH", "0.0")),
+            },
+        }).encode()
+        req = urllib.request.Request(
+            "https://texttospeech.googleapis.com/v1/text:synthesize",
+            data=payload,
+            headers={"Authorization": f"Bearer {creds.token}", "Content-Type": "application/json"},
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            data = json.loads(resp.read().decode())
+        out.write_bytes(base64.b64decode(data["audioContent"]))
+        return out.exists() and out.stat().st_size > 1000
+    except Exception as exc:
+        (out.parent / "google_tts_error.txt").write_text(str(exc), encoding="utf-8")
+        return False
 
 
 def fallback_tts(text: str, out: Path) -> None:
@@ -224,8 +284,9 @@ def render_scene(work: Path, idx: int, scene: dict) -> Path:
     audio = sd / f"{idx:02d}.mp3"
     spoken = f"{scene['title']}. {scene['body']}"
     if not elevenlabs_tts(spoken, audio):
-        audio = sd / f"{idx:02d}.wav"
-        fallback_tts(spoken, audio)
+        if not google_tts(spoken, audio):
+            audio = sd / f"{idx:02d}.wav"
+            fallback_tts(spoken, audio)
     duration = float(sh(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=nw=1:nk=1", str(audio)])) + 0.6
     vf = graphic_filters(idx, title, body, scene["visual"], duration)
     out = sd / f"{idx:02d}.mp4"
@@ -243,7 +304,8 @@ def render(work: Path, scenes: list[dict]) -> Path:
 
 
 def upload(video: Path, title: str, description: str) -> dict:
-    raw = sh(["python3", str(SHARED_UPLOADER), str(video), "--title", title, "--description", description, "--tags", "discipline,self improvement,motivation,shorts", "--privacy", "public", "--project", PROJECT, "--log-jsonl", str(UPLOAD_LOG), "--delete-after-upload"])
+    token = os.getenv("YOUTUBE_UPLOAD_TOKEN") or "/opt/data/secrets/faceless-youtube-channel/youtube_upload_token.json"
+    raw = sh(["python3", str(SHARED_UPLOADER), str(video), "--title", title, "--description", description, "--tags", "discipline,self improvement,motivation,shorts", "--privacy", "public", "--token", token, "--project", PROJECT, "--log-jsonl", str(UPLOAD_LOG), "--delete-after-upload"])
     return json.loads(raw)
 
 
@@ -262,7 +324,7 @@ def main() -> int:
     (work / "script.json").write_text(json.dumps({"topic": args.topic, "scenes": scenes}, indent=2), encoding="utf-8")
     video = render(work, scenes)
     probe = json.loads(sh(["ffprobe", "-v", "error", "-show_entries", "stream=width,height", "-show_entries", "format=duration,size", "-of", "json", str(video)]))
-    result = {"workspace": str(work), "video": str(video), "probe": probe, "uploaded": False, "elevenlabs_key_present": bool(elevenlabs_key())}
+    result = {"workspace": str(work), "video": str(video), "probe": probe, "uploaded": False, "elevenlabs_key_present": bool(elevenlabs_key()), "google_tts_credentials_present": bool(google_tts_credentials_path())}
     if args.upload:
         upload_title = title_case_short(args.topic, 64) + " #Shorts"
         result["upload"] = upload(video, upload_title, "My read: " + args.topic + "\n\nBuild one proof today. Don't wait for motivation to make it pretty." + support_block() + "\n\n#Shorts")

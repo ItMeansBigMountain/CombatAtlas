@@ -37,7 +37,9 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 - `references/drive-cache-memory-extension.md` — Google Drive as a durable Hermes cache / memory-extension pattern, including OAuth vs service-account pitfalls
 - `references/multi-profile-google-oauth.md` — Profile-scoped OAuth for managing multiple Gmail/Workspace identities with separate tokens, PKCE pending state, action policies, browser/redirect pitfalls, and smoke tests.
 - `references/google-oauth-scope-reauth-matrix.md` — Decide whether enabling additional Google APIs requires OAuth reauth; includes Workspace baseline scopes, YouTube upload/private-data scope guidance, API-key distinction, and verification probes.
+- `references/youtube-oauth-scope-repair-2026-06.md` — User-specific YouTube reauth repair: full upload/metadata/read/analytics scope set, profile-specific pending files, and channel identity verification after exchange.
 - `references/user-google-account-scope-map-2026-06.md` — User-specific account aliases, full/read-only scope policy, mass OAuth refresh workflow, and Discord bullet-format reporting preference for Google account status.
+- `references/user-google-oauth-account-map-2026-06.md` — Current user-specific Workspace/YouTube account roles, exact scope policy, OAuth hygiene, and no-table reporting preference.
 
 ## Scripts
 
