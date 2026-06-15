@@ -1,0 +1,564 @@
+{
+  "jobs": [
+    {
+      "id": "cfcea697da5c",
+      "name": "Daily HeRmEz GitHub backup",
+      "prompt": "",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "backup_hermez.sh",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 3 * * *",
+        "display": "0 3 * * *"
+      },
+      "schedule_display": "0 3 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 29
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-05-14T06:28:44.368316+00:00",
+      "next_run_at": "2026-06-15T03:00:00+00:00",
+      "last_run_at": "2026-06-14T03:01:00.828034+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": null,
+      "enabled_toolsets": null,
+      "workdir": null
+    },
+    {
+      "id": "92f873723241",
+      "name": "Morning operator report",
+      "prompt": "You are doing the user's proactive daily morning stand-up/operator report in Discord.\n\nUse the loaded `operator-morning-reports` skill as the report contract and tone guide. Keep it laconic, skimmable, Discord-native, no Markdown tables, no long essays.\n\nA pre-run script may inject Google Workspace context above this prompt. Treat that injected output as read-only source material from these five profiles:\n- `hermes-agent` / trapiistan@gmail.com \u2014 Hermes/YouTube/operator account\n- `personal-main` / Affan.fareed@gmail.com \u2014 personal main, read-focused\n- `personal-secondary` / fareed320@gmail.com \u2014 personal secondary, read-focused\n- `classicalechos` / classicalechos@gmail.com \u2014 Classical Echos/content lane\n- `burner` / laflametoast@gmail.com \u2014 low-stakes/burner account\n\nInclude a compact **Google Workspace pulse** inside the Work source / operating pulse section. Summarize high-signal updates from all accounts: unread or important Gmail, calendar events, useful Drive/Docs/Sheets movement, deadlines, receipts/renewals, opportunities, and weird useful AI/content/tooling leads. Group by profile only when useful; otherwise consolidate into \u201cNeeds attention,\u201d \u201cCalendar,\u201d \u201cOps/admin,\u201d \u201cInteresting/source material,\u201d and \u201cEmail cleanup candidates.\u201d\n\nEmail-specific rules for the report:\n- Prioritize billing/charges/receipts, Chase, Apple receipts/Card, cloud services, AI APIs, Robinhood, Landing only for active stay/rent-impacting logistics, Ticketmaster ticket/venue info, myQ/Chamberlain garage alerts, GitGuardian/security, official/vehicle renewal notices, and similar life/admin signals.\n- TLDR is useful for latest news, but only use/keep the feed from `fareed320@gmail.com`; TLDR on other accounts is duplicate cleanup candidate.\n- Kino Body and Daily Stoic are interesting: summarize useful ideas in the morning report, then list them as post-review cleanup candidates if appropriate.\n- Grammarly Insights is interesting self-metrics/profile data: summarize what it says about the user's writing/communication habits and connect it to his personal operating profile.\n- For TLDR, Kino Body, Daily Stoic, and Grammarly Insights: summarize through the lens of the user's known interests/profile, draw appealing personal insights, then list each as a newsletter cleanup candidate with sender, category, and title. Since the user has now approved junk-email cleanup, clearly separate already-approved junk categories from any newsletter/source emails that still need review before deletion.\n- Junk categories approved for cleanup include FoundersCard, Yieldi, Crunch, Higgsfield, Fundrise, Kling AI, Instagram notifications, Lumen marketing, Chess.com nags, YEEZY, City Experiences, LELO, GNC, and generic consumer sales/promotional emails.\n- Include an **Email priority + cleanup** mini-section every morning with concise bullets: \u201cpriority emails,\u201d \u201cinteresting/source emails,\u201d \u201ccleanup actions,\u201d and \u201cneeds review.\u201d Do not bury important billing/finance/security/venue items inside generic unread lists.\n- Do not actually delete newsletter/source emails unless they have already been used for the requested video pipeline and the upload has been verified, or the user has explicitly approved that sender/category as junk.\n\nHard rules:\n- Do not send emails, reply, create/delete calendar events, share/edit/delete Drive files, or modify Docs/Sheets without explicit user approval in a separate user request.\n- Personal accounts are read-first; never send from `personal-main` or `personal-secondary` without approval of the exact message.\n- Do not include raw secrets, recovery-code filenames, token contents, or credential-looking file names. If credential/recovery-like items are detected, mention only that sensitive Drive items were hidden.\n- If Google context is unavailable or an API errors, state the blocker briefly and continue the rest of the report.\n- Do not include the 14-Day Challenge Check-In, 14-day challenge boxes, one-second-rule tracker, or `done: meditation...` reply prompt anymore. The user explicitly removed that section.\n\nAlso include: Chicago local pulse, bullish/bearish market pulse in one line, Google search/social pulse, game-changing AI + coding news, capability/trend radar, interesting item(s), numerology, daily challenge, one big priority prompt, and hard truth/leverage move.",
+      "skills": [
+        "operator-morning-reports",
+        "google-workspace",
+        "blogwatcher"
+      ],
+      "skill": "operator-morning-reports",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "google_morning_context.py",
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 13 * * *",
+        "display": "30 13 * * *"
+      },
+      "schedule_display": "30 13 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 26
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-05-21T01:20:05.320432+00:00",
+      "next_run_at": "2026-06-14T13:30:00+00:00",
+      "last_run_at": "2026-06-13T13:31:52.667666+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "web",
+        "terminal",
+        "file",
+        "session_search",
+        "x_search"
+      ],
+      "workdir": null
+    },
+    {
+      "id": "6355d735bb4a",
+      "name": "Creator discovery feeder for Viral Radar",
+      "prompt": "Run the creator watchlist monitor for Viral Radar. This job is discovery-only: it should identify new YouTube videos from configured watchlist channels such as Andrew Huberman and Hamza, create candidate workspaces under `/opt/data/HeRmEz/projects/viral-clip-radar/CLIP_PLANS/`, preserve source metadata/attribution, and stay quiet when there is nothing new. Do not raw-reupload source clips; all future clip use must be transformative with hooks, captions, context/analysis, and attribution.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "creator_watchlist.sh",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "interval",
+        "minutes": 360,
+        "display": "every 360m"
+      },
+      "schedule_display": "every 360m",
+      "repeat": {
+        "times": null,
+        "completed": 37
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-04T02:32:26.430124+00:00",
+      "next_run_at": "2026-06-14T06:46:39.718558+00:00",
+      "last_run_at": "2026-06-14T00:46:39.718558+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "workdir": "/opt/data/HeRmEz/projects/viral-clip-radar",
+      "profile": null
+    },
+    {
+      "id": "c9e81ae638fe",
+      "name": "Daily faceless YouTube full video generation + upload",
+      "prompt": "You are running the user's Daily Faceless YouTube full video generation + upload pipeline. This job should create one fresh, private-first/production-ready faceless Short using the `social-video-cron-growth-loop` and `youtube-automation-with-tts` skills.\n\nUse performance learnings first, then research a fresh self-improvement/discipline/social-confidence/no-degree/cloud-career angle. Also check `/opt/data/HeRmEz/projects/faceless-youtube-channel/STATE/source_transcripts/` for source inspiration from creators the user likes, especially Andrew Huberman and Hamza. Use their clips/transcripts as inspiration or source material only with transformative narration/context; do not raw-reupload.\n\nIf source transcript artifacts are available, prefer turning one useful idea into a faceless script with: sharp hook, simple explanation, practical action, captions, and attribution if directly referencing the creator. Keep the final report concise: topic/hook, output/upload URL or blocker, cleanup status.",
+      "skills": [
+        "social-video-cron-growth-loop",
+        "youtube-automation-with-tts",
+        "social-platform-publishing"
+      ],
+      "skill": "social-video-cron-growth-loop",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "run_trend_video.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "45 1 * * *",
+        "display": "45 1 * * *"
+      },
+      "schedule_display": "45 1 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 10
+      },
+      "enabled": false,
+      "state": "paused",
+      "paused_at": "2026-06-11T14:42:55.181743+00:00",
+      "paused_reason": null,
+      "created_at": "2026-06-04T12:55:03.480224+00:00",
+      "next_run_at": "2026-06-12T01:45:00+00:00",
+      "last_run_at": "2026-06-11T01:45:57.216706+00:00",
+      "last_status": "error",
+      "last_error": "Script not found: /opt/data/scripts/run_trend_video.py",
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "web",
+        "terminal",
+        "file"
+      ],
+      "workdir": "/opt/data/HeRmEz/projects/faceless-youtube-channel",
+      "profile": null
+    },
+    {
+      "id": "bce8ebabac36",
+      "name": "Daily Viral Radar / Creator clip generation + upload",
+      "prompt": "You are running the user's Daily Viral Radar / creator clip full video generation + upload pipeline. Use `social-video-cron-growth-loop`, `youtube-automation-with-tts`, and `social-platform-publishing`.\n\nUse fresh reviewed clip manifests and creator watchlist candidates from `/opt/data/HeRmEz/projects/viral-clip-radar/CLIP_PLANS/`. The watchlist now includes Andrew Huberman and Hamza. Prioritize clips that teach discipline, dopamine control, focus, social confidence, exercise, mental health, learning, or practical self-improvement. Do not raw-reupload creator clips: every upload must add hook/context/captions/analysis and source attribution, then private-first or according to the existing project upload policy.\n\nIf no reviewed manifest exists, select/create a candidate review note rather than inventing a finished upload. Keep final report concise: selected source, hook, output/upload URL or blocker, cleanup status.",
+      "skills": [
+        "social-video-cron-growth-loop",
+        "youtube-automation-with-tts",
+        "social-platform-publishing"
+      ],
+      "skill": "social-video-cron-growth-loop",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": [
+        "6355d735bb4a"
+      ],
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 20 * * *",
+        "display": "15 20 * * *"
+      },
+      "schedule_display": "15 20 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 7
+      },
+      "enabled": false,
+      "state": "paused",
+      "paused_at": "2026-06-11T14:50:59.670727+00:00",
+      "paused_reason": null,
+      "created_at": "2026-06-04T12:58:58.087889+00:00",
+      "next_run_at": "2026-06-11T20:15:00+00:00",
+      "last_run_at": "2026-06-10T20:15:56.423179+00:00",
+      "last_status": "error",
+      "last_error": "Blocked: prompt matches threat pattern 'deception_hide'. Cron prompts must not contain injection or exfiltration payloads.",
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "web",
+        "terminal",
+        "file"
+      ],
+      "workdir": "/opt/data/HeRmEz/projects/viral-clip-radar",
+      "profile": null
+    },
+    {
+      "id": "6265cf005534",
+      "name": "HeRmEz Kanban project sweep dispatcher nudge",
+      "prompt": "Silent watchdog that nudges the HeRmEz Kanban project sweep dispatcher. The script appends dispatch output to /opt/data/HeRmEz/projects/KANBAN_SWEEP_DISPATCH.log and prints nothing so routine ticks are silent.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "kanban_dispatch_hermez_sweep.sh",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "interval",
+        "minutes": 10,
+        "display": "every 10m"
+      },
+      "schedule_display": "every 10m",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": false,
+      "state": "paused",
+      "paused_at": "2026-06-06T02:10:28.674909+00:00",
+      "paused_reason": null,
+      "created_at": "2026-06-06T02:05:15.742685+00:00",
+      "next_run_at": "2026-06-06T02:15:15.742728+00:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "workdir": null,
+      "profile": null
+    },
+    {
+      "id": "184d6fe792e3",
+      "name": "Daily social video metrics learning loop",
+      "prompt": "Collect YouTube upload metrics and update social-growth performance learnings for future faceless YouTube and Viral Radar cron runs.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "youtube_metrics_monitor.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 14 * * *",
+        "display": "0 14 * * *"
+      },
+      "schedule_display": "0 14 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 7
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-07T00:27:10.163742+00:00",
+      "next_run_at": "2026-06-14T14:00:00+00:00",
+      "last_run_at": "2026-06-13T14:00:37.470403+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "local",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "terminal",
+        "file"
+      ],
+      "workdir": null,
+      "profile": null
+    },
+    {
+      "id": "920d68fd715e",
+      "name": "Morning email sorting agent",
+      "prompt": "Run the Hermes email sorting agent before the morning operator report. It should sort known source newsletters (TLDR, Daily Stoic, Kino Body) into Hermes Gmail labels/folders and remove them from Inbox while preserving them for video generation. The wrapper stays silent when there is nothing to sort.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "email_sorting_agent_apply.sh",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 13 * * *",
+        "display": "15 13 * * *"
+      },
+      "schedule_display": "15 13 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 2
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-12T04:20:40.734347+00:00",
+      "next_run_at": "2026-06-14T13:15:00+00:00",
+      "last_run_at": "2026-06-13T13:15:38.950820+00:00",
+      "last_status": "error",
+      "last_error": "Script exited with code 1\nstderr:\nTraceback (most recent call last):\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 197, in <module>\n    raise SystemExit(main())\n                     ~~~~^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 191, in main\n    results = [process_profile(p, e, apply=args.apply, max_results=args.max_results) for p, e in selected]\n               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 153, in process_profile\n    service = gmail(profile)\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 79, in gmail\n    return build(\"gmail\", \"v1\", credentials=load_creds(profile), cache_discovery=False)\n                                            ~~~~~~~~~~^^^^^^^^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 72, in load_creds\n    creds.refresh(Request())\n    ~~~~~~~~~~~~~^^^^^^^^^^^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/credentials.py\", line 412, in refresh\n    ) = reauth.refresh_grant(\n        ~~~~~~~~~~~~~~~~~~~~^\n        request,\n        ^^^^^^^^\n    ...<6 lines>...\n        enable_reauth_refresh=self._enable_reauth_refresh,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/reauth.py\", line 370, in refresh_grant\n    _client._handle_error_response(response_data, retryable_error)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/_client.py\", line 69, in _handle_error_response\n    raise exceptions.RefreshError(\n        error_details, response_data, retryable=retryable_error\n    )\ngoogle.auth.exceptions.RefreshError: ('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})",
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "workdir": null,
+      "profile": null
+    },
+    {
+      "id": "df35199a8b51",
+      "name": "Post-morning Agentic portfolio market scan",
+      "prompt": "Run the user's post-morning Agentic portfolio market scan for Robinhood Agentic account 433711041 / account ending 1041. This job runs after the Morning operator report. It is primarily research/reporting unless a separate active autonomous trading policy is clearly present in /opt/data/HeRmEz/projects/trading-journal/playbook/autonomous-policy.md AND current account/broker state is certain. Do not ask questions; final response is delivered to Discord.\n\nRequired workflow:\n1. Inspect live Robinhood account state using available Robinhood MCP tools if present: portfolio/buying power, equity positions, option positions if any, open equity orders, recent orders. If MCP tools are unavailable in this cron environment, state that clearly and continue with market/news research only.\n2. Inspect broad market: SPY, QQQ, IWM quotes and recent historicals when available. Summarize bullish/bearish/neutral in one line.\n3. Scan candidates beyond stale user watchlists. Use: recent source/newsletter signals from routed Gmail labels when accessible (TLDR, Robinhood Snacks, Daily Stoic/Kino Body only if relevant to markets/health stocks), web/news search, Robinhood popular/daily movers if tools are available, and live quotes/historicals/tradability.\n4. Produce technical analysis for top candidates: price, daily move, trend vs recent moving averages if available, volume/ATR if available, support/resistance/invalidation, setup quality.\n5. Produce lightweight fundamental/catalyst analysis: what changed, earnings/news/sector narrative, why it matters, and what would disconfirm it.\n6. Update the local trading journal under /opt/data/HeRmEz/projects/trading-journal/YYYY-MM-DD/post-morning-market-scan.md with the account state, candidate list, best setup(s), and any tool failures/upgrades needed.\n7. Include a small 'Tool / system upgrades' section: what data source, scanner, script, or MCP/tool improvement would make future scans better. Do not modify tools unless it is a harmless local journal/runbook update.\n8. If no clean setup exists, say no trade; do not force a trade.\n9. Never trade options unless explicitly authorized. Never trade non-Agentic accounts. Stop all trading consideration if account value is below $10, broker state is uncertain, or risk cannot be calculated.\n10. If an autonomous policy is active and a trade is placed within policy, use review before placement when possible, journal the preview and execution, and report the exact order/result. Otherwise, do NOT place orders; only provide setups.\n\nOutput style: concise Discord bullets, no Markdown tables. Sections: Decision, Agentic Portfolio, Market Read, Top Candidates, Best Setup, Risk / Invalidation, Tool Upgrades, Journal.",
+      "skills": [
+        "robinhood-trading-operator",
+        "google-workspace"
+      ],
+      "skill": "robinhood-trading-operator",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "50 13 * * 1-5",
+        "display": "50 13 * * 1-5"
+      },
+      "schedule_display": "50 13 * * 1-5",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-12T15:48:08.357771+00:00",
+      "next_run_at": "2026-06-15T13:50:00+00:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null,
+      "profile": null
+    },
+    {
+      "id": "f02334d43494",
+      "name": "Daily Content Backlog Processor",
+      "prompt": "Process all unread emails in the fareed320 Gmail profile, generate a faceless YouTube video for each using the updated newsletter pipeline that pulls stock footage from Pexels, uploads to YouTube, adds a Calendar event to https://www.google.com/calendar/calendar/embedded?src=trapi-3226%40group.calendar.google.com for scheduled release, then deletes the email and local video files to maintain a clean backlog. Use google-workspace skill for Calendar integration and Gmail access. Ensure the job respects the user\u2019s preference for daily batch processing and never exceeds the $2 per-transaction risk limit. Log success/failure in /opt/data/HeRmEz/projects/CONTENT_STRATEGY.md.",
+      "skills": [
+        "google-workspace",
+        "process_newsletters_for_videos"
+      ],
+      "skill": "google-workspace",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * *",
+        "display": "0 9 * * *"
+      },
+      "schedule_display": "0 9 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 1
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-12T17:32:19.594106+00:00",
+      "next_run_at": "2026-06-14T09:00:00+00:00",
+      "last_run_at": "2026-06-13T09:02:32.603931+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "web",
+        "terminal",
+        "file"
+      ],
+      "workdir": null,
+      "profile": null
+    },
+    {
+      "id": "11c4893d4718",
+      "name": "Resume Classical Echos uploads after YouTube limit reset",
+      "prompt": "Resume uploading the pending Classical Echos newsletter videos after YouTube daily upload limit reset.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "resume_newsletter_uploads_after_limit.sh",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "once",
+        "run_at": "2026-06-14T04:00:00+00:00",
+        "display": "once at 2026-06-14 04:00"
+      },
+      "schedule_display": "once at 2026-06-14 04:00",
+      "repeat": {
+        "times": 1,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-13T03:32:32.962740+00:00",
+      "next_run_at": "2026-06-14T04:00:00+00:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null,
+      "profile": null
+    },
+    {
+      "id": "c430795296d8",
+      "name": "Faceless newsletter video uploader",
+      "prompt": "Run the faceless YouTube newsletter catch-up uploader for new newsletter emails. Workdir: /opt/data/HeRmEz/projects/faceless-youtube-channel. Command: /opt/hermes/.venv/bin/python scripts/newsletter_batch_upload.py --limit 5. Report only if videos were uploaded or if an error occurred; include YouTube URLs and source trash status. If processed=0/uploaded=0, say the inbox is caught up in one concise sentence. Do not schedule additional cron jobs.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "interval",
+        "minutes": 60,
+        "display": "every 60m"
+      },
+      "schedule_display": "every 60m",
+      "repeat": {
+        "times": 24,
+        "completed": 1
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-14T01:51:09.782877+00:00",
+      "next_run_at": "2026-06-14T03:51:45.448754+00:00",
+      "last_run_at": "2026-06-14T02:51:45.448754+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "terminal",
+        "file"
+      ],
+      "workdir": "/opt/data/HeRmEz/projects/faceless-youtube-channel",
+      "profile": null
+    }
+  ],
+  "updated_at": "2026-06-14T03:01:00.828450+00:00"
+}

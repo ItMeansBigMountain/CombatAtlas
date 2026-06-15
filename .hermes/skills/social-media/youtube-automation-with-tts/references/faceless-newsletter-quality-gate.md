@@ -22,8 +22,9 @@ The user explicitly corrected that faceless newsletter videos should not rely on
 Implementation standard:
 
 - Generate per-scene visual queries from the actual newsletter subject/body and script beats.
-- Prefer real stock footage APIs: Pexels video first, Pixabay video second, then Pexels photos/other safe image fallback.
+- Prefer real stock footage APIs: Pexels video first, Pixabay video second, Pexels photos third, Shutterstock preview/licensed video if configured, then other safe image fallback.
 - Use topic/company phrases where useful, but fall back to broad semantic queries (`engineers working on AI`, `payment technology office`, `cybersecurity operations center`, `gym discipline`, `morning journaling`) when exact company footage is unavailable.
+- Treat `PIXABAY_API_KEY` as the Pixabay env var. Do not confuse Pixabay with Pexels/Pixels: a key shaped like `56299266-...` from `pixabay.com/api/docs` belongs in `PIXABAY_API_KEY`, not `PEXELS_API_KEY`. If a stale `PEXELS_API_KEY` returns 403, disable it and let the renderer fall through to Pixabay.
 - Render stock videos looped/cropped to 9:16; render photos with slow zoom/pan and dark overlays for legible captions.
 - Save a `visual_manifest.json` recording scene, query, provider, source URL, and asset path for QA.
 - Do not call the video ready if the manifest shows only fallback_dynamic unless the user explicitly accepts a draft.

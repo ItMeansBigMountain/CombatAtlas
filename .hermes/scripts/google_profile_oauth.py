@@ -19,16 +19,33 @@ CLIENT_SECRET_PATH = Path("/opt/data/google_client_secret.json")
 PROFILES_PATH = Path("/opt/data/HeRmEz/projects/_ops/google-email-profiles.json")
 BASE_DIR = Path("/opt/data/google_profiles")
 REDIRECT_URI = "http://localhost:1"
-SCOPES = [
+FULL_WORKSPACE_SCOPES = [
     "https://www.googleapis.com/auth/gmail.readonly",
     "https://www.googleapis.com/auth/gmail.send",
     "https://www.googleapis.com/auth/gmail.modify",
+    "https://www.googleapis.com/auth/gmail.settings.basic",
     "https://www.googleapis.com/auth/calendar",
     "https://www.googleapis.com/auth/drive",
     "https://www.googleapis.com/auth/contacts.readonly",
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/documents",
 ]
+
+READ_ONLY_WORKSPACE_SCOPES = [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/calendar.readonly",
+    "https://www.googleapis.com/auth/drive.readonly",
+    "https://www.googleapis.com/auth/contacts.readonly",
+    "https://www.googleapis.com/auth/spreadsheets.readonly",
+    "https://www.googleapis.com/auth/documents.readonly",
+]
+
+
+def scopes_for_profile(profile: str, meta: dict) -> list[str]:
+    access = meta.get("access", "")
+    if profile == "personal-main" or access == "read_only_workspace":
+        return READ_ONLY_WORKSPACE_SCOPES
+    return FULL_WORKSPACE_SCOPES
 
 
 def profile_dir(profile: str) -> Path:
@@ -43,7 +60,8 @@ def profile_dir(profile: str) -> Path:
 def load_profiles() -> dict:
     if not PROFILES_PATH.exists():
         raise SystemExit(f"Missing profile registry: {PROFILES_PATH}")
-    return json.loads(PROFILES_PATH.read_text())["profiles"]
+    data = json.loads(PROFILES_PATH.read_text())
+    return data.get("profiles") or data.get("workspace_profiles") or {}
 
 
 def normalize_token(payload: dict) -> dict:
@@ -73,12 +91,13 @@ def auth_url(profile: str) -> None:
     if profile not in profiles:
         raise SystemExit(f"Unknown profile {profile}. Known: {', '.join(profiles)}")
     email = profiles[profile]["email"]
+    scopes = scopes_for_profile(profile, profiles[profile])
 
     from google_auth_oauthlib.flow import Flow
 
     flow = Flow.from_client_secrets_file(
         str(CLIENT_SECRET_PATH),
-        scopes=SCOPES,
+        scopes=scopes,
         redirect_uri=REDIRECT_URI,
         autogenerate_code_verifier=True,
     )
@@ -94,7 +113,7 @@ def auth_url(profile: str) -> None:
         "state": state,
         "code_verifier": flow.code_verifier,
         "redirect_uri": REDIRECT_URI,
-        "scopes": SCOPES,
+        "scopes": scopes,
     }
     pending_path = d / "pending.json"
     pending_path.write_text(json.dumps(pending, indent=2))
@@ -114,7 +133,7 @@ def auth_code(profile: str, callback: str) -> None:
 
     from google_auth_oauthlib.flow import Flow
 
-    scopes = granted or pending.get("scopes") or SCOPES
+    scopes = granted or pending.get("scopes") or []
     flow = Flow.from_client_secrets_file(
         str(CLIENT_SECRET_PATH),
         scopes=scopes,

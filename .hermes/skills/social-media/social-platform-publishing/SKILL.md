@@ -87,6 +87,16 @@ Requested scopes:
 - Do not paste secrets in output or commit `.env`; verify presence with preflight checks that redact values.
 - Do not rely on Zapier webhooks for a low-cost pilot unless the user has explicitly accepted premium Zapier features; native APIs and manual review bridges are often better first steps.
 
+## Absorbed Tool-Specific Playbooks
+
+This is the umbrella for social and video content operations. The former narrow skills are preserved as re-homed package references:
+
+- `references/youtube-content/original-skill.md` — YouTube transcripts, summaries, clipping workflows, upload automation, and related scripts/references under `references/youtube-content/`.
+- `references/xurl/original-skill.md` — X/Twitter operations through `xurl`, including posting, search, DMs, media upload, API selection, and troubleshooting.
+- `references/gif-search/original-skill.md` — Tenor/GIF search and download workflow for adding reaction or illustrative media.
+
+Choose the subsection by task intent: publish/manage social posts here first; consult the re-homed reference when a platform-specific command, transcript script, GIF lookup, or API quirk matters.
+
 ## Verification
 
 - Run a credential preflight that reports set/unset status without printing values.

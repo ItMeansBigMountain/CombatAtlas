@@ -5,6 +5,10 @@ tags: [runescape, osrs, plugin-development, runelite]
 ---
 # OSRS RuneLite Plugin Development Guide
 
+## Portfolio Review Workflow
+
+When the user asks to review the OSRS plugin portfolio, use `references/portfolio-review-pattern.md`: inventory child repos under `/opt/data/HeRmEz/projects/osrs-plugins`, run sequential Java 11 `./gradlew clean test assemble --no-daemon` checks, save a JSONL report, then give a product-maturity review instead of only build status. For the current post-GitHub-import completion plan, also load `references/osrs-portfolio-completion-2026-06.md`: Vercel is not a blocker for RuneLite plugins, 17/17 active child plugins passed the Java 11 build review, and the recommended completion order is AccountLegacyCard → BossReadinessScore → RivalRadar → clan activity panel → lightweight utility batch.
+
 ## User Workspace Layout
 
 When working on this user's RuneLite plugin projects, inspect `/opt/data/HeRmEz/projects/osrs-plugins` first. The directory is a parent folder for multiple plugin projects; each plugin should become its own repository when requested. Use `https://github.com/ItMeansBigMountain/breach-check-osrs.git` as the boilerplate/reference structure, but verify where it is cloned locally before copying from it. See `references/workspace-repo-layout.md` for the exact workspace paths and repo-splitting workflow, and `references/plugin-repo-stabilization-checklist.md` for the stabilization checklist used when cleaning a messy multi-plugin parent directory.

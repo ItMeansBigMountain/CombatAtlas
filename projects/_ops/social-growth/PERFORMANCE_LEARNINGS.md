@@ -1,6 +1,6 @@
 # Social Video Performance Learnings
 
-Last updated: `2026-06-13T14:00:37.461454+00:00`
+Last updated: `2026-06-14T14:00:42.400421+00:00`
 
 ## Metrics status
 
@@ -10,7 +10,7 @@ Last updated: `2026-06-13T14:00:37.461454+00:00`
 
 ## faceless-youtube-channel
 
-- Uploads logged: 27 total; 11 public.
+- Uploads logged: 38 total; 22 public.
 - Live metrics unavailable for public videos in this snapshot; use upload-log dedupe only until API metrics are configured.
 
 ## viral-clip-radar

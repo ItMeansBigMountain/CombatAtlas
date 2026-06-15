@@ -56,3 +56,17 @@
 - Calendar/email cleanup: no new Calendar events were created and no unread emails were deleted this run, because deletion is only safe after confirmed upload + calendar scheduling.
 - Local cleanup: retained failed local MP4s so they can be retried after YouTube upload limit resets; uploaded batch records already used delete-after-upload where successful.
 - Result: BLOCKED by YouTube upload limit and missing requested skill. Next safe retry: after YouTube upload limit resets; process a smaller daily batch to avoid quota exhaustion.
+
+## Newsletter video cron run — 2026-06-14 09:07:09 UTC
+
+- Notice: requested skill `process_newsletters_for_videos` was not installed, so I used the available Google Workspace tooling and the updated `faceless-youtube-channel/scripts/newsletter_batch_upload.py` pipeline.
+- Gmail profile: `fareed320` via `/opt/data/google_profiles/fareed320/google_token.json`.
+- Preflight: video/TTS/render stack ready; Google TTS OK; stock visuals available. Loaded Pexels key from `/opt/data/HeRmEz/projects/faceless-youtube-channel/.env.pexels` for this run. No paid stock purchase or high-risk transaction was performed; estimated per-item transaction risk stayed below `$2`.
+- Daily-batch policy: processed a conservative batch of 3 unread newsletter/source emails rather than the entire stale unread backlog.
+- Uploads completed:
+  - `Freight drain` → https://youtu.be/RAGY_K2WLCA (`RAGY_K2WLCA`), 1080x1920, 55.09s; source Gmail message `19eb63fb42a56b91` trashed after verified upload.
+  - `The Most Overlooked Aspect Of Growing A Social Media Following` → https://youtu.be/HVRRzUwE3qg (`HVRRzUwE3qg`), 1080x1920, 51.05s; source Gmail message `18d653996742a49e` trashed after verified upload.
+  - `Minimum Daily Output To Get To 1M Followers` → https://youtu.be/uDz_lhJM06U (`uDz_lhJM06U`), 1080x1920, 45.96s; source Gmail message `18d6013d10062a07` trashed after verified upload.
+- Cleanup: uploader deleted each final MP4 after upload; I also removed 54 local generated media assets (`.mp4/.mp3/.jpg/.png/.mov/.webm/.wav`) from the three workspaces while retaining JSON manifests/results for auditability.
+- Calendar integration: attempted to create scheduled-release events on `trapi-3226@group.calendar.google.com`; OAuth profile tokens lacked Calendar scopes (`403 insufficientPermissions`) and the configured service account could not see the calendar (`404 notFound`). No calendar events were created.
+- Result: PARTIAL SUCCESS — 3 videos generated/uploaded and their source emails cleaned up; Calendar scheduling remains blocked until the calendar is shared with the configured service account or an OAuth profile is reauthorized with Calendar scope.

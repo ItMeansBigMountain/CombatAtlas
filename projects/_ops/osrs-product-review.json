@@ -1,0 +1,273 @@
+[
+  {
+    "plugin": "AccountLegacyCard",
+    "java_files": 2,
+    "classes": [
+      "AccountLegacyCardConfig.java",
+      "AccountLegacyCardPlugin.java"
+    ],
+    "features": [
+      "sidebar",
+      "player menu",
+      "api/http",
+      "hiscore/WOM/Temple",
+      "config"
+    ],
+    "maturity": "serious side-panel/API product",
+    "readme_hint": "# Account Legacy Card Account Legacy Card is a lightweight RuneLite external plugin that posts a concise account snapshot to the in-game chat when you log in. It is intentionally local-only: the plugin reads the active RuneLite client state and does not call Wise Old Man, TempleOSRS, or any other ex"
+  },
+  {
+    "plugin": "BossKCRivalLookup",
+    "java_files": 3,
+    "classes": [
+      "BossKcRivalLookupFormatter.java",
+      "BossKcRivalLookupConfig.java",
+      "BossKcRivalLookupPlugin.java"
+    ],
+    "features": [
+      "chat",
+      "hiscore/WOM/Temple",
+      "config"
+    ],
+    "maturity": "thin",
+    "readme_hint": "# Boss KC Rival Lookup Boss KC Rival Lookup is an external RuneLite plugin that compares your boss kill count against a configured rival using the official Old School RuneScape hiscores exposed through RuneLite's `HiscoreClient`. The plugin is intentionally lightweight: it does not store data locall"
+  },
+  {
+    "plugin": "BossRaceCreator",
+    "java_files": 2,
+    "classes": [
+      "BossRaceCreatorPlugin.java",
+      "BossRaceCreatorConfig.java"
+    ],
+    "features": [
+      "chat",
+      "config"
+    ],
+    "maturity": "thin",
+    "readme_hint": "# Boss Race Creator Boss Race Creator is a RuneLite external plugin scaffold for setting up a simple boss kill-count race reminder. It lets a player configure the race name, boss/activity, target KC, and comma-separated competitors, then announces the configured race in the in-game chat after login."
+  },
+  {
+    "plugin": "BossReadinessScore",
+    "java_files": 14,
+    "classes": [
+      "BossProfile.java",
+      "OsrsWikiApiClient.java",
+      "BossTarget.java",
+      "GearItem.java",
+      "BossReadinessScorePlugin.java",
+      "GearRecommendationEngine.java",
+      "BossReadinessScoreConfig.java",
+      "SetupRecommendation.java",
+      "PlayerStats.java",
+      "BudgetTier.java",
+      "BossDataService.java",
+      "GearSlot.java"
+    ],
+    "features": [
+      "sidebar",
+      "api/http",
+      "config"
+    ],
+    "maturity": "serious side-panel/API product",
+    "readme_hint": "# Boss Readiness Score Boss Readiness Score is a RuneLite external plugin that gives a quick, in-client readiness estimate before bossing. On login, it reads the local player's combat stats, compares them to the selected boss profile, and opens a RuneLite side panel with a 0-100 readiness score plus"
+  },
+  {
+    "plugin": "BossStreaks",
+    "java_files": 3,
+    "classes": [
+      "BossStreaksTracker.java",
+      "BossStreaksConfig.java",
+      "BossStreaksPlugin.java"
+    ],
+    "features": [
+      "chat",
+      "config"
+    ],
+    "maturity": "thin",
+    "readme_hint": "# BossStreaks BossStreaks is a RuneLite external plugin that watches normal in-game boss kill-count chat messages and keeps a lightweight daily streak for each boss you kill. When a kill-count message such as `Your Zulrah kill count is: 150` appears, the plugin records that boss for the current loca"
+  },
+  {
+    "plugin": "ClanGrindHeatmap",
+    "java_files": 3,
+    "classes": [
+      "ClanGrindHeatmapConfig.java",
+      "ClanGrindHeatmapPlugin.java",
+      "ClanGrindHeatmapModel.java"
+    ],
+    "features": [
+      "overlay",
+      "chat",
+      "config"
+    ],
+    "maturity": "usable RuneLite UI/plugin MVP",
+    "readme_hint": "# Clan Grind Heatmap Clan Grind Heatmap is a RuneLite external plugin that is being prepared to show when your clan is most actively gaining XP. The current implementation establishes the plugin shell, configuration, metadata, and pure-Java heatmap bucketing logic so it is ready for manual RuneLite "
+  },
+  {
+    "plugin": "CompetitionOverlay",
+    "java_files": 2,
+    "classes": [
+      "CompetitionOverlayConfig.java",
+      "CompetitionOverlayPlugin.java"
+    ],
+    "features": [
+      "overlay",
+      "chat",
+      "config"
+    ],
+    "maturity": "usable RuneLite UI/plugin MVP",
+    "readme_hint": "# Competition Overlay Competition Overlay is a RuneLite external plugin scaffold for OSRS clan or community competitions. It currently provides a small in-client reminder on login and a stable place to wire future competition standings/progress data into an overlay or panel. ## Current features"
+  },
+  {
+    "plugin": "GroupIronProgressBoard",
+    "java_files": 2,
+    "classes": [
+      "GroupIronProgressBoardConfig.java",
+      "GroupIronProgressBoardPlugin.java"
+    ],
+    "features": [
+      "chat",
+      "config"
+    ],
+    "maturity": "thin",
+    "readme_hint": "# Group Iron Progress Board Group Iron Progress Board is a RuneLite external plugin scaffold for Group Ironman teams that want a small in-client reminder of who is on the team and where their shared progress board lives. Current behavior is intentionally lightweight and safe for local manual testing"
+  },
+  {
+    "plugin": "IceBarrageTimer",
+    "java_files": 3,
+    "classes": [
+      "IceBarrageTimerOverlay.java",
+      "IceBarrageTimerPlugin.java",
+      "IceBarrageTimerConfig.java"
+    ],
+    "features": [
+      "overlay",
+      "game tick",
+      "chat",
+      "config"
+    ],
+    "maturity": "usable RuneLite UI/plugin MVP",
+    "readme_hint": "# Ice Barrage Timer Ice Barrage Timer is a RuneLite external plugin for PvP practice and fights. It watches your local game chat for successful Ice Barrage and Teleblock casts, starts a timer for the target player, and shows active timers in a compact overlay. ## Features"
+  },
+  {
+    "plugin": "NameChangeWatcher",
+    "java_files": 2,
+    "classes": [
+      "NameChangeWatcherConfig.java",
+      "NameChangeWatcherPlugin.java"
+    ],
+    "features": [
+      "game tick",
+      "chat",
+      "config"
+    ],
+    "maturity": "thin",
+    "readme_hint": "# Name Change Watcher Name Change Watcher is a RuneLite external plugin that surfaces the previous-display-name information RuneLite already exposes for friends and friends-chat members. It is intended as a lightweight manual-testing/plugin-hub-ready starting point for keeping track of friends or ri"
+  },
+  {
+    "plugin": "PersonalProgressTimeline",
+    "java_files": 3,
+    "classes": [
+      "MilestoneParser.java",
+      "PersonalProgressTimelineConfig.java",
+      "PersonalProgressTimelinePlugin.java"
+    ],
+    "features": [
+      "chat",
+      "config"
+    ],
+    "maturity": "thin",
+    "readme_hint": "# Personal Progress Timeline Personal Progress Timeline is a lightweight RuneLite plugin that records notable personal milestones during the current client session. It watches local game messages for level-ups, quest completions, and combat achievement completions, then keeps a small in-memory timel"
+  },
+  {
+    "plugin": "RivalRadar",
+    "java_files": 4,
+    "classes": [
+      "RivalRadarPlugin.java",
+      "WOMApiHelper.java",
+      "RivalRadarConfig.java",
+      "RivalRadarOverlay.java"
+    ],
+    "features": [
+      "overlay",
+      "chat",
+      "api/http",
+      "hiscore/WOM/Temple",
+      "config"
+    ],
+    "maturity": "usable RuneLite UI/plugin MVP",
+    "readme_hint": "# RivalRadar RivalRadar is a RuneLite external plugin scaffold for tracking a configured Old School RuneScape rival and preparing XP comparison checks against public Wise Old Man data. The current implementation is intentionally lightweight and ready for manual RuneLite testing: it loads as `RivalRa"
+  },
+  {
+    "plugin": "SkillNemesis",
+    "java_files": 4,
+    "classes": [
+      "SkillNemesisAnalyzer.java",
+      "SkillNemesisAnalysis.java",
+      "SkillNemesisPlugin.java",
+      "SkillNemesisConfig.java"
+    ],
+    "features": [
+      "chat",
+      "config"
+    ],
+    "maturity": "moderate codebase",
+    "readme_hint": "# SkillNemesis SkillNemesis is a RuneLite plugin that highlights the player's current \"nemesis\" skill: the tracked skill furthest below a configurable target level. On login, it can post a short game message naming the skill, current real level, target level, and level gap. This repo is structured a"
+  },
+  {
+    "plugin": "SkillRaceCreator",
+    "java_files": 2,
+    "classes": [
+      "SkillRaceCreatorConfig.java",
+      "SkillRaceCreatorPlugin.java"
+    ],
+    "features": [
+      "chat",
+      "config"
+    ],
+    "maturity": "thin",
+    "readme_hint": "# SkillRaceCreator SkillRaceCreator is a lightweight RuneLite external plugin scaffold for local OSRS skill-race tracking. It lets a player choose one skill, set a target XP value, and receive in-game chat progress updates as XP changes. This repo is prepared as a standalone RuneLite plugin project "
+  },
+  {
+    "plugin": "SkillStreaks",
+    "java_files": 2,
+    "classes": [
+      "SkillStreaksConfig.java",
+      "SkillStreaksPlugin.java"
+    ],
+    "features": [
+      "chat",
+      "config"
+    ],
+    "maturity": "thin",
+    "readme_hint": "# SkillStreaks SkillStreaks is a RuneLite external plugin that tracks consecutive XP gains in the same OSRS skill. When the same skill gains XP repeatedly, the plugin keeps a running streak count, records the best streak for the session, and can announce streak milestones in the in-game chat box. ##"
+  },
+  {
+    "plugin": "SmartHiscoreLookup",
+    "java_files": 2,
+    "classes": [
+      "SmartHiscoreLookupPlugin.java",
+      "SmartHiscoreLookupConfig.java"
+    ],
+    "features": [
+      "chat",
+      "hiscore/WOM/Temple",
+      "config"
+    ],
+    "maturity": "thin",
+    "readme_hint": "# Smart Hiscore Lookup Smart Hiscore Lookup is a RuneLite external plugin that keeps Old School RuneScape hiscore links close at hand while you play. The current implementation is intentionally lightweight: it normalizes RuneScape display names, builds official hiscore lookup URLs, and shows an opti"
+  },
+  {
+    "plugin": "WhosGrindingClanPanel",
+    "java_files": 2,
+    "classes": [
+      "WhosGrindingClanPanelConfig.java",
+      "WhosGrindingClanPanelPlugin.java"
+    ],
+    "features": [
+      "chat",
+      "config"
+    ],
+    "maturity": "thin",
+    "readme_hint": "# Who's Grinding Clan Panel A RuneLite external plugin scaffold for showing which clanmates are currently grinding. The current implementation is intentionally lightweight and plugin-hub-prep friendly: it registers clean RuneLite metadata, exposes the first configuration options, and provides reusab"
+  }
+]

@@ -20,15 +20,15 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 28
+        "completed": 29
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-06-15T03:00:00+00:00",
-      "last_run_at": "2026-06-13T03:01:06.629913+00:00",
+      "next_run_at": "2026-06-16T03:00:00+00:00",
+      "last_run_at": "2026-06-14T03:01:00.828034+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -43,8 +43,7 @@
       "prompt": "You are doing the user's proactive daily morning stand-up/operator report in Discord.\n\nUse the loaded `operator-morning-reports` skill as the report contract and tone guide. Keep it laconic, skimmable, Discord-native, no Markdown tables, no long essays.\n\nA pre-run script may inject Google Workspace context above this prompt. Treat that injected output as read-only source material from these five profiles:\n- `hermes-agent` / trapiistan@gmail.com \u2014 Hermes/YouTube/operator account\n- `personal-main` / Affan.fareed@gmail.com \u2014 personal main, read-focused\n- `personal-secondary` / fareed320@gmail.com \u2014 personal secondary, read-focused\n- `classicalechos` / classicalechos@gmail.com \u2014 Classical Echos/content lane\n- `burner` / laflametoast@gmail.com \u2014 low-stakes/burner account\n\nInclude a compact **Google Workspace pulse** inside the Work source / operating pulse section. Summarize high-signal updates from all accounts: unread or important Gmail, calendar events, useful Drive/Docs/Sheets movement, deadlines, receipts/renewals, opportunities, and weird useful AI/content/tooling leads. Group by profile only when useful; otherwise consolidate into \u201cNeeds attention,\u201d \u201cCalendar,\u201d \u201cOps/admin,\u201d \u201cInteresting/source material,\u201d and \u201cEmail cleanup candidates.\u201d\n\nEmail-specific rules for the report:\n- Prioritize billing/charges/receipts, Chase, Apple receipts/Card, cloud services, AI APIs, Robinhood, Landing only for active stay/rent-impacting logistics, Ticketmaster ticket/venue info, myQ/Chamberlain garage alerts, GitGuardian/security, official/vehicle renewal notices, and similar life/admin signals.\n- TLDR is useful for latest news, but only use/keep the feed from `fareed320@gmail.com`; TLDR on other accounts is duplicate cleanup candidate.\n- Kino Body and Daily Stoic are interesting: summarize useful ideas in the morning report, then list them as post-review cleanup candidates if appropriate.\n- Grammarly Insights is interesting self-metrics/profile data: summarize what it says about the user's writing/communication habits and connect it to his personal operating profile.\n- For TLDR, Kino Body, Daily Stoic, and Grammarly Insights: summarize through the lens of the user's known interests/profile, draw appealing personal insights, then list each as a newsletter cleanup candidate with sender, category, and title. Since the user has now approved junk-email cleanup, clearly separate already-approved junk categories from any newsletter/source emails that still need review before deletion.\n- Junk categories approved for cleanup include FoundersCard, Yieldi, Crunch, Higgsfield, Fundrise, Kling AI, Instagram notifications, Lumen marketing, Chess.com nags, YEEZY, City Experiences, LELO, GNC, and generic consumer sales/promotional emails.\n- Include an **Email priority + cleanup** mini-section every morning with concise bullets: \u201cpriority emails,\u201d \u201cinteresting/source emails,\u201d \u201ccleanup actions,\u201d and \u201cneeds review.\u201d Do not bury important billing/finance/security/venue items inside generic unread lists.\n- Do not actually delete newsletter/source emails unless they have already been used for the requested video pipeline and the upload has been verified, or the user has explicitly approved that sender/category as junk.\n\nHard rules:\n- Do not send emails, reply, create/delete calendar events, share/edit/delete Drive files, or modify Docs/Sheets without explicit user approval in a separate user request.\n- Personal accounts are read-first; never send from `personal-main` or `personal-secondary` without approval of the exact message.\n- Do not include raw secrets, recovery-code filenames, token contents, or credential-looking file names. If credential/recovery-like items are detected, mention only that sensitive Drive items were hidden.\n- If Google context is unavailable or an API errors, state the blocker briefly and continue the rest of the report.\n- Do not include the 14-Day Challenge Check-In, 14-day challenge boxes, one-second-rule tracker, or `done: meditation...` reply prompt anymore. The user explicitly removed that section.\n\nAlso include: Chicago local pulse, bullish/bearish market pulse in one line, Google search/social pulse, game-changing AI + coding news, capability/trend radar, interesting item(s), numerology, daily challenge, one big priority prompt, and hard truth/leverage move.",
       "skills": [
         "operator-morning-reports",
-        "google-workspace",
-        "blogwatcher"
+        "google-workspace"
       ],
       "skill": "operator-morning-reports",
       "model": null,
@@ -61,15 +60,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 26
+        "completed": 27
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-06-14T13:30:00+00:00",
-      "last_run_at": "2026-06-13T13:31:52.667666+00:00",
+      "next_run_at": "2026-06-15T13:30:00+00:00",
+      "last_run_at": "2026-06-14T13:31:40.485588+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -109,15 +108,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 37
+        "completed": 41
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-06-14T06:46:39.718558+00:00",
-      "last_run_at": "2026-06-14T00:46:39.718558+00:00",
+      "next_run_at": "2026-06-15T06:48:03.689967+00:00",
+      "last_run_at": "2026-06-15T00:48:03.689967+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -303,15 +302,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 7
+        "completed": 8
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-06-14T14:00:00+00:00",
-      "last_run_at": "2026-06-13T14:00:37.470403+00:00",
+      "next_run_at": "2026-06-15T14:00:00+00:00",
+      "last_run_at": "2026-06-14T14:00:42.411824+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -349,15 +348,15 @@
       "schedule_display": "15 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 2
+        "completed": 3
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T04:20:40.734347+00:00",
-      "next_run_at": "2026-06-14T13:15:00+00:00",
-      "last_run_at": "2026-06-13T13:15:38.950820+00:00",
+      "next_run_at": "2026-06-15T13:15:00+00:00",
+      "last_run_at": "2026-06-14T13:15:44.244792+00:00",
       "last_status": "error",
       "last_error": "Script exited with code 1\nstderr:\nTraceback (most recent call last):\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 197, in <module>\n    raise SystemExit(main())\n                     ~~~~^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 191, in main\n    results = [process_profile(p, e, apply=args.apply, max_results=args.max_results) for p, e in selected]\n               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 153, in process_profile\n    service = gmail(profile)\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 79, in gmail\n    return build(\"gmail\", \"v1\", credentials=load_creds(profile), cache_discovery=False)\n                                            ~~~~~~~~~~^^^^^^^^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 72, in load_creds\n    creds.refresh(Request())\n    ~~~~~~~~~~~~~^^^^^^^^^^^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/credentials.py\", line 412, in refresh\n    ) = reauth.refresh_grant(\n        ~~~~~~~~~~~~~~~~~~~~^\n        request,\n        ^^^^^^^^\n    ...<6 lines>...\n        enable_reauth_refresh=self._enable_reauth_refresh,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/reauth.py\", line 370, in refresh_grant\n    _client._handle_error_response(response_data, retryable_error)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/_client.py\", line 69, in _handle_error_response\n    raise exceptions.RefreshError(\n        error_details, response_data, retryable=retryable_error\n    )\ngoogle.auth.exceptions.RefreshError: ('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})",
       "last_delivery_error": null,
@@ -443,15 +442,15 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 1
+        "completed": 2
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T17:32:19.594106+00:00",
-      "next_run_at": "2026-06-14T09:00:00+00:00",
-      "last_run_at": "2026-06-13T09:02:32.603931+00:00",
+      "next_run_at": "2026-06-15T09:00:00+00:00",
+      "last_run_at": "2026-06-14T09:07:35.669444+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -469,96 +468,7 @@
       ],
       "workdir": null,
       "profile": null
-    },
-    {
-      "id": "11c4893d4718",
-      "name": "Resume Classical Echos uploads after YouTube limit reset",
-      "prompt": "Resume uploading the pending Classical Echos newsletter videos after YouTube daily upload limit reset.",
-      "skills": [],
-      "skill": null,
-      "model": null,
-      "provider": null,
-      "base_url": null,
-      "script": "resume_newsletter_uploads_after_limit.sh",
-      "no_agent": true,
-      "context_from": null,
-      "schedule": {
-        "kind": "once",
-        "run_at": "2026-06-14T04:00:00+00:00",
-        "display": "once at 2026-06-14 04:00"
-      },
-      "schedule_display": "once at 2026-06-14 04:00",
-      "repeat": {
-        "times": 1,
-        "completed": 0
-      },
-      "enabled": true,
-      "state": "scheduled",
-      "paused_at": null,
-      "paused_reason": null,
-      "created_at": "2026-06-13T03:32:32.962740+00:00",
-      "next_run_at": "2026-06-14T04:00:00+00:00",
-      "last_run_at": null,
-      "last_status": null,
-      "last_error": null,
-      "last_delivery_error": null,
-      "deliver": "origin",
-      "origin": {
-        "platform": "discord",
-        "chat_id": "1499990220077137943",
-        "chat_name": "TRAPISTAN / #general",
-        "thread_id": null
-      },
-      "enabled_toolsets": null,
-      "workdir": null,
-      "profile": null
-    },
-    {
-      "id": "c430795296d8",
-      "name": "Faceless newsletter video uploader",
-      "prompt": "Run the faceless YouTube newsletter catch-up uploader for new newsletter emails. Workdir: /opt/data/HeRmEz/projects/faceless-youtube-channel. Command: /opt/hermes/.venv/bin/python scripts/newsletter_batch_upload.py --limit 5. Report only if videos were uploaded or if an error occurred; include YouTube URLs and source trash status. If processed=0/uploaded=0, say the inbox is caught up in one concise sentence. Do not schedule additional cron jobs.",
-      "skills": [],
-      "skill": null,
-      "model": null,
-      "provider": null,
-      "base_url": null,
-      "script": null,
-      "no_agent": false,
-      "context_from": null,
-      "schedule": {
-        "kind": "interval",
-        "minutes": 60,
-        "display": "every 60m"
-      },
-      "schedule_display": "every 60m",
-      "repeat": {
-        "times": 24,
-        "completed": 1
-      },
-      "enabled": true,
-      "state": "scheduled",
-      "paused_at": null,
-      "paused_reason": null,
-      "created_at": "2026-06-14T01:51:09.782877+00:00",
-      "next_run_at": "2026-06-14T03:51:45.448754+00:00",
-      "last_run_at": "2026-06-14T02:51:45.448754+00:00",
-      "last_status": "ok",
-      "last_error": null,
-      "last_delivery_error": null,
-      "deliver": "origin",
-      "origin": {
-        "platform": "discord",
-        "chat_id": "1499990220077137943",
-        "chat_name": "TRAPISTAN / #general",
-        "thread_id": null
-      },
-      "enabled_toolsets": [
-        "terminal",
-        "file"
-      ],
-      "workdir": "/opt/data/HeRmEz/projects/faceless-youtube-channel",
-      "profile": null
     }
   ],
-  "updated_at": "2026-06-14T03:00:39.792289+00:00"
+  "updated_at": "2026-06-15T03:00:03.456246+00:00"
 }

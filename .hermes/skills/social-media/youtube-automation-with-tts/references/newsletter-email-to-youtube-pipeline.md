@@ -2,7 +2,7 @@
 
 Use when the user asks to turn Gmail newsletters (TLDR, Daily Stoic, Kino Body, similar source emails) into faceless YouTube videos and then clean up the source emails.
 
-For the current channel quality bar, also load `references/faceless-newsletter-quality-gate.md`. The key correction is: **one email = one video**, actual newsletter content must drive the video, and uploadable outputs require realistic voiceover plus relevant stock/API-sourced visual assets — not generic text slides.
+For the current channel quality bar, also load `references/faceless-newsletter-quality-gate.md`. The key correction is: **one email = one video**, actual newsletter content must drive the video, and uploadable outputs require realistic voiceover plus relevant stock/API visuals. Prefer per-beat stock footage/photos over AI-video-only gating: Pexels/Pixabay/Shutterstock-backed visuals are acceptable when matched to the script topic.
 
 ## Proven workflow
 

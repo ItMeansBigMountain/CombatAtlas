@@ -1,0 +1,1424 @@
+[
+  {
+    "name": "account-legacy-card-osrs",
+    "full_name": "ItMeansBigMountain/account-legacy-card-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/account-legacy-card-osrs",
+    "description": "RuneLite plugin: Account Legacy Card for OSRS account progress snapshots.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-02T01:02:34Z",
+    "pushed_at": "2026-06-02T01:02:30Z",
+    "size": 117,
+    "open_issues": 0
+  },
+  {
+    "name": "boss-readiness-score-osrs",
+    "full_name": "ItMeansBigMountain/boss-readiness-score-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/boss-readiness-score-osrs",
+    "description": "RuneLite plugin: BossReadinessScore for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T03:59:00Z",
+    "pushed_at": "2026-06-01T03:58:56Z",
+    "size": 250,
+    "open_issues": 0
+  },
+  {
+    "name": "whos-grinding-clan-panel-osrs",
+    "full_name": "ItMeansBigMountain/whos-grinding-clan-panel-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/whos-grinding-clan-panel-osrs",
+    "description": "RuneLite plugin: WhosGrindingClanPanel for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:01:00Z",
+    "pushed_at": "2026-06-01T01:00:57Z",
+    "size": 111,
+    "open_issues": 0
+  },
+  {
+    "name": "skill-streaks-osrs",
+    "full_name": "ItMeansBigMountain/skill-streaks-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/skill-streaks-osrs",
+    "description": "RuneLite plugin: SkillStreaks for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:00:59Z",
+    "pushed_at": "2026-06-01T01:00:55Z",
+    "size": 110,
+    "open_issues": 0
+  },
+  {
+    "name": "smart-hiscore-lookup-osrs",
+    "full_name": "ItMeansBigMountain/smart-hiscore-lookup-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/smart-hiscore-lookup-osrs",
+    "description": "RuneLite plugin: SmartHiscoreLookup for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:00:59Z",
+    "pushed_at": "2026-06-01T01:00:56Z",
+    "size": 111,
+    "open_issues": 0
+  },
+  {
+    "name": "skill-race-creator-osrs",
+    "full_name": "ItMeansBigMountain/skill-race-creator-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/skill-race-creator-osrs",
+    "description": "RuneLite plugin: SkillRaceCreator for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:00:58Z",
+    "pushed_at": "2026-06-01T01:00:54Z",
+    "size": 111,
+    "open_issues": 0
+  },
+  {
+    "name": "skill-nemesis-osrs",
+    "full_name": "ItMeansBigMountain/skill-nemesis-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/skill-nemesis-osrs",
+    "description": "RuneLite plugin: SkillNemesis for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:00:57Z",
+    "pushed_at": "2026-06-01T01:00:54Z",
+    "size": 112,
+    "open_issues": 0
+  },
+  {
+    "name": "rival-radar-osrs",
+    "full_name": "ItMeansBigMountain/rival-radar-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/rival-radar-osrs",
+    "description": "RuneLite plugin: RivalRadar for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:00:56Z",
+    "pushed_at": "2026-06-01T01:00:53Z",
+    "size": 115,
+    "open_issues": 0
+  },
+  {
+    "name": "personal-progress-timeline-osrs",
+    "full_name": "ItMeansBigMountain/personal-progress-timeline-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/personal-progress-timeline-osrs",
+    "description": "RuneLite plugin: PersonalProgressTimeline for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:00:56Z",
+    "pushed_at": "2026-06-01T01:00:52Z",
+    "size": 112,
+    "open_issues": 0
+  },
+  {
+    "name": "name-change-watcher-osrs",
+    "full_name": "ItMeansBigMountain/name-change-watcher-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/name-change-watcher-osrs",
+    "description": "RuneLite plugin: NameChangeWatcher for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:00:55Z",
+    "pushed_at": "2026-06-01T01:00:51Z",
+    "size": 111,
+    "open_issues": 0
+  },
+  {
+    "name": "ice-barrage-timer-osrs",
+    "full_name": "ItMeansBigMountain/ice-barrage-timer-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/ice-barrage-timer-osrs",
+    "description": "RuneLite plugin: IceBarrageTimer for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:00:54Z",
+    "pushed_at": "2026-06-01T01:00:50Z",
+    "size": 111,
+    "open_issues": 0
+  },
+  {
+    "name": "group-iron-progress-board-osrs",
+    "full_name": "ItMeansBigMountain/group-iron-progress-board-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/group-iron-progress-board-osrs",
+    "description": "RuneLite plugin: GroupIronProgressBoard for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:00:54Z",
+    "pushed_at": "2026-06-01T01:00:50Z",
+    "size": 109,
+    "open_issues": 0
+  },
+  {
+    "name": "competition-overlay-osrs",
+    "full_name": "ItMeansBigMountain/competition-overlay-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/competition-overlay-osrs",
+    "description": "RuneLite plugin: CompetitionOverlay for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:00:53Z",
+    "pushed_at": "2026-06-01T01:00:49Z",
+    "size": 109,
+    "open_issues": 0
+  },
+  {
+    "name": "clan-grind-heatmap-osrs",
+    "full_name": "ItMeansBigMountain/clan-grind-heatmap-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/clan-grind-heatmap-osrs",
+    "description": "RuneLite plugin: ClanGrindHeatmap for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:00:52Z",
+    "pushed_at": "2026-06-01T01:00:48Z",
+    "size": 110,
+    "open_issues": 0
+  },
+  {
+    "name": "boss-streaks-osrs",
+    "full_name": "ItMeansBigMountain/boss-streaks-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/boss-streaks-osrs",
+    "description": "RuneLite plugin: BossStreaks for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:00:51Z",
+    "pushed_at": "2026-06-01T01:00:47Z",
+    "size": 110,
+    "open_issues": 0
+  },
+  {
+    "name": "boss-race-creator-osrs",
+    "full_name": "ItMeansBigMountain/boss-race-creator-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/boss-race-creator-osrs",
+    "description": "RuneLite plugin: BossRaceCreator for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:00:49Z",
+    "pushed_at": "2026-06-01T01:00:46Z",
+    "size": 111,
+    "open_issues": 0
+  },
+  {
+    "name": "boss-k-c-rival-lookup-osrs",
+    "full_name": "ItMeansBigMountain/boss-k-c-rival-lookup-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/boss-k-c-rival-lookup-osrs",
+    "description": "RuneLite plugin: BossKCRivalLookup for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-06-01T01:00:49Z",
+    "pushed_at": "2026-06-01T01:00:45Z",
+    "size": 112,
+    "open_issues": 0
+  },
+  {
+    "name": "osrs-plugins-boilerplate-osrs",
+    "full_name": "ItMeansBigMountain/osrs-plugins-boilerplate-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/osrs-plugins-boilerplate-osrs",
+    "description": "RuneLite plugin: osrs-plugins-boilerplate for Old School RuneScape.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [
+      "java",
+      "osrs",
+      "runelite",
+      "runelite-plugin"
+    ],
+    "updated_at": "2026-05-31T01:55:39Z",
+    "pushed_at": "2026-05-31T01:55:35Z",
+    "size": 116,
+    "open_issues": 0
+  },
+  {
+    "name": "robinhood-daily-portfolio-report",
+    "full_name": "ItMeansBigMountain/robinhood-daily-portfolio-report",
+    "html_url": "https://github.com/ItMeansBigMountain/robinhood-daily-portfolio-report",
+    "description": "Lightweight daily portfolio performance reports inspired by AZ204 Azure Functions lab",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2026-05-26T04:39:05Z",
+    "pushed_at": "2026-05-26T04:39:01Z",
+    "size": 4,
+    "open_issues": 0
+  },
+  {
+    "name": "cox-elementary-pta",
+    "full_name": "ItMeansBigMountain/cox-elementary-pta",
+    "html_url": "https://github.com/ItMeansBigMountain/cox-elementary-pta",
+    "description": "Modern static website mockup for Cox Elementary PTA",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "HTML",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2026-05-26T04:39:04Z",
+    "pushed_at": "2026-05-26T04:39:00Z",
+    "size": 3136,
+    "open_issues": 0
+  },
+  {
+    "name": "az204",
+    "full_name": "ItMeansBigMountain/az204",
+    "html_url": "https://github.com/ItMeansBigMountain/az204",
+    "description": "studying to be the GOAT",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2026-05-26T04:39:04Z",
+    "pushed_at": "2026-05-26T04:39:00Z",
+    "size": 1535,
+    "open_issues": 0
+  },
+  {
+    "name": "algos",
+    "full_name": "ItMeansBigMountain/algos",
+    "html_url": "https://github.com/ItMeansBigMountain/algos",
+    "description": "Collection of challenge algorithms solved | Each branch is a different language or era ",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "java",
+      "main",
+      "pi",
+      "school"
+    ],
+    "topics": [],
+    "updated_at": "2026-05-26T04:39:02Z",
+    "pushed_at": "2026-05-26T04:38:59Z",
+    "size": 53,
+    "open_issues": 0
+  },
+  {
+    "name": "penTest",
+    "full_name": "ItMeansBigMountain/penTest",
+    "html_url": "https://github.com/ItMeansBigMountain/penTest",
+    "description": "Each branch is a pen test project from my kali Linux machine",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "NOTES",
+    "branches": [
+      "KeyLogServer",
+      "NOTES",
+      "denial_of_service",
+      "freeCodeCamp_networking",
+      "md5_hash_crack",
+      "packetTracer",
+      "python_packet_Sniffing",
+      "rubberDucky_scripts",
+      "serverBombal",
+      "serverNC",
+      "vizio_tv_hack"
+    ],
+    "topics": [],
+    "updated_at": "2026-03-15T22:57:10Z",
+    "pushed_at": "2026-03-15T22:57:07Z",
+    "size": 88,
+    "open_issues": 0
+  },
+  {
+    "name": "CombatAtlas",
+    "full_name": "ItMeansBigMountain/CombatAtlas",
+    "html_url": "https://github.com/ItMeansBigMountain/CombatAtlas",
+    "description": "Database app of martial art drills! ",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2026-02-15T01:08:43Z",
+    "pushed_at": "2026-02-15T01:08:40Z",
+    "size": 22,
+    "open_issues": 0
+  },
+  {
+    "name": "plugin-hub",
+    "full_name": "ItMeansBigMountain/plugin-hub",
+    "html_url": "https://github.com/ItMeansBigMountain/plugin-hub",
+    "description": "External plugins for RuneLite",
+    "private": false,
+    "fork": true,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "master",
+    "branches": [
+      "master"
+    ],
+    "topics": [],
+    "updated_at": "2026-02-11T18:41:38Z",
+    "pushed_at": "2026-02-11T18:41:34Z",
+    "size": 10417,
+    "open_issues": 0
+  },
+  {
+    "name": "breach-check-osrs",
+    "full_name": "ItMeansBigMountain/breach-check-osrs",
+    "html_url": "https://github.com/ItMeansBigMountain/breach-check-osrs",
+    "description": "runelite plug-in to check DMM breach times",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "master",
+    "branches": [
+      "master"
+    ],
+    "topics": [],
+    "updated_at": "2026-02-11T07:57:59Z",
+    "pushed_at": "2026-02-11T07:57:55Z",
+    "size": 117,
+    "open_issues": 0
+  },
+  {
+    "name": "Multiplayer",
+    "full_name": "ItMeansBigMountain/Multiplayer",
+    "html_url": "https://github.com/ItMeansBigMountain/Multiplayer",
+    "description": "Unity third person shooting game that will act as a template and known as \"multiplayer\"",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "C#",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2026-01-14T13:47:34Z",
+    "pushed_at": "2025-05-07T23:06:06Z",
+    "size": 264205,
+    "open_issues": 0
+  },
+  {
+    "name": "pdf-emailer",
+    "full_name": "ItMeansBigMountain/pdf-emailer",
+    "html_url": "https://github.com/ItMeansBigMountain/pdf-emailer",
+    "description": "email a pdf using an LLM to generate the content for you to plug in your email list",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2025-10-19T04:04:04Z",
+    "pushed_at": "2025-10-19T04:08:59Z",
+    "size": 156,
+    "open_issues": 0
+  },
+  {
+    "name": "local-meeting-transcriber",
+    "full_name": "ItMeansBigMountain/local-meeting-transcriber",
+    "html_url": "https://github.com/ItMeansBigMountain/local-meeting-transcriber",
+    "description": "free tool to record meetings and transcribe notes. it should be smart enough to differentiate different people",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "C#",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2025-09-28T19:48:03Z",
+    "pushed_at": "2025-09-28T19:47:59Z",
+    "size": 18017,
+    "open_issues": 0
+  },
+  {
+    "name": "mcp-servers",
+    "full_name": "ItMeansBigMountain/mcp-servers",
+    "html_url": "https://github.com/ItMeansBigMountain/mcp-servers",
+    "description": "a directory where I organize my mcp servers",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2025-09-08T02:55:48Z",
+    "pushed_at": "2025-09-08T02:55:44Z",
+    "size": 17,
+    "open_issues": 0
+  },
+  {
+    "name": "musicAI",
+    "full_name": "ItMeansBigMountain/musicAI",
+    "html_url": "https://github.com/ItMeansBigMountain/musicAI",
+    "description": "Music Statistics and Sentiment Analysis using flask",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "feature/update-musicai-modernization",
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2025-08-31T15:38:25Z",
+    "pushed_at": "2026-05-23T19:54:35Z",
+    "size": 101,
+    "open_issues": 0
+  },
+  {
+    "name": "Generative-AI",
+    "full_name": "ItMeansBigMountain/Generative-AI",
+    "html_url": "https://github.com/ItMeansBigMountain/Generative-AI",
+    "description": "All my projects using LLM ai models ",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2025-08-03T18:25:34Z",
+    "pushed_at": "2025-08-03T18:25:31Z",
+    "size": 4604,
+    "open_issues": 0
+  },
+  {
+    "name": "frequencyFinder.Hz",
+    "full_name": "ItMeansBigMountain/frequencyFinder.Hz",
+    "html_url": "https://github.com/ItMeansBigMountain/frequencyFinder.Hz",
+    "description": "Simple web app to catch a vibe",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "HTML",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2025-06-02T05:19:40Z",
+    "pushed_at": "2025-06-02T05:19:36Z",
+    "size": 27,
+    "open_issues": 0
+  },
+  {
+    "name": "REST_Templates",
+    "full_name": "ItMeansBigMountain/REST_Templates",
+    "html_url": "https://github.com/ItMeansBigMountain/REST_Templates",
+    "description": "REST-API  CRUD Endpoints in different languages",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "C++",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2024-08-26T02:40:11Z",
+    "pushed_at": "2024-08-26T02:40:08Z",
+    "size": 8428,
+    "open_issues": 0
+  },
+  {
+    "name": "school",
+    "full_name": "ItMeansBigMountain/school",
+    "html_url": "https://github.com/ItMeansBigMountain/school",
+    "description": "Three Years of Python Classwork",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2024-08-20T13:21:01Z",
+    "pushed_at": "2022-05-22T21:00:13Z",
+    "size": 3427,
+    "open_issues": 0
+  },
+  {
+    "name": "stockNews",
+    "full_name": "ItMeansBigMountain/stockNews",
+    "html_url": "https://github.com/ItMeansBigMountain/stockNews",
+    "description": "LLM usage to read news pertaining to user's portfollio",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2024-07-17T14:26:36Z",
+    "pushed_at": "2024-05-10T20:33:57Z",
+    "size": 2309,
+    "open_issues": 0
+  },
+  {
+    "name": "Financial.Market.ML",
+    "full_name": "ItMeansBigMountain/Financial.Market.ML",
+    "html_url": "https://github.com/ItMeansBigMountain/Financial.Market.ML",
+    "description": "Crypto - Stock - Forex | Machine Learning Algo Class from Udemy",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Jupyter Notebook",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2024-06-12T02:50:03Z",
+    "pushed_at": "2024-06-12T02:50:00Z",
+    "size": 30792,
+    "open_issues": 0
+  },
+  {
+    "name": "wutHappened",
+    "full_name": "ItMeansBigMountain/wutHappened",
+    "html_url": "https://github.com/ItMeansBigMountain/wutHappened",
+    "description": "Aggregate news sources to make news report script and images ",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "googleColab",
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2023-09-25T04:35:18Z",
+    "pushed_at": "2023-09-25T06:28:47Z",
+    "size": 68,
+    "open_issues": 0
+  },
+  {
+    "name": "3D-React-Web",
+    "full_name": "ItMeansBigMountain/3D-React-Web",
+    "html_url": "https://github.com/ItMeansBigMountain/3D-React-Web",
+    "description": "using Three.js we can make 3D environments using react components and hooks!!",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "JavaScript",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2023-09-04T18:10:30Z",
+    "pushed_at": "2023-09-04T18:11:25Z",
+    "size": 185,
+    "open_issues": 0
+  },
+  {
+    "name": "Codology",
+    "full_name": "ItMeansBigMountain/Codology",
+    "html_url": "https://github.com/ItMeansBigMountain/Codology",
+    "description": "Code language emblem guessing game app",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "JavaScript",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2023-08-13T09:03:34Z",
+    "pushed_at": "2023-09-14T23:48:35Z",
+    "size": 798,
+    "open_issues": 0
+  },
+  {
+    "name": "WebCrawl",
+    "full_name": "ItMeansBigMountain/WebCrawl",
+    "html_url": "https://github.com/ItMeansBigMountain/WebCrawl",
+    "description": "WebScraping & WebCrawling",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2023-04-09T02:43:27Z",
+    "pushed_at": "2023-05-19T07:20:58Z",
+    "size": 30,
+    "open_issues": 0
+  },
+  {
+    "name": "Kubernetes-Docker",
+    "full_name": "ItMeansBigMountain/Kubernetes-Docker",
+    "html_url": "https://github.com/ItMeansBigMountain/Kubernetes-Docker",
+    "description": "Kubernetes Clusters of Docker Containers",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2023-01-31T21:11:22Z",
+    "pushed_at": "2022-12-06T21:18:38Z",
+    "size": 66,
+    "open_issues": 0
+  },
+  {
+    "name": "darkSouls-Unity",
+    "full_name": "ItMeansBigMountain/darkSouls-Unity",
+    "html_url": "https://github.com/ItMeansBigMountain/darkSouls-Unity",
+    "description": "Unity C# Game following tutorials |  https://www.youtube.com/playlist?list=PLD_vBJjpCwJtrHIW1SS5_BNRk6KZJZ7_d",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "C#",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2023-01-28T14:37:15Z",
+    "pushed_at": "2024-01-30T01:32:49Z",
+    "size": 254084,
+    "open_issues": 0
+  },
+  {
+    "name": "genSpark",
+    "full_name": "ItMeansBigMountain/genSpark",
+    "html_url": "https://github.com/ItMeansBigMountain/genSpark",
+    "description": "Projects done in genSpark initial boot-camp",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-11-27T02:02:10Z",
+    "pushed_at": "2022-11-27T02:07:44Z",
+    "size": 207,
+    "open_issues": 0
+  },
+  {
+    "name": "CloudAutomation",
+    "full_name": "ItMeansBigMountain/CloudAutomation",
+    "html_url": "https://github.com/ItMeansBigMountain/CloudAutomation",
+    "description": "scripts that use SDKs , Terraform, & Ansible to  automate data extraction / motorization of Cloud Infrastructure.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "Azure",
+    "branches": [
+      "AWS",
+      "Azure",
+      "Terraform"
+    ],
+    "topics": [],
+    "updated_at": "2022-10-21T18:06:39Z",
+    "pushed_at": "2022-12-09T18:49:18Z",
+    "size": 1630,
+    "open_issues": 0
+  },
+  {
+    "name": "RTS-JS-ChatRooms",
+    "full_name": "ItMeansBigMountain/RTS-JS-ChatRooms",
+    "html_url": "https://github.com/ItMeansBigMountain/RTS-JS-ChatRooms",
+    "description": "Using web, RTS, and Agora Javascript libraries, I made a web server that allows the creation and use of chat rooms. Flask web server, deployed on Azure Cloud",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "JavaScript",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-10-10T15:49:57Z",
+    "pushed_at": "2022-10-10T23:25:40Z",
+    "size": 146,
+    "open_issues": 0
+  },
+  {
+    "name": "OptaPlanner",
+    "full_name": "ItMeansBigMountain/OptaPlanner",
+    "html_url": "https://github.com/ItMeansBigMountain/OptaPlanner",
+    "description": "Java Artificial Intelligence video tutorial... Tutorial is using Quarkus Framework. I then converted the project into a Spring Boot / React.js project",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "JavaScript",
+    "default_branch": "Spring",
+    "branches": [
+      "Quarkus",
+      "Spring"
+    ],
+    "topics": [],
+    "updated_at": "2022-09-06T21:47:55Z",
+    "pushed_at": "2022-09-09T14:15:41Z",
+    "size": 433,
+    "open_issues": 0
+  },
+  {
+    "name": "spring_Oauth",
+    "full_name": "ItMeansBigMountain/spring_Oauth",
+    "html_url": "https://github.com/ItMeansBigMountain/spring_Oauth",
+    "description": "account creation within SQL for different Web Service account OAUTH ",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-08-08T19:18:55Z",
+    "pushed_at": "2022-07-30T05:15:12Z",
+    "size": 75,
+    "open_issues": 0
+  },
+  {
+    "name": "React.web_userLoginForm",
+    "full_name": "ItMeansBigMountain/React.web_userLoginForm",
+    "html_url": "https://github.com/ItMeansBigMountain/React.web_userLoginForm",
+    "description": "genSpark user login form assignment",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "CSS",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-08-07T23:34:25Z",
+    "pushed_at": "2022-08-07T23:53:13Z",
+    "size": 304,
+    "open_issues": 0
+  },
+  {
+    "name": "react.web_MovieList",
+    "full_name": "ItMeansBigMountain/react.web_MovieList",
+    "html_url": "https://github.com/ItMeansBigMountain/react.web_MovieList",
+    "description": "https://www.youtube.com/watch?v=b9eMGE7QtTk |  React JS Full Course 2022",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "CSS",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-08-07T00:11:11Z",
+    "pushed_at": "2022-08-07T00:49:51Z",
+    "size": 307,
+    "open_issues": 0
+  },
+  {
+    "name": "HTML_REGEX",
+    "full_name": "ItMeansBigMountain/HTML_REGEX",
+    "html_url": "https://github.com/ItMeansBigMountain/HTML_REGEX",
+    "description": null,
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "HTML",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-08-03T23:41:20Z",
+    "pushed_at": "2022-08-03T18:51:44Z",
+    "size": 8,
+    "open_issues": 0
+  },
+  {
+    "name": "react.web_taskList",
+    "full_name": "ItMeansBigMountain/react.web_taskList",
+    "html_url": "https://github.com/ItMeansBigMountain/react.web_taskList",
+    "description": "Original React Web Front End Using JSON File",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "JavaScript",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-08-03T19:29:10Z",
+    "pushed_at": "2022-08-03T19:29:07Z",
+    "size": 301,
+    "open_issues": 0
+  },
+  {
+    "name": "Spring_Boot_webDev",
+    "full_name": "ItMeansBigMountain/Spring_Boot_webDev",
+    "html_url": "https://github.com/ItMeansBigMountain/Spring_Boot_webDev",
+    "description": "spring boot web development template    |     Each branch is a different configuration",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "SQL_CONFIG",
+    "branches": [
+      "SQL_CONFIG",
+      "main",
+      "send_email"
+    ],
+    "topics": [],
+    "updated_at": "2022-07-31T16:18:18Z",
+    "pushed_at": "2022-07-23T01:15:36Z",
+    "size": 73,
+    "open_issues": 0
+  },
+  {
+    "name": "spring_template",
+    "full_name": "ItMeansBigMountain/spring_template",
+    "html_url": "https://github.com/ItMeansBigMountain/spring_template",
+    "description": "boiler Spring configurations",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Java",
+    "default_branch": "XML_CONFIG",
+    "branches": [
+      "AOP",
+      "Annotations_CONFIG",
+      "SPEL",
+      "XML_CONFIG"
+    ],
+    "topics": [],
+    "updated_at": "2022-07-19T05:55:15Z",
+    "pushed_at": "2022-07-19T21:36:18Z",
+    "size": 19,
+    "open_issues": 0
+  },
+  {
+    "name": "muscleMadness_API",
+    "full_name": "ItMeansBigMountain/muscleMadness_API",
+    "html_url": "https://github.com/ItMeansBigMountain/muscleMadness_API",
+    "description": "Back-End Rest API for front end React-Native project ",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-06-16T16:23:51Z",
+    "pushed_at": "2022-06-16T16:23:48Z",
+    "size": 754,
+    "open_issues": 0
+  },
+  {
+    "name": "snake-REACT_NATIVE",
+    "full_name": "ItMeansBigMountain/snake-REACT_NATIVE",
+    "html_url": "https://github.com/ItMeansBigMountain/snake-REACT_NATIVE",
+    "description": "Expo cli and react native game engine components",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "JavaScript",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-04-29T05:04:49Z",
+    "pushed_at": "2022-04-16T01:28:25Z",
+    "size": 224,
+    "open_issues": 0
+  },
+  {
+    "name": "watsonAI",
+    "full_name": "ItMeansBigMountain/watsonAI",
+    "html_url": "https://github.com/ItMeansBigMountain/watsonAI",
+    "description": "Discord Server Mod Bot with text sentiment and user personality insights. Custom databases per server when bot begins... using flask | Host bot and API then request api endpoints for server stats",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-04-29T05:03:58Z",
+    "pushed_at": "2022-04-16T06:28:45Z",
+    "size": 9,
+    "open_issues": 0
+  },
+  {
+    "name": "ticVoter_REST.api",
+    "full_name": "ItMeansBigMountain/ticVoter_REST.api",
+    "html_url": "https://github.com/ItMeansBigMountain/ticVoter_REST.api",
+    "description": "REST backend for ticVoter react frontend",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-04-29T05:03:12Z",
+    "pushed_at": "2022-04-16T06:49:50Z",
+    "size": 50,
+    "open_issues": 0
+  },
+  {
+    "name": "ticVoter",
+    "full_name": "ItMeansBigMountain/ticVoter",
+    "html_url": "https://github.com/ItMeansBigMountain/ticVoter",
+    "description": "Swipe like tinder to vote on if you think the stock will go up or down this week! Votes reset per week",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "JavaScript",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-04-29T05:02:57Z",
+    "pushed_at": "2022-04-16T07:00:24Z",
+    "size": 7327,
+    "open_issues": 0
+  },
+  {
+    "name": "muscleMadness",
+    "full_name": "ItMeansBigMountain/muscleMadness",
+    "html_url": "https://github.com/ItMeansBigMountain/muscleMadness",
+    "description": "Random workout generator ",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "JavaScript",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-04-29T05:02:05Z",
+    "pushed_at": "2022-04-16T07:15:34Z",
+    "size": 917,
+    "open_issues": 0
+  },
+  {
+    "name": "Jupyter.Notebooks",
+    "full_name": "ItMeansBigMountain/Jupyter.Notebooks",
+    "html_url": "https://github.com/ItMeansBigMountain/Jupyter.Notebooks",
+    "description": "Machine learning |  Data-Science | Each branch is a different subject",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Jupyter Notebook",
+    "default_branch": "valueMetrics",
+    "branches": [
+      "cancerPrediction",
+      "valueMetrics"
+    ],
+    "topics": [],
+    "updated_at": "2022-04-29T05:01:41Z",
+    "pushed_at": "2022-04-16T16:38:00Z",
+    "size": 92,
+    "open_issues": 0
+  },
+  {
+    "name": "utilityScripts",
+    "full_name": "ItMeansBigMountain/utilityScripts",
+    "html_url": "https://github.com/ItMeansBigMountain/utilityScripts",
+    "description": "Basic scripts that can be used as boiler plates for projects | Each branch is a utility suite",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "Email.Text",
+      "Face_Detection",
+      "Translation",
+      "cameraOrbit.Unity",
+      "crypto_WebSocket",
+      "main",
+      "qrCode",
+      "sentimentAI"
+    ],
+    "topics": [],
+    "updated_at": "2022-04-29T05:01:11Z",
+    "pushed_at": "2023-08-16T02:09:57Z",
+    "size": 1398,
+    "open_issues": 0
+  },
+  {
+    "name": "selenium",
+    "full_name": "ItMeansBigMountain/selenium",
+    "html_url": "https://github.com/ItMeansBigMountain/selenium",
+    "description": "Selenium Web Bots! \"The turning point of my understanding\"",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-04-29T05:00:59Z",
+    "pushed_at": "2022-04-17T18:18:06Z",
+    "size": 7,
+    "open_issues": 0
+  },
+  {
+    "name": "tutoring.Repl",
+    "full_name": "ItMeansBigMountain/tutoring.Repl",
+    "html_url": "https://github.com/ItMeansBigMountain/tutoring.Repl",
+    "description": "Collection of honorable mentions from lessons I have instructed.",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-04-29T05:00:06Z",
+    "pushed_at": "2022-04-17T21:53:13Z",
+    "size": 66,
+    "open_issues": 0
+  },
+  {
+    "name": "music",
+    "full_name": "ItMeansBigMountain/music",
+    "html_url": "https://github.com/ItMeansBigMountain/music",
+    "description": "Scripts dealing with sound",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main"
+    ],
+    "topics": [],
+    "updated_at": "2022-04-29T04:59:49Z",
+    "pushed_at": "2022-04-19T06:35:16Z",
+    "size": 16,
+    "open_issues": 0
+  },
+  {
+    "name": "Fintech",
+    "full_name": "ItMeansBigMountain/Fintech",
+    "html_url": "https://github.com/ItMeansBigMountain/Fintech",
+    "description": "Each Branch is a Finance Technology Project",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "robinStocks.cli",
+    "branches": [
+      "reddiTicker",
+      "robinStocks.cli"
+    ],
+    "topics": [],
+    "updated_at": "2022-04-29T04:58:49Z",
+    "pushed_at": "2024-02-21T16:18:35Z",
+    "size": 60,
+    "open_issues": 0
+  },
+  {
+    "name": "api.requests",
+    "full_name": "ItMeansBigMountain/api.requests",
+    "html_url": "https://github.com/ItMeansBigMountain/api.requests",
+    "description": "http requests based scripts",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "main",
+    "branches": [
+      "main",
+      "simple"
+    ],
+    "topics": [],
+    "updated_at": "2022-04-29T04:58:02Z",
+    "pushed_at": "2022-04-19T21:33:34Z",
+    "size": 20,
+    "open_issues": 0
+  },
+  {
+    "name": "networking",
+    "full_name": "ItMeansBigMountain/networking",
+    "html_url": "https://github.com/ItMeansBigMountain/networking",
+    "description": "Networking scripts for routers and switches.    |   Each branch is a networking topic",
+    "private": false,
+    "fork": false,
+    "archived": false,
+    "language": "Python",
+    "default_branch": "Nvidia",
+    "branches": [
+      "Ansible",
+      "Mist_api",
+      "Nvidia",
+      "Router_Object",
+      "basicServer",
+      "chatRoom",
+      "nmap_scan",
+      "python_sockets"
+    ],
+    "topics": [],
+    "updated_at": "2022-04-29T04:56:04Z",
+    "pushed_at": "2022-04-28T17:27:16Z",
+    "size": 33,
+    "open_issues": 0
+  }
+]

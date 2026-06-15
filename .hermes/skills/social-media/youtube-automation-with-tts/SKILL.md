@@ -9,7 +9,9 @@ tags: ["youtube", "automation", "tts", "elevenlabs", "faceless-channel"]
 ---
 
 ## Overview
-Automated YouTube video creation pipeline with ElevenLabs voice-over integration for faceless channels and viral radar content. Ensures professional-quality narration on all videos.
+Automated YouTube video creation pipeline with ElevenLabs/Google TTS voice-over integration for faceless channels and viral radar content. Ensures professional-quality narration and script-matched visuals on all videos.
+
+**Stock visual reference:** see `references/stock-visual-provider-pattern.md` for the current faceless newsletter visual standard: derive per-beat search queries from the script, prefer Pexels/Pixabay/Shutterstock stock footage/photos, and avoid text-only backgrounds.
 
 For newsletter-driven videos (TLDR, Daily Stoic, Kino Body, Robinhood Snacks, similar), follow `references/faceless-newsletter-quality-gate.md`: **one email = one video**, use the actual email content, require realistic ElevenLabs narration plus relevant Pexels stock footage/images or Hugging Face visuals, and upload public by default unless the user explicitly requests private/unlisted review mode.
 

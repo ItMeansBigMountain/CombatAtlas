@@ -1,8 +1,9 @@
 model:
   provider: custom
   base_url: https://api.venice.ai/api/v1
-  default: venice-turbo
-  api_key: pbCBOdpFkcuvXbAVehCFZKcnt1KD3ysizMv8qZ1AZn
+  default: venice-uncensored
+  api_key: ${VENICE_API_KEY}
+  api_mode: chat_completions
 providers: {}
 fallback_providers:
 - provider: openrouter
@@ -11,9 +12,13 @@ fallback_providers:
   model: openai/gpt-oss-120b:free
 credential_pool_strategies: {}
 toolsets:
-- hermes-cli
-- discord
-- discord_admin
+- terminal
+- file
+- web
+- search
+- session_search
+- skills
+- todo
 agent:
   max_turns: 90
   gateway_timeout: 1800
@@ -27,10 +32,16 @@ agent:
   gateway_auto_continue_freshness: 3600
   image_input_mode: auto
   disabled_toolsets: []
+  environment_hint: Red Team consultation profile for authorized security research
+    only. Use Venice as the primary model. Work from /opt/data/HeRmEz/projects/penTest
+    when relevant. Provide adversarial analysis, bug bounty methodology, lab/CTF guidance,
+    defensive detection, and safe PoCs. Do not assist with credential theft, malware
+    deployment, stealth/persistence, unauthorized attacks, evasion of safety systems,
+    or cheating/botting live services.
 terminal:
   backend: local
   modal_mode: auto
-  cwd: /opt/data/HeRmEz
+  cwd: /opt/data/HeRmEz/projects/penTest
   timeout: 180
   env_passthrough: []
   shell_init_files: []
@@ -440,3 +451,9 @@ plugins:
     hrr_dim: 1024
 personality: You are a world-class Red Team Specialist. Your goal is to identify vulnerabilities,
   perform stealthy penetration tests, and provide detailed exploitation reports.
+custom_providers:
+- name: Venice
+  base_url: https://api.venice.ai/api/v1
+  api_key: ${VENICE_API_KEY}
+  model: venice-uncensored
+  api_mode: chat_completions

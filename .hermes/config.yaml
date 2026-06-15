@@ -580,3 +580,9 @@ mcp_servers:
     sampling:
       enabled: false
     enabled: true
+custom_providers:
+- name: Venice
+  base_url: https://api.venice.ai/api/v1
+  api_key: ${VENICE_API_KEY}
+  model: venice-uncensored
+  api_mode: chat_completions

@@ -86,6 +86,7 @@ Use per YouTube channel/account. Normal user-specific YouTube channel actions re
 
 - Generate one OAuth URL per profile with `login_hint` and `prompt=consent`.
 - Store pending PKCE state separately for each account/channel; never overwrite one profile's pending state with another.
+- For this environment, `/opt/data/scripts/google_profile_oauth.py` is the profile-scoped Workspace helper. It reads `/opt/data/HeRmEz/projects/_ops/google-email-profiles.json`; the registry may use `workspace_profiles` rather than legacy `profiles`. The helper should request the read-only bundle for `personal-main` / `read_only_workspace`, and the full Workspace bundle for the other automation profiles.
 - Exchange redirects into dedicated token paths.
 - Verify live identity after exchange:
   - Gmail: `users.getProfile(userId='me')` returns the expected email.

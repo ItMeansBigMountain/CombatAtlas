@@ -1,9 +1,9 @@
 {
-  "last_report_path": "/opt/data/logs/curator/20260607-024226",
-  "last_run_at": "2026-06-07T02:42:26.149977+00:00",
-  "last_run_duration_seconds": 512.088433,
-  "last_run_summary": "auto: no changes; llm: Completed a real umbrella-building consolidation pass.\n\nSummary of work done:\n\n- Created 7 class-level umbrella skills:\n  - `macos-automation`\n  - `ai-coding-agents`\n  - `github-workflows`\n  - `music-and-audio-workflows`\n  - `document-produ…\narchived 39 skill(s):\n  • apple-notes — pruned (stale)\n  • apple-reminders — pruned (stale)\n  • architecture-diagram — pruned (stale)\n  • ascii-art — pruned (stale)\n  • ascii-video — pruned (stale)\n  • audiocraft-audio-generation — pruned (stale)\n  • baoyu-infographic — pruned (stale)\n  • claude-code — pruned (stale)\n  • codex — pruned (stale)\n  • design-md — pruned (stale)\n  … and 29 more\nfull report: hermes curator status",
+  "last_report_path": "/opt/data/logs/curator/20260614-032139",
+  "last_run_at": "2026-06-14T03:21:39.874768+00:00",
+  "last_run_duration_seconds": 344.837761,
+  "last_run_summary": "auto: no changes; llm: Completed an umbrella-building consolidation pass.\n\n### Human summary\n\nCreated/expanded these umbrella skills:\n\n1. **`software-quality-workflows`**  \n   Consolidated the narrow software-process skills into one class-level workflow covering …\narchived 25 skill(s):\n  • gif-search → social-platform-publishing\n  • xurl → social-platform-publishing\n  • youtube-content → social-platform-publishing\n  • airtable — pruned (stale)\n  • arxiv — pruned (stale)\n  • blogwatcher — pruned (stale)\n  • cloud-provider-cli-setup — pruned (stale)\n  • comfyui — pruned (stale)\n  • humanizer — pruned (stale)\n  • jupyter-live-kernel — pruned (stale)\n  … and 15 more\nfull report: hermes curator status\nkeep an umbrella stable: hermes curator pin social-platform-publishing",
   "last_run_summary_shown_at": "2026-05-31T01:46:49.188313+00:00",
   "paused": false,
-  "run_count": 4
+  "run_count": 5
 }

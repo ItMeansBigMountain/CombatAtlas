@@ -155,6 +155,7 @@ When the user asks to replicate another business/app's customer portal or workfl
 ## References
 
 - `references/hermez-portfolio-2026-05.md` — session-specific example of retiring a project, merging apps, importing exercises from all branches, and creating a new standalone portfolio-report repo.
+- `references/github-portfolio-branch-correlation.md` — full GitHub account + local `projects/` correlation workflow: branch inventory with `git ls-remote`, missing-repo import, nested-repo ignore hygiene, project clustering, and unfinished-candidate reports.
 - `references/coding-school-crm-portal-research-2026-05.md` — research-backed product-parity pattern for a coding-school CRM with teacher schedules, AI lesson-note tagging, and parent/student progress dashboards.
 - `references/hermez-consolidation-patterns-2026-05.md` — condensed merge/retire/new-repo patterns from the HeRmEz project-direction session, including stockNews+wutHappened and social-media app consolidation.
 - `references/clipcurrent-api-vs-browser-strategy-2026-05.md` — strategy pattern for turning a new social/video trend-clipping idea into a code-first platform with browser automation only as fallback, including OpusClip API and YouTube credential caveats.

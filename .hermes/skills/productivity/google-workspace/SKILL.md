@@ -17,7 +17,11 @@ metadata:
     related_skills: [himalaya]
 ---
 
-# Google Workspace
+# Google Workspace Skill
+
+## YouTube OAuth / upload tokens
+
+When reauthing YouTube upload automation, see `references/youtube-oauth-callback-exchange.md` for the callback exchange pattern, scope set, localhost `OAUTHLIB_INSECURE_TRANSPORT=*** pitfall, channel identity verification, and explicit-token uploader check.
 
 Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OAuth and a thin CLI wrapper. When `gws` is installed, the skill uses it as the execution backend for broader Google Workspace coverage; otherwise it falls back to the bundled Python client implementation.
 
@@ -38,8 +42,11 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 - `references/multi-profile-google-oauth.md` — Profile-scoped OAuth for managing multiple Gmail/Workspace identities with separate tokens, PKCE pending state, action policies, browser/redirect pitfalls, and smoke tests.
 - `references/google-oauth-scope-reauth-matrix.md` — Decide whether enabling additional Google APIs requires OAuth reauth; includes Workspace baseline scopes, YouTube upload/private-data scope guidance, API-key distinction, and verification probes.
 - `references/youtube-oauth-scope-repair-2026-06.md` — User-specific YouTube reauth repair: full upload/metadata/read/analytics scope set, profile-specific pending files, and channel identity verification after exchange.
-- `references/user-google-account-scope-map-2026-06.md` — User-specific account aliases, full/read-only scope policy, mass OAuth refresh workflow, and Discord bullet-format reporting preference for Google account status.
+- `references/user-google-account-scope-map-2026-06.md` — User-specific account aliases, full/read-only scope policy, mass OAuth refresh workflow, and Discord bullet-format reporting preference.
+- `references/personal-main-invalid-scope-repair-2026-06.md` — User-specific repair pattern for `personal-main` / `affan.fareed@gmail.com` invalid_scope: read-only OAuth scopes, profile-scoped PKCE exchange, and live identity/service smoke tests.
 - `references/user-google-oauth-account-map-2026-06.md` — Current user-specific Workspace/YouTube account roles, exact scope policy, OAuth hygiene, and no-table reporting preference.
+
+- `references/personal-main-readonly-reauth.md` — Repair `personal-main` / `affan.fareed@gmail.com` invalid_scope by generating profile-scoped read-only OAuth URLs and verifying live identity.
 
 ## Scripts
 
@@ -60,9 +67,11 @@ When the user asks to find, identify, or organize Google credentials across the 
 
 When the user wants credentials to survive VPS/container restarts without being backed up by Git, use `references/durable-google-secret-storage.md`: copy credentials into a persistent non-repo secrets tree, expose only stable path references through `.env`, lock modes to `700`/`600`, update `.gitignore`, remove any already-tracked credential files with `git rm --cached --force`, verify with `git ls-files` and `git check-ignore --no-index`, and remind the user that untracking does not erase old Git history if secrets were previously pushed.
 
+When the user asks to repair `personal-main` / `affan.fareed@gmail.com` OAuth, especially `invalid_scope`, load `references/personal-main-readonly-reauth.md`. Generate a profile-scoped URL for the read-only Workspace bundle only, keep pending PKCE state isolated under `/opt/data/google_profiles/personal-main/`, and verify the returned Gmail profile email before reporting the main account context as restored.
+
 When the user wants Hermes to manage multiple Gmail/Google Workspace accounts as separate internet identities or project lanes, use `references/multiple-google-account-profiles.md
   - path: references/user-google-account-scope-map-2026-06.md
-    description: User-specific Google account aliases, scope policy, and content automation account split.`. Keep each account isolated with a named credential directory and a per-command `HERMES_HOME` override; maintain a non-secret profile inventory under the user's workspace; never mix tokens between identities.
+    description: User-specific account aliases, scope policy, and content automation account split.`. Keep each account isolated with a named credential directory and a per-command `HERMES_HOME` override; maintain a non-secret profile inventory under the user's workspace; never mix tokens between identities.
 
 When the user asks for enabled APIs, permissions, or a table of Google projects, use `references/google-project-api-permissions-probe.md`. Actively run safe read-only probes instead of guessing from credential filenames: Service Usage for enabled APIs, Cloud Resource Manager/IAM policy where available, and harmless product endpoint probes for Calendar, Drive, Gmail, Sheets, Docs, and YouTube. If the user explicitly asks for a table, provide a compact Markdown table even if the user's normal Discord preference is bullet-style replies.
 
