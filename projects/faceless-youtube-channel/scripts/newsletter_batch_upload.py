@@ -5,7 +5,7 @@ One Gmail message -> one video -> upload -> trash message only after verified vi
 Uses Google TTS and dynamic multi-scene cinematic visuals when stock API keys are absent.
 """
 from __future__ import annotations
-import argparse, base64, datetime as dt, html, json, math, os, re, shutil, subprocess, sys, textwrap, urllib.parse, urllib.request
+import argparse, base64, datetime as dt, html, json, math, os, random, re, shutil, subprocess, sys, textwrap, urllib.parse, urllib.request
 from pathlib import Path
 from google.oauth2.credentials import Credentials
 from google.oauth2 import service_account
@@ -15,9 +15,10 @@ from googleapiclient.discovery import build
 ROOT = Path(__file__).resolve().parents[1]
 TOKEN_BASE = Path('/opt/data/google_profiles')
 GMAIL_SCOPE = 'https://www.googleapis.com/auth/gmail.modify'
-YOUTUBE_TOKEN = Path('/opt/data/secrets/faceless-youtube-channel/youtube_upload_token.json')
+YOUTUBE_TOKEN = Path(os.getenv('YOUTUBE_UPLOAD_TOKEN') or '/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json')
 UPLOADER = Path('/opt/data/HeRmEz/projects/_ops/youtube-automation/scripts/upload_youtube.py')
 UPLOAD_LOG = ROOT / 'UPLOADS' / 'newsletter_youtube_uploads.jsonl'
+VISUAL_HISTORY = ROOT / 'UPLOADS' / 'visual_asset_history.jsonl'
 
 SAFE_TAGS = 'discipline,self improvement,technology,finance,stoicism,motivation,shorts'
 
@@ -114,77 +115,156 @@ def sentence_candidates(body):
     return out[:12]
 
 
+def interesting_terms(subject: str, body: str) -> list[str]:
+    raw=' '.join(re.split(r'[,|•:;\-–—]+', subject))+' '+body[:1200]
+    terms=[]
+    for m in re.finditer(r'\b(?:[A-Z][A-Za-z0-9+.&-]{2,}|[A-Z]{2,}|\$\d+[a-zA-Z]*|\d+%|\d+x)\b', raw):
+        t=m.group(0).strip('.,()[]')
+        if t.lower() not in {'the','and','for','with','from','this','that'} and t not in terms:
+            terms.append(t)
+    return terms[:8]
+
+
+def humanize_fact(sentence: str, max_len: int = 190) -> str:
+    s=clean_text(sentence)
+    s=re.sub(r'\[[0-9]+\]', '', s)
+    s=re.sub(r'\b(HEADLINES|TRENDS|SPONSOR|PRESENTED BY)\b.*', '', s, flags=re.I).strip()
+    s=re.sub(r'\bSee how it works\b.*', '', s, flags=re.I).strip()
+    s=re.sub(r'[\U00010000-\U0010ffff]', '', s)
+    s=re.sub(r'\b(newsletter|read more|sponsored|advertisement)\b.*','',s,flags=re.I).strip()
+    s=re.sub(r'\s+',' ',s).strip(' -–—:;,.')
+    s=re.sub(r'\b(from|with|and|or|to|of|for)$', '', s, flags=re.I).strip(' -–—:;,.')
+    if len(s) > max_len:
+        s=s[:max_len].rsplit(' ',1)[0].rstrip(',;:')+'.'
+    elif s and s[-1] not in '.!?':
+        s += '.'
+    return s or 'The details are still moving, but the signal is loud enough to pay attention.'
+
+
 def build_script(src):
     typ=source_type(src); subject=clean_text(src['subject'])
-    sents=sentence_candidates(src['body'])
-    key1=sents[0] if sents else src['snippet'][:180]
-    key2=sents[1] if len(sents)>1 else 'The bigger point is not the headline. It is what the headline lets you do next.'
-    key3=sents[2] if len(sents)>2 else 'Most people consume the update and move on. Operators turn it into a decision, a workflow, or a receipt.'
+    spoken_subject=safe_title(subject)
+    body=clean_text(src.get('body',''))
+    sents=[humanize_fact(s) for s in sentence_candidates(body)]
+    key1=sents[0] if sents else humanize_fact(src.get('snippet',''))
+    key2=sents[1] if len(sents)>1 else 'The interesting part is not the headline. It is what people will start doing differently because of it.'
+    key3=sents[2] if len(sents)>2 else 'Most people will scroll past it, nod like experts, and then change absolutely nothing.'
+    terms=interesting_terms(subject, body)
+    lead=', '.join(terms[:3]) if terms else spoken_subject
+
     if typ=='stoic':
-        hook=f"This is the kind of Stoic lesson people agree with, then completely fail to live. {subject}."
-        angle='The lesson only matters if it changes your next uncomfortable choice.'
-        cta='Pick one hard thing today and do it before you negotiate with yourself.'
+        opener=f"Quick gut check: {spoken_subject}. Everybody loves a clean Stoic quote until life asks for the receipt."
+        story=(f"Here’s what caught me: {key1} The point is not to sound wise on the internet. "
+               "The point is whether the next annoying choice gets handled by your standards or by your mood. "
+               "Honestly, most of us do not need another quote. We need one less beautifully branded excuse. "
+               f"You can see it in the details: {key2} {key3} "
+               "So today, make the standard visible before the day starts negotiating with you. Do one hard thing before comfort gets its opening argument.")
+        title='STANDARD CHECK'
+        takeaway='Do the hard thing before comfort starts negotiating.'
     elif typ=='fitness':
-        hook=f"This is not really about fitness tips. It is about the standard you keep when nobody is watching: {subject}."
-        angle='Your body follows the receipts: meals logged, walks done, lifts completed, sleep protected.'
-        cta='Make the standard visible today: one meal, one walk, one lift, one proof.'
+        opener=f"This looks like a fitness update: {spoken_subject}. But it is really about the standard you keep when nobody is clapping."
+        story=(f"Here’s the part that matters: {key1} The body is just the scoreboard. "
+               "Meals, walks, lifts, sleep, and boring consistency are the receipts. Motivation is cute, but it has the work ethic of a group chat plan. "
+               f"The details make it obvious: {key2} {key3} "
+               "So keep the system simple enough to survive a bad day. One meal, one walk, one lift, one proof.")
+        title='RECEIPTS ONLY'
+        takeaway='Put one proof on the board today.'
     elif typ in ('finance','crypto'):
-        hook=f"Money is moving toward agents, payments, and rails faster than most people are noticing: {subject}."
-        angle='The edge is not predicting every headline. The edge is spotting where behavior is becoming infrastructure.'
-        cta='Write down the one business or skill this makes more valuable, then build a tiny proof.'
+        opener=f"Follow the money for a second: {spoken_subject}. This is not just finance gossip with a cleaner landing page."
+        story=(f"Here’s the thing: {key1} When names like {lead} show up, the question is not just who raised money or who bought who. "
+               "The real question is what behavior is turning into infrastructure. The market loves making obvious things expensive right after everyone finally calls them obvious. "
+               f"You can see the shape of it here: {key2} {key3} "
+               "So do not just watch the headline. Ask which workflow, rail, or skill becomes more valuable because of it, then build a tiny proof.")
+        title='FOLLOW THE MONEY'
+        takeaway='Find the workflow getting more valuable.'
     elif typ=='security':
-        hook=f"This security update is not background noise. It is a warning about how fragile modern systems really are: {subject}."
-        angle='Every exploit story is also a career signal: someone has to understand the blast radius before it becomes the incident.'
-        cta='Turn the headline into one lab, one note, or one control you can explain clearly.'
+        opener=f"If your security plan was vibes and a strong password, bad news: {spoken_subject}."
+        story=(f"Here’s why this matters: {key1} The scary part is not just {lead}. "
+               "It is how fast one weak link becomes everybody’s Monday morning emergency. Security headlines always sound dramatic until you realize the attacker only needed the boring thing nobody patched. "
+               f"The receipt is right there: {key2} {key3} "
+               "So turn this into something useful: one lab, one note, or one control you can explain clearly before it becomes the incident.")
+        title='PATCH THE BORING THING'
+        takeaway='Turn the headline into one control you can explain.'
     elif typ=='ai':
-        hook=f"AI is moving from demos into actual workflows, and this headline is another signal: {subject}."
-        angle='The winners will not be the people collecting tools. They will be the people converting tools into shipped output.'
-        cta='Pick one task you avoid and use the new leverage to ship it today.'
+        opener=f"AI had another weird little plot twist: {spoken_subject}. Somewhere, a roadmap just got rewritten in panic font."
+        story=(f"Here’s the thing: {key1} The tools are not the whole story anymore. "
+               "The story is whether these demos are turning into workflows people can actually ship with. And the twist is, collecting AI tools is starting to look like collecting gym memberships: impressive list, suspicious results. "
+               f"You can see it in the details: {key2} {key3} "
+               "So the move is simple: stop bookmarking every launch thread and convert one piece of leverage into shipped output today.")
+        title='SHIP THE LEVERAGE'
+        takeaway='Turn one tool into shipped output.'
     else:
-        hook=f"This tech update looks like news, but it is really a signal about where the next leverage is forming: {subject}."
-        angle='Headlines are cheap. Interpretation is where the advantage starts.'
-        cta='Save the signal, turn it into one workflow, and move before it becomes obvious.'
-    beats=[
-        ('STOP SCROLLING', hook),
-        ('THE SIGNAL', key1),
-        ('WHAT IT MEANS', key2),
-        ('THE OPERATOR ANGLE', angle),
-        ('THE PROOF', key3),
-        ('MOVE FIRST', cta),
-    ]
+        opener=f"This headline looks like normal tech news: {spoken_subject}. It is not. It is a small preview of somebody’s next advantage."
+        story=(f"Here’s what caught me: {key1} The signal around {lead} is about where attention, money, and workflows are quietly moving. "
+               "Most people will treat it like trivia, which is usually where the opportunity hides. "
+               f"Then the details start to stack up: {key2} {key3} "
+               "So do not just consume the update. Save the signal, turn it into one workflow, and move before it becomes obvious.")
+        title='NOTICE THE SHIFT'
+        takeaway='Turn the update into one workflow.'
+
+    # Captions are scene anchors; narration is a single avatar-style story.
+    chunks=[opener]
+    rest=[x.strip() for x in re.split(r'(?<=[.!?])\s+', story) if x.strip()]
+    chunks.extend(rest)
+    # Merge into 8-10 natural scenes so visuals can change often without the voice sounding segmented.
+    scenes=[]
+    cur=''
+    for sent in chunks:
+        if not cur:
+            cur=sent
+        elif len(cur)+len(sent) < 230:
+            cur += ' ' + sent
+        else:
+            scenes.append(cur); cur=sent
+    if cur: scenes.append(cur)
+    if len(scenes) < 7 and len(scenes) > 2:
+        # split longer scenes once for more visual variety
+        expanded=[]
+        for sc in scenes:
+            parts=[x.strip() for x in re.split(r'(?<=[.!?])\s+', sc) if x.strip()]
+            if len(parts) >= 2 and len(expanded) < 8:
+                expanded.extend(parts)
+            else:
+                expanded.append(sc)
+        scenes=expanded[:10]
+    captions=['WAIT—WHAT?','HERE’S THE THING','THE REAL STORY','PLOT TWIST','THE RECEIPT','WHY IT MATTERS','YOUR MOVE','BUILD THE PROOF','WATCH THIS','MOVE FIRST']
+    beats=[(captions[i] if i < len(captions) else 'KEEP WATCHING', sc) for i,sc in enumerate(scenes[:10])]
+    if beats and takeaway not in beats[-1][1] and takeaway.lower() not in beats[-1][1].lower():
+        beats[-1]=( 'YOUR MOVE', beats[-1][1]+' '+takeaway )
+
     subject_phrases=[clean_text(p) for p in re.split(r'[,|•]+', subject) if clean_text(p)]
     base_visual={
-        'stoic':'stoic discipline morning journaling running alone philosophy',
-        'fitness':'gym workout meal prep athletic discipline transformation',
-        'finance':'fintech payment technology office money banking app',
-        'crypto':'cryptocurrency finance payment technology bank office',
-        'security':'cybersecurity hacker server room security operations center',
-        'ai':'artificial intelligence engineers working laptop data center startup office',
-        'tech':'software engineers working startup office laptop server room technology',
+        'stoic':'stoic discipline morning journaling running alone philosophy cinematic',
+        'fitness':'gym workout meal prep athletic discipline transformation cinematic',
+        'finance':'fintech payment technology office money banking app city business',
+        'crypto':'cryptocurrency finance payment technology bank office digital assets',
+        'security':'cybersecurity hacker server room security operations center laptop alert',
+        'ai':'artificial intelligence engineers working laptop data center startup office robot automation',
+        'tech':'software engineers working startup office laptop server room technology product demo',
     }.get(typ,'technology office workers laptop')
+    visual_moods=['close up hands laptop','busy office hallway','server room lights','phone app scrolling','city night timelapse','team meeting whiteboard','founder desk late night','abstract data screen','person thinking window','fast moving startup office']
     visual_queries=[]
-    for idx,(cap,body) in enumerate(beats):
-        phrase=subject_phrases[idx % len(subject_phrases)] if subject_phrases else subject
+    for idx,(cap,bodytxt) in enumerate(beats):
+        phrase=subject_phrases[idx % len(subject_phrases)] if subject_phrases else spoken_subject
+        term=terms[idx % len(terms)] if terms else phrase
+        mood=visual_moods[idx % len(visual_moods)]
         if idx == 0:
-            q=f"{phrase} company office workers technology"
-        elif idx in (1,2):
-            q=f"{phrase} {base_visual}"
-        elif idx == 3:
-            q=base_visual
-        elif idx == 4:
-            q=f"people working on {phrase} laptop office"
+            q=f"{phrase} {base_visual} {mood}"
+        elif idx % 3 == 1:
+            q=f"{term} {base_visual} {mood}"
+        elif idx % 3 == 2:
+            q=f"{source_type(src)} {mood} cinematic b roll"
         else:
-            q="focused person working laptop city night motivation"
+            q=f"{phrase} {mood} people working technology"
         visual_queries.append(re.sub(r'[^A-Za-z0-9 ]+',' ',q).strip()[:110])
     narration=' '.join([b[1] for b in beats])
     title=safe_title(subject)
-    desc=(f"{title}\n\nMy read: {angle} Build one proof today.\n\n"
+    desc=(f"{title}\n\nMy read: {takeaway} Build one proof today.\n\n"
           "More from me: https://linktr.ee/sosai.oyama\n"
           "Support the channel: https://buymeacoffee.com/affanfareev\n"
           "Cash App: https://cash.app/$sosaioyama\n"
           "Venmo: https://venmo.com/u/SosaiOyama\n\n#Shorts")
     return {'type':typ,'beats':beats,'visual_queries':visual_queries,'narration':narration,'title':title,'description':desc}
-
 
 def safe_title(subject):
     s=re.sub(r'[\U00010000-\U0010ffff]','',subject)
@@ -220,6 +300,26 @@ def api_json(url: str, headers: dict | None = None, timeout=25):
         return json.loads(r.read().decode())
 
 
+def seen_visual_url(url: str) -> bool:
+    if not url or not VISUAL_HISTORY.exists():
+        return False
+    try:
+        return url in VISUAL_HISTORY.read_text(errors='ignore')
+    except Exception:
+        return False
+
+
+def remember_visual(meta: dict | None) -> None:
+    if not meta:
+        return
+    try:
+        VISUAL_HISTORY.parent.mkdir(parents=True, exist_ok=True)
+        with VISUAL_HISTORY.open('a', encoding='utf-8') as f:
+            f.write(json.dumps(meta, separators=(',', ':'))+'\n')
+    except Exception:
+        pass
+
+
 def download(url: str, out: Path, timeout=90) -> bool:
     try:
         req=urllib.request.Request(url, headers={'User-Agent':'Hermes faceless video renderer'})
@@ -240,8 +340,8 @@ def pexels_video(query: str, out: Path) -> tuple[Path | None, dict | None]:
             files=sorted(vid.get('video_files',[]), key=lambda f: abs((f.get('height') or 1080)-1920)+abs((f.get('width') or 1080)-1080))
             for f in files:
                 link=f.get('link')
-                if link and download(link,out):
-                    return out, {'provider':'pexels_video','query':query,'id':vid.get('id'),'url':vid.get('url')}
+                if link and not seen_visual_url(vid.get('url') or link) and download(link,out):
+                    meta={'provider':'pexels_video','query':query,'id':vid.get('id'),'url':vid.get('url') or link}; remember_visual(meta); return out, meta
     except Exception as e:
         return None, {'provider':'pexels_video','query':query,'error':str(e)[:200]}
     return None, {'provider':'pexels_video','query':query,'error':'no_downloadable_result'}
@@ -258,8 +358,8 @@ def pixabay_video(query: str, out: Path) -> tuple[Path | None, dict | None]:
             candidates=[videos.get(k,{}) for k in ('large','medium','small','tiny')]
             for f in candidates:
                 link=f.get('url')
-                if link and download(link,out):
-                    return out, {'provider':'pixabay_video','query':query,'id':hit.get('id'),'url':hit.get('pageURL')}
+                if link and not seen_visual_url(hit.get('pageURL') or link) and download(link,out):
+                    meta={'provider':'pixabay_video','query':query,'id':hit.get('id'),'url':hit.get('pageURL') or link}; remember_visual(meta); return out, meta
     except Exception as e:
         return None, {'provider':'pixabay_video','query':query,'error':str(e)[:200]}
     return None, {'provider':'pixabay_video','query':query,'error':'no_downloadable_result'}
@@ -274,8 +374,8 @@ def shutterstock_video(query: str, out: Path) -> tuple[Path | None, dict | None]
         for item in data.get('data',[]):
             assets=item.get('assets',{})
             link=(assets.get('preview_mp4') or assets.get('thumb_mp4') or {}).get('url')
-            if link and download(link,out):
-                return out, {'provider':'shutterstock_preview_video','query':query,'id':item.get('id'),'url':item.get('url'),'note':'preview asset'}
+            if link and not seen_visual_url(item.get('url') or link) and download(link,out):
+                meta={'provider':'shutterstock_preview_video','query':query,'id':item.get('id'),'url':item.get('url') or link,'note':'preview asset'}; remember_visual(meta); return out, meta
     except Exception as e:
         return None, {'provider':'shutterstock_preview_video','query':query,'error':str(e)[:200]}
     return None, {'provider':'shutterstock_preview_video','query':query,'error':'no_downloadable_result'}
@@ -290,8 +390,8 @@ def pexels_photo(query: str, out: Path) -> tuple[Path | None, dict | None]:
         for photo in data.get('photos',[]):
             src=photo.get('src',{})
             link=src.get('portrait') or src.get('large2x') or src.get('large')
-            if link and download(link,out):
-                return out, {'provider':'pexels_photo','query':query,'id':photo.get('id'),'url':photo.get('url')}
+            if link and not seen_visual_url(photo.get('url') or link) and download(link,out):
+                meta={'provider':'pexels_photo','query':query,'id':photo.get('id'),'url':photo.get('url') or link}; remember_visual(meta); return out, meta
     except Exception as e:
         return None, {'provider':'pexels_photo','query':query,'error':str(e)[:200]}
     return None, {'provider':'pexels_photo','query':query,'error':'no_downloadable_result'}
@@ -319,8 +419,8 @@ def wikimedia_image(query: str, out: Path) -> tuple[Path | None, dict | None]:
             if (info.get('width') or 0) < 500 or (info.get('height') or 0) < 500:
                 continue
             link=info.get('thumburl') or info.get('url')
-            if link and download(link,out):
-                return out, {'provider':'wikimedia_image','query':query,'search':clean,'title':page.get('title'),'url':info.get('descriptionurl') or link}
+            if link and not seen_visual_url(info.get('descriptionurl') or link) and download(link,out):
+                meta={'provider':'wikimedia_image','query':query,'search':clean,'title':page.get('title'),'url':info.get('descriptionurl') or link}; remember_visual(meta); return out, meta
     except Exception as e:
         return None, {'provider':'wikimedia_image','query':query,'error':str(e)[:200]}
     return None, {'provider':'wikimedia_image','query':query,'error':'no_downloadable_result'}

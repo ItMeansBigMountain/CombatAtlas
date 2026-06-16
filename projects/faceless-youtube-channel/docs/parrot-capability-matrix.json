@@ -1,0 +1,122 @@
+{
+  "service": "Parrot AI / tryparrotai.com",
+  "login": {
+    "url": "https://www.tryparrotai.com",
+    "method": "email_password",
+    "email_username": "Affan.fareed@gmail.com",
+    "password_storage": "not_stored_raw_in_repo_or_skill"
+  },
+  "credit_state_observed": {
+    "credits_balance_shown": 0,
+    "credit_packs_shown": [
+      {
+        "name": "Starter",
+        "credits": 100,
+        "price_usd": 9.99
+      },
+      {
+        "name": "Creator",
+        "credits": 500,
+        "price_usd": 39.99
+      },
+      {
+        "name": "Pro",
+        "credits": 1000,
+        "price_usd": 69.99
+      }
+    ],
+    "note": "User believes account has unlimited access. Web UI still showed 0 credits; each tool must be live-tested before treating it as unlimited. Do not buy credits without explicit confirmation."
+  },
+  "tool_families": [
+    {
+      "family": "AI Voice / Talking Video",
+      "status": "queued_for_live_test",
+      "faceless_youtube_use": "persona narration chunks, avatar hooks, voice A/B tests"
+    },
+    {
+      "family": "Voice Changer",
+      "status": "queued_for_live_test",
+      "faceless_youtube_use": "convert clean base narration into house persona voice"
+    },
+    {
+      "family": "Custom Voice / Voice Clone",
+      "status": "available_form_inspected_not_generated",
+      "requirements": "MP3, one speaker, >20 seconds, no background noise; cover photo optional 500x500; publish-to-public defaults checked",
+      "faceless_youtube_use": "private reusable narrator/host voice"
+    },
+    {
+      "family": "Image Generator / Text-to-Image",
+      "status": "queued_for_live_test",
+      "faceless_youtube_use": "thumbnails, avatar headshots, scene stills"
+    },
+    {
+      "family": "Image Editor / Image-to-Image",
+      "status": "queued_for_live_test",
+      "faceless_youtube_use": "thumbnail cleanup, avatar edits, background/style edits"
+    },
+    {
+      "family": "Background Removal / Upscaling",
+      "status": "queued_for_live_test",
+      "faceless_youtube_use": "cut out avatar/subjects and improve thumbnails"
+    },
+    {
+      "family": "Image Animator / Image-to-Video",
+      "status": "queued_for_live_test",
+      "faceless_youtube_use": "animated stills and AI B-roll"
+    },
+    {
+      "family": "Text-to-Video / Video Generator",
+      "status": "queued_for_live_test",
+      "faceless_youtube_use": "special high-value AI B-roll when stock is too generic"
+    },
+    {
+      "family": "Talking Avatars / Video Lip Sync",
+      "status": "queued_for_live_test",
+      "faceless_youtube_use": "short host intro/outro clips"
+    },
+    {
+      "family": "Viral Effects / Custom Animation",
+      "status": "queued_for_live_test",
+      "faceless_youtube_use": "retention hooks, transitions, social variants"
+    },
+    {
+      "family": "Text-to-Audio / Music / SFX",
+      "status": "queued_for_live_test",
+      "faceless_youtube_use": "music beds, stingers, whooshes, SFX"
+    },
+    {
+      "family": "Media Upload / Share URLs",
+      "status": "available_ui_inspected",
+      "limits": "100MB max file size",
+      "faceless_youtube_use": "host inputs for Parrot generation; always save local durable copies"
+    }
+  ],
+  "live_tests": [
+    {
+      "tool": "AI Voice / Talking Video",
+      "attempt": "Spongebob Squarepants community voice, audio-only, 91 chars",
+      "result": "UI accepted text and voice selection but Generate click did not produce a visible request/result in this browser run; needs retry/classic UI or direct network capture.",
+      "unlimited_verified": false
+    },
+    {
+      "tool": "AI Voice / Classic Talking Video",
+      "attempt": "Classic UI, Donald default premium voice, 38-char text: Pipeline test. AI news just got weird.",
+      "result": "Generate clicked; frontend requested Firebase AppCheck / reCAPTCHA token but stayed on LOADING with no media output or /api/create request observed. No output URL/file captured.",
+      "unlimited_verified": false,
+      "likely_blocker": "web browser automation / AppCheck or create flow hang, not conclusively credit-gated"
+    }
+  ],
+  "last_updated": "2026-06-15",
+  "credit_system_findings": {
+    "balance_modal_observed_credits": 0,
+    "credit_history_page": "No transactions yet",
+    "cost_labels_from_buy_modal": [
+      "Video Generation ~3/sec",
+      "Image Creation ~5 each",
+      "Voice Cloning ~2/sec",
+      "200+ More ~6 each"
+    ],
+    "free_credit_hint_from_playground_js": "If no credits remain, UI says: You need credits to use this feature. Verify your email to get 5 free credits.",
+    "interpretation": "The web UI does not currently prove unlimited generation. It presents the account as 0 credits with no transaction history; individual tools must still be tested for subscription/unlimited bypass."
+  }
+}

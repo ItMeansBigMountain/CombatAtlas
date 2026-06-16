@@ -7,11 +7,16 @@ from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
-SCOPE="https://www.googleapis.com/auth/youtube.upload"
+SCOPES=[
+    "https://www.googleapis.com/auth/youtube.upload",
+    "https://www.googleapis.com/auth/youtube.force-ssl",
+    "https://www.googleapis.com/auth/youtube.readonly",
+    "https://www.googleapis.com/auth/yt-analytics.readonly",
+]
 DEFAULT_TOKEN="/opt/data/secrets/youtube-main/youtube_upload_token.json"
 
 def load_token(path):
-    creds=Credentials.from_authorized_user_file(path, scopes=[SCOPE])
+    creds=Credentials.from_authorized_user_file(path, scopes=SCOPES)
     if not creds.valid and creds.expired and creds.refresh_token:
         creds.refresh(Request())
         pathlib.Path(path).write_text(creds.to_json())

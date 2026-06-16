@@ -35,6 +35,8 @@ Use this reference for the user's faceless YouTube newsletter pipeline, Viral Cl
 
 ## Faceless newsletter pipeline
 
+- Canonical account flow: read newsletter/source emails from `fareed320@gmail.com` via Workspace profile `personal-secondary`, then upload the produced newsletter videos to Trapiistan's YouTube account/channel **Sosai Oyama** using the explicit Trapiistan token path (`/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json`).
+- Do **not** route fareed320 newsletter videos to Classical Echos unless the user explicitly requests that lane. Classical Echos remains a separate channel/token.
 - One real newsletter email = one video.
 - Use actual newsletter body content, not placeholder topics.
 - Visuals should use Pexels stock pictures/videos and Hugging Face visuals for now; Sora is not the default because of cost.

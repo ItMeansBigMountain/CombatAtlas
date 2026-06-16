@@ -8,12 +8,8 @@ Cloud Engineer at GM Financial, TX; wants concise Discord replies and concrete, 
 §
 User wants project backups to live under /opt/data/HeRmEz/projects, specifically /opt/data/HeRmEz/projects/_backups for backup artifacts, rather than under /opt/data/HeRmEz/.hermes.
 §
-User prefers laconic Discord replies/reports: no tables; bold bullets; ask less; smoke-test.
-§
-User wants cron jobs refined and verified until perfectly working - this is a standing preference for system reliability.
-§
-Google: fareed320=personal-secondary inbox; trapiistan=Hermes workspace/Sosai YT+calendar; classicalechos=Classical Echos YT; affan read-only.
+Google/YT: fareed320=personal-secondary newsletter source; Trapiistan/Sosai uploads + calendar; classicalechos=Classical Echos; affan read-only.
 §
 User allows known junk/spam email cleanup without per-item review; newsletter/source emails delete only after verified YouTube upload.
 §
-Faceless/Classical Echos: one video/newsletter; ~2min; multi relevant clips; ElevenLabs voice; public unless told private.
+Faceless vids: fareed320→Trapiistan/Sosai; viral story script, humor when apt, relevant clips; public unless told private.

@@ -29,6 +29,24 @@ Implementation standard:
 - Save a `visual_manifest.json` recording scene, query, provider, source URL, and asset path for QA.
 - Do not call the video ready if the manifest shows only fallback_dynamic unless the user explicitly accepts a draft.
 
+## Script style correction — viral story, not lecture
+
+The user liked the video direction but corrected the scripts twice: fixed beats still sound too structured. Scripts must feel like a charismatic avatar/personality sharing news as a compelling mini-story, not an intro/body/conclusion outline.
+
+Use these principles:
+
+- Start with the strongest hook immediately, like “wait, did you see this?”
+- Keep one clear core message per email/video.
+- Build a natural story arc with stakes, curiosity, twist, receipts, and a practical takeaway, but do **not** make the spoken narration sound sectioned.
+- Match tone by source/topic: AI/tech can be witty and curious, security should be urgent/practical, finance should follow the money, Stoic/fitness should feel motivational but grounded.
+- Use humor only when appropriate and never trivialize real harm/security incidents.
+- Avoid robotic narration headings such as “the signal,” “operator angle,” “move first,” or “in conclusion.” Captions can be punchy, but voiceover must sound like one continuous human monologue.
+- Use actual newsletter body facts as receipts, not generic filler.
+- Increase visual variety: use 8–10 distinct scenes when possible, derive varied queries from company/category/mood, mix stock footage/photos, and avoid reusing the same generic office/laptop clips. Keep a visual URL history.
+- Parrot AI may be explored for voice experiments if it has an API/export path, but public content should use original/parody-inspired personas rather than exact impersonations of celebrities or protected entertainment characters.
+
+Project doc: `/opt/data/HeRmEz/projects/faceless-youtube-channel/docs/newsletter-script-style-guide.md`.
+
 ## Public metadata pattern
 
 ```text

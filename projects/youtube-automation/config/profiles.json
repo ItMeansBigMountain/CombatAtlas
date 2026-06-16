@@ -1,7 +1,7 @@
 {
   "hermes-agent": {
     "email": "trapiistan@gmail.com",
-    "use_for": ["calendar", "youtube_upload", "newsletter_processing"],
+    "use_for": ["calendar", "youtube_upload", "newsletter_processing", "newsletter_video_uploads"],
     "default": true
   },
   "personal-main": {
@@ -11,7 +11,7 @@
   },
   "personal-secondary": {
     "email": "fareed320@gmail.com",
-    "use_for": [],
+    "use_for": ["newsletter_source", "newsletter_processing"],
     "default": false
   },
   "burner": {

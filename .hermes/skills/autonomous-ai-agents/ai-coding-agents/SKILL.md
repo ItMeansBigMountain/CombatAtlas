@@ -40,6 +40,10 @@ Best for lightweight one-shot coding and review tasks when OpenCode is the avail
 
 Best for bounded research/review/coding subtasks inside Hermes where results return as summaries. Pass full context because subagents do not inherit conversation state.
 
+### Specialized Hermes Profiles
+
+Best when the user wants a standing alternate model/profile for a class of work while the main assistant keeps orchestration, policy, verification, and final reporting. For security/redteam consultation, use `references/redteam-consult-profile.md`: pass explicit authorization/scope, treat the profile as an advisor rather than a bypass, and verify outputs before acting.
+
 ### Kanban Codex Lanes
 
 Best when a Hermes Kanban worker needs Codex as an isolated implementation lane while Hermes owns lifecycle, reconciliation, tests, and handoff.

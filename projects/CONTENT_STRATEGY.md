@@ -70,3 +70,17 @@
 - Cleanup: uploader deleted each final MP4 after upload; I also removed 54 local generated media assets (`.mp4/.mp3/.jpg/.png/.mov/.webm/.wav`) from the three workspaces while retaining JSON manifests/results for auditability.
 - Calendar integration: attempted to create scheduled-release events on `trapi-3226@group.calendar.google.com`; OAuth profile tokens lacked Calendar scopes (`403 insufficientPermissions`) and the configured service account could not see the calendar (`404 notFound`). No calendar events were created.
 - Result: PARTIAL SUCCESS — 3 videos generated/uploaded and their source emails cleaned up; Calendar scheduling remains blocked until the calendar is shared with the configured service account or an OAuth profile is reauthorized with Calendar scope.
+
+## Newsletter video cron run — 2026-06-15 09:06:11 UTC
+
+- Notice: requested skill `process_newsletters_for_videos` was not installed, so I used the available Google Workspace tooling and existing `faceless-youtube-channel/scripts/newsletter_batch_upload.py` pipeline.
+- Gmail profile: `fareed320` via `/opt/data/google_profiles/fareed320/google_token.json`.
+- Preflight: render/upload stack passed; Google TTS OK; ElevenLabs account still on free tier with `current_overage.amount=0`, so no paid overage or transaction above the `$2` risk cap was incurred. Pexels key was loaded from `.env.pexels`, but the run resolved usable stock footage from Pixabay/Shutterstock preview fallbacks rather than Pexels.
+- Daily-batch policy: processed 3 unread emails from the 201-message unread backlog rather than draining the full backlog in one cron run.
+- Uploads completed:
+  - `Wouldn't it be wild if…` → https://youtu.be/me-k_GwDOfw (`me-k_GwDOfw`), 1080x1920, 51.48s; source Gmail message `19957d39faf718a1` trashed after verified upload.
+  - `Print On Demand (POD) Management` → https://youtu.be/K2nMayJr8Oo (`K2nMayJr8Oo`), 1080x1920, 48.77s; source Gmail message `191566a0f3b0f2a6` trashed after verified upload.
+  - `Print On Demand (POD) Management` → https://youtu.be/ARt72kZzMs0 (`ARt72kZzMs0`), 1080x1920, 48.77s; source Gmail message `191544bb623cded1` trashed after verified upload.
+- Cleanup: uploader deleted each final MP4 after upload; I then removed 54 generated local media assets (`.mp4/.mp3/.jpg/.png/.mov/.webm/.wav`, 140,742,835 bytes) from the three workspaces while retaining JSON manifests/results for auditability.
+- Calendar integration: attempted to create scheduled-release events on `trapi-3226@group.calendar.google.com`; the available `fareed320` OAuth token still lacks Calendar scope (`403 insufficient authentication scopes`), and no other usable calendar credential was present. No Calendar events were created.
+- Result: PARTIAL SUCCESS — 3 videos generated/uploaded and their source emails cleaned up; Calendar scheduling remains blocked by OAuth scope/credential access.

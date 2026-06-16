@@ -1,0 +1,128 @@
+[
+  {
+    "plugin": "AccountLegacyCard",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/AccountLegacyCard",
+    "remote": "https://github.com/ItMeansBigMountain/account-legacy-card-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "BossKCRivalLookup",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/BossKCRivalLookup",
+    "remote": "https://github.com/ItMeansBigMountain/boss-k-c-rival-lookup-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "BossRaceCreator",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/BossRaceCreator",
+    "remote": "https://github.com/ItMeansBigMountain/boss-race-creator-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "BossReadinessScore",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/BossReadinessScore",
+    "remote": "https://github.com/ItMeansBigMountain/boss-readiness-score-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "BossStreaks",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/BossStreaks",
+    "remote": "https://github.com/ItMeansBigMountain/boss-streaks-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "ClanGrindHeatmap",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/ClanGrindHeatmap",
+    "remote": "https://github.com/ItMeansBigMountain/clan-grind-heatmap-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "CompetitionOverlay",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/CompetitionOverlay",
+    "remote": "https://github.com/ItMeansBigMountain/competition-overlay-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "GroupIronProgressBoard",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/GroupIronProgressBoard",
+    "remote": "https://github.com/ItMeansBigMountain/group-iron-progress-board-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "IceBarrageTimer",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/IceBarrageTimer",
+    "remote": "https://github.com/ItMeansBigMountain/ice-barrage-timer-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "NameChangeWatcher",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/NameChangeWatcher",
+    "remote": "https://github.com/ItMeansBigMountain/name-change-watcher-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "PersonalProgressTimeline",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/PersonalProgressTimeline",
+    "remote": "https://github.com/ItMeansBigMountain/personal-progress-timeline-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "RivalRadar",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/RivalRadar",
+    "remote": "https://github.com/ItMeansBigMountain/rival-radar-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "SkillNemesis",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/SkillNemesis",
+    "remote": "https://github.com/ItMeansBigMountain/skill-nemesis-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "SkillRaceCreator",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/SkillRaceCreator",
+    "remote": "https://github.com/ItMeansBigMountain/skill-race-creator-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "SkillStreaks",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/SkillStreaks",
+    "remote": "https://github.com/ItMeansBigMountain/skill-streaks-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "SmartHiscoreLookup",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/SmartHiscoreLookup",
+    "remote": "https://github.com/ItMeansBigMountain/smart-hiscore-lookup-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "WhosGrindingClanPanel",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/WhosGrindingClanPanel",
+    "remote": "https://github.com/ItMeansBigMountain/whos-grinding-clan-panel-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  },
+  {
+    "plugin": "osrs-plugins-boilerplate",
+    "path": "/opt/data/HeRmEz/projects/osrs-plugins/osrs-plugins-boilerplate",
+    "remote": "https://github.com/ItMeansBigMountain/osrs-plugins-boilerplate-osrs.git",
+    "branch": "main",
+    "dirty": ""
+  }
+]

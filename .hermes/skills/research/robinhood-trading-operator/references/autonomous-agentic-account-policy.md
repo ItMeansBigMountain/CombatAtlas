@@ -37,6 +37,14 @@ That phrase activates Mode 5 for this account only. Future sessions should not k
 
 If Robinhood MCP returns transient server errors such as 502/unreachable, do **not** trade. Report: autonomous mode is armed/active but paused because broker state is uncertain. Resume only after account, positions, orders, quotes, and risk can be verified live.
 
+## Investor-profile / second-trade broker gate
+
+Robinhood may block additional Agentic-account orders with HTTP 400 and a message like: `We're required to have you answer some questions about your investing goals before we can allow you to continue using Robinhood.` Treat this as a broker setup gate, not a strategy/risk failure. Do not retry or route around it. Report that no order was placed, verify same-day orders if needed, journal the blocked attempt, and give the user the broker setup URL returned by the tool, typically:
+
+`https://applink.robinhood.com/investment_profile?account_number=433711041&context=second_trade`
+
+After the user completes the investor profile, rerun the normal live account/positions/orders/quotes/review workflow before placing anything; do not reuse stale preview data.
+
 ## Journal path
 
 The active policy file lives at:

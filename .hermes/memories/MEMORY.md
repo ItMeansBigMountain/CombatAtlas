@@ -4,11 +4,11 @@ A daily HeRmEz backup cron job exists: job_id cfcea697da5c, name "Daily HeRmEz G
 §
 Hermes Kanban is consolidated to the canonical default board for the user's main workspace. DB path is /opt/data/kanban.db; current-board file is /opt/data/kanban/current with value "default". Use the default board for active HeRmEz project work; old hermez and nous-kanban-demo boards were removed after backup.
 §
-Email/YT: audit 5 Google profiles; source labels TLDR/Daily Stoic/Kino Body/Robinhood Snacks; trash only after verified YouTube upload. AM report 8:30–9 CST concise. TTS ElevenLabs env EllevenLabsKey; faceless uploader supports Pexels/Pixabay stock visuals via API keys.
+Email/YT: 5 Google profiles; source TLDR/Daily Stoic/Kino/Robinhood, trash only after verified YT upload. AM report 8:30 CST concise. TTS env EllevenLabsKey; use Pexels/Pixabay stock. Paid Parrot AI may offload faceless voice/media API costs after live credits/export check.
 §
 Cox Elementary PTA dynamic Django site is deployed at https://cox-elementary-pta.onrender.com from repo /opt/data/HeRmEz/projects/cox-elementary-pta.
 §
-Cox Elementary PTA project backup is stored as a Git bundle at /opt/data/HeRmEz/projects/_backups/cox-elementary-pta/cox-elementary-pta.bundle with restore notes in that folder's README.md.
+OSRS plugin dirs under /opt/data/HeRmEz/projects/osrs-plugins/<Plugin> are standalone git repos for each plugin project, not backup folders; treat each as its own active repo.
 §
 Hermes external memory provider is configured as holographic in /opt/data/config.yaml, with plugin config under plugins.hermes-memory-store using $HERMES_HOME/memory_store.db, auto_extract false, default_trust 0.5, hrr_dim 1024.
 §

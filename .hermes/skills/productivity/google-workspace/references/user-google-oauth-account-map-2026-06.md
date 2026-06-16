@@ -4,9 +4,9 @@ Use this for the user's multi-account Google Workspace + YouTube automation.
 
 ## Account roles
 
-- `personal-secondary` / `fareed320@gmail.com`: source newsletter Gmail account. Full Workspace automation. Legacy scripts may use `fareed320` as an alias to this profile.
-- `trapiistan@gmail.com`: Hermes workspace/calendar account; owns the operational calendar lane. Also has Sosai Oyama YouTube token when that channel is needed.
-- `classicalechos@gmail.com`: Classical Echos content/channel account. Use its YouTube token for Classical Echos uploads and metadata edits.
+- `personal-secondary` / `fareed320@gmail.com`: source newsletter Gmail account. Full Workspace automation. Legacy scripts may use `fareed320` as an alias to this profile. For the faceless newsletter workflow, this is the source account only.
+- `trapiistan@gmail.com`: Hermes workspace/calendar account; owns the operational calendar lane. Its YouTube token owns **Sosai Oyama** and is the canonical upload destination for videos generated from `fareed320` newsletter emails.
+- `classicalechos@gmail.com`: Classical Echos content/channel account. Use its YouTube token for Classical Echos uploads and metadata edits only; do not use it for `fareed320` newsletter videos unless the user explicitly requests that channel.
 - `burner` / `laflametoast@gmail.com`: disposable/burner Workspace account with full automation.
 - `personal-main` / `affan.fareed@gmail.com`: read-only only. Do not request write/delete scopes or perform destructive actions here.
 

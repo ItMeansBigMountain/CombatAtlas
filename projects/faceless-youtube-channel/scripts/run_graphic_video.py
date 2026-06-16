@@ -304,7 +304,7 @@ def render(work: Path, scenes: list[dict]) -> Path:
 
 
 def upload(video: Path, title: str, description: str) -> dict:
-    token = os.getenv("YOUTUBE_UPLOAD_TOKEN") or "/opt/data/secrets/faceless-youtube-channel/youtube_upload_token.json"
+    token = os.getenv("YOUTUBE_UPLOAD_TOKEN") or "/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json"
     raw = sh(["python3", str(SHARED_UPLOADER), str(video), "--title", title, "--description", description, "--tags", "discipline,self improvement,motivation,shorts", "--privacy", "public", "--token", token, "--project", PROJECT, "--log-jsonl", str(UPLOAD_LOG), "--delete-after-upload"])
     return json.loads(raw)
 

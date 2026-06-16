@@ -23,7 +23,7 @@ For stock/API visual selection and QA, also follow `references/stock-visuals-for
 
 For YouTube OAuth, channel-token selection, public/default upload behavior, and account-specific content rules, follow `references/youtube-oauth-metadata-cleanup.md`, `references/content-creation-account-and-upload-rules-2026-06.md`, and `references/google-tts-stock-youtube-oauth-fallbacks-2026-06.md`. The last reference captures the current Google TTS fallback, stock-visual gate, and OAuth channel-identity verification lessons.
 
-For the user's current content-creation system, account mapping, upload visibility, calendar/cron contract, and faceless-vs-Viral-Clip-Radar boundaries, follow `references/content-creation-account-and-upload-rules-2026-06.md`: read newsletter emails from fareed320/personal-secondary, upload/manage calendar as trapiistan, keep affan.fareed@gmail.com read-only, use public YouTube uploads by default, and do not add stock footage to clipping videos.
+For the user's current content-creation system, account mapping, upload visibility, calendar/cron contract, and faceless-vs-Viral-Clip-Radar boundaries, follow `references/content-creation-account-and-upload-rules-2026-06.md`: read newsletter emails from fareed320/personal-secondary, upload those newsletter videos to Trapiistan's Sosai Oyama YouTube token/channel (not Classical Echos unless explicitly requested), keep affan.fareed@gmail.com read-only, use public YouTube uploads by default, and do not add stock footage to clipping videos.
 
 For OpenAI Sora as the preferred AI B-roll/video backend, follow `references/openai-sora-video-gen-provider.md`: ChatGPT UI access is not enough for cron automation; configure a Hermes `video_gen` provider (`openai-sora`) with `OPENAI_API_KEY` Videos/Sora API access, and treat Higgsfield/FAL/etc. as fallbacks.
 
@@ -34,6 +34,8 @@ For auditing/rebuilding the user's faceless/newsletter pipeline after quality is
 For hands-on Classical Echos/newsletter backlog operations, follow `references/newsletter-video-ops-lessons-2026-06.md`: no Markdown tables in Discord reports, target ~2-minute multi-clip videos, separate review fallback renders from final ElevenLabs uploads, search labeled newsletters outside Inbox, use Mixkit-style fallback only with source manifests, and handle YouTube `uploadLimitExceeded` with pending manifests plus resume jobs.
 
 For the current faceless newsletter catch-up lane, follow `references/faceless-newsletter-batch-upload-2026-06.md`: Google TTS is an approved fallback/equivalent when ElevenLabs credits are low, Higgsfield/Sora auth is not required, use Pexels or stock/dynamic visual fallback, upload with the explicit faceless/Sosai Oyama token, and trash each source email only after a verified YouTube `video_id`.
+
+For the user's corrected script/visual/voice direction, follow `references/faceless-newsletter-avatar-storytelling-and-parrot.md`: scripts must sound like a charismatic avatar naturally sharing a compelling news story (not intro/body/conclusion), videos need broader varied stock footage with reuse avoidance, and Parrot AI is a semi-automated voice experiment path using browser/session export until a stable API/export workflow is proven.
 
 For Classical Echos newsletter-video rendering after the user's 2-minute quality correction, follow `references/newsletter-video-rendering-provider-fallbacks-2026-06.md`: target ~120 seconds, require multiple relevant visual clips, use Mixkit as a vetted stock fallback when Pexels is blocked, and treat edge-tts as review-only unless explicitly approved.
 

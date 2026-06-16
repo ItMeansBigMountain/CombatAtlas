@@ -5,8 +5,10 @@
 The system is partially wired but not production-ready for the user's quality bar.
 
 - YouTube OAuth works for both channels:
-  - Sosai Oyama token: `/opt/data/secrets/faceless-youtube-channel/youtube_upload_token.json`
-  - Classical Echos token: `/opt/data/secrets/youtube-main/youtube_upload_token.json`
+  - Newsletter source Gmail: `personal-secondary` / `fareed320@gmail.com`.
+  - Faceless/newsletter upload token: `/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json` → YouTube channel **Sosai Oyama** / Trapiistan.
+  - Legacy compatibility token: `/opt/data/secrets/faceless-youtube-channel/youtube_upload_token.json` currently verifies to the same **Sosai Oyama** channel, but new docs/scripts should prefer the explicit `youtube-trapiistan` path.
+  - Classical Echos token: `/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json` → YouTube channel **Classical Echos**; do not use it for fareed320 newsletter videos unless specifically requested.
 - Support links are configured and injected into descriptions:
   - Linktree: https://linktr.ee/sosai.oyama
   - Buy Me a Coffee: https://buymeacoffee.com/affanfareev

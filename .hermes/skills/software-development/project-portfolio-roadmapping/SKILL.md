@@ -141,6 +141,7 @@ When the user asks to replicate another business/app's customer portal or workfl
 
 - The user often steers multiple legacy projects by explaining how they should merge or evolve. Convert those instructions into repo docs and tracker updates immediately.
 - The user prefers momentum: remove what is no longer needed, document merged directions, scaffold new repos, test, commit, and push.
+- The user clones the private HeRmEz repo locally to grab project code; when project work creates durable artifacts, keep `/opt/data/HeRmEz/projects` and `projects/_ops/` updated as the handoff surface, while keeping nested standalone repos ignored/submodule-managed rather than swallowed by the parent repo.
 - Keep summaries concise and operational: what changed, where it was written, commit hash, and next build step.
 
 ## Pitfalls
@@ -160,6 +161,7 @@ When the user asks to replicate another business/app's customer portal or workfl
 - `references/hermez-consolidation-patterns-2026-05.md` — condensed merge/retire/new-repo patterns from the HeRmEz project-direction session, including stockNews+wutHappened and social-media app consolidation.
 - `references/clipcurrent-api-vs-browser-strategy-2026-05.md` — strategy pattern for turning a new social/video trend-clipping idea into a code-first platform with browser automation only as fallback, including OpusClip API and YouTube credential caveats.
 - `references/youtube-automation-portfolio-organization-2026-06.md` — portfolio pattern for organizing multiple YouTube automation projects into lanes, centralizing shared OAuth upload tooling, adding per-project upload logs, and keeping private-first publishing rules.
+- `references/private-workspace-project-sync.md` — user-specific workflow for keeping `/opt/data/HeRmEz/projects` useful as the private GitHub-cloned project handoff surface, including nested repo hygiene and update-log pattern.
 
 RuneLite/plugin-hub procedure that used to live here has been copied into the `osrs-plugins` umbrella as `references/runelite-plugin-hub-workflow.md`; use that skill for OSRS/RuneLite implementation details.
 

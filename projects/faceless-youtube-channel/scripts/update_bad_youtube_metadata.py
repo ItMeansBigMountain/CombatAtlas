@@ -7,7 +7,7 @@ from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 from creator_links import support_block
 
-TOKEN = os.getenv('YOUTUBE_UPLOAD_TOKEN') or '/opt/data/secrets/faceless-youtube-channel/youtube_upload_token.json'
+TOKEN = os.getenv('YOUTUBE_UPLOAD_TOKEN') or '/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json'
 SCOPE = 'https://www.googleapis.com/auth/youtube'
 ITEMS = [
     {

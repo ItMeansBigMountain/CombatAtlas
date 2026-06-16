@@ -35,9 +35,24 @@ The script:
 3. Uses the actual email subject/body/snippet to generate a hook, signal, operator angle, proof, and CTA.
 4. Synthesizes voice with Google Cloud TTS (`GOOGLE_APPLICATION_CREDENTIALS` / `GOOGLE_TTS_CREDENTIALS`, default `en-US-Neural2-J`).
 5. Renders a 9:16 multi-scene MP4 with audio and attention-grabbing captions.
-6. Uploads public through `/opt/data/HeRmEz/projects/_ops/youtube-automation/scripts/upload_youtube.py` using `/opt/data/secrets/faceless-youtube-channel/youtube_upload_token.json`.
+6. Uploads public through `/opt/data/HeRmEz/projects/_ops/youtube-automation/scripts/upload_youtube.py` using the explicit Trapiistan/Sosai Oyama token `/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json`. The legacy `/opt/data/secrets/faceless-youtube-channel/youtube_upload_token.json` currently resolves to the same Sosai Oyama channel, but new scripts/docs should prefer the explicit Trapiistan path so account intent is unambiguous.
 7. Appends upload/source markers to `UPLOADS/newsletter_youtube_uploads.jsonl`.
 8. Trashes the Gmail source only after YouTube returns a verified `video_id`.
+
+## Script-flow correction
+
+The user liked the direction of the uploaded faceless newsletter videos but corrected the script style: scripts must **flow naturally** like one short-form story, not sound like disconnected lecture cards or rigid headings. Keep punchy caption labels if useful, but voiceover needs conversational transitions and a clear narrative arc.
+
+Use this voiceover pattern:
+
+1. Hook immediately with the strongest/strangest part of the newsletter.
+2. Continue with natural transitions: “Here’s the thing…”, “That matters because…”, “And the twist is…”, “You can see it in the details…”, “So the move is simple…”
+3. Add humor only when appropriate for the topic.
+4. Match the newsletter tone/category rather than forcing the same generic operator voice.
+5. Use actual newsletter facts as receipts and strip citation artifacts (`[4]`, “HEADLINES & TRENDS”, emoji boxes, source mechanics) from narration.
+6. If the generated narration sounds like headings stitched together, rewrite before rendering/uploading.
+
+Project detail/reference doc: `/opt/data/HeRmEz/projects/faceless-youtube-channel/docs/newsletter-script-style-guide.md`.
 
 ## OAuth/channel notes
 
