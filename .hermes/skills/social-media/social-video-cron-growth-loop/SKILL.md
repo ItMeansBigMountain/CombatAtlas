@@ -51,13 +51,21 @@ Use this skill when a cron job must create and publish a new social video every 
 
 ## Current local commands
 
-Faceless fresh-topic upload:
+Faceless fresh-topic upload (Hacker News trend-based):
 
 ```bash
-FACELESS_TOPIC='<researched topic/hook>' \
-FACELESS_RESEARCH_JSON='<compact JSON research brief>' \
+FACELESS_TOPIC='<researched topic/hook>' \\
+FACELESS_RESEARCH_JSON='<compact JSON research brief>' \\
 python3 /opt/data/scripts/faceless_daily_upload.py
 ```
+
+Faceless YouTube channel (newsletter-based) - project specific:
+
+- Project path: `/opt/data/HeRmEz/projects/faceless-youtube-channel`
+- Core script: `/opt/data/HeRmEz/projects/faceless-youtube-channel/scripts/run_trend_video.py`
+- Cron wrapper: `~/.hermes/scripts/run_faceless_video.sh` (changes to project directory before execution)
+- Example manual run (dry-run): `python3 /opt/data/HeRmEz/projects/faceless-youtube-channel/scripts/run_trend_video.py --dry-run-upload`
+- Can be adapted to process newsletter emails via Google Workspace Gmail API.
 
 Viral Radar one-fresh-clip public upload:
 

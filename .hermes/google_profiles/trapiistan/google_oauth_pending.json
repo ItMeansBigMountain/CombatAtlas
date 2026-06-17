@@ -1,0 +1,22 @@
+{
+  "kind": "workspace",
+  "profile": "trapiistan",
+  "email": "trapiistan@gmail.com",
+  "mode": "full",
+  "state": "XCifWTme1jcWFIbbhWK15ysrzxvNrj",
+  "redirect_uri": "http://localhost:1",
+  "client_secret": "/opt/data/google_profiles/trapiistan/google_client_secret.json",
+  "token": "/opt/data/google_profiles/trapiistan/google_token.json",
+  "scopes": [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.modify",
+    "https://www.googleapis.com/auth/gmail.send",
+    "https://www.googleapis.com/auth/gmail.settings.basic",
+    "https://www.googleapis.com/auth/calendar",
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/documents",
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/contacts.readonly"
+  ],
+  "code_verifier": "HL~4DAs3PnoSks-bjfiB_bCYcZ37R_g8kBPZN_qbkyxtc~qzxthse5p9HElYx5UuNP4PxAaiIR-bcOna0Bo3OinhDKmAzU6DxbtixxG6aqApYo~09J7RHu_PoczGjr3w"
+}

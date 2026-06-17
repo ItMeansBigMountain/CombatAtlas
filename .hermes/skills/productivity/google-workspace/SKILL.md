@@ -393,6 +393,8 @@ All commands return JSON. Parse with `jq` or read directly. Key fields:
 | `HttpError 403: Access Not Configured` | API not enabled — user needs to enable it in Google Cloud Console |
 | `ModuleNotFoundError` | Run `$GSETUP --install-deps` |
 | Advanced Protection blocks auth | Workspace admin must allowlist the OAuth client ID |
+| Redirect URI mismatch           | Ensure `redirect_uri` in token exchange exactly matches one of the URIs registered in Google Cloud Console (check `client_secret.json`). |
+| Invalid grant                   | Authorization code expired or already used; generate a fresh auth URL and obtain a new code from the browser. |
 
 ## Revoking Access
 

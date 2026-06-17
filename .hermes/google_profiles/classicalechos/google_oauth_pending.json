@@ -1,0 +1,22 @@
+{
+  "kind": "workspace",
+  "profile": "classicalechos",
+  "email": "classicalechos@gmail.com",
+  "mode": "full",
+  "state": "WUrpmJ08vDPkhOV6pqUSIUs08eJx0C",
+  "redirect_uri": "http://localhost:1",
+  "client_secret": "/opt/data/google_profiles/classicalechos/google_client_secret.json",
+  "token": "/opt/data/google_profiles/classicalechos/google_token.json",
+  "scopes": [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.modify",
+    "https://www.googleapis.com/auth/gmail.send",
+    "https://www.googleapis.com/auth/gmail.settings.basic",
+    "https://www.googleapis.com/auth/calendar",
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/documents",
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/contacts.readonly"
+  ],
+  "code_verifier": "Anr3ip~xrrl8.mNnU~XAZsjEeO_uoGh3.BfeV5.yyP6b.Ic0bat5eaf9KcT4I.n.I1HgtblDSxalvTOSFCzftyVPUmHc1~bEbH_VMmAByyuwog~EbgS0ChBy4NQKulkQ"
+}

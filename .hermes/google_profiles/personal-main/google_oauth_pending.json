@@ -1,0 +1,19 @@
+{
+  "kind": "workspace",
+  "profile": "personal-main",
+  "email": "affan.fareed@gmail.com",
+  "mode": "readonly",
+  "state": "KLmezHHbZ9uCx7LG5cmT8t765AYz3M",
+  "redirect_uri": "http://localhost:1",
+  "client_secret": "/opt/data/google_profiles/personal-main/google_client_secret.json",
+  "token": "/opt/data/google_profiles/personal-main/google_token.json",
+  "scopes": [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/calendar.readonly",
+    "https://www.googleapis.com/auth/drive.readonly",
+    "https://www.googleapis.com/auth/documents.readonly",
+    "https://www.googleapis.com/auth/spreadsheets.readonly",
+    "https://www.googleapis.com/auth/contacts.readonly"
+  ],
+  "code_verifier": "ajwlnQjPfpf~NMeaQmTwEHXdExwHv5ZEUkwh3CVqbn8m3mcd1GIOdPC--cyQxy3ybwTsqH82peUbfbFL.xIVqSl9eIzus~IMov5tMzqbfqwtbBVhkXQOc2~Jgx6lMB72"
+}
