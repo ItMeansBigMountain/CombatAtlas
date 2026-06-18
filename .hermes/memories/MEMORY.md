@@ -13,3 +13,5 @@ Hermes external memory provider is configured as holographic in /opt/data/config
 User has five Google Workspace email profiles: personal-main (primary personal), personal-secondary (backup/restricted), hermes-agent (Hermes automation/account-linked communications), burner (temporary/disposable sending), classicalechos (archive/curated content sending). Faceless YouTube channel processes fareed320 newsletters (TLDR/Daily Stoic/Kino) into daily videos, with cleanup and email deletion post-upload.
 §
 User wants Robinhood trading + Venice/redteam authorized pentest workflows.
+§
+Google Workspace policy: personal-main / affan.fareed@gmail.com should use Gmail read-only scopes, but full/admin Calendar, Drive, Docs, Sheets, and Contacts scopes.

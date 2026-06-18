@@ -42,8 +42,8 @@ Use this reference when managing the user's Google Workspace, Gmail, Calendar, D
 
 - **personal-main**
   - Email: `affan.fareed@gmail.com`
-  - Access policy: read-only only.
-  - Uses: read-only personal context.
+  - Access policy: Gmail read-only; full Workspace automation for non-email services.
+  - Uses: read-only Gmail/personal email context, plus full Calendar/Drive/Docs/Sheets/Contacts automation.
   - Token path: `/opt/data/google_profiles/personal-main/google_token.json`
 
 ## Scope bundles
@@ -60,18 +60,18 @@ Use when the user grants full access to an automation identity other than `affan
 - `https://www.googleapis.com/auth/drive`
 - `https://www.googleapis.com/auth/documents`
 - `https://www.googleapis.com/auth/spreadsheets`
-- `https://www.googleapis.com/auth/contacts.readonly`
+- `https://www.googleapis.com/auth/contacts`
 
-### Personal-main read-only
+### Personal-main Gmail read-only + Workspace admin
 
-Use for `affan.fareed@gmail.com` unless the user explicitly changes the policy.
+Use for `affan.fareed@gmail.com`: email must remain read-only, while non-email Workspace services should be full/admin.
 
 - `https://www.googleapis.com/auth/gmail.readonly`
-- `https://www.googleapis.com/auth/calendar.readonly`
-- `https://www.googleapis.com/auth/drive.readonly`
-- `https://www.googleapis.com/auth/documents.readonly`
-- `https://www.googleapis.com/auth/spreadsheets.readonly`
-- `https://www.googleapis.com/auth/contacts.readonly`
+- `https://www.googleapis.com/auth/calendar`
+- `https://www.googleapis.com/auth/drive`
+- `https://www.googleapis.com/auth/documents`
+- `https://www.googleapis.com/auth/spreadsheets`
+- `https://www.googleapis.com/auth/contacts`
 
 ### YouTube automation
 
@@ -86,7 +86,7 @@ Use per YouTube channel/account. Normal user-specific YouTube channel actions re
 
 - Generate one OAuth URL per profile with `login_hint` and `prompt=consent`.
 - Store pending PKCE state separately for each account/channel; never overwrite one profile's pending state with another.
-- For this environment, `/opt/data/scripts/google_profile_oauth.py` is the profile-scoped Workspace helper. It reads `/opt/data/HeRmEz/projects/_ops/google-email-profiles.json`; the registry may use `workspace_profiles` rather than legacy `profiles`. The helper should request the read-only bundle for `personal-main` / `read_only_workspace`, and the full Workspace bundle for the other automation profiles.
+- For this environment, `/opt/data/scripts/google_profile_oauth.py` is the profile-scoped Workspace helper. It reads `/opt/data/HeRmEz/projects/_ops/google-email-profiles.json`; the registry may use `workspace_profiles` rather than legacy `profiles`. The helper should request the Gmail-read-only/non-email-admin bundle for `personal-main` / `gmail_read_only_workspace_admin`, and the full Workspace bundle for the other automation profiles.
 - Exchange redirects into dedicated token paths.
 - Verify live identity after exchange:
   - Gmail: `users.getProfile(userId='me')` returns the expected email.

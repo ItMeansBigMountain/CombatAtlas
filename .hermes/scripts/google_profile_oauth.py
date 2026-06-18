@@ -26,7 +26,16 @@ FULL_WORKSPACE_SCOPES = [
     "https://www.googleapis.com/auth/gmail.settings.basic",
     "https://www.googleapis.com/auth/calendar",
     "https://www.googleapis.com/auth/drive",
-    "https://www.googleapis.com/auth/contacts.readonly",
+    "https://www.googleapis.com/auth/contacts",
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/documents",
+]
+
+GMAIL_READ_ONLY_WORKSPACE_ADMIN_SCOPES = [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/calendar",
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/contacts",
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/documents",
 ]
@@ -43,6 +52,8 @@ READ_ONLY_WORKSPACE_SCOPES = [
 
 def scopes_for_profile(profile: str, meta: dict) -> list[str]:
     access = meta.get("access", "")
+    if access == "gmail_read_only_workspace_admin":
+        return GMAIL_READ_ONLY_WORKSPACE_ADMIN_SCOPES
     if profile == "personal-main" or access == "read_only_workspace":
         return READ_ONLY_WORKSPACE_SCOPES
     return FULL_WORKSPACE_SCOPES

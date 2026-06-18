@@ -3,7 +3,7 @@
   "rules": {
     "no_tables_in_discord_reports": true,
     "youtube_upload_default": "public",
-    "affan_fareed_policy": "read_only",
+    "affan_fareed_policy": "gmail_read_only_workspace_admin",
     "newsletter_source_profile": "personal-secondary",
     "newsletter_source_email": "fareed320@gmail.com",
     "calendar_profile": "trapiistan",
@@ -38,9 +38,9 @@
     },
     "personal-main": {
       "email": "affan.fareed@gmail.com",
-      "access": "read_only_workspace",
+      "access": "gmail_read_only_workspace_admin",
       "token_path": "/opt/data/google_profiles/personal-main/google_token.json",
-      "uses": ["read-only personal context only"]
+      "uses": ["read-only Gmail", "full/admin Calendar Drive Docs Sheets Contacts"]
     }
   },
   "youtube_profiles": {

@@ -26,7 +26,7 @@ Each profile entry should include:
 For this user's workspace, the current policy is:
 
 - `hermes-agent` / `trapiistan@gmail.com`: primary on-behalf account for Google and YouTube upload work.
-- `personal-main` / `Affan.fareed@gmail.com`: read-first; do not send email without explicit per-message approval.
+- `personal-main` / `affan.fareed@gmail.com`: Gmail read-only; non-email Workspace services full/admin. Do not request Gmail send/modify/settings scopes for this profile.
 - `personal-secondary` / `fareed320@gmail.com`: read-first; do not send email without explicit per-message approval.
 - `classicalechos` / `classicalechos@gmail.com`: classy/high-ticket content account; review required before upload/use.
 - `burner` / `laflametoast@gmail.com`: miscellaneous/free-trial/low-stakes tasks.
