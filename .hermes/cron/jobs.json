@@ -20,15 +20,15 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 32
+        "completed": 33
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-06-19T03:00:00+00:00",
-      "last_run_at": "2026-06-17T03:00:41.773719+00:00",
+      "next_run_at": "2026-06-20T03:00:00+00:00",
+      "last_run_at": "2026-06-18T03:00:54.822005+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -60,15 +60,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 30
+        "completed": 31
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-06-18T13:30:00+00:00",
-      "last_run_at": "2026-06-17T13:30:19.296013+00:00",
+      "next_run_at": "2026-06-19T13:30:00+00:00",
+      "last_run_at": "2026-06-18T13:31:37.716281+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -108,15 +108,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 53
+        "completed": 57
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-06-18T06:50:18.271173+00:00",
-      "last_run_at": "2026-06-18T00:50:18.271173+00:00",
+      "next_run_at": "2026-06-19T06:52:23.060997+00:00",
+      "last_run_at": "2026-06-19T00:52:23.060997+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -136,7 +136,7 @@
     {
       "id": "c9e81ae638fe",
       "name": "Daily faceless YouTube full video generation + upload",
-      "prompt": "You are running the user's Daily Faceless YouTube full video generation + upload pipeline. This job should create one fresh, private-first/production-ready faceless Short using the `social-video-cron-growth-loop` and `youtube-automation-with-tts` skills.\n\nUse performance learnings first, then research a fresh self-improvement/discipline/social-confidence/no-degree/cloud-career angle. Also check `/opt/data/HeRmEz/projects/faceless-youtube-channel/STATE/source_transcripts/` for source inspiration from creators the user likes, especially Andrew Huberman and Hamza. Use their clips/transcripts as inspiration or source material only with transformative narration/context; do not raw-reupload.\n\nIf source transcript artifacts are available, prefer turning one useful idea into a faceless script with: sharp hook, simple explanation, practical action, captions, and attribution if directly referencing the creator. Keep the final report concise: topic/hook, output/upload URL or blocker, cleanup status.",
+      "prompt": "Run the user's Daily Faceless YouTube full video generation + upload pipeline as a full growth loop. First read /opt/data/HeRmEz/projects/faceless-youtube-channel/VIRAL_YOUTUBE_SYSTEM.md and /opt/data/HeRmEz/projects/_ops/social-growth/PERFORMANCE_LEARNINGS.md if present. Apply viral packaging: 1-3s high-contrast hook, no intro, hook\u2192context\u2192receipts\u2192implication\u2192identity/action close, short on-screen captions, visual changes every 2-4s, title/on-screen text/description semantically aligned. Then run the configured project pipeline from /opt/data/HeRmEz/projects/faceless-youtube-channel. Prefer newsletter_batch_upload.py for real newsletter videos when Gmail/Youtube/TTS are ready; otherwise run the wrapper dry-run and report the blocker. Verify with py_compile, ffprobe, and uploader JSON before reporting. Do not trash source emails unless YouTube returns a verified video_id. Keep the final Discord report concise with video path/URL, upload status, and any blocker.",
       "skills": [
         "social-video-cron-growth-loop",
         "youtube-automation-with-tts",
@@ -147,7 +147,7 @@
       "provider": null,
       "base_url": null,
       "script": "run_faceless_video.sh",
-      "no_agent": true,
+      "no_agent": false,
       "context_from": null,
       "schedule": {
         "kind": "cron",
@@ -157,17 +157,17 @@
       "schedule_display": "45 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 14
+        "completed": 15
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:55:03.480224+00:00",
-      "next_run_at": "2026-06-19T01:45:00+00:00",
-      "last_run_at": "2026-06-18T01:45:17.368566+00:00",
-      "last_status": "error",
-      "last_error": "Script not found: /opt/data/scripts/run_faceless_video.sh",
+      "next_run_at": "2026-06-20T01:45:00+00:00",
+      "last_run_at": "2026-06-19T01:47:30.226104+00:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": {
@@ -177,6 +177,7 @@
         "thread_id": null
       },
       "enabled_toolsets": [
+        "web",
         "terminal",
         "file"
       ],
@@ -186,7 +187,7 @@
     {
       "id": "bce8ebabac36",
       "name": "Daily Viral Radar / Creator clip generation + upload",
-      "prompt": "You are running the user's Daily Viral Radar / creator clip full video generation + upload pipeline. Use `social-video-cron-growth-loop`, `youtube-automation-with-tts`, and `social-platform-publishing`.\n\nUse fresh reviewed clip manifests and creator watchlist candidates from `/opt/data/HeRmEz/projects/viral-clip-radar/CLIP_PLANS/`. The watchlist now includes Andrew Huberman and Hamza. Prioritize clips that teach discipline, dopamine control, focus, social confidence, exercise, mental health, learning, or practical self-improvement. Do not raw-reupload creator clips: every upload must add hook/context/captions/analysis and source attribution, then private-first or according to the existing project upload policy.\n\nIf no reviewed manifest exists, select/create a candidate review note rather than inventing a finished upload. Keep final report concise: selected source, hook, output/upload URL or blocker, cleanup status.",
+      "prompt": "You are running the user's Daily Viral Radar / creator clip full video generation + upload pipeline. Use `social-video-cron-growth-loop`, `youtube-automation-with-tts`, and `social-platform-publishing`.\n\nUse fresh reviewed clip manifests and creator watchlist candidates from `/opt/data/HeRmEz/projects/viral-clip-radar/CLIP_PLANS/`. The watchlist includes Andrew Huberman, Chris Williamson, Greg O'Gallagher / Kinobody, Andrew Tate / TateSpeech / Cobratate, Zerkaa, ZerkaaPlays, GG33, Luke Belmar / Capital Club, Nate Belmar / Mr Belmar, Alex Hormozi, Hamza, and Hamza Unfiltered.\n\nPrioritize clips that teach discipline, dopamine control, focus, social confidence, exercise, mental health, learning, business, wealth, fitness, self-improvement, masculinity, relationships, or practical life strategy. Avoid raw reuploads: every upload must add hook/context/captions/analysis and source attribution, then private-first or according to the existing project upload policy.\n\nIf no reviewed manifest exists, select/create a candidate review note rather than inventing a finished upload. Keep final report concise: selected source, hook, output/upload URL or blocker, cleanup status.",
       "skills": [
         "social-video-cron-growth-loop",
         "youtube-automation-with-tts",
@@ -209,17 +210,17 @@
       "schedule_display": "15 20 * * *",
       "repeat": {
         "times": null,
-        "completed": 11
+        "completed": 13
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-06-18T20:15:00+00:00",
-      "last_run_at": "2026-06-17T20:15:16.338151+00:00",
-      "last_status": "error",
-      "last_error": "Blocked: prompt matches threat pattern 'deception_hide'. Cron prompts must not contain injection or exfiltration payloads.",
+      "next_run_at": "2026-06-19T20:15:00+00:00",
+      "last_run_at": "2026-06-19T01:07:39.108892+00:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": {
@@ -256,15 +257,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 199
+        "completed": 330
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-06-18T03:07:17.644865+00:00",
-      "last_run_at": "2026-06-18T02:57:17.644865+00:00",
+      "next_run_at": "2026-06-19T03:08:22.623569+00:00",
+      "last_run_at": "2026-06-19T02:58:22.623569+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -301,15 +302,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 11
+        "completed": 12
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-06-18T14:00:00+00:00",
-      "last_run_at": "2026-06-17T14:00:14.710721+00:00",
+      "next_run_at": "2026-06-19T14:00:00+00:00",
+      "last_run_at": "2026-06-18T14:00:19.583559+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -347,15 +348,15 @@
       "schedule_display": "15 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 6
+        "completed": 7
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T04:20:40.734347+00:00",
-      "next_run_at": "2026-06-18T13:15:00+00:00",
-      "last_run_at": "2026-06-17T13:15:15.326469+00:00",
+      "next_run_at": "2026-06-19T13:15:00+00:00",
+      "last_run_at": "2026-06-18T13:15:20.235869+00:00",
       "last_status": "error",
       "last_error": "Script exited with code 1\nstderr:\nTraceback (most recent call last):\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 197, in <module>\n    raise SystemExit(main())\n                     ~~~~^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 191, in main\n    results = [process_profile(p, e, apply=args.apply, max_results=args.max_results) for p, e in selected]\n               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 153, in process_profile\n    service = gmail(profile)\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 79, in gmail\n    return build(\"gmail\", \"v1\", credentials=load_creds(profile), cache_discovery=False)\n                                            ~~~~~~~~~~^^^^^^^^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 72, in load_creds\n    creds.refresh(Request())\n    ~~~~~~~~~~~~~^^^^^^^^^^^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/credentials.py\", line 412, in refresh\n    ) = reauth.refresh_grant(\n        ~~~~~~~~~~~~~~~~~~~~^\n        request,\n        ^^^^^^^^\n    ...<6 lines>...\n        enable_reauth_refresh=self._enable_reauth_refresh,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/reauth.py\", line 370, in refresh_grant\n    _client._handle_error_response(response_data, retryable_error)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/_client.py\", line 69, in _handle_error_response\n    raise exceptions.RefreshError(\n        error_details, response_data, retryable=retryable_error\n    )\ngoogle.auth.exceptions.RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
       "last_delivery_error": null,
@@ -395,15 +396,15 @@
       "schedule_display": "50 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 3
+        "completed": 4
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T15:48:08.357771+00:00",
-      "next_run_at": "2026-06-18T13:50:00+00:00",
-      "last_run_at": "2026-06-17T13:55:24.178558+00:00",
+      "next_run_at": "2026-06-19T13:50:00+00:00",
+      "last_run_at": "2026-06-18T13:53:03.981828+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -421,10 +422,12 @@
     {
       "id": "f02334d43494",
       "name": "Daily Content Backlog Processor",
-      "prompt": "Process all unread emails in the fareed320 Gmail profile, generate a faceless YouTube video for each using the updated newsletter pipeline that pulls stock footage from Pexels, uploads to YouTube, adds a Calendar event to https://www.google.com/calendar/calendar/embedded?src=trapi-3226%40group.calendar.google.com for scheduled release, then deletes the email and local video files to maintain a clean backlog. Use google-workspace skill for Calendar integration and Gmail access. Ensure the job respects the user\u2019s preference for daily batch processing and never exceeds the $2 per-transaction risk limit. Log success/failure in /opt/data/HeRmEz/projects/CONTENT_STRATEGY.md.",
+      "prompt": "Process unread approved newsletter/source emails in the fareed320/personal-secondary Gmail profile into faceless YouTube videos. Use /opt/data/HeRmEz/projects/faceless-youtube-channel/VIRAL_YOUTUBE_SYSTEM.md and the loaded skills. One email = one video. Use actual email content. Script with hook\u2192context\u2192receipts\u2192implication\u2192identity/action close. Generate realistic TTS and relevant stock visuals. Upload public to the configured Sosai/Trapiistan YouTube token only after quality gates pass. Trash source emails only after a verified YouTube video_id. If providers/auth are blocked, stop safely and report the exact blocker; do not upload placeholder/static/flite drafts.",
       "skills": [
         "google-workspace",
-        "process_newsletters_for_videos"
+        "youtube-automation-with-tts",
+        "social-video-cron-growth-loop",
+        "social-platform-publishing"
       ],
       "skill": "google-workspace",
       "model": null,
@@ -441,15 +444,15 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 5
+        "completed": 6
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T17:32:19.594106+00:00",
-      "next_run_at": "2026-06-18T09:00:00+00:00",
-      "last_run_at": "2026-06-17T09:00:24.605813+00:00",
+      "next_run_at": "2026-06-19T09:00:00+00:00",
+      "last_run_at": "2026-06-18T09:16:26.850527+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -469,5 +472,5 @@
       "profile": null
     }
   ],
-  "updated_at": "2026-06-18T03:00:17.263408+00:00"
+  "updated_at": "2026-06-19T03:00:22.265148+00:00"
 }

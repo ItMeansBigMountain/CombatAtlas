@@ -1,22 +1,35 @@
 # Social Video Performance Learnings
 
-Last updated: `2026-06-17T14:00:14.701296+00:00`
+Last updated: `2026-06-19T02:50:20.458983+00:00`
 
 ## Metrics status
 
-- `YOUTUBE_API_KEY` was not available, so this run could not fetch live view/like/comment metrics.
-- Upload logs were still parsed so cron jobs can avoid duplicate video IDs/titles.
-- To enable the learning loop, add a YouTube Data API v3 key as `YOUTUBE_API_KEY` in `/opt/data/.env`.
+- Live YouTube metrics are fetched with OAuth tokens from the same upload lane/account, not a generic API key.
+- This preserves private/unlisted visibility and prevents mixing channel accounts.
 
 ## faceless-youtube-channel
 
-- Uploads logged: 39 total; 23 public.
-- Live metrics unavailable for public videos in this snapshot; use upload-log dedupe only until API metrics are configured.
+- Uploads logged: 205 total; 197 public/metric-eligible.
+- Median public views in latest snapshot: 1.0.
+- Current winners to study:
+  - 203 views / 1 likes / 0 comments — Print On Demand (POD) Management — https://youtu.be/K2nMayJr8Oo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 203 views / 1 likes / 0 comments — Print On Demand (POD) Management — https://youtu.be/K2nMayJr8Oo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 134 views / 0 likes / 0 comments — Bezos' AI engineer 🤖, SpaceX record IPO 💰, building vertical agents 👨‍💻 — https://youtu.be/g4c5O0DI-ys — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 121 views / 1 likes / 0 comments — The Terror of Knowing What The World Is About — https://youtu.be/b6QcYwU9SPo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 102 views / 0 likes / 0 comments — Anthropic Fable shutdown , GLM-5.2 , OpenRouter Fusion — https://youtu.be/hjwDcBryTQ8 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+- Hook/title words showing up in better performers: https, cash, sosaioyama, venmo, will, people, tools, output, read, into, proof, today.
 
 ## viral-clip-radar
 
-- Uploads logged: 22 total; 4 public.
-- Live metrics unavailable for public videos in this snapshot; use upload-log dedupe only until API metrics are configured.
+- Uploads logged: 23 total; 8 public/metric-eligible.
+- Median public views in latest snapshot: 378.0.
+- Current winners to study:
+  - 1036 views / 18 likes / 1 comments — Two types of procrastination and how activation changes behavior #Shorts — https://youtu.be/XJ4QzlHq2TE — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 944 views / 26 likes / 0 comments — The viral moment is not the landing. It is proof under pressure. #Shorts — https://youtu.be/JBX3lRhKhy4 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 919 views / 24 likes / 0 comments — The viral moment is not the landing. It is proof under pressure. #Shorts — https://youtu.be/ParX8IBet5I — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 625 views / 14 likes / 0 comments — Dopamine is wanting/craving, not just pleasure #Shorts — https://youtu.be/66PdAQkydMU — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 131 views / 1 likes / 0 comments — Seven minutes of terror #Shorts — https://youtu.be/VZfCiXLXwN0 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+- Hook/title words showing up in better performers: source, radar, youtube, clip, huberman, https, watch, transformative, additions, vertical, captions, hook.
 
 ## Operating rule for future cron runs
 

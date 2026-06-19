@@ -12,4 +12,4 @@ Google/YT: fareed320=personal-secondary newsletter source; Trapiistan/Sosai uplo
 §
 User allows known junk/spam email cleanup without per-item review; newsletter/source emails delete only after verified YouTube upload.
 §
-Faceless vids: fareed320→Trapiistan/Sosai; viral story script, humor when apt, relevant clips; public unless told private.
+Faceless/newsletter vids: fareed320→Trapiistan/Sosai, public by default; scripts must relay newsletter facts in a human/personified voice, not advice/opinion; display-only captions; semantic stock footage; review block if visuals fail.

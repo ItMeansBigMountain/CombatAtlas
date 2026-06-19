@@ -84,3 +84,18 @@
 - Cleanup: uploader deleted each final MP4 after upload; I then removed 54 generated local media assets (`.mp4/.mp3/.jpg/.png/.mov/.webm/.wav`, 140,742,835 bytes) from the three workspaces while retaining JSON manifests/results for auditability.
 - Calendar integration: attempted to create scheduled-release events on `trapi-3226@group.calendar.google.com`; the available `fareed320` OAuth token still lacks Calendar scope (`403 insufficient authentication scopes`), and no other usable calendar credential was present. No Calendar events were created.
 - Result: PARTIAL SUCCESS — 3 videos generated/uploaded and their source emails cleaned up; Calendar scheduling remains blocked by OAuth scope/credential access.
+
+## Newsletter video cron run — 2026-06-18T09:15:53Z
+
+- Notice: requested skill `process_newsletters_for_videos` was not installed, so I used the available Google Workspace tooling and existing `faceless-youtube-channel/scripts/newsletter_batch_upload.py` pipeline.
+- Gmail profile: the expected `/opt/data/google_profiles/fareed320/google_token.json` was not present; I used the available verified `fareed320@gmail.com` token at `/opt/data/google_profiles/fareed320.old-20260612-193356/google_token.json`.
+- Pipeline maintenance: updated `newsletter_batch_upload.py` to load the project `.env.pexels` stock key after global env files, and fixed a render crash where scenes beyond six exceeded the accent-color palette.
+- Preflight/risk: ffmpeg/ffprobe OK; Google TTS OK; ElevenLabs free tier OK with `current_overage.amount=0`; no paid stock/AI-video purchase was made, so the `$2` per-transaction risk limit was respected.
+- Daily-batch policy: processed 3 unread source/newsletter emails only.
+- Uploads completed:
+  - `GLM-5.2, DeepSeek raises $7.4B, Android MCP` → https://youtu.be/lpo14wWmPeU (`lpo14wWmPeU`), 1080x1920, 80.73s; source Gmail message `19ed5cfafe13e54f` trashed after verified upload.
+  - `iRhythm Data Ransom, FIFA World Cup Hack, JetBrains Key Theft` → https://youtu.be/iKkaIdZPpBU (`iKkaIdZPpBU`), 1080x1920, 71.92s; source Gmail message `19ed5c23d7046030` trashed after verified upload.
+  - `Crowded AI markets, how to pivot, building your learning loop` → https://youtu.be/JyKknko1mFU (`JyKknko1mFU`), 1080x1920, 139.01s; source Gmail message `19ed5895a2fb1a77` trashed after verified upload.
+- Calendar integration: attempted to create scheduled-release events on `trapi-3226@group.calendar.google.com`, but the available fareed320 token still lacks Calendar scope (`403 insufficient authentication scopes`). No Calendar events were created.
+- Cleanup: uploader deleted each final MP4 after upload; I also removed 152 generated local media assets (`.mp4/.mp3/.wav/.jpg/.png/.webm/.mov/.m4a`, 703,496,837 bytes) from 2026-06-18 workspaces while retaining JSON manifests/results for auditability.
+- Result: PARTIAL SUCCESS — 3 videos generated/uploaded and their source emails cleaned up; Calendar scheduling remains blocked by OAuth scope/credential access.

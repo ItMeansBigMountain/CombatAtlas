@@ -1,0 +1,208 @@
+[
+  {
+    "profile": "personal-main",
+    "email": "affan.fareed@gmail.com",
+    "inbox_count": 14,
+    "messages": [
+      {
+        "bucket": "unread",
+        "id": "19edae71b000c594",
+        "from": "TLDR InfoSec",
+        "subject": "OpenBSD Auth Bypass \ud83d\udc21, FortiBleed Hits 30K \ud83d\udee1\ufe0f, Peter Thiel Data Leak \ud83d\udcc2",
+        "date": "Thu, 18 Jun 2026 13:23:58 +0000",
+        "snippet": "Argus disclosed a PAP authentication bypass in OpenBSD's sppp(4) subsystem, where sppp_pap_input() in sys/net/if_spppsubr.c fed attacker-controlled",
+        "labels": [
+          "UNREAD",
+          "CATEGORY_UPDATES",
+          "INBOX"
+        ]
+      },
+      {
+        "bucket": "unread",
+        "id": "19ed7d1fdfb59c5e",
+        "from": "Greg - Kinobody",
+        "subject": "Brad Pitt Only Gained 10 lbs for Troy...",
+        "date": "Wed, 17 Jun 2026 23:02:01 +0000 (UTC)",
+        "snippet": "Most people think building an insane physique means bulking up like crazy. But when Brad Pitt got in shape for Troy, he only gained about 10 pounds of muscle. That's it. But the way he trained? And",
+        "labels": [
+          "UNREAD",
+          "CATEGORY_UPDATES",
+          "INBOX"
+        ]
+      },
+      {
+        "bucket": "unread",
+        "id": "19ed5c99e5eebecb",
+        "from": "TLDR InfoSec",
+        "subject": "iRhythm Data Ransom \ud83c\udfe5, FIFA World Cup Hack \u26bd, JetBrains Key Theft \ud83d\udcbb",
+        "date": "Wed, 17 Jun 2026 13:33:40 +0000",
+        "snippet": "A criminal contacted cardiac monitoring firm iRhythm on June 9 claiming to have stolen proprietary data, patient health information",
+        "labels": [
+          "UNREAD",
+          "CATEGORY_UPDATES",
+          "INBOX"
+        ]
+      },
+      {
+        "bucket": "unread",
+        "id": "19ed30502e94ce1a",
+        "from": "Greg - Kinobody",
+        "subject": "By Popular Demand: The Troy Protocol Is Back!",
+        "date": "Wed, 17 Jun 2026 00:39:39 +0000 (UTC)",
+        "snippet": "Last year, I offered the Troy Protocol as a free bonus for anyone who subscribed to the Hero Stack. The response was incredible, so we're doing it again. If you've followed me for any length of",
+        "labels": [
+          "UNREAD",
+          "CATEGORY_UPDATES",
+          "INBOX"
+        ]
+      },
+      {
+        "bucket": "unread",
+        "id": "19ed09888de59f7a",
+        "from": "TLDR InfoSec",
+        "subject": "Europe Council Hack \ud83c\uddea\ud83c\uddfa, M365 Copilot Leak \ud83d\udcbb, Hand Gestures for ReCAPTCHA \ud83d\udc4b",
+        "date": "Tue, 16 Jun 2026 13:21:57 +0000",
+        "snippet": "The ShinyHunters ransomware gang claims to have hacked Europe's leading human rights organization, the Council of Europe",
+        "labels": [
+          "UNREAD",
+          "CATEGORY_UPDATES",
+          "INBOX"
+        ]
+      },
+      {
+        "bucket": "unread",
+        "id": "19ecf31389817615",
+        "from": "Kinobody",
+        "subject": "Get Ready for Your Next Order!",
+        "date": "Tue, 16 Jun 2026 06:49:28 +0000 (UTC)",
+        "snippet": "Upcoming subscription order!",
+        "labels": [
+          "UNREAD",
+          "CATEGORY_UPDATES",
+          "INBOX"
+        ]
+      },
+      {
+        "bucket": "unread",
+        "id": "19ecc9b5607f387d",
+        "from": "Greg - Kinobody",
+        "subject": "Leanness Used to Be the Goal. Now It's Just the Starting Point",
+        "date": "Mon, 15 Jun 2026 18:46:30 +0000 (UTC)",
+        "snippet": "With tirzepatide and drugs like it going mainstream, getting lean is becoming something almost anyone can do. In fact, a ton of people have already been microdosing tirzepatide with the Kino Clinic.",
+        "labels": [
+          "UNREAD",
+          "CATEGORY_UPDATES",
+          "INBOX"
+        ]
+      },
+      {
+        "bucket": "unread",
+        "id": "19ecbcb715908aa2",
+        "from": "Robinhood",
+        "subject": "Your order has been executed",
+        "date": "Mon, 15 Jun 2026 14:59:27 +0000 (UTC)",
+        "snippet": "Your order to buy $40.00 of NVDA through your individual (\u2022\u2022\u20221041) account was executed on June 15, 2026 at 10:59 AM ET. Your order has been executed Hi Affan, Your order to buy $40.00 of NVDA through",
+        "labels": [
+          "UNREAD",
+          "CATEGORY_UPDATES",
+          "INBOX"
+        ]
+      },
+      {
+        "bucket": "unread",
+        "id": "19ecb7a320777b1b",
+        "from": "TLDR InfoSec",
+        "subject": "Splunk Pre-Auth RCE \ud83d\udca5, Novo Nordisk Attack \ud83e\uddec, LangGraph RCE Flaw \ud83e\udd16",
+        "date": "Mon, 15 Jun 2026 13:30:43 +0000",
+        "snippet": "CVE-2026-20253 (CVSS 9.8) allows unauthenticated attackers to access Splunk Enterprise's PostgreSQL Sidecar Service via the main web application",
+        "labels": [
+          "UNREAD",
+          "CATEGORY_UPDATES",
+          "INBOX"
+        ]
+      },
+      {
+        "bucket": "recent",
+        "id": "19ecb8fa699a388e",
+        "from": "Caroline Dean",
+        "subject": "Here if you need anything during testing",
+        "date": "Mon, 15 Jun 2026 06:54:08 -0700",
+        "snippet": "Hi Affan, Thanks for requesting a free Storyblocks API test key \u2014 excited to have you try it out. As you start exploring, I just wanted to reach out personally and let you know I'm here as a",
+        "labels": [
+          "IMPORTANT",
+          "CATEGORY_PERSONAL",
+          "INBOX"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "personal-secondary",
+    "email": "fareed320@gmail.com",
+    "inbox_count": 2,
+    "messages": [
+      {
+        "bucket": "unread",
+        "id": "19eda506ee232815",
+        "from": "Snacks",
+        "subject": "The (dot) plot thickens",
+        "date": "Thu, 18 Jun 2026 06:36:16 -0400 (EDT)",
+        "snippet": "The Federal Reserve voted to keep rates unchanged at a range of 3.5% to 3.75% Fed Char Kevin Warsh (Chip Somodevilla/Getty Images) Hey Snackers, The newest producer of scripted dramas is\u2026 Procter &",
+        "labels": [
+          "UNREAD",
+          "CATEGORY_UPDATES",
+          "INBOX"
+        ]
+      },
+      {
+        "bucket": "unread",
+        "id": "19ecb4f9befd2f63",
+        "from": "Snacks",
+        "subject": "The trillion-dollar man",
+        "date": "Mon, 15 Jun 2026 08:44:12 -0400 (EDT)",
+        "snippet": "Elon Musk is more than 3x richer than the next man on the Bloomberg Billionaires Index. (Brendan Smialowski/Getty Images) Presented by Hey Snackers, It's June, which usually means we stock up on",
+        "labels": [
+          "UNREAD",
+          "CATEGORY_UPDATES",
+          "INBOX"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "trapiistan",
+    "email": "trapiistan@gmail.com",
+    "inbox_count": 1,
+    "messages": [
+      {
+        "bucket": "recent",
+        "id": "19ec78f7acda70ba",
+        "from": "\"Venice.ai\"",
+        "subject": "Thank you for choosing private, unrestricted AI",
+        "date": "Sun, 14 Jun 2026 19:15:28 +0000",
+        "snippet": "Here's everything you have access to today.",
+        "labels": [
+          "CATEGORY_PROMOTIONS",
+          "INBOX"
+        ]
+      }
+    ]
+  },
+  {
+    "profile": "classicalechos",
+    "email": "classicalechos@gmail.com",
+    "inbox_count": 0,
+    "messages": []
+  },
+  {
+    "profile": "burner",
+    "email": "laflametoast@gmail.com",
+    "inbox_count": 0,
+    "messages": []
+  },
+  {
+    "profile": "hermes-agent",
+    "error": "RefreshError",
+    "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+  }
+]

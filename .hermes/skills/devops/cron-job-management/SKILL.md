@@ -53,6 +53,7 @@ metadata:
 - **Stale token** – jobs fail with `invalid_grant`; re‑run credential generation scripts and re‑enable the job.
 - **Insufficient permissions** – script not executable; `chmod +x` resolves.
 - **Incorrect workdir** – ensure the script runs in its intended directory; set `workdir` in the cron job if needed.
+- **Prompt-injection scanner false positives** – cron jobs can be blocked by the assembled prompt, not just the job's own prompt. If the error names `deception_hide`, inspect attached skills and references for literal hidden/deception phrasing such as instructions about hiding information from the user. Rephrase those docs transparently, then trigger a manual run before declaring the cron fixed.
 
 ## Related Skills
 - `cloud-app-deployment-ops` – for deploying scripts to cloud‑hosted environments.

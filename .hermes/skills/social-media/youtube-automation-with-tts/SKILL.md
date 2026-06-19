@@ -37,6 +37,12 @@ For the current faceless newsletter catch-up lane, follow `references/faceless-n
 
 For the user's corrected script/visual/voice direction, follow `references/faceless-newsletter-avatar-storytelling-and-parrot.md`: scripts must sound like a charismatic avatar naturally sharing a compelling news story (not intro/body/conclusion), videos need broader varied stock footage with reuse avoidance, and Parrot AI is a semi-automated voice experiment path using browser/session export until a stable API/export workflow is proven.
 
+For the successful backlog upload pattern and the latest user correction on natural monologue flow plus semantically aligned multi-asset visuals, follow `references/newsletter-batch-upload-natural-storytelling-and-retry-2026-06.md`: process one email per topic/story, use multiple relevant background assets matched to each beat, retry transient Google TTS 429/5xx with backoff, verify upload IDs before trashing source emails, and re-run discovery until no eligible newsletter emails remain. Additional correction: if a Gmail source is already processed, trash that source email instead of silently skipping it; include topic types for fitness and martial arts; captions are display-only and must never be included in the spoken TTS text; choose an internal famous-actor-style narrator archetype from the email tone/topic, without cloning or claiming celebrity endorsement; require a real stock/API visual per scene and block for review if all providers/fallbacks fail.
+
+For regenerating bad newsletter uploads after narration drift, follow `references/newsletter-grounded-replacement-workflow-2026-06.md`: the script must relay the newsletter's facts in a personified human voice, not insert the assistant's advice/opinion; ban phrases like "build one proof today" and "My read:"; use short proven stock queries instead of long sentence-like API queries; log replacement mappings with `replacement_for`.
+
+For the current viral packaging standard, read `/opt/data/HeRmEz/projects/faceless-youtube-channel/VIRAL_YOUTUBE_SYSTEM.md` before rendering or uploading faceless/newsletter videos.
+
 For Classical Echos newsletter-video rendering after the user's 2-minute quality correction, follow `references/newsletter-video-rendering-provider-fallbacks-2026-06.md`: target ~120 seconds, require multiple relevant visual clips, use Mixkit as a vetted stock fallback when Pexels is blocked, and treat edge-tts as review-only unless explicitly approved.
 
 For Google TTS fallback and the user's corrected stock-visual workflow, follow `references/google-tts-and-stock-visual-fallbacks-2026-06.md`: Pexels/stock fallback is the intended visual path; Higgsfield/Sora auth must not block stock-first newsletter videos, and ElevenLabs should be skipped when low credits would be burned by smoke tests.
@@ -49,6 +55,8 @@ For Google Cloud TTS fallback and stock-visual quality-gate rules, follow `refer
 - Social media upload: "Upload to YouTube/Instagram/TikTok"
 
 ## Configuration Requirements
+
+For scheduled/cron runs, load `social-video-cron-growth-loop` and apply its `references/viral-youtube-system-2026.md` guidance: first 1-3s hook, hook→context→receipts→implication→identity/action close, short captions, visual state changes every 2-4s, and semantic alignment between title/on-screen text/narration/description.
 
 For the user's newsletter-driven faceless channel, also load `references/faceless-newsletter-quality-gate.md`. That reference captures the current bar: one real video per newsletter email, actual TLDR/Daily Stoic/Kino Body content, realistic voiceover, relevant AI B-roll, motivational pacing, and public metadata that does **not** disclose AI/faceless automation.
 
@@ -160,7 +168,10 @@ viral_radar_script:
 - Voice-over validation
 - Content licensing compliance
 - Platform optimization
-- For the user's faceless newsletter channel, run the `faceless-newsletter-quality-gate` reference before upload: no static text-slide placeholders, no generic filler script, one email per video, relevant AI B-roll, realistic voiceover, and no public disclosure of AI/faceless automation in metadata.
+- For viral Shorts/newsletter videos, enforce a packaging gate before upload: first 1-3 seconds contain a specific curiosity hook, no channel intro, visual state changes every 2-4 seconds, title/on-screen text/description align semantically, and `ffprobe` confirms expected orientation, duration, and audio.
+- For the user's faceless newsletter channel, run the `faceless-newsletter-quality-gate` reference before upload: no static text-slide placeholders, no generic filler script, one email per video, relevant AI/stock B-roll, realistic voiceover, and no public disclosure of AI/faceless automation in metadata.
+- The narration should feel like one natural charismatic story around the newsletter topic, not a rigid intro/body/conclusion. Use facts as the actual core of the video, not as loose receipts for the assistant's own take. Do not add generic advice, self-improvement morals, or unrelated opinions unless the source newsletter itself says them.
+- Visuals must be semantically aligned with the current spoken beat; use multiple distinct background videos/images and inspect/preserve the visual manifest when QAing. Random generic office/laptop footage is not enough.
 - YouTube metadata validation: strip emoji/control-ish Unicode from upload title/description if the API returns `invalidDescription`; keep richer source metadata locally.
 - Public metadata should reword the email idea in the user's voice and include the configured support URLs when available (Linktree, Buy Me a Coffee, Cash App, Venmo); affiliate links are added later only after the user approves the video quality.
 - For email/newsletter sources, verify upload with a returned YouTube `video_id` before trashing the Gmail message.

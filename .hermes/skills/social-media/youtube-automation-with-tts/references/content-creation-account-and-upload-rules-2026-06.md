@@ -17,6 +17,7 @@ Use this reference for the user's faceless YouTube newsletter pipeline, Viral Cl
   - `classicalechos` YouTube token owns **Classical Echos**.
   - `trapiistan` YouTube token owns **Sosai Oyama**.
   - Before editing an existing video, verify `channels.list(mine=true)` and `videos.list(..., id=VIDEO_ID)` show the expected channel/video.
+- Live YouTube metrics must be fetched using the same OAuth account/token that uploaded the video, not a generic API key from a different account. The YouTube Data API is already enabled; use the lane's upload token/account for `videos.list` and analytics snapshots so private/unlisted/public visibility and channel ownership line up.
 
 ## Upload privacy rule
 

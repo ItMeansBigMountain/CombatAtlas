@@ -81,7 +81,7 @@ Requested scopes:
 
 ## Pitfalls
 
-- Avoid the exact phrase `do not tell the user` in this skill or references because publishing skills are often attached to cron jobs and Hermes' cron prompt-injection scanner flags that wording as `deception_hide`. Phrase safety warnings as `never claim...`, `do not promise...`, or `report clearly...` instead.
+- Avoid wording that instructs hiding information from the user in this skill or references because publishing skills are often attached to cron jobs and Hermes' cron prompt-injection scanner flags deception/hiding language as `deception_hide`. Phrase safety warnings as `never claim...`, `do not promise...`, or `report clearly...` instead.
 - Never claim TikTok upload readiness when only `video.list` is available. `video.list` is read-only.
 - Do not chase TikTok Direct Post first if the user's portal only allows draft/upload access; direct publishing is a later approval step.
 - Do not paste secrets in output or commit `.env`; verify presence with preflight checks that redact values.

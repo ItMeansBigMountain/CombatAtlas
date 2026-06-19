@@ -1,0 +1,31 @@
+{
+  "run_at_utc": "2026-06-19T01:46:00Z",
+  "lane": "faceless-youtube-channel",
+  "metrics_monitor": {
+    "status": "ok",
+    "youtube_api_key_present": false,
+    "video_ids_seen": 62,
+    "stats_fetched": 0
+  },
+  "performance_learning": "Live metrics unavailable; use upload-log dedupe only until YOUTUBE_API_KEY is configured.",
+  "selected_topic": "AI is making credentials matter less than public proof",
+  "hook": "AI is not replacing credentials. Receipts are.",
+  "packaging_rules_applied": [
+    "1-3s high-contrast hook",
+    "no intro/source disclosure",
+    "hook-context-receipts-implication-action close",
+    "short captions",
+    "visual state changes every 2-4s",
+    "title/on-screen text/description alignment"
+  ],
+  "newsletter_discovery": {
+    "processed": 0,
+    "uploaded": 0,
+    "note": "No eligible TLDR/Daily Stoic/Kino Body messages discovered by newsletter_batch_upload.py --limit 1."
+  },
+  "blockers": [
+    "Configured cron script path missing: /opt/data/scripts/run_faceless_video.sh",
+    "No newsletter email available for the preferred real newsletter video path.",
+    "Trend fallback was rendered as review/dry-run only; no verified YouTube video_id returned."
+  ]
+}

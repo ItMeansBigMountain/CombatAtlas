@@ -145,6 +145,8 @@ User-corrected kill switch for this sandbox: stop trading if account value drops
 
 After the morning operator report, the user wants a separate Agentic portfolio market scan that updates the sandbox portfolio, scans the market beyond stale watchlists, provides technical + fundamental/catalyst analysis, and suggests tool/system upgrades. See `references/post-morning-agentic-market-scan.md`.
 
+When a post-morning scan finds a liquid gap leader that fits policy math, remember that broker review success is not a strategy mandate. It is valid to review a small starter order, journal the compliance quote disclosure, and still choose **no trade / wait for retest** if the entry is extended or catalyst confirmation is thin. See `references/post-morning-scan-gap-review-discipline.md`.
+
 ### Step 1 — Parse Intent
 
 Identify:

@@ -40,12 +40,15 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 - `references/drive-service-account-cache.md` — Drive-backed cache pattern for service-account writable folders/Shared Drives, MP4 backup manifests, and safe local deletion after confirmed upload
 - `references/drive-cache-memory-extension.md` — Google Drive as a durable Hermes cache / memory-extension pattern, including OAuth vs service-account pitfalls
 - `references/multi-profile-google-oauth.md` — Profile-scoped OAuth for managing multiple Gmail/Workspace identities with separate tokens, PKCE pending state, action policies, browser/redirect pitfalls, and smoke tests.
+- `references/profile-oauth-batch-callback-exchange.md` — Batch exchange pattern when the user returns multiple `localhost` callback URLs in one message/file; includes exact helper commands, live probes, and the pitfall of refreshing with ungranted scope supersets.
 - `references/google-oauth-scope-reauth-matrix.md` — Decide whether enabling additional Google APIs requires OAuth reauth; includes Workspace baseline scopes, YouTube upload/private-data scope guidance, API-key distinction, and verification probes.
 - `references/youtube-oauth-scope-repair-2026-06.md` — User-specific YouTube reauth repair: full upload/metadata/read/analytics scope set, profile-specific pending files, and channel identity verification after exchange.
 - `references/user-google-account-scope-map-2026-06.md` — User-specific account aliases, full/read-only scope policy, mass OAuth refresh workflow, and Discord bullet-format reporting preference.
 - `references/personal-main-invalid-scope-repair-2026-06.md` — User-specific repair pattern for `personal-main` / `affan.fareed@gmail.com` invalid_scope: read-only OAuth scopes, profile-scoped PKCE exchange, and live identity/service smoke tests.
 - `references/user-google-oauth-account-map-2026-06.md` — Current user-specific Workspace/YouTube account roles, exact scope policy, OAuth hygiene, and no-table reporting preference.
+- `references/google-multi-account-reauth-ops-2026-06.md` — Hands-on repair pattern for regenerating all profile-scoped auth URLs, handling legacy/narrow tokens, exchanging `<profile>: <redirect URL>` callbacks, and verifying Workspace vs YouTube tokens separately.
 
+- `references/multi-profile-callback-batch-exchange-2026-06.md` — batch-exchange pattern for multiple returned localhost OAuth callbacks, token overwrite locations, harmless verification probes, and compact no-secrets reporting.
 - `references/personal-main-readonly-reauth.md` — Repair `personal-main` / `affan.fareed@gmail.com` invalid_scope by generating profile-scoped read-only OAuth URLs and verifying live identity.
 
 ## Scripts

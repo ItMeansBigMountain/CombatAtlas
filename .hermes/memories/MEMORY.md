@@ -4,7 +4,7 @@ A daily HeRmEz backup cron job exists: job_id cfcea697da5c, name "Daily HeRmEz G
 §
 Hermes Kanban is consolidated to the canonical default board for the user's main workspace. DB path is /opt/data/kanban.db; current-board file is /opt/data/kanban/current with value "default". Use the default board for active HeRmEz project work; old hermez and nous-kanban-demo boards were removed after backup.
 §
-Email/YT: 5 Google profiles; source TLDR/Daily Stoic/Kino/Robinhood, trash only after verified YT upload. AM report 8:30 CST concise. TTS env EllevenLabsKey; use Pexels/Pixabay stock. Paid Parrot AI may offload faceless voice/media API costs after live credits/export check.
+Email/YT: fareed320 newsletters→Trapiistan/Sosai; trash only after verified upload. YT metrics use same OAuth upload token/account; API enabled. Viral Radar sources include Huberman, Chris Williamson, Kinobody/Greg, Tate, Zerkaa, GG33, Belmars, Hormozi, Hamza. TTS ElevenLabsKey; stock Pexels/Pixabay.
 §
 Cox Elementary PTA dynamic Django site is deployed at https://cox-elementary-pta.onrender.com from repo /opt/data/HeRmEz/projects/cox-elementary-pta.
 §

@@ -5,7 +5,7 @@ One Gmail message -> one video -> upload -> trash message only after verified vi
 Uses Google TTS and dynamic multi-scene cinematic visuals when stock API keys are absent.
 """
 from __future__ import annotations
-import argparse, base64, datetime as dt, html, json, math, os, random, re, shutil, subprocess, sys, textwrap, urllib.parse, urllib.request
+import argparse, base64, datetime as dt, html, json, math, os, random, re, shutil, subprocess, sys, textwrap, traceback, urllib.parse, urllib.request, urllib.error
 from pathlib import Path
 from google.oauth2.credentials import Credentials
 from google.oauth2 import service_account
@@ -21,21 +21,30 @@ UPLOAD_LOG = ROOT / 'UPLOADS' / 'newsletter_youtube_uploads.jsonl'
 VISUAL_HISTORY = ROOT / 'UPLOADS' / 'visual_asset_history.jsonl'
 
 SAFE_TAGS = 'discipline,self improvement,technology,finance,stoicism,motivation,shorts'
+TARGET_SHORT_SECONDS = (45, 95)  # full newsletter shorts can run longer, but avoid draggy 2+ min renders
+MAX_SCENES = 8
+VIRAL_HOOK_CAPTIONS = [
+    'YOU MISSED THIS', 'NOT THE HEADLINE', 'WATCH THE SHIFT', 'THE REAL SIGNAL',
+    'FOLLOW THE MONEY', 'THE RECEIPT', 'WHY IT MATTERS', 'YOUR MOVE'
+]
 
 
 def load_dotenv(path=Path('/opt/data/.env')):
-    # .env is source of truth for stock-provider keys; override stale inherited
-    # process env so a revoked Pexels key does not block/fallback-delay renders.
+    # /opt/data/.env plus project-local stock files are the source of truth for
+    # stock-provider keys; override stale inherited process env so revoked keys
+    # do not block/fallback-delay renders. Later files win, letting .env.pexels
+    # supply the dedicated Pexels key without exposing it in the global env.
     managed={'PEXELS_API_KEY','PIXABAY_API_KEY','PIXELS_API_KEY','STORYBLOCKS_PUBLIC_KEY','STORYBLOCKS_PRIVATE_KEY','SHUTTERSTOCK_CONSUMER_KEY','SHUTTERSTOCK_CONSUMER_SECRET','SHUTTERSTOCK_TOKEN'}
     seen=set()
-    if path.exists():
-        for line in path.read_text(errors='ignore').splitlines():
-            if '=' in line and not line.strip().startswith('#'):
-                k,v=line.split('=',1); k=k.strip(); val=v.strip().strip('"').strip("'")
-                if k in managed:
-                    os.environ[k]=val; seen.add(k)
-                else:
-                    os.environ.setdefault(k, val)
+    for env_path in [path, ROOT/'.env', ROOT/'.env.pexels']:
+        if env_path.exists():
+            for line in env_path.read_text(errors='ignore').splitlines():
+                if '=' in line and not line.strip().startswith('#'):
+                    k,v=line.split('=',1); k=k.strip(); val=v.strip().strip('"').strip("'")
+                    if k in managed:
+                        os.environ[k]=val; seen.add(k)
+                    else:
+                        os.environ.setdefault(k, val)
     for k in managed-seen:
         os.environ.pop(k, None)
 
@@ -49,6 +58,12 @@ def sh(cmd: list[str], timeout=300) -> str:
 
 def gmail(profile: str):
     token=TOKEN_BASE/profile/'google_token.json'
+    if not token.exists():
+        pending=TOKEN_BASE/profile/'pending.json'
+        hint=f"missing Gmail OAuth token for profile {profile}: {token}"
+        if pending.exists():
+            hint += f"; reauthentication is pending at {pending}"
+        raise RuntimeError(hint)
     creds=Credentials.from_authorized_user_file(str(token), scopes=[GMAIL_SCOPE])
     if not creds.valid and creds.refresh_token:
         creds.refresh(Request()); token.write_text(creds.to_json()); os.chmod(token,0o600)
@@ -96,7 +111,8 @@ def get_email(g, profile, msg_id):
 def source_type(src):
     t=(src['from']+' '+src['subject']).lower()
     if 'daily stoic' in t: return 'stoic'
-    if 'kino' in t: return 'fitness'
+    if 'kino' in t or 'fitness' in t or 'workout' in t or 'gym' in t: return 'fitness'
+    if 'martial' in t or 'karate' in t or 'bjj' in t or 'boxing' in t or 'mma' in t or 'ufc' in t or 'muay thai' in t: return 'martial_arts'
     if 'crypto' in t: return 'crypto'
     if 'fintech' in t or 'robinhood' in t: return 'finance'
     if 'infosec' in t or 'security' in t: return 'security'
@@ -104,10 +120,39 @@ def source_type(src):
     return 'tech'
 
 
+def scene_keyword(text: str, fallback: str='story') -> str:
+    """Pick one concrete keyword/phrase from a spoken beat for visual search."""
+    stop={'about','after','again','already','because','before','being','could','every','their','there','these','thing','those','through','today','under','where','which','while','would','people','really','still','start','right','headline','details','story','this','that'}
+    candidates=[]
+    for m in re.finditer(r'\b[A-Z][A-Za-z0-9+.&-]{2,}(?:\s+[A-Z][A-Za-z0-9+.&-]{2,}){0,2}\b', text):
+        cand=m.group(0)
+        if cand.lower() not in stop:
+            candidates.append(cand)
+    for w in re.findall(r'\b[a-zA-Z][a-zA-Z0-9+-]{4,}\b', text.lower()):
+        if w not in stop:
+            candidates.append(w)
+    return clean_text(candidates[0] if candidates else fallback)[:42]
+
+
+def narrator_persona(typ: str, subject: str) -> dict:
+    """Internal tone target; we do not claim or clone celebrity voices in metadata."""
+    if typ in ('fitness','martial_arts'):
+        return {'archetype':'Denzel Washington training-montage mentor','pace':'controlled, intense, inspirational'}
+    if typ=='stoic':
+        return {'archetype':'Morgan Freeman wise narrator','pace':'warm, reflective, grounded'}
+    if typ in ('finance','crypto'):
+        return {'archetype':'Matthew McConaughey smooth strategist','pace':'confident, sly, conversational'}
+    if typ=='security':
+        return {'archetype':'Jason Statham heist briefing','pace':'urgent, clipped, no-nonsense'}
+    if typ=='ai':
+        return {'archetype':'Robert Downey Jr. fast-talking inventor','pace':'witty, sharp, energetic'}
+    return {'archetype':'Ryan Reynolds sarcastic explainer','pace':'quick, playful, clear'}
+
+
 def sentence_candidates(body):
     bits=re.split(r'(?<=[.!?])\s+', body)
     out=[]
-    junk=('unsubscribe','advertise','sponsor','privacy policy','manage preferences','view in browser')
+    junk=('unsubscribe','advertise','sponsor','sponsored','privacy policy','manage preferences','view in browser','sign up','presented by','tldr together with','readers will learn','read the report','flashpoint')
     for b in bits:
         b=b.strip()
         if 55 <= len(b) <= 240 and not any(j in b.lower() for j in junk):
@@ -127,7 +172,8 @@ def interesting_terms(subject: str, body: str) -> list[str]:
 
 def humanize_fact(sentence: str, max_len: int = 190) -> str:
     s=clean_text(sentence)
-    s=re.sub(r'\[[0-9]+\]', '', s)
+    s=re.sub(r'\[[0-9]+\]|\[link\]|\(\s*\[link\]\s*\)', '', s, flags=re.I)
+    s=re.sub(r'^\s*\d+\s+', '', s)
     s=re.sub(r'\b(HEADLINES|TRENDS|SPONSOR|PRESENTED BY)\b.*', '', s, flags=re.I).strip()
     s=re.sub(r'\bSee how it works\b.*', '', s, flags=re.I).strip()
     s=re.sub(r'[\U00010000-\U0010ffff]', '', s)
@@ -138,11 +184,29 @@ def humanize_fact(sentence: str, max_len: int = 190) -> str:
         s=s[:max_len].rsplit(' ',1)[0].rstrip(',;:')+'.'
     elif s and s[-1] not in '.!?':
         s += '.'
-    return s or 'The details are still moving, but the signal is loud enough to pay attention.'
+    return s or 'The details are still moving, but the shift is loud enough to pay attention.'
+
+
+def loosen_story_voice(text: str) -> str:
+    """Keep narration feeling like one charismatic monologue, not an outline."""
+    swaps={
+        'Here’s what caught me:':'The part that made me stop was this:',
+        'Here’s the thing:':'And this is where it gets interesting:',
+        'Here’s why this matters:':'This is why I would not shrug this off:',
+        'You can see it in the details:':'The receipts are already sitting in the details:',
+        'Then the details start to stack up:':'Then the receipts start stacking up:',
+        'The signal around':'The quiet shift around',
+        'So do not just watch the headline.':'So do not let this stay as just another headline.',
+        'So do not just consume the update.':'So do not let this become another thing you consumed and forgot.',
+    }
+    for old,new in swaps.items():
+        text=text.replace(old,new)
+    return re.sub(r'\s+',' ',text).strip()
 
 
 def build_script(src):
     typ=source_type(src); subject=clean_text(src['subject'])
+    persona=narrator_persona(typ, subject)
     spoken_subject=safe_title(subject)
     body=clean_text(src.get('body',''))
     sents=[humanize_fact(s) for s in sentence_candidates(body)]
@@ -152,56 +216,31 @@ def build_script(src):
     terms=interesting_terms(subject, body)
     lead=', '.join(terms[:3]) if terms else spoken_subject
 
+    # Stay grounded in the newsletter: personified relay, not advice/opinion.
+    facts=sents[:8] if sents else [humanize_fact(src.get('snippet',''))]
     if typ=='stoic':
-        opener=f"Quick gut check: {spoken_subject}. Everybody loves a clean Stoic quote until life asks for the receipt."
-        story=(f"Here’s what caught me: {key1} The point is not to sound wise on the internet. "
-               "The point is whether the next annoying choice gets handled by your standards or by your mood. "
-               "Honestly, most of us do not need another quote. We need one less beautifully branded excuse. "
-               f"You can see it in the details: {key2} {key3} "
-               "So today, make the standard visible before the day starts negotiating with you. Do one hard thing before comfort gets its opening argument.")
-        title='STANDARD CHECK'
-        takeaway='Do the hard thing before comfort starts negotiating.'
-    elif typ=='fitness':
-        opener=f"This looks like a fitness update: {spoken_subject}. But it is really about the standard you keep when nobody is clapping."
-        story=(f"Here’s the part that matters: {key1} The body is just the scoreboard. "
-               "Meals, walks, lifts, sleep, and boring consistency are the receipts. Motivation is cute, but it has the work ethic of a group chat plan. "
-               f"The details make it obvious: {key2} {key3} "
-               "So keep the system simple enough to survive a bad day. One meal, one walk, one lift, one proof.")
-        title='RECEIPTS ONLY'
-        takeaway='Put one proof on the board today.'
+        opener=f"The newsletter opens with a quiet punch: {spoken_subject}."
+        transitions=['It says the first thread is this:', 'Then it brings the point closer:', 'The next detail makes the idea feel less abstract:', 'And the closing note is the part that lingers:']
+    elif typ in ('fitness','martial_arts'):
+        opener=f"This one is built around a very visual idea: {spoken_subject}."
+        transitions=['The email starts with the main claim:', 'Then it explains the look and the method:', 'After that, it lays out the offer and the promise:', 'The final beat is basically the callout:']
     elif typ in ('finance','crypto'):
-        opener=f"Follow the money for a second: {spoken_subject}. This is not just finance gossip with a cleaner landing page."
-        story=(f"Here’s the thing: {key1} When names like {lead} show up, the question is not just who raised money or who bought who. "
-               "The real question is what behavior is turning into infrastructure. The market loves making obvious things expensive right after everyone finally calls them obvious. "
-               f"You can see the shape of it here: {key2} {key3} "
-               "So do not just watch the headline. Ask which workflow, rail, or skill becomes more valuable because of it, then build a tiny proof.")
-        title='FOLLOW THE MONEY'
-        takeaway='Find the workflow getting more valuable.'
+        opener=f"The money story today is pretty direct: {spoken_subject}."
+        transitions=['The newsletter starts with the market setup:', 'Then it follows the money into the next detail:', 'The part that widens the story is this:', 'And the last piece gives the whole thing context:']
     elif typ=='security':
-        opener=f"If your security plan was vibes and a strong password, bad news: {spoken_subject}."
-        story=(f"Here’s why this matters: {key1} The scary part is not just {lead}. "
-               "It is how fast one weak link becomes everybody’s Monday morning emergency. Security headlines always sound dramatic until you realize the attacker only needed the boring thing nobody patched. "
-               f"The receipt is right there: {key2} {key3} "
-               "So turn this into something useful: one lab, one note, or one control you can explain clearly before it becomes the incident.")
-        title='PATCH THE BORING THING'
-        takeaway='Turn the headline into one control you can explain.'
+        opener=f"This security update is not subtle: {spoken_subject}."
+        transitions=['The first report says:', 'Then the newsletter moves to the next incident:', 'Another detail in the same issue:', 'And the thread running through all of it is:']
     elif typ=='ai':
-        opener=f"AI had another weird little plot twist: {spoken_subject}. Somewhere, a roadmap just got rewritten in panic font."
-        story=(f"Here’s the thing: {key1} The tools are not the whole story anymore. "
-               "The story is whether these demos are turning into workflows people can actually ship with. And the twist is, collecting AI tools is starting to look like collecting gym memberships: impressive list, suspicious results. "
-               f"You can see it in the details: {key2} {key3} "
-               "So the move is simple: stop bookmarking every launch thread and convert one piece of leverage into shipped output today.")
-        title='SHIP THE LEVERAGE'
-        takeaway='Turn one tool into shipped output.'
+        opener=f"The AI update has a lot packed into one headline: {spoken_subject}."
+        transitions=['The first piece is:', 'Then the newsletter shifts to:', 'Another detail it calls out:', 'And the bigger context in the email is:']
     else:
-        opener=f"This headline looks like normal tech news: {spoken_subject}. It is not. It is a small preview of somebody’s next advantage."
-        story=(f"Here’s what caught me: {key1} The signal around {lead} is about where attention, money, and workflows are quietly moving. "
-               "Most people will treat it like trivia, which is usually where the opportunity hides. "
-               f"Then the details start to stack up: {key2} {key3} "
-               "So do not just consume the update. Save the signal, turn it into one workflow, and move before it becomes obvious.")
-        title='NOTICE THE SHIFT'
-        takeaway='Turn the update into one workflow.'
+        opener=f"Here is what the newsletter is saying: {spoken_subject}."
+        transitions=['It starts here:', 'Then it adds:', 'The next detail is:', 'And the final piece is:']
+    story=' '.join(f"{transitions[i % len(transitions)]} {fact}" for i,fact in enumerate(facts))
+    takeaway='The newsletter connects these details into one unfolding story.'
 
+    opener=loosen_story_voice(opener)
+    story=loosen_story_voice(story)
     # Captions are scene anchors; narration is a single avatar-style story.
     chunks=[opener]
     rest=[x.strip() for x in re.split(r'(?<=[.!?])\s+', story) if x.strip()]
@@ -227,15 +266,17 @@ def build_script(src):
             else:
                 expanded.append(sc)
         scenes=expanded[:10]
-    captions=['WAIT—WHAT?','HERE’S THE THING','THE REAL STORY','PLOT TWIST','THE RECEIPT','WHY IT MATTERS','YOUR MOVE','BUILD THE PROOF','WATCH THIS','MOVE FIRST']
-    beats=[(captions[i] if i < len(captions) else 'KEEP WATCHING', sc) for i,sc in enumerate(scenes[:10])]
-    if beats and takeaway not in beats[-1][1] and takeaway.lower() not in beats[-1][1].lower():
-        beats[-1]=( 'YOUR MOVE', beats[-1][1]+' '+takeaway )
+    # Viral packaging: each scene gets a short curiosity caption. The first frame
+    # must stop the swipe; later captions create open loops and receipts.
+    captions=VIRAL_HOOK_CAPTIONS
+    beats=[(captions[i] if i < len(captions) else 'KEEP WATCHING', sc) for i,sc in enumerate(scenes[:MAX_SCENES])]
+    # Do not append advice or generic morals; the newsletter content is the story.
 
     subject_phrases=[clean_text(p) for p in re.split(r'[,|•]+', subject) if clean_text(p)]
     base_visual={
         'stoic':'stoic discipline morning journaling running alone philosophy cinematic',
         'fitness':'gym workout meal prep athletic discipline transformation cinematic',
+        'martial_arts':'martial arts boxing karate mma training dojo sparring discipline cinematic',
         'finance':'fintech payment technology office money banking app city business',
         'crypto':'cryptocurrency finance payment technology bank office digital assets',
         'security':'cybersecurity hacker server room security operations center laptop alert',
@@ -246,25 +287,30 @@ def build_script(src):
     visual_queries=[]
     for idx,(cap,bodytxt) in enumerate(beats):
         phrase=subject_phrases[idx % len(subject_phrases)] if subject_phrases else spoken_subject
-        term=terms[idx % len(terms)] if terms else phrase
+        keyword=scene_keyword(bodytxt, terms[idx % len(terms)] if terms else phrase)
         mood=visual_moods[idx % len(visual_moods)]
+        # Keep queries short; stock APIs reject long/free-form sentence queries.
+        core_base=' '.join(base_visual.split()[:5])
+        core_mood=' '.join(mood.split()[:3])
         if idx == 0:
-            q=f"{phrase} {base_visual} {mood}"
+            q=f"{keyword} {phrase} {core_base}"
         elif idx % 3 == 1:
-            q=f"{term} {base_visual} {mood}"
+            q=f"{keyword} {core_base} {core_mood}"
         elif idx % 3 == 2:
-            q=f"{source_type(src)} {mood} cinematic b roll"
+            q=f"{keyword} {source_type(src)} {core_mood}"
         else:
-            q=f"{phrase} {mood} people working technology"
-        visual_queries.append(re.sub(r'[^A-Za-z0-9 ]+',' ',q).strip()[:110])
+            q=f"{keyword} {phrase} {core_mood}"
+        q=re.sub(r'[^A-Za-z0-9 ]+',' ',q)
+        q=re.sub(r'\s+',' ',q).strip()
+        visual_queries.append(q[:75].rsplit(' ',1)[0])
     narration=' '.join([b[1] for b in beats])
     title=safe_title(subject)
-    desc=(f"{title}\n\nMy read: {takeaway} Build one proof today.\n\n"
+    desc=(f"{title}\n\nA quick, human-style rundown of the newsletter's main details.\n\n"
           "More from me: https://linktr.ee/sosai.oyama\n"
           "Support the channel: https://buymeacoffee.com/affanfareev\n"
           "Cash App: https://cash.app/$sosaioyama\n"
           "Venmo: https://venmo.com/u/SosaiOyama\n\n#Shorts")
-    return {'type':typ,'beats':beats,'visual_queries':visual_queries,'narration':narration,'title':title,'description':desc}
+    return {'type':typ,'persona':persona,'beats':beats,'visual_queries':visual_queries,'narration':narration,'title':title,'description':desc}
 
 def safe_title(subject):
     s=re.sub(r'[\U00010000-\U0010ffff]','',subject)
@@ -287,8 +333,56 @@ def google_tts(text, out:Path):
         'audioConfig': {'audioEncoding':'MP3','speakingRate': float(os.getenv('GOOGLE_TTS_SPEAKING_RATE','1.0'))},
     }).encode()
     req=urllib.request.Request('https://texttospeech.googleapis.com/v1/text:synthesize',data=payload,headers={'Authorization':'Bearer '+creds.token,'Content-Type':'application/json'},method='POST')
-    with urllib.request.urlopen(req,timeout=60) as r: data=json.loads(r.read().decode())
-    out.write_bytes(base64.b64decode(data['audioContent']))
+    last_err: BaseException | None = None
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req,timeout=60) as r: data=json.loads(r.read().decode())
+            out.write_bytes(base64.b64decode(data['audioContent']))
+            return
+        except urllib.error.HTTPError as e:
+            last_err=e
+            if e.code not in (429,500,502,503,504):
+                raise
+        except Exception as e:
+            last_err=e
+        import time; time.sleep(2*(attempt+1))
+    if last_err:
+        raise last_err
+    raise RuntimeError('Google TTS failed without an exception')
+
+
+def elevenlabs_tts(text: str, out: Path) -> bool:
+    """Preferred automated narrator when credits/voice are available."""
+    key=os.getenv('EllevenLabsKey') or os.getenv('ELEVENLABS_API_KEY') or os.getenv('XI_API_KEY') or os.getenv('ELEVEN_API_KEY')
+    if not key:
+        return False
+    voice=os.getenv('ELEVENLABS_VOICE_ID') or 'CwhRBWXzGAHq8TQ4Fs17'
+    model=os.getenv('ELEVENLABS_MODEL') or 'eleven_flash_v2_5'
+    payload=json.dumps({
+        'text': text,
+        'model_id': model,
+        'voice_settings': {'stability':0.38,'similarity_boost':0.78,'style':0.35,'use_speaker_boost':True},
+    }).encode()
+    req=urllib.request.Request(
+        f'https://api.elevenlabs.io/v1/text-to-speech/{voice}',
+        data=payload,
+        headers={'xi-api-key':key,'Content-Type':'application/json','Accept':'audio/mpeg'},
+        method='POST'
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=90) as r:
+            out.write_bytes(r.read())
+        return out.exists() and out.stat().st_size > 2048
+    except Exception:
+        return False
+
+
+def generate_voiceover(text: str, out: Path) -> str:
+    """Provider order: ElevenLabs -> Google Cloud TTS. Parrot AI remains browser/manual until export is proven."""
+    if elevenlabs_tts(text, out):
+        return 'elevenlabs'
+    google_tts(text, out)
+    return 'google_tts'
 
 
 def fftext(path:Path): return str(path).replace('\\','/').replace(':','\\:').replace("'","\\'")
@@ -448,33 +542,39 @@ def background_input(asset: Path | None, dur: float) -> tuple[list[str], list[st
 def render(work:Path, script):
     scenes=work/'scenes'; scenes.mkdir(exist_ok=True)
     assets_dir=work/'visual_assets'; assets_dir.mkdir(exist_ok=True)
-    final_parts=[]; visual_manifest=[]
+    final_parts=[]; visual_manifest=[]; voice_manifest=[]
     queries=script.get('visual_queries') or []
     for i,(cap,body) in enumerate(script['beats'],1):
-        audio=scenes/f'{i:02d}.mp3'; google_tts(f'{cap}. {body}', audio)
+        audio=scenes/f'{i:02d}.mp3'
+        voice_provider=generate_voiceover(body, audio)  # never read overlay captions aloud
+        voice_manifest.append({'scene':i,'provider':voice_provider,'caption_display_only':cap})
         dur=float(sh(['ffprobe','-v','error','-show_entries','format=duration','-of','default=nw=1:nk=1',str(audio)],60)) + 0.8
         query=queries[i-1] if i-1 < len(queries) else f"{script.get('type','technology')} people working laptop"
         asset, meta=visual_asset(query, assets_dir/f'{i:02d}')
-        visual_manifest.append({'scene':i,'caption':cap,'query':query,'asset':str(asset) if asset else None,'meta':meta})
+        if not asset:
+            raise RuntimeError(f"visual gate blocked: no stock/API visual asset for scene {i} query={query!r}; attempts={json.dumps(meta)[:800]}")
+        visual_manifest.append({'scene':i,'caption':cap,'keyword':scene_keyword(body, query),'query':query,'asset':str(asset),'meta':meta})
         titlef=scenes/f'{i:02d}_title.txt'; bodyf=scenes/f'{i:02d}_body.txt'
         titlef.write_text('\n'.join(textwrap.wrap(cap,16)),encoding='utf-8')
         bodyf.write_text('\n'.join(textwrap.wrap(body,31))[:520],encoding='utf-8')
-        accent=['0x38BDF8','0xFACC15','0x22C55E','0xF97316','0xA78BFA','0xEF4444'][i-1]
+        palette=['0x38BDF8','0xFACC15','0x22C55E','0xF97316','0xA78BFA','0xEF4444']
+        accent=palette[(i-1) % len(palette)]
         bg_args,bg_filters=background_input(asset,dur)
         filters=bg_filters + [
           f'[bg]drawbox=x=0:y=0:w=1080:h=1920:color=0x020617@0.30:t=fill,'
           f'drawbox=x=50:y=95:w=980:h=330:color=0x020617@0.62:t=fill,'
-          f'drawbox=x=80:y=435:w=900*min(t/3\\,1):h=14:color={accent}:t=fill,'
+          f'drawbox=x=80:y=435:w=900*min(t/2\\,1):h=14:color={accent}:t=fill,'
           f'drawbox=x=70:y=1120:w=940:h=520:color=0x020617@0.74:t=fill,'
           f"drawtext=textfile='{fftext(titlef)}':font=DejaVuSans-Bold:fontcolor=0xF8FAFC:fontsize=72:x=80:y=135:line_spacing=10:shadowcolor=black:shadowx=3:shadowy=3,"
           f"drawtext=textfile='{fftext(bodyf)}':font=DejaVuSans:fontcolor=0xE2E8F0:fontsize=41:x=105:y=1150:line_spacing=16:shadowcolor=black:shadowx=2:shadowy=2,"
           f"drawtext=text='BUILD ONE PROOF TODAY':font=DejaVuSans-Bold:fontcolor={accent}:fontsize=32:x=95:y=1745:shadowcolor=black:shadowx=2:shadowy=2,"
-          f'drawbox=x=80:y=1810:w=920*{i}/6:h=12:color={accent}:t=fill[v]'
+          f'drawbox=x=80:y=1810:w=920*{i}/{len(script["beats"])}:h=12:color={accent}:t=fill[v]'
         ]
         out=scenes/f'{i:02d}.mp4'
         sh(['ffmpeg','-y','-hide_banner',*bg_args,'-i',str(audio),'-filter_complex',';'.join(filters),'-map','[v]','-map','1:a','-t',f'{dur:.2f}','-shortest','-c:v','libx264','-pix_fmt','yuv420p','-c:a','aac','-movflags','+faststart',str(out)],300)
         final_parts.append(out)
     (work/'visual_manifest.json').write_text(json.dumps(visual_manifest,indent=2),encoding='utf-8')
+    (work/'voice_manifest.json').write_text(json.dumps(voice_manifest,indent=2),encoding='utf-8')
     concat=work/'concat.txt'; concat.write_text(''.join(f"file {p.resolve()}\n" for p in final_parts),encoding='utf-8')
     final=work/'final.mp4'; sh(['ffmpeg','-y','-hide_banner','-f','concat','-safe','0','-i',str(concat),'-c','copy',str(final)],300)
     return final
@@ -514,14 +614,28 @@ def process(profile,msg_id, upload_enabled=True):
     (work/'source_email.json').write_text(json.dumps({k:v for k,v in src.items() if k!='body'} | {'body_excerpt':src['body'][:5000]},indent=2),encoding='utf-8')
     (work/'script.json').write_text(json.dumps(script,indent=2),encoding='utf-8')
     video=render(work,script)
-    probe=json.loads(sh(['ffprobe','-v','error','-show_entries','stream=width,height','-show_entries','format=duration,size','-of','json',str(video)],60))
+    probe=json.loads(sh(['ffprobe','-v','error','-show_entries','stream=width,height,codec_type','-show_entries','format=duration,size','-of','json',str(video)],60))
+    duration=float(probe.get('format',{}).get('duration') or 0)
+    streams=probe.get('streams') or []
+    has_audio=any(s.get('codec_type')=='audio' for s in streams)
+    video_stream=next((s for s in streams if s.get('codec_type')=='video'), {})
+    if video_stream.get('width') != 1080 or video_stream.get('height') != 1920:
+        raise RuntimeError(f"quality gate failed: expected 1080x1920 vertical video, got {video_stream.get('width')}x{video_stream.get('height')}")
+    if not has_audio or duration <= 0:
+        raise RuntimeError('quality gate failed: final render has no audio or zero duration')
+    if duration < TARGET_SHORT_SECONDS[0] or duration > TARGET_SHORT_SECONDS[1] + 45:
+        print(json.dumps({'warning':'duration_outside_ideal_range','duration':duration,'ideal_seconds':TARGET_SHORT_SECONDS}), file=sys.stderr)
     result={'profile':profile,'message_id':msg_id,'subject':src['subject'],'workspace':str(work),'video':str(video),'probe':probe,'uploaded':False}
     if upload_enabled:
         up=upload(video,script); result['upload']=up; result['uploaded']=up.get('status')=='UPLOADED'
         if result['uploaded'] and up.get('video_id'):
-            g.users().messages().trash(userId='me', id=msg_id).execute(); result['trashed_source_email']=True
-            # append source id marker to upload log for idempotency
+            # append source id marker to upload log for idempotency even if Gmail cleanup fails
             with UPLOAD_LOG.open('a',encoding='utf-8') as f: f.write(json.dumps({'source_profile':profile,'source_message_id':msg_id,'youtube_video_id':up.get('video_id'),'url':up.get('url')},separators=(',',':'))+'\n')
+            try:
+                g.users().messages().trash(userId='me', id=msg_id).execute(); result['trashed_source_email']=True
+            except Exception as e:
+                result['trashed_source_email']=False
+                result['cleanup_error']=str(e)[:500]
     (work/'result.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
     return result
 
@@ -533,9 +647,17 @@ def discover(profile, limit):
     for q in queries:
         resp=g.users().messages().list(userId='me',q=q,maxResults=limit).execute()
         for m in resp.get('messages',[]):
-            if m['id'] not in seen and not already_done(m['id']):
-                seen.add(m['id']); out.append(m['id'])
-                if len(out)>=limit: return out
+            if m['id'] in seen:
+                continue
+            seen.add(m['id'])
+            if already_done(m['id']):
+                try:
+                    g.users().messages().trash(userId='me', id=m['id']).execute()
+                except Exception:
+                    pass
+                continue
+            out.append(m['id'])
+            if len(out)>=limit: return out
     return out
 
 
@@ -546,14 +668,19 @@ def main():
     ap.add_argument('--message',action='append',help='explicit Gmail message id; can repeat')
     ap.add_argument('--no-upload',action='store_true')
     args=ap.parse_args()
-    ids=args.message or discover(args.profile,args.limit)
+    try:
+        ids=args.message or discover(args.profile,args.limit)
+    except Exception as e:
+        err={'processed':0,'uploaded':0,'blocked':True,'error':type(e).__name__,'detail':str(e)[:1000],'profile':args.profile}
+        print(json.dumps(err,indent=2))
+        return 0
     results=[]
     for mid in ids:
         try:
             results.append(process(args.profile,mid,not args.no_upload))
             print(json.dumps(results[-1],indent=2))
         except Exception as e:
-            err={'profile':args.profile,'message_id':mid,'error':type(e).__name__,'detail':str(e)[:1000]}
+            err={'profile':args.profile,'message_id':mid,'error':type(e).__name__,'detail':str(e)[:1000],'traceback':traceback.format_exc()[-2000:]}
             results.append(err); print(json.dumps(err,indent=2))
     print(json.dumps({'processed':len(results),'uploaded':sum(1 for r in results if r.get('uploaded')),'results':results},indent=2))
 
