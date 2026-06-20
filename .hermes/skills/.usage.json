@@ -82,13 +82,13 @@
     "created_at": "2026-06-16T14:22:03.752121+00:00",
     "created_by": "agent",
     "last_patched_at": "2026-06-19T01:02:36.890858+00:00",
-    "last_used_at": "2026-06-19T01:00:43.575621+00:00",
-    "last_viewed_at": "2026-06-19T01:00:43.573276+00:00",
+    "last_used_at": "2026-06-19T16:12:15.038047+00:00",
+    "last_viewed_at": "2026-06-19T16:12:15.036333+00:00",
     "patch_count": 2,
     "pinned": false,
     "state": "active",
-    "use_count": 1,
-    "view_count": 1
+    "use_count": 2,
+    "view_count": 2
   },
   "debugging-hermes-tui-commands": {
     "archived_at": null,
@@ -212,26 +212,26 @@
     "created_at": "2026-05-31T17:07:23.940211+00:00",
     "created_by": null,
     "last_patched_at": "2026-06-18T15:49:15.628241+00:00",
-    "last_used_at": "2026-06-18T17:14:00.775611+00:00",
-    "last_viewed_at": "2026-06-18T17:14:00.773714+00:00",
+    "last_used_at": "2026-06-19T23:39:48.069160+00:00",
+    "last_viewed_at": "2026-06-19T23:39:48.066799+00:00",
     "patch_count": 88,
     "pinned": false,
     "state": "active",
-    "use_count": 79,
-    "view_count": 56
+    "use_count": 87,
+    "view_count": 61
   },
   "hermes-agent": {
     "archived_at": null,
     "created_at": "2026-05-29T04:28:02.991198+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-06-16T15:53:09.139563+00:00",
-    "last_viewed_at": "2026-06-16T15:53:09.137843+00:00",
+    "last_used_at": "2026-06-19T04:02:52.669539+00:00",
+    "last_viewed_at": "2026-06-19T04:02:52.667355+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 25,
-    "view_count": 25
+    "use_count": 26,
+    "view_count": 26
   },
   "hermes-agent-skill-authoring": {
     "archived_at": null,
@@ -368,13 +368,13 @@
     "created_at": "2026-06-07T02:42:26.708320+00:00",
     "created_by": null,
     "last_patched_at": "2026-06-12T14:46:06.300902+00:00",
-    "last_used_at": "2026-06-13T14:03:47.155884+00:00",
-    "last_viewed_at": "2026-06-13T14:03:47.153498+00:00",
+    "last_used_at": "2026-06-19T18:31:08.929189+00:00",
+    "last_viewed_at": "2026-06-19T18:31:08.927578+00:00",
     "patch_count": 8,
     "pinned": false,
     "state": "active",
-    "use_count": 2,
-    "view_count": 2
+    "use_count": 4,
+    "view_count": 4
   },
   "node-inspect-debugger": {
     "archived_at": null,
@@ -407,12 +407,12 @@
     "created_at": "2026-05-22T13:56:28.500384+00:00",
     "created_by": "agent",
     "last_patched_at": "2026-06-12T16:11:52.819467+00:00",
-    "last_used_at": "2026-06-18T13:30:29.422665+00:00",
+    "last_used_at": "2026-06-19T13:30:30.669315+00:00",
     "last_viewed_at": "2026-06-12T16:12:07.462772+00:00",
     "patch_count": 59,
     "pinned": false,
     "state": "active",
-    "use_count": 59,
+    "use_count": 60,
     "view_count": 32
   },
   "osrs-plugins": {
@@ -458,14 +458,14 @@
     "archived_at": null,
     "created_at": "2026-05-28T15:54:00.459720+00:00",
     "created_by": null,
-    "last_patched_at": "2026-05-28T15:54:00.459735+00:00",
-    "last_used_at": null,
-    "last_viewed_at": null,
-    "patch_count": 1,
+    "last_patched_at": "2026-06-19T03:45:23.896125+00:00",
+    "last_used_at": "2026-06-19T03:45:09.275259+00:00",
+    "last_viewed_at": "2026-06-19T03:45:09.273447+00:00",
+    "patch_count": 2,
     "pinned": false,
     "state": "active",
-    "use_count": 0,
-    "view_count": 0
+    "use_count": 1,
+    "view_count": 1
   },
   "project-portfolio-roadmapping": {
     "archived_at": null,
@@ -497,14 +497,14 @@
     "archived_at": null,
     "created_at": "2026-06-12T15:23:13.659551+00:00",
     "created_by": null,
-    "last_patched_at": "2026-06-18T13:53:35.324103+00:00",
-    "last_used_at": "2026-06-18T13:50:19.503980+00:00",
-    "last_viewed_at": "2026-06-15T14:58:40.843195+00:00",
-    "patch_count": 13,
+    "last_patched_at": "2026-06-20T01:40:27.305770+00:00",
+    "last_used_at": "2026-06-19T19:00:25.470342+00:00",
+    "last_viewed_at": "2026-06-19T18:31:04.564479+00:00",
+    "patch_count": 19,
     "pinned": false,
     "state": "active",
-    "use_count": 19,
-    "view_count": 15
+    "use_count": 33,
+    "view_count": 21
   },
   "segment-anything-model": {
     "archived_at": null,
@@ -536,27 +536,27 @@
     "archived_at": null,
     "created_at": "2026-06-02T12:48:52.071881+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-06-19T01:05:37.997189+00:00",
-    "last_used_at": "2026-06-19T01:45:22.068250+00:00",
-    "last_viewed_at": "2026-06-19T01:05:24.683317+00:00",
-    "patch_count": 16,
+    "last_patched_at": "2026-06-20T02:04:59.615578+00:00",
+    "last_used_at": "2026-06-20T02:01:14.724969+00:00",
+    "last_viewed_at": "2026-06-20T02:01:14.722602+00:00",
+    "patch_count": 22,
     "pinned": false,
     "state": "active",
-    "use_count": 32,
-    "view_count": 17
+    "use_count": 37,
+    "view_count": 19
   },
   "social-video-cron-growth-loop": {
     "archived_at": null,
     "created_at": "2026-06-07T00:28:30.328615+00:00",
     "created_by": null,
-    "last_patched_at": "2026-06-19T01:21:17.794841+00:00",
-    "last_used_at": "2026-06-19T01:45:22.037012+00:00",
-    "last_viewed_at": "2026-06-19T01:12:29.163526+00:00",
-    "patch_count": 20,
+    "last_patched_at": "2026-06-20T01:40:06.818041+00:00",
+    "last_used_at": "2026-06-20T01:45:26.821750+00:00",
+    "last_viewed_at": "2026-06-20T01:36:11.536266+00:00",
+    "patch_count": 29,
     "pinned": false,
     "state": "active",
-    "use_count": 31,
-    "view_count": 16
+    "use_count": 38,
+    "view_count": 20
   },
   "software-development/osrs-plugins": {
     "archived_at": null,
@@ -640,14 +640,14 @@
     "archived_at": null,
     "created_at": "2026-06-07T00:21:18.846681+00:00",
     "created_by": null,
-    "last_patched_at": "2026-06-19T02:50:25.957037+00:00",
-    "last_used_at": "2026-06-19T02:48:51.658435+00:00",
-    "last_viewed_at": "2026-06-19T02:48:51.656852+00:00",
-    "patch_count": 102,
+    "last_patched_at": "2026-06-20T02:05:26.424920+00:00",
+    "last_used_at": "2026-06-20T01:45:26.836266+00:00",
+    "last_viewed_at": "2026-06-19T23:38:25.318707+00:00",
+    "patch_count": 115,
     "pinned": false,
     "state": "active",
-    "use_count": 67,
-    "view_count": 52
+    "use_count": 75,
+    "view_count": 57
   },
   "yuanbao": {
     "archived_at": null,

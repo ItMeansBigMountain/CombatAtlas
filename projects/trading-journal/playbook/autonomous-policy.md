@@ -17,12 +17,14 @@ Hermes is authorized to research, preview, place, manage, and exit trades withou
 - Avoid low-liquidity names, wide spreads, unclear stops, forced trades, and revenge trades
 
 ## Risk / Budget
-- Max risk per trade: target about $2 unless user changes
-- Max aggregate planned open risk: target about $6 unless user changes
-- Prefer starter positions around $25-$50
-- Max initial single position allocation: $50 unless a later policy update changes this
-- Cash reserve rule: do not deploy more than 60% of account value across open positions unless a written trade plan justifies it
-- Keep some cash available for better entries/adds unless a plan justifies deployment
+- User update 2026-06-19: use most available funds when clean setups exist, maximizing leverage of the Agentic stock-market sandbox while staying inside live risk controls.
+- Target deployment: 70%–90% of account value across open equity positions when account/market state is clear and trade plans justify entries.
+- Avoid idle cash as the default; do not force trades when no clean setup exists.
+- Max risk per trade: target about $2 by default; may increase only when a written trade plan shows clear invalidation and higher deployment is justified.
+- Max aggregate planned open risk: target about $6 by default; may increase only with written plan, live account verification, and clear stop/invalidation math.
+- Fractional-share starter positions may exceed the old $25-$50 guideline when liquidity, risk, and buying power support it.
+- No fixed $50 initial-position cap after the 2026-06-19 user update; size from risk, buying power, liquidity, and plan quality.
+- Keep enough cash available for exits, broker buffers, and superior entries unless a written plan justifies fuller deployment.
 - Minimum R:R: 1.5:1, prefer 2:1+
 - Daily drawdown pause: if account is down 5%+ in one day or 10%+ from recent high, pause new entries and write a review before resuming
 
@@ -34,12 +36,15 @@ Hermes is authorized to research, preview, place, manage, and exit trades withou
 
 ## Workflow
 1. Inspect account, positions, open orders, buying power.
-2. Inspect broad market and candidate quotes/historicals.
-3. Select liquid fractional-tradable equity setups.
-4. Build a concrete thesis with entry, stop/invalidation, target, position size, max loss, and reason to avoid/exit.
-5. Review orders before placement when available.
-6. Place only inside policy.
-7. Journal every preview, placement, fill, management action, exit, no-trade decision, and tool failure.
+2. Inspect broad market and sector regime: SPY/QQQ/IWM plus relevant sector ETFs when applicable.
+3. Combine technical analysis with fundamental/news context before selecting or managing trades:
+   - Technicals: trend, support/resistance, breakout/pullback/retest, relative strength, volume confirmation, volatility, invalidation.
+   - Fundamentals/news: earnings/revenue growth, margin/cash-flow quality where available, balance-sheet stress, guidance, analyst/institutional catalysts, macro/sector flows, and asset/sector cash-flow rotation.
+4. Select liquid fractional-tradable equity setups where both chart structure and fundamental/news/sector context support the trade.
+5. Build a concrete thesis with entry, stop/invalidation, target, position size, max loss, potential reward, R:R, technical basis, fundamental/news basis, sector/cash-flow basis, and reason to avoid/exit.
+6. Review orders before placement when available.
+7. Place only inside policy.
+8. Journal every preview, placement, fill, management action, exit, no-trade decision, and tool failure.
 
 ## Management
 - Treat Robinhood MCP as connectivity, not the strategy; Hermes must run the policy/playbook explicitly each scan.

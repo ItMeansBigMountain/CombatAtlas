@@ -1,6 +1,6 @@
 # Social Video Performance Learnings
 
-Last updated: `2026-06-19T02:50:20.458983+00:00`
+Last updated: `2026-06-20T02:04:02.988149+00:00`
 
 ## Metrics status
 
@@ -9,8 +9,8 @@ Last updated: `2026-06-19T02:50:20.458983+00:00`
 
 ## faceless-youtube-channel
 
-- Uploads logged: 205 total; 197 public/metric-eligible.
-- Median public views in latest snapshot: 1.0.
+- Uploads logged: 207 total; 198 public/metric-eligible.
+- Median public views in latest snapshot: 5.
 - Current winners to study:
   - 203 views / 1 likes / 0 comments — Print On Demand (POD) Management — https://youtu.be/K2nMayJr8Oo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
   - 203 views / 1 likes / 0 comments — Print On Demand (POD) Management — https://youtu.be/K2nMayJr8Oo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json

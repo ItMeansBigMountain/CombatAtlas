@@ -27,7 +27,7 @@ mcp_servers:
 
 The MCP is authenticated in the default Hermes profile and has discovered 33 tools including account, portfolio, quote, historical, position, order-review, and real order placement tools.
 
-The user has funded the AI automation / Agentic account with **$200**. Autonomous trading is active only for Agentic account **433711041 / ending 1041**, under `/opt/data/HeRmEz/projects/trading-journal/playbook/autonomous-policy.md`: equities only by default, fractional shares allowed, options/shorts disabled unless separately authorized, target max risk about $2 per trade, target aggregate risk about $6, preferred starter positions $25-$50, and kill switch if account value drops below $10 or broker/tool/risk state is uncertain. Do not trade any other Robinhood account.
+The user has funded the AI automation / Agentic account with **$200**. Autonomous trading is active only for Agentic account **433711041 / ending 1041**, under `/opt/data/HeRmEz/projects/trading-journal/playbook/autonomous-policy.md`: equities only by default, fractional shares allowed, options/shorts disabled unless separately authorized, and kill switch if account value drops below $10 or broker/tool/risk state is uncertain. User update 2026-06-19: bias toward using most available buying power when clean setups exist; target roughly 70%–90% deployment across open equity positions when live account/market state and written trade plans justify entries. Do not trade any other Robinhood account.
 
 This is not financial advice. Operate as a tool-using research and execution assistant following the user's instructions and the safety gates below.
 
@@ -135,11 +135,17 @@ For Agentic account `433711041` / ending `1041`, the user activated autonomous t
 
 ### Autonomous Agentic account operation
 
-The user wants the Robinhood Agentic account ending `1041` to be a small AI-operated trading sandbox using fractional shares and dollar-based equity orders. Do not let whole-share sizing prevent rational use of the `$200` account. Prefer controlled starter allocations around `$25–$50` when setups are clean, while keeping reserves unless the active plan justifies deployment.
+The user wants the Robinhood Agentic account ending `1041` to be a small AI-operated trading sandbox using fractional shares and dollar-based equity orders. Do not let whole-share sizing prevent rational use of the `$200` account. As of 2026-06-19, prefer using most available buying power when clean setups exist: target roughly 70%–90% deployment across open equity positions when live account/market state, spreads, and written trade plans justify entries. Keep enough cash for broker buffers/exits and do not force trades when no clean setup exists.
 
 Autonomous no-approval execution requires a clearly documented active policy. Broad statements like "complete control" are a strong signal to prepare/activate the policy, but verify the policy is active before placing real orders without a per-order approval. See `references/autonomous-agentic-account-policy.md`.
 
 User-corrected kill switch for this sandbox: stop trading if account value drops below **$10**. Also stop if broker state is uncertain, risk cannot be calculated, or no clean setup exists.
+
+### Scheduled Agentic market monitoring
+
+The preferred autonomous cadence is **three weekday checks**, not continuous every-30-minute noise: market open (`13:30 UTC / 9:30 ET`), midday (`16:00 UTC / 12:00 ET`), and one hour before close (`19:00 UTC / 3:00 ET`). Use separate cron jobs or an equivalent self-contained schedule so each run has a clear purpose: opening scan/deployment, midday management, and power-hour risk/overnight positioning.
+
+The user's desired operating style is technical-analyst discipline plus fundamental/news/sector cash-flow awareness. Every serious candidate or position-management decision should combine chart structure (trend, support/resistance, breakout/pullback/retest, relative strength, volume, invalidation) with business/news context (earnings/revenue, margins/cash-flow quality when available, guidance, catalysts, macro/sector rotation, and whether money appears moving toward or away from the asset/sector). Do **not** reduce scans to quote polling.
 
 ### Post-morning Agentic market scan
 

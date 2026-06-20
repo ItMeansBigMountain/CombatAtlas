@@ -17,7 +17,9 @@ This skill is invoked whenever the user asks about their job, career growth, mar
 3. **Skill Gap Analysis** – Compares the user’s stated experience/technologies against typical GM Financial job requirements and suggests concrete learning actions (certifications, projects, internal training).
 4. **Interview & Promotion Prep** – Generates tailored talking points, STAR stories, and a checklist of artifacts (architecture diagrams, cost‑savings reports, compliance checklists) to bring to performance reviews or internal interview panels.
 5. **Internal Process Guidance** – Answers questions about GM Financial specific tools (e.g., internal ticketing, compliance review flow, FinOps reporting) by pulling from the shared knowledge base.
-6. **Memory Integration** – When the user provides new information (e.g., a certification earned, a new project, a salary target), the skill updates the persistent memory store so future queries remember the latest state.
+6. **Productivity Framing** – For ambiguous or broad professional goals, default to SMART goals, Feynman/ELI5 simplification, and 80/20 prioritization. For job-search or promotion work, use resume tailoring, STAR story extraction, and salary-negotiation framing.
+7. **Persona-Based Coaching** – When useful, answer through a clear role lens such as career strategist, life coach, mental-performance adviser, or personal trainer; keep it practical and avoid generic motivational filler.
+8. **Memory Integration** – When the user provides new information (e.g., a certification earned, a new project, a salary target), the skill updates the persistent memory store so future queries remember the latest state.
 
 ## Usage Pattern
 The skill can be called directly via `skill_view` or automatically by the assistant when the user’s prompt contains any of the following triggers:

@@ -61,7 +61,7 @@ Split multiple channels across different high-signal windows so they are not com
 
 ## Monitoring caveat
 
-YouTube Data API statistics need `YOUTUBE_API_KEY` in `/opt/data/.env`. Without it, the monitor should still parse upload logs and write a setup note, but future agents must not interpret missing live metrics as content failure.
+Live YouTube metrics should be fetched with the OAuth token/account that uploaded the video, not a generic cross-account API key. The YouTube Data API is already enabled for the user's current lane; if token access fails, the monitor should still parse upload logs and write a setup note, but future agents must not interpret missing live metrics as content failure.
 
 ## Duplicate guard
 

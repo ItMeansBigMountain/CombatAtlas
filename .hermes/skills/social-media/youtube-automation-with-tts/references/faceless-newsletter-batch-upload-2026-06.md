@@ -46,11 +46,13 @@ The user liked the direction of the uploaded faceless newsletter videos but corr
 Use this voiceover pattern:
 
 1. Hook immediately with the strongest/strangest part of the newsletter.
-2. Continue with natural transitions: “Here’s the thing…”, “That matters because…”, “And the twist is…”, “You can see it in the details…”, “So the move is simple…”
+2. Continue with natural transitions that sound spoken, not templated: “That’s where it gets interesting…”, “The part people miss is…”, “Then the receipts start stacking up…”.
 3. Add humor only when appropriate for the topic.
 4. Match the newsletter tone/category rather than forcing the same generic operator voice.
 5. Use actual newsletter facts as receipts and strip citation artifacts (`[4]`, “HEADLINES & TRENDS”, emoji boxes, source mechanics) from narration.
-6. If the generated narration sounds like headings stitched together, rewrite before rendering/uploading.
+6. Avoid formulaic spoken labels such as “the signal,” “operator angle,” “move first,” “intro/body/conclusion,” or generic morals like “build one proof today” unless the source itself says them.
+7. If the generated narration sounds like headings stitched together, rewrite before rendering/uploading.
+8. Before a batch upload after script changes, run at least one `--no-upload` smoke render to catch Gmail auth, TTS, script, or visual issues before public publishing.
 
 Project detail/reference doc: `/opt/data/HeRmEz/projects/faceless-youtube-channel/docs/newsletter-script-style-guide.md`.
 

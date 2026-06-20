@@ -217,27 +217,48 @@ def build_script(src):
     lead=', '.join(terms[:3]) if terms else spoken_subject
 
     # Stay grounded in the newsletter: personified relay, not advice/opinion.
+    # The user specifically asked for catchy, natural scripts, so avoid outline
+    # labels like "the signal" or "operator angle" in the spoken narration.
     facts=sents[:8] if sents else [humanize_fact(src.get('snippet',''))]
-    if typ=='stoic':
-        opener=f"The newsletter opens with a quiet punch: {spoken_subject}."
-        transitions=['It says the first thread is this:', 'Then it brings the point closer:', 'The next detail makes the idea feel less abstract:', 'And the closing note is the part that lingers:']
-    elif typ in ('fitness','martial_arts'):
-        opener=f"This one is built around a very visual idea: {spoken_subject}."
-        transitions=['The email starts with the main claim:', 'Then it explains the look and the method:', 'After that, it lays out the offer and the promise:', 'The final beat is basically the callout:']
-    elif typ in ('finance','crypto'):
-        opener=f"The money story today is pretty direct: {spoken_subject}."
-        transitions=['The newsletter starts with the market setup:', 'Then it follows the money into the next detail:', 'The part that widens the story is this:', 'And the last piece gives the whole thing context:']
-    elif typ=='security':
-        opener=f"This security update is not subtle: {spoken_subject}."
-        transitions=['The first report says:', 'Then the newsletter moves to the next incident:', 'Another detail in the same issue:', 'And the thread running through all of it is:']
-    elif typ=='ai':
-        opener=f"The AI update has a lot packed into one headline: {spoken_subject}."
-        transitions=['The first piece is:', 'Then the newsletter shifts to:', 'Another detail it calls out:', 'And the bigger context in the email is:']
-    else:
-        opener=f"Here is what the newsletter is saying: {spoken_subject}."
-        transitions=['It starts here:', 'Then it adds:', 'The next detail is:', 'And the final piece is:']
+    tone_pack={
+        'stoic': (
+            f"This one lands quietly at first, but it gets under your skin: {spoken_subject}.",
+            ['The reason it works is simple:', 'Then the email pulls the idea out of theory:', 'What makes it hit harder is this detail:', 'By the end, the point is not loud, but it is obvious:']
+        ),
+        'fitness': (
+            f"This email is basically pointing at one thing you can picture immediately: {spoken_subject}.",
+            ['The setup is straightforward:', 'Then it gets more practical:', 'The part people will notice is this:', 'And the piece that makes it feel real is:']
+        ),
+        'martial_arts': (
+            f"This one has that old-school training energy: {spoken_subject}.",
+            ['The first detail sets the tone:', 'Then it moves from image to method:', 'The next part gives it some edge:', 'And the closing beat is the reason it sticks:']
+        ),
+        'finance': (
+            f"The money story here is not hiding in the fine print: {spoken_subject}.",
+            ['First, follow where the pressure is building:', 'Then watch where the cash starts moving:', 'The detail that changes the read is this:', 'And that is why this is bigger than one headline:']
+        ),
+        'crypto': (
+            f"Crypto has another one of those moments where the headline is only half the story: {spoken_subject}.",
+            ['The setup starts with market behavior:', 'Then the money trail gets more interesting:', 'The receipt that matters is this:', 'And the bigger picture is pretty clear:']
+        ),
+        'security': (
+            f"This security story has a very simple warning label: {spoken_subject}.",
+            ['The first detail is already uncomfortable:', 'Then the pattern gets wider:', 'The part that should make people pause is this:', 'And the bigger lesson from the email is:']
+        ),
+        'ai': (
+            f"AI had another little plot twist, and this one is about {spoken_subject}.",
+            ['The first piece is the kind of detail that sounds small until it spreads:', 'Then the email shows where the workflow is shifting:', 'The more interesting part is this:', 'And the reason it matters is not the demo, it is the behavior change:']
+        ),
+        'tech': (
+            f"This tech update looks like a normal headline until you follow the ripple: {spoken_subject}.",
+            ['The first detail gives you the setup:', 'Then the product story starts turning into a people story:', 'The part worth watching is this:', 'And that is where the bigger shift shows up:']
+        ),
+    }
+    opener, transitions = tone_pack.get(typ, (
+        f"This newsletter had one detail that made the whole story feel bigger: {spoken_subject}.",
+        ['The first clue is this:', 'Then the story moves a little closer:', 'The detail that gives it weight is this:', 'And the part that makes it worth remembering is:']
+    ))
     story=' '.join(f"{transitions[i % len(transitions)]} {fact}" for i,fact in enumerate(facts))
-    takeaway='The newsletter connects these details into one unfolding story.'
 
     opener=loosen_story_voice(opener)
     story=loosen_story_voice(story)
@@ -567,7 +588,7 @@ def render(work:Path, script):
           f'drawbox=x=70:y=1120:w=940:h=520:color=0x020617@0.74:t=fill,'
           f"drawtext=textfile='{fftext(titlef)}':font=DejaVuSans-Bold:fontcolor=0xF8FAFC:fontsize=72:x=80:y=135:line_spacing=10:shadowcolor=black:shadowx=3:shadowy=3,"
           f"drawtext=textfile='{fftext(bodyf)}':font=DejaVuSans:fontcolor=0xE2E8F0:fontsize=41:x=105:y=1150:line_spacing=16:shadowcolor=black:shadowx=2:shadowy=2,"
-          f"drawtext=text='BUILD ONE PROOF TODAY':font=DejaVuSans-Bold:fontcolor={accent}:fontsize=32:x=95:y=1745:shadowcolor=black:shadowx=2:shadowy=2,"
+          f"drawtext=text='STAY WITH THE STORY':font=DejaVuSans-Bold:fontcolor={accent}:fontsize=32:x=95:y=1745:shadowcolor=black:shadowx=2:shadowy=2,"
           f'drawbox=x=80:y=1810:w=920*{i}/{len(script["beats"])}:h=12:color={accent}:t=fill[v]'
         ]
         out=scenes/f'{i:02d}.mp4'

@@ -29,6 +29,12 @@ When social publishing is part of a viral content automation project, require th
 
 For upload timing/frequency and free Opus-like clipping strategy, see the `youtube-content` skill reference `references/viral-growth-content-automation-2026-06.md`.
 
+For deleting underperforming YouTube uploads by view count, follow `references/youtube-zero-view-cleanup.md`: refresh metrics first, identify `viewCount == 0`, group by owning OAuth token/channel, delete via `videos().delete`, verify with `videos().list`, and write an audit JSON.
+
+For creator/YouTube source acquisition when VPS/headless downloads hit bot verification, follow `references/youtube-source-acquisition-provider-fallbacks.md`: prefer local/direct MP4, official clipping/import provider APIs (OpusClip/Choppity/Vizard/Klap/MuAPI), or Drive-source files; keep raw `yt-dlp` as explicit opt-in only, and report missing provider keys as `needs_provider_credentials` rather than a crash.
+
+For VPS/headless YouTube source-acquisition blocks (`Sign in to confirm you’re not a bot`), use `references/official-clipping-api-fallbacks.md`: prefer local/Drive/direct MP4 sources or official clipping/import APIs such as OpusClip and Choppity, and make raw `yt-dlp` source downloading an explicit opt-in fallback rather than the default automation path.
+
 ## TikTok Content Posting API quick guide
 
 - Read-only scopes like `user.info.profile`, `user.info.stats`, and `video.list` do **not** permit uploads.

@@ -90,12 +90,14 @@ python3 /opt/data/scripts/youtube_metrics_monitor.py --json
 
 ## Monitoring notes
 
-- Live metrics require `YOUTUBE_API_KEY` in `/opt/data/.env`; without it, the monitor still parses upload logs and writes a setup note.
+- Live metrics should use the OAuth token/account that uploaded the video, not a generic cross-account API key. The metrics monitor should still parse upload logs and write setup notes if token access fails.
 - The learning source of truth is `/opt/data/HeRmEz/projects/_ops/social-growth/PERFORMANCE_LEARNINGS.md`.
 - Future automation should add retention/watch-time if YouTube Analytics OAuth scopes are configured; Data API statistics alone cover views/likes/comments, not retention.
 - For the concrete cron conversion pattern, timing defaults, duplicate guard, and verification rules, see `references/cron-full-pipeline-and-metrics-loop.md`.
 - For the viral YouTube script/visual/timing rules and the safe pipeline quality-gate pattern from the 2026-06 hardening pass, see `references/viral-youtube-system-and-pipeline-gates-2026-06.md`.
-- For the current creator-source expansion, see `references/creator-source-expansion-huberman-hamza-2026-06.md`: Huberman and Hamza are both useful source examples, but clips must be transformed with hook/context/captions/analysis and attribution.
+- For the current creator-source expansion, see `references/creator-source-expansion-huberman-hamza-2026-06.md`: Huberman and Hamza are both useful source examples, but clips must be transformed with hook/context/captions/analysis and attribution. The active project workflow is `/opt/data/HeRmEz/projects/viral-clip-radar/WORKFLOWS/daily_creator_clip_release_google_api_fallbacks.md`: each daily job refreshes latest long-form candidates via Google/YouTube APIs, downloads/restores the selected source, renders a transformative Short, uploads through the correct YouTube OAuth token, and reports exact blockers for YouTube download or Opus Clips fallback failures. See `references/viral-radar-google-api-and-source-fallbacks-2026-06.md` for the durable fallback ladder and Classical Echos token rule.
+- For the expanded Viral Radar long-form creator release lane, daily 12:15 PM Central schedule, YouTube Data API seeding pattern, and creator pool, see `references/viral-radar-creator-longform-release-lane-2026-06.md`.
+- For manual Viral Radar batch requests where the user pastes multiple creator URLs/plan paths, see `references/viral-radar-manual-batch-clip-up-2026-06.md`: prepare `clip_manifest.json`/edit notes first, then use the source acquisition ladder, and report exact source/provider blockers without claiming renders.
 - For the script path fix used in the daily faceless YouTube cron job, see `references/script-path-fix.md`.
 
 ## Pitfalls

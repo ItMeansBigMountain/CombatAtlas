@@ -22,10 +22,54 @@ DEFAULT_MANIFEST = ROOT / "CLIP_PLANS" / "2026-06-04-huberman-motivation-great-f
 MANIFEST = Path(os.getenv("VIRAL_RADAR_MANIFEST", str(DEFAULT_MANIFEST)))
 RENDER = ROOT / "scripts" / "render_clip_manifest.py"
 UPLOAD = ROOT / "scripts" / "upload_to_youtube.py"
+SEED_LATEST = ROOT / "scripts" / "seed_latest_longform_manifests.py"
+EXTERNAL_PROVIDER = ROOT / "scripts" / "external_clip_provider.py"
 
 
 def run(cmd: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True)
+    env = os.environ.copy()
+    env.setdefault("YOUTUBE_UPLOAD_TOKEN", "/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json")
+    return subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True, env=env)
+
+
+def seed_latest_manifests() -> dict:
+    """Refresh queue from Google/YouTube APIs every job before selecting a clip."""
+    if not SEED_LATEST.exists():
+        return {"status": "missing_seed_script", "path": str(SEED_LATEST)}
+    proc = run([sys.executable, str(SEED_LATEST), "--clips-per-video", "2", "--max-videos-per-channel", "50"])
+    if proc.returncode != 0:
+        return {"status": "seed_failed", "returncode": proc.returncode, "stdout_tail": proc.stdout[-2000:], "stderr_tail": proc.stderr[-2000:]}
+    try:
+        return parse_json_output(proc.stdout)
+    except Exception:
+        return {"status": "seed_output_unparsed", "stdout_tail": proc.stdout[-2000:]}
+
+
+def external_clip_fallback(manifest_path: Path, manifest: dict, selected_clip: dict) -> dict:
+    """Use official clipping/import APIs instead of direct YouTube downloading.
+
+    This avoids the VPS/headless `yt-dlp` bot-verification path. Providers may
+    return a finished local MP4 immediately or a submitted/pending job for a
+    later cron poll.
+    """
+    if not EXTERNAL_PROVIDER.exists():
+        return {"attempted": False, "reason": "external provider script missing", "path": str(EXTERNAL_PROVIDER)}
+    clips = manifest.get("clips") or []
+    try:
+        clip_index = clips.index(selected_clip)
+    except ValueError:
+        clip_index = 0
+    proc = run([
+        sys.executable, str(EXTERNAL_PROVIDER), str(manifest_path),
+        "--clip-index", str(clip_index),
+        "--poll-seconds", os.getenv("VIRAL_RADAR_PROVIDER_POLL_SECONDS", "0"),
+    ])
+    if proc.returncode != 0:
+        return {"attempted": True, "status": "failed", "stdout_tail": proc.stdout[-2000:], "stderr_tail": proc.stderr[-2000:]}
+    try:
+        return parse_json_output(proc.stdout)
+    except Exception:
+        return {"attempted": True, "status": "unparsed", "stdout_tail": proc.stdout[-2000:]}
 
 
 def load_manifest() -> dict:
@@ -106,13 +150,38 @@ def ensure_source(manifest: dict) -> Path:
         vid = str(manifest.get("source_url", "")).split("v=")[-1].split("&")[0]
         if vid:
             url = f"https://archive.org/download/youtube-{vid}/{vid}.mp4"
-    if not url:
-        raise RuntimeError("manifest source missing and no fallback_source_url/archive_source present")
-    tmp = source.with_suffix(source.suffix + ".part")
-    with urllib.request.urlopen(url, timeout=180) as resp, tmp.open("wb") as out:
-        shutil.copyfileobj(resp, out)
-    tmp.replace(source)
-    return source
+    if url:
+        tmp = source.with_suffix(source.suffix + ".part")
+        with urllib.request.urlopen(url, timeout=180) as resp, tmp.open("wb") as out:
+            shutil.copyfileobj(resp, out)
+        tmp.replace(source)
+        return source
+
+    source_url = manifest.get("source_url")
+    if source_url and os.getenv("VIRAL_RADAR_DISABLE_DIRECT_YOUTUBE_DOWNLOAD") != "1":
+        downloader = ROOT / "scripts" / "download_youtube_source.py"
+        logdir = ROOT / "LOGS" / "daily_youtube_source_download" / str(manifest.get("source_video_id") or "unknown")
+        proc = run([
+            sys.executable, str(downloader), source_url,
+            "--outdir", str(source.parent),
+            "--logdir", str(logdir),
+            "--skip-cleanup",
+        ])
+        if proc.returncode != 0:
+            raise RuntimeError(json.dumps({
+                "source_download_failed": source_url,
+                "stdout_tail": proc.stdout[-2000:],
+                "stderr_tail": proc.stderr[-2000:],
+                "logs": str(logdir),
+            }, indent=2))
+        payload = parse_json_output(proc.stdout)
+        downloaded = Path(payload.get("path", ""))
+        if downloaded.exists():
+            downloaded.replace(source)
+            return source
+    if source_url:
+        raise RuntimeError("direct YouTube/Rumble downloading is disabled by VIRAL_RADAR_DISABLE_DIRECT_YOUTUBE_DOWNLOAD=1; use external provider APIs or local/Drive source media")
+    raise RuntimeError("manifest source missing and no fallback/local source is available")
 
 
 def parse_json_output(text: str) -> dict:
@@ -180,9 +249,58 @@ def main() -> int:
         }, indent=2))
         return 0
     try:
+        seed_result = seed_latest_manifests()
         manifest_path, manifest, selected_clip = select_daily_manifest_clip()
         single_manifest = write_single_clip_manifest(manifest_path, manifest, selected_clip, local_day)
-        source = ensure_source(manifest)
+        try:
+            source = ensure_source(manifest)
+        except Exception as source_exc:
+            provider_result = external_clip_fallback(manifest_path, manifest, selected_clip)
+            provider_path_raw = str(provider_result.get("path") or "")
+            provider_path = Path(provider_path_raw) if provider_path_raw else Path("/__no_provider_clip__")
+            if provider_result.get("status") in {"pending", "submitted", "submitted_unparsed", "needs_provider_credentials"}:
+                result = {
+                    "job": "viral_radar_daily_upload",
+                    "status": provider_result.get("status"),
+                    "manifest": str(single_manifest),
+                    "selected_from_manifest": str(manifest_path),
+                    "selected_hook": selected_clip.get("hook"),
+                    "seed_result": seed_result,
+                    "source_error": str(source_exc),
+                    "external_provider": provider_result,
+                    "source_url": manifest.get("source_url"),
+                    "next_step": "Current downloader was tried first. If YouTube still requires bot verification, add cookies/proxy/local Drive MP4 or configure an official clipping provider.",
+                }
+                print(json.dumps(result, indent=2))
+                return 0
+            if provider_path.is_file() and provider_path.stat().st_size > 1000:
+                uploads = upload_rendered([{"output": str(provider_path)}], manifest, selected_clip)
+                result = {
+                    "job": "viral_radar_daily_upload",
+                    "status": "ok_external_provider",
+                    "manifest": str(single_manifest),
+                    "selected_from_manifest": str(manifest_path),
+                    "selected_hook": selected_clip.get("hook"),
+                    "seed_result": seed_result,
+                    "external_provider": provider_result,
+                    "uploads": uploads,
+                    "cleanup": "external provider MP4 preserved for audit; upload logged after verified YouTube response",
+                }
+                marker.parent.mkdir(parents=True, exist_ok=True)
+                marker.write_text(json.dumps({
+                    "completed_at": dt.datetime.now(dt.UTC).isoformat(),
+                    "result": result,
+                }, indent=2), encoding="utf-8")
+                print(json.dumps(result, indent=2))
+                return 0
+            raise RuntimeError(json.dumps({
+                "stage": "source_acquisition_external_provider",
+                "source_error": str(source_exc),
+                "external_provider": provider_result,
+                "source_url": manifest.get("source_url"),
+                "manifest": str(manifest_path),
+                "note": "Direct yt-dlp source download is disabled unless VIRAL_RADAR_ALLOW_DIRECT_YOUTUBE_DOWNLOAD=1. Use Opus/Choppity/Vizard/Klap/Drive-compatible source paths.",
+            }, indent=2))
         render_proc = run([sys.executable, str(RENDER), str(single_manifest), "--suffix=-daily"])
         if render_proc.returncode != 0:
             print(json.dumps({
@@ -202,6 +320,7 @@ def main() -> int:
             "manifest": str(single_manifest),
             "selected_from_manifest": str(manifest_path),
             "selected_hook": selected_clip.get("hook"),
+            "seed_result": seed_result,
             "rendered_count": len(render_payload.get("rendered", [])),
             "uploads": uploads,
             "source_cleanup": render_payload.get("source_cleanup"),

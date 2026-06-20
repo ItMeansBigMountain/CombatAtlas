@@ -1,0 +1,29 @@
+{
+  "timestamp_utc": "2026-06-20T01:46:00Z",
+  "lane": "faceless-youtube-channel",
+  "metrics_monitor": {
+    "status": "ok",
+    "oauth_metrics": true,
+    "video_ids_seen": 147,
+    "stats_fetched": 143
+  },
+  "performance_signal": "Recent winners favor practical money/proof/output hooks plus AI/tools and discipline framing; avoid repeating fixed titles.",
+  "attempted_newsletter_pipeline": {
+    "command": "uv run --with google-api-python-client --with google-auth --with google-auth-oauthlib --with requests python scripts/newsletter_batch_upload.py --limit 1",
+    "blocked": true,
+    "error": "Gmail OAuth RefreshError invalid_grant: token expired or revoked for profile personal-secondary"
+  },
+  "fallback_render": {
+    "topic": "Hyundai buys Boston Dynamics",
+    "hook": "Stop Letting Trends Steal Your Discipline",
+    "workspace": "/opt/data/HeRmEz/projects/faceless-youtube-channel/videos/20260620-014627-hyundai-buys-boston-dynamics",
+    "video": "/opt/data/HeRmEz/projects/faceless-youtube-channel/videos/20260620-014627-hyundai-buys-boston-dynamics/final.mp4",
+    "upload_mode": "dry-run"
+  },
+  "quality_gate": {
+    "py_compile": "passed",
+    "ffprobe": "audio present, duration 65.85s, but rendered 1920x1080 horizontal instead of required 1080x1920 vertical",
+    "upload_json": "dry-run JSON returned; no video_id"
+  },
+  "decision": "Do not publish or trash emails until Gmail OAuth is reauthorized and the renderer produces vertical output."
+}

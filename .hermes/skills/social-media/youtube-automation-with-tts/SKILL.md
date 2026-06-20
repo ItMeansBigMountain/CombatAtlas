@@ -37,6 +37,8 @@ For the current faceless newsletter catch-up lane, follow `references/faceless-n
 
 For the user's corrected script/visual/voice direction, follow `references/faceless-newsletter-avatar-storytelling-and-parrot.md`: scripts must sound like a charismatic avatar naturally sharing a compelling news story (not intro/body/conclusion), videos need broader varied stock footage with reuse avoidance, and Parrot AI is a semi-automated voice experiment path using browser/session export until a stable API/export workflow is proven.
 
+For the user's sharper 2026-06 script-quality correction, follow `references/catchy-natural-newsletter-scripting-2026-06.md`: each newsletter script must be catchy, natural, grounded in actual email facts, and must avoid rigid section labels, generic advice, repeated catchphrases, and spoken captions. For the latest newsletter-specific script correction — catchy, natural monologue, no rigid operator-outline phrases, topic-specific voice packs, and captions separate from TTS — also follow `references/newsletter-natural-script-upgrade-2026-06.md`.
+
 For the successful backlog upload pattern and the latest user correction on natural monologue flow plus semantically aligned multi-asset visuals, follow `references/newsletter-batch-upload-natural-storytelling-and-retry-2026-06.md`: process one email per topic/story, use multiple relevant background assets matched to each beat, retry transient Google TTS 429/5xx with backoff, verify upload IDs before trashing source emails, and re-run discovery until no eligible newsletter emails remain. Additional correction: if a Gmail source is already processed, trash that source email instead of silently skipping it; include topic types for fitness and martial arts; captions are display-only and must never be included in the spoken TTS text; choose an internal famous-actor-style narrator archetype from the email tone/topic, without cloning or claiming celebrity endorsement; require a real stock/API visual per scene and block for review if all providers/fallbacks fail.
 
 For regenerating bad newsletter uploads after narration drift, follow `references/newsletter-grounded-replacement-workflow-2026-06.md`: the script must relay the newsletter's facts in a personified human voice, not insert the assistant's advice/opinion; ban phrases like "build one proof today" and "My read:"; use short proven stock queries instead of long sentence-like API queries; log replacement mappings with `replacement_for`.
@@ -77,7 +79,7 @@ visuals:
   not_required_for_standard_path: higgsfield
 ```
 
-Keep Viral-Clip Radar separate: it clips creator long-form source videos into 9:16 captioned shorts and does **not** need stock footage by default.
+Keep Viral-Clip Radar separate: it clips creator long-form source videos into 9:16 captioned shorts and does **not** need stock footage by default. For YouTube source acquisition failures, follow `references/youtube-source-acquisition-first-aid-2026-06.md`: before paid clipping APIs, update/harden the current downloader, try multiple yt-dlp clients plus bgutil/PO-token support, accept cookies/proxy env vars, and only then escalate to Opus/Choppity/Vizard/Klap/MuAPI or local/Drive MP4 source.
 ```yaml
 elevenlabs:
   api_key_env: "EllevenLabsKey"  # also accept ELEVENLABS_API_KEY, XI_API_KEY, ELEVEN_API_KEY

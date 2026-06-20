@@ -20,15 +20,15 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 33
+        "completed": 34
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-06-20T03:00:00+00:00",
-      "last_run_at": "2026-06-18T03:00:54.822005+00:00",
+      "next_run_at": "2026-06-21T03:00:00+00:00",
+      "last_run_at": "2026-06-19T03:00:43.559653+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -60,15 +60,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 31
+        "completed": 32
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-06-19T13:30:00+00:00",
-      "last_run_at": "2026-06-18T13:31:37.716281+00:00",
+      "next_run_at": "2026-06-20T13:30:00+00:00",
+      "last_run_at": "2026-06-19T13:31:35.446775+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -108,15 +108,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 57
+        "completed": 61
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-06-19T06:52:23.060997+00:00",
-      "last_run_at": "2026-06-19T00:52:23.060997+00:00",
+      "next_run_at": "2026-06-20T06:56:32.612761+00:00",
+      "last_run_at": "2026-06-20T00:56:32.612761+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -157,15 +157,15 @@
       "schedule_display": "45 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 15
+        "completed": 16
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:55:03.480224+00:00",
-      "next_run_at": "2026-06-20T01:45:00+00:00",
-      "last_run_at": "2026-06-19T01:47:30.226104+00:00",
+      "next_run_at": "2026-06-21T01:45:00+00:00",
+      "last_run_at": "2026-06-20T01:47:17.692729+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -187,7 +187,7 @@
     {
       "id": "bce8ebabac36",
       "name": "Daily Viral Radar / Creator clip generation + upload",
-      "prompt": "You are running the user's Daily Viral Radar / creator clip full video generation + upload pipeline. Use `social-video-cron-growth-loop`, `youtube-automation-with-tts`, and `social-platform-publishing`.\n\nUse fresh reviewed clip manifests and creator watchlist candidates from `/opt/data/HeRmEz/projects/viral-clip-radar/CLIP_PLANS/`. The watchlist includes Andrew Huberman, Chris Williamson, Greg O'Gallagher / Kinobody, Andrew Tate / TateSpeech / Cobratate, Zerkaa, ZerkaaPlays, GG33, Luke Belmar / Capital Club, Nate Belmar / Mr Belmar, Alex Hormozi, Hamza, and Hamza Unfiltered.\n\nPrioritize clips that teach discipline, dopamine control, focus, social confidence, exercise, mental health, learning, business, wealth, fitness, self-improvement, masculinity, relationships, or practical life strategy. Avoid raw reuploads: every upload must add hook/context/captions/analysis and source attribution, then private-first or according to the existing project upload policy.\n\nIf no reviewed manifest exists, select/create a candidate review note rather than inventing a finished upload. Keep final report concise: selected source, hook, output/upload URL or blocker, cleanup status.",
+      "prompt": "Run the user's bulletproof Daily Viral Radar creator clip release pipeline at 12:15 PM Central.\n\nWorkflow:\n1. Run `/opt/data/scripts/youtube_metrics_monitor.py --json`; metrics must use the same OAuth account/token that uploaded each video.\n2. Refresh the candidate queue with Google/YouTube APIs by running `/opt/data/HeRmEz/projects/viral-clip-radar/scripts/seed_latest_longform_manifests.py --clips-per-video 2 --max-videos-per-channel 50`. The watchlist must cover Andrew Huberman, Chris Williamson, Greg O'Gallagher / Kinobody, Andrew Tate, Zerkaa, GG33, Luke Belmar, Nate Belmar, Alex Hormozi, Hamza, and configured adjacent channels.\n3. Run `/opt/data/scripts/viral_radar_daily_upload.py`. It should pick the next fresh `clip_manifest.json`, download/restore the source video, render a 1080x1920 Short with hook/context overlay and attribution, upload to YouTube with the Classical Echos OAuth upload token, log the returned YouTube ID/URL, and clean generated media only after verified upload.\n4. If direct source download fails due to YouTube bot checks, cookies, PO tokens, or cloud-IP blocks, report the exact log path and whether Opus Clips fallback credentials are configured. Do not pretend an upload succeeded.\n5. Avoid raw reuploads. Every clip must be transformative: hook/context/captions or overlay framing plus source attribution.\n\nKeep the final Discord report concise: selected creator/source, hook, upload URL or exact blocker, and cleanup status.",
       "skills": [
         "social-video-cron-growth-loop",
         "youtube-automation-with-tts",
@@ -197,28 +197,28 @@
       "model": null,
       "provider": null,
       "base_url": null,
-      "script": "scripts/run_trend_video.py",
+      "script": "viral_radar_daily_upload.py",
       "no_agent": false,
       "context_from": [
         "6355d735bb4a"
       ],
       "schedule": {
         "kind": "cron",
-        "expr": "15 20 * * *",
-        "display": "15 20 * * *"
+        "expr": "15 17 * * *",
+        "display": "15 17 * * *"
       },
-      "schedule_display": "15 20 * * *",
+      "schedule_display": "15 17 * * *",
       "repeat": {
         "times": null,
-        "completed": 13
+        "completed": 14
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-06-19T20:15:00+00:00",
-      "last_run_at": "2026-06-19T01:07:39.108892+00:00",
+      "next_run_at": "2026-06-20T17:15:00+00:00",
+      "last_run_at": "2026-06-19T17:16:24.802389+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -230,7 +230,6 @@
         "thread_id": null
       },
       "enabled_toolsets": [
-        "web",
         "terminal",
         "file"
       ],
@@ -257,15 +256,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 330
+        "completed": 461
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-06-19T03:08:22.623569+00:00",
-      "last_run_at": "2026-06-19T02:58:22.623569+00:00",
+      "next_run_at": "2026-06-20T03:09:27.405585+00:00",
+      "last_run_at": "2026-06-20T02:59:27.405585+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -302,15 +301,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 12
+        "completed": 13
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-06-19T14:00:00+00:00",
-      "last_run_at": "2026-06-18T14:00:19.583559+00:00",
+      "next_run_at": "2026-06-20T14:00:00+00:00",
+      "last_run_at": "2026-06-19T14:00:25.783599+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -348,15 +347,15 @@
       "schedule_display": "15 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 7
+        "completed": 8
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T04:20:40.734347+00:00",
-      "next_run_at": "2026-06-19T13:15:00+00:00",
-      "last_run_at": "2026-06-18T13:15:20.235869+00:00",
+      "next_run_at": "2026-06-20T13:15:00+00:00",
+      "last_run_at": "2026-06-19T13:15:25.231754+00:00",
       "last_status": "error",
       "last_error": "Script exited with code 1\nstderr:\nTraceback (most recent call last):\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 197, in <module>\n    raise SystemExit(main())\n                     ~~~~^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 191, in main\n    results = [process_profile(p, e, apply=args.apply, max_results=args.max_results) for p, e in selected]\n               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 153, in process_profile\n    service = gmail(profile)\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 79, in gmail\n    return build(\"gmail\", \"v1\", credentials=load_creds(profile), cache_discovery=False)\n                                            ~~~~~~~~~~^^^^^^^^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 72, in load_creds\n    creds.refresh(Request())\n    ~~~~~~~~~~~~~^^^^^^^^^^^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/credentials.py\", line 412, in refresh\n    ) = reauth.refresh_grant(\n        ~~~~~~~~~~~~~~~~~~~~^\n        request,\n        ^^^^^^^^\n    ...<6 lines>...\n        enable_reauth_refresh=self._enable_reauth_refresh,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/reauth.py\", line 370, in refresh_grant\n    _client._handle_error_response(response_data, retryable_error)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/_client.py\", line 69, in _handle_error_response\n    raise exceptions.RefreshError(\n        error_details, response_data, retryable=retryable_error\n    )\ngoogle.auth.exceptions.RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
       "last_delivery_error": null,
@@ -396,15 +395,15 @@
       "schedule_display": "50 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 4
+        "completed": 5
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T15:48:08.357771+00:00",
-      "next_run_at": "2026-06-19T13:50:00+00:00",
-      "last_run_at": "2026-06-18T13:53:03.981828+00:00",
+      "next_run_at": "2026-06-22T13:50:00+00:00",
+      "last_run_at": "2026-06-19T13:52:36.501366+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -444,15 +443,162 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 6
+        "completed": 7
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T17:32:19.594106+00:00",
-      "next_run_at": "2026-06-19T09:00:00+00:00",
-      "last_run_at": "2026-06-18T09:16:26.850527+00:00",
+      "next_run_at": "2026-06-20T09:00:00+00:00",
+      "last_run_at": "2026-06-19T09:04:18.343747+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "web",
+        "terminal",
+        "file"
+      ],
+      "workdir": null,
+      "profile": null
+    },
+    {
+      "id": "549658fc5a9e",
+      "name": "Agentic Robinhood Trade Account Monitor \u2014 Market Open",
+      "prompt": "Autonomous Agentic Robinhood trade-account monitor and manager.\n\nYou are running unattended. Do not ask the user questions. Do not create or modify cron jobs. Do not trade any account except Robinhood Agentic account 433711041 / ending 1041. Follow the loaded robinhood-trading-operator skill and the active policy at /opt/data/HeRmEz/projects/trading-journal/playbook/autonomous-policy.md.\n\nOperating style requested by user: manage the account like a technical analyst with a strong grip on fundamental news, asset/sector cash-flow rotation, and business quality. Do not simply scan quotes. Every entry/add/hold/exit decision should connect chart structure with news/fundamental/sector context.\n\nScope and authority:\n- Account: 433711041 only, nickname Agentic, agentic_allowed=true.\n- Equities only by default.\n- Fractional shares allowed and expected.\n- Options disabled unless separately authorized.\n- Shorts disabled unless separately authorized.\n- User has authorized autonomous no-per-trade-approval operation within the active policy.\n- Updated deployment preference: use most available funds when clean setups exist; target 70%\u201390% deployed across open equity positions when live account/market state is clear and trade plans justify entries.\n- Never force a trade. If market is closed, quotes are stale, broker state is uncertain, risk cannot be calculated, or no clean setup exists, do not place orders.\n\nEach run workflow:\n1. Get current UTC time using terminal date.\n2. Inspect live account state with Robinhood tools: get_accounts, get_portfolio(433711041), get_equity_positions(433711041), get_equity_orders(433711041) for open/recent orders.\n3. Confirm Agentic account exists and agentic_allowed=true. If not, stop and report.\n4. Inspect current holdings and calculate approximate exposure, cash, and P/L using get_equity_quotes for held symbols.\n5. Inspect broad market and sector regime. At minimum quote/history: SPY, QQQ, IWM, XLK, XLF, SMH, XLY, HOOD, NVDA, AMD, AVGO, SOFI, PLTR, SMCI, HIMS, RBLX, RKLB. Use get_equity_historicals where needed for recent trend/support/volume.\n6. Add external/news/fundamental context before trading: use web_search for relevant recent news on top candidates and their sector; consider earnings/revenue growth, cash-flow/margin quality when available, guidance, analyst/industry catalysts, macro rate/liquidity conditions, crypto/AI/semiconductor/fintech sector flows, and whether money appears rotating toward or away from the asset class.\n7. Confirm quotes are fresh enough for the intended session. If US equity market is closed/holiday or quote timestamps are stale, manage analytically only; do not place new orders from stale data.\n8. Manage existing positions first: check whether HOOD/NVDA or any other held equity has breached thesis/invalidation, is down ~8% from entry, has hit target/extension, or needs hold/trim/exit. Never move risk farther away.\n9. If current deployment is below target and market state is clear, identify clean additions/entries. Prefer liquid fractional-tradable equities with clear invalidation, normal spread, R:R >= 1.5:1, and alignment between technicals + fundamental/news/sector cash-flow context. Prefer 2:1+.\n10. For each serious candidate, explicitly score: technical structure, volume/relative strength, fundamental/news support, sector/cash-flow alignment, liquidity/spread, invalidation clarity, R:R, and portfolio fit.\n11. Before any order placement, call review_equity_order. Only call place_equity_order if review succeeds, alerts are acceptable under policy, and the setup remains inside risk/deployment rules.\n12. Journal every run, including no-trade decisions, reviews, placements, exits, and tool failures under /opt/data/HeRmEz/projects/trading-journal/YYYY-MM-DD/ using concise markdown.\n13. Final response must be concise and include: account value, cash, deployment %, positions summary, technical read, fundamental/news/sector read, action taken or no-trade reason, any order IDs if placed, and journal path.\n\nSafety gates:\n- Kill switch: stop trading if account value < $10.\n- Stop if broker/account/tool state is uncertain.\n- Stop if risk cannot be calculated from live data.\n- Stop if no clean setup exists.\n- Do not bypass Robinhood investor-profile or broker restrictions. If a Robinhood review/place call returns an investor-profile/second-trade gate, report it and do not retry.\n- Do not place market orders outside regular hours. Dollar/fractional orders only in regular hours.\n- Never trade other accounts.",
+      "skills": [
+        "robinhood-trading-operator"
+      ],
+      "skill": "robinhood-trading-operator",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 13 * * 1-5",
+        "display": "30 13 * * 1-5"
+      },
+      "schedule_display": "30 13 * * 1-5",
+      "repeat": {
+        "times": null,
+        "completed": 6
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-19T16:12:37.431999+00:00",
+      "next_run_at": "2026-06-22T13:30:00+00:00",
+      "last_run_at": "2026-06-19T18:33:52.296399+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "web",
+        "terminal",
+        "file"
+      ],
+      "workdir": null,
+      "profile": null
+    },
+    {
+      "id": "d7f2c79b64db",
+      "name": "Agentic Robinhood Trade Account Monitor \u2014 Midday",
+      "prompt": "Autonomous Agentic Robinhood midday trade-account monitor and manager.\n\nRun unattended. Do not ask questions. Do not create or modify cron jobs. Trade only Robinhood Agentic account 433711041 / ending 1041, equities only, fractional shares allowed, no options, no shorts, no other accounts. Follow the loaded robinhood-trading-operator skill and /opt/data/HeRmEz/projects/trading-journal/playbook/autonomous-policy.md.\n\nOperate like a technical analyst with strong fundamental/news/sector cash-flow awareness. Inspect account, portfolio, positions, open/recent orders, live quotes, and broad/sector regime. At minimum consider SPY, QQQ, IWM, XLK, XLF, SMH, XLY plus HOOD, NVDA, AMD, AVGO, SOFI, PLTR, SMCI, HIMS, RBLX, RKLB. Use web/news context for serious candidates: earnings/revenue, margins/cash-flow quality when available, guidance, catalysts, macro/sector rotation, and whether cash appears rotating toward/away from the asset/sector.\n\nManage existing positions first, then consider entries/adds only if market is open, quotes are fresh, broker/account/tool state is clear, risk can be calculated, spread/liquidity are acceptable, technicals + fundamentals/news/sector context align, and R:R >= 1.5:1. Target 70%\u201390% deployment when clean setups justify it, but never force trades. Before placing any order, call review_equity_order. Place only if review succeeds and policy gates pass. Journal every run under /opt/data/HeRmEz/projects/trading-journal/YYYY-MM-DD/.\n\nFinal response: account value, cash, deployment %, positions summary, technical read, fundamental/news/sector read, action taken/no-trade reason, order IDs if any, journal path.",
+      "skills": [
+        "robinhood-trading-operator"
+      ],
+      "skill": "robinhood-trading-operator",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 16 * * 1-5",
+        "display": "0 16 * * 1-5"
+      },
+      "schedule_display": "0 16 * * 1-5",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-19T18:35:06.052701+00:00",
+      "next_run_at": "2026-06-22T16:00:00+00:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": [
+        "web",
+        "terminal",
+        "file"
+      ],
+      "workdir": null,
+      "profile": null
+    },
+    {
+      "id": "44b1b5e0156f",
+      "name": "Agentic Robinhood Trade Account Monitor \u2014 Power Hour",
+      "prompt": "Autonomous Agentic Robinhood one-hour-before-close trade-account monitor and manager.\n\nRun unattended. Do not ask questions. Do not create or modify cron jobs. Trade only Robinhood Agentic account 433711041 / ending 1041, equities only, fractional shares allowed, no options, no shorts, no other accounts. Follow the loaded robinhood-trading-operator skill and /opt/data/HeRmEz/projects/trading-journal/playbook/autonomous-policy.md.\n\nOperate like a technical analyst with strong fundamental/news/sector cash-flow awareness. Inspect account, portfolio, positions, open/recent orders, live quotes, and broad/sector regime. At minimum consider SPY, QQQ, IWM, XLK, XLF, SMH, XLY plus HOOD, NVDA, AMD, AVGO, SOFI, PLTR, SMCI, HIMS, RBLX, RKLB. Use web/news context for serious candidates: earnings/revenue, margins/cash-flow quality when available, guidance, catalysts, macro/sector rotation, and whether cash appears rotating toward/away from the asset/sector.\n\nThis run is one hour before regular close: prioritize risk management, confirming/invalidating existing trade thesis, avoiding overnight exposure if thesis weakens, and adding only when end-of-day structure confirms. Manage existing positions first, then consider entries/adds only if market is open, quotes are fresh, broker/account/tool state is clear, risk can be calculated, spread/liquidity are acceptable, technicals + fundamentals/news/sector context align, and R:R >= 1.5:1. Target 70%\u201390% deployment when clean setups justify it, but never force trades. Before placing any order, call review_equity_order. Place only if review succeeds and policy gates pass. Journal every run under /opt/data/HeRmEz/projects/trading-journal/YYYY-MM-DD/.\n\nFinal response: account value, cash, deployment %, positions summary, technical read, fundamental/news/sector read, action taken/no-trade reason, order IDs if any, journal path.",
+      "skills": [
+        "robinhood-trading-operator"
+      ],
+      "skill": "robinhood-trading-operator",
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 19 * * 1-5",
+        "display": "0 19 * * 1-5"
+      },
+      "schedule_display": "0 19 * * 1-5",
+      "repeat": {
+        "times": null,
+        "completed": 1
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-06-19T18:35:07.056543+00:00",
+      "next_run_at": "2026-06-22T19:00:00+00:00",
+      "last_run_at": "2026-06-19T19:01:22.195487+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -472,5 +618,5 @@
       "profile": null
     }
   ],
-  "updated_at": "2026-06-19T03:00:22.265148+00:00"
+  "updated_at": "2026-06-20T03:00:27.056098+00:00"
 }

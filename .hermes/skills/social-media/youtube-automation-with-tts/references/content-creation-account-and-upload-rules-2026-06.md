@@ -48,7 +48,12 @@ Use this reference for the user's faceless YouTube newsletter pipeline, Viral Cl
 ## Viral Clip Radar distinction
 
 - Viral Clip Radar does **not** need stock footage for clipping videos.
+- For source-acquisition failures, follow `references/viral-radar-source-acquisition-fallbacks-2026-06.md`: fix and smoke-test the current downloader first before jumping to paid clipping APIs, then require cookies/proxy/local media/provider credentials only if YouTube still blocks the VPS.
 - It scouts long-form creator videos, clips them, adds captions/transcription, reframes to portrait 9:16 for smartphone/Shorts/Reels distribution, and uploads.
+- Current user instruction for influencer/creator Viral Radar clips: upload to **Classical Echos** using `/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json` unless the user explicitly changes the lane.
+- Use Google/YouTube APIs for discovery and account verification. For actual media acquisition, **do not default to raw VPS/headless YouTube downloading** when YouTube bot checks appear; prefer compatible automation sources in this order: cached/local source MP4, archive/direct MP4 fallback URL, official clipping/import provider API export (OpusClip first, then Choppity/Vizard/Klap/MuAPI as configured), or Google Drive/source-file MP4. Only use direct `yt-dlp`/YouTube source downloads when explicitly enabled for that run (for example with a clear opt-in flag such as `VIRAL_RADAR_ALLOW_DIRECT_YOUTUBE_DOWNLOAD=1`) and the source is legally/technically downloadable.
+- Provider credential aliases worth checking before reporting a blocker: `OPUS_CLIP_API_KEY`, `OPUSCLIP_API_KEY`, `OPUS_API_KEY`, `OPUS_ORG_ID`, `OPUSCLIP_ORG_ID`, `CHOPPITY_API_KEY`, `CHOPPITY_KEY`, `VIZARD_API_KEY`, `VIZARD_KEY`, `KLAP_API_KEY`, `KLAP_KEY`, `MUAPI_API_KEY`, `MUAPI_KEY`.
+- Missing provider credentials should be reported as an actionable `needs_provider_credentials`/setup state, not as a crash or a generic source-download failure.
 - Do not conflate this with the faceless newsletter stock-footage workflow.
 
 ## Reporting style
