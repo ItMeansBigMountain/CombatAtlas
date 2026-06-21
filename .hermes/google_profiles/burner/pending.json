@@ -1,0 +1,18 @@
+{
+  "profile": "burner",
+  "email": "laflametoast@gmail.com",
+  "state": "lJTal9vZPGbjZlROAeFjc3KRrTq4FO",
+  "code_verifier": "WmNAKQikHX.AXyWPcoy4ZJgAh0Z0m_BGX1NOs6Qx5PP04RUnN_TYJzgZhTG6yct4atCAXiMDZWarkiw-IdQl9zSiGww-a2DVGjfRAvMza2SdBpYXBCekbk2Vdjmnz.CZ",
+  "redirect_uri": "http://localhost:1",
+  "scopes": [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.send",
+    "https://www.googleapis.com/auth/gmail.modify",
+    "https://www.googleapis.com/auth/gmail.settings.basic",
+    "https://www.googleapis.com/auth/calendar",
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/contacts",
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/documents"
+  ]
+}

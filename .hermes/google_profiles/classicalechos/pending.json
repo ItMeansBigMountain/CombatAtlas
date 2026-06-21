@@ -1,0 +1,18 @@
+{
+  "profile": "classicalechos",
+  "email": "classicalechos@gmail.com",
+  "state": "X61obw5lK13hLEIyC9Fn0J9tguhPNg",
+  "code_verifier": "0~c5~RwGhJPVqdabXpu5aRrARvnPfHjws3bYX.dKOQidB-O_j3-dKsw0KwOOMJMkDZ49AFtSaQDxCwJKMW8L7c4NIfZvbI.SKImBAMCLWKt_kPBblhrmpsGiGWAB4Ixh",
+  "redirect_uri": "http://localhost:1",
+  "scopes": [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.send",
+    "https://www.googleapis.com/auth/gmail.modify",
+    "https://www.googleapis.com/auth/gmail.settings.basic",
+    "https://www.googleapis.com/auth/calendar",
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/contacts",
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/documents"
+  ]
+}

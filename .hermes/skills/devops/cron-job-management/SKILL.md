@@ -53,6 +53,7 @@ metadata:
 - **Stale token** – jobs fail with `invalid_grant`; re‑run credential generation scripts and re‑enable the job.
 - **Insufficient permissions** – script not executable; `chmod +x` resolves.
 - **Incorrect workdir** – ensure the script runs in its intended directory; set `workdir` in the cron job if needed.
+- **Expanding a no-agent discovery cron into an action pipeline** – preserve the watchdog contract. Wrap the old discovery command in a new script that captures stdout, exits silently when stdout is empty, prints discovery output when non-empty, then runs the downstream action. Keep `no_agent=true` only if the wrapper itself emits the exact user-facing status. Smoke-test the wrapper before `cronjob action=update`, but remember that discovery smoke tests may mark items as seen or consume “new item” state.
 - **Prompt-injection scanner false positives** – cron jobs can be blocked by the assembled prompt, not just the job's own prompt. If the error names `deception_hide`, inspect attached skills and references for literal hidden/deception phrasing such as instructions about hiding information from the user. Rephrase those docs transparently, then trigger a manual run before declaring the cron fixed.
 
 ## Related Skills
