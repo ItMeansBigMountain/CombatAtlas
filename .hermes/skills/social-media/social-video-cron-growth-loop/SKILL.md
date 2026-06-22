@@ -11,6 +11,8 @@ Use this skill when a cron job must create and publish a new social video every 
 
 ## Required loop per cron run
 
+Before expensive generation/render/upload work, apply the blocked-status preflight pattern in `references/content-cron-blocked-status-preflight.md`: verify required Workspace/YouTube tokens, channel identity, provider readiness, and source availability; report `blocked_auth`, `blocked_source`, `blocked_provider`, `blocked_quality`, or `ok_uploaded` rather than treating scheduler exit status as product success.
+
 0. **Apply viral packaging rules**
    - For the faceless newsletter lane, read `/opt/data/HeRmEz/projects/faceless-youtube-channel/VIRAL_YOUTUBE_SYSTEM.md` before scripting or rendering; the portable skill-library version is `references/viral-youtube-system-2026.md`.
    - First 1-3 seconds must contain a high-contrast curiosity hook; no intro/welcome/source disclosure.

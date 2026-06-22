@@ -1,9 +1,9 @@
 {
-  "last_report_path": "/opt/data/logs/curator/20260614-032139",
-  "last_run_at": "2026-06-14T03:21:39.874768+00:00",
-  "last_run_duration_seconds": 344.837761,
-  "last_run_summary": "auto: no changes; llm: Completed an umbrella-building consolidation pass.\n\n### Human summary\n\nCreated/expanded these umbrella skills:\n\n1. **`software-quality-workflows`**  \n   Consolidated the narrow software-process skills into one class-level workflow covering …\narchived 25 skill(s):\n  • gif-search → social-platform-publishing\n  • xurl → social-platform-publishing\n  • youtube-content → social-platform-publishing\n  • airtable — pruned (stale)\n  • arxiv — pruned (stale)\n  • blogwatcher — pruned (stale)\n  • cloud-provider-cli-setup — pruned (stale)\n  • comfyui — pruned (stale)\n  • humanizer — pruned (stale)\n  • jupyter-live-kernel — pruned (stale)\n  … and 15 more\nfull report: hermes curator status\nkeep an umbrella stable: hermes curator pin social-platform-publishing",
+  "last_report_path": "/opt/data/logs/curator/20260621-042032",
+  "last_run_at": "2026-06-21T04:20:32.111152+00:00",
+  "last_run_duration_seconds": 334.386813,
+  "last_run_summary": "auto: no changes; llm: Completed the umbrella-building consolidation pass.\n\nCreated 3 new class-level umbrella skills:\n\n1. **`hermes-agent-operations`**\n   - Consolidates Hermes operational workflows: skill authoring, cron jobs, Kanban workers, specialist profile…\narchived 13 skill(s):\n  • client-editable-django-sites — pruned (stale)\n  • collectible-card-scanner-apps — pruned (stale)\n  • cron-job-management — pruned (stale)\n  • dogfood — pruned (stale)\n  • hermes-agent-skill-authoring — pruned (stale)\n  • high-ticket-offer-architecture — pruned (stale)\n  • kanban-worker — pruned (stale)\n  • node-inspect-debugger — pruned (stale)\n  • operator-morning-reports — pruned (stale)\n  • osrs-plugins — pruned (stale)\n  … and 3 more\nfull report: hermes curator status",
   "last_run_summary_shown_at": "2026-05-31T01:46:49.188313+00:00",
   "paused": false,
-  "run_count": 5
+  "run_count": 6
 }
