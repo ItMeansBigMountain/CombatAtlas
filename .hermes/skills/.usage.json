@@ -173,13 +173,13 @@
     "created_at": "2026-05-31T17:07:23.940211+00:00",
     "created_by": null,
     "last_patched_at": "2026-06-21T22:54:08.808705+00:00",
-    "last_used_at": "2026-06-21T19:31:28.240701+00:00",
-    "last_viewed_at": "2026-06-21T19:31:28.239011+00:00",
+    "last_used_at": "2026-06-22T13:50:39.284204+00:00",
+    "last_viewed_at": "2026-06-22T13:16:31.138330+00:00",
     "patch_count": 91,
     "pinned": false,
     "state": "active",
-    "use_count": 97,
-    "view_count": 67
+    "use_count": 104,
+    "view_count": 71
   },
   "hermes-agent": {
     "archived_at": null,
@@ -381,12 +381,12 @@
     "created_at": "2026-06-12T15:23:13.659551+00:00",
     "created_by": null,
     "last_patched_at": "2026-06-20T01:40:27.305770+00:00",
-    "last_used_at": "2026-06-19T19:00:25.470342+00:00",
+    "last_used_at": "2026-06-22T19:00:40.314412+00:00",
     "last_viewed_at": "2026-06-19T18:31:04.564479+00:00",
     "patch_count": 19,
     "pinned": false,
     "state": "active",
-    "use_count": 33,
+    "use_count": 37,
     "view_count": 21
   },
   "segment-anything-model": {
@@ -420,12 +420,12 @@
     "created_at": "2026-06-07T00:28:30.328615+00:00",
     "created_by": null,
     "last_patched_at": "2026-06-21T22:54:26.600796+00:00",
-    "last_used_at": "2026-06-22T01:45:36.848601+00:00",
+    "last_used_at": "2026-06-23T01:45:41.658769+00:00",
     "last_viewed_at": "2026-06-20T01:36:11.536266+00:00",
     "patch_count": 31,
     "pinned": false,
     "state": "active",
-    "use_count": 44,
+    "use_count": 47,
     "view_count": 20
   },
   "software-development/osrs-plugins": {
@@ -511,12 +511,12 @@
     "created_at": "2026-06-07T00:21:18.846681+00:00",
     "created_by": null,
     "last_patched_at": "2026-06-20T02:05:26.424920+00:00",
-    "last_used_at": "2026-06-22T01:45:36.864493+00:00",
+    "last_used_at": "2026-06-23T01:45:41.674629+00:00",
     "last_viewed_at": "2026-06-20T19:36:16.544604+00:00",
     "patch_count": 115,
     "pinned": false,
     "state": "active",
-    "use_count": 82,
+    "use_count": 85,
     "view_count": 58
   },
   "yuanbao": {

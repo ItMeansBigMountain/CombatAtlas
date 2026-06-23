@@ -20,15 +20,15 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 36
+        "completed": 37
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-06-23T03:00:00+00:00",
-      "last_run_at": "2026-06-21T03:00:50.529577+00:00",
+      "next_run_at": "2026-06-24T03:00:00+00:00",
+      "last_run_at": "2026-06-22T03:00:55.583404+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -59,15 +59,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 34
+        "completed": 35
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-06-22T13:30:00+00:00",
-      "last_run_at": "2026-06-21T13:31:03.848625+00:00",
+      "next_run_at": "2026-06-23T13:30:00+00:00",
+      "last_run_at": "2026-06-22T13:31:09.319058+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -107,15 +107,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 69
+        "completed": 73
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-06-22T07:40:47.055061+00:00",
-      "last_run_at": "2026-06-22T01:40:47.055061+00:00",
+      "next_run_at": "2026-06-23T07:44:50.881334+00:00",
+      "last_run_at": "2026-06-23T01:44:50.881334+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -155,15 +155,15 @@
       "schedule_display": "45 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 18
+        "completed": 19
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:55:03.480224+00:00",
-      "next_run_at": "2026-06-23T01:45:00+00:00",
-      "last_run_at": "2026-06-22T01:47:16.774938+00:00",
+      "next_run_at": "2026-06-24T01:45:00+00:00",
+      "last_run_at": "2026-06-23T01:47:18.176999+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -207,15 +207,15 @@
       "schedule_display": "15 17 * * *",
       "repeat": {
         "times": null,
-        "completed": 16
+        "completed": 17
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-06-22T17:15:00+00:00",
-      "last_run_at": "2026-06-21T17:16:11.930044+00:00",
+      "next_run_at": "2026-06-23T17:15:00+00:00",
+      "last_run_at": "2026-06-22T17:16:38.713682+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -253,15 +253,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 723
+        "completed": 853
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-06-22T03:10:37.452426+00:00",
-      "last_run_at": "2026-06-22T03:00:37.452426+00:00",
+      "next_run_at": "2026-06-23T03:00:42.221569+00:00",
+      "last_run_at": "2026-06-23T02:50:42.221569+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -298,15 +298,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 15
+        "completed": 16
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-06-22T14:00:00+00:00",
-      "last_run_at": "2026-06-21T14:00:34.845782+00:00",
+      "next_run_at": "2026-06-23T14:00:00+00:00",
+      "last_run_at": "2026-06-22T14:00:39.611526+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -344,15 +344,15 @@
       "schedule_display": "15 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 10
+        "completed": 11
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T04:20:40.734347+00:00",
-      "next_run_at": "2026-06-22T13:15:00+00:00",
-      "last_run_at": "2026-06-21T13:15:35.438115+00:00",
+      "next_run_at": "2026-06-23T13:15:00+00:00",
+      "last_run_at": "2026-06-22T13:15:39.909005+00:00",
       "last_status": "error",
       "last_error": "Script exited with code 1\nstderr:\nTraceback (most recent call last):\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 197, in <module>\n    raise SystemExit(main())\n                     ~~~~^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 191, in main\n    results = [process_profile(p, e, apply=args.apply, max_results=args.max_results) for p, e in selected]\n               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 153, in process_profile\n    service = gmail(profile)\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 79, in gmail\n    return build(\"gmail\", \"v1\", credentials=load_creds(profile), cache_discovery=False)\n                                            ~~~~~~~~~~^^^^^^^^^\n  File \"/opt/data/scripts/email_sorting_agent.py\", line 72, in load_creds\n    creds.refresh(Request())\n    ~~~~~~~~~~~~~^^^^^^^^^^^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/credentials.py\", line 412, in refresh\n    ) = reauth.refresh_grant(\n        ~~~~~~~~~~~~~~~~~~~~^\n        request,\n        ^^^^^^^^\n    ...<6 lines>...\n        enable_reauth_refresh=self._enable_reauth_refresh,\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/reauth.py\", line 370, in refresh_grant\n    _client._handle_error_response(response_data, retryable_error)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hermes/.venv/lib/python3.13/site-packages/google/oauth2/_client.py\", line 69, in _handle_error_response\n    raise exceptions.RefreshError(\n        error_details, response_data, retryable=retryable_error\n    )\ngoogle.auth.exceptions.RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
       "last_delivery_error": null,
@@ -392,15 +392,15 @@
       "schedule_display": "50 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 5
+        "completed": 6
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T15:48:08.357771+00:00",
-      "next_run_at": "2026-06-22T13:50:00+00:00",
-      "last_run_at": "2026-06-19T13:52:36.501366+00:00",
+      "next_run_at": "2026-06-23T13:50:00+00:00",
+      "last_run_at": "2026-06-22T13:52:47.779872+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -439,15 +439,15 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 9
+        "completed": 10
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T17:32:19.594106+00:00",
-      "next_run_at": "2026-06-22T09:00:00+00:00",
-      "last_run_at": "2026-06-21T09:01:30.467269+00:00",
+      "next_run_at": "2026-06-23T09:00:00+00:00",
+      "last_run_at": "2026-06-22T09:01:45.721870+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -488,15 +488,15 @@
       "schedule_display": "30 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 6
+        "completed": 7
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T16:12:37.431999+00:00",
-      "next_run_at": "2026-06-22T13:30:00+00:00",
-      "last_run_at": "2026-06-19T18:33:52.296399+00:00",
+      "next_run_at": "2026-06-23T13:30:00+00:00",
+      "last_run_at": "2026-06-22T13:34:46.294858+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -537,16 +537,16 @@
       "schedule_display": "0 16 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 0
+        "completed": 1
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T18:35:06.052701+00:00",
-      "next_run_at": "2026-06-22T16:00:00+00:00",
-      "last_run_at": null,
-      "last_status": null,
+      "next_run_at": "2026-06-23T16:00:00+00:00",
+      "last_run_at": "2026-06-22T16:02:32.657024+00:00",
+      "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
       "deliver": "origin",
@@ -586,15 +586,15 @@
       "schedule_display": "0 19 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 1
+        "completed": 2
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T18:35:07.056543+00:00",
-      "next_run_at": "2026-06-22T19:00:00+00:00",
-      "last_run_at": "2026-06-19T19:01:22.195487+00:00",
+      "next_run_at": "2026-06-23T19:00:00+00:00",
+      "last_run_at": "2026-06-22T19:01:52.163207+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -614,5 +614,5 @@
       "profile": null
     }
   ],
-  "updated_at": "2026-06-22T03:00:37.452596+00:00"
+  "updated_at": "2026-06-23T03:00:41.888968+00:00"
 }

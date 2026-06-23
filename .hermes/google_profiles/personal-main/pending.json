@@ -1,0 +1,15 @@
+{
+  "profile": "personal-main",
+  "email": "affan.fareed@gmail.com",
+  "state": "sKpmz5Q07l2qJAoBWlV1u6joHL1nLE",
+  "code_verifier": "qdYI_74cHeP9R~tP9hIXLsL~w4Jcnwj~wKTevQ~7Hv8mDtE_nqEbGC.ekL9XrmlocMX-BvbnGxfU9FVV14EWtDm.gGSIfKdUMtJNdnVYH-CXulrDPXueeLGzeu52Xd.g",
+  "redirect_uri": "http://localhost:1",
+  "scopes": [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/calendar",
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/contacts",
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/documents"
+  ]
+}

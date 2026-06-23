@@ -1,8 +1,8 @@
 {
   "profile": "trapiistan",
   "email": "trapiistan@gmail.com",
-  "state": "lYMQaBc7e6LH6I4pWk1hQkXhxiRqTi",
-  "code_verifier": "VW.3Vh12r4c3jNMvyqjxs4V-wmGwrAEK1ykQAua~s~bfwdOIj2WkAuoFS6V8fAFzH0n7ncn.4cVi8UIyflWtWh8pqR~AUdNl~E-2sFCBxeWNRmKmDJZBH4oXiYwK854x",
+  "state": "XmkTdyJWLIDl9PXUlVb1J9MNxpg5lW",
+  "code_verifier": "cYHQn6Rh5di4o34n.fBWPCLCB6PSmW1aRZNGQzOIWxikFerdb0mSjmd3vBzpHAq2P0rGCKu3CjfYvUyAWhWJ2dYKlG9H5rYcQVhv1wT7rKX3C5Gs9ROq8Y2u39Mob7yE",
   "redirect_uri": "http://localhost:1",
   "scopes": [
     "https://www.googleapis.com/auth/gmail.readonly",
