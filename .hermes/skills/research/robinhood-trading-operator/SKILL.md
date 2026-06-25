@@ -153,7 +153,9 @@ After the morning operator report, the user wants a separate Agentic portfolio m
 
 When a post-morning scan finds a liquid gap leader that fits policy math, remember that broker review success is not a strategy mandate. It is valid to review a small starter order, journal the compliance quote disclosure, and still choose **no trade / wait for retest** if the entry is extended or catalyst confirmation is thin. See `references/post-morning-scan-gap-review-discipline.md`.
 
-For scheduled post-morning scans, if the default Google Workspace CLI reports unauthenticated, do not stop source/newsletter checks immediately: use the user's profile-scoped Gmail token pattern for read-only probes when present, and report the default-token issue separately. Also avoid overstating open-order certainty from recent-order history; query open states explicitly or phrase the limitation. See `references/post-morning-scan-profile-gmail-and-scanner-upgrades.md`.
+For scheduled post-morning scans, if the default Google Workspace CLI reports unauthenticated, do not stop source/newsletter checks immediately: use the user's profile-scoped Gmail token pattern for read-only probes when present, and report the default-token issue separately. Also avoid overstating open-order certainty from recent-order history; query open states explicitly or phrase the limitation. See `references/post-morning-scan-profile-gmail-and-scanner-upgrades.md` and `references/post-morning-open-order-and-gmail-probes.md`.
+
+When reporting open orders in Agentic scans, check all practical open-ish equity states (`new`, `queued`, `confirmed`, `unconfirmed`, `partially_filled`) before saying there are no open equity orders. If only one state was queried, state the limitation rather than implying certainty.
 
 ### Step 1 — Parse Intent
 

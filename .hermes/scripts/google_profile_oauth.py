@@ -51,11 +51,12 @@ READ_ONLY_WORKSPACE_SCOPES = [
 
 
 def scopes_for_profile(profile: str, meta: dict) -> list[str]:
-    access = meta.get("access", "")
-    if access == "gmail_read_only_workspace_admin":
-        return GMAIL_READ_ONLY_WORKSPACE_ADMIN_SCOPES
-    if profile == "personal-main" or access == "read_only_workspace":
-        return READ_ONLY_WORKSPACE_SCOPES
+    """Return the current required scopes for every Workspace profile.
+
+    User policy as of 2026-06-24: every Google profile, including
+    personal-main / affan.fareed@gmail.com, should have full Workspace
+    read/write coverage for persistent cross-project automation.
+    """
     return FULL_WORKSPACE_SCOPES
 
 

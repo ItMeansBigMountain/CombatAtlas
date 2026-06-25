@@ -1,8 +1,8 @@
 {
   "profile": "classicalechos",
   "email": "classicalechos@gmail.com",
-  "state": "0lsjhEOG7LINSme4gKeAtEZFHIafM5",
-  "code_verifier": "nqu1DxU.xbX7YIaxIakDoybZibca3K4NKq6JdSDRexU4bHhr2qbLjMuX0XcXb9Ipav2W9_AK7f0wqT9a.4NiPg~kG-Xk~ude0kylNz~hqczPcySClpqku2KUCcDHVOS.",
+  "state": "qfaw6ApTYF9T4J7mjO98gBCHB6SFUE",
+  "code_verifier": "B~Lhw7Q8zWxPanTONy~ODJiBuKc6USUfFmz0b0.E0HaUkhXKKP_o5GFJF4Gyncqi_xXgcuWzN6GCbDZvFIiU7iqzJ3lD8byI3~~a5P3Mlmhm-WabvMhFn9l64G82nJg1",
   "redirect_uri": "http://localhost:1",
   "scopes": [
     "https://www.googleapis.com/auth/gmail.readonly",

@@ -18,15 +18,17 @@ from email.utils import parseaddr
 from pathlib import Path
 from typing import Any
 
+from google.auth.exceptions import RefreshError
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 
 SCOPES = ["https://www.googleapis.com/auth/gmail.modify"]
 TOKEN_ROOT = Path("/opt/data/google_profiles")
+# Default sorting only targets profiles where Hermes is allowed to modify Gmail.
+# personal-main/affan is intentionally read-only; hermes-agent is not a user inbox lane.
 PROFILES = [
-    ("hermes-agent", "trapiistan@gmail.com"),
-    ("personal-main", "Affan.fareed@gmail.com"),
     ("personal-secondary", "fareed320@gmail.com"),
     ("classicalechos", "classicalechos@gmail.com"),
     ("burner", "laflametoast@gmail.com"),
@@ -150,34 +152,43 @@ def process_profile(profile: str, account_email: str, *, apply: bool, max_result
     token = TOKEN_ROOT / profile / "google_token.json"
     if not token.exists():
         return {"profile": profile, "email": account_email, "ok": False, "error": f"missing token {token}"}
-    service = gmail(profile)
-    label_cache: dict[str, str | None] = {}
-    matches = []
-    for msg in list_inbox_messages(service, max_results):
-        rule = classify(account_email, msg)
-        if not rule:
-            continue
-        if rule.label not in label_cache:
-            label_cache[rule.label] = ensure_label(service, rule.label, apply=apply)
-        label_id = label_cache[rule.label]
-        h = headers_from_msg(msg)
-        action = {
-            "id": msg["id"],
-            "from": safe(h.get("from"), 100),
-            "subject": safe(h.get("subject"), 140),
-            "label": rule.label,
-            "reason": rule.reason,
-            "applied": False,
-        }
-        if apply and label_id:
-            service.users().messages().modify(
-                userId="me",
-                id=msg["id"],
-                body={"addLabelIds": [label_id], "removeLabelIds": ["INBOX"] if rule.remove_inbox else []},
-            ).execute()
-            action["applied"] = True
-        matches.append(action)
-    return {"profile": profile, "email": account_email, "ok": True, "apply": apply, "matches": matches, "match_count": len(matches)}
+    try:
+        service = gmail(profile)
+        label_cache: dict[str, str | None] = {}
+        matches = []
+        for msg in list_inbox_messages(service, max_results):
+            rule = classify(account_email, msg)
+            if not rule:
+                continue
+            if rule.label not in label_cache:
+                label_cache[rule.label] = ensure_label(service, rule.label, apply=apply)
+            label_id = label_cache[rule.label]
+            h = headers_from_msg(msg)
+            action = {
+                "id": msg["id"],
+                "from": safe(h.get("from"), 100),
+                "subject": safe(h.get("subject"), 140),
+                "label": rule.label,
+                "reason": rule.reason,
+                "applied": False,
+            }
+            if apply and label_id:
+                service.users().messages().modify(
+                    userId="me",
+                    id=msg["id"],
+                    body={"addLabelIds": [label_id], "removeLabelIds": ["INBOX"] if rule.remove_inbox else []},
+                ).execute()
+                action["applied"] = True
+            matches.append(action)
+        return {"profile": profile, "email": account_email, "ok": True, "apply": apply, "matches": matches, "match_count": len(matches)}
+    except RefreshError as exc:
+        return {"profile": profile, "email": account_email, "ok": False, "blocked": "auth", "error": safe(exc, 500)}
+    except HttpError as exc:
+        status = getattr(getattr(exc, "resp", None), "status", None)
+        blocked = "permission" if status in {401, 403} else "api"
+        return {"profile": profile, "email": account_email, "ok": False, "blocked": blocked, "status": status, "error": safe(exc, 500)}
+    except Exception as exc:
+        return {"profile": profile, "email": account_email, "ok": False, "blocked": "runtime", "error": safe(exc, 500)}
 
 
 def main() -> int:

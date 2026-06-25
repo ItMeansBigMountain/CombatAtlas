@@ -363,8 +363,48 @@ def download_clips(queries: list[str], work_dir: Path, needed: int = 10) -> list
     return paths
 
 
-def generate_voiceover(text: str, out: Path, allow_edge_fallback: bool = False) -> str:
+def write_parrot_voice_queue(text: str, work_dir: Path, reason: str) -> Path:
+    """Prepare Parrot AI browser-first voiceover chunks when ElevenLabs fails.
+
+    Parrot currently has no proven unattended API adapter. This queue gives the
+    browser/manual automation path exact chunks to generate with Audio only.
+    """
+    parrot_dir = work_dir / 'parrot_voice_queue'
+    parrot_dir.mkdir(parents=True, exist_ok=True)
+    words = text.replace('\n', ' ').split()
+    chunks: list[str] = []
+    cur = ''
+    for word in words:
+        candidate = (cur + ' ' + word).strip()
+        if len(candidate) > 480 and cur:
+            chunks.append(cur)
+            cur = word
+        else:
+            cur = candidate
+    if cur:
+        chunks.append(cur)
+    manifest = {
+        'status': 'needs_parrot_browser_export',
+        'reason': reason,
+        'service_url': 'https://www.tryparrotai.com/app/create-new',
+        'settings': {
+            'mode': 'AI Voice / Audio only',
+            'chunk_character_limit': 500,
+            'public_metadata_voice_style': 'original charismatic avatar/news narrator; do not claim celebrity endorsement',
+            'output_pattern': 'parrot_chunk_001.mp3 ... parrot_chunk_NNN.mp3',
+            'concat_command': "printf \"file '%s'\\n\" parrot_chunk_*.mp3 > concat.txt && ffmpeg -y -f concat -safe 0 -i concat.txt -c copy ../voice.mp3",
+        },
+        'chunks': [{'index': i + 1, 'chars': len(chunk), 'text': chunk} for i, chunk in enumerate(chunks)],
+    }
+    (parrot_dir / 'manifest.json').write_text(json.dumps(manifest, indent=2), encoding='utf-8')
+    for i, chunk in enumerate(chunks, 1):
+        (parrot_dir / f'chunk_{i:03d}.txt').write_text(chunk, encoding='utf-8')
+    return parrot_dir / 'manifest.json'
+
+
+def generate_voiceover(text: str, out: Path, allow_edge_fallback: bool = False, parrot_on_elevenlabs_fail: bool = True) -> str:
     key = elevenlabs_key()
+    eleven_error: Exception | None = None
     if key:
         payload = json.dumps({
             'text': text,
@@ -383,11 +423,20 @@ def generate_voiceover(text: str, out: Path, allow_edge_fallback: bool = False) 
                 raise RuntimeError(f'Voiceover too small: {out.stat().st_size} bytes')
             return 'elevenlabs'
         except Exception as exc:
+            eleven_error = exc
+            if parrot_on_elevenlabs_fail:
+                manifest = write_parrot_voice_queue(text, out.parent, f'ElevenLabs failed: {exc}')
+                raise RuntimeError(f'ElevenLabs failed; Parrot AI voice queue prepared at {manifest}') from exc
             if not allow_edge_fallback:
                 raise
             print(f'ElevenLabs unavailable for this render ({exc}); using edge-tts REVIEW fallback')
-    elif not allow_edge_fallback:
-        raise RuntimeError('Missing ElevenLabs key')
+    else:
+        eleven_error = RuntimeError('Missing ElevenLabs key')
+        if parrot_on_elevenlabs_fail:
+            manifest = write_parrot_voice_queue(text, out.parent, 'Missing ElevenLabs key')
+            raise RuntimeError(f'Missing ElevenLabs key; Parrot AI voice queue prepared at {manifest}')
+        if not allow_edge_fallback:
+            raise eleven_error
 
     # Review fallback only; do not treat as final channel voice unless user approves.
     escaped = text.replace('\n', ' ')[:3500]
@@ -475,6 +524,7 @@ def main() -> None:
     parser.add_argument('--no-upload', action='store_true', help='Render and verify only; do not upload/trash source email')
     parser.add_argument('--keep-workspace', action='store_true')
     parser.add_argument('--allow-edge-tts-fallback', action='store_true', help='Review renders only: use edge-tts if ElevenLabs quota/auth blocks')
+    parser.add_argument('--no-parrot-on-elevenlabs-fail', dest='parrot_on_elevenlabs_fail', action='store_false', default=True, help='Disable Parrot AI queue creation when ElevenLabs fails')
     parser.add_argument('--fixture', action='store_true', help='Render one representative test item without Gmail')
     args = parser.parse_args()
 
@@ -505,7 +555,12 @@ def main() -> None:
             (work_dir / 'queries.json').write_text(json.dumps(queries, indent=2))
 
             voice = work_dir / 'voice.mp3'
-            voice_provider = generate_voiceover(narration, voice, allow_edge_fallback=args.allow_edge_tts_fallback)
+            voice_provider = generate_voiceover(
+                narration,
+                voice,
+                allow_edge_fallback=args.allow_edge_tts_fallback,
+                parrot_on_elevenlabs_fail=args.parrot_on_elevenlabs_fail,
+            )
             print(f'Voiceover: {voice.stat().st_size} bytes via {voice_provider}')
 
             clips = download_clips(queries, work_dir, needed=10)

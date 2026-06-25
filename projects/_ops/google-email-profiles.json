@@ -1,9 +1,9 @@
 {
-  "last_verified_utc": "2026-06-12T00:00:00Z",
+  "last_verified_utc": "2026-06-24T00:00:00Z",
   "rules": {
     "no_tables_in_discord_reports": true,
     "youtube_upload_default": "public",
-    "affan_fareed_policy": "gmail_read_only_workspace_admin",
+    "affan_fareed_policy": "full_workspace",
     "newsletter_source_profile": "personal-secondary",
     "newsletter_source_email": "fareed320@gmail.com",
     "calendar_profile": "trapiistan",
@@ -16,31 +16,50 @@
       "email": "fareed320@gmail.com",
       "access": "full_workspace",
       "token_path": "/opt/data/google_profiles/personal-secondary/google_token.json",
-      "uses": ["newsletter inbox", "email sorting", "delete processed newsletter emails", "source content"]
+      "uses": [
+        "newsletter inbox",
+        "email sorting",
+        "delete processed newsletter emails",
+        "source content"
+      ]
     },
     "trapiistan": {
       "email": "trapiistan@gmail.com",
       "access": "full_workspace",
       "token_path": "/opt/data/google_profiles/trapiistan/google_token.json",
-      "uses": ["Hermes main workspace", "content calendar", "automation docs", "reports"]
+      "uses": [
+        "Hermes main workspace",
+        "content calendar",
+        "automation docs",
+        "reports"
+      ]
     },
     "classicalechos": {
       "email": "classicalechos@gmail.com",
       "access": "full_workspace",
       "token_path": "/opt/data/google_profiles/classicalechos/google_token.json",
-      "uses": ["content channel workspace", "review/archive sending"]
+      "uses": [
+        "content channel workspace",
+        "review/archive sending"
+      ]
     },
     "burner": {
       "email": "laflametoast@gmail.com",
       "access": "full_workspace",
       "token_path": "/opt/data/google_profiles/burner/google_token.json",
-      "uses": ["burner/disposable sending", "temporary automation"]
+      "uses": [
+        "burner/disposable sending",
+        "temporary automation"
+      ]
     },
     "personal-main": {
       "email": "affan.fareed@gmail.com",
-      "access": "gmail_read_only_workspace_admin",
+      "access": "full_workspace",
       "token_path": "/opt/data/google_profiles/personal-main/google_token.json",
-      "uses": ["read-only Gmail", "full/admin Calendar Drive Docs Sheets Contacts"]
+      "uses": [
+        "primary personal Workspace",
+        "full Gmail/Calendar/Drive/Docs/Sheets/Contacts automation"
+      ]
     }
   },
   "youtube_profiles": {
@@ -49,14 +68,24 @@
       "channel_title": "Sosai Oyama",
       "channel_id": "UCsxzQlusqwmMUdjMvKAJDfA",
       "token_path": "/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json",
-      "scopes": ["youtube.upload", "youtube.force-ssl", "youtube.readonly", "yt-analytics.readonly"]
+      "scopes": [
+        "youtube.upload",
+        "youtube.force-ssl",
+        "youtube.readonly",
+        "yt-analytics.readonly"
+      ]
     },
     "classicalechos": {
       "email": "classicalechos@gmail.com",
       "channel_title": "Classical Echos",
       "channel_id": "UCcIpxiU2CLEsBdHcc7_lcyA",
       "token_path": "/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json",
-      "scopes": ["youtube.upload", "youtube.force-ssl", "youtube.readonly", "yt-analytics.readonly"]
+      "scopes": [
+        "youtube.upload",
+        "youtube.force-ssl",
+        "youtube.readonly",
+        "yt-analytics.readonly"
+      ]
     }
   }
 }

@@ -8,7 +8,7 @@ Cloud Engineer at GM Financial, TX; wants concise Discord replies, smoke-tested 
 §
 User wants project backups to live under /opt/data/HeRmEz/projects, specifically /opt/data/HeRmEz/projects/_backups for backup artifacts, rather than under /opt/data/HeRmEz/.hermes.
 §
-Google/YT: fareed320=personal-secondary newsletter source; Trapiistan/Sosai uploads + calendar; classicalechos=Classical Echos; affan read-only.
+Google/YT: fareed320 source; Trapiistan/Sosai uploads+calendar; Classical Echos; all Google profiles incl. affan need full Workspace read/write scopes.
 §
 User allows known junk/spam email cleanup without per-item review; newsletter/source emails delete only after verified YouTube upload.
 §

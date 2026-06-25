@@ -8,12 +8,11 @@ Use this for the user's multi-account Google Workspace + YouTube automation.
 - `trapiistan@gmail.com`: Hermes workspace/calendar account; owns the operational calendar lane. Its YouTube token owns **Sosai Oyama** and is the canonical upload destination for videos generated from `fareed320` newsletter emails.
 - `classicalechos@gmail.com`: Classical Echos content/channel account. Use its YouTube token for Classical Echos uploads and metadata edits only; do not use it for `fareed320` newsletter videos unless the user explicitly requests that channel.
 - `burner` / `laflametoast@gmail.com`: disposable/burner Workspace account with full automation.
-- `personal-main` / `affan.fareed@gmail.com`: Gmail read-only, but full/admin scopes for non-email Workspace services. Do not request Gmail write/delete/send/settings scopes for this account.
+- `personal-main` / `affan.fareed@gmail.com`: primary personal Workspace account. As of 2026-06-24, user wants full read/write Workspace automation for this profile too.
 
 ## Scope policy
 
-- Full Workspace accounts: Gmail readonly/modify/send/settings.basic, Calendar, Drive, Docs, Sheets, Contacts.
-- Personal-main account: Gmail readonly only for email, plus Calendar, Drive, Docs, Sheets, Contacts full/admin.
+- Full Workspace accounts, including personal-main: Gmail readonly/modify/send/settings.basic, Calendar, Drive, Docs, Sheets, Contacts.
 - YouTube channel tokens: youtube.upload, youtube.force-ssl, youtube.readonly, yt-analytics.readonly.
 
 ## OAuth hygiene

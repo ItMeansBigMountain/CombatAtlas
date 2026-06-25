@@ -15,7 +15,7 @@ Use this when repairing the user's Google Workspace auth across all named profil
 
 - `personal-secondary` / `fareed320@gmail.com`: full Workspace automation. Legacy `fareed320.old-*` tokens may prove Gmail access, but may only contain `gmail.modify`; do not treat them as full Workspace readiness.
 - `trapiistan`, `classicalechos`, and `burner`: full Workspace automation.
-- `personal-main` / `affan.fareed@gmail.com`: Gmail read-only plus full Calendar/Drive/Docs/Sheets/Contacts. Never request Gmail send/modify/settings scopes for this account.
+- `personal-main` / `affan.fareed@gmail.com`: full Workspace automation, including Gmail readonly/modify/send/settings plus Calendar/Drive/Docs/Sheets/Contacts. The user explicitly removed the former read-only Gmail restriction on 2026-06-24.
 
 ## Verification pattern
 
