@@ -1,6 +1,6 @@
 # Social Video Performance Learnings
 
-Last updated: `2026-06-25T01:46:20.484804+00:00`
+Last updated: `2026-06-26T01:46:30.752879+00:00`
 
 ## Metrics status
 
