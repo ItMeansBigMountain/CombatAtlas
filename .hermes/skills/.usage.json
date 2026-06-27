@@ -172,14 +172,14 @@
     "archived_at": null,
     "created_at": "2026-05-31T17:07:23.940211+00:00",
     "created_by": null,
-    "last_patched_at": "2026-06-25T23:11:57.501459+00:00",
-    "last_used_at": "2026-06-25T23:10:54.185695+00:00",
-    "last_viewed_at": "2026-06-25T23:10:54.183412+00:00",
-    "patch_count": 100,
+    "last_patched_at": "2026-06-26T03:42:13.541845+00:00",
+    "last_used_at": "2026-06-26T13:50:58.933771+00:00",
+    "last_viewed_at": "2026-06-26T03:39:45.782291+00:00",
+    "patch_count": 101,
     "pinned": false,
     "state": "active",
-    "use_count": 118,
-    "view_count": 76
+    "use_count": 122,
+    "view_count": 77
   },
   "hermes-agent": {
     "archived_at": null,
@@ -394,12 +394,12 @@
     "created_at": "2026-06-12T15:23:13.659551+00:00",
     "created_by": null,
     "last_patched_at": "2026-06-25T13:54:16.968407+00:00",
-    "last_used_at": "2026-06-25T19:00:55.091376+00:00",
+    "last_used_at": "2026-06-26T19:00:59.981116+00:00",
     "last_viewed_at": "2026-06-24T13:50:54.003912+00:00",
     "patch_count": 25,
     "pinned": false,
     "state": "active",
-    "use_count": 53,
+    "use_count": 57,
     "view_count": 24
   },
   "segment-anything-model": {
@@ -433,12 +433,12 @@
     "created_at": "2026-06-07T00:28:30.328615+00:00",
     "created_by": null,
     "last_patched_at": "2026-06-24T20:41:12.821532+00:00",
-    "last_used_at": "2026-06-26T01:46:18.455821+00:00",
+    "last_used_at": "2026-06-27T01:45:24.922775+00:00",
     "last_viewed_at": "2026-06-24T20:35:22.002904+00:00",
     "patch_count": 33,
     "pinned": false,
     "state": "active",
-    "use_count": 57,
+    "use_count": 60,
     "view_count": 21
   },
   "software-development/osrs-plugins": {
@@ -537,12 +537,12 @@
     "created_at": "2026-06-07T00:21:18.846681+00:00",
     "created_by": null,
     "last_patched_at": "2026-06-20T02:05:26.424920+00:00",
-    "last_used_at": "2026-06-26T01:46:18.471794+00:00",
+    "last_used_at": "2026-06-27T01:45:24.940485+00:00",
     "last_viewed_at": "2026-06-25T23:10:54.178597+00:00",
     "patch_count": 115,
     "pinned": false,
     "state": "active",
-    "use_count": 97,
+    "use_count": 100,
     "view_count": 61
   },
   "yuanbao": {

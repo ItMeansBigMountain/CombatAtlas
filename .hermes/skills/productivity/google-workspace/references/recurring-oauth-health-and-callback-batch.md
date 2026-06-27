@@ -66,9 +66,16 @@ Recommended business statuses:
 
 This prevents misleading cron outcomes where the scheduler says `ok` but the actual business result was blocked.
 
+## Long-lived token hygiene
+
+Current Google Identity guidance: access tokens are short-lived; durable automation depends on receiving and securely storing a refresh token from an OAuth authorization-code flow with `access_type=offline`. Google can still expire or revoke refresh tokens, so crons must handle refresh failure gracefully. Practical causes include user revocation/password-security events, testing-mode OAuth apps, unused tokens, scope changes, and per-client/user token limits.
+
+For this user's automation, generate URLs with `access_type=offline` and `prompt=consent`, then verify the stored token refreshes. To avoid the common 7-day refresh-token failure, ensure the Google Cloud OAuth consent app is not left in Testing mode for external Gmail users; move it to Production when appropriate, or use an Internal Workspace app where available. Sensitive/restricted scopes may still show unverified-app warnings or need Google verification for broad public use, but personal/small-user production apps can often continue with click-through consent.
+
 ## Pitfalls
 
 - `login_hint` is not an account lock; the user must confirm the consent-screen account/channel.
 - A Google account can own multiple YouTube channels/brand channels; always verify channel ID after exchange.
 - Gmail-only success is not full Workspace success; Calendar/Drive can still fail with insufficient scopes.
 - A localhost callback code is single-use and short-lived; on `invalid_grant`, generate a fresh URL instead of reusing the pasted callback.
+- There is no promise that a Google refresh token "never expires"; the best achievable setup is offline refresh tokens from a Production/Internal OAuth app plus health checks and fast reauth when Google revokes one.
