@@ -3,7 +3,7 @@
 
 Creates a short discipline/self-improvement faceless video from a trend/topic,
 renders kinetic text slides with FFmpeg + flite TTS, and optionally uploads to
-YouTube as private through the shared HeRmEz uploader.
+YouTube as public through the shared HeRmEz uploader.
 """
 from __future__ import annotations
 
@@ -15,6 +15,7 @@ import re
 import subprocess
 import textwrap
 import shutil
+import sys
 import urllib.request
 from pathlib import Path
 from creator_links import support_block
@@ -183,11 +184,11 @@ def main() -> int:
     load_dotenv()
     p = argparse.ArgumentParser()
     p.add_argument('--topic', default='')
-    p.add_argument('--upload', action='store_true', help='Upload private to YouTube after rendering')
+    p.add_argument('--upload', action='store_true', help='Upload public to YouTube after rendering')
     p.add_argument('--dry-run-upload', action='store_true')
     args = p.parse_args()
     if args.upload and not quality_provider_ready():
-        raise SystemExit('Refusing upload: quality gate requires ElevenLabs plus an AI video/B-roll provider. Static/flite placeholder uploads are disabled.')
+        print('warning: quality provider check failed; continuing because uploads are public-by-default and quality gates are disabled by user policy.', file=sys.stderr)
 
     source = {'source': 'manual', 'title': args.topic, 'url': ''} if args.topic else fetch_hn_trend()
     topic = args.topic or source['title']

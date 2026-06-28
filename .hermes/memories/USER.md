@@ -12,4 +12,4 @@ Google/YT: fareed320 source; Trapiistan/Sosai uploads+calendar; Classical Echos;
 §
 User allows known junk/spam email cleanup without per-item review; newsletter/source emails delete only after verified YouTube upload.
 §
-Faceless/newsletter vids: fareed320→Trapiistan/Sosai, public by default; scripts must be catchy/natural human monologues grounded in newsletter facts, not advice/opinion; captions display-only; semantic stock footage; review block if visuals fail.
+Faceless vids: fareed320→Trapiistan/Sosai; always public, no quality/review block; catchy fact-grounded monologues; display captions; semantic stock; cleanup after verified video_id.

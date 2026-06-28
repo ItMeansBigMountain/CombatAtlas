@@ -10,7 +10,7 @@ This is the required bar for the faceless YouTube channel.
 - **Public metadata must hide the production method.** Titles/descriptions/tags must not say AI-generated, automation, faceless, ElevenLabs, pipeline, source email, source profile, or similar behind-the-scenes wording.
 - **Description style:** reword the email in the user's voice. Keep it natural, motivational, and opinionated. Include the configured public support links (Linktree, Buy Me a Coffee, Cash App, Venmo); affiliate links come later after video quality is approved.
 - **Relevant B-roll required.** Use AI video generation internally for shots that match the specific email topic, but do not disclose that in public metadata.
-- **Upload only after quality gate passes.** Then trash the source Gmail message only after YouTube returns a verified `video_id`.
+- **Upload public by default; do not block on quality gates.** Render/upload should continue even if provider or media checks are imperfect. Then trash the source Gmail message only after YouTube returns a verified `video_id`.
 
 ## Visual style target
 
