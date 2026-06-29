@@ -43,6 +43,8 @@ For the successful backlog upload pattern and the latest user correction on natu
 
 For regenerating bad newsletter uploads after narration drift, follow `references/newsletter-grounded-replacement-workflow-2026-06.md`: the script must relay the newsletter's facts in a personified human voice, not insert the assistant's advice/opinion; ban phrases like "build one proof today" and "My read:"; use short proven stock queries instead of long sentence-like API queries; log replacement mappings with `replacement_for`.
 
+For replaying stopped/failed social-video jobs, preventing duplicate newsletter uploads, respecting the user's no-paid-clipping-provider choice, and handling Viral Radar `blocked_source` correctly, follow `references/social-video-recovery-and-source-policy-2026-06.md`.
+
 For the current viral packaging standard, read `/opt/data/HeRmEz/projects/faceless-youtube-channel/VIRAL_YOUTUBE_SYSTEM.md` before rendering or uploading faceless/newsletter videos.
 
 For Classical Echos newsletter-video rendering after the user's 2-minute quality correction, follow `references/newsletter-video-rendering-provider-fallbacks-2026-06.md`: target ~120 seconds, require multiple relevant visual clips, use Mixkit as a vetted stock fallback when Pexels is blocked, and treat edge-tts as review-only unless explicitly approved.
@@ -79,7 +81,7 @@ visuals:
   not_required_for_standard_path: higgsfield
 ```
 
-Keep Viral-Clip Radar separate: it clips creator long-form source videos into 9:16 captioned shorts and does **not** need stock footage by default. For YouTube source acquisition failures, follow `references/youtube-source-acquisition-first-aid-2026-06.md`: before paid clipping APIs, update/harden the current downloader, try multiple yt-dlp clients plus bgutil/PO-token support, accept cookies/proxy env vars, and only then escalate to Opus/Choppity/Vizard/Klap/MuAPI or local/Drive MP4 source.
+Keep Viral-Clip Radar separate: it clips creator long-form source videos into 9:16 captioned shorts and does **not** need stock footage by default. For YouTube source acquisition failures, follow `references/youtube-source-acquisition-first-aid-2026-06.md`: before paid clipping APIs, update/harden the current downloader, try multiple yt-dlp clients plus bgutil/PO-token support, accept cookies/proxy env vars, and only then escalate to local/Drive MP4 source or external providers if the user wants that route. If the user says not to use clipping-provider keys, follow `references/social-video-recovery-and-source-policy-2026-06.md`: disable external-provider fallback by default and report `blocked_source` with cookies/proxy/local-source options instead of repeating missing provider-key blockers.
 ```yaml
 elevenlabs:
   api_key_env: "EllevenLabsKey"  # also accept ELEVENLABS_API_KEY, XI_API_KEY, ELEVEN_API_KEY

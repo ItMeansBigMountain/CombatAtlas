@@ -1,9 +1,9 @@
 {
-  "last_report_path": "/opt/data/logs/curator/20260621-042032",
-  "last_run_at": "2026-06-21T04:20:32.111152+00:00",
-  "last_run_duration_seconds": 334.386813,
-  "last_run_summary": "auto: no changes; llm: Completed the umbrella-building consolidation pass.\n\nCreated 3 new class-level umbrella skills:\n\n1. **`hermes-agent-operations`**\n   - Consolidates Hermes operational workflows: skill authoring, cron jobs, Kanban workers, specialist profile…\narchived 13 skill(s):\n  • client-editable-django-sites — pruned (stale)\n  • collectible-card-scanner-apps — pruned (stale)\n  • cron-job-management — pruned (stale)\n  • dogfood — pruned (stale)\n  • hermes-agent-skill-authoring — pruned (stale)\n  • high-ticket-offer-architecture — pruned (stale)\n  • kanban-worker — pruned (stale)\n  • node-inspect-debugger — pruned (stale)\n  • operator-morning-reports — pruned (stale)\n  • osrs-plugins — pruned (stale)\n  … and 3 more\nfull report: hermes curator status",
+  "last_report_path": "/opt/data/logs/curator/20260628-042106",
+  "last_run_at": "2026-06-28T04:21:06.667853+00:00",
+  "last_run_duration_seconds": 154.869113,
+  "last_run_summary": "auto: no changes; llm: Processed the candidate set of 3 skills and performed the only viable umbrella consolidation present.\n\nSummary:\n- Created new umbrella skill: `platform-device-integrations`\n  - Covers specialized external integrations operated from Hermes.\n…\narchived 2 skill(s):\n  • openhue — pruned (stale)\n  • yuanbao — pruned (stale)\nfull report: hermes curator status",
   "last_run_summary_shown_at": "2026-05-31T01:46:49.188313+00:00",
   "paused": false,
-  "run_count": 6
+  "run_count": 7
 }

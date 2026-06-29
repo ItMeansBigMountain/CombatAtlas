@@ -28,7 +28,7 @@ EXTERNAL_PROVIDER = ROOT / "scripts" / "external_clip_provider.py"
 
 def run(cmd: list[str]) -> subprocess.CompletedProcess[str]:
     env = os.environ.copy()
-    env.setdefault("YOUTUBE_UPLOAD_TOKEN", "/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json")
+    env["YOUTUBE_UPLOAD_TOKEN"] = os.getenv("YOUTUBE_UPLOAD_TOKEN") or "/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json"
     return subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True, env=env)
 
 
@@ -255,6 +255,20 @@ def main() -> int:
         try:
             source = ensure_source(manifest)
         except Exception as source_exc:
+            if os.getenv("VIRAL_RADAR_USE_EXTERNAL_PROVIDER") != "1":
+                print(json.dumps({
+                    "job": "viral_radar_daily_upload",
+                    "status": "blocked_source",
+                    "manifest": str(single_manifest),
+                    "selected_from_manifest": str(manifest_path),
+                    "selected_hook": selected_clip.get("hook"),
+                    "seed_result": seed_result,
+                    "source_error": str(source_exc),
+                    "source_url": manifest.get("source_url"),
+                    "next_step": "External clipping providers are intentionally disabled. Fix source acquisition with YouTube cookies, residential proxy, or a local/Drive MP4 source.",
+                }, indent=2))
+                return 0
+
             provider_result = external_clip_fallback(manifest_path, manifest, selected_clip)
             provider_path_raw = str(provider_result.get("path") or "")
             provider_path = Path(provider_path_raw) if provider_path_raw else Path("/__no_provider_clip__")
@@ -299,7 +313,7 @@ def main() -> int:
                 "external_provider": provider_result,
                 "source_url": manifest.get("source_url"),
                 "manifest": str(manifest_path),
-                "note": "Direct yt-dlp source download is disabled unless VIRAL_RADAR_ALLOW_DIRECT_YOUTUBE_DOWNLOAD=1. Use Opus/Choppity/Vizard/Klap/Drive-compatible source paths.",
+                "note": "External providers require VIRAL_RADAR_USE_EXTERNAL_PROVIDER=1 and provider credentials. Otherwise use cookies/proxy/local Drive MP4 source.",
             }, indent=2))
         render_proc = run([sys.executable, str(RENDER), str(single_manifest), "--suffix=-daily"])
         if render_proc.returncode != 0:

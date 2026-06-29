@@ -1,23 +1,35 @@
 # Social Video Performance Learnings
 
-Last updated: `2026-06-28T01:45:37.374786+00:00`
+Last updated: `2026-06-29T01:45:42.355170+00:00`
 
 ## Metrics status
 
 - Live YouTube metrics are fetched with OAuth tokens from the same upload lane/account, not a generic API key.
 - This preserves private/unlisted visibility and prevents mixing channel accounts.
-- Token/account errors:
-  - `/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json`: RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
 
 ## faceless-youtube-channel
 
-- Uploads logged: 207 total; 191 public/metric-eligible.
-- Live metrics unavailable for metric-eligible videos in this snapshot; inspect token/account errors above.
+- Uploads logged: 218 total; 209 public/metric-eligible.
+- Median public views in latest snapshot: 5.0.
+- Current winners to study:
+  - 203 views / 1 likes / 0 comments — Print On Demand (POD) Management — https://youtu.be/K2nMayJr8Oo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 203 views / 1 likes / 0 comments — Print On Demand (POD) Management — https://youtu.be/K2nMayJr8Oo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 134 views / 0 likes / 0 comments — Bezos' AI engineer 🤖, SpaceX record IPO 💰, building vertical agents 👨‍💻 — https://youtu.be/g4c5O0DI-ys — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 121 views / 1 likes / 0 comments — The Terror of Knowing What The World Is About — https://youtu.be/b6QcYwU9SPo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 106 views / 0 likes / 0 comments — Anthropic Fable shutdown , GLM-5.2 , OpenRouter Fusion — https://youtu.be/hjwDcBryTQ8 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+- Hook/title words showing up in better performers: https, cash, sosaioyama, venmo, will, people, tools, output, read, into, proof, today.
 
 ## viral-clip-radar
 
-- Uploads logged: 23 total; 5 public/metric-eligible.
-- Live metrics unavailable for metric-eligible videos in this snapshot; inspect token/account errors above.
+- Uploads logged: 23 total; 8 public/metric-eligible.
+- Median public views in latest snapshot: 378.0.
+- Current winners to study:
+  - 1036 views / 18 likes / 1 comments — Two types of procrastination and how activation changes behavior #Shorts — https://youtu.be/XJ4QzlHq2TE — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 944 views / 26 likes / 0 comments — The viral moment is not the landing. It is proof under pressure. #Shorts — https://youtu.be/JBX3lRhKhy4 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 919 views / 24 likes / 0 comments — The viral moment is not the landing. It is proof under pressure. #Shorts — https://youtu.be/ParX8IBet5I — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 625 views / 14 likes / 0 comments — Dopamine is wanting/craving, not just pleasure #Shorts — https://youtu.be/66PdAQkydMU — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 131 views / 1 likes / 0 comments — Seven minutes of terror #Shorts — https://youtu.be/VZfCiXLXwN0 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+- Hook/title words showing up in better performers: source, radar, youtube, clip, huberman, https, watch, transformative, additions, vertical, captions, hook.
 
 ## Operating rule for future cron runs
 

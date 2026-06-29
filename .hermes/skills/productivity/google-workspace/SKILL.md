@@ -23,7 +23,7 @@ metadata:
 
 On this user's workspace, use the unified helper `/opt/data/scripts/google_reauth_workflow.py` for repeatable reauth across Google Workspace profile tokens and YouTube channel upload tokens. It inventories profiles, generates fresh profile-scoped PKCE auth URLs, exchanges labeled localhost callbacks, and verifies harmless live probes without printing secrets. Examples: `python3 /opt/data/scripts/google_reauth_workflow.py inventory`, `workspace-auth-url personal-secondary`, `youtube-auth-url classicalechos`, `workspace-exchange <profile> '<callback>'`, `youtube-exchange <profile> '<callback>'`, `verify workspace <profile>`, `verify youtube <profile>`.
 
-When reauthing YouTube upload automation, see `references/youtube-oauth-callback-exchange.md` for the callback exchange pattern, scope set, localhost `OAUTHLIB_INSECURE_TRANSPORT=*** pitfall, channel identity verification, and explicit-token uploader check.
+When reauthing YouTube upload automation, see `references/youtube-oauth-callback-exchange.md` for the callback exchange pattern, scope set, localhost `OAUTHLIB_INSECURE_TRANSPORT=*** pitfall, channel identity verification, and explicit-token uploader check. After a token verifies, replay the actual failing cron/script and inspect its `YOUTUBE_UPLOAD_TOKEN` default/env propagation; a stale script default can keep producing `invalid_grant` against a different channel token even though the freshly reauthed token is valid.
 
 Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OAuth and a thin CLI wrapper. When `gws` is installed, the skill uses it as the execution backend for broader Google Workspace coverage; otherwise it falls back to the bundled Python client implementation.
 

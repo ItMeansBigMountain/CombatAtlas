@@ -541,14 +541,34 @@ def wikimedia_image(query: str, out: Path) -> tuple[Path | None, dict | None]:
     return None, {'provider':'wikimedia_image','query':query,'error':'no_downloadable_result'}
 
 
+def compact_visual_queries(query: str) -> list[str]:
+    """Use short stock-search phrases, not sentence-like scene descriptions."""
+    q=re.sub(r'[^a-zA-Z0-9 ]+',' ',query).lower()
+    stop={'the','this','that','with','working','busy','new','state','about','from','into','will','versus','vs'}
+    words=[w for w in q.split() if len(w)>2 and w not in stop]
+    themed=[]
+    if any(w in words for w in ['ai','openai','artificial','intelligence','llm','model','models']): themed += ['artificial intelligence', 'technology startup', 'data center']
+    if any(w in words for w in ['security','hack','bug','macos','data','extortion']): themed += ['cybersecurity', 'computer security', 'server room']
+    if any(w in words for w in ['founder','startup','solopreneur','business','moat']): themed += ['startup founder', 'entrepreneur laptop', 'business meeting']
+    if any(w in words for w in ['market','stock','money','economy','polymarket']): themed += ['stock market', 'finance charts', 'trading desk']
+    base=' '.join(words[:3]) if words else query
+    out=[]
+    for cand in [query, base, *themed, 'technology office', 'laptop work']:
+        cand=' '.join(cand.split())
+        if cand and cand not in out:
+            out.append(cand)
+    return out[:7]
+
+
 def visual_asset(query: str, out_base: Path) -> tuple[Path | None, dict]:
-    safe=re.sub(r'[^a-zA-Z0-9]+','-',query.lower()).strip('-')[:45] or 'visual'
     attempts=[]
-    for fn, ext in ((pexels_video,'.mp4'), (pixabay_video,'.mp4'), (pexels_photo,'.jpg'), (shutterstock_video,'.mp4'), (wikimedia_image,'.jpg')):
-        path=out_base.with_name(out_base.name+'-'+safe+ext)
-        got, meta=fn(query,path)
-        if meta: attempts.append(meta)
-        if got: return got, meta or {'provider':fn.__name__,'query':query}
+    for q in compact_visual_queries(query):
+        safe=re.sub(r'[^a-zA-Z0-9]+','-',q.lower()).strip('-')[:45] or 'visual'
+        for fn, ext in ((pexels_video,'.mp4'), (pixabay_video,'.mp4'), (pexels_photo,'.jpg'), (shutterstock_video,'.mp4'), (wikimedia_image,'.jpg')):
+            path=out_base.with_name(out_base.name+'-'+safe+ext)
+            got, meta=fn(q,path)
+            if meta: attempts.append(meta)
+            if got: return got, meta or {'provider':fn.__name__,'query':q,'original_query':query}
     return None, {'provider':'fallback_dynamic','query':query,'attempts':attempts}
 
 

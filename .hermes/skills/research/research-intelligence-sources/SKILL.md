@@ -25,14 +25,17 @@ Use this umbrella when the user needs current or domain-specific intelligence fr
 | Ongoing blog/news monitoring | Blog/RSS watcher | Prefer feed-backed monitoring for recurring source surveillance; summarize deltas rather than full archives. |
 | Market-implied forecasts | Polymarket | Query markets, prices, orderbooks, and history; distinguish market probability from factual truth. |
 | LLM knowledge-base exploration | LLM wiki | Build/query an interlinked markdown knowledge base for model concepts, papers, and terminology. |
+| Local service/application intake | Web search + browser | Search by the user's actual location, prefer official provider pages with application/contact handles, and summarize eligibility before asking for personal details. |
 
 ## Workflow
 
-1. Clarify the research question and decide whether it needs current web facts, papers, market odds, or a local knowledge base.
+1. Clarify the research question and decide whether it needs current web facts, papers, market odds, a local knowledge base, or a local provider/application flow.
 2. Use the narrowest source that answers the question; avoid mixing sources unless cross-validation matters.
-3. Capture durable handles: arXiv IDs, feed URLs, market slugs/IDs, page paths, or source URLs.
-4. Summarize evidence separately from interpretation.
-5. If the task is recurring, convert it to a monitor/subscription rather than a one-off search.
+3. For location-sensitive services, use the user's current/corrected location immediately; if the user corrects the location mid-turn, pivot rather than continuing with the earlier geography.
+4. Capture durable handles: arXiv IDs, feed URLs, market slugs/IDs, page paths, provider application URLs, contact emails/phones, addresses, or source URLs.
+5. Summarize evidence separately from interpretation, including eligibility requirements and any “no walk-ins/apply first” constraints before requesting personal information.
+6. If submitting an application or lead form, gather only fields required by the page and get explicit user confirmation before sending any personal details.
+7. If the task is recurring, convert it to a monitor/subscription rather than a one-off search.
 
 ## Re-homed Playbooks
 
@@ -48,6 +51,8 @@ Former source-specific skills are preserved as support packages:
 - Do not treat a prediction market price as a verified fact; label it as market-implied probability.
 - Do not summarize papers from titles alone; inspect abstracts and, when needed, the paper text.
 - Do not make recurring monitoring depend on ad-hoc web searches if an RSS/API source exists.
+- Do not keep working from an inferred/old location after the user provides a corrected location; restart local-provider searches around the corrected geography.
+- Do not submit application, medical, financial, or other personal-intake forms until the user has provided the exact required fields and explicitly confirmed submission.
 - Keep source-specific scripts in their re-homed package directories and update paths if promoting them into first-class umbrella scripts.
 
 ## Verification Checklist

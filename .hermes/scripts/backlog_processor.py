@@ -226,59 +226,186 @@ def infer_lane(subject: str, sender: str, body: str) -> str:
     return 'Operator Brief'
 
 
+def extract_source_facts(subject: str, body: str, max_facts: int = 5) -> list[str]:
+    """Pull concrete facts from the actual email so scripts are topic-specific.
+
+    This intentionally avoids generic motivational filler. Prefer sentences that
+    contain named entities, numbers, money, percentages, or strong event words.
+    """
+    text = clean_text(f"{subject}. {body}")
+    raw_sentences = re.split(r'(?<=[.!?])\s+', text)
+    boring = {'unsubscribe', 'sponsor', 'advertise', 'forwarded', 'privacy', 'manage preferences'}
+    scored: list[tuple[int, str]] = []
+    for s in raw_sentences:
+        s = re.sub(r'\s+', ' ', s).strip()
+        if len(s) < 45 or len(s) > 240:
+            continue
+        low = s.lower()
+        if any(b in low for b in boring):
+            continue
+        score = 0
+        score += 4 * len(re.findall(r'\$\d|\d+%|\b\d+(?:\.\d+)?\s?(?:m|b|million|billion|k)\b', low))
+        score += 2 * len(re.findall(r'\b[A-Z][A-Za-z0-9&.-]{2,}\b', s))
+        score += 3 if re.search(r'\b(hack|lawsuit|launch|raises|funding|ban|bug|breach|openai|ai|market|startup|study|testosterone|training|stoic|habit|risk|security|infrastructure)\b', low) else 0
+        score += 1 if any(w in low for w in re.findall(r'[a-zA-Z]{5,}', subject.lower())) else 0
+        if score > 0:
+            scored.append((score, s))
+    scored.sort(key=lambda x: x[0], reverse=True)
+    facts=[]
+    seen=set()
+    for _, s in scored:
+        key=s[:80].lower()
+        if key not in seen:
+            seen.add(key); facts.append(s)
+        if len(facts) >= max_facts:
+            break
+    if not facts:
+        facts = [clean_text(body)[:220] or subject]
+    return facts
+
+
+def script_style(subject: str, lane: str) -> int:
+    """Deterministically vary structure so uploads do not all feel templated."""
+    return sum(ord(c) for c in f'{lane}:{subject}') % 6
+
+
+def catchy_hook(subject: str, lane: str, facts: list[str], style: int) -> str:
+    subj = re.sub(r'\s+', ' ', subject).strip().rstrip('.')
+    first = facts[0].rstrip('.') if facts else subj
+    second = facts[1].rstrip('.') if len(facts) > 1 else first
+    templates = {
+        'Daily Stoic': [
+            f"I would not read this like advice. I would read it like a mirror: {subj}.",
+            f"The uncomfortable part of this Stoic idea is not the quote — it is what it asks you to do today.",
+            f"This one is less about philosophy and more about what you do when your mood starts negotiating.",
+            f"If your day has been testing you, this is the part worth paying attention to: {first}.",
+            f"Most people collect Stoic lines. This one is asking for a receipt.",
+            f"The lesson here is simple, but it is not soft: {subj}.",
+        ],
+        'Kino Body': [
+            f"The fitness headline is not the real story. The real story is whether your standards survive convenience.",
+            f"This is about the body, but it is really about trust — whether your habits make your body believe you.",
+            f"Forget the hack for a second. The useful part is what this reveals about consistency.",
+            f"The part I care about is not the trend. It is the behavior hiding underneath it: {first}.",
+            f"A stronger body usually starts with a less dramatic decision than people want to admit.",
+            f"This fitness story only matters if it changes what you do when nobody is watching.",
+        ],
+        'Market Brief': [
+            f"This market story looks like a headline, but it is really a map of incentives moving.",
+            f"The money is not the loudest part here. The risk is.",
+            f"If you want to understand this story, do not start with the price. Start with who is suddenly exposed.",
+            f"This is the kind of market signal people ignore until it becomes obvious.",
+            f"The interesting part is not that something happened. It is who has to react now: {first}.",
+            f"Every market headline is asking one question: what changed hands — risk, leverage, or attention?",
+        ],
+        'TLDR / AI': [
+            f"This tech story feels small until you ask who gets leverage if it keeps compounding.",
+            f"The important part is not the buzzword. It is the workflow that changes after this.",
+            f"If this keeps going, somebody's job, product, or moat starts looking different.",
+            f"This is one of those AI stories where the second-order effect matters more than the announcement.",
+            f"The headline is {subj}. The real question is what becomes easier because of it.",
+            f"Do not file this under random tech news. File it under: what does this make possible now?",
+        ],
+        'Operator Brief': [
+            f"This one is worth slowing down for because the useful signal is not obvious at first glance.",
+            f"The headline is only the doorway. The pattern is what matters.",
+            f"There is a practical lesson hiding inside this story, but it is not the generic one.",
+            f"This is the kind of update that gets forgotten unless you turn it into a decision.",
+            f"The interesting part is the gap between {first} and {second}.",
+            f"I would treat this less like content and more like a clue.",
+        ],
+    }
+    return templates.get(lane, templates['Operator Brief'])[style % 6]
+
+
 def build_script(email: dict) -> tuple[str, list[dict], list[str]]:
     subject, sender, body = email['subject'], email.get('from', ''), email.get('body', '')
     lane = infer_lane(subject, sender, body)
-    source = clean_text(body)[:2500]
+    facts = extract_source_facts(subject, body, max_facts=5)
+    style = script_style(subject, lane)
+    hook = catchy_hook(subject, lane, facts, style)
+
     if lane == 'Daily Stoic':
-        angle = 'turning a hard day into training for character'
-        tone = 'calm, disciplined, ancient-warrior motivation'
+        closer = 'The move is not to feel inspired. The move is to catch the exact pressure point from this lesson and rehearse it before life forces the exam on you.'
     elif lane == 'Kino Body':
-        angle = 'building a stronger body without losing your joy or standards'
-        tone = 'fitness, warrior discipline, masculine health, clean confidence'
+        closer = 'The takeaway is physical, but it is also personal: your body believes repeated evidence, not hype. Make the next meal, lift, walk, or sleep decision count.'
     elif lane == 'Market Brief':
-        angle = 'what today’s market signal means for a builder watching money and risk'
-        tone = 'sharp finance operator, calm and practical'
+        closer = 'The edge is not predicting everything. The edge is noticing where incentives moved, where risk got repriced, and where you need a cleaner rule before the crowd reacts.'
     elif lane == 'TLDR / AI':
-        angle = 'why this tech shift matters before everybody else catches up'
-        tone = 'fast, futuristic, operator-minded tech analysis'
+        closer = 'The question is not whether this is interesting. The question is what skill, workflow, or product assumption changes if this keeps compounding for six more months.'
     else:
-        angle = 'what this signal means for discipline and leverage'
-        tone = 'motivational operator voice'
+        closer = 'The point is to turn the signal into a concrete next move while everyone else is still treating it like background noise.'
 
-    # Long enough for ~115-130 seconds at natural 135-155 wpm.
-    narration = f"""
-    {subject}.
+    fact_lines = []
+    for i, fact in enumerate(facts[:5], start=1):
+        if i == 1:
+            fact_lines.append(f"Start here: {fact}")
+        elif i == 2:
+            fact_lines.append(f"Then the second clue: {fact}")
+        elif i == 3:
+            fact_lines.append(f"The part most people miss is this: {fact}")
+        elif i == 4:
+            fact_lines.append(f"That matters because it changes the incentives around the story: {fact}")
+        else:
+            fact_lines.append(f"And the final receipt is the one that gives the whole thing weight: {fact}")
 
-    Here is the part that matters: {source[:650]}
-
-    My read is simple. This is not just information. This is a signal. The point is {angle}.
-
-    Most people consume messages like this and move on. They nod, they feel inspired for ten seconds, then they go right back to the same habits. But the edge is not in hearing the lesson. The edge is in turning the lesson into a rule you can actually live by today.
-
-    If this is about discipline, then the move is to choose the obstacle before the obstacle chooses you. Write down the hard thing, face it early, and stop negotiating with your weaker mood.
-
-    If this is about health, then the move is not chasing some random hack. It is stacking sleep, training, food, sunlight, and consistency until your body starts trusting you again.
-
-    If this is about technology or markets, then the move is to ask what changed, who benefits, who gets disrupted, and what skill or position you should build before the crowd understands the shift.
-
-    The hidden pattern is ownership. Discovery gives you the signal. Harnessing turns it into a system. Ownership means you stop waiting for motivation and start acting like the operator of your own life.
-
-    So take this message and make it practical. Pick one action. One workout. One note. One trade rule. One build session. One uncomfortable conversation. Something real enough that your day has evidence, not just intention.
-
-    That is how you stay ahead. Not by collecting more information, but by converting the right information into standards, reps, and proof.
-    """
+    structure_a = [
+        f"{hook} {' '.join(fact_lines[:2])}",
+        f"The turn in the story is this: {facts[2] if len(facts) > 2 else facts[0]}",
+        "That is why the headline by itself is not enough. You have to ask what changed, who has to respond, and what becomes easier or harder tomorrow.",
+        f"{closer}",
+    ]
+    structure_b = [
+        f"Before the headline, look at the pressure underneath it: {facts[0]}",
+        f"That is what makes {re.sub(r'\\s+', ' ', subject).strip()} worth talking about.",
+        ' '.join(fact_lines[1:4]) or facts[0],
+        "My read: the useful signal is not the drama. It is the incentive shift. Somebody gained leverage, somebody inherited risk, and the smart move is to notice that before the crowd does.",
+        f"{closer}",
+    ]
+    structure_c = [
+        f"Three details make this story bigger than it looks. First: {facts[0]}",
+        f"Second: {facts[1] if len(facts) > 1 else facts[0]}",
+        f"Third: {facts[2] if len(facts) > 2 else facts[-1]}",
+        f"Now put those together with the headline — {re.sub(r'\\s+', ' ', subject).strip()} — and the pattern gets clearer.",
+        "The mistake is turning every update into the same generic lesson. This one has its own shape. It is about the specific thing that broke, accelerated, or got repriced.",
+        f"{closer}",
+    ]
+    structure_d = [
+        f"{hook}",
+        f"I care about one detail first: {facts[0]}",
+        "Not because it is the loudest detail, but because it changes how the rest of the story should be read.",
+        ' '.join(fact_lines[1:5]) or facts[0],
+        "So the question is not, 'is this interesting?' The question is, 'what decision would I make differently if this trend continues?'",
+        f"{closer}",
+    ]
+    structure_e = [
+        f"Here is the plain-English version of {re.sub(r'\\s+', ' ', subject).strip()}: {facts[0]}",
+        "But the plain-English version is only step one.",
+        ' '.join(fact_lines[1:3]) or facts[0],
+        "The deeper read is about momentum. A story like this tells you where attention is moving, where trust is weakening, and where a new advantage might be forming.",
+        f"{facts[3] if len(facts) > 3 else facts[-1]}",
+        f"{closer}",
+    ]
+    structure_f = [
+        f"Most people will scroll past this because it sounds like niche news: {re.sub(r'\\s+', ' ', subject).strip()}.",
+        f"But niche news is where big changes usually show up first. The first receipt is {facts[0]}",
+        ' '.join(fact_lines[1:5]) or facts[0],
+        "That gives you the real question: what is this story teaching you before it becomes common sense?",
+        f"{closer}",
+        "Catch the signal early, and you do not need to chase the noise later.",
+    ]
+    structures = [structure_a, structure_b, structure_c, structure_d, structure_e, structure_f]
+    narration = ' '.join(structures[style % len(structures)])
     narration = re.sub(r'\s+', ' ', textwrap.dedent(narration)).strip()
 
     beat_specs = [
-        ('Hook / source signal', subject, 0, 12),
-        ('The real meaning', angle, 12, 28),
-        ('Most people consume and forget', 'scrolling phone distraction crowd', 28, 42),
-        ('Turn lesson into rule', 'journal writing discipline morning', 42, 58),
-        ('Face the hard thing', 'man walking alone sunrise mountain', 58, 74),
-        ('Body / execution / reps', 'gym workout strength training running', 74, 90),
-        ('Tech / money / leverage', 'technology data center financial charts coding laptop', 90, 106),
-        ('Ownership close', 'silhouette sunrise city cinematic', 106, 120),
+        ('Cold open', subject, 0, 12),
+        ('Receipt 1', facts[0] if facts else subject, 12, 30),
+        ('Receipt 2', facts[1] if len(facts) > 1 else subject, 30, 46),
+        ('Receipt 3', facts[2] if len(facts) > 2 else subject, 46, 62),
+        ('Why it matters', f'{lane} implications {subject}', 62, 80),
+        ('Who benefits / who is exposed', 'technology finance risk analysis' if lane in {'TLDR / AI','Market Brief'} else 'focused person disciplined action', 80, 96),
+        ('Practical close', queries_for_email(subject, sender, body)[0], 96, 120),
     ]
     beats = [{'label': a, 'query': b, 'start': c, 'end': d} for a,b,c,d in beat_specs]
     queries = queries_for_email(subject, sender, body) + [b['query'] for b in beats]
@@ -440,7 +567,8 @@ def generate_voiceover(text: str, out: Path, allow_edge_fallback: bool = False, 
 
     # Review fallback only; do not treat as final channel voice unless user approves.
     escaped = text.replace('\n', ' ')[:3500]
-    cmd = ['edge-tts', '--voice', 'en-US-GuyNeural', '--text', escaped, '--write-media', str(out)]
+    edge_tts = shutil.which('edge-tts') or '/opt/hermes/.venv/bin/edge-tts'
+    cmd = [edge_tts, '--voice', 'en-US-GuyNeural', '--text', escaped, '--write-media', str(out)]
     subprocess.run(cmd, check=True, capture_output=True)
     if out.stat().st_size < 50_000:
         raise RuntimeError(f'edge-tts fallback voiceover too small: {out.stat().st_size} bytes')
@@ -480,7 +608,8 @@ def render_video(clips: list[Path], voice: Path, out: Path, seconds: int = TARGE
 
 def upload_video(out_video: Path, title: str, desc: str, scheduled: bool = False) -> dict:
     publish_time = (dt.datetime.now(dt.UTC) + dt.timedelta(hours=1)).isoformat()
-    cmd = ['python3', str(UPLOAD_SCRIPT), str(out_video), '--title', title, '--description', desc, '--privacy', 'public', '--project', 'faceless-backlog', '--log-jsonl', str(UPLOAD_LOG), '--delete-after-upload']
+    python_bin = shutil.which('python') or '/opt/hermes/.venv/bin/python'
+    cmd = [python_bin, str(UPLOAD_SCRIPT), str(out_video), '--title', title, '--description', desc, '--privacy', 'public', '--project', 'faceless-backlog', '--log-jsonl', str(UPLOAD_LOG), '--delete-after-upload']
     if scheduled:
         cmd.extend(['--publish-at', publish_time])
     r = subprocess.run(cmd, capture_output=True, text=True)
@@ -571,7 +700,7 @@ def main() -> None:
             print(f'Rendered: {out_video} ({duration:.1f}s)')
 
             title = f'{re.sub(r"\\s+", " ", subject).strip()[:72]} #Shorts'
-            desc = f"My read: turn the signal into proof today.\n\n{SUPPORT_BLOCK}\n\n#Shorts"
+            desc = f"{re.sub(r'\\s+', ' ', subject).strip()}\n\nA fast original breakdown built from the actual newsletter details — what happened, why it matters, and what changes next.\n\n{SUPPORT_BLOCK}\n\n#Shorts"
             if args.no_upload:
                 print('NO_UPLOAD: quality-gated render complete; source email not trashed')
                 if not args.keep_workspace:
