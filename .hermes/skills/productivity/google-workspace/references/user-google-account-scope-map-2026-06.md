@@ -42,8 +42,8 @@ Use this reference when managing the user's Google Workspace, Gmail, Calendar, D
 
 - **personal-main**
   - Email: `affan.fareed@gmail.com`
-  - Access policy: Gmail read-only; full Workspace automation for non-email services.
-  - Uses: read-only Gmail/personal email context, plus full Calendar/Drive/Docs/Sheets/Contacts automation.
+  - Access policy: full Workspace automation, including Gmail read/modify/send/settings.
+  - Uses: personal email context/review, Robinhood email routing for Agentic trading context, Zoom meeting-assets archive, duplicate-newsletter cleanup, and full Calendar/Drive/Docs/Sheets/Contacts automation.
   - Token path: `/opt/data/google_profiles/personal-main/google_token.json`
 
 ## Scope bundles
@@ -62,11 +62,14 @@ Use when the user grants full access to an automation identity other than `affan
 - `https://www.googleapis.com/auth/spreadsheets`
 - `https://www.googleapis.com/auth/contacts`
 
-### Personal-main Gmail read-only + Workspace admin
+### Personal accounts full Workspace automation
 
-Use for `affan.fareed@gmail.com`: email must remain read-only, while non-email Workspace services should be full/admin.
+Use for both personal Google accounts per the user's explicit 2026-06-29 permission grant: `personal-main` / `affan.fareed@gmail.com` and `personal-secondary` / `fareed320@gmail.com`.
 
 - `https://www.googleapis.com/auth/gmail.readonly`
+- `https://www.googleapis.com/auth/gmail.modify`
+- `https://www.googleapis.com/auth/gmail.send`
+- `https://www.googleapis.com/auth/gmail.settings.basic`
 - `https://www.googleapis.com/auth/calendar`
 - `https://www.googleapis.com/auth/drive`
 - `https://www.googleapis.com/auth/documents`

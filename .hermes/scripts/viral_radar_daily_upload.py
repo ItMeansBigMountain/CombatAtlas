@@ -101,27 +101,112 @@ def uploaded_public_keys() -> set[str]:
     return keys
 
 
-def select_daily_manifest_clip() -> tuple[Path, dict, dict]:
+def _creator_name(manifest: dict) -> str:
+    return str(manifest.get("creator") or manifest.get("channel") or "unknown").strip()
+
+
+def _is_evergreen_fallback_creator(manifest: dict) -> bool:
+    creator = _creator_name(manifest).lower()
+    title = str(manifest.get("source_title") or "").lower()
+    return (
+        "nasa" in creator
+        or creator == "unknown"
+        or "huberman / huberman lab" in creator
+        or "how to increase motivation" in title
+    )
+
+
+def recent_uploaded_creators(limit: int = 8) -> list[str]:
+    logs = [ROOT / "UPLOADS" / "viral_radar_enriched_uploads.jsonl", ROOT / "UPLOADS" / "youtube_uploads.jsonl"]
+    creators: list[str] = []
+    lines = []
+    for log in logs:
+        if log.exists():
+            lines.extend(log.read_text(encoding="utf-8", errors="ignore").splitlines())
+    for line in reversed(lines):
+        try:
+            row = json.loads(line)
+        except Exception:
+            continue
+        creator = str(row.get("creator") or row.get("source_creator") or "").strip()
+        if not creator:
+            # Older rows did not log creator. Infer from title/description only as
+            # a weak de-dupe hint; new rows should include explicit creator.
+            blob = (str(row.get("title") or "") + " " + str(row.get("description") or "")).lower()
+            for name in ["huberman", "chris williamson", "kinobody", "hormozi", "hamza", "gg33", "belmar", "tate"]:
+                if name in blob:
+                    creator = name
+                    break
+        if creator:
+            creators.append(creator.lower())
+        if len(creators) >= limit:
+            break
+    return creators
+
+
+def iter_candidate_manifest_clips() -> list[tuple[Path, dict, dict]]:
+    """Return candidate clips in creator-diverse priority order.
+
+    Cron must publish a finished clip, not merely identify a source. Try every
+    influencer in the pool before repeating the same creator. Source-ready
+    candidates still rank higher inside each creator so the job can complete.
+    """
     forced_index = os.getenv("VIRAL_RADAR_CLIP_INDEX", "").strip()
     manifests = [MANIFEST] if os.getenv("VIRAL_RADAR_MANIFEST") else sorted((ROOT / "CLIP_PLANS").glob("*/clip_manifest.json"), reverse=True)
     seen = uploaded_public_keys()
-    fallback = None
+    fresh: list[tuple[Path, dict, dict]] = []
+    fallback: list[tuple[Path, dict, dict]] = []
     for manifest_path in manifests:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        creator_l = _creator_name(manifest).lower()
+        if "zerkaa" in creator_l:
+            continue
+        if _is_evergreen_fallback_creator(manifest) and os.getenv("VIRAL_RADAR_ALLOW_EVERGREEN_FALLBACK") != "1":
+            # The user's current queue is influencer clips. Do not silently fill
+            # blocked creator slots with NASA/unknown/old Huberman evergreen clips.
+            continue
         clips = manifest.get("clips") or []
         if forced_index:
-            clip = clips[int(forced_index)]
-            return manifest_path, manifest, clip
+            if clips:
+                return [(manifest_path, manifest, clips[int(forced_index)])]
+            continue
         for clip in clips:
             stem = Path(clip.get("captioned_file") or clip.get("file") or "").stem
             hook = str(clip.get("hook") or "").lower()
             candidate = (manifest_path, manifest, clip)
-            fallback = fallback or candidate
             if stem not in seen and hook not in seen:
-                return candidate
-    if fallback and os.getenv("VIRAL_RADAR_ALLOW_DUPLICATE") == "1":
+                fresh.append(candidate)
+            else:
+                fallback.append(candidate)
+
+    recent_creators = set(recent_uploaded_creators())
+
+    def source_ready_score(candidate: tuple[Path, dict, dict]) -> int:
+        _manifest_path, manifest, _clip = candidate
+        source_file = ROOT / str(manifest.get("source_file", ""))
+        if source_file.exists() and source_file.stat().st_size > 1000:
+            return 0
+        if manifest.get("fallback_source_url") or manifest.get("archive_source"):
+            return 1
+        return 2
+
+    def diversity_score(candidate: tuple[Path, dict, dict]) -> tuple[int, int, str]:
+        _manifest_path, manifest, _clip = candidate
+        creator = _creator_name(manifest).lower()
+        repeated = 1 if any(c and c in creator for c in recent_creators) else 0
+        return (repeated, source_ready_score(candidate), creator)
+
+    fresh.sort(key=diversity_score)
+    fallback.sort(key=diversity_score)
+    if fresh:
+        return fresh + fallback
+    if fallback:
         return fallback
-    raise RuntimeError("no fresh reviewed manifest clips available; add/review a new clip manifest or set VIRAL_RADAR_ALLOW_DUPLICATE=1 explicitly")
+    raise RuntimeError("no reviewed manifest clips available; add/review a new clip manifest")
+
+
+def select_daily_manifest_clip() -> tuple[Path, dict, dict]:
+    return iter_candidate_manifest_clips()[0]
 
 
 def write_single_clip_manifest(manifest_path: Path, manifest: dict, clip: dict, local_day: str) -> Path:
@@ -161,12 +246,16 @@ def ensure_source(manifest: dict) -> Path:
     if source_url and os.getenv("VIRAL_RADAR_DISABLE_DIRECT_YOUTUBE_DOWNLOAD") != "1":
         downloader = ROOT / "scripts" / "download_youtube_source.py"
         logdir = ROOT / "LOGS" / "daily_youtube_source_download" / str(manifest.get("source_video_id") or "unknown")
-        proc = run([
+        cmd = [
             sys.executable, str(downloader), source_url,
             "--outdir", str(source.parent),
             "--logdir", str(logdir),
             "--skip-cleanup",
-        ])
+            "--try-pytubefix",
+        ]
+        if manifest.get("fallback_source_url"):
+            cmd += ["--fallback-url", str(manifest["fallback_source_url"])]
+        proc = run(cmd)
         if proc.returncode != 0:
             raise RuntimeError(json.dumps({
                 "source_download_failed": source_url,
@@ -232,7 +321,16 @@ def upload_rendered(rendered: list[dict], manifest: dict, selected_clip: dict | 
                 "stdout_tail": proc.stdout[-2000:],
                 "stderr_tail": proc.stderr[-2000:],
             }, indent=2))
-        uploads.append(parse_json_output(proc.stdout))
+        upload_payload = parse_json_output(proc.stdout)
+        upload_payload["creator"] = manifest.get("creator") or manifest.get("channel") or "source creator"
+        upload_payload["source_url"] = manifest.get("source_url", "")
+        uploads.append(upload_payload)
+        # Append enriched row because the shared uploader log historically did
+        # not include source creator, which caused the cron to repeat Huberman.
+        enriched_log = ROOT / "UPLOADS" / "viral_radar_enriched_uploads.jsonl"
+        enriched_log.parent.mkdir(parents=True, exist_ok=True)
+        with enriched_log.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(upload_payload, ensure_ascii=False) + "\n")
     return uploads
 
 
@@ -250,71 +348,70 @@ def main() -> int:
         return 0
     try:
         seed_result = seed_latest_manifests()
-        manifest_path, manifest, selected_clip = select_daily_manifest_clip()
-        single_manifest = write_single_clip_manifest(manifest_path, manifest, selected_clip, local_day)
-        try:
-            source = ensure_source(manifest)
-        except Exception as source_exc:
-            if os.getenv("VIRAL_RADAR_USE_EXTERNAL_PROVIDER") != "1":
-                print(json.dumps({
-                    "job": "viral_radar_daily_upload",
-                    "status": "blocked_source",
+        candidates = iter_candidate_manifest_clips()
+        max_attempts = int(os.getenv("VIRAL_RADAR_MAX_SOURCE_ATTEMPTS", "8"))
+        source_failures = []
+        for manifest_path, manifest, selected_clip in candidates[:max_attempts]:
+            single_manifest = write_single_clip_manifest(manifest_path, manifest, selected_clip, local_day)
+            try:
+                source = ensure_source(manifest)
+                if source_failures and _is_evergreen_fallback_creator(manifest) and os.getenv("VIRAL_RADAR_ALLOW_EVERGREEN_FALLBACK") != "1":
+                    source_failures.append({
+                        "manifest": str(single_manifest),
+                        "selected_from_manifest": str(manifest_path),
+                        "selected_hook": selected_clip.get("hook"),
+                        "source_url": manifest.get("source_url"),
+                        "skipped_reason": "evergreen Huberman/NASA fallback suppressed so cron does not keep publishing the same influencer while other influencer sources are blocked",
+                    })
+                    continue
+                break
+            except Exception as source_exc:
+                failure = {
                     "manifest": str(single_manifest),
                     "selected_from_manifest": str(manifest_path),
                     "selected_hook": selected_clip.get("hook"),
-                    "seed_result": seed_result,
                     "source_error": str(source_exc),
                     "source_url": manifest.get("source_url"),
-                    "next_step": "External clipping providers are intentionally disabled. Fix source acquisition with YouTube cookies, residential proxy, or a local/Drive MP4 source.",
-                }, indent=2))
-                return 0
-
-            provider_result = external_clip_fallback(manifest_path, manifest, selected_clip)
-            provider_path_raw = str(provider_result.get("path") or "")
-            provider_path = Path(provider_path_raw) if provider_path_raw else Path("/__no_provider_clip__")
-            if provider_result.get("status") in {"pending", "submitted", "submitted_unparsed", "needs_provider_credentials"}:
-                result = {
-                    "job": "viral_radar_daily_upload",
-                    "status": provider_result.get("status"),
-                    "manifest": str(single_manifest),
-                    "selected_from_manifest": str(manifest_path),
-                    "selected_hook": selected_clip.get("hook"),
-                    "seed_result": seed_result,
-                    "source_error": str(source_exc),
-                    "external_provider": provider_result,
-                    "source_url": manifest.get("source_url"),
-                    "next_step": "Current downloader was tried first. If YouTube still requires bot verification, add cookies/proxy/local Drive MP4 or configure an official clipping provider.",
                 }
-                print(json.dumps(result, indent=2))
-                return 0
-            if provider_path.is_file() and provider_path.stat().st_size > 1000:
-                uploads = upload_rendered([{"output": str(provider_path)}], manifest, selected_clip)
-                result = {
-                    "job": "viral_radar_daily_upload",
-                    "status": "ok_external_provider",
-                    "manifest": str(single_manifest),
-                    "selected_from_manifest": str(manifest_path),
-                    "selected_hook": selected_clip.get("hook"),
-                    "seed_result": seed_result,
-                    "external_provider": provider_result,
-                    "uploads": uploads,
-                    "cleanup": "external provider MP4 preserved for audit; upload logged after verified YouTube response",
-                }
-                marker.parent.mkdir(parents=True, exist_ok=True)
-                marker.write_text(json.dumps({
-                    "completed_at": dt.datetime.now(dt.UTC).isoformat(),
-                    "result": result,
-                }, indent=2), encoding="utf-8")
-                print(json.dumps(result, indent=2))
-                return 0
-            raise RuntimeError(json.dumps({
-                "stage": "source_acquisition_external_provider",
-                "source_error": str(source_exc),
-                "external_provider": provider_result,
-                "source_url": manifest.get("source_url"),
-                "manifest": str(manifest_path),
-                "note": "External providers require VIRAL_RADAR_USE_EXTERNAL_PROVIDER=1 and provider credentials. Otherwise use cookies/proxy/local Drive MP4 source.",
+                source_failures.append(failure)
+                if os.getenv("VIRAL_RADAR_USE_EXTERNAL_PROVIDER") == "1":
+                    provider_result = external_clip_fallback(manifest_path, manifest, selected_clip)
+                    provider_path_raw = str(provider_result.get("path") or "")
+                    provider_path = Path(provider_path_raw) if provider_path_raw else Path("/__no_provider_clip__")
+                    if provider_path.is_file() and provider_path.stat().st_size > 1000:
+                        uploads = upload_rendered([{"output": str(provider_path)}], manifest, selected_clip)
+                        result = {
+                            "job": "viral_radar_daily_upload",
+                            "status": "ok_external_provider",
+                            "manifest": str(single_manifest),
+                            "selected_from_manifest": str(manifest_path),
+                            "selected_hook": selected_clip.get("hook"),
+                            "seed_result": seed_result,
+                            "prior_source_failures": source_failures[:-1],
+                            "external_provider": provider_result,
+                            "uploads": uploads,
+                            "cleanup": "external provider MP4 preserved for audit; upload logged after verified YouTube response",
+                        }
+                        marker.parent.mkdir(parents=True, exist_ok=True)
+                        marker.write_text(json.dumps({
+                            "completed_at": dt.datetime.now(dt.UTC).isoformat(),
+                            "result": result,
+                        }, indent=2), encoding="utf-8")
+                        print(json.dumps(result, indent=2))
+                        return 0
+                    failure["external_provider"] = provider_result
+                continue
+        else:
+            print(json.dumps({
+                "job": "viral_radar_daily_upload",
+                "status": "blocked_source_all_candidates",
+                "seed_result": seed_result,
+                "attempted_candidates": len(source_failures),
+                "source_failures": source_failures,
+                "next_step": "No usable source media after trying multiple manifests. Add YouTube cookies/residential proxy/local MP4 source, or enable an official external clipping provider. This now exits nonzero so cron no longer reports discovery-only work as success.",
             }, indent=2))
+            return 2
+
         render_proc = run([sys.executable, str(RENDER), str(single_manifest), "--suffix=-daily"])
         if render_proc.returncode != 0:
             print(json.dumps({
@@ -335,6 +432,7 @@ def main() -> int:
             "selected_from_manifest": str(manifest_path),
             "selected_hook": selected_clip.get("hook"),
             "seed_result": seed_result,
+            "prior_source_failures": source_failures,
             "rendered_count": len(render_payload.get("rendered", [])),
             "uploads": uploads,
             "source_cleanup": render_payload.get("source_cleanup"),

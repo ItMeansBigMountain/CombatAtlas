@@ -125,9 +125,15 @@ For the $200 sandbox:
 
 ## Standard Workflow
 
+### Legacy stock-script integration
+
+When the user asks to leverage older stock/Robinhood projects, load `references/legacy-stock-scripts-agentic-integration.md`. Mine old scripts for reporting/scoring ideas, but use Robinhood MCP for live broker state and orders.
+
 ### Broad candidate discovery from email/news/tools
 
 When the user says their watchlists are stale or asks to scan beyond watchlists, do not use watchlists as the primary universe. Combine read-only newsletter/email signals, web/news confirmation, Robinhood curated lists, live quotes, tradability, and OHLCV-derived indicators before selecting candidates. See `references/news-email-broader-candidate-scan.md` for the proven workflow and pitfalls.
+
+When the user asks to leverage old stock-market scripts or Robinhood email confirmations for smarter Agentic trading, use `references/legacy-market-scripts-and-email-context-2026-06-29.md`: mine old projects for reporting/scoring ideas, route Robinhood emails to `Hermes/Finance/Robinhood`, but keep live account data and all order review/execution on the Robinhood MCP path.
 
 ### Autonomous Agentic account operation
 
@@ -156,6 +162,8 @@ When a post-morning scan finds a liquid gap leader that fits policy math, rememb
 For scheduled post-morning scans, if the default Google Workspace CLI reports unauthenticated, do not stop source/newsletter checks immediately: use the user's profile-scoped Gmail token pattern for read-only probes when present, and report the default-token issue separately. In practice, verify with `/opt/data/scripts/google_reauth_workflow.py verify workspace personal-main`, then run `google_api.py` with `HERMES_HOME=/opt/data/google_profiles/personal-main` for read-only Gmail searches. Also avoid overstating open-order certainty from recent-order history; query open states explicitly or phrase the limitation. See `references/post-morning-scan-profile-gmail-and-scanner-upgrades.md`, `references/post-morning-open-order-and-gmail-probes.md`, and `references/post-morning-scan-gap-movers-and-profile-gmail-2026-06-25.md`.
 
 When reporting open orders in Agentic scans, check all practical open-ish equity states (`new`, `queued`, `confirmed`, `unconfirmed`, `partially_filled`) before saying there are no open equity orders. If only one state was queried, state the limitation rather than implying certainty.
+
+For post-morning candidate scans using Robinhood Daily Movers or broad symbol batches, avoid dumping raw historical payloads into the context. Fetch quotes/tradability first to narrow candidates, then request OHLCV only for the shortlist. If a historicals tool response is persisted as an oversized output file, parse that file programmatically to compute compact scanner fields (SMA10/SMA20, ATR14, 20-day high/low, average volume, daily % move) and journal the summary plus any data-source gaps instead of hand-reading the full payload.
 
 ### Step 1 — Parse Intent
 

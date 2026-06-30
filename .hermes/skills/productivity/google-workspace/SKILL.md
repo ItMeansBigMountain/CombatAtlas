@@ -34,6 +34,8 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 - `references/gmail-email-sorting-agent-rules.md` — Hermes-level deterministic Gmail sorting rules and labels, including the Robinhood account-vs-Robinhood Snacks newsletter split.
 - `references/gmail-cron-auth-block-resilience.md` — Pattern for multi-profile Gmail cron jobs: catch per-profile auth/scope failures, continue healthy profiles, report structured `blocked` statuses, and avoid misleading traceback-only cron errors.
 - `references/junk-cleanup-newsletter-deletion-boundary.md` — user-specific boundary: known junk/spam cleanup is pre-approved, but newsletter/source emails are deleted only after use/verified YouTube upload.
+- `references/gmail-personal-cleanup-routing-2026-06-29.md` — personal Gmail full-permission policy, confirmed junk senders, Robinhood/Zoom/Grammarly routing rules, and duplicate-newsletter handling across `affan.fareed@gmail.com` and `fareed320@gmail.com`.
+- `references/personal-email-cleanup-routing-2026-06.md` — current personal Gmail cleanup/routing policy: both personal accounts have full Workspace write access, Robinhood/Zoom routing labels, Grammarly personal-info hold, affan-vs-fareed320 duplicate newsletter handling, and verification steps.
 - `references/gmail-inbox-audit-pattern.md` — read-only Gmail inbox/subscription audit workflow, real Inbox counting pattern, classification/reporting guidance, and destructive-action confirmation rules.
 - `references/calendar-service-account.md` — service-account setup for Calendar automation when the user shares calendars with the service account.
 - `references/credential-requirements.md` — required Google credential files and setup verification
@@ -51,12 +53,8 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 - `references/auth-error-triage-batch-reauth-2026-06.md` — When the user asks to look back at auth errors, combine session-history recovery with live `google_reauth_workflow.py` inventory/verify probes, regenerate fresh labeled callback bundles, and verify account/channel identity before replaying blocked jobs.
 - `references/replay-failed-google-cron-runs-after-reauth.md` — After OAuth repair, search history for affected jobs/scripts, rerun each failed attempt one by one, make multi-profile jobs skip/report blocked profiles instead of crashing, and distinguish scheduler OK from product success.
 - `references/user-google-account-scope-map-2026-06.md` — User-specific account aliases, full/read-only scope policy, mass OAuth refresh workflow, and Discord bullet-format reporting preference.
-- `references/personal-main-invalid-scope-repair-2026-06.md` — User-specific repair pattern for `personal-main` / `affan.fareed@gmail.com` invalid_scope: read-only OAuth scopes, profile-scoped PKCE exchange, and live identity/service smoke tests.
-- `references/user-google-oauth-account-map-2026-06.md` — Current user-specific Workspace/YouTube account roles, exact scope policy, OAuth hygiene, and no-table reporting preference.
-- `references/google-multi-account-reauth-ops-2026-06.md` — Hands-on repair pattern for regenerating all profile-scoped auth URLs, handling legacy/narrow tokens, exchanging `<profile>: <redirect URL>` callbacks, and verifying Workspace vs YouTube tokens separately.
-
-- `references/multi-profile-callback-batch-exchange-2026-06.md` — batch-exchange pattern for multiple returned localhost OAuth callbacks, token overwrite locations, harmless verification probes, and compact no-secrets reporting.
-- `references/personal-main-readonly-reauth.md` — Repair `personal-main` / `affan.fareed@gmail.com` invalid_scope by generating profile-scoped read-only OAuth URLs and verifying live identity.
+- `references/personal-main-invalid-scope-repair-2026-06.md` — Legacy repair pattern for `personal-main` / `affan.fareed@gmail.com`; superseded for current scope policy by full Workspace read/write permission including Gmail read/modify/send.
+- `references/personal-main-readonly-reauth.md` — Legacy filename; current content covers repairing `personal-main` / `affan.fareed@gmail.com` by generating full Workspace OAuth URLs and verifying live identity.
 
 ## Scripts
 
@@ -77,7 +75,7 @@ When the user asks to find, identify, or organize Google credentials across the 
 
 When the user wants credentials to survive VPS/container restarts without being backed up by Git, use `references/durable-google-secret-storage.md`: copy credentials into a persistent non-repo secrets tree, expose only stable path references through `.env`, lock modes to `700`/`600`, update `.gitignore`, remove any already-tracked credential files with `git rm --cached --force`, verify with `git ls-files` and `git check-ignore --no-index`, and remind the user that untracking does not erase old Git history if secrets were previously pushed.
 
-When the user asks to repair `personal-main` / `affan.fareed@gmail.com` OAuth, especially `invalid_scope`, load `references/personal-main-readonly-reauth.md`. Generate a profile-scoped URL for the read-only Workspace bundle only, keep pending PKCE state isolated under `/opt/data/google_profiles/personal-main/`, and verify the returned Gmail profile email before reporting the main account context as restored.
+When the user asks to repair `personal-main` / `affan.fareed@gmail.com` OAuth, especially expired/revoked tokens or missing scopes, load `references/personal-main-readonly-reauth.md` (legacy filename; content now documents full access). Generate a profile-scoped URL for the full Workspace bundle including Gmail read/modify/send, keep pending PKCE state isolated under `/opt/data/google_profiles/personal-main/`, and verify the returned Gmail profile email before reporting the main account context as restored.
 
 When the user wants Hermes to manage multiple Gmail/Google Workspace accounts as separate internet identities or project lanes, use `references/multiple-google-account-profiles.md
   - path: references/user-google-account-scope-map-2026-06.md
@@ -258,6 +256,10 @@ $GAPI gmail labels
 $GAPI gmail modify MESSAGE_ID --add-labels LABEL_ID
 $GAPI gmail modify MESSAGE_ID --remove-labels UNREAD
 ```
+
+#### User-specific Gmail routing/cleanup rules
+
+For this user's personal Gmail cleanup and routing, load `references/user-gmail-routing-cleanup-rules.md` before modifying labels or trashing messages. It covers full Gmail permissions for both personal accounts, Grammarly personal-information handling, Robinhood/Zoom routing, and duplicate newsletter cleanup from `affan.fareed@gmail.com`.
 
 #### Gmail audits and subscription cleanup
 

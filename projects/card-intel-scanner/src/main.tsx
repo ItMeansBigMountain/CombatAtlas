@@ -63,6 +63,29 @@ const API = 'https://api.pokemontcg.io/v2/cards';
 const LIVE_SCAN_INTERVAL_MS = 3200;
 const WATCHLIST_KEY = 'card-intel-watchlist-v1';
 
+const FALLBACK_CARDS: PokemonCard[] = [
+  {
+    id: 'demo-charizard-4-102',
+    name: 'Charizard',
+    number: '4/102',
+    rarity: 'Rare Holo',
+    set: { name: 'Base Set', series: 'Base', printedTotal: 102, releaseDate: '1999/01/09' },
+    images: { small: 'https://images.pokemontcg.io/base1/4.png', large: 'https://images.pokemontcg.io/base1/4_hires.png' },
+    tcgplayer: { url: 'https://www.tcgplayer.com/search/pokemon/product?productLineName=pokemon&q=Charizard%204%2F102', prices: { holofoil: { low: 180, mid: 260, high: 499, market: 315 } } },
+    cardmarket: { url: 'https://www.cardmarket.com/en/Pokemon/Products/Search?searchString=Charizard+4%2F102', prices: { trendPrice: 280, averageSellPrice: 265, lowPrice: 170 } }
+  },
+  {
+    id: 'demo-charizard-ex-obsidian',
+    name: 'Charizard ex',
+    number: '223/197',
+    rarity: 'Special Illustration Rare',
+    set: { name: 'Obsidian Flames', series: 'Scarlet & Violet', releaseDate: '2023/08/11' },
+    images: { small: 'https://images.pokemontcg.io/sv3/223.png', large: 'https://images.pokemontcg.io/sv3/223_hires.png' },
+    tcgplayer: { url: 'https://www.tcgplayer.com/search/pokemon/product?productLineName=pokemon&q=Charizard%20ex%20223%2F197', prices: { holofoil: { low: 35, mid: 50, high: 95, market: 58 } } },
+    cardmarket: { url: 'https://www.cardmarket.com/en/Pokemon/Products/Search?searchString=Charizard+ex+223%2F197', prices: { trendPrice: 55, averageSellPrice: 51, lowPrice: 34 } }
+  }
+];
+
 const CONDITION_OPTIONS: ConditionOption[] = [
   { key: 'raw-damaged', label: 'Raw damaged', multiplier: 0.35, note: 'heavy wear / binder copy estimate' },
   { key: 'raw-lp-mp', label: 'Raw LP/MP', multiplier: 0.72, note: 'light-to-moderate play estimate' },
@@ -137,8 +160,8 @@ async function recognizeText(source: File | HTMLCanvasElement) {
 
 function App() {
   const [query, setQuery] = useState('Charizard');
-  const [cards, setCards] = useState<PokemonCard[]>([]);
-  const [selectedId, setSelectedId] = useState('');
+  const [cards, setCards] = useState<PokemonCard[]>(FALLBACK_CARDS);
+  const [selectedId, setSelectedId] = useState(FALLBACK_CARDS[0]?.id || '');
   const [loading, setLoading] = useState(false);
   const [ocrLoading, setOcrLoading] = useState(false);
   const [ocrText, setOcrText] = useState('');
@@ -207,7 +230,14 @@ function App() {
       setSelectedId(data.data?.[0]?.id || '');
       if (!data.data?.length) setError('No card match. Try the exact card name or set number.');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Search failed');
+      const fallback = FALLBACK_CARDS.filter((card) => card.name.toLowerCase().includes(term.toLowerCase()) || term.toLowerCase().includes('charizard'));
+      if (fallback.length) {
+        setCards(fallback);
+        setSelectedId(fallback[0].id);
+        setError('Live Pokémon TCG API is unavailable from this environment, so showing built-in demo comps. Add an API key/proxy before app-store release.');
+      } else {
+        setError(err instanceof Error ? err.message : 'Search failed');
+      }
     } finally {
       if (!silent) setLoading(false);
     }

@@ -7,13 +7,15 @@ export const getApiBaseUrl = (): string => {
   
   console.log("🔧 API_BASE from config:", baseUrl);
   
-  if (baseUrl && baseUrl !== 'API_BASE=http://localhost:5000') {
+  if (baseUrl && baseUrl !== 'API_BASE=http://localhost:5000' && baseUrl !== 'http://localhost:5000') {
     return baseUrl;
   }
 
-  // Fallback logic for different platforms
+  // Fallback logic for different platforms. In exported web/Vercel builds,
+  // use same-origin `/api/*` serverless functions. Expo dev can still override
+  // this with API_BASE in app config.
   if (Platform.OS === 'web') {
-    return 'http://localhost:5000';
+    return '';
   } else if (Platform.OS === 'ios') {
     // For iOS physical device, use your computer's IP address
     // You'll need to replace this with your actual IP address

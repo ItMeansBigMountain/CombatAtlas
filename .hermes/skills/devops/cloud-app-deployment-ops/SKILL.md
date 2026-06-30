@@ -19,6 +19,8 @@ Use this umbrella for application delivery work that crosses local code, cloud p
 
 ## Workflow
 
+For Vercel portfolio audits, first load `references/vercel-portfolio-audit-pattern.md`; the user cares about primary alias vs latest deployment health and end-user product readiness, not just HTTP 200.
+
 1. Identify provider/platform, target account/project, and deployment environment.
 2. Verify CLI installation and authentication without printing secrets.
 3. Inspect existing project configuration before changing build/output settings.
@@ -30,6 +32,7 @@ Use this umbrella for application delivery work that crosses local code, cloud p
 
 - `references/cloud-provider-cli-setup/original-skill.md` plus provider credential/setup references.
 - `references/vercel-app-deployments/original-skill.md` plus Vercel deployment, OAuth, database, static shell, alias, and project-decommission references.
+- `references/vercel-live-portfolio-audit-2026-06-29.md` — live Vercel portfolio audit pattern: compare primary aliases, configured aliases, and latest deployment URLs; distinguish alias drift from actual app breakage.
 
 ## Pitfalls
 
@@ -45,3 +48,15 @@ Use this umbrella for application delivery work that crosses local code, cloud p
 - [ ] Deployment command output captured.
 - [ ] Live URL/provider status verified.
 - [ ] Credential handling was secret-safe.
+
+## Workflow Enhancement: Cross-Project Continuity
+
+When Vercel deployment tasks are complete and no blockers exist, transition to the next project in the user's priority queue rather than waiting for new instructions. The Robinhood trading system is a natural next step when infrastructure work is done.
+
+### Example transition path:
+1. Complete all Vercel project deployments and verifications.
+2. Confirm no credential/API blockers remain.
+3. Identify next priority project (e.g., Agentic Robinhood trading system).
+4. Run the relevant monitoring/cron job or fetch account/portfolio status to verify operational state.
+
+This keeps momentum and provides immediate value without idle time.

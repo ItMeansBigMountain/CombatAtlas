@@ -40,12 +40,15 @@ The default standard is: inspect first, implement the smallest useful slice, ver
 
 ## Portfolio and Roadmapping
 
+For this user's project portfolio, first load `references/user-project-portfolio-operating-model.md`; it captures the retire/set-aside handoff pattern, app-domain classifications, and Vercel end-user review preference.
+
 For workspaces with many related projects:
 
 - Update the same artifacts consistently: project-local docs, `PROJECT_REVIEW_SHEET.md`, CSV trackers, workspace README/indexes, aggregate update logs, and `.gitignore` for nested repos.
 - When projects overlap, choose a primary target app and add merge notes to sources.
 - When a project is only a plan/static review shell, do not run installs or redeploys; recommend restoring source or scaffolding the documented MVP first.
 - For product-parity research, record public sources and translate competitor concepts into original names.
+- For this user's project portfolio statuses and durable buckets (finished/set aside, ship/operate, incubate, upcoming OSRS lane, archive/freeze), see `references/user-project-portfolio-status-2026-06-29.md`.
 
 ## Domain Playbooks
 

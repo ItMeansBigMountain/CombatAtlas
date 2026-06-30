@@ -683,7 +683,17 @@ def process(profile,msg_id, upload_enabled=True):
 
 def discover(profile, limit):
     g=gmail(profile)
-    queries=['from:tldrnewsletter.com newer_than:30d -in:trash','from:info@dailystoic.com newer_than:30d -in:trash','from:news@kinobody.com newer_than:30d -in:trash']
+    # Check both personal accounts for newsletter sources.  affan.fareed@gmail.com
+    # can have duplicate subscriptions; duplicates are normally removed from affan,
+    # while unique affan-only source emails may be processed here and trashed only
+    # after a verified YouTube upload.
+    queries=[
+        'from:tldrnewsletter.com newer_than:30d -in:trash',
+        'from:dan@tldrnewsletter.com newer_than:30d -in:trash',
+        'from:info@dailystoic.com newer_than:30d -in:trash',
+        'from:support@kinobody.com newer_than:30d -in:trash',
+        'from:news@kinobody.com newer_than:30d -in:trash',
+    ]
     out=[]; seen=set()
     for q in queries:
         resp=g.users().messages().list(userId='me',q=q,maxResults=limit).execute()
@@ -702,26 +712,43 @@ def discover(profile, limit):
     return out
 
 
+def parse_profiles(value: str) -> list[str]:
+    if value in ('all-personal','personal'):
+        return ['personal-secondary','personal-main']
+    return [p.strip() for p in value.split(',') if p.strip()]
+
+
 def main():
     load_dotenv(); ap=argparse.ArgumentParser()
-    ap.add_argument('--profile',default='personal-secondary')
+    ap.add_argument('--profile',default='all-personal',help='Profile, comma-separated profiles, or all-personal (default: personal-secondary + personal-main)')
     ap.add_argument('--limit',type=int,default=3)
-    ap.add_argument('--message',action='append',help='explicit Gmail message id; can repeat')
+    ap.add_argument('--message',action='append',help='explicit Gmail message id; can repeat; used with the first --profile only')
     ap.add_argument('--no-upload',action='store_true')
     args=ap.parse_args()
+    profiles=parse_profiles(args.profile)
     try:
-        ids=args.message or discover(args.profile,args.limit)
+        planned=[]
+        if args.message:
+            planned=[(profiles[0], mid) for mid in args.message]
+        else:
+            remaining=args.limit
+            for profile in profiles:
+                if remaining <= 0:
+                    break
+                ids=discover(profile, remaining)
+                planned.extend((profile, mid) for mid in ids)
+                remaining=args.limit-len(planned)
     except Exception as e:
         err={'processed':0,'uploaded':0,'blocked':True,'error':type(e).__name__,'detail':str(e)[:1000],'profile':args.profile}
         print(json.dumps(err,indent=2))
         return 0
     results=[]
-    for mid in ids:
+    for profile, mid in planned:
         try:
-            results.append(process(args.profile,mid,not args.no_upload))
+            results.append(process(profile,mid,not args.no_upload))
             print(json.dumps(results[-1],indent=2))
         except Exception as e:
-            err={'profile':args.profile,'message_id':mid,'error':type(e).__name__,'detail':str(e)[:1000],'traceback':traceback.format_exc()[-2000:]}
+            err={'profile':profile,'message_id':mid,'error':type(e).__name__,'detail':str(e)[:1000],'traceback':traceback.format_exc()[-2000:]}
             results.append(err); print(json.dumps(err,indent=2))
     print(json.dumps({'processed':len(results),'uploaded':sum(1 for r in results if r.get('uploaded')),'results':results},indent=2))
 

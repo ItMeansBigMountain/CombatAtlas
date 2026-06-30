@@ -19,7 +19,6 @@ The current Viral Radar creator pool includes:
 - Chris Williamson
 - Greg O'Gallagher / Kinobody
 - Andrew Tate / TateSpeech / Cobratate
-- Zerkaa / ZerkaaPlays
 - GG33
 - Luke Belmar / Capital Club
 - Nate Belmar / Mr Belmar
@@ -45,6 +44,8 @@ python3 /opt/data/HeRmEz/projects/viral-clip-radar/scripts/seed_latest_longform_
 ```
 
 If a creator's official uploads playlist is missing or has no recent long-form videos, use a YouTube Data API search fallback and mark the manifest as search-fallback seeded.
+
+When YouTube source downloads hit cloud-IP bot checks, use human-style web discovery before giving up: search for official creator reposts on Facebook/LinkedIn/owned sites, prefer official Facebook video URLs when available, and download those with yt-dlp into `SOURCES/<creator-source>/source.mp4`. Then seed a normal `clip_manifest.json` with `source_url` pointing to the official repost and `source_file` pointing to the local MP4. This worked for Alex Hormozi official Facebook and Kinobody official Facebook without Google cookies.
 
 ## Daily upload behavior
 

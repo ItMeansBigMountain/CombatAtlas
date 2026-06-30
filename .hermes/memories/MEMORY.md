@@ -14,4 +14,4 @@ User has five Google Workspace email profiles: personal-main (primary personal),
 §
 User wants Agentic Robinhood auto-trading: monitor/manage cron, high deployment; Venice/redteam pentest.
 §
-Google Workspace policy: personal-main / affan.fareed@gmail.com should use Gmail read-only scopes, but full/admin Calendar, Drive, Docs, Sheets, and Contacts scopes.
+Google Workspace policy: affan.fareed@gmail.com and fareed320@gmail.com have user-approved full read/write Workspace permissions, incl. Gmail read/modify/send.

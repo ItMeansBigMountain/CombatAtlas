@@ -1,6 +1,6 @@
 User prefers Discord bot conversations to be natural channel back-and-forth rather than automatic per-conversation threads.
 §
-User wants apps/projects created with Hermes to live as project directories under /opt/data/HeRmEz/projects in the configured Git-backed workspace.
+User wants Hermes-built apps under /opt/data/HeRmEz/projects; finished projects should be retired/set aside with PROJECT_HANDOFF_CONTEXT notes so future agents can revive them without active-orchestration burden.
 §
 User prefers client website projects to be deployed live first with Git-based auto-deploys, then handle Stripe/payment setup and custom domain attachment afterward.
 §
@@ -8,8 +8,8 @@ Cloud Engineer at GM Financial, TX; wants concise Discord replies, smoke-tested 
 §
 User wants project backups to live under /opt/data/HeRmEz/projects, specifically /opt/data/HeRmEz/projects/_backups for backup artifacts, rather than under /opt/data/HeRmEz/.hermes.
 §
-Google/YT: fareed320 source; Trapiistan/Sosai uploads+calendar; Classical Echos; all Google profiles incl. affan need full Workspace read/write scopes.
+Google/YT: Workspace R/W incl affan; burner login OK for browser auth (never store password); fareed320→Trapiistan/Sosai; Classical Echos.
 §
-User allows known junk/spam email cleanup without per-item review; newsletter/source emails delete only after verified YouTube upload.
+Email cleanup: known junk OK; source emails delete post-upload; Grammarly personal; Robinhood→trading; Zoom→class archive.
 §
-Faceless vids: fareed320→Trapiistan/Sosai; always public, no quality/review block; catchy fact-grounded monologues; display captions; semantic stock; cleanup after verified video_id.
+Faceless vids: fareed320→Trapiistan/Sosai; public/no review gate; younger punchy fact-grounded scripts, not technical; captions display-only; semantic stock; cleanup post-video_id.

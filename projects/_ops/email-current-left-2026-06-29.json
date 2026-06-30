@@ -1,0 +1,1160 @@
+{
+  "personal-main": {
+    "email": "affan.fareed@gmail.com",
+    "verified": "affan.fareed@gmail.com",
+    "inbox_count": 80,
+    "unread_count": 74,
+    "buckets": {
+      "important_finance_security": [
+        {
+          "id": "19f120e05bc5200d",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "Your credit card payment is scheduled",
+          "date": "Mon, 29 Jun 2026 06:25:34 +0000 (UTC)",
+          "snippet": "Payment scheduled Thank you for scheduling your credit card payment Here are the details of your payment: Account Chase Freedom Unlimited Visa(...7999) Amount $90.00 Payment authorized on Jun 29, 2026",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_PERSONAL",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19f120dfcc0d1528",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "Your bill payment of $90.00 was made from account ending in (\u20265360)",
+          "date": "Mon, 29 Jun 2026 06:25:33 +0000 (UTC)",
+          "snippet": "Bill payment Your bill payment of $90.00 to CHASE CARD 7999 Account ending in (...5360) Made on Jun 29, 2026 at 2:25 AM ET Recipient CHASE CARD 7999 Amount $90.00 You are receiving this alert because",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19f120d77083c0b1",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "Your bill payment of $233.00 was made from account ending in (\u20265360)",
+          "date": "Mon, 29 Jun 2026 06:24:58 +0000 (UTC)",
+          "snippet": "Bill payment Your bill payment of $233.00 to CHASE CARD 7999 Account ending in (...5360) Made on Jun 29, 2026 at 2:24 AM ET Recipient CHASE CARD 7999 Amount $233.00 You are receiving this alert because",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19f120d7659bcb72",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "Your credit card payment is scheduled",
+          "date": "Mon, 29 Jun 2026 06:24:58 +0000 (UTC)",
+          "snippet": "Payment scheduled Thank you for scheduling your credit card payment Here are the details of your payment: Account Chase Freedom Unlimited Visa(...7999) Amount $233.00 Payment authorized on Jun 29, 2026",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19f10ba69a018c1b",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "You made a $205.54 transaction with UBER * EATS PENDIN",
+          "date": "Mon, 29 Jun 2026 00:14:38 +0000 (UTC)",
+          "snippet": "This transaction is above the level you set, see more here. \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19f0cdfe9731abdf",
+          "from": "FoxieBlu <noreply@github.com>",
+          "subject": "foxieblu invited you to foxieblu/Logicara",
+          "date": "Sat, 27 Jun 2026 23:17:08 -0700",
+          "snippet": "GitHub home @foxieblu has invited you to collaborate on the foxieblu/Logicara repository You can accept or decline this invitation. You can also visit @foxieblu to learn a bit more about them. This",
+          "labels": [
+            "UNREAD",
+            "IMPORTANT",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19f087088a16d1f2",
+          "from": "Anthropic Team <notice@email.anthropic.com>",
+          "subject": "[No Action Required]: Higher rate limits on the Claude API",
+          "date": "Sat, 27 Jun 2026 09:37:00 +0000",
+          "snippet": "Your rate limits are increasing, and usage tiers are getting simpler. No action required. \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19f07752756f5e12",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Your trade confirmations are available",
+          "date": "Sat, 27 Jun 2026 05:02:25 +0000 (UTC)",
+          "snippet": "View your trade confirmations. Your trade confirmations are available Hi Affan, your recent trade confirmations are available. Trade confirmations detail any activity during the last 24 hours until 8",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19f066ec595fa111",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Your Individual \u2022 Crypto account (...8856) crypto recurring investments summary",
+          "date": "Sat, 27 Jun 2026 00:15:49 +0000 (UTC)",
+          "snippet": "Here&#39;s what happened with your crypto recurring investments today. Your Individual \u2022 Crypto account (...8856) crypto recurring investments summary Hi Affan, Here&#39;s what happened with your",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19f05f6d3e52ea33",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Vote in the The J. M. Smucker Company Annual Meeting",
+          "date": "Fri, 26 Jun 2026 22:04:15 +0000",
+          "snippet": "Vote on key company decisions by August 9, 2026 and view the meeting materials through the link below. SJM The JM Smucker Company Vote in the The JM Smucker Company 2026 Annual Meeting Hi Affan, The JM",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19f04aad51737c9f",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Your order has been executed",
+          "date": "Fri, 26 Jun 2026 16:02:11 +0000 (UTC)",
+          "snippet": "Your order to buy $50.00 of SOFI through your individual (\u2022\u2022\u20221041) account was executed on June 26, 2026 at 12:02 PM ET. Your order has been executed Hi Affan, Your order to buy $50.00 of SOFI through",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19f04685303ccb33",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "Your latest statement is now available",
+          "date": "Fri, 26 Jun 2026 14:49:32 +0000 (UTC)",
+          "snippet": "Statement notification Your latest statement is now available Here are the details: Account ending in (...5360) If you aren&#39;t enrolled to receive paperless statements or think you&#39;re getting",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19f039a9fd6327e3",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Vanguard High Dividend Yield ETF has published information for its investors",
+          "date": "Fri, 26 Jun 2026 11:04:49 +0000",
+          "snippet": "Vanguard High Dividend Yield ETF has just published new information. These documents are written to inform shareholders like you about your investment. VYM Vanguard High Dividend Yield ETF New",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19f00360b763ca82",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "Your credit card payment is scheduled",
+          "date": "Thu, 25 Jun 2026 19:16:07 +0000 (UTC)",
+          "snippet": "Payment scheduled Thank you for scheduling your credit card payment Here are the details of your payment: Account Chase Freedom Unlimited Visa(...7999) Amount $200.00 Payment authorized on Jun 25, 2026",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19f0036052d7848c",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "Your bill payment of $200.00 was made from account ending in (\u20265360)",
+          "date": "Thu, 25 Jun 2026 19:16:06 +0000 (UTC)",
+          "snippet": "Bill payment Your bill payment of $200.00 to CHASE CARD 7999 Account ending in (...5360) Made on Jun 25, 2026 at 3:16 PM ET Recipient CHASE CARD 7999 Amount $200.00 You are receiving this alert because",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19eff858ca36168f",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Your order has been executed",
+          "date": "Thu, 25 Jun 2026 16:03:22 +0000 (UTC)",
+          "snippet": "Your order to buy $60.00 of AMD through your individual (\u2022\u2022\u20221041) account was executed on June 25, 2026 at 12:03 PM ET. Your order has been executed Hi Affan, Your order to buy $60.00 of AMD through",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19eff858a381db1b",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Your order has been executed",
+          "date": "Thu, 25 Jun 2026 16:03:21 +0000 (UTC)",
+          "snippet": "Your order to sell 0.19015 shares of NVDA was executed at an average price of $195.70 on June 25, 2026 at 12:03 PM ET. Your order has been executed Hi Affan, Your order to sell 0.19015 shares of NVDA",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19efd1c89b50aeae",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Your trade confirmations are available",
+          "date": "Thu, 25 Jun 2026 04:49:26 +0000 (UTC)",
+          "snippet": "View your trade confirmations. Your trade confirmations are available Hi Affan, your recent trade confirmations are available. Trade confirmations detail any activity during the last 24 hours until 8",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19efcbb55348ca56",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "You used your card at a gas station",
+          "date": "Thu, 25 Jun 2026 03:03:14 +0000 (UTC)",
+          "snippet": "Transaction made Your gas station transaction Here are the details: Account Chase Freedom Unlimited Visa (...7999) Posted on Jun 24, 2026 at 11:03 PM ET Merchant THORNTONS #0016 You enrolled to receive",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19efc1c8630e542c",
+          "from": "HSA Bank <hsabank@emails.hsabank.com>",
+          "subject": "Affan\u2019s summer HSA update",
+          "date": "Wed, 24 Jun 2026 18:09:18 -0600",
+          "snippet": "Here&#39;s your account snapshot and tools to save. Building your HSA balance $2690.39 HSA cash balance* $1519.24 Contributions* added so far this year $0.00 Distributions* spent so far this year Affan",
+          "labels": [
+            "UNREAD",
+            "IMPORTANT",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19efb057b7a37dfe",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Your order has been executed",
+          "date": "Wed, 24 Jun 2026 19:05:00 +0000 (UTC)",
+          "snippet": "Your order to sell 0.993769 shares of HOOD was executed at an average price of $97.14 on June 24, 2026 at 3:04 PM ET. Your order has been executed Hi Affan, Your order to sell 0.993769 shares of HOOD",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19ef9d5eeddf9d9a",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Your order has been executed",
+          "date": "Wed, 24 Jun 2026 13:33:25 +0000 (UTC)",
+          "snippet": "Your order to buy $30.00 of SOFI through your individual (\u2022\u2022\u20221041) account was executed on June 24, 2026 at 9:33 AM ET. Your order has been executed Hi Affan, Your order to buy $30.00 of SOFI through",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19ef7f0ef9be90c7",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Your trade confirmations are available",
+          "date": "Wed, 24 Jun 2026 04:43:41 +0000 (UTC)",
+          "snippet": "View your trade confirmations. Your trade confirmations are available Hi Affan, your recent trade confirmations are available. Trade confirmations detail any activity during the last 24 hours until 8",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19ef4cd29d4d8991",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "S&P Global Inc. has published information for its investors",
+          "date": "Tue, 23 Jun 2026 14:04:31 +0000",
+          "snippet": "S&amp;P Global Inc. has just published new information. These documents are written to inform shareholders like you about your investment. SPGI S&amp;P Global Inc. New Information Statement from",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19ef37f7468ecb9d",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Your trade confirmations are available",
+          "date": "Tue, 23 Jun 2026 08:01:16 +0000 (UTC)",
+          "snippet": "View your trade confirmations. Your trade confirmations are available Hi Affan, your recent trade confirmations are available. Trade confirmations detail any activity during the last 24 hours until 8",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19ef022b8b9b2e71",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "New powers for your AI agent unlocked",
+          "date": "Mon, 22 Jun 2026 16:21:06 +0000 (UTC)",
+          "snippet": "Options trading, watchlists, market scans, and more. \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19eeff92975f9186",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Neutron Holdings Inc. (LIME) is now on Robinhood",
+          "date": "Mon, 22 Jun 2026 15:35:43 +0000 (UTC)",
+          "snippet": "Neutron Holdings Inc. (LIME) filed their prospectus with plans to go public. New IPO: Neutron Holdings Inc. (LIME) is now on Robinhood Hi Affan, Neutron Holdings Inc. (LIME) plans to go public. You can",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19eef8917981358e",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Your order has been executed",
+          "date": "Mon, 22 Jun 2026 13:33:18 +0000 (UTC)",
+          "snippet": "Your order to buy $50.00 of HOOD through your individual (\u2022\u2022\u20221041) account was executed on June 22, 2026 at 9:33 AM ET. Your order has been executed Hi Affan, Your order to buy $50.00 of HOOD through",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19eef1fd9bd4b4e4",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "You sent $11.99 from account ending in (...5360)",
+          "date": "Mon, 22 Jun 2026 11:38:20 +0000 (UTC)",
+          "snippet": "Transfer alert You sent $11.99 to PAYPAL Account ending in (...5360) Sent on Jun 22, 2026 at 7:38 AM ET Recipient PAYPAL Amount $11.99 You are receiving this alert because this transaction is more than",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19eedd862c505da4",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "You sent $190.08 from account ending in (...5360)",
+          "date": "Mon, 22 Jun 2026 05:40:40 +0000 (UTC)",
+          "snippet": "Transfer alert You sent $190.08 to PAYPAL Account ending in (...5360) Sent on Jun 22, 2026 at 1:39 AM ET Recipient PAYPAL Amount $190.08 You are receiving this alert because this transaction is more",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19eebb58da202980",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "Your ATM withdrawal of $33.50 from account ending in (\u20265360)",
+          "date": "Sun, 21 Jun 2026 19:43:22 +0000 (UTC)",
+          "snippet": "ATM withdrawal You made an ATM withdrawal of $33.50 Account ending in (...5360) Made on Jun 21, 2026 at 3:43 PM ET Amount $33.50 You are receiving this alert because this transaction is more than the",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19eeb5daac0ae698",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "Your credit card payment is scheduled",
+          "date": "Sun, 21 Jun 2026 18:07:23 +0000 (UTC)",
+          "snippet": "Payment scheduled Thank you for scheduling your credit card payment Here are the details of your payment: Account Chase Freedom Unlimited Visa(...7999) Amount $350.00 Payment authorized on Jun 21, 2026",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19eeb5da708874c1",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "Your bill payment of $350.00 was made from account ending in (\u20265360)",
+          "date": "Sun, 21 Jun 2026 18:07:22 +0000 (UTC)",
+          "snippet": "Bill payment Your bill payment of $350.00 to CHASE CARD 7999 Account ending in (...5360) Made on Jun 21, 2026 at 2:07 PM ET Recipient CHASE CARD 7999 Amount $350.00 You are receiving this alert because",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19eeacdbcaccc988",
+          "from": "Experian <support@s.usa.experian.com>",
+          "subject": "Your monthly account statement is here, Affan",
+          "date": "Sun, 21 Jun 2026 09:30:09 -0600",
+          "snippet": "Review your account statement Experian Logo Membership ID# 10132682897472648 Sign In Check out your monthly account statement 1 unread notifications 1 new in the past 30 days Your credit rating is very",
+          "labels": [
+            "IMPORTANT",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19ee68406f4c6b18",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "Your debit card transaction of $9.18 from account ending in (\u20265360)",
+          "date": "Sat, 20 Jun 2026 19:31:10 +0000 (UTC)",
+          "snippet": "Transaction alert You made a debit card transaction of $9.18 with ARMK ROSEMONT THEATR Account ending in (...5360) Made on Jun 20, 2026 at 3:31 PM ET Description ARMK ROSEMONT THEATR Amount $9.18 You",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19ee4c41ce0933ec",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "Your credit card statement is available",
+          "date": "Sat, 20 Jun 2026 11:21:56 +0000 (UTC)",
+          "snippet": "Statement ready Your credit card statement is available Account Chase Credit Card (...7999) Due date 07/16/2026 Minimum payment due $40.00 Statement balance $160.97 Auto-pay enabled You&#39;re already",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19ee2517ebd6da78",
+          "from": "Chase <no.reply.alerts@chase.com>",
+          "subject": "Your ATM withdrawal of $23.50 from account ending in (\u20265360)",
+          "date": "Fri, 19 Jun 2026 23:57:31 +0000 (UTC)",
+          "snippet": "ATM withdrawal You made an ATM withdrawal of $23.50 Account ending in (...5360) Made on Jun 19, 2026 at 7:57 PM ET Amount $23.50 You are receiving this alert because this transaction is more than the",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19edf0bcd2c96dea",
+          "from": "Robinhood <noreply@robinhood.com>",
+          "subject": "Your trade confirmations are available",
+          "date": "Fri, 19 Jun 2026 08:42:31 +0000 (UTC)",
+          "snippet": "View your trade confirmations. Your trade confirmations are available Hi Affan, your recent trade confirmations are available. Trade confirmations detail any activity during the last 24 hours until 8",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        }
+      ],
+      "low_priority_possible_junk": [
+        {
+          "id": "19f0a587f901d005",
+          "from": "no-reply@unity3d.com",
+          "subject": "New Asset Store Notifications",
+          "date": "Sat, 27 Jun 2026 18:29:57 +0000 (UTC)",
+          "snippet": "Dustyroom just updated AI Toolbox with ChatGPT, DALL\u00b7E, Whisper, Gemini etc to version 7.1.1. Unity Asset Store logo You Have New Notifications Dustyroom just updated AI Toolbox with ChatGPT, DALL\u00b7E,",
+          "labels": [
+            "CATEGORY_PROMOTIONS",
+            "UNREAD",
+            "INBOX"
+          ],
+          "bucket": "low_priority_possible_junk"
+        },
+        {
+          "id": "19efbe2977b7669b",
+          "from": "Cooldown <campaigns@sweatpals.com>",
+          "subject": "You're invited: Wet Hydration x Cooldown Pop Up. Cooldown will be waiting!",
+          "date": "Wed, 24 Jun 2026 23:06:31 +0000",
+          "snippet": "You&#39;re invited: Wet Hydration x Cooldown Pop Up. Cooldown will be waiting! Cooldown Hi, Affan Fareed! We&#39;d love to see you at Wet Hydration x Cooldown Pop Up! When: Jun 27th, 9:30 AM EDT",
+          "labels": [
+            "UNREAD",
+            "IMPORTANT",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "low_priority_possible_junk"
+        },
+        {
+          "id": "19eeb5def8641dab",
+          "from": "\"Chase Freedom Unlimited\u00ae \" <chase@e.chase.com>",
+          "subject": "Your cash back is on the way!",
+          "date": "Sun, 21 Jun 2026 18:07:42 +0000",
+          "snippet": "Hi, Affan. You&#39;ll get your cash back soon. Cash back Your cash back is on the way, Affan! Here are your Ultimate Rewards\u00ae details: Ultimate Rewards\u00ae order summary Account ...7999 Order date 06/21/",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "low_priority_possible_junk"
+        },
+        {
+          "id": "19ee1ad4ab01db15",
+          "from": "Cooldown <campaigns@sweatpals.com>",
+          "subject": "You're invited: Cincinnati Run/Walk Club . Cooldown will be waiting!",
+          "date": "Fri, 19 Jun 2026 20:58:10 +0000",
+          "snippet": "You&#39;re invited: Cincinnati Run/Walk Club . Cooldown will be waiting! Cooldown Hi, Affan Fareed! We&#39;d love to see you at Cincinnati Run/Walk Club ! When: Jul 15th, 6:30 PM EDT Location:",
+          "labels": [
+            "UNREAD",
+            "IMPORTANT",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "low_priority_possible_junk"
+        },
+        {
+          "id": "19cfd15eebd9361d",
+          "from": "Ticketmaster <customer_support@email.ticketmaster.com>",
+          "subject": "You Got Tickets To DEADMAN ALL STARS LIVE",
+          "date": "Tue, 17 Mar 2026 12:36:38 -0600",
+          "snippet": "The countdown to your event starts now. Save this info for your records. Ticketmaster Ticketmaster My Account You Got the Tickets Order # 42-29877/CH1 You Got the Tickets Order # 42-29877/CH1 DEADMAN",
+          "labels": [
+            "YELLOW_STAR",
+            "IMPORTANT",
+            "STARRED",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "low_priority_possible_junk"
+        }
+      ],
+      "source_newsletter_hold": [
+        {
+          "id": "19f0a0b63d71191e",
+          "from": "Greg - Kinobody <support@kinobody.com>",
+          "subject": "The Fat Mobilization Ingredient Nobody Talks About",
+          "date": "Sat, 27 Jun 2026 17:05:42 +0000 (UTC)",
+          "snippet": "Carnitine might be one of the most underrated tools for improving body composition. Its primary role is helping shuttle long-chain fatty acids into the mitochondria, where they can be burned for energy",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19f05f21f8ff5381",
+          "from": "Greg - Kinobody <support@kinobody.com>",
+          "subject": "Your Body Doesn\u2019t Just Store Fat. It Monitors It",
+          "date": "Fri, 26 Jun 2026 21:59:14 +0000 (UTC)",
+          "snippet": "Most people think body fat is simply stored energy. It isn&#39;t. Your body is constantly monitoring how much fat you have and adjusting your hunger accordingly. One of the primary hormones responsible",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19f0475071833b05",
+          "from": "Kinobody <support@kinobody.com>",
+          "subject": "Thanks for ordering again",
+          "date": "Fri, 26 Jun 2026 15:03:25 +0000 (UTC)",
+          "snippet": "You stayed the course \ud83d\udcaa \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19f0413231bde335",
+          "from": "TLDR InfoSec <dan@tldrnewsletter.com>",
+          "subject": "Polymarket $3M Hack \ud83d\udcb8, Klue Data Extortion \ud83d\udea8, GasLight macOS Bug \ud83c\udf4f",
+          "date": "Fri, 26 Jun 2026 13:16:30 +0000",
+          "snippet": "A compromised third-party vendor allowed attackers to inject a malicious script into Polymarket&#39;s frontend for some users \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19f0027dd038e08d",
+          "from": "Greg - Kinobody <support@kinobody.com>",
+          "subject": "Free Kino Coaching Call in 2 Hours!",
+          "date": "Thu, 25 Jun 2026 19:00:39 +0000 (UTC)",
+          "snippet": "I&#39;m hosting a free coaching call at 5:00 PM Eastern today. This one is all about fat loss. What it actually takes to get lean, how to set your calories the right way, and how I&#39;ve been using",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19efef2e6338e568",
+          "from": "TLDR InfoSec <dan@tldrnewsletter.com>",
+          "subject": "FortiBleed cred harvest \ud83d\udcf6, ModeloRAT backdoor \ud83d\udeaa, Mythos finds gov flaws \ud83c\udfdb\ufe0f",
+          "date": "Thu, 25 Jun 2026 13:23:11 +0000",
+          "snippet": "A Russian-speaking initial access broker has run FortiBleed since February, brute-forcing over 430000 FortiGate firewalls \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19efbfdd0b4341f7",
+          "from": "Greg - Kinobody <support@kinobody.com>",
+          "subject": "Free Kinobody Coaching Call on Thursday",
+          "date": "Wed, 24 Jun 2026 23:36:12 +0000 (UTC)",
+          "snippet": "I&#39;m hosting a free coaching call tomorrow (Thursday) at 5:00 PM Eastern. This one is all about fat loss. What it actually takes to get lean, how to set your calories the right way, and how I&#39;ve",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19efae7fe6fa508a",
+          "from": "Greg - Kinobody <support@kinobody.com>",
+          "subject": "Why the Last 15 Pounds Are Next to Impossible to Lose",
+          "date": "Wed, 24 Jun 2026 18:32:24 +0000 (UTC)",
+          "snippet": "Your body has a natural defense against fat loss. As you get leaner, as you spend time in a deficit, you hit a wall. Your body senses that the fat reserves are dropping and reads it as a threat: &quot;",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ef9c67e2771641",
+          "from": "TLDR InfoSec <dan@tldrnewsletter.com>",
+          "subject": "Tata Secrets Leak \ud83c\uddee\ud83c\uddf3, FFmpeg RCE Patch \ud83c\udfa5, OpenAI Daybreak Updates \ud83c\udf05",
+          "date": "Wed, 24 Jun 2026 13:16:35 +0000",
+          "snippet": "The World Leaks ransomware group published more than 200k files allegedly belonging to Indian electronics manufacturer Tata Electronics \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ef8c58e12cc64d",
+          "from": "Kinobody <store+18003573@t.shopifyemail.com>",
+          "subject": "A shipment from order KB-660881 is out for delivery",
+          "date": "Wed, 24 Jun 2026 08:35:56 +0000",
+          "snippet": "Your order is on it&#39;s way! We&#39;ve got an exciting update regarding your order #660881! The last items in your order are now out for delivery. Items in this shipment: Kino Collagen Protein -",
+          "labels": [
+            "IMPORTANT",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ef592e8b2586de",
+          "from": "Greg - Kinobody <support@kinobody.com>",
+          "subject": "Why Being in Shape Is So Easy Now",
+          "date": "Tue, 23 Jun 2026 17:41:44 +0000 (UTC)",
+          "snippet": "Lifting three days a week is genuinely enjoyable. Getting your steps in feels good. Eating quality food, keeping a short fast, building strength over time. None of that is hard. Most guys who&#39;ve",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ef4a22ca6d2629",
+          "from": "TLDR InfoSec <dan@tldrnewsletter.com>",
+          "subject": "Apple Beats Wiretap Bug \ud83c\udfa7, Langflow Under Attack \ud83e\udd16, MCP Agentjacking Risk \ud83d\udd0c",
+          "date": "Tue, 23 Jun 2026 13:18:48 +0000",
+          "snippet": "Apple shipped Beats Firmware Update 1B211 to fix CVE-2025-20701, an authentication flaw in Airoha SoCs disclosed at a 2025 German security conference \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ef0c270329f3e1",
+          "from": "Greg - Kinobody <support@kinobody.com>",
+          "subject": "What This Biohacker Said About Me Using Tirzepatide Surprised Me",
+          "date": "Mon, 22 Jun 2026 19:15:21 +0000 (UTC)",
+          "snippet": "Tirzepatide might be the most controversial thing I&#39;ve ever talked about publicly. But I don&#39;t buckle to noise when I believe in something, and I genuinely think this is one of the best tools",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19eef80c82b1f8ae",
+          "from": "TLDR InfoSec <dan@tldrnewsletter.com>",
+          "subject": "Apple A12/A13 Exploit \ud83d\udcf1, Texas 3M License Breach \ud83e\udd20, Novo Nordisk Code Leak \ud83e\uddec",
+          "date": "Mon, 22 Jun 2026 13:24:14 +0000",
+          "snippet": "Paradigm Shift published &quot;usbliter8,&quot; a BootROM exploit against Apple&#39;s A12 and A13 chips that abuses a USB controller bug \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ee5c5d818c6d0d",
+          "from": "Greg - Kinobody <support@kinobody.com>",
+          "subject": "I've Gone Over My Calories 1000+ Times",
+          "date": "Sat, 20 Jun 2026 16:03:26 +0000 (UTC)",
+          "snippet": "Twenty years of training. I can count on one hand the workouts I&#39;ve missed in that time. Missing a session genuinely wrecks me. We&#39;re hitting the gym, no negotiation. But calories? Completely",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ee1c2fc6ba5799",
+          "from": "Kinobody <support@kinobody.com>",
+          "subject": "Something Caught Your Eye\u2026 Don\u2019t Leave It Behind",
+          "date": "Fri, 19 Jun 2026 21:21:52 +0000 (UTC)",
+          "snippet": "Revisit the products designed to help you get leaner, stronger, and sharper. \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ee00c53b91b294",
+          "from": "TLDR InfoSec <dan@tldrnewsletter.com>",
+          "subject": "GlassWASM VSX Malware \ud83d\udce6, Boots Phishing Blitz \ud83c\udfa3, Homebrew 6.0 Security \ud83c\udf7a",
+          "date": "Fri, 19 Jun 2026 13:22:44 +0000",
+          "snippet": "GlassWASM is a TinyGo-compiled WebAssembly payload hidden in two trojanized Open VSX extensions published by impersonation account zaitoona43 \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ede5d2b54c2016",
+          "from": "Kinobody <support@kinobody.com>",
+          "subject": "Your subscription just renewed!",
+          "date": "Fri, 19 Jun 2026 05:31:47 +0000 (UTC)",
+          "snippet": "Home Account My Programs Your Subscription Order Processed Hi Affan, Get excited! Your next subscription order just processed. We&#39;re packing your order and will send a shipping link once it leaves",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ede4db360ce651",
+          "from": "Kinobody <store+18003573@t.shopifyemail.com>",
+          "subject": "Order KB-660881 confirmed",
+          "date": "Fri, 19 Jun 2026 05:14:54 +0000 (UTC)",
+          "snippet": "Thanks for your purchase! This email is to confirm your order on 06/19/2026. Your order number is 660881. Billing Address: Affan Fareed 10851 West Montfair Boulevard The Woodlands, Texas 77382 United",
+          "labels": [
+            "UNREAD",
+            "IMPORTANT",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19edcb43decb36c4",
+          "from": "Greg - Kinobody <support@kinobody.com>",
+          "subject": "Why Most Guys\u2019 Legs Look Like Sh*t in Shorts (How to Fix It)",
+          "date": "Thu, 18 Jun 2026 21:47:35 +0000 (UTC)",
+          "snippet": "I remember when I used to train legs hard. Heavy squats, deadlifts, leg curls. I ate big, trained heavy, and my legs grew, but they didn&#39;t look good (in shorts -or- pants). And worse than that...",
+          "labels": [
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19edae71b000c594",
+          "from": "TLDR InfoSec <dan@tldrnewsletter.com>",
+          "subject": "OpenBSD Auth Bypass \ud83d\udc21, FortiBleed Hits 30K \ud83d\udee1\ufe0f, Peter Thiel Data Leak \ud83d\udcc2",
+          "date": "Thu, 18 Jun 2026 13:23:58 +0000",
+          "snippet": "Argus disclosed a PAP authentication bypass in OpenBSD&#39;s sppp(4) subsystem, where sppp_pap_input() in sys/net/if_spppsubr.c fed attacker-controlled \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ed7d1fdfb59c5e",
+          "from": "Greg - Kinobody <support@kinobody.com>",
+          "subject": "Brad Pitt Only Gained 10 lbs for Troy...",
+          "date": "Wed, 17 Jun 2026 23:02:01 +0000 (UTC)",
+          "snippet": "Most people think building an insane physique means bulking up like crazy. But when Brad Pitt got in shape for Troy, he only gained about 10 pounds of muscle. That&#39;s it. But the way he trained? And",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ed5c99e5eebecb",
+          "from": "TLDR InfoSec <dan@tldrnewsletter.com>",
+          "subject": "iRhythm Data Ransom \ud83c\udfe5, FIFA World Cup Hack \u26bd, JetBrains Key Theft \ud83d\udcbb",
+          "date": "Wed, 17 Jun 2026 13:33:40 +0000",
+          "snippet": "A criminal contacted cardiac monitoring firm iRhythm on June 9 claiming to have stolen proprietary data, patient health information \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ed30502e94ce1a",
+          "from": "Greg - Kinobody <support@kinobody.com>",
+          "subject": "By Popular Demand: The Troy Protocol Is Back!",
+          "date": "Wed, 17 Jun 2026 00:39:39 +0000 (UTC)",
+          "snippet": "Last year, I offered the Troy Protocol as a free bonus for anyone who subscribed to the Hero Stack. The response was incredible, so we&#39;re doing it again. If you&#39;ve followed me for any length of",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ed09888de59f7a",
+          "from": "TLDR InfoSec <dan@tldrnewsletter.com>",
+          "subject": "Europe Council Hack \ud83c\uddea\ud83c\uddfa, M365 Copilot Leak \ud83d\udcbb, Hand Gestures for ReCAPTCHA \ud83d\udc4b",
+          "date": "Tue, 16 Jun 2026 13:21:57 +0000",
+          "snippet": "The ShinyHunters ransomware gang claims to have hacked Europe&#39;s leading human rights organization, the Council of Europe \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ecf31389817615",
+          "from": "Kinobody <support@kinobody.com>",
+          "subject": "Get Ready for Your Next Order!",
+          "date": "Tue, 16 Jun 2026 06:49:28 +0000 (UTC)",
+          "snippet": "Upcoming subscription order! \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        },
+        {
+          "id": "19ecc9b5607f387d",
+          "from": "Greg - Kinobody <support@kinobody.com>",
+          "subject": "Leanness Used to Be the Goal. Now It's Just the Starting Point",
+          "date": "Mon, 15 Jun 2026 18:46:30 +0000 (UTC)",
+          "snippet": "With tirzepatide and drugs like it going mainstream, getting lean is becoming something almost anyone can do. In fact, a ton of people have already been microdosing tirzepatide with the Kino Clinic.",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "source_newsletter_hold"
+        }
+      ],
+      "personal_other": [
+        {
+          "id": "19f054690317237c",
+          "from": "Google <google-noreply@google.com>",
+          "subject": "Learn more about our updated Terms of Service",
+          "date": "Fri, 26 Jun 2026 11:52:18 -0700",
+          "snippet": "affan.fareed@gmail.com Every couple of years, we update our Terms of Service. We wanted to let you know ahead of time that the next update will be on July 30, 2026. These changes won&#39;t affect the",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "personal_other"
+        },
+        {
+          "id": "19efe7433732b351",
+          "from": "Google Business Profile <businessprofile-noreply@google.com>",
+          "subject": "Code Tutoring | Algorithm Academy, are you open on 4th of July?",
+          "date": "Thu, 25 Jun 2026 04:04:48 -0700",
+          "snippet": "Keep your listing up to date \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d \u200d",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "personal_other"
+        },
+        {
+          "id": "19ef49a6b3220182",
+          "from": "\"Wade (Hyperplexed)\" <hello@trywade.com>",
+          "subject": "Did Wade actually help you?",
+          "date": "Tue, 23 Jun 2026 13:10:20 +0000",
+          "snippet": "Hey T.zdbd, Saw that you signed up for Wade recently (probably from one of my shorts). I&#39;m trying to make it actually useful for people so I&#39;d love to get your feedback. Feel free to reply",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_PERSONAL",
+            "INBOX"
+          ],
+          "bucket": "personal_other"
+        },
+        {
+          "id": "19ef237970aecd04",
+          "from": "Zoom <no-reply@zoom.us>",
+          "subject": "Meeting assets for Affan Fareed's Personal Meeting Room are ready!",
+          "date": "Tue, 23 Jun 2026 02:03:09 +0000 (UTC)",
+          "snippet": "Meeting assets for Affan Fareed&#39;s Personal Meeting Room are ready! Review action items Meeting summary Quick recap Affan and Jared worked together on coding challenges through Code Wars, focusing",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "personal_other"
+        },
+        {
+          "id": "19eefebf261f30b4",
+          "from": "RuneScape <noreply@l.runescape.com>",
+          "subject": "Thanks for coming to the Deadman: All Stars finale!",
+          "date": "Mon, 22 Jun 2026 15:21:13 +0000",
+          "snippet": "We want your feedback... \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f",
+          "labels": [
+            "UNREAD",
+            "IMPORTANT",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "personal_other"
+        },
+        {
+          "id": "19ee67c1d4809076",
+          "from": "LaserAway <contact@laseraway.co>",
+          "subject": "Important: Details on your upcoming treatment\u2026",
+          "date": "Sat, 20 Jun 2026 19:22:33 +0000",
+          "snippet": "Your LaserAway appointment is coming up! \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f \u034f",
+          "labels": [
+            "UNREAD",
+            "IMPORTANT",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "personal_other"
+        },
+        {
+          "id": "19edfdc0c7b4623c",
+          "from": "Landing <care@hellolanding.com>",
+          "subject": "\ud83d\udea8 You're off the Orlando waitlist",
+          "date": "Fri, 19 Jun 2026 12:30:00 +0000 (UTC)",
+          "snippet": "Hurry, your hour to book starts now.\u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f \u200c \u034f",
+          "labels": [
+            "UNREAD",
+            "IMPORTANT",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "personal_other"
+        },
+        {
+          "id": "19ec181a0e4b302d",
+          "from": "RuneScape <noreply@l.runescape.com>",
+          "subject": "Important information regarding Deadman: All Stars Live Finale",
+          "date": "Sat, 13 Jun 2026 15:02:37 +0000",
+          "snippet": "Prepare for the event... \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f \u200c \ufeff \u034f",
+          "labels": [
+            "IMPORTANT",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "personal_other"
+        },
+        {
+          "id": "19cdc042c10cb59c",
+          "from": "renewalnotice@ilsos.gov",
+          "subject": "Your vehicle registration is about to expire - You can renew online.",
+          "date": "Wed, 11 Mar 2026 01:29:47 -0700 (PDT)",
+          "snippet": "Your Vehicle Registration is about to Expire - You Can Renew Online Hello, This email is a reminder that you have not yet renewed your Illinois license plate registration, for Plate Number CF99130 for",
+          "labels": [
+            "IMPORTANT",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "personal_other"
+        }
+      ],
+      "personal_info": [
+        {
+          "id": "19ef092c1864e83e",
+          "from": "Grammarly Insights <hello@mail.grammarly.com>",
+          "subject": "\ud83d\udcc8 See your writing wins + Pro for 50% off!",
+          "date": "Mon, 22 Jun 2026 18:23:29 +0000",
+          "snippet": "And earning a reputation for peak performance. \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "labels": [
+            "CATEGORY_PROMOTIONS",
+            "UNREAD",
+            "INBOX"
+          ],
+          "bucket": "personal_info"
+        }
+      ]
+    }
+  },
+  "personal-secondary": {
+    "email": "fareed320@gmail.com",
+    "verified": "fareed320@gmail.com",
+    "inbox_count": 6,
+    "unread_count": 5,
+    "buckets": {
+      "personal_other": [
+        {
+          "id": "19f112921c28e6d1",
+          "from": "Affan Fareed <affan.fareed@gmail.com>",
+          "subject": "",
+          "date": "Sun, 28 Jun 2026 21:15:25 -0500",
+          "snippet": "https://www.reddit.com/r/logitech/comments/1r14u6o/was_i_lied_to_that_x2_superstrike_will_have/",
+          "labels": [
+            "UNREAD",
+            "IMPORTANT",
+            "CATEGORY_PERSONAL",
+            "INBOX"
+          ],
+          "bucket": "personal_other"
+        }
+      ],
+      "important_finance_security": [
+        {
+          "id": "19f11262d70ce104",
+          "from": "Uber Receipts <noreply@uber.com>",
+          "subject": "[Personal] Your Sunday evening order with Uber Eats",
+          "date": "Mon, 29 Jun 2026 02:12:22 +0000 (UTC)",
+          "snippet": "Jun 28, 2026 7:14 PM Tip Jun 28, 2026 , 7:14 PM Thanks for tipping, Affan Here&#39;s your receipt for Best Buy (350 W Army Trail Rd). Total $205.55 To view your full receipt go to Uber Eats, or",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19ef5f6b38a2d1a4",
+          "from": "Credit Karma <notifications@mail.creditkarma.com>",
+          "subject": "A closed account could impact your credit usage, Affan",
+          "date": "Tue, 23 Jun 2026 18:43:40 +0000",
+          "snippet": "Take a minute to see what&#39;s changed. \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19ef356762af0716",
+          "from": "npm <support@npmjs.com>",
+          "subject": "Enabling two-factor authentication (2FA) on your npm account: trapistan",
+          "date": "Tue, 23 Jun 2026 07:16:30 +0000",
+          "snippet": "You still do not have two-factor authentication (2FA) enabled on your npm account. Hi, trapistan! It looks like you still do not have two-factor authentication (2FA) enabled on your npm account. To",
+          "labels": [
+            "UNREAD",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19eedb09c556955f",
+          "from": "PayPal <service@paypal.com>",
+          "subject": "SoundCloud Operation...: $11.99 USD",
+          "date": "Sun, 21 Jun 2026 21:57:13 -0700",
+          "snippet": "Payment details are inside. Hello, Affan Fareed You paid $11.99 USD to SoundCloud Operation... Merchant SoundCloud Operation... transactions@soundcl... Transaction date Jun 21, 2026 Order ID",
+          "labels": [
+            "UNREAD",
+            "IMPORTANT",
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        },
+        {
+          "id": "19ede4dd1b34801f",
+          "from": "\"service@paypal.com\" <service@paypal.com>",
+          "subject": "Receipt for your PayPal payment",
+          "date": "Thu, 18 Jun 2026 22:15:01 -0700",
+          "snippet": "Affan Fareed, thanks for paying with PayPal. Affan Fareed - Here&#39;s your receipt. Thanks for paying with PayPal To see the payment details, log in to your PayPal account. Payment from Affan Fareed",
+          "labels": [
+            "CATEGORY_UPDATES",
+            "INBOX"
+          ],
+          "bucket": "important_finance_security"
+        }
+      ]
+    }
+  }
+}

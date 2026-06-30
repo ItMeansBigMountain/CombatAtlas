@@ -1,19 +1,22 @@
-# Personal-main read-only OAuth reauth pattern
+# Personal-main full OAuth reauth pattern
 
-Use when `personal-main` / `affan.fareed@gmail.com` has `invalid_scope`, stale consent, or a blind main-account context.
+Use when `personal-main` / `affan.fareed@gmail.com` has stale consent, expired/revoked tokens, or a blind main-account context.
 
 ## Policy
 
-`personal-main` is read-only unless the user explicitly changes policy. Do not request Gmail send/modify, Calendar write, Drive write, Docs write, or Sheets write scopes for this account.
+As of the user's explicit 2026-06-29 instruction, both personal Google accounts have full read/write Workspace permission. `personal-main` / `affan.fareed@gmail.com` is no longer Gmail-read-only.
 
-Read-only Workspace scope bundle:
+Full Workspace scope bundle for `personal-main`:
 
 - `https://www.googleapis.com/auth/gmail.readonly`
-- `https://www.googleapis.com/auth/calendar.readonly`
-- `https://www.googleapis.com/auth/drive.readonly`
-- `https://www.googleapis.com/auth/contacts.readonly`
-- `https://www.googleapis.com/auth/spreadsheets.readonly`
-- `https://www.googleapis.com/auth/documents.readonly`
+- `https://www.googleapis.com/auth/gmail.modify`
+- `https://www.googleapis.com/auth/gmail.send`
+- `https://www.googleapis.com/auth/gmail.settings.basic`
+- `https://www.googleapis.com/auth/calendar`
+- `https://www.googleapis.com/auth/drive`
+- `https://www.googleapis.com/auth/contacts`
+- `https://www.googleapis.com/auth/spreadsheets`
+- `https://www.googleapis.com/auth/documents`
 
 ## Durable helper behavior
 

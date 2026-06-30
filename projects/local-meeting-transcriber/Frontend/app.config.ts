@@ -4,7 +4,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   name: "LMT",
   slug: "local-meeting-transcriber",
   extra: {
-    API_BASE: process.env.API_BASE || "http://localhost:5000", // Default to localhost
+    // Empty string means same-origin /api routes in Vercel web builds.
+    API_BASE: process.env.API_BASE || "",
   },
   ios: { 
     supportsTablet: true,

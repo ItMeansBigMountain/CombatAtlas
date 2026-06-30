@@ -1,0 +1,3991 @@
+{
+  "generated_at": "2026-06-29T07:08:21.963192",
+  "projects": [
+    {
+      "name": "3d-react-web",
+      "path": "/opt/data/HeRmEz/projects/3d-react-web",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true,
+        "package.json": true
+      },
+      "stack": [
+        "node/js",
+        "app/src"
+      ],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "src/index.css",
+          "mtime": "2026-05-24T15:21:11"
+        },
+        {
+          "file": "src/App.js",
+          "mtime": "2026-05-24T15:21:11"
+        },
+        {
+          "file": "src/App.css",
+          "mtime": "2026-05-24T15:21:11"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-05-24T15:21:11"
+        }
+      ]
+    },
+    {
+      "name": "CloudAutomation",
+      "path": "/opt/data/HeRmEz/projects/CloudAutomation",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "TerraForm/Templates/deployVirtualMachine.tf",
+          "mtime": "2026-05-17T22:23:46"
+        },
+        {
+          "file": "TerraForm/Templates/kubernetesCluster.tf",
+          "mtime": "2026-05-17T22:10:27"
+        },
+        {
+          "file": "TerraForm/Templates/ServicePrinciple_Auth.tf",
+          "mtime": "2026-05-17T22:10:27"
+        },
+        {
+          "file": "TerraForm/TF_NOTES.txt",
+          "mtime": "2026-05-17T22:10:27"
+        }
+      ]
+    },
+    {
+      "name": "Codology",
+      "path": "/opt/data/HeRmEz/projects/Codology",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "PRODUCT_DIRECTION.md": true,
+        "DEVELOPMENT_PLAN.md": true,
+        "package.json": true
+      },
+      "stack": [
+        "node/js"
+      ],
+      "docs": [
+        "README.md",
+        "PRODUCT_DIRECTION.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "codology/.expo/metro/polyfill.native.js",
+          "mtime": "2026-06-06T02:09:03"
+        },
+        {
+          "file": "codology/.expo/metro/polyfill.js",
+          "mtime": "2026-06-06T02:09:03"
+        },
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "PRODUCT_DIRECTION.md",
+          "mtime": "2026-05-26T03:19:48"
+        },
+        {
+          "file": "ALGOS_IMPORT_PLAN.md",
+          "mtime": "2026-05-26T03:17:27"
+        }
+      ]
+    },
+    {
+      "name": "CombatAtlas",
+      "path": "/opt/data/HeRmEz/projects/CombatAtlas",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true,
+        "package.json": true
+      },
+      "stack": [
+        "node/js",
+        "app/src"
+      ],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-05-25T12:32:36"
+        },
+        {
+          "file": "src/data/combatData.js",
+          "mtime": "2026-05-25T12:28:26"
+        },
+        {
+          "file": "src/styles.css",
+          "mtime": "2026-05-25T12:27:15"
+        },
+        {
+          "file": "src/main.jsx",
+          "mtime": "2026-05-25T12:26:44"
+        }
+      ]
+    },
+    {
+      "name": "Financial.Market.ML",
+      "path": "/opt/data/HeRmEz/projects/Financial.Market.ML",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "tickers.txt",
+          "mtime": "2026-06-14T19:41:56"
+        },
+        {
+          "file": "stratmanager.py",
+          "mtime": "2026-06-14T19:41:56"
+        },
+        {
+          "file": "box-candle.ipynb",
+          "mtime": "2026-06-14T19:41:56"
+        },
+        {
+          "file": "box-candle-2.py",
+          "mtime": "2026-06-14T19:41:56"
+        },
+        {
+          "file": "WorkFlow.md",
+          "mtime": "2026-06-14T19:41:56"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/Financial.Market.ML.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/Financial.Market.ML.git (push)"
+      ],
+      "last_commit": "ddd02a8 2024-06-11 GPT notes for primer videos on reinforcement learning"
+    },
+    {
+      "name": "Fintech",
+      "path": "/opt/data/HeRmEz/projects/Fintech",
+      "git": true,
+      "files": {},
+      "stack": [],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "robinAPI.py",
+          "mtime": "2026-06-14T19:42:06"
+        },
+        {
+          "file": "daytrade.py",
+          "mtime": "2026-06-14T19:42:06"
+        },
+        {
+          "file": "STOCKS.txt",
+          "mtime": "2026-06-14T19:42:06"
+        },
+        {
+          "file": "README",
+          "mtime": "2026-06-14T19:42:06"
+        },
+        {
+          "file": ".gitignore",
+          "mtime": "2026-06-14T19:42:06"
+        }
+      ],
+      "branch": "robinStocks.cli",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/Fintech.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/Fintech.git (push)"
+      ],
+      "last_commit": "c090a34 2024-02-21 nuke"
+    },
+    {
+      "name": "Generative-AI",
+      "path": "/opt/data/HeRmEz/projects/Generative-AI",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "prompt-engineering.txt",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "hugging-face-demo/word-identification.py",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "hugging-face-demo/text-translation.py",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "hugging-face-demo/text-to-video.py",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "hugging-face-demo/text-summary.py",
+          "mtime": "2026-06-14T19:41:53"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/Generative-AI.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/Generative-AI.git (push)"
+      ],
+      "last_commit": "a3e5ab4 2025-08-03 prompt engineering notes"
+    },
+    {
+      "name": "HTML_REGEX",
+      "path": "/opt/data/HeRmEz/projects/HTML_REGEX",
+      "git": true,
+      "files": {},
+      "stack": [],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "users.html",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "profile.html",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "index.html",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "index.css",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "contact_me.html",
+          "mtime": "2026-06-14T19:42:04"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/HTML_REGEX.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/HTML_REGEX.git (push)"
+      ],
+      "last_commit": "62a7b4e 2022-08-03 about me"
+    },
+    {
+      "name": "Jupyter.Notebooks",
+      "path": "/opt/data/HeRmEz/projects/Jupyter.Notebooks",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true,
+        "requirements.txt": true
+      },
+      "stack": [
+        "python"
+      ],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "requirements.txt",
+          "mtime": "2026-06-09T01:50:35"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-06-09T01:50:29"
+        },
+        {
+          "file": "EqualWeightSMP500/EqualWeight500.ipynb",
+          "mtime": "2026-06-06T07:32:10"
+        },
+        {
+          "file": "OFFLINE_VALIDATION.md",
+          "mtime": "2026-06-06T07:31:32"
+        },
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-06-06T07:31:26"
+        }
+      ]
+    },
+    {
+      "name": "Kubernetes-Docker",
+      "path": "/opt/data/HeRmEz/projects/Kubernetes-Docker",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "nginx/nginx-service.yaml",
+          "mtime": "2026-06-14T19:41:56"
+        },
+        {
+          "file": "nginx/nginx-depl.yaml",
+          "mtime": "2026-06-14T19:41:56"
+        },
+        {
+          "file": "mongo/namespace.yaml",
+          "mtime": "2026-06-14T19:41:56"
+        },
+        {
+          "file": "mongo/mongo-service.yaml",
+          "mtime": "2026-06-14T19:41:56"
+        },
+        {
+          "file": "mongo/mongo-secret.yaml",
+          "mtime": "2026-06-14T19:41:56"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/Kubernetes-Docker.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/Kubernetes-Docker.git (push)"
+      ],
+      "last_commit": "4de6f2f 2022-12-06 cloudAutomation repo contains terraform files"
+    },
+    {
+      "name": "Multiplayer",
+      "path": "/opt/data/HeRmEz/projects/Multiplayer",
+      "git": true,
+      "files": {},
+      "stack": [],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "ProjectSettings/XRSettings.asset",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "ProjectSettings/VersionControlSettings.asset",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "ProjectSettings/VFXManager.asset",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "ProjectSettings/UnityConnectSettings.asset",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "ProjectSettings/URPProjectSettings.asset",
+          "mtime": "2026-06-14T19:41:53"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/Multiplayer.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/Multiplayer.git (push)"
+      ],
+      "last_commit": "0efb7d0 2025-05-07 gorilla damage, player damage, set up for ragdoll knockback"
+    },
+    {
+      "name": "MusicAI",
+      "path": "/opt/data/HeRmEz/projects/MusicAI",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "PRODUCT_DIRECTION.md": true,
+        "DEVELOPMENT_PLAN.md": true,
+        "package.json": true,
+        "requirements.txt": true
+      },
+      "stack": [
+        "node/js",
+        "python",
+        "app/src"
+      ],
+      "docs": [
+        "README.md",
+        "PRODUCT_DIRECTION.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "tests/smoke.spec.js",
+          "mtime": "2026-06-09T05:33:26"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-06-09T05:32:17"
+        },
+        {
+          "file": "test-results/.last-run.json",
+          "mtime": "2026-06-09T05:30:57"
+        },
+        {
+          "file": "test-results/smoke-single-song-analyzer-c4cf3-nd-shows-cached-analysis-UI/trace.zip",
+          "mtime": "2026-06-09T05:30:57"
+        },
+        {
+          "file": "test-results/smoke-single-song-analyzer-c4cf3-nd-shows-cached-analysis-UI/error-context.md",
+          "mtime": "2026-06-09T05:30:57"
+        }
+      ]
+    },
+    {
+      "name": "OptaPlanner",
+      "path": "/opt/data/HeRmEz/projects/OptaPlanner",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "optaPlanner-DB/src/test/java/com/scheduleplanner/optaPlannerDB/OptaPlannerDbApplicationTests.java",
+          "mtime": "2026-06-14T19:42:03"
+        },
+        {
+          "file": "optaPlanner-DB/src/main/resources/application.properties",
+          "mtime": "2026-06-14T19:42:03"
+        },
+        {
+          "file": "optaPlanner-DB/src/main/java/com/scheduleplanner/optaPlannerDB/Solver/TimeTableConstraintProvider.java",
+          "mtime": "2026-06-14T19:42:03"
+        },
+        {
+          "file": "optaPlanner-DB/src/main/java/com/scheduleplanner/optaPlannerDB/Solver/TimeTable.java",
+          "mtime": "2026-06-14T19:42:03"
+        },
+        {
+          "file": "optaPlanner-DB/src/main/java/com/scheduleplanner/optaPlannerDB/Service/interfaces/TimeTableService.java",
+          "mtime": "2026-06-14T19:42:03"
+        }
+      ],
+      "branch": "Spring",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/OptaPlanner.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/OptaPlanner.git (push)"
+      ],
+      "last_commit": "ed1e9e8 2022-09-09 README"
+    },
+    {
+      "name": "REST_Templates",
+      "path": "/opt/data/HeRmEz/projects/REST_Templates",
+      "git": true,
+      "files": {},
+      "stack": [],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "python/Flask/main.py",
+          "mtime": "2026-06-14T19:41:55"
+        },
+        {
+          "file": "python/Flask/.gitignore",
+          "mtime": "2026-06-14T19:41:55"
+        },
+        {
+          "file": "python/Django/manage.py",
+          "mtime": "2026-06-14T19:41:55"
+        },
+        {
+          "file": "python/Django/core_app/views.py",
+          "mtime": "2026-06-14T19:41:55"
+        },
+        {
+          "file": "python/Django/core_app/urls.py",
+          "mtime": "2026-06-14T19:41:55"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/REST_Templates.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/REST_Templates.git (push)"
+      ],
+      "last_commit": "39f23b3 2024-08-25 users and books crud"
+    },
+    {
+      "name": "RTS-JS-ChatRooms",
+      "path": "/opt/data/HeRmEz/projects/RTS-JS-ChatRooms",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "PRODUCT_DIRECTION.md": true,
+        "DEVELOPMENT_PLAN.md": true,
+        "requirements.txt": true,
+        "Dockerfile": true
+      },
+      "stack": [
+        "python",
+        "app/src"
+      ],
+      "docs": [
+        "README.md",
+        "PRODUCT_DIRECTION.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "PRODUCT_DIRECTION.md",
+          "mtime": "2026-05-26T03:19:48"
+        },
+        {
+          "file": ".env",
+          "mtime": "2026-05-18T00:50:26"
+        },
+        {
+          "file": "requirements.txt",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "app/templates/lobby.html",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "React.web_userLoginForm",
+      "path": "/opt/data/HeRmEz/projects/React.web_userLoginForm",
+      "git": true,
+      "files": {
+        "README.md": true,
+        "package.json": true
+      },
+      "stack": [
+        "node/js",
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/static/Oauth.css",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "src/static/LoginForm.css",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "src/setupTests.js",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "src/reportWebVitals.js",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "src/index.js",
+          "mtime": "2026-06-14T19:42:04"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/React.web_userLoginForm.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/React.web_userLoginForm.git (push)"
+      ],
+      "last_commit": "c2953ef 2022-08-07 final touches CSS"
+    },
+    {
+      "name": "Spring_Boot_webDev",
+      "path": "/opt/data/HeRmEz/projects/Spring_Boot_webDev",
+      "git": true,
+      "files": {},
+      "stack": [
+        "app/src"
+      ],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "src/test/java/com/projectGroup/mySQL_REST/MySqlRestApplicationTests.java",
+          "mtime": "2026-06-14T19:42:05"
+        },
+        {
+          "file": "src/main/resources/application.properties",
+          "mtime": "2026-06-14T19:42:05"
+        },
+        {
+          "file": "src/main/java/com/projectGroup/mySQL_REST/Service/Course_impl.java",
+          "mtime": "2026-06-14T19:42:05"
+        },
+        {
+          "file": "src/main/java/com/projectGroup/mySQL_REST/Service/CourseService.java",
+          "mtime": "2026-06-14T19:42:05"
+        },
+        {
+          "file": "src/main/java/com/projectGroup/mySQL_REST/MySqlRestApplication.java",
+          "mtime": "2026-06-14T19:42:05"
+        }
+      ],
+      "branch": "SQL_CONFIG",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/Spring_Boot_webDev.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/Spring_Boot_webDev.git (push)"
+      ],
+      "last_commit": "3c70f08 2022-07-21 Controller --> Service --> Entity & Dao"
+    },
+    {
+      "name": "WebCrawl",
+      "path": "/opt/data/HeRmEz/projects/WebCrawl",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "DATA_FREEDOM_DIRECTION.md",
+          "mtime": "2026-05-26T03:19:48"
+        },
+        {
+          "file": "finviz.py",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": "Spider-Link-Map/spider.py",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": "Spider-Link-Map/main.py",
+          "mtime": "2026-05-17T22:10:32"
+        }
+      ]
+    },
+    {
+      "name": "__pycache__",
+      "path": "/opt/data/HeRmEz/projects/__pycache__",
+      "git": false,
+      "files": {},
+      "stack": [],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "deploy_all_projects.cpython-313.pyc",
+          "mtime": "2026-05-24T04:17:37"
+        }
+      ]
+    },
+    {
+      "name": "_vercel_mvp",
+      "path": "/opt/data/HeRmEz/projects/_vercel_mvp",
+      "git": false,
+      "files": {},
+      "stack": [],
+      "docs": [
+        "docs"
+      ],
+      "recent_files": [
+        {
+          "file": "honda-tech-upgrade/package.json",
+          "mtime": "2026-06-09T02:04:55"
+        },
+        {
+          "file": "honda-tech-upgrade/src/styles.css",
+          "mtime": "2026-06-09T02:04:46"
+        },
+        {
+          "file": "honda-tech-upgrade/src/main.jsx",
+          "mtime": "2026-06-09T02:04:15"
+        },
+        {
+          "file": "honda-tech-upgrade/src/planner.js",
+          "mtime": "2026-06-09T02:03:40"
+        },
+        {
+          "file": "honda-tech-upgrade/src/planner.test.mjs",
+          "mtime": "2026-06-09T02:02:49"
+        }
+      ]
+    },
+    {
+      "name": "_vercel_mvp_fix",
+      "path": "/opt/data/HeRmEz/projects/_vercel_mvp_fix",
+      "git": false,
+      "files": {},
+      "stack": [],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "legacy-src/.gitignore",
+          "mtime": "2026-05-25T06:00:29"
+        },
+        {
+          "file": "legacy-src/.vercel/project.json",
+          "mtime": "2026-05-25T06:00:29"
+        },
+        {
+          "file": "legacy-src/.vercel/README.txt",
+          "mtime": "2026-05-25T06:00:29"
+        },
+        {
+          "file": "consumer-advocate-app/.gitignore",
+          "mtime": "2026-05-25T06:00:17"
+        },
+        {
+          "file": "consumer-advocate-app/.vercel/project.json",
+          "mtime": "2026-05-25T06:00:17"
+        }
+      ]
+    },
+    {
+      "name": "_vercel_mvp_safe",
+      "path": "/opt/data/HeRmEz/projects/_vercel_mvp_safe",
+      "git": false,
+      "files": {},
+      "stack": [],
+      "docs": [
+        "docs"
+      ],
+      "recent_files": [
+        {
+          "file": "musclemadness/vercel.json",
+          "mtime": "2026-05-22T14:12:25"
+        },
+        {
+          "file": "codology/vercel.json",
+          "mtime": "2026-05-22T14:12:25"
+        },
+        {
+          "file": "ticvoter/vercel.json",
+          "mtime": "2026-05-22T14:12:25"
+        },
+        {
+          "file": "wuthappened/.gitignore",
+          "mtime": "2026-05-22T14:10:57"
+        },
+        {
+          "file": "wuthappened/.vercel/project.json",
+          "mtime": "2026-05-22T14:10:57"
+        }
+      ]
+    },
+    {
+      "name": "account-legacy-card-osrs",
+      "path": "/opt/data/HeRmEz/projects/account-legacy-card-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:41"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/accountlegacycard/AccountLegacyCardPluginTest.java",
+          "mtime": "2026-06-14T19:41:41"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/accountlegacycard/AccountLegacyCardPlugin.java",
+          "mtime": "2026-06-14T19:41:41"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/accountlegacycard/AccountLegacyCardConfig.java",
+          "mtime": "2026-06-14T19:41:41"
+        },
+        {
+          "file": "settings.gradle",
+          "mtime": "2026-06-14T19:41:41"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/account-legacy-card-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/account-legacy-card-osrs.git (push)"
+      ],
+      "last_commit": "8253683 2026-06-02 feat: finish account legacy card panel lookup"
+    },
+    {
+      "name": "addictive-mobile-games",
+      "path": "/opt/data/HeRmEz/projects/addictive-mobile-games",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "legacy-src/video-games/space_invaders_unf/singleenemy.py",
+          "mtime": "2026-05-17T22:10:27"
+        },
+        {
+          "file": "legacy-src/video-games/space_invaders_unf/purple_pixels.png",
+          "mtime": "2026-05-17T22:10:27"
+        },
+        {
+          "file": "legacy-src/video-games/space_invaders_unf/player.png",
+          "mtime": "2026-05-17T22:10:27"
+        },
+        {
+          "file": "legacy-src/video-games/space_invaders_unf/notes.png",
+          "mtime": "2026-05-17T22:10:27"
+        }
+      ]
+    },
+    {
+      "name": "algos",
+      "path": "/opt/data/HeRmEz/projects/algos",
+      "git": true,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": ".git",
+          "mtime": "2026-05-25T03:09:44"
+        },
+        {
+          "file": "school/shellSort.py",
+          "mtime": "2026-05-23T15:12:17"
+        },
+        {
+          "file": "school/selectionSort.py",
+          "mtime": "2026-05-23T15:12:17"
+        },
+        {
+          "file": "school/recursiveMultiplication.py",
+          "mtime": "2026-05-23T15:12:17"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/algos.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/algos.git (push)"
+      ],
+      "last_commit": "6c2c440 2026-05-26 Add project development plan"
+    },
+    {
+      "name": "api.requests",
+      "path": "/opt/data/HeRmEz/projects/api.requests",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "googleReviews.py",
+          "mtime": "2026-05-26T09:58:47"
+        },
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "meme.py",
+          "mtime": "2026-05-17T22:23:42"
+        },
+        {
+          "file": "vinAPI.py",
+          "mtime": "2026-05-17T22:10:27"
+        },
+        {
+          "file": "twitterTopHashtag.py",
+          "mtime": "2026-05-17T22:10:27"
+        }
+      ]
+    },
+    {
+      "name": "az204",
+      "path": "/opt/data/HeRmEz/projects/az204",
+      "git": true,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "labs/containers/webapp/frequencyFinderHz/pyproject.toml",
+          "mtime": "2026-06-06T02:10:36"
+        },
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "notes.txt",
+          "mtime": "2026-05-26T03:16:26"
+        },
+        {
+          "file": "labs/function_apps/scripts/seed_cosmos_test_data.py",
+          "mtime": "2026-05-26T03:16:26"
+        },
+        {
+          "file": "labs/function_apps/infra/variables.tf",
+          "mtime": "2026-05-26T03:16:26"
+        }
+      ],
+      "branch": "main",
+      "dirty": "M labs/containers/webapp/frequencyFinderHz/pyproject.toml",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/az204.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/az204.git (push)"
+      ],
+      "last_commit": "c0b9c73 2026-05-26 Add project development plan"
+    },
+    {
+      "name": "boss-k-c-rival-lookup-osrs",
+      "path": "/opt/data/HeRmEz/projects/boss-k-c-rival-lookup-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPluginTest.java",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupPlugin.java",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupFormatter.java",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/bosskcrivallookup/BossKcRivalLookupConfig.java",
+          "mtime": "2026-06-14T19:41:45"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/boss-k-c-rival-lookup-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/boss-k-c-rival-lookup-osrs.git (push)"
+      ],
+      "last_commit": "1ce9098 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "boss-race-creator-osrs",
+      "path": "/opt/data/HeRmEz/projects/boss-race-creator-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/bossracecreator/BossRaceCreatorPluginTest.java",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/bossracecreator/BossRaceCreatorPlugin.java",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/bossracecreator/BossRaceCreatorConfig.java",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "settings.gradle",
+          "mtime": "2026-06-14T19:41:45"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/boss-race-creator-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/boss-race-creator-osrs.git (push)"
+      ],
+      "last_commit": "ebb7e5b 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "boss-readiness-score-osrs",
+      "path": "/opt/data/HeRmEz/projects/boss-readiness-score-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md",
+        "docs"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:41"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/bossreadinessscore/GearRecommendationEngineTest.java",
+          "mtime": "2026-06-14T19:41:41"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/bossreadinessscore/BossReadinessScorePluginTest.java",
+          "mtime": "2026-06-14T19:41:41"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/bossreadinessscore/BossDataServiceTest.java",
+          "mtime": "2026-06-14T19:41:41"
+        },
+        {
+          "file": "src/main/resources/com/itmeansbigmountain/bossreadinessscore/boss_readiness_icon.png",
+          "mtime": "2026-06-14T19:41:41"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/boss-readiness-score-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/boss-readiness-score-osrs.git (push)"
+      ],
+      "last_commit": "2314946 2026-06-01 fix: broaden 2h detection and current gear"
+    },
+    {
+      "name": "boss-streaks-osrs",
+      "path": "/opt/data/HeRmEz/projects/boss-streaks-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/bossstreaks/BossStreaksTrackerTest.java",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/bossstreaks/BossStreaksPluginTest.java",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/bossstreaks/BossStreaksTracker.java",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/bossstreaks/BossStreaksPlugin.java",
+          "mtime": "2026-06-14T19:41:45"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/boss-streaks-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/boss-streaks-osrs.git (push)"
+      ],
+      "last_commit": "93a8862 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "breach-check-osrs",
+      "path": "/opt/data/HeRmEz/projects/breach-check-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/test/java/com/oyama/dmm/DeadmanBreachPluginTest.java",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/main/java/com/oyama/dmm/DeadmanBreachPlugin.java",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/main/java/com/oyama/dmm/DeadmanBreachOverlay.java",
+          "mtime": "2026-06-14T19:41:45"
+        },
+        {
+          "file": "src/main/java/com/oyama/dmm/DeadmanBreachConfig.java",
+          "mtime": "2026-06-14T19:41:45"
+        }
+      ],
+      "branch": "master",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/breach-check-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/breach-check-osrs.git (push)"
+      ],
+      "last_commit": "e9c1ad3 2026-02-10 makin it official"
+    },
+    {
+      "name": "card-intel-scanner",
+      "path": "/opt/data/HeRmEz/projects/card-intel-scanner",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true,
+        "package.json": true
+      },
+      "stack": [
+        "node/js",
+        "app/src"
+      ],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/vite-env.d.ts",
+          "mtime": "2026-06-06T02:08:19"
+        },
+        {
+          "file": "package-lock.json",
+          "mtime": "2026-06-06T02:08:15"
+        },
+        {
+          "file": "package.json",
+          "mtime": "2026-06-06T02:08:15"
+        },
+        {
+          "file": "tsconfig.json",
+          "mtime": "2026-06-06T02:07:57"
+        },
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        }
+      ]
+    },
+    {
+      "name": "cellphone_scripts",
+      "path": "/opt/data/HeRmEz/projects/cellphone_scripts",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "PYTHONISTA_2026_SCOPE.md",
+          "mtime": "2026-05-26T02:47:56"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-05-26T02:47:45"
+        },
+        {
+          "file": "toolkit/README.md",
+          "mtime": "2026-05-26T02:47:27"
+        },
+        {
+          "file": "toolkit/agent_tick.py",
+          "mtime": "2026-05-26T02:47:04"
+        }
+      ]
+    },
+    {
+      "name": "clan-grind-heatmap-osrs",
+      "path": "/opt/data/HeRmEz/projects/clan-grind-heatmap-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/clangrindheatmap/ClanGrindHeatmapPluginTest.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/clangrindheatmap/ClanGrindHeatmapPlugin.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/clangrindheatmap/ClanGrindHeatmapModel.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/clangrindheatmap/ClanGrindHeatmapConfig.java",
+          "mtime": "2026-06-14T19:41:44"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/clan-grind-heatmap-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/clan-grind-heatmap-osrs.git (push)"
+      ],
+      "last_commit": "ece7f74 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "coding-school-platform",
+      "path": "/opt/data/HeRmEz/projects/coding-school-platform",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "PRODUCT_DIRECTION.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "PRODUCT_DIRECTION.md",
+        "DEVELOPMENT_PLAN.md",
+        "docs"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "PRODUCT_DIRECTION.md",
+          "mtime": "2026-05-26T03:44:43"
+        },
+        {
+          "file": "docs/plans/2026-05-26-coding-school-crm.md",
+          "mtime": "2026-05-26T03:44:36"
+        },
+        {
+          "file": "CODERSCHOOL_CRM_RESEARCH_AND_PLAN.md",
+          "mtime": "2026-05-26T03:43:31"
+        },
+        {
+          "file": "TEACHER_HIRING_LOCATION_PLAN.md",
+          "mtime": "2026-05-17T22:10:27"
+        }
+      ]
+    },
+    {
+      "name": "competition-overlay-osrs",
+      "path": "/opt/data/HeRmEz/projects/competition-overlay-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/competitionoverlay/CompetitionOverlayPluginTest.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/competitionoverlay/CompetitionOverlayPlugin.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/competitionoverlay/CompetitionOverlayConfig.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "settings.gradle",
+          "mtime": "2026-06-14T19:41:44"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/competition-overlay-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/competition-overlay-osrs.git (push)"
+      ],
+      "last_commit": "a5f65a7 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "consumer-advocate-app",
+      "path": "/opt/data/HeRmEz/projects/consumer-advocate-app",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-05-24T15:21:11"
+        },
+        {
+          "file": "PROJECT.md",
+          "mtime": "2026-05-24T15:21:11"
+        },
+        {
+          "file": ".gitignore",
+          "mtime": "2026-05-24T15:21:11"
+        },
+        {
+          "file": ".env.example",
+          "mtime": "2026-05-24T15:21:11"
+        }
+      ]
+    },
+    {
+      "name": "cox-elementary-pta",
+      "path": "/opt/data/HeRmEz/projects/cox-elementary-pta",
+      "git": true,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true,
+        "requirements.txt": true,
+        "manage.py": true,
+        "render.yaml": true
+      },
+      "stack": [
+        "python",
+        "django"
+      ],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md",
+        "docs"
+      ],
+      "recent_files": [
+        {
+          "file": "media/sponsors/sponsor_40TgoLC.png",
+          "mtime": "2026-06-06T02:11:31"
+        },
+        {
+          "file": "media/newsletters/covers/newsletter_rwCuseO.png",
+          "mtime": "2026-06-06T02:11:31"
+        },
+        {
+          "file": "media/announcements/jump_QtLvsHM.png",
+          "mtime": "2026-06-06T02:11:31"
+        },
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": ".git",
+          "mtime": "2026-05-25T03:09:44"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/cox-elementary-pta.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/cox-elementary-pta.git (push)"
+      ],
+      "last_commit": "0fe5524 2026-05-26 Add project development plan"
+    },
+    {
+      "name": "darkSouls-Unity",
+      "path": "/opt/data/HeRmEz/projects/darkSouls-Unity",
+      "git": true,
+      "files": {},
+      "stack": [],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "ProjectSettings/boot.config",
+          "mtime": "2026-06-14T19:42:02"
+        },
+        {
+          "file": "ProjectSettings/XRSettings.asset",
+          "mtime": "2026-06-14T19:42:02"
+        },
+        {
+          "file": "ProjectSettings/VersionControlSettings.asset",
+          "mtime": "2026-06-14T19:42:02"
+        },
+        {
+          "file": "ProjectSettings/VFXManager.asset",
+          "mtime": "2026-06-14T19:42:02"
+        },
+        {
+          "file": "ProjectSettings/UnityConnectSettings.asset",
+          "mtime": "2026-06-14T19:42:02"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/darkSouls-Unity.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/darkSouls-Unity.git (push)"
+      ],
+      "last_commit": "a2d9363 2024-01-29 2024"
+    },
+    {
+      "name": "deployment_docs",
+      "path": "/opt/data/HeRmEz/projects/deployment_docs",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "VERCEL_DEPLOYMENT_PLANS.md",
+          "mtime": "2026-05-17T22:10:32"
+        }
+      ]
+    },
+    {
+      "name": "docs",
+      "path": "/opt/data/HeRmEz/projects/docs",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "runelite.properties",
+          "mtime": "2026-05-17T22:10:29"
+        },
+        {
+          "file": "openclaw-commands.md",
+          "mtime": "2026-05-17T22:10:29"
+        },
+        {
+          "file": "notes.txt",
+          "mtime": "2026-05-17T22:10:29"
+        },
+        {
+          "file": ".env.example",
+          "mtime": "2026-05-17T22:10:29"
+        }
+      ]
+    },
+    {
+      "name": "faceless-youtube-channel",
+      "path": "/opt/data/HeRmEz/projects/faceless-youtube-channel",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "package.json": true
+      },
+      "stack": [
+        "node/js",
+        "app/src"
+      ],
+      "docs": [
+        "README.md",
+        "docs"
+      ],
+      "recent_files": [
+        {
+          "file": "scripts/newsletter_batch_upload.py",
+          "mtime": "2026-06-29T06:57:32"
+        },
+        {
+          "file": "videos/20260629-014556-bitcoin-recovering-post-quantum-private-eth-fed-crypto-payment-accounts/result.json",
+          "mtime": "2026-06-29T01:49:16"
+        },
+        {
+          "file": "UPLOADS/newsletter_youtube_uploads.jsonl",
+          "mtime": "2026-06-29T01:49:16"
+        },
+        {
+          "file": "videos/20260629-014556-bitcoin-recovering-post-quantum-private-eth-fed-crypto-payment-accounts/concat.txt",
+          "mtime": "2026-06-29T01:49:14"
+        },
+        {
+          "file": "videos/20260629-014556-bitcoin-recovering-post-quantum-private-eth-fed-crypto-payment-accounts/voice_manifest.json",
+          "mtime": "2026-06-29T01:49:14"
+        }
+      ]
+    },
+    {
+      "name": "frequencyFinder.Hz",
+      "path": "/opt/data/HeRmEz/projects/frequencyFinder.Hz",
+      "git": true,
+      "files": {
+        "pyproject.toml": true,
+        "requirements.txt": true
+      },
+      "stack": [
+        "python"
+      ],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "templates/demo.html",
+          "mtime": "2026-06-14T19:41:54"
+        },
+        {
+          "file": "requirements.txt",
+          "mtime": "2026-06-14T19:41:54"
+        },
+        {
+          "file": "pyproject.toml",
+          "mtime": "2026-06-14T19:41:54"
+        },
+        {
+          "file": "poetry.lock",
+          "mtime": "2026-06-14T19:41:54"
+        },
+        {
+          "file": "main.py",
+          "mtime": "2026-06-14T19:41:54"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/frequencyFinder.Hz.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/frequencyFinder.Hz.git (push)"
+      ],
+      "last_commit": "ccc9fe4 2025-06-01 update"
+    },
+    {
+      "name": "genSpark",
+      "path": "/opt/data/HeRmEz/projects/genSpark",
+      "git": true,
+      "files": {},
+      "stack": [],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "genSpark-projects/genspark-group-challenge/src/main/test/Group_Project_TEST.java",
+          "mtime": "2026-06-14T19:42:03"
+        },
+        {
+          "file": "genSpark-projects/genspark-group-challenge/src/main/resources/com/group_one/hello-view.fxml",
+          "mtime": "2026-06-14T19:42:03"
+        },
+        {
+          "file": "genSpark-projects/genspark-group-challenge/src/main/resources/Project/Group_Project.fxml",
+          "mtime": "2026-06-14T19:42:03"
+        },
+        {
+          "file": "genSpark-projects/genspark-group-challenge/src/main/java/module-info.java",
+          "mtime": "2026-06-14T19:42:03"
+        },
+        {
+          "file": "genSpark-projects/genspark-group-challenge/src/main/java/com/group_one/HelloController.java",
+          "mtime": "2026-06-14T19:42:03"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/genSpark.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/genSpark.git (push)"
+      ],
+      "last_commit": "4925511 2022-11-26 Agile workflow"
+    },
+    {
+      "name": "group-iron-progress-board-osrs",
+      "path": "/opt/data/HeRmEz/projects/group-iron-progress-board-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/groupironprogressboard/GroupIronProgressBoardPluginTest.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/groupironprogressboard/GroupIronProgressBoardPlugin.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/groupironprogressboard/GroupIronProgressBoardConfig.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "settings.gradle",
+          "mtime": "2026-06-14T19:41:44"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/group-iron-progress-board-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/group-iron-progress-board-osrs.git (push)"
+      ],
+      "last_commit": "003af44 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "honda-tech-upgrade",
+      "path": "/opt/data/HeRmEz/projects/honda-tech-upgrade",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true,
+        "package.json": true
+      },
+      "stack": [
+        "node/js"
+      ],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "REVIEW_STATUS.md",
+          "mtime": "2026-06-09T02:03:44"
+        },
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-06-09T02:02:57"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-06-09T02:02:50"
+        },
+        {
+          "file": "package.json",
+          "mtime": "2026-06-09T01:54:35"
+        },
+        {
+          "file": "style.css",
+          "mtime": "2026-06-09T01:54:18"
+        }
+      ]
+    },
+    {
+      "name": "ice-barrage-timer-osrs",
+      "path": "/opt/data/HeRmEz/projects/ice-barrage-timer-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/icebarragetimer/IceBarrageTimerPluginTest.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/icebarragetimer/IceBarrageTimerPlugin.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/icebarragetimer/IceBarrageTimerOverlay.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/icebarragetimer/IceBarrageTimerConfig.java",
+          "mtime": "2026-06-14T19:41:44"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/ice-barrage-timer-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/ice-barrage-timer-osrs.git (push)"
+      ],
+      "last_commit": "0a52bcb 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "journal-ai",
+      "path": "/opt/data/HeRmEz/projects/journal-ai",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "PRODUCT_DIRECTION.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "PRODUCT_DIRECTION.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "README.md",
+          "mtime": "2026-06-09T02:04:44"
+        },
+        {
+          "file": "frontend/journal-app/src/style.css",
+          "mtime": "2026-06-09T02:04:37"
+        },
+        {
+          "file": "legacy-src/persistent-gpt-api/SETUP.md",
+          "mtime": "2026-06-09T02:02:30"
+        },
+        {
+          "file": "legacy-src/persistent-gpt-api/.env.example",
+          "mtime": "2026-06-09T02:02:21"
+        },
+        {
+          "file": "legacy-src/persistent-gpt-api/Persistent_GPT_api/settings.py",
+          "mtime": "2026-06-09T02:02:15"
+        }
+      ]
+    },
+    {
+      "name": "legacy-src",
+      "path": "/opt/data/HeRmEz/projects/legacy-src",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "MusicAI/musicAI.py",
+          "mtime": "2026-06-06T07:21:16"
+        },
+        {
+          "file": "MusicAI/.venv-validation/lib/python3.11/site-packages/ibm_watson-11.2.0.dist-info/RECORD",
+          "mtime": "2026-06-06T07:10:02"
+        },
+        {
+          "file": "MusicAI/.venv-validation/lib/python3.11/site-packages/ibm_watson-11.2.0.dist-info/REQUESTED",
+          "mtime": "2026-06-06T07:10:02"
+        },
+        {
+          "file": "MusicAI/.venv-validation/lib/python3.11/site-packages/ibm_watson-11.2.0.dist-info/INSTALLER",
+          "mtime": "2026-06-06T07:10:02"
+        },
+        {
+          "file": "MusicAI/.venv-validation/lib/python3.11/site-packages/ibm_watson-11.2.0.dist-info/zip-safe",
+          "mtime": "2026-06-06T07:10:01"
+        }
+      ]
+    },
+    {
+      "name": "local-meeting-transcriber",
+      "path": "/opt/data/HeRmEz/projects/local-meeting-transcriber",
+      "git": false,
+      "files": {
+        "PRODUCT_DIRECTION.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "PRODUCT_DIRECTION.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "Frontend/.expo/dev/logs/export.log",
+          "mtime": "2026-06-09T05:27:14"
+        },
+        {
+          "file": "Frontend/package-lock.json",
+          "mtime": "2026-06-09T05:26:35"
+        },
+        {
+          "file": "Frontend/.gitignore",
+          "mtime": "2026-06-09T02:03:00"
+        },
+        {
+          "file": "Frontend/.vercel/README.txt",
+          "mtime": "2026-06-09T02:03:00"
+        },
+        {
+          "file": "Frontend/.vercel/project.json",
+          "mtime": "2026-06-09T02:03:00"
+        }
+      ]
+    },
+    {
+      "name": "mcp-servers",
+      "path": "/opt/data/HeRmEz/projects/mcp-servers",
+      "git": true,
+      "files": {
+        "requirements.txt": true
+      },
+      "stack": [
+        "python"
+      ],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "requirements.txt",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "readme.md",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "python/poke.py",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "python/demo.py",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "python/demo-server/aks_mcp_server.py",
+          "mtime": "2026-06-14T19:41:53"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/mcp-servers.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/mcp-servers.git (push)"
+      ],
+      "last_commit": "6df5551 2025-09-07 silly ai apps got u clapped"
+    },
+    {
+      "name": "muscleMadness",
+      "path": "/opt/data/HeRmEz/projects/muscleMadness",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true,
+        "package.json": true
+      },
+      "stack": [
+        "node/js"
+      ],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "package.json",
+          "mtime": "2026-06-06T07:39:47"
+        },
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "package-lock.json",
+          "mtime": "2026-05-22T13:57:51"
+        },
+        {
+          "file": "vercel.json",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "screens/HomeScreen.js",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "muscleMadness_API",
+      "path": "/opt/data/HeRmEz/projects/muscleMadness_API",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true,
+        "manage.py": true
+      },
+      "stack": [
+        "python",
+        "django"
+      ],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "muscleMadness_API/settings.py",
+          "mtime": "2026-06-09T01:54:22"
+        },
+        {
+          "file": "core/tests.py",
+          "mtime": "2026-06-09T01:51:24"
+        },
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "workouts.json",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "shell_scripts.py",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "music",
+      "path": "/opt/data/HeRmEz/projects/music",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "whoSampled.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "spottynotes.txt",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "spotfiyAPI.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": ".env.example",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "music-mood-app",
+      "path": "/opt/data/HeRmEz/projects/music-mood-app",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "MERGE_INTO_MUSICAI.md",
+          "mtime": "2026-05-26T03:19:48"
+        },
+        {
+          "file": "legacy-src/sounddoe/spottynotes.txt",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "PROJECT.md",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "name-change-watcher-osrs",
+      "path": "/opt/data/HeRmEz/projects/name-change-watcher-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/namechangewatcher/NameChangeWatcherPluginTest.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/namechangewatcher/NameChangeWatcherPlugin.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/namechangewatcher/NameChangeWatcherConfig.java",
+          "mtime": "2026-06-14T19:41:44"
+        },
+        {
+          "file": "settings.gradle",
+          "mtime": "2026-06-14T19:41:44"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/name-change-watcher-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/name-change-watcher-osrs.git (push)"
+      ],
+      "last_commit": "aa97ad2 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "networking",
+      "path": "/opt/data/HeRmEz/projects/networking",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "PENTESTING_LAB_DIRECTION.md",
+          "mtime": "2026-05-26T03:19:48"
+        },
+        {
+          "file": "eos.py",
+          "mtime": "2026-05-17T22:23:42"
+        },
+        {
+          "file": "sshTemplate.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "routerScan.py",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "osrs-plugins",
+      "path": "/opt/data/HeRmEz/projects/osrs-plugins",
+      "git": false,
+      "files": {
+        "README.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "AccountLegacyCard/.gradle/8.10/gc.properties",
+          "mtime": "2026-06-15T03:26:06"
+        },
+        {
+          "file": "AccountLegacyCard/.gradle/8.10/dependencies-accessors/gc.properties",
+          "mtime": "2026-06-15T03:26:06"
+        },
+        {
+          "file": "AccountLegacyCard/.gradle/vcs-1/gc.properties",
+          "mtime": "2026-06-15T03:26:06"
+        },
+        {
+          "file": "AccountLegacyCard/.gradle/8.10/fileHashes/fileHashes.lock",
+          "mtime": "2026-06-15T03:26:06"
+        },
+        {
+          "file": "AccountLegacyCard/.gradle/8.10/checksums/checksums.lock",
+          "mtime": "2026-06-15T03:26:06"
+        }
+      ]
+    },
+    {
+      "name": "osrs-plugins-beers",
+      "path": "/opt/data/HeRmEz/projects/osrs-plugins-beers",
+      "git": false,
+      "files": {},
+      "stack": [],
+      "docs": [],
+      "recent_files": []
+    },
+    {
+      "name": "osrs-plugins-boilerplate",
+      "path": "/opt/data/HeRmEz/projects/osrs-plugins-boilerplate",
+      "git": false,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md",
+        "docs"
+      ],
+      "recent_files": [
+        {
+          "file": "src/main/java/com/itmeansbigmountain/osrsapi/WOMApiClient.java",
+          "mtime": "2026-06-09T05:32:32"
+        },
+        {
+          "file": ".gradle/8.7/checksums/checksums.lock",
+          "mtime": "2026-06-09T05:28:04"
+        },
+        {
+          "file": ".gradle/8.7/fileHashes/fileHashes.lock",
+          "mtime": "2026-06-09T05:28:04"
+        },
+        {
+          "file": ".gradle/buildOutputCleanup/buildOutputCleanup.lock",
+          "mtime": "2026-06-09T05:28:04"
+        },
+        {
+          "file": ".gradle/8.7/executionHistory/executionHistory.lock",
+          "mtime": "2026-06-09T05:28:04"
+        }
+      ]
+    },
+    {
+      "name": "oyama-productions-legal",
+      "path": "/opt/data/HeRmEz/projects/oyama-productions-legal",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "legacy-src/networking-security-learning-reference/subnetting_calc.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "legacy-src/networking-security-learning-reference/router_Driver_code.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "legacy-src/networking-security-learning-reference/packetTracer.txt",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "legacy-src/networking-security-learning-reference/os_detect.py",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "pdf-emailer",
+      "path": "/opt/data/HeRmEz/projects/pdf-emailer",
+      "git": true,
+      "files": {},
+      "stack": [],
+      "docs": [
+        "docs"
+      ],
+      "recent_files": [
+        {
+          "file": "readme.md",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "infra/variables.tf",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "infra/outputs.tf",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "infra/main.tf.bu",
+          "mtime": "2026-06-14T19:41:53"
+        },
+        {
+          "file": "infra/main.tf",
+          "mtime": "2026-06-14T19:41:53"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/pdf-emailer.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/pdf-emailer.git (push)"
+      ],
+      "last_commit": "55b5624 2025-10-18 Edit usage guide to remove unusable content"
+    },
+    {
+      "name": "penTest",
+      "path": "/opt/data/HeRmEz/projects/penTest",
+      "git": true,
+      "files": {},
+      "stack": [],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "tryhackme.txt",
+          "mtime": "2026-06-14T19:26:10"
+        },
+        {
+          "file": "keylogger.py",
+          "mtime": "2026-06-14T19:26:10"
+        },
+        {
+          "file": "hackingNotes.txt",
+          "mtime": "2026-06-14T19:26:10"
+        },
+        {
+          "file": "gitHub",
+          "mtime": "2026-06-14T19:26:10"
+        },
+        {
+          "file": "Linux_Notes.txt",
+          "mtime": "2026-06-14T19:26:10"
+        }
+      ],
+      "branch": "NOTES",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/penTest (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/penTest (push)"
+      ],
+      "last_commit": "6b9d779 2026-03-15 Update Linux notes with WiFi password retrieval commands"
+    },
+    {
+      "name": "personal-progress-timeline-osrs",
+      "path": "/opt/data/HeRmEz/projects/personal-progress-timeline-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:43"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/personalprogresstimeline/PersonalProgressTimelinePluginTest.java",
+          "mtime": "2026-06-14T19:41:43"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/personalprogresstimeline/MilestoneParserTest.java",
+          "mtime": "2026-06-14T19:41:43"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/personalprogresstimeline/PersonalProgressTimelinePlugin.java",
+          "mtime": "2026-06-14T19:41:43"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/personalprogresstimeline/PersonalProgressTimelineConfig.java",
+          "mtime": "2026-06-14T19:41:43"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/personal-progress-timeline-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/personal-progress-timeline-osrs.git (push)"
+      ],
+      "last_commit": "eda0d9f 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "plugin-hub",
+      "path": "/opt/data/HeRmEz/projects/plugin-hub",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "package/.gradle/8.10/expanded/expanded.lock",
+          "mtime": "2026-06-15T03:26:44"
+        },
+        {
+          "file": "package/.gradle/8.10/checksums/checksums.lock",
+          "mtime": "2026-06-15T03:26:44"
+        },
+        {
+          "file": "package/.gradle/8.10/fileHashes/fileHashes.lock",
+          "mtime": "2026-06-15T03:26:44"
+        },
+        {
+          "file": "package/.gradle/8.10/executionHistory/executionHistory.lock",
+          "mtime": "2026-06-15T03:26:44"
+        },
+        {
+          "file": "package/.gradle/buildOutputCleanup/buildOutputCleanup.lock",
+          "mtime": "2026-06-15T03:26:44"
+        }
+      ],
+      "branch": "account-legacy-card",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/plugin-hub.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/plugin-hub.git (push)"
+      ],
+      "last_commit": "2c39c1b1 2026-06-15 Add account legacy card"
+    },
+    {
+      "name": "policy-pit-app",
+      "path": "/opt/data/HeRmEz/projects/policy-pit-app",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "PRODUCT_DIRECTION.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "PRODUCT_DIRECTION.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "PRODUCT_DIRECTION.md",
+          "mtime": "2026-05-26T03:19:48"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "PROJECT.md",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "NEXT_IMPLEMENTATION_SLICE.md",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "portfolio-sentiment-subscription-app",
+      "path": "/opt/data/HeRmEz/projects/portfolio-sentiment-subscription-app",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "src/sentiment.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "src/config.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "src/app.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "sample-data/watchlist.json",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "react.web_MovieList",
+      "path": "/opt/data/HeRmEz/projects/react.web_MovieList",
+      "git": true,
+      "files": {
+        "package.json": true
+      },
+      "stack": [
+        "node/js",
+        "app/src"
+      ],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "src/setupTests.js",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "src/reportWebVitals.js",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "src/index.js",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "src/index.css",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "src/images/search.svg",
+          "mtime": "2026-06-14T19:42:04"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/react.web_MovieList.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/react.web_MovieList.git (push)"
+      ],
+      "last_commit": "e4598ca 2022-08-06 final touches"
+    },
+    {
+      "name": "react.web_taskList",
+      "path": "/opt/data/HeRmEz/projects/react.web_taskList",
+      "git": true,
+      "files": {
+        "package.json": true
+      },
+      "stack": [
+        "node/js",
+        "app/src"
+      ],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "src/setupTests.js",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "src/reportWebVitals.js",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "src/logo.svg",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "src/index.js",
+          "mtime": "2026-06-14T19:42:04"
+        },
+        {
+          "file": "src/index.css",
+          "mtime": "2026-06-14T19:42:04"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/react.web_taskList.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/react.web_taskList.git (push)"
+      ],
+      "last_commit": "66d7af9 2022-08-03 2021"
+    },
+    {
+      "name": "rival-radar-osrs",
+      "path": "/opt/data/HeRmEz/projects/rival-radar-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:43"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/rivalradar/RivalRadarPluginTest.java",
+          "mtime": "2026-06-14T19:41:43"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/rivalradar/RivalRadarConfigTest.java",
+          "mtime": "2026-06-14T19:41:43"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/rivalradar/WOMApiHelper.java",
+          "mtime": "2026-06-14T19:41:43"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/rivalradar/RivalRadarPlugin.java",
+          "mtime": "2026-06-14T19:41:43"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/rival-radar-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/rival-radar-osrs.git (push)"
+      ],
+      "last_commit": "4d7f84f 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "robinhood-daily-portfolio-report",
+      "path": "/opt/data/HeRmEz/projects/robinhood-daily-portfolio-report",
+      "git": true,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true,
+        "pyproject.toml": true
+      },
+      "stack": [
+        "python",
+        "app/src"
+      ],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md",
+        "docs"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "tests/test_report.py",
+          "mtime": "2026-05-26T03:20:51"
+        },
+        {
+          "file": "src/portfolio_report/report.py",
+          "mtime": "2026-05-26T03:20:32"
+        },
+        {
+          "file": "src/portfolio_report/cli.py",
+          "mtime": "2026-05-26T03:20:32"
+        },
+        {
+          "file": "src/portfolio_report/__init__.py",
+          "mtime": "2026-05-26T03:20:32"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/robinhood-daily-portfolio-report.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/robinhood-daily-portfolio-report.git (push)"
+      ],
+      "last_commit": "25cc24f 2026-05-26 Add project development plan"
+    },
+    {
+      "name": "robinhood-email-reports",
+      "path": "/opt/data/HeRmEz/projects/robinhood-email-reports",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "legacy-src/stonks/daytrade.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "legacy-src/stonks/IMPORT_NOTES.md",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "legacy-src/robin-mail-unf/setup.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "legacy-src/robin-mail-unf/robin_stocks/urls.py",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "school",
+      "path": "/opt/data/HeRmEz/projects/school",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "sideProjects/truthTables/truthTable.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "sideProjects/truthTables/logicalStatement.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "sideProjects/TweetListener.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "sideProjects/trendFinder.py",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "scraper-project",
+      "path": "/opt/data/HeRmEz/projects/scraper-project",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "legacy-src/web-crawl/finviz.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "legacy-src/web-crawl/Spider-Link-Map/spider.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "legacy-src/web-crawl/Spider-Link-Map/main.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "legacy-src/web-crawl/Spider-Link-Map/domain.py",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "selenium",
+      "path": "/opt/data/HeRmEz/projects/selenium",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "twitter_autoscroller.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "tinderBot.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "playlistExtraction.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "instaLikeBot.py",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "skill-nemesis-osrs",
+      "path": "/opt/data/HeRmEz/projects/skill-nemesis-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:43"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/skillnemesis/SkillNemesisPluginTest.java",
+          "mtime": "2026-06-14T19:41:43"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/skillnemesis/SkillNemesisPluginLauncher.java",
+          "mtime": "2026-06-14T19:41:43"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/skillnemesis/SkillNemesisPlugin.java",
+          "mtime": "2026-06-14T19:41:43"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/skillnemesis/SkillNemesisConfig.java",
+          "mtime": "2026-06-14T19:41:43"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/skill-nemesis-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/skill-nemesis-osrs.git (push)"
+      ],
+      "last_commit": "802fa3c 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "skill-race-creator-osrs",
+      "path": "/opt/data/HeRmEz/projects/skill-race-creator-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/skillracecreator/SkillRaceCreatorPluginTest.java",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/skillracecreator/SkillRaceCreatorPlugin.java",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/skillracecreator/SkillRaceCreatorConfig.java",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "settings.gradle",
+          "mtime": "2026-06-14T19:41:42"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/skill-race-creator-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/skill-race-creator-osrs.git (push)"
+      ],
+      "last_commit": "1abebe4 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "skill-streaks-osrs",
+      "path": "/opt/data/HeRmEz/projects/skill-streaks-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/skillstreaks/SkillStreaksPluginTest.java",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/skillstreaks/SkillStreaksPlugin.java",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/skillstreaks/SkillStreaksConfig.java",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "settings.gradle",
+          "mtime": "2026-06-14T19:41:42"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/skill-streaks-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/skill-streaks-osrs.git (push)"
+      ],
+      "last_commit": "d4e8d88 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "sleep-dream-app",
+      "path": "/opt/data/HeRmEz/projects/sleep-dream-app",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "MERGE_INTO_JOURNAL_AI.md",
+          "mtime": "2026-05-26T03:19:48"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "PROJECT.md",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": ".gitignore",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "smart-hiscore-lookup-osrs",
+      "path": "/opt/data/HeRmEz/projects/smart-hiscore-lookup-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/smarthiscorelookup/SmartHiscoreLookupPluginTest.java",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/smarthiscorelookup/SmartHiscoreLookupPluginLauncher.java",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/smarthiscorelookup/SmartHiscoreLookupPlugin.java",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/smarthiscorelookup/SmartHiscoreLookupConfig.java",
+          "mtime": "2026-06-14T19:41:42"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/smart-hiscore-lookup-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/smart-hiscore-lookup-osrs.git (push)"
+      ],
+      "last_commit": "7b8fdd7 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "snake-REACT_NATIVE",
+      "path": "/opt/data/HeRmEz/projects/snake-REACT_NATIVE",
+      "git": true,
+      "files": {
+        "package.json": true
+      },
+      "stack": [
+        "node/js"
+      ],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "systems/GameLoop.js",
+          "mtime": "2026-06-14T19:42:05"
+        },
+        {
+          "file": "package.json",
+          "mtime": "2026-06-14T19:42:05"
+        },
+        {
+          "file": "package-lock.json",
+          "mtime": "2026-06-14T19:42:05"
+        },
+        {
+          "file": "components/Tail.js",
+          "mtime": "2026-06-14T19:42:05"
+        },
+        {
+          "file": "components/Head.js",
+          "mtime": "2026-06-14T19:42:05"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/snake-REACT_NATIVE.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/snake-REACT_NATIVE.git (push)"
+      ],
+      "last_commit": "8658f61 2022-04-15 no score but functional app"
+    },
+    {
+      "name": "social-media-analysis",
+      "path": "/opt/data/HeRmEz/projects/social-media-analysis",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "PRODUCT_DIRECTION.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "PRODUCT_DIRECTION.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "DATA_FREEDOM_DIRECTION.md",
+          "mtime": "2026-05-26T03:26:25"
+        },
+        {
+          "file": "PRODUCT_DIRECTION.md",
+          "mtime": "2026-05-26T03:26:01"
+        },
+        {
+          "file": "legacy-src/tweet-between-the-lines/tweetDeleter/tweetDeleter/settings.py",
+          "mtime": "2026-05-17T22:24:55"
+        },
+        {
+          "file": "legacy-src/tweet-between-the-lines/wordDatabase.txt",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "spring_Oauth",
+      "path": "/opt/data/HeRmEz/projects/spring_Oauth",
+      "git": true,
+      "files": {},
+      "stack": [
+        "app/src"
+      ],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "src/test/java/com/googleAPI/google_api/GoogleApiDemoApplicationTests.java",
+          "mtime": "2026-06-14T19:42:03"
+        },
+        {
+          "file": "src/main/resources/templates/profile.html",
+          "mtime": "2026-06-14T19:42:03"
+        },
+        {
+          "file": "src/main/resources/templates/homepage.html",
+          "mtime": "2026-06-14T19:42:03"
+        },
+        {
+          "file": "src/main/resources/application.properties",
+          "mtime": "2026-06-14T19:42:03"
+        },
+        {
+          "file": "src/main/java/com/googleAPI/google_api/Service/render_implementation.java",
+          "mtime": "2026-06-14T19:42:03"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/spring_Oauth.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/spring_Oauth.git (push)"
+      ],
+      "last_commit": "d807c95 2022-07-30 @Query in DAO --> SecurityConfig success handler()"
+    },
+    {
+      "name": "spring_template",
+      "path": "/opt/data/HeRmEz/projects/spring_template",
+      "git": true,
+      "files": {},
+      "stack": [
+        "app/src"
+      ],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "src/main/resources/Spring.xml",
+          "mtime": "2026-06-14T19:42:05"
+        },
+        {
+          "file": "src/main/java/org/genSpark/Student.java",
+          "mtime": "2026-06-14T19:42:05"
+        },
+        {
+          "file": "src/main/java/org/genSpark/Phone.java",
+          "mtime": "2026-06-14T19:42:05"
+        },
+        {
+          "file": "src/main/java/org/genSpark/App.java",
+          "mtime": "2026-06-14T19:42:05"
+        },
+        {
+          "file": "src/main/java/org/genSpark/Address.java",
+          "mtime": "2026-06-14T19:42:05"
+        }
+      ],
+      "branch": "XML_CONFIG",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/spring_template.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/spring_template.git (push)"
+      ],
+      "last_commit": "e385d8b 2022-07-18 xml config with @annotation example"
+    },
+    {
+      "name": "stockNews",
+      "path": "/opt/data/HeRmEz/projects/stockNews",
+      "git": false,
+      "files": {
+        "PRODUCT_DIRECTION.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "PRODUCT_DIRECTION.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "readme.md",
+          "mtime": "2026-05-26T03:40:32"
+        },
+        {
+          "file": "PRODUCT_DIRECTION.md",
+          "mtime": "2026-05-26T03:40:07"
+        },
+        {
+          "file": ".env",
+          "mtime": "2026-05-22T14:57:44"
+        },
+        {
+          "file": "stock_news_backend/core/watson_service.py",
+          "mtime": "2026-05-19T06:06:00"
+        }
+      ]
+    },
+    {
+      "name": "store-code-content-studio",
+      "path": "/opt/data/HeRmEz/projects/store-code-content-studio",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "legacy-src/video-generation-api/veo3.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "legacy-src/video-generation-api/runaway.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "legacy-src/video-generation-api/kling.py",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "legacy-src/video-generation-api/IMPORT_NOTES.md",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "survey-analytics-website",
+      "path": "/opt/data/HeRmEz/projects/survey-analytics-website",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "package-lock.json",
+          "mtime": "2026-06-10T13:59:41"
+        },
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": "PROJECT.md",
+          "mtime": "2026-05-17T22:10:31"
+        },
+        {
+          "file": ".gitignore",
+          "mtime": "2026-05-17T22:10:31"
+        }
+      ]
+    },
+    {
+      "name": "ticVoter",
+      "path": "/opt/data/HeRmEz/projects/ticVoter",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true,
+        "package.json": true
+      },
+      "stack": [
+        "node/js"
+      ],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "package-lock.json",
+          "mtime": "2026-06-10T14:17:12"
+        },
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": ".vercel/README.txt",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": "vercel.json",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": "screens/VoteCardScreen.js",
+          "mtime": "2026-05-17T22:10:32"
+        }
+      ]
+    },
+    {
+      "name": "ticVoter_REST.api",
+      "path": "/opt/data/HeRmEz/projects/ticVoter_REST.api",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true,
+        "requirements.txt": true,
+        "manage.py": true
+      },
+      "stack": [
+        "python",
+        "django"
+      ],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "vote_app/views.py",
+          "mtime": "2026-05-17T22:23:46"
+        },
+        {
+          "file": "vote_app/urls.py",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": "vote_app/tests.py",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": "vote_app/serializers.py",
+          "mtime": "2026-05-17T22:10:32"
+        }
+      ]
+    },
+    {
+      "name": "tiktok-clone",
+      "path": "/opt/data/HeRmEz/projects/tiktok-clone",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "SCOPE.md",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": "PROJECT.md",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": ".gitignore",
+          "mtime": "2026-05-17T22:10:32"
+        }
+      ]
+    },
+    {
+      "name": "tiktok-shop-shopify-commerce",
+      "path": "/opt/data/HeRmEz/projects/tiktok-shop-shopify-commerce",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": "PROJECT.md",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": "INSTAGRAM_SHOP_SETUP_CHECKLIST.md",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": "COMMERCE_LAUNCH_PLAN.md",
+          "mtime": "2026-05-17T22:10:32"
+        }
+      ]
+    },
+    {
+      "name": "tournament-wager-app",
+      "path": "/opt/data/HeRmEz/projects/tournament-wager-app",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": "PROJECT.md",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": ".gitignore",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": ".env.example",
+          "mtime": "2026-05-17T22:10:32"
+        }
+      ]
+    },
+    {
+      "name": "trading-journal",
+      "path": "/opt/data/HeRmEz/projects/trading-journal",
+      "git": false,
+      "files": {
+        "README.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "2026-06-26/power-hour-monitor-1902UTC.md",
+          "mtime": "2026-06-26T19:02:28"
+        },
+        {
+          "file": "2026-06-26/midday-monitor-1602UTC.md",
+          "mtime": "2026-06-26T16:02:43"
+        },
+        {
+          "file": "2026-06-26/post-morning-market-scan.md",
+          "mtime": "2026-06-26T13:52:50"
+        },
+        {
+          "file": "2026-06-26/agentic-open-monitor.md",
+          "mtime": "2026-06-26T13:33:44"
+        },
+        {
+          "file": "2026-06-25/power-hour-monitor-1902UTC.md",
+          "mtime": "2026-06-25T19:02:25"
+        }
+      ]
+    },
+    {
+      "name": "tutoring.Repl",
+      "path": "/opt/data/HeRmEz/projects/tutoring.Repl",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": ".env",
+          "mtime": "2026-05-19T06:08:32"
+        },
+        {
+          "file": "discordBots/watson.py",
+          "mtime": "2026-05-19T06:07:25"
+        },
+        {
+          "file": "projects/rottenTomatoes.py",
+          "mtime": "2026-05-17T22:23:59"
+        },
+        {
+          "file": "discordBots/discordMeme.py",
+          "mtime": "2026-05-17T22:23:44"
+        }
+      ]
+    },
+    {
+      "name": "tweetBetweenTheLines",
+      "path": "/opt/data/HeRmEz/projects/tweetBetweenTheLines",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "MERGE_INTO_SOCIAL_MEDIA_ANALYSIS.md",
+          "mtime": "2026-05-26T03:26:08"
+        },
+        {
+          "file": "tweetDeleter/tweetDeleter/settings.py",
+          "mtime": "2026-05-17T22:23:57"
+        },
+        {
+          "file": "wordDatabase.txt",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": "twitterTopHashtag.py",
+          "mtime": "2026-05-17T22:10:32"
+        }
+      ]
+    },
+    {
+      "name": "tweet_video_generator",
+      "path": "/opt/data/HeRmEz/projects/tweet_video_generator",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": ".gitignore",
+          "mtime": "2026-06-03T22:01:31"
+        },
+        {
+          "file": "UPLOADS/youtube_uploads.jsonl",
+          "mtime": "2026-06-03T22:00:16"
+        },
+        {
+          "file": "output.mp4",
+          "mtime": "2026-06-03T22:00:14"
+        },
+        {
+          "file": "output_render/voice.wav",
+          "mtime": "2026-06-03T22:00:11"
+        },
+        {
+          "file": "output_render/voice.txt",
+          "mtime": "2026-06-03T22:00:11"
+        }
+      ]
+    },
+    {
+      "name": "twitter-therapy-app",
+      "path": "/opt/data/HeRmEz/projects/twitter-therapy-app",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "CLASSIFICATION.md",
+          "mtime": "2026-06-10T15:44:04"
+        },
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "MERGE_INTO_SOCIAL_MEDIA_ANALYSIS.md",
+          "mtime": "2026-05-26T03:26:16"
+        },
+        {
+          "file": "legacy-src/tweet-between-the-lines/tweetDeleter/tweetDeleter/settings.py",
+          "mtime": "2026-05-17T22:24:53"
+        },
+        {
+          "file": "legacy-src/tweet-between-the-lines/wordDatabase.txt",
+          "mtime": "2026-05-17T22:10:32"
+        }
+      ]
+    },
+    {
+      "name": "utilityScripts",
+      "path": "/opt/data/HeRmEz/projects/utilityScripts",
+      "git": false,
+      "files": {
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "SMOKE_TEST.md",
+          "mtime": "2026-06-10T15:52:34"
+        },
+        {
+          "file": "WORK_QUEUE.md",
+          "mtime": "2026-06-10T15:47:04"
+        },
+        {
+          "file": "CLASSIFICATION.md",
+          "mtime": "2026-06-10T15:43:58"
+        },
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "memeGenerator.py",
+          "mtime": "2026-05-17T22:23:42"
+        }
+      ]
+    },
+    {
+      "name": "viral-clip-radar",
+      "path": "/opt/data/HeRmEz/projects/viral-clip-radar",
+      "git": true,
+      "files": {
+        "README.md": true,
+        "PRODUCT_DIRECTION.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "PRODUCT_DIRECTION.md"
+      ],
+      "recent_files": [
+        {
+          "file": "LOGS/daily_youtube_source_download/BIB4JtXaTwY/yt-dlp-download-5-android.log",
+          "mtime": "2026-06-29T05:00:26"
+        },
+        {
+          "file": "LOGS/daily_youtube_source_download/BIB4JtXaTwY/yt-dlp-download-4-ios.log",
+          "mtime": "2026-06-29T05:00:25"
+        },
+        {
+          "file": "LOGS/daily_youtube_source_download/BIB4JtXaTwY/yt-dlp-download-3-tv.log",
+          "mtime": "2026-06-29T05:00:24"
+        },
+        {
+          "file": "LOGS/daily_youtube_source_download/BIB4JtXaTwY/yt-dlp-download-2-web_safari.log",
+          "mtime": "2026-06-29T05:00:23"
+        },
+        {
+          "file": "LOGS/daily_youtube_source_download/BIB4JtXaTwY/yt-dlp-download-1-mweb.log",
+          "mtime": "2026-06-29T05:00:21"
+        }
+      ],
+      "branch": "main",
+      "dirty": "M PRODUCT_DIRECTION.md\n M README.md\n M WORKFLOWS/clip_pipeline.md\n M scripts/download_youtube_source.py\n M scripts/render_clip_manifest.py\n M scripts/upload_to_tiktok.py\n M scripts/upload_to_youtube.py\n?? ANALYTICS/\n?? CLIP_PLANS/2012-03-07-cobratate-andrew-tate-tristan-tate-vs-martyn-flood-iska-british-title-fight-WtFbhJjmnRk/\n?? CLIP_PLANS/2012-04-09-cobratate-andrew-tate-tate-vs-adnan-PqurRymUh5M/\n?? CLIP_PLANS/2012-06-06-cobratate-andrew-tate-andrew-tate-joe-mcgovan-JjEtLYeHr2Y/\n?? CLIP_PLANS/2012-09-30-cobratate-andrew-tate-pads-with-master-amir-1U_UG7c77mE/\n?? CLIP_PLANS/2012-09-30-cobratate-andrew-tate-sidekick-gloves-JNi5FQdZOlQ/\n?? CLIP_PLANS/2012-10-21-cobratate-andrew-tate-bordeux-avi-Y0EppFMDYOo/\n?? CLIP_PLANS/2012-12-23-cobratate-andrew-tate-king-cobra-new-Kac6dkbzyuc/\n?? CLIP_PLANS/2012-12-24-cobratate-andrew-tate-cycle-king-B6yJMKWMZe8/\n?? CLIP_PLANS/2012-12-27-cobratate-andrew-tate-andrew-tate-vs-ritchie-hockin-gh2qyffArdQ/\n?? CLIP_PLANS/2013-02-10-cobratate-andrew-tate",
+      "remote": [
+        ""
+      ],
+      "last_commit": "3aabaab 2026-06-02 feat: pivot publishing pilots to tiktok instagram"
+    },
+    {
+      "name": "watsonAI",
+      "path": "/opt/data/HeRmEz/projects/watsonAI",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "DEVELOPMENT_PLAN.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": ".env",
+          "mtime": "2026-05-19T06:08:32"
+        },
+        {
+          "file": "watson.py",
+          "mtime": "2026-05-19T06:07:00"
+        },
+        {
+          "file": "README.md",
+          "mtime": "2026-05-17T22:10:32"
+        },
+        {
+          "file": "main.py",
+          "mtime": "2026-05-17T22:10:32"
+        }
+      ]
+    },
+    {
+      "name": "whos-grinding-clan-panel-osrs",
+      "path": "/opt/data/HeRmEz/projects/whos-grinding-clan-panel-osrs",
+      "git": true,
+      "files": {
+        "README.md": true
+      },
+      "stack": [
+        "app/src"
+      ],
+      "docs": [
+        "README.md"
+      ],
+      "recent_files": [
+        {
+          "file": "src/test/resources/logback-test.xml",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/whosgrindingclanpanel/WhosGrindingClanPanelPluginUtilityTest.java",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "src/test/java/com/itmeansbigmountain/whosgrindingclanpanel/WhosGrindingClanPanelPluginTest.java",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/whosgrindingclanpanel/WhosGrindingClanPanelPlugin.java",
+          "mtime": "2026-06-14T19:41:42"
+        },
+        {
+          "file": "src/main/java/com/itmeansbigmountain/whosgrindingclanpanel/WhosGrindingClanPanelConfig.java",
+          "mtime": "2026-06-14T19:41:42"
+        }
+      ],
+      "branch": "main",
+      "dirty": "",
+      "remote": [
+        "origin\thttps://github.com/ItMeansBigMountain/whos-grinding-clan-panel-osrs.git (fetch)",
+        "origin\thttps://github.com/ItMeansBigMountain/whos-grinding-clan-panel-osrs.git (push)"
+      ],
+      "last_commit": "062b4a4 2026-06-01 docs: add developer cheat sheet"
+    },
+    {
+      "name": "wutHappened",
+      "path": "/opt/data/HeRmEz/projects/wutHappened",
+      "git": false,
+      "files": {
+        "README.md": true,
+        "PRODUCT_DIRECTION.md": true,
+        "DEVELOPMENT_PLAN.md": true,
+        "requirements.txt": true
+      },
+      "stack": [
+        "python"
+      ],
+      "docs": [
+        "README.md",
+        "PRODUCT_DIRECTION.md",
+        "DEVELOPMENT_PLAN.md"
+      ],
+      "recent_files": [
+        {
+          "file": "README.md",
+          "mtime": "2026-06-10T15:52:20"
+        },
+        {
+          "file": "CLASSIFICATION.md",
+          "mtime": "2026-06-10T15:45:56"
+        },
+        {
+          "file": "DEVELOPMENT_PLAN.md",
+          "mtime": "2026-05-26T04:37:08"
+        },
+        {
+          "file": "PRODUCT_DIRECTION.md",
+          "mtime": "2026-05-26T03:40:24"
+        },
+        {
+          "file": "MERGE_INTO_STOCKNEWS.md",
+          "mtime": "2026-05-26T03:40:15"
+        }
+      ]
+    },
+    {
+      "name": "youtube-automation",
+      "path": "/opt/data/HeRmEz/projects/youtube-automation",
+      "git": false,
+      "files": {},
+      "stack": [],
+      "docs": [],
+      "recent_files": [
+        {
+          "file": "config/profiles.json",
+          "mtime": "2026-06-15T15:00:35"
+        },
+        {
+          "file": "scripts/newsletter-to-calendar.py",
+          "mtime": "2026-06-10T01:43:13"
+        },
+        {
+          "file": "scripts/newsletter-monitor.py",
+          "mtime": "2026-06-10T01:39:37"
+        }
+      ]
+    },
+    {
+      "name": "youtube-high-ticket-leverage",
+      "path": "/opt/data/HeRmEz/projects/youtube-high-ticket-leverage",
+      "git": true,
+      "files": {
+        "README.md": true,
+        "PRODUCT_DIRECTION.md": true
+      },
+      "stack": [],
+      "docs": [
+        "README.md",
+        "PRODUCT_DIRECTION.md"
+      ],
+      "recent_files": [
+        {
+          "file": "CHANNEL_STRATEGY/publishing_system.md",
+          "mtime": "2026-06-04T12:49:29"
+        },
+        {
+          "file": ".gitignore",
+          "mtime": "2026-06-03T22:01:59"
+        },
+        {
+          "file": "UPLOADS/youtube_uploads.jsonl",
+          "mtime": "2026-06-03T22:00:11"
+        },
+        {
+          "file": "EPISODES/private-origin-draft.mp4",
+          "mtime": "2026-06-03T22:00:09"
+        },
+        {
+          "file": "EPISODES/private-origin-draft_render/voice.wav",
+          "mtime": "2026-06-03T22:00:07"
+        }
+      ],
+      "branch": "main",
+      "dirty": "M .gitignore\n M CHANNEL_STRATEGY/publishing_system.md\n?? UPLOADS/",
+      "remote": [
+        ""
+      ],
+      "last_commit": "b64acba 2026-05-31 chore: add first planned weekly reset episode workspace"
+    }
+  ]
+}

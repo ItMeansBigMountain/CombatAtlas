@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "session_id": "proc_1684cfeedb96",
+    "command": "node /opt/data/bgutil-ytdlp-pot-provider/server/build/main.js --port 4416",
+    "pid": 77151,
+    "pid_scope": "host",
+    "cwd": "/opt/data/bgutil-ytdlp-pot-provider/server",
+    "started_at": 1782759042.175675,
+    "task_id": "default",
+    "session_key": "agent:main:discord:group:1499990220077137943:219376861866754049",
+    "watcher_platform": "discord",
+    "watcher_chat_id": "1499990220077137943",
+    "watcher_user_id": "219376861866754049",
+    "watcher_user_name": "Oyama",
+    "watcher_thread_id": "",
+    "watcher_message_id": "1521226110073831529",
+    "watcher_interval": 0,
+    "notify_on_complete": false,
+    "watch_patterns": [
+      "Server listening",
+      "listening"
+    ]
+  }
+]

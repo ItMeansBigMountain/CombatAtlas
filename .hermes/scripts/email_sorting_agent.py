@@ -26,9 +26,11 @@ from googleapiclient.errors import HttpError
 
 SCOPES = ["https://www.googleapis.com/auth/gmail.modify"]
 TOKEN_ROOT = Path("/opt/data/google_profiles")
-# Default sorting only targets profiles where Hermes is allowed to modify Gmail.
-# personal-main/affan is intentionally read-only; hermes-agent is not a user inbox lane.
+# Default sorting targets profiles where Hermes is allowed to modify Gmail.
+# The user granted full Gmail read/write for both personal accounts on 2026-06-29;
+# hermes-agent is not a user inbox lane.
 PROFILES = [
+    ("personal-main", "affan.fareed@gmail.com"),
     ("personal-secondary", "fareed320@gmail.com"),
     ("classicalechos", "classicalechos@gmail.com"),
     ("burner", "laflametoast@gmail.com"),
@@ -45,6 +47,8 @@ REVIEW_LABELS = {
     "important": "Hermes/Review/Important",
     "needs_human": "Hermes/Review/Needs Human",
     "robinhood": "Hermes/Finance/Robinhood",
+    "zoom_assets": "Hermes/Archive/Zoom Meeting Assets",
+    "personal_info": "Hermes/Personal Info",
     "known_junk": "Hermes/Junk/Known",
 }
 
@@ -100,10 +104,14 @@ def classify(account_email: str, msg: dict[str, Any]) -> RuleResult | None:
         return RuleResult("daily_stoic", SOURCE_LABELS["daily_stoic"], "Daily Stoic source email")
     if "kinobody" in raw or "kino body" in raw or "greg o'gallagher" in raw or "greg ogallagher" in raw:
         return RuleResult("kino_body", SOURCE_LABELS["kino_body"], "Kino Body source email")
+    if "grammarly insights" in raw or "hello@mail.grammarly.com" in sender:
+        return RuleResult("personal_info", REVIEW_LABELS["personal_info"], "Grammarly Insights personal information", remove_inbox=False)
+    if "zoom" in raw and ("meeting assets" in raw or "personal meeting room" in raw):
+        return RuleResult("zoom_assets", REVIEW_LABELS["zoom_assets"], "Zoom meeting/class assets archive")
     if sender == "hello@snacks.robinhood.com" or "snacks.robinhood.com" in sender:
         return RuleResult("robinhood_snacks", SOURCE_LABELS["robinhood_snacks"], "Robinhood Snacks financial markets newsletter")
     if "robinhood" in raw or "robinhood.com" in sender:
-        return RuleResult("robinhood", REVIEW_LABELS["robinhood"], "Robinhood financial/account email")
+        return RuleResult("robinhood", REVIEW_LABELS["robinhood"], "Robinhood financial/account email for Agentic trading context")
     return None
 
 

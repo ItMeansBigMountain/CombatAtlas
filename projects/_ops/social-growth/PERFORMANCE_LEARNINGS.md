@@ -1,6 +1,6 @@
 # Social Video Performance Learnings
 
-Last updated: `2026-06-29T01:45:42.355170+00:00`
+Last updated: `2026-06-30T01:45:48.397165+00:00`
 
 ## Metrics status
 
@@ -9,7 +9,7 @@ Last updated: `2026-06-29T01:45:42.355170+00:00`
 
 ## faceless-youtube-channel
 
-- Uploads logged: 218 total; 209 public/metric-eligible.
+- Uploads logged: 220 total; 211 public/metric-eligible.
 - Median public views in latest snapshot: 5.0.
 - Current winners to study:
   - 203 views / 1 likes / 0 comments — Print On Demand (POD) Management — https://youtu.be/K2nMayJr8Oo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
@@ -21,15 +21,15 @@ Last updated: `2026-06-29T01:45:42.355170+00:00`
 
 ## viral-clip-radar
 
-- Uploads logged: 23 total; 8 public/metric-eligible.
-- Median public views in latest snapshot: 378.0.
+- Uploads logged: 31 total; 16 public/metric-eligible.
+- Median public views in latest snapshot: 109.0.
 - Current winners to study:
   - 1036 views / 18 likes / 1 comments — Two types of procrastination and how activation changes behavior #Shorts — https://youtu.be/XJ4QzlHq2TE — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
   - 944 views / 26 likes / 0 comments — The viral moment is not the landing. It is proof under pressure. #Shorts — https://youtu.be/JBX3lRhKhy4 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
   - 919 views / 24 likes / 0 comments — The viral moment is not the landing. It is proof under pressure. #Shorts — https://youtu.be/ParX8IBet5I — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 752 views / 8 likes / 0 comments — One bad day is normal. Letting it become your identity is the trap. #Shorts — https://youtu.be/7EhcyS1U4d8 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
   - 625 views / 14 likes / 0 comments — Dopamine is wanting/craving, not just pleasure #Shorts — https://youtu.be/66PdAQkydMU — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
-  - 131 views / 1 likes / 0 comments — Seven minutes of terror #Shorts — https://youtu.be/VZfCiXLXwN0 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
-- Hook/title words showing up in better performers: source, radar, youtube, clip, huberman, https, watch, transformative, additions, vertical, captions, hook.
+- Hook/title words showing up in better performers: source, radar, clip, youtube, https, transformative, additions, vertical, captions, hook, context, attribution.
 
 ## Operating rule for future cron runs
 
