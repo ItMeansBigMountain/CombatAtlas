@@ -252,6 +252,7 @@ def ensure_source(manifest: dict) -> Path:
             "--logdir", str(logdir),
             "--skip-cleanup",
             "--try-pytubefix",
+            "--try-pytube",
         ]
         if manifest.get("fallback_source_url"):
             cmd += ["--fallback-url", str(manifest["fallback_source_url"])]
@@ -408,7 +409,7 @@ def main() -> int:
                 "seed_result": seed_result,
                 "attempted_candidates": len(source_failures),
                 "source_failures": source_failures,
-                "next_step": "No usable source media after trying multiple manifests. Add YouTube cookies/residential proxy/local MP4 source, or enable an official external clipping provider. This now exits nonzero so cron no longer reports discovery-only work as success.",
+                "next_step": "No usable source media after trying multiple manifests. Add YouTube cookies/residential proxy/local MP4 source, or use the pytubefix/yt-dlp direct downloader path. Opus Clips is intentionally disabled. This exits nonzero so cron no longer reports discovery-only work as success.",
             }, indent=2))
             return 2
 

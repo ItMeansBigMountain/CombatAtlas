@@ -33,7 +33,7 @@ SCOPES = [
 ]
 
 PROFILES = [
-    ("hermes-agent", "trapiistan@gmail.com", "Hermes / YouTube / operator account"),
+    ("trapiistan", "trapiistan@gmail.com", "Hermes / YouTube / operator account"),
     ("personal-main", "Affan.fareed@gmail.com", "personal main — read-focused; no sends without approval"),
     ("personal-secondary", "fareed320@gmail.com", "personal secondary — read-focused; no sends without approval"),
     ("classicalechos", "classicalechos@gmail.com", "Classical Echos / classy content lane"),

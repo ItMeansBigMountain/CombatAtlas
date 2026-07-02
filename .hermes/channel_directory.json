@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-30T02:56:16.914578",
+  "updated_at": "2026-07-02T03:00:21.766740",
   "platforms": {
     "discord": [
       {
@@ -35,6 +35,7 @@
     ],
     "telegram": [],
     "whatsapp": [],
+    "whatsapp_cloud": [],
     "slack": [],
     "signal": [],
     "mattermost": [],
@@ -51,11 +52,13 @@
     "bluebubbles": [],
     "qqbot": [],
     "yuanbao": [],
+    "relay": [],
     "google_chat": [],
     "irc": [],
     "line": [],
     "ntfy": [],
     "photon": [],
+    "raft": [],
     "simplex": [],
     "teams": []
   }

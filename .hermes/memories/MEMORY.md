@@ -1,4 +1,4 @@
-Workspace repo: /opt/data/HeRmEz (GitHub ItMeansBigMountain/HeRmEz); create projects under /opt/data/HeRmEz/projects. Hermes git install /opt/data/hermes-agent; launcher /opt/data/.local/bin/hermes; /opt/hermes is legacy/root-owned.
+Workspace repo /opt/data/HeRmEz; projects in projects/. Hermes git /opt/data/hermes-agent; launcher /opt/data/.local/bin/hermes; gateway may run legacy /opt/hermes until restarted.
 §
 A daily HeRmEz backup cron job exists: job_id cfcea697da5c, name "Daily HeRmEz GitHub backup", schedule "0 3 * * *", script backup_hermez.sh in /opt/data/scripts, no_agent true, backing up /opt/data into /opt/data/HeRmEz/.hermes and pushing to origin/main.
 §

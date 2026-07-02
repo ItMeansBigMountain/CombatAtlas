@@ -1,0 +1,7 @@
+name: openai-sora
+version: 1.0.0
+description: "OpenAI Sora Videos API backend for Hermes video_generate. Supports text-to-video and first-frame image-to-video when OpenAI API video access is enabled."
+author: Hermes Agent + local
+kind: backend
+requires_env:
+  - OPENAI_API_KEY

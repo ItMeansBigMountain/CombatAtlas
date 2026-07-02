@@ -186,7 +186,9 @@ $GSETUP --auth-url
 On this installation, the setup script emits the exact authorization URL as plain text and requests the full Workspace scope set by default: Gmail read/send/modify, Calendar, Drive, Contacts readonly, Sheets, and Docs. It does not currently support `--services` or `--format` flags.
 
 Agent rules for this step:
+Agent rules for this step:
 - Send that exact URL to the user as a single line.
+- For Discord/chat users, paste every generated OAuth URL directly in the chat. Do not only save them to a VPS file or tell the user to open a file on the server; they may not access VPS files. A saved handoff file is fine as a backup, but the actionable URLs must be returned in-chat.
 - Tell the user that the browser will likely fail on `http://localhost:1` after approval, and that this is expected.
 - Tell them to copy the ENTIRE redirected URL from the browser address bar.
 - If the user gets `Error 403: access_denied`, send them directly to `https://console.cloud.google.com/auth/audience` to add themselves as a test user.
