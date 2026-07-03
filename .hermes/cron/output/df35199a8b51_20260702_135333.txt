@@ -1,0 +1,89 @@
+Cronjob Response: Post-morning Agentic portfolio market scan
+(job_id: df35199a8b51)
+-------------
+
+**Decision**
+- No new trade placed.
+- Account is already ~73% deployed, which is inside the active policy’s 70%–90% target.
+- Best action: hold SOFI + AMD, keep ~$53.74 cash for cleaner entries.
+- Reason: no candidate had clean enough entry + catalyst + invalidation to justify forcing more cash into the market.
+
+**Agentic Portfolio**
+- Account: Robinhood Agentic ending 1041.
+- Account value: ~$199.20.
+- Equity value: ~$145.46.
+- Cash / buying power: ~$53.74.
+- Options: none.
+- Open equity orders checked across new / queued / confirmed / unconfirmed / partially filled: none found.
+- Recent equity orders since 2026-07-01: none found.
+- Positions:
+  - SOFI: 4.477580 shares, avg $17.87, live ~$18.76, est. P/L +$3.99 / +5.0%.
+  - AMD: 0.115059 shares, avg $521.47, live ~$538.03, est. P/L +$1.91 / +3.2%.
+
+**Market Read**
+- SPY ~$750.57, +0.6%.
+- QQQ ~$728.66, +0.5%.
+- IWM ~$301.72, +0.8%.
+- Read: neutral-to-bullish tape; all three benchmarks green, small caps leading modestly.
+
+**Top Candidates**
+- SOFI:
+  - Live ~$18.76, +1.7% daily.
+  - Above rough 10-day SMA ~$17.81.
+  - Very liquid; current position is working.
+  - Catalyst context: Q2 results scheduled for July 29; recent product/news flow around small-business loans, AI investing tools, stablecoin/banking API narrative, and S&P 500 inclusion speculation.
+  - Setup quality: hold, not chase-add. Best support/invalidation area: $17.90–$18.00 first support; review below ~$17.50; thesis weakens below ~$17.00.
+
+- AMD:
+  - Live ~$538.03, -0.5% daily.
+  - Roughly flat vs 10-day SMA ~$538.21 after recent spike to ~$580.91.
+  - Catalyst context remains AI/semis, but valuation is rich and momentum cooled.
+  - Setup quality: hold only; avoid adding unless it reclaims ~$545–$550 or pulls back cleanly with defined support.
+
+- AAPL:
+  - Live ~$302.04, +2.6% daily.
+  - Above rough 10-day SMA ~$290.88.
+  - Catalyst context: rebound from WWDC/AI disappointment and legal/regulatory headlines.
+  - Setup quality: watchlist only; extended intraday and still below June highs near ~$317. Future setup improves on constructive retest of ~$294–$296.
+
+- META:
+  - Live ~$593.75, -3.1% daily.
+  - Still above rough 10-day SMA ~$568.66 but selling after prior gap.
+  - Catalyst context: AI capex / possible equity-raise concerns remain an overhang.
+  - Setup quality: avoid new long until it stabilizes above ~$595–$600 or reclaims ~$610 on volume.
+
+- ASST:
+  - Live ~$13.47, +12.1% daily.
+  - Above rough 10-day SMA ~$12.69.
+  - Catalyst context: Strive / bitcoin treasury headlines.
+  - Setup quality: no trade for this sandbox; too speculative and BTC-treasury driven, with large downtrend/volatility risk.
+
+**Best Setup**
+- Best setup is not a new entry; it is portfolio management:
+  - Hold SOFI as the cleanest current working position.
+  - Hold AMD but do not add.
+  - Keep cash available for pullbacks/retests.
+- No order preview or placement was warranted.
+
+**Risk / Invalidation**
+- Kill switch not triggered: account value is well above $10.
+- No options, shorts, or non-Agentic accounts used.
+- SOFI:
+  - Watch $17.90–$18.00.
+  - Review/trim if below ~$17.50.
+  - Material thesis warning below ~$17.00.
+- AMD:
+  - Hold while above roughly $525–$530.
+  - Review exit if it loses the ~$521 average-cost / support zone.
+- Aggregate account risk is monitor-only because no new trade/stop order was placed today.
+
+**Tool Upgrades**
+- Create a persistent Robinhood scanner for liquid US equities: price > $5, avg volume > 1M, daily move > 2%, relative strength/RSI, sorted by volume or % change.
+- Add a compact OHLCV summarizer script for SMA10/SMA20, ATR14, 20-day high/low, avg volume, and gap %.
+- Improve Gmail source search using exact routed labels like `Hermes/Finance/Robinhood` and TLDR/newsletter labels; today’s Gmail probe returned no recent TLDR/Robinhood Snacks messages.
+- Add BTC/crypto context automatically when ASST/MSTR-style treasury stocks appear in movers.
+
+**Journal**
+- Updated: `/opt/data/HeRmEz/projects/trading-journal/2026-07-02/post-morning-market-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Post-morning Agentic portfolio market scan").

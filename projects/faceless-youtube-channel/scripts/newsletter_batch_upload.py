@@ -664,10 +664,14 @@ def process(profile,msg_id, upload_enabled=True):
         print(json.dumps({'warning':'former_quality_gate_disabled','detail':'expected 1080x1920 vertical video','actual_width':video_stream.get('width'),'actual_height':video_stream.get('height')}), file=sys.stderr)
     if not has_audio or duration <= 0:
         print(json.dumps({'warning':'former_quality_gate_disabled','detail':'final render has no audio or zero duration','has_audio':has_audio,'duration':duration}), file=sys.stderr)
-    if duration < TARGET_SHORT_SECONDS[0] or duration > TARGET_SHORT_SECONDS[1] + 45:
+    duration_gate_failed = duration < TARGET_SHORT_SECONDS[0] or duration > TARGET_SHORT_SECONDS[1] + 45
+    if duration_gate_failed:
         print(json.dumps({'warning':'duration_outside_ideal_range','duration':duration,'ideal_seconds':TARGET_SHORT_SECONDS}), file=sys.stderr)
     result={'profile':profile,'message_id':msg_id,'subject':src['subject'],'workspace':str(work),'video':str(video),'probe':probe,'uploaded':False}
     if upload_enabled:
+        if duration_gate_failed:
+            result['warning'] = 'duration_outside_ideal_range_public_upload_continued'
+            result['detail'] = {'duration': duration, 'ideal_seconds': list(TARGET_SHORT_SECONDS), 'policy': 'faceless_public_upload_no_quality_gate'}
         up=upload(video,script); result['upload']=up; result['uploaded']=up.get('status')=='UPLOADED'
         if result['uploaded'] and up.get('video_id'):
             # append source id marker to upload log for idempotency even if Gmail cleanup fails
@@ -688,11 +692,11 @@ def discover(profile, limit):
     # while unique affan-only source emails may be processed here and trashed only
     # after a verified YouTube upload.
     queries=[
-        'from:tldrnewsletter.com newer_than:30d -in:trash',
-        'from:dan@tldrnewsletter.com newer_than:30d -in:trash',
-        'from:info@dailystoic.com newer_than:30d -in:trash',
-        'from:support@kinobody.com newer_than:30d -in:trash',
-        'from:news@kinobody.com newer_than:30d -in:trash',
+        'is:unread from:tldrnewsletter.com newer_than:30d -in:trash',
+        'is:unread from:dan@tldrnewsletter.com newer_than:30d -in:trash',
+        'is:unread from:info@dailystoic.com newer_than:30d -in:trash',
+        'is:unread from:support@kinobody.com newer_than:30d -in:trash',
+        'is:unread from:news@kinobody.com newer_than:30d -in:trash',
     ]
     out=[]; seen=set()
     for q in queries:

@@ -179,6 +179,28 @@ def iter_candidate_manifest_clips() -> list[tuple[Path, dict, dict]]:
             else:
                 fallback.append(candidate)
 
+    # If a source is not local/source-ready, trying multiple clips from the same
+    # manifest only repeats the same blocked downloader path. Keep the first clip
+    # per remote-only source for the expensive acquisition pass; source-ready
+    # manifests can still publish their remaining clips normally.
+    def dedupe_remote_sources(items: list[tuple[Path, dict, dict]]) -> list[tuple[Path, dict, dict]]:
+        out: list[tuple[Path, dict, dict]] = []
+        seen_remote: set[str] = set()
+        for candidate in items:
+            _manifest_path, manifest, _clip = candidate
+            source_file = ROOT / str(manifest.get("source_file", ""))
+            source_ready = source_file.exists() and source_file.stat().st_size > 1000
+            key = str(manifest.get("source_url") or manifest.get("source_file") or _manifest_path)
+            if not source_ready and key in seen_remote:
+                continue
+            if not source_ready:
+                seen_remote.add(key)
+            out.append(candidate)
+        return out
+
+    fresh = dedupe_remote_sources(fresh)
+    fallback = dedupe_remote_sources(fallback)
+
     recent_creators = set(recent_uploaded_creators())
 
     def source_ready_score(candidate: tuple[Path, dict, dict]) -> int:
@@ -235,14 +257,20 @@ def ensure_source(manifest: dict) -> Path:
         vid = str(manifest.get("source_url", "")).split("v=")[-1].split("&")[0]
         if vid:
             url = f"https://archive.org/download/youtube-{vid}/{vid}.mp4"
-    if url:
-        tmp = source.with_suffix(source.suffix + ".part")
-        with urllib.request.urlopen(url, timeout=180) as resp, tmp.open("wb") as out:
-            shutil.copyfileobj(resp, out)
-        tmp.replace(source)
-        return source
-
     source_url = manifest.get("source_url")
+    direct_video_url = False
+    if url:
+        # Only raw-download actual media/archive URLs. Facebook/YouTube page URLs
+        # return HTML if fetched with urllib, which creates corrupt .mp4 files.
+        url_l = str(url).lower()
+        direct_video_url = any(url_l.split("?", 1)[0].endswith(ext) for ext in (".mp4", ".mov", ".m4v", ".webm")) or "archive.org/download" in url_l
+        if direct_video_url:
+            tmp = source.with_suffix(source.suffix + ".part")
+            with urllib.request.urlopen(url, timeout=180) as resp, tmp.open("wb") as out:
+                shutil.copyfileobj(resp, out)
+            tmp.replace(source)
+            return source
+
     if source_url and os.getenv("VIRAL_RADAR_DISABLE_DIRECT_YOUTUBE_DOWNLOAD") != "1":
         downloader = ROOT / "scripts" / "download_youtube_source.py"
         logdir = ROOT / "LOGS" / "daily_youtube_source_download" / str(manifest.get("source_video_id") or "unknown")
@@ -254,7 +282,7 @@ def ensure_source(manifest: dict) -> Path:
             "--try-pytubefix",
             "--try-pytube",
         ]
-        if manifest.get("fallback_source_url"):
+        if manifest.get("fallback_source_url") and direct_video_url:
             cmd += ["--fallback-url", str(manifest["fallback_source_url"])]
         proc = run(cmd)
         if proc.returncode != 0:

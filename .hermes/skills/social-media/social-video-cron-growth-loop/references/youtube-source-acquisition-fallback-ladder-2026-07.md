@@ -49,3 +49,7 @@ Interpretation:
 ## Verified workaround from session
 
 Chris Williamson YouTube was blocked by bot-check, but an official Facebook repost downloaded successfully with `yt-dlp`, then rendered as a 1080x1920 42s Short. Future automation should make this official-repost search a first-class fallback rather than manual work.
+
+## Implementation pitfall: page URLs are not direct media URLs
+
+Do **not** raw-download Facebook/YouTube page URLs with `urllib` just because they appear in `fallback_source_url`; that saves HTML into `source.mp4` and later ffmpeg fails with `moov atom not found`. Only `urllib` direct media/archive URLs (`.mp4`, `.mov`, `.webm`, archive.org direct downloads). For Facebook creator repost URLs, run them through `yt-dlp`/the source downloader and verify with `ffprobe` before rendering. Also dedupe remote-only manifests by source URL so the cron does not retry the same blocked YouTube source once per clip window.
