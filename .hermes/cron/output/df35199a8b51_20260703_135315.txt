@@ -1,0 +1,74 @@
+Cronjob Response: Post-morning Agentic portfolio market scan
+(job_id: df35199a8b51)
+-------------
+
+**Decision**
+- No trade / no order placed.
+- Autonomous policy is present and active, but new trade consideration is blocked because live quote/broker market state is uncertain: Robinhood quotes/historicals are timestamped from July 2, not fresh July 3 intraday data.
+- Best action: hold current positions, monitor SOFI support and AMD downside risk, and wait for cleaner live setups.
+
+**Agentic Portfolio**
+- Account: Agentic ending 1041.
+- Account value: $195.18.
+- Equity value: $141.44.
+- Cash / buying power: $53.74.
+- Options: none; no option positions.
+- Current equity positions:
+  - SOFI: 4.477580 shares, avg cost $17.87.
+  - AMD: 0.115059 shares, avg cost $521.47.
+- Recent order: 2026-06-26 SOFI $50 market buy filled at avg $17.9099.
+- Open order check: queried `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled`; no open equity orders returned.
+
+**Market Read**
+- Broad read: mixed / neutral-to-cautious.
+- SPY is roughly flat in the latest available data, but QQQ is weak and semis/tech are under pressure.
+- IWM is holding up better than QQQ, suggesting rotation away from mega-cap/semiconductor risk rather than broad risk-on confirmation.
+- Because the latest quote timestamps are stale, I treated today as research-only.
+
+**Top Candidates**
+- SOFI:
+  - Latest quote context: about $18.26, slightly above avg cost.
+  - Structure: still holding recent support around $17.75–$18.00; resistance near $18.45 then $19.20.
+  - Setup quality: best current hold, not a fresh add while quote state is stale.
+- AMD:
+  - Latest quote context: about $518.26 / $519.50 after-hours, slightly below avg cost $521.47.
+  - Structure: pulled back with QQQ/semis; watch July 2 low near $506 and the $500 area.
+  - Setup quality: hold/watch only; no averaging down while semis are weak.
+- AIP:
+  - Latest close: $35.06, -20.0% day.
+  - SMA10: $43.26; SMA20: $40.61; ATR14: 10.9%.
+  - Catalyst quality is better than the chart: record Q1, revenue +39% YoY, raised 2026 outlook, positive FCF guide.
+  - Setup quality: watch-only; falling-knife until it bases/reclaims $38–$40.
+- CLVT:
+  - Latest close: $2.59, +16.7% day; above SMA10/SMA20.
+  - Rejected for sandbox policy quality: under $5 and insufficient catalyst conviction.
+- VICR / UCTT / ACLS / VECO:
+  - All are liquid enough, but most are high-ATR semiconductor-equipment breakdowns.
+  - VECO/ACLS also have merger and sector uncertainty; VECO has China/profitability pressure.
+  - Setup quality: avoid dip-buying until spreads and trend stabilize.
+
+**Best Setup**
+- Best actionable setup is not a new trade; it is position management:
+  - Hold SOFI while it stays above $17.75–$18.00.
+  - Watch for SOFI reclaim above $18.45 and push toward $19.20.
+  - Review/defend AMD if it breaks near $506 or QQQ weakens further.
+- AIP becomes interesting only if it stabilizes above $35 and reclaims $38–$40 on volume.
+
+**Risk / Invalidation**
+- Kill switch not triggered: $195.18 account value > $10.
+- New orders blocked because broker/market data freshness is uncertain.
+- SOFI invalidation: sustained break below $17.75–$18.00.
+- AMD invalidation/review zone: break below ~$506 or broad QQQ/semiconductor breakdown.
+- No options considered or traded.
+
+**Tool Upgrades**
+- Add a compact scanner script to summarize Robinhood historical payloads into SMA10/SMA20, ATR14, avg volume, 20-day high/low, and support/resistance.
+- Add a market-hours/holiday/freshness guard before autonomous order review/placement.
+- Add a Gmail source collector for Robinhood Snacks/TLDR routed labels that cleanly reports `no messages` vs auth/scope failures.
+- Add better catalyst enrichment via news/earnings/SEC APIs so mover scans are not dependent on broad web snippets.
+
+**Journal**
+- Updated local journal:
+  - `/opt/data/HeRmEz/projects/trading-journal/2026-07-03/post-morning-market-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Post-morning Agentic portfolio market scan").

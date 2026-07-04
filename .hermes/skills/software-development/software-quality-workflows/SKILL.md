@@ -125,6 +125,10 @@ If the user asks for a dry run, report findings without editing.
 - Skipping verification because the change "looks obvious."
 - Running a full expensive suite first when a targeted test would isolate the issue faster.
 
+## Domain-Specific Review References
+
+- For reviewing a portfolio of standalone RuneLite/OSRS external plugins, use `references/runelite-plugin-portfolio-review.md`. It covers multi-repo inventory, Gradle verification, Plugin Hub metadata checks, product-readiness ranking, and common consolidation families.
+
 ## Verification Checklist
 
 - [ ] The selected mode matches the user's request.
