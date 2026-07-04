@@ -26,10 +26,6 @@
 	path = projects/osrs-plugins/BossStreaks
 	url = https://github.com/ItMeansBigMountain/boss-streaks-osrs.git
 	branch = main
-[submodule "projects/osrs-plugins/ClanGrindHeatmap"]
-	path = projects/osrs-plugins/ClanGrindHeatmap
-	url = https://github.com/ItMeansBigMountain/clan-grind-heatmap-osrs.git
-	branch = main
 [submodule "projects/osrs-plugins/CompetitionOverlay"]
 	path = projects/osrs-plugins/CompetitionOverlay
 	url = https://github.com/ItMeansBigMountain/competition-overlay-osrs.git
