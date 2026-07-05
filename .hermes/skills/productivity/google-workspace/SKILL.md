@@ -25,6 +25,8 @@ On this user's workspace, use the unified helper `/opt/data/scripts/google_reaut
 
 When reauthing YouTube upload automation, see `references/youtube-oauth-callback-exchange.md` for the callback exchange pattern, scope set, localhost `OAUTHLIB_INSECURE_TRANSPORT=*** pitfall, channel identity verification, and explicit-token uploader check. After a token verifies, replay the actual failing cron/script and inspect its `YOUTUBE_UPLOAD_TOKEN` default/env propagation; a stale script default can keep producing `invalid_grant` against a different channel token even though the freshly reauthed token is valid.
 
+For YouTube downloader/source-acquisition login errors (`Sign in to confirm you're not a bot`, `LOGIN_REQUIRED`, pytubefix `BotDetection`), this user's current workflow is device login with the **Classical Echos** account, not normal YouTube upload OAuth. Use `social-video-cron-growth-loop/references/youtube-device-login-reauth-workflow.md`; cached token path is `/opt/data/secrets/pytubefix-classical-echos/tokens.json`, and Viral Radar should download with pytubefix OAuth (`--no-ytdlp --try-pytubefix --oauth --pytubefix-client WEB`).
+
 Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OAuth and a thin CLI wrapper. When `gws` is installed, the skill uses it as the execution backend for broader Google Workspace coverage; otherwise it falls back to the bundled Python client implementation.
 
 ## References

@@ -73,11 +73,15 @@ Treat lookup as the baseline and video/AR overlay as the product direction.
 
 ### OSRS / RuneLite plugins
 
-For OSRS plugins, each child plugin should be its own Gradle/RuneLite repo under the user's portfolio container.
+For OSRS plugins, each child plugin should be its own Gradle/RuneLite repo under the user's portfolio container, but related concepts that form one user workflow should be consolidated into one plugin repo before Plugin Hub submission. See `references/osrs-runelite-plugin-consolidation.md` for the child-repo merge + parent-submodule update sequence.
 
 - Use Java 11 and verified boilerplate; run `./gradlew clean test assemble --no-daemon`.
 - Keep Old School RuneScape sources separate from RuneScape 3; use OSRS Wiki and RuneLite item IDs.
 - RuneLite side panels must fit narrow UI constraints; test long names and result states for overflow.
+- For local user testing, add a visible `ClientToolbar` / `NavigationButton` / `PluginPanel` scaffold with placeholder data before live API integrations.
+- For plugin-hub submission: child repo build/test/push first, update plugin-hub manifest with the child commit SHA, then push parent pointers.
+- For parent HeRmEz updates involving submodules, push the child repo commit first, then update/remove submodule pointers in the parent repo; tell Windows users to run `git submodule sync --recursive` and `git submodule update --init --recursive <path>` after `git pull`.
+- For plugin-hub submission: child repo build/test/push first, update plugin-hub manifest with the child commit SHA, then push parent pointers.
 - For plugin-hub submission: child repo build/test/push first, update plugin-hub manifest with the child commit SHA, then push parent pointers.
 
 ### Node inspect debugging

@@ -29,6 +29,11 @@ EXTERNAL_PROVIDER = ROOT / "scripts" / "external_clip_provider.py"
 def run(cmd: list[str]) -> subprocess.CompletedProcess[str]:
     env = os.environ.copy()
     env["YOUTUBE_UPLOAD_TOKEN"] = os.getenv("YOUTUBE_UPLOAD_TOKEN") or "/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json"
+    cookie_path = "/opt/data/secrets/youtube-cookies/youtube-cookies.txt"
+    if Path(cookie_path).is_file():
+        env.setdefault("YOUTUBE_COOKIES_FILE", cookie_path)
+        env.setdefault("YTDLP_COOKIES_FILE", cookie_path)
+        env.setdefault("YOUTUBE_COOKIES", cookie_path)
     return subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True, env=env)
 
 
@@ -279,7 +284,10 @@ def ensure_source(manifest: dict) -> Path:
             "--outdir", str(source.parent),
             "--logdir", str(logdir),
             "--skip-cleanup",
+            "--no-ytdlp",
             "--try-pytubefix",
+            "--oauth",
+            "--pytubefix-client", os.getenv("PYTUBEFIX_CLIENTS", "WEB"),
             "--try-pytube",
         ]
         if manifest.get("fallback_source_url") and direct_video_url:

@@ -10,13 +10,15 @@ The user does not want Opus Clips and is scrapping that dependency. Do not produ
 
 1. Use existing local/cached `source.mp4` if present.
 2. Use manifest `fallback_source_url` or `archive_source` if it is a direct/video source.
-3. Try the direct downloader stack:
-   - `yt-dlp` with multiple clients: `mweb,web_safari,tv,ios,android`
+3. Try the direct downloader stack, honoring the user's preference if they reject a tool:
+   - If the user explicitly says not to use `yt-dlp`, skip it; do **not** keep cycling yt-dlp flags or let a fallback script try it first.
+   - For the no-yt-dlp path, use `pytubefix` OAuth with the Classical Echos token file documented in `references/pytubefix-oauth-youtube-source-acquisition-2026-07.md`.
+   - Default path when yt-dlp is allowed: `yt-dlp` with multiple clients: `mweb,web_safari,tv,ios,android`
    - bgutil/PO-token provider if present
    - Node JS runtime if present
    - env-driven cookies/proxy: `YOUTUBE_COOKIES_FILE`, `YTDLP_COOKIES_FILE`, `YTDLP_COOKIES_FROM_BROWSER`, `YTDLP_PROXY`, `HTTPS_PROXY`, `HTTP_PROXY`
-   - `pytubefix` with multiple clients: `WEB,WEB_EMBED,ANDROID,IOS`
-   - plain `pytube` as a final dependency-light fallback
+   - When the user supplies exported cookies, convert to Netscape format, store under `/opt/data/secrets/` with `0600`, and smoke-test one blocked URL before replaying the cron. If yt-dlp says `provided YouTube account cookies are no longer valid`, a `.youtube.com`-only export is not enough or the session rotated; request a fresh export that includes Google/YouTube auth cookies from the active logged-in browser/session.
+   - Python-only ladder: `pytubefix` clients `WEB,WEB_EMBED,ANDROID,IOS`; then `pytubefix` OAuth device flow (`use_oauth=True`, `allow_oauth_cache=True`) if the user is present and approves the Google device-code login; then `pytube`; then direct `innertube` API probe to classify `LOGIN_REQUIRED` vs actual stream availability. `youtube_dl`/`pafy` usually wrap stale extraction and are only quick probes, not likely durable fixes.
 4. If YouTube still returns bot-check, search for creator-controlled reposts before declaring blocked:
    - `site:facebook.com <creator> <title keywords> video`
    - `site:facebook.com/<official page>/videos <topic>`
@@ -28,9 +30,8 @@ The user does not want Opus Clips and is scrapping that dependency. Do not produ
 
 Current metrics show Huberman/credible psychology sources perform better. The source strategy should prioritize credible voices and not treat creator diversity as more important than credible, high-retention psychology/self-control angles.
 
-## Smoke-test pattern
-
-A useful smoke test is to run a bounded set of queued manifests through the downloader with low-res format selection, then inspect attempts:
+Interpretation:
+- If the user has not constrained tools, a useful smoke test is to run a bounded set of queued manifests through the downloader with low-res format selection, then inspect attempts:
 
 ```bash
 python3 scripts/download_youtube_source.py "$URL" \
@@ -42,7 +43,36 @@ python3 scripts/download_youtube_source.py "$URL" \
   --format '18/b[height<=360]/bv*[height<=360]+ba/b[height<=360]/b'
 ```
 
-Interpretation:
+- If the user explicitly asks for another Python package / no `yt-dlp`, run the Python ladder directly instead of re-testing yt-dlp:
+
+```bash
+# Non-interactive probes: classify whether normal Python extractors can see streams.
+python3 - <<'PY'
+from pytubefix import YouTube
+url = 'https://www.youtube.com/watch?v=VIDEO_ID'
+for kwargs in [dict(client='WEB'), dict(client='WEB_EMBED'), dict(client='ANDROID'), dict(client='IOS')]:
+    print('TRY pytubefix', kwargs)
+    try:
+        yt = YouTube(url, **kwargs)
+        print('title', yt.title)
+        print('streams', yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first())
+    except Exception as e:
+        print('ERR', type(e).__name__, str(e)[:300])
+PY
+
+# Interactive fallback when the user is present: Google device-code OAuth.
+python3 - <<'PY'
+from pytubefix import YouTube
+url = 'https://www.youtube.com/watch?v=VIDEO_ID'
+yt = YouTube(url, client='WEB', use_oauth=True, allow_oauth_cache=True)
+s = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
+print('stream', s)
+if s:
+    print(s.download(output_path='/tmp/pytubefix-oauth'))
+PY
+```
+
+- `innertube` can be used as a lightweight classifier: if multiple clients return `playabilityStatus.status == LOGIN_REQUIRED` and no `streamingData`, the block is at YouTube playback API/IP/session level, not a single downloader bug.
 - `yt-dlp` bot-check + `pytubefix`/`pytube` HTTP 400 means YouTube is requiring a proven/authenticated/non-cloud session for that URL/IP.
 - If an official Facebook repost is found, `yt-dlp` can often acquire it without YouTube cookies.
 
