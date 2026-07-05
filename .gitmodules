@@ -6,25 +6,9 @@
 	path = projects/cox-elementary-pta
 	url = https://github.com/ItMeansBigMountain/cox-elementary-pta.git
 	branch = main
-[submodule "projects/osrs-plugins/AccountLegacyCard"]
-	path = projects/osrs-plugins/AccountLegacyCard
-	url = https://github.com/ItMeansBigMountain/account-legacy-card-osrs.git
-	branch = main
-[submodule "projects/osrs-plugins/BossKCRivalLookup"]
-	path = projects/osrs-plugins/BossKCRivalLookup
-	url = https://github.com/ItMeansBigMountain/boss-k-c-rival-lookup-osrs.git
-	branch = main
-[submodule "projects/osrs-plugins/BossRaceCreator"]
-	path = projects/osrs-plugins/BossRaceCreator
-	url = https://github.com/ItMeansBigMountain/boss-race-creator-osrs.git
-	branch = main
 [submodule "projects/osrs-plugins/BossReadinessScore"]
 	path = projects/osrs-plugins/BossReadinessScore
 	url = https://github.com/ItMeansBigMountain/boss-readiness-score-osrs.git
-	branch = main
-[submodule "projects/osrs-plugins/BossStreaks"]
-	path = projects/osrs-plugins/BossStreaks
-	url = https://github.com/ItMeansBigMountain/boss-streaks-osrs.git
 	branch = main
 [submodule "projects/osrs-plugins/CompetitionOverlay"]
 	path = projects/osrs-plugins/CompetitionOverlay
@@ -34,14 +18,6 @@
 	path = projects/osrs-plugins/IceBarrageTimer
 	url = https://github.com/ItMeansBigMountain/ice-barrage-timer-osrs.git
 	branch = main
-[submodule "projects/osrs-plugins/NameChangeWatcher"]
-	path = projects/osrs-plugins/NameChangeWatcher
-	url = https://github.com/ItMeansBigMountain/name-change-watcher-osrs.git
-	branch = main
-[submodule "projects/osrs-plugins/osrs-plugins-boilerplate"]
-	path = projects/osrs-plugins/osrs-plugins-boilerplate
-	url = https://github.com/ItMeansBigMountain/osrs-plugins-boilerplate-osrs.git
-	branch = main
 [submodule "projects/osrs-plugins/PersonalProgressTimeline"]
 	path = projects/osrs-plugins/PersonalProgressTimeline
 	url = https://github.com/ItMeansBigMountain/personal-progress-timeline-osrs.git
@@ -49,18 +25,6 @@
 [submodule "projects/osrs-plugins/RivalRadar"]
 	path = projects/osrs-plugins/RivalRadar
 	url = https://github.com/ItMeansBigMountain/rival-radar-osrs.git
-	branch = main
-[submodule "projects/osrs-plugins/SkillNemesis"]
-	path = projects/osrs-plugins/SkillNemesis
-	url = https://github.com/ItMeansBigMountain/skill-nemesis-osrs.git
-	branch = main
-[submodule "projects/osrs-plugins/SkillRaceCreator"]
-	path = projects/osrs-plugins/SkillRaceCreator
-	url = https://github.com/ItMeansBigMountain/skill-race-creator-osrs.git
-	branch = main
-[submodule "projects/osrs-plugins/SkillStreaks"]
-	path = projects/osrs-plugins/SkillStreaks
-	url = https://github.com/ItMeansBigMountain/skill-streaks-osrs.git
 	branch = main
 [submodule "projects/osrs-plugins/SmartHiscoreLookup"]
 	path = projects/osrs-plugins/SmartHiscoreLookup

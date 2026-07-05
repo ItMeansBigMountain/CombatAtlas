@@ -3,13 +3,14 @@
 ## Current decisions
 
 - Remove `GroupIronProgressBoard`; user does not want ironman/GIM-focused plugins.
+- Remove thin/overlapping source repos from the parent HeRmEz workspace once their product direction is captured in the canonical repos.
 - Keep `RivalRadar` as the canonical repo for race/streak/rival/competition consolidation.
 - Make `SmartHiscoreLookup` the canonical account/player intel repo.
 - Keep `WhosGrindingPanel` standalone. It should implement similar account-detail functionality locally rather than depending on SmartHiscoreLookup.
 
-## Keep standalone
+## Active parent submodules after cleanup
 
-- WhosGrindingPanel
+- WhosGrindingClanPanel / WhosGrindingPanel
 - SmartHiscoreLookup / Account Intel
 - RivalRadar
 - BossReadinessScore
@@ -17,11 +18,22 @@
 - PersonalProgressTimeline
 - CompetitionOverlay
 
-## Remove/archive
+## Removed from parent submodules
 
 - GroupIronProgressBoard
+- AccountLegacyCard
+- NameChangeWatcher
+- SkillNemesis
+- SkillRaceCreator
+- BossRaceCreator
+- BossKCRivalLookup
+- BossStreaks
+- SkillStreaks
+- osrs-plugins-boilerplate
 
-## Merge into SmartHiscoreLookup
+The removed child repositories still exist remotely/history-wise, but they are no longer cloned by default from the HeRmEz parent workspace.
+
+## Merge direction: SmartHiscoreLookup
 
 - AccountLegacyCard
 - NameChangeWatcher
@@ -34,7 +46,7 @@ Merged feature target:
 - previous/current name detection
 - external tracker enrichment from OSRS APIs
 
-## Merge into RivalRadar
+## Merge direction: RivalRadar
 
 - SkillNemesis
 - SkillRaceCreator
