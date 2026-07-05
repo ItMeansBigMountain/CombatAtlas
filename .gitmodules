@@ -30,10 +30,6 @@
 	path = projects/osrs-plugins/CompetitionOverlay
 	url = https://github.com/ItMeansBigMountain/competition-overlay-osrs.git
 	branch = main
-[submodule "projects/osrs-plugins/GroupIronProgressBoard"]
-	path = projects/osrs-plugins/GroupIronProgressBoard
-	url = https://github.com/ItMeansBigMountain/group-iron-progress-board-osrs.git
-	branch = main
 [submodule "projects/osrs-plugins/IceBarrageTimer"]
 	path = projects/osrs-plugins/IceBarrageTimer
 	url = https://github.com/ItMeansBigMountain/ice-barrage-timer-osrs.git
