@@ -17,6 +17,7 @@
 - IceBarrageTimer
 - PersonalProgressTimeline
 - CompetitionOverlay
+- `_templates/osrs-plugins-boilerplate` as the RuneLite starter template/reference, not an active plugin product
 
 ## Removed from parent submodules
 
@@ -29,7 +30,7 @@
 - BossKCRivalLookup
 - BossStreaks
 - SkillStreaks
-- osrs-plugins-boilerplate
+- osrs-plugins-boilerplate from the top-level active plugin folder; it lives under `_templates/` instead
 
 The removed child repositories still exist remotely/history-wise, but they are no longer cloned by default from the HeRmEz parent workspace.
 

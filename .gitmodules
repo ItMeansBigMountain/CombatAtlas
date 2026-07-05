@@ -38,3 +38,7 @@
 	path = projects/plugin-hub
 	url = https://github.com/ItMeansBigMountain/plugin-hub.git
 	branch = master
+[submodule "projects/osrs-plugins/_templates/osrs-plugins-boilerplate"]
+	path = projects/osrs-plugins/_templates/osrs-plugins-boilerplate
+	url = https://github.com/ItMeansBigMountain/osrs-plugins-boilerplate-osrs.git
+	branch = main

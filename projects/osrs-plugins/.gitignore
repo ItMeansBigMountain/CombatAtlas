@@ -3,3 +3,5 @@
 */
 !.gitignore
 !README.md
+!_templates/
+!_templates/*
