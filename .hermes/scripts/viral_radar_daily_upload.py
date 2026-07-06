@@ -282,6 +282,39 @@ def format_seconds(seconds: int) -> str:
     seconds = max(1, int(seconds))
     return f"00:{seconds // 60:02d}:{seconds % 60:02d}"
 
+def _clean_words(text: str) -> list[str]:
+    words = re.findall(r"[A-Za-z][A-Za-z'’-]{2,}", text.lower())
+    stop = {
+        "this", "that", "with", "from", "they", "them", "what", "when", "where", "were", "your", "youre",
+        "about", "after", "before", "have", "has", "had", "into", "over", "under", "because", "there",
+        "their", "would", "could", "should", "people", "someone", "thing", "things", "really", "going",
+        "will", "just", "dont", "doesnt", "isnt", "cant", "than", "then", "also", "very",
+    }
+    return [w.strip("'’-") for w in words if w not in stop]
+
+
+def make_public_packaging(creator: str, source_title: str, window_text: str, idx: int = 1) -> dict[str, str]:
+    seed = re.sub(r"\s+", " ", (window_text or source_title or "")).strip()
+    words = []
+    for w in _clean_words(seed):
+        if w not in words:
+            words.append(w)
+        if len(words) >= 4:
+            break
+    title_l = source_title.lower()
+    seed_l = seed.lower()
+    if any(x in title_l or x in seed_l for x in ["sex", "dating", "women", "men", "desire", "attraction", "bedroom"]):
+        templates = ["The Desire Gap Nobody Admits", "Why Attraction Gets Messy Fast", "The Bedroom Truth People Dodge", "Men, Women, and the Awkward Truth"]
+    elif any(x in title_l or x in seed_l for x in ["money", "business", "sales", "entrepreneur", "broke", "rich"]):
+        templates = ["The Money Mistake That Looks Smart", "Why Most Hustlers Stay Broke", "The Business Trap Nobody Warns You About", "This Is Where Winners Separate"]
+    elif any(x in title_l or x in seed_l for x in ["fat", "muscle", "fitness", "hormone", "diet", "body"]):
+        templates = ["The Body Hack Nobody Wants to Hear", "Why Your Fitness Plan Feels Rigged", "The Physique Lie That Keeps You Stuck", "This Is Why Discipline Gets Ugly"]
+    else:
+        templates = ["The Uncomfortable Truth Hiding Here", "This Sounds Wrong Until It Clicks", "The Part They Say Quietly", "Why This Hits Harder Than Expected"]
+    public_title = templates[(idx - 1) % len(templates)]
+    public_subtitle = " / ".join(w.title() for w in words[:3]) if words else re.sub(r"[^A-Za-z0-9 ,'-]", "", source_title).strip()[:54] or f"Moment {idx}"
+    return {"hook": f"{public_title} — {public_subtitle}"[:118], "public_title": public_title[:90], "public_subtitle": public_subtitle[:90]}
+
 
 def auto_clip_manifest_from_plan(plan_dir: Path) -> Path | None:
     """Create a minimal reviewed manifest for a newly discovered watchlist plan.
@@ -328,13 +361,16 @@ def auto_clip_manifest_from_plan(plan_dir: Path) -> Path | None:
             start_seconds = max(0, min(start_seconds, max(0, duration - clip_len)))
         end_seconds = min(duration, start_seconds + clip_len)
         label = f"auto-{idx+1:02d}"
+        packaging = make_public_packaging(creator, title, str(meta.get("description") or ""), idx + 1)
         clips.append({
             "file": f"EXPORTS/{stem}-{label}.mp4",
             "captioned_file": f"EXPORTS/{stem}-{label}-captioned.mp4",
             "start": format_seconds(start_seconds),
             "end": format_seconds(end_seconds),
-            "hook": f"{creator}: {title[:62]} — clip {idx+1}",
-            "context": f"Auto-selected candidate {idx+1} from a {duration}s source. Use transcript/analysis manifests when available for sharper moments.",
+            "hook": packaging["hook"],
+            "public_title": packaging["public_title"],
+            "public_subtitle": packaging["public_subtitle"],
+            "context": f"{packaging['public_subtitle']} from {title}",
         })
     manifest = {
         "creator": creator,
@@ -470,12 +506,19 @@ def upload_rendered(rendered: list[dict], manifest: dict, selected_clip: dict | 
             or manifest.get("source_description")
             or ""
         ).strip()
-        title_seed = hook.strip() or output.stem.replace("-", " ").title()
-        # Hashtags belong in tags/description, not the title.
-        title = re.sub(r"\s*#\w+", "", title_seed).strip()[:95]
+        public_title = str((selected_clip or {}).get("public_title") or "").strip()
+        public_subtitle = str((selected_clip or {}).get("public_subtitle") or "").strip()
+        title_seed = public_title or hook.strip() or output.stem.replace("-", " ").title()
+        # Hashtags belong in tags/description, not the title. Never publish internal
+        # planning labels like "the part people will replay".
+        title = re.sub(r"\s*#\w+", "", title_seed).replace("the part people will replay", "").strip()[:95]
+        if not title:
+            title = "The Uncomfortable Truth Hiding Here"
+        context_line = public_subtitle or context[:600]
         description = (
-            f"Source: {manifest.get('creator','source creator')} — {manifest.get('source_title','source footage')}. "
-            + (f"What this clip is saying: {context[:600]} " if context else "")
+            f"{title}. "
+            + (f"{context_line}. " if context_line else "")
+            + f"Source: {manifest.get('creator','source creator')} — {manifest.get('source_title','source footage')}. "
             + f"Original source: {manifest.get('source_url','')}. "
             + "Transformative additions: vertical edit, burned captions, hook/context framing, and source attribution. "
             + f"Cron cohort: viral-radar-{suffix}.\n\n#Shorts #ViralRadar #SelfImprovement"
