@@ -19,6 +19,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 ROOT = Path("/opt/data/HeRmEz/projects/viral-clip-radar")
+UPLOAD_QUEUE = ROOT / "UPLOAD_QUEUE"
 DEFAULT_MANIFEST = ROOT / "CLIP_PLANS" / "2026-06-04-huberman-motivation-great-find" / "clip_manifest.json"
 MANIFEST = Path(os.getenv("VIRAL_RADAR_MANIFEST", str(DEFAULT_MANIFEST)))
 RENDER = ROOT / "scripts" / "render_clip_manifest.py"
@@ -533,6 +534,121 @@ def parse_json_output(text: str) -> dict:
     raise ValueError("could not parse JSON output")
 
 
+def local_upload_day() -> str:
+    return dt.datetime.now(ZoneInfo("America/Chicago")).date().isoformat()
+
+
+def daily_upload_cap() -> int:
+    # YouTube has an account-level video upload limit that is separate from API
+    # quota and can be undocumented. We observed Classical Echos hit it after
+    # 13 successful uploads on 2026-07-06, so default to 12/day as a safety cap
+    # while still meeting the user's 10/day floor. Override after more evidence.
+    return max(1, int(os.getenv("VIRAL_RADAR_DAILY_UPLOAD_CAP", "12")))
+
+
+def uploaded_count_for_day(day: str | None = None) -> int:
+    day = day or local_upload_day()
+    log = ROOT / "UPLOADS" / "youtube_uploads.jsonl"
+    if not log.exists():
+        return 0
+    count = 0
+    for line in log.read_text(encoding="utf-8", errors="ignore").splitlines():
+        try:
+            row = json.loads(line)
+            uploaded_at = row.get("uploaded_at")
+            if not uploaded_at:
+                continue
+            row_day = dt.datetime.fromisoformat(uploaded_at).astimezone(ZoneInfo("America/Chicago")).date().isoformat()
+            if row_day == day and row.get("privacy") == "public":
+                count += 1
+        except Exception:
+            continue
+    return count
+
+
+def upload_capacity_remaining() -> int:
+    return max(0, daily_upload_cap() - uploaded_count_for_day())
+
+
+def queue_failed_upload(output: Path, *, title: str, description: str, tags: str, manifest: dict, selected_clip: dict | None, proc: subprocess.CompletedProcess[str]) -> dict:
+    UPLOAD_QUEUE.mkdir(parents=True, exist_ok=True)
+    queued_file = UPLOAD_QUEUE / output.name
+    if output.exists() and output.resolve() != queued_file.resolve():
+        if queued_file.exists():
+            queued_file = UPLOAD_QUEUE / f"{dt.datetime.now(dt.UTC).strftime('%Y%m%d%H%M%S')}-{output.name}"
+        shutil.move(str(output), str(queued_file))
+    meta = {
+        "queued_at": dt.datetime.now(dt.UTC).isoformat(),
+        "file": str(queued_file),
+        "title": title,
+        "description": description,
+        "tags": tags,
+        "privacy": "public",
+        "creator": manifest.get("creator") or manifest.get("channel") or "source creator",
+        "source_url": manifest.get("source_url", ""),
+        "source_title": manifest.get("source_title", ""),
+        "selected_hook": (selected_clip or {}).get("hook"),
+        "last_error": {
+            "returncode": proc.returncode,
+            "stdout_tail": proc.stdout[-2000:],
+            "stderr_tail": proc.stderr[-2000:],
+            "blocked_upload_quota": "exceeded the number of videos" in (proc.stderr + proc.stdout).lower(),
+        },
+    }
+    meta_path = queued_file.with_suffix(queued_file.suffix + ".upload.json")
+    meta_path.write_text(json.dumps(meta, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return {"queued_file": str(queued_file), "queue_metadata": str(meta_path), "queued_for_next_run": True}
+
+
+def append_enriched_upload(upload_payload: dict, manifest: dict) -> None:
+    upload_payload["creator"] = manifest.get("creator") or manifest.get("channel") or "source creator"
+    upload_payload["source_url"] = manifest.get("source_url", "")
+    enriched_log = ROOT / "UPLOADS" / "viral_radar_enriched_uploads.jsonl"
+    enriched_log.parent.mkdir(parents=True, exist_ok=True)
+    with enriched_log.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(upload_payload, ensure_ascii=False) + "\n")
+
+
+def upload_pending_queue(limit: int | None = None) -> list[dict]:
+    uploads: list[dict] = []
+    if not UPLOAD_QUEUE.exists():
+        return uploads
+    metas = sorted(UPLOAD_QUEUE.glob("*.upload.json"), key=lambda p: p.stat().st_mtime)
+    if limit is not None:
+        metas = metas[:max(0, limit)]
+    for meta_path in metas:
+        if upload_capacity_remaining() <= 0:
+            break
+        meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        file_path = Path(meta.get("file") or "")
+        if not file_path.exists():
+            meta_path.unlink(missing_ok=True)
+            continue
+        proc = run([
+            sys.executable, str(UPLOAD),
+            "--file", str(file_path),
+            "--title", str(meta.get("title") or file_path.stem)[:95],
+            "--description", str(meta.get("description") or ""),
+            "--tags", str(meta.get("tags") or "shorts,viral radar"),
+            "--privacy", str(meta.get("privacy") or "public"),
+        ])
+        if proc.returncode != 0:
+            meta["last_attempt_at"] = dt.datetime.now(dt.UTC).isoformat()
+            meta["last_error"] = {"returncode": proc.returncode, "stdout_tail": proc.stdout[-2000:], "stderr_tail": proc.stderr[-2000:], "blocked_upload_quota": "exceeded the number of videos" in (proc.stderr + proc.stdout).lower()}
+            meta_path.write_text(json.dumps(meta, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            break
+        payload = parse_json_output(proc.stdout)
+        payload["creator"] = meta.get("creator") or "source creator"
+        payload["source_url"] = meta.get("source_url") or ""
+        uploads.append(payload)
+        enriched_log = ROOT / "UPLOADS" / "viral_radar_enriched_uploads.jsonl"
+        enriched_log.parent.mkdir(parents=True, exist_ok=True)
+        with enriched_log.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(payload, ensure_ascii=False) + "\n")
+        meta_path.unlink(missing_ok=True)
+    return uploads
+
+
 def upload_rendered(rendered: list[dict], manifest: dict, selected_clip: dict | None = None) -> list[dict]:
     uploads = []
     suffix = dt.datetime.now(dt.UTC).strftime("%Y%m%d")
@@ -595,41 +711,42 @@ def upload_rendered(rendered: list[dict], manifest: dict, selected_clip: dict | 
             "--tags", build_youtube_tags(hashtags),
             "--privacy", "public",
         ]
+        tags = build_youtube_tags(hashtags)
+        if upload_capacity_remaining() <= 0:
+            proc = subprocess.CompletedProcess(cmd, 1, "", f"daily upload safety cap reached: {uploaded_count_for_day()}/{daily_upload_cap()}")
+            queued = queue_failed_upload(output, title=title, description=description, tags=tags, manifest=manifest, selected_clip=selected_clip, proc=proc)
+            raise RuntimeError(json.dumps({
+                "upload_deferred_for": str(output),
+                "queued_for_next_run": True,
+                **queued,
+                "daily_upload_cap": daily_upload_cap(),
+                "uploaded_today": uploaded_count_for_day(),
+                "reason": "daily_upload_safety_cap_reached",
+            }, indent=2))
         proc = run(cmd)
         if proc.returncode != 0:
-            # User preference: upload clips as they are created; do not leave
-            # local-only rendered exports behind after an upload failure/quota hit.
-            try:
-                if output.exists():
-                    output.unlink()
-            except Exception:
-                pass
+            queued = queue_failed_upload(output, title=title, description=description, tags=tags, manifest=manifest, selected_clip=selected_clip, proc=proc)
             error_blob = proc.stderr[-4000:] + proc.stdout[-1000:]
             raise RuntimeError(json.dumps({
                 "upload_failed_for": str(output),
                 "returncode": proc.returncode,
                 "stdout_tail": proc.stdout[-2000:],
                 "stderr_tail": proc.stderr[-2000:],
-                "cleaned_unuploaded_export": True,
+                "queued_for_next_run": True,
+                **queued,
                 "blocked_upload_quota": "exceeded the number of videos" in error_blob.lower(),
             }, indent=2))
         upload_payload = parse_json_output(proc.stdout)
-        upload_payload["creator"] = manifest.get("creator") or manifest.get("channel") or "source creator"
-        upload_payload["source_url"] = manifest.get("source_url", "")
+        append_enriched_upload(upload_payload, manifest)
         uploads.append(upload_payload)
-        # Append enriched row because the shared uploader log historically did
-        # not include source creator, which caused the cron to repeat Huberman.
-        enriched_log = ROOT / "UPLOADS" / "viral_radar_enriched_uploads.jsonl"
-        enriched_log.parent.mkdir(parents=True, exist_ok=True)
-        with enriched_log.open("a", encoding="utf-8") as f:
-            f.write(json.dumps(upload_payload, ensure_ascii=False) + "\n")
     return uploads
 
 
 def main() -> int:
     local_day = dt.datetime.now(ZoneInfo("America/Chicago")).date().isoformat()
     marker = ROOT / "STATE" / f"viral_radar_daily_upload_{local_day}.done"
-    if marker.exists() and os.getenv("FORCE_UPLOAD") != "1":
+    queue_has_items = UPLOAD_QUEUE.exists() and any(UPLOAD_QUEUE.glob("*.upload.json"))
+    if marker.exists() and os.getenv("FORCE_UPLOAD") != "1" and not queue_has_items:
         print(json.dumps({
             "job": "viral_radar_daily_upload",
             "status": "skipped_already_ran_today",
@@ -639,14 +756,15 @@ def main() -> int:
         }, indent=2))
         return 0
     try:
+        min_uploads = max(10, int(os.getenv("VIRAL_RADAR_MIN_UPLOADS", os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", "10"))))
+        queued_uploads = upload_pending_queue(limit=min_uploads)
         seed_result = seed_latest_manifests()
         candidates = iter_candidate_manifest_clips()
-        min_uploads = max(10, int(os.getenv("VIRAL_RADAR_MIN_UPLOADS", os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", "10"))))
         max_attempts = max(min_uploads, int(os.getenv("VIRAL_RADAR_MAX_SOURCE_ATTEMPTS", "50")))
         source_failures = []
         render_failures = []
         uploaded_batches = []
-        all_uploads = []
+        all_uploads = list(queued_uploads)
         rendered_total = 0
         source_cleanup = []
         used_sources: set[str] = set()
@@ -726,6 +844,8 @@ def main() -> int:
                 "status": "blocked_min_uploads_not_met",
                 "min_uploads": min_uploads,
                 "uploaded_count": len(all_uploads),
+                "queued_replay_uploaded_count": len(queued_uploads),
+                "remaining_queue_count": len(list(UPLOAD_QUEUE.glob("*.upload.json"))) if UPLOAD_QUEUE.exists() else 0,
                 "seed_result": seed_result,
                 "uploaded_batches": uploaded_batches,
                 "source_failures": source_failures,
@@ -739,6 +859,8 @@ def main() -> int:
             "status": "ok",
             "min_uploads": min_uploads,
             "uploaded_count": len(all_uploads),
+            "queued_replay_uploaded_count": len(queued_uploads),
+            "remaining_queue_count": len(list(UPLOAD_QUEUE.glob("*.upload.json"))) if UPLOAD_QUEUE.exists() else 0,
             "seed_result": seed_result,
             "prior_source_failures": source_failures,
             "render_failures": render_failures,
