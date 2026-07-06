@@ -48,9 +48,11 @@ def seed_latest_manifests() -> dict:
         return {"status": "missing_seed_script", "path": str(SEED_LATEST)}
     min_clips = os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", "3")
     env = os.environ.copy()
-    # Discovery/read scopes can use the existing working data token; uploads still
-    # use Classical Echos through run()/upload_to_youtube.py.
-    env["YOUTUBE_UPLOAD_TOKEN"] = os.getenv("YOUTUBE_DISCOVERY_TOKEN") or "/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json"
+    # Viral Radar discovery/read scopes should use the same Classical Echos lane
+    # token as upload unless an explicit discovery override is provided. Do not
+    # fall back to Trapiistan here; cross-lane token defaults caused recurring
+    # wrong-channel/auth confusion.
+    env["YOUTUBE_UPLOAD_TOKEN"] = os.getenv("YOUTUBE_DISCOVERY_TOKEN") or "/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json"
     proc = subprocess.run(
         [sys.executable, str(SEED_LATEST), "--clips-per-video", min_clips, "--max-videos-per-channel", "50"],
         cwd=ROOT,
