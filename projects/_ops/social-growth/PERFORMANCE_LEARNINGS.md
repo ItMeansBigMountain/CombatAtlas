@@ -1,6 +1,6 @@
 # Social Video Performance Learnings
 
-Last updated: `2026-07-06T17:53:19.248991+00:00`
+Last updated: `2026-07-06T20:49:05.740425+00:00`
 
 ## Metrics status
 
@@ -21,13 +21,13 @@ Last updated: `2026-07-06T17:53:19.248991+00:00`
 
 ## viral-clip-radar
 
-- Uploads logged: 54 total; 39 public/metric-eligible.
-- Median public views in latest snapshot: 98.
+- Uploads logged: 57 total; 42 public/metric-eligible.
+- Median public views in latest snapshot: 66.
 - Current winners to study:
-  - 1332 views / 18 likes / 0 comments — Alex Hormozi: Whoever You Blame Is Who You Give Power To — https://youtu.be/8vdPqKeijgw — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
-  - 1226 views / 10 likes / 0 comments — Alex Hormozi: If the Truth Isn't Compelling, Fix That — https://youtu.be/BZ03CWhpuSk — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
+  - 1333 views / 18 likes / 0 comments — Alex Hormozi: Whoever You Blame Is Who You Give Power To — https://youtu.be/8vdPqKeijgw — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
+  - 1231 views / 10 likes / 0 comments — Alex Hormozi: If the Truth Isn't Compelling, Fix That — https://youtu.be/BZ03CWhpuSk — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
   - 1036 views / 18 likes / 1 comments — Two types of procrastination and how activation changes behavior #Shorts — https://youtu.be/XJ4QzlHq2TE — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
-  - 1085 views / 7 likes / 0 comments — GG33 #Shorts — https://youtu.be/sew5nLYII0A — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
+  - 1086 views / 7 likes / 0 comments — GG33 #Shorts — https://youtu.be/sew5nLYII0A — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
   - 944 views / 26 likes / 0 comments — The viral moment is not the landing. It is proof under pressure. #Shorts — https://youtu.be/JBX3lRhKhy4 — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
 - Hook/title words showing up in better performers: source, radar, https, transformative, additions, vertical, captions, hook, context, attribution, original, edit.
 

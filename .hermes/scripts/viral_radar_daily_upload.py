@@ -515,14 +515,25 @@ def upload_rendered(rendered: list[dict], manifest: dict, selected_clip: dict | 
         if not title:
             title = "The Uncomfortable Truth Hiding Here"
         context_line = public_subtitle or context[:600]
-        description = (
-            f"{title}. "
-            + (f"{context_line}. " if context_line else "")
-            + f"Source: {manifest.get('creator','source creator')} — {manifest.get('source_title','source footage')}. "
-            + f"Original source: {manifest.get('source_url','')}. "
-            + "Transformative additions: vertical edit, burned captions, hook/context framing, and source attribution. "
-            + f"Cron cohort: viral-radar-{suffix}.\n\n#Shorts #ViralRadar #SelfImprovement"
-        )
+        source_url = str(manifest.get('source_url') or '').strip()
+        description_parts = [title]
+        if context_line:
+            description_parts += ["", context_line]
+        description_parts += [
+            "",
+            "Source:",
+            f"{manifest.get('creator','source creator')} — {manifest.get('source_title','source footage')}",
+        ]
+        if source_url:
+            # Keep the original URL on its own line so YouTube renders it as a clear hyperlink.
+            description_parts += ["", "Original source:", source_url]
+        description_parts += [
+            "",
+            "Edited with vertical framing, burned captions, context, and source attribution.",
+            "",
+            "#Shorts #ViralRadar #SelfImprovement",
+        ]
+        description = "\n".join(description_parts)
         cmd = [
             sys.executable, str(UPLOAD),
             "--file", str(output),
