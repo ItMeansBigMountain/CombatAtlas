@@ -65,6 +65,7 @@ Use this when working on the user's OSRS/RuneLite plugin portfolio: fixing plugi
 ## Current consolidation direction
 
 See `references/osrs-plugin-portfolio-cleanup.md` for the current user-approved consolidation map.
+See `references/osrs-consolidation-implementation-notes.md` for session-tested implementation notes, pure-service module patterns, RuneLite API probes, and child/parent push verification snippets.
 
 High-level rules:
 
@@ -77,6 +78,7 @@ High-level rules:
 ## Pitfalls
 
 - Do not claim GitHub access is unavailable just because `gh` is missing; use `GITHUB_ACCESS_TOKEN` and the GitHub API fallback.
+- When pushing with `GITHUB_ACCESS_TOKEN`, avoid nested single-quoted shell/Python URL construction; use a simple double-quoted/f-string token URL and verify `ls-remote` SHA equals local `HEAD` after every child and parent push.
 - Do not `git add` nested plugin worktrees directly into the HeRmEz parent unless intentionally updating submodule gitlinks or backup artifacts.
 - Do not leave child repo changes unpushed while updating only the parent repo.
 - Do not preserve obsolete names like `WhosGrindingClanPanel` in user-facing display text when the direction is **Who's Grinding Panel**; internal package paths may change later as a deliberate migration.
