@@ -51,7 +51,7 @@ EMAIL_POLICY_NOTE = (
     "Ticketmaster tickets, myQ/Chamberlain garage alerts, GitGuardian/security, vehicle/official notices. "
     "Landing is priority only for Standby/rent-impacting logistics: bumped/rebooked, active stay changes, payment/rent, parking, mail/packages, pets, or support. "
     "Credit Karma should only be surfaced if it indicates credit score dropped or serious credit-risk/identity/duplicate-charge signal. "
-    "Use TLDR only from fareed320@gmail.com. Use TLDR/Kino Body/Daily Stoic as morning-report interesting inputs. "
+    "Use TLDR only from fareed320@gmail.com. Treat TLDR/Kino Body/Kinobody/Daily Stoic as approved faceless-video source inputs, not personal needs-attention items. "
     "Treat Grammarly Insights as interesting self-metrics/profile data. "
     "Junk categories include FoundersCard, Yieldi, Crunch, Higgsfield, Fundrise, Kling AI, Instagram notifications, "
     "Lumen marketing, Chess.com nags, YEEZY, City Experiences, LELO, GNC, and random consumer sales emails. "
