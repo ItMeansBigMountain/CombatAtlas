@@ -73,14 +73,37 @@ Treat lookup as the baseline and video/AR overlay as the product direction.
 
 ### OSRS / RuneLite plugins
 
-For OSRS plugins, each child plugin should be its own Gradle/RuneLite repo under the user's portfolio container, but related concepts that form one user workflow should be consolidated into one plugin repo before Plugin Hub submission. See `references/osrs-runelite-plugin-consolidation.md` for the child-repo merge + parent-submodule update sequence.
+For OSRS plugins, each child plugin should be its own Gradle/RuneLite repo under the user's portfolio container, except when the user explicitly decides related ideas should become one plugin/product. For merge workflow details, see `references/absorbed/osrs-plugins/merge-related-runelite-submodules.md`. For current portfolio/UI lessons from recent work, see `references/osrs-runelite-plugin-portfolio-lessons.md`. For the latest portfolio-refinement notes, standalone-plugin policy, social API examples, Swing control pitfalls, and submodule cleanup patterns, see `references/osrs-plugin-portfolio-refinement.md`.
 
-- Use Java 11 and verified boilerplate; run `./gradlew clean test assemble --no-daemon`.
+- Use Java 11 and verified boilerplate; run `./gradlew clean test assemble --no-daemon` before committing/pushing.
+- Keep Old School RuneScape sources separate from RuneScape 3; use OSRS Wiki and RuneLite item IDs.
+- RuneLite side panels must fit the default RuneLite sidebar width without requiring player resizing. Prefer compact dropdowns + icon buttons over wide tabs/buttons; explicitly constrain Swing control sizes under `BoxLayout`.
+- For live social/client features, inspect the local `runelite-api` jar with `javap` when docs/examples are unclear, then wire graceful empty/unsupported states.
+- When merging two plugin repos, choose one canonical child repo, move the other plugin's useful code into that package as helpers/views/models, update `@PluginDescriptor` + `plugin.json` + `runelite-plugin.properties`, commit/push the child first, then remove the obsolete parent submodule gitlink.
+- For plugin-hub submission: child repo build/test/push first, update plugin-hub manifest with the child commit SHA, then push parent pointers.
+- For social tracking plugins, start empty unless live RuneLite APIs provide members; avoid fake/default people in production UI.
+- For social tracking refresh, rescan on login and expose a configurable integer refresh interval in minutes, defaulting to 60, plus manual refresh.
+- When merging two plugin repos, choose one canonical child repo, move the other plugin's useful code into that package as helpers/views/models, update `@PluginDescriptor` + `plugin.json` + `runelite-plugin.properties`, commit/push the child first, then remove the obsolete parent submodule gitlink.
+- For social tracker plugins, prefer top tabs for primary social views (Friends Chat, Clan Chat, Friends List), rescan on login, expose manual Rescan, and add an integer refresh interval config in minutes defaulting to 60.
+- When merging two plugin repos, choose one canonical child repo, move the other plugin's useful code into that package as helpers/views/models, update `@PluginDescriptor` + `plugin.json` + `runelite-plugin.properties`, commit/push the child first, then remove the obsolete parent submodule gitlink.
+- When the user needs to run a local Windows copy, commit and push child-repo changes first, then tell them to `git switch main`, `git pull origin main`, and run `.\gradlew.bat run --no-daemon` from the plugin directory.
+- When merging two plugin repos, choose one canonical child repo, move the other plugin's useful code into that package as helpers/views/models, update `@PluginDescriptor` + `plugin.json` + `runelite-plugin.properties`, commit/push the child first, then remove the obsolete parent submodule gitlink.
+- When the user wants multiple social views, choose the narrowest control that actually fits the default RuneLite side panel. Top tabs are acceptable only if screenshots/manual testing show they do not trail off; otherwise use a constrained selector row (`JComboBox` + icon button) with explicit preferred/maximum sizes.
+- When merging two plugin repos, choose one canonical child repo, move the other plugin's useful code into that package as helpers/views/models, update `@PluginDescriptor` + `plugin.json` + `runelite-plugin.properties`, commit/push the child first, then remove the obsolete parent submodule gitlink.
+- Test long names and result states for overflow.
+- When merging two plugin repos, choose one canonical child repo, move the other plugin's useful code into that package as helpers/views/models, update `@PluginDescriptor` + `plugin.json` + `runelite-plugin.properties`, commit/push the child first, then remove the obsolete parent submodule gitlink.
+- For social tracker concepts, build local discovery/tracking/removal/cap behavior first: configurable source toggles, normalized member records, source tags, ignored-name persistence, panel filters, rescan, and one-by-one removal.
 - Keep Old School RuneScape sources separate from RuneScape 3; use OSRS Wiki and RuneLite item IDs.
 - RuneLite side panels must fit narrow UI constraints; test long names and result states for overflow.
-- For local user testing, add a visible `ClientToolbar` / `NavigationButton` / `PluginPanel` scaffold with placeholder data before live API integrations.
+- For social-tracker plugins that watch friends list, clan chat, and friends chat, use a state-driven side panel with explicit top tabs (`Friends Chat`, `Clan Chat`, `Friends List`), per-member remove/untrack actions, compact ignored-member persistence, and a scanner/service boundary before adding external XP/KC APIs. See `references/runelite-social-tracker-panel-pattern.md`.
+- When merging two plugin repos, choose one canonical child repo, move the other plugin's useful code into that package as helpers/views/models, update `@PluginDescriptor` + `plugin.json` + `runelite-plugin.properties`, commit/push the child first, then remove the obsolete parent submodule gitlink.
+- For plugin-hub submission: child repo build/test/push first, update plugin-hub manifest with the child commit SHA, then push parent pointers.
 - For plugin-hub submission: child repo build/test/push first, update plugin-hub manifest with the child commit SHA, then push parent pointers.
 - For parent HeRmEz updates involving submodules, push the child repo commit first, then update/remove submodule pointers in the parent repo; tell Windows users to run `git submodule sync --recursive` and `git submodule update --init --recursive <path>` after `git pull`.
+- Keep repo-local research notes during OSRS plugin work. Add/update `PROJECT_NOTES.md`, `PRODUCT_DIRECTION.md`, or cleanup-plan docs with verified API methods, working examples, and product decisions so future sessions do not re-research old context externally.
+- Preserve standalone-plugin behavior unless the user explicitly approves a shared library: copy/adapt shared account/detail/rival patterns into each plugin rather than requiring users to install multiple plugins.
+- Treat `projects/osrs-plugins/` as the active plugin portfolio, not a dumping ground. Remove consolidated thin-plugin submodules from the parent after recording their direction in canonical repos. Keep boilerplate as a remote/template or under `_templates/`, not as a top-level active plugin folder.
+- When pruning parent submodules, verify both `.gitmodules` and the directory listing; on Windows, stale removed submodule folders may require manual `rmdir /s /q` after `git pull`, `git submodule sync --recursive`, and `git submodule update --init --recursive`. See `references/osrs-plugin-portfolio-refinement.md` for the current cleanup pattern and active set.
 - For plugin-hub submission: child repo build/test/push first, update plugin-hub manifest with the child commit SHA, then push parent pointers.
 - For plugin-hub submission: child repo build/test/push first, update plugin-hub manifest with the child commit SHA, then push parent pointers.
 
@@ -112,6 +135,7 @@ Archived source packages absorbed into this umbrella are preserved under `refere
 - `dogfood/` — browser QA workflow, issue taxonomy, and report template.
 - `node-inspect-debugger/` — Node inspector and CDP debugging recipes.
 - `osrs-plugins/` — RuneLite plugin portfolio, scaffolding, API, UI, and plugin-hub references.
+- `references/runelite-social-tracking-panel.md` — social tracking panel pattern: empty defaults, source tabs, rescan interval, ignored members, and default side-panel width constraints.
 - `project-portfolio-roadmapping/` — workspace inventory, merge/retire, tracker, and source-of-truth documentation patterns.
 
 ## Common Pitfalls

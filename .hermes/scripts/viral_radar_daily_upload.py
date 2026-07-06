@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import sys
 import urllib.request
+import re
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -28,7 +29,9 @@ EXTERNAL_PROVIDER = ROOT / "scripts" / "external_clip_provider.py"
 
 def run(cmd: list[str]) -> subprocess.CompletedProcess[str]:
     env = os.environ.copy()
-    env["YOUTUBE_UPLOAD_TOKEN"] = os.getenv("YOUTUBE_UPLOAD_TOKEN") or "/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json"
+    # Viral Radar influencer clips belong on Classical Echos. Newsletter/faceless
+    # videos use the Trapiistan/Sosai token in their separate pipeline.
+    env["YOUTUBE_UPLOAD_TOKEN"] = os.getenv("YOUTUBE_UPLOAD_TOKEN") or "/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json"
     cookie_path = "/opt/data/secrets/youtube-cookies/youtube-cookies.txt"
     if Path(cookie_path).is_file():
         env.setdefault("YOUTUBE_COOKIES_FILE", cookie_path)
@@ -41,7 +44,18 @@ def seed_latest_manifests() -> dict:
     """Refresh queue from Google/YouTube APIs every job before selecting a clip."""
     if not SEED_LATEST.exists():
         return {"status": "missing_seed_script", "path": str(SEED_LATEST)}
-    proc = run([sys.executable, str(SEED_LATEST), "--clips-per-video", "2", "--max-videos-per-channel", "50"])
+    min_clips = os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", "3")
+    env = os.environ.copy()
+    # Discovery/read scopes can use the existing working data token; uploads still
+    # use Classical Echos through run()/upload_to_youtube.py.
+    env["YOUTUBE_UPLOAD_TOKEN"] = os.getenv("YOUTUBE_DISCOVERY_TOKEN") or "/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json"
+    proc = subprocess.run(
+        [sys.executable, str(SEED_LATEST), "--clips-per-video", min_clips, "--max-videos-per-channel", "50"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        env=env,
+    )
     if proc.returncode != 0:
         return {"status": "seed_failed", "returncode": proc.returncode, "stdout_tail": proc.stdout[-2000:], "stderr_tail": proc.stderr[-2000:]}
     try:
@@ -157,7 +171,12 @@ def iter_candidate_manifest_clips() -> list[tuple[Path, dict, dict]]:
     candidates still rank higher inside each creator so the job can complete.
     """
     forced_index = os.getenv("VIRAL_RADAR_CLIP_INDEX", "").strip()
-    manifests = [MANIFEST] if os.getenv("VIRAL_RADAR_MANIFEST") else sorted((ROOT / "CLIP_PLANS").glob("*/clip_manifest.json"), reverse=True)
+    priority_manifests = priority_plan_manifests()
+    priority_set = set(priority_manifests)
+    manifests = [MANIFEST] if os.getenv("VIRAL_RADAR_MANIFEST") else priority_manifests + [
+        p for p in sorted((ROOT / "CLIP_PLANS").glob("*/clip_manifest.json"), reverse=True)
+        if p not in priority_set
+    ]
     seen = uploaded_public_keys()
     fresh: list[tuple[Path, dict, dict]] = []
     fallback: list[tuple[Path, dict, dict]] = []
@@ -234,6 +253,95 @@ def iter_candidate_manifest_clips() -> list[tuple[Path, dict, dict]]:
 
 def select_daily_manifest_clip() -> tuple[Path, dict, dict]:
     return iter_candidate_manifest_clips()[0]
+
+
+def slugify(value: str, max_len: int = 72) -> str:
+    value = re.sub(r"[^a-zA-Z0-9]+", "-", value).strip("-").lower()
+    return (value[:max_len].strip("-") or "clip")
+
+
+def parse_time_to_seconds(value: str | None, fallback: int = 45) -> int:
+    if not value:
+        return fallback
+    try:
+        parts = [float(p) for p in str(value).split(":")]
+        if len(parts) == 3:
+            return int(parts[0] * 3600 + parts[1] * 60 + parts[2])
+        if len(parts) == 2:
+            return int(parts[0] * 60 + parts[1])
+        return int(parts[0])
+    except Exception:
+        return fallback
+
+
+def format_seconds(seconds: int) -> str:
+    seconds = max(1, int(seconds))
+    return f"00:{seconds // 60:02d}:{seconds % 60:02d}"
+
+
+def auto_clip_manifest_from_plan(plan_dir: Path) -> Path | None:
+    """Create a minimal reviewed manifest for a newly discovered watchlist plan.
+
+    The watchlist poller creates source_metadata.json immediately. This lets the
+    discovery cron clip/render/upload the found video right away instead of
+    waiting for a separate manual manifest pass. The render still adds a hook
+    overlay and the uploader adds source attribution, so this is not a raw
+    reupload.
+    """
+    manifest_path = plan_dir / "clip_manifest.json"
+    if manifest_path.exists():
+        return manifest_path
+    metadata_path = plan_dir / "source_metadata.json"
+    if not metadata_path.exists():
+        return None
+    meta = json.loads(metadata_path.read_text(encoding="utf-8"))
+    video_id = str(meta.get("video_id") or "").strip()
+    source_url = str(meta.get("url") or meta.get("source_url") or "").strip()
+    title = str(meta.get("title") or "Creator clip").strip()
+    creator = str(meta.get("channel_name") or meta.get("creator") or meta.get("channel") or "Creator").strip()
+    if not video_id and "youtu" in source_url:
+        video_id = source_url.rsplit("/", 1)[-1].split("?", 1)[0].split("&", 1)[0]
+    if not source_url:
+        return None
+    duration = parse_time_to_seconds(str(meta.get("duration") or meta.get("duration_seconds") or ""), 45)
+    clip_seconds = min(max(duration, 12), 58) if "/shorts/" in source_url else min(duration, 45)
+    stem = slugify(f"{creator}-{title}", 64)
+    manifest = {
+        "creator": creator,
+        "source_title": title,
+        "source_url": source_url,
+        "source_video_id": video_id or stem,
+        "source_file": f"SOURCES/{video_id or stem}/source.mp4",
+        "auto_generated_from_watchlist": True,
+        "clips": [
+            {
+                "file": f"EXPORTS/{stem}-auto.mp4",
+                "captioned_file": f"EXPORTS/{stem}-auto-captioned.mp4",
+                "start": "00:00:00",
+                "end": format_seconds(clip_seconds),
+                "hook": f"{creator}: {title[:70]}",
+            }
+        ],
+    }
+    manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return manifest_path
+
+
+def priority_plan_manifests() -> list[Path]:
+    raw = os.getenv("VIRAL_RADAR_PRIORITY_PLANS", "").strip()
+    if not raw:
+        return []
+    manifests: list[Path] = []
+    for item in raw.split(os.pathsep):
+        if not item.strip():
+            continue
+        plan = Path(item.strip())
+        if not plan.is_absolute():
+            plan = ROOT / plan
+        manifest = plan if plan.name == "clip_manifest.json" else auto_clip_manifest_from_plan(plan)
+        if manifest and manifest.exists() and manifest not in manifests:
+            manifests.append(manifest)
+    return manifests
 
 
 def write_single_clip_manifest(manifest_path: Path, manifest: dict, clip: dict, local_day: str) -> Path:
@@ -333,14 +441,22 @@ def upload_rendered(rendered: list[dict], manifest: dict, selected_clip: dict | 
             if Path(clip.get("file", "")).stem in output.stem or Path(clip.get("captioned_file", "")).stem in output.stem:
                 hook = str(clip.get("hook") or "")
                 break
-        title_seed = hook.split(":")[0].strip() or output.stem.replace("-", " ").title()
-        title = f"{title_seed[:74]} #Shorts"
+        context = str(
+            (selected_clip or {}).get("summary")
+            or (selected_clip or {}).get("context")
+            or manifest.get("transcript_summary")
+            or manifest.get("source_description")
+            or ""
+        ).strip()
+        title_seed = hook.strip() or output.stem.replace("-", " ").title()
+        # Hashtags belong in tags/description, not the title.
+        title = re.sub(r"\s*#\w+", "", title_seed).strip()[:95]
         description = (
-            f"Public Viral Clip Radar automated upload. Source: {manifest.get('creator','source creator')}, "
-            f"{manifest.get('source_title','source footage')}. "
-            f"Original source: {manifest.get('source_url','')}. "
-            "Transformative additions: vertical edit, burned captions, hook/context framing, and source attribution. "
-            f"Cron cohort: viral-radar-{suffix}.\n\n#Shorts"
+            f"Source: {manifest.get('creator','source creator')} — {manifest.get('source_title','source footage')}. "
+            + (f"What this clip is saying: {context[:600]} " if context else "")
+            + f"Original source: {manifest.get('source_url','')}. "
+            + "Transformative additions: vertical edit, burned captions, hook/context framing, and source attribution. "
+            + f"Cron cohort: viral-radar-{suffix}.\n\n#Shorts #ViralRadar #SelfImprovement"
         )
         cmd = [
             sys.executable, str(UPLOAD),
@@ -493,3 +609,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

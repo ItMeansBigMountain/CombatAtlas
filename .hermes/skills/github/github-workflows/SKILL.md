@@ -68,6 +68,7 @@ This umbrella covers GitHub work across authentication, issue management, PR lif
 3. **Reviewing only generated summaries.** Inspect the actual diff.
 4. **Ignoring CI logs.** Fetch failing logs before guessing a fix.
 5. **Dropping templates.** Preserve repository issue/PR templates when present.
+6. **Leaving local tracking refs stale after token-authenticated pushes.** If using an explicit token URL because normal HTTPS auth is unavailable, verify `git ls-remote <token-url> refs/heads/<branch>` equals `git rev-parse HEAD`; if it matches, update the local tracking ref with `git update-ref refs/remotes/origin/<branch> HEAD` so later status output does not falsely report ahead/behind.
 
 ## Verification Checklist
 

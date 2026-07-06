@@ -1,9 +1,9 @@
 {
-  "last_report_path": "/opt/data/logs/curator/20260628-042106",
-  "last_run_at": "2026-06-28T04:21:06.667853+00:00",
-  "last_run_duration_seconds": 154.869113,
-  "last_run_summary": "auto: no changes; llm: Processed the candidate set of 3 skills and performed the only viable umbrella consolidation present.\n\nSummary:\n- Created new umbrella skill: `platform-device-integrations`\n  - Covers specialized external integrations operated from Hermes.\n…\narchived 2 skill(s):\n  • openhue — pruned (stale)\n  • yuanbao — pruned (stale)\nfull report: hermes curator status",
+  "last_report_path": "/opt/data/logs/curator/20260705-050526",
+  "last_run_at": "2026-07-05T05:05:26.654555+00:00",
+  "last_run_duration_seconds": 0.567717,
+  "last_run_summary": "auto: no changes; llm: skipped (consolidation off)",
   "last_run_summary_shown_at": "2026-05-31T01:46:49.188313+00:00",
   "paused": false,
-  "run_count": 7
+  "run_count": 8
 }

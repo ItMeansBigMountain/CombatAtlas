@@ -128,6 +128,7 @@ If the user asks for a dry run, report findings without editing.
 ## Domain-Specific Review References
 
 - For reviewing a portfolio of standalone RuneLite/OSRS external plugins, use `references/runelite-plugin-portfolio-review.md`. It covers multi-repo inventory, Gradle verification, Plugin Hub metadata checks, product-readiness ranking, and common consolidation families.
+- For RuneLite side-panel QA, treat default sidebar width as a hard requirement: verify controls do not trail off, prefer compact dropdowns/icon buttons over wide tabs, and call out Swing controls that need explicit preferred/maximum sizing.
 
 ## Verification Checklist
 

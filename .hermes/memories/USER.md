@@ -1,6 +1,6 @@
-User prefers Discord bot conversations to be natural channel back-and-forth rather than automatic per-conversation threads.
+Discord prefs: natural channel back-and-forth, no auto threads; use #coding for coding/dev, general for cron jobs and orchestration config.
 §
-Hermes-built apps belong under /opt/data/HeRmEz/projects; finished projects get PROJECT_HANDOFF_CONTEXT notes. For OSRS/RuneLite, user prefers overlapping plugin ideas consolidated into one child repo and HeRmEz parent submodule pointer pushed.
+OSRS/RuneLite: consolidate overlaps; standalone plugins/no cross-plugin deps; panels fit default width/start empty/no fake players; remove ironman/GIM ideas.
 §
 User prefers client website projects to be deployed live first with Git-based auto-deploys, then handle Stripe/payment setup and custom domain attachment afterward.
 §

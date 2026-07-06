@@ -512,6 +512,21 @@ def pexels_photo(query: str, out: Path) -> tuple[Path | None, dict | None]:
     return None, {'provider':'pexels_photo','query':query,'error':'no_downloadable_result'}
 
 
+def pixabay_photo(query: str, out: Path) -> tuple[Path | None, dict | None]:
+    key=os.getenv('PIXABAY_API_KEY')
+    if not key: return None, None
+    url='https://pixabay.com/api/?'+urllib.parse.urlencode({'key':key,'q':query,'image_type':'photo','orientation':'vertical','per_page':12,'safesearch':'true'})
+    try:
+        data=api_json(url)
+        for hit in data.get('hits',[]):
+            link=hit.get('largeImageURL') or hit.get('webformatURL')
+            if link and not seen_visual_url(hit.get('pageURL') or link) and download(link,out):
+                meta={'provider':'pixabay_photo','query':query,'id':hit.get('id'),'url':hit.get('pageURL') or link}; remember_visual(meta); return out, meta
+    except Exception as e:
+        return None, {'provider':'pixabay_photo','query':query,'error':str(e)[:200]}
+    return None, {'provider':'pixabay_photo','query':query,'error':'no_downloadable_result'}
+
+
 def wikimedia_image(query: str, out: Path) -> tuple[Path | None, dict | None]:
     # No-key fallback for company/topic imagery. Pexels/Pixabay remain preferred
     # for true stock footage when keys are configured.
@@ -564,7 +579,7 @@ def visual_asset(query: str, out_base: Path) -> tuple[Path | None, dict]:
     attempts=[]
     for q in compact_visual_queries(query):
         safe=re.sub(r'[^a-zA-Z0-9]+','-',q.lower()).strip('-')[:45] or 'visual'
-        for fn, ext in ((pexels_video,'.mp4'), (pixabay_video,'.mp4'), (pexels_photo,'.jpg'), (shutterstock_video,'.mp4'), (wikimedia_image,'.jpg')):
+        for fn, ext in ((pexels_video,'.mp4'), (pixabay_video,'.mp4'), (pexels_photo,'.jpg'), (pixabay_photo,'.jpg'), (shutterstock_video,'.mp4'), (wikimedia_image,'.jpg')):
             path=out_base.with_name(out_base.name+'-'+safe+ext)
             got, meta=fn(q,path)
             if meta: attempts.append(meta)

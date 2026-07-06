@@ -1,6 +1,6 @@
 # Social Video Performance Learnings
 
-Last updated: `2026-07-05T01:46:13.312116+00:00`
+Last updated: `2026-07-05T23:36:53.037158+00:00`
 
 ## Metrics status
 
@@ -9,8 +9,8 @@ Last updated: `2026-07-05T01:46:13.312116+00:00`
 
 ## faceless-youtube-channel
 
-- Uploads logged: 300 total; 291 public/metric-eligible.
-- Median public views in latest snapshot: 4.5.
+- Uploads logged: 308 total; 299 public/metric-eligible.
+- Median public views in latest snapshot: 5.0.
 - Current winners to study:
   - 203 views / 1 likes / 0 comments — Print On Demand (POD) Management — https://youtu.be/K2nMayJr8Oo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
   - 203 views / 1 likes / 0 comments — Print On Demand (POD) Management — https://youtu.be/K2nMayJr8Oo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
@@ -21,14 +21,14 @@ Last updated: `2026-07-05T01:46:13.312116+00:00`
 
 ## viral-clip-radar
 
-- Uploads logged: 37 total; 22 public/metric-eligible.
-- Median public views in latest snapshot: 109.0.
+- Uploads logged: 39 total; 24 public/metric-eligible.
+- Median public views in latest snapshot: 125.5.
 - Current winners to study:
   - 1036 views / 18 likes / 1 comments — Two types of procrastination and how activation changes behavior #Shorts — https://youtu.be/XJ4QzlHq2TE — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
   - 944 views / 26 likes / 0 comments — The viral moment is not the landing. It is proof under pressure. #Shorts — https://youtu.be/JBX3lRhKhy4 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
   - 919 views / 24 likes / 0 comments — The viral moment is not the landing. It is proof under pressure. #Shorts — https://youtu.be/ParX8IBet5I — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
   - 835 views / 10 likes / 0 comments — One bad day is normal. Letting it become your identity is the trap. #Shorts — https://youtu.be/7EhcyS1U4d8 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
-  - 739 views / 16 likes / 2 comments — Most people confuse hard work with the thing that actually scales. #Shorts — https://youtu.be/wjo6nMGAWgk — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 741 views / 16 likes / 2 comments — Most people confuse hard work with the thing that actually scales. #Shorts — https://youtu.be/wjo6nMGAWgk — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
 - Hook/title words showing up in better performers: source, radar, clip, https, transformative, additions, vertical, captions, hook, context, attribution, youtube.
 
 ## Operating rule for future cron runs
