@@ -31,7 +31,7 @@ def main():
     ap.add_argument('--tags', default='', help='comma-separated')
     ap.add_argument('--privacy', choices=['private','unlisted','public'], default='private')
     ap.add_argument('--category-id', default='22')
-    ap.add_argument('--token', default=os.getenv('YOUTUBE_UPLOAD_TOKEN') or DEFAULT_TOKEN)
+    ap.add_argument('--token', default=DEFAULT_TOKEN)
     ap.add_argument('--delete-after-upload', action='store_true', help='Delete the uploaded local MP4 after YouTube returns a video ID')
     ap.add_argument('--dry-run', action='store_true')
     args=ap.parse_args()

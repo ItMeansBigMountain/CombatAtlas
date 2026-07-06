@@ -33,7 +33,7 @@ EXTRA_LOGS = {
 # youtube_token_path, upload_token_path, or uploader_token_path.
 PROJECT_TOKENS = {
     "faceless-youtube-channel": Path("/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json"),
-    "viral-clip-radar": Path("/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json"),
+    "viral-clip-radar": Path("/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json"),
 }
 SCOPES = [
     "https://www.googleapis.com/auth/youtube.readonly",

@@ -31,7 +31,9 @@ def run(cmd: list[str]) -> subprocess.CompletedProcess[str]:
     env = os.environ.copy()
     # Viral Radar influencer clips belong on Classical Echos. Newsletter/faceless
     # videos use the Trapiistan/Sosai token in their separate pipeline.
-    env["YOUTUBE_UPLOAD_TOKEN"] = os.getenv("YOUTUBE_UPLOAD_TOKEN") or "/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json"
+    # Viral Radar influencer clips must always upload to Classical Echos.
+    # Override inherited faceless/newsletter token values.
+    env["YOUTUBE_UPLOAD_TOKEN"] = "/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json"
     cookie_path = "/opt/data/secrets/youtube-cookies/youtube-cookies.txt"
     if Path(cookie_path).is_file():
         env.setdefault("YOUTUBE_COOKIES_FILE", cookie_path)

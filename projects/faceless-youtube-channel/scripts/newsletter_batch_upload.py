@@ -15,7 +15,11 @@ from googleapiclient.discovery import build
 ROOT = Path(__file__).resolve().parents[1]
 TOKEN_BASE = Path('/opt/data/google_profiles')
 GMAIL_SCOPE = 'https://www.googleapis.com/auth/gmail.modify'
-YOUTUBE_TOKEN = Path(os.getenv('YOUTUBE_UPLOAD_TOKEN') or '/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json')
+# Faceless/newsletter videos must always upload to Trapiistan/Sosai.
+# Do not honor an inherited YOUTUBE_UPLOAD_TOKEN here: Viral Radar jobs export
+# the Classical Echos token, and a shared process environment once caused a
+# newsletter Short to land on the wrong channel.
+YOUTUBE_TOKEN = Path('/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json')
 UPLOADER = Path('/opt/data/HeRmEz/projects/_ops/youtube-automation/scripts/upload_youtube.py')
 UPLOAD_LOG = ROOT / 'UPLOADS' / 'newsletter_youtube_uploads.jsonl'
 VISUAL_HISTORY = ROOT / 'UPLOADS' / 'visual_asset_history.jsonl'
@@ -653,7 +657,7 @@ def parse_uploader_json(raw: str):
 
 
 def upload(video:Path, script):
-    raw=sh([sys.executable,str(UPLOADER),str(video),'--title',script['title'],'--description',script['description'],'--tags',SAFE_TAGS,'--privacy','public','--token',str(YOUTUBE_TOKEN),'--project','faceless-youtube-newsletters','--log-jsonl',str(UPLOAD_LOG),'--delete-after-upload'],600)
+    raw=sh([sys.executable,str(UPLOADER),str(video),'--title',script['title'],'--description',script['description'],'--tags',SAFE_TAGS,'--privacy','public','--token',str(YOUTUBE_TOKEN),'--expect-channel-id','UCsxzQlusqwmMUdjMvKAJDfA','--project','faceless-youtube-newsletters','--log-jsonl',str(UPLOAD_LOG),'--delete-after-upload'],600)
     return parse_uploader_json(raw)
 
 

@@ -146,14 +146,14 @@
     "archived_at": null,
     "created_at": "2026-05-29T22:37:56.151647+00:00",
     "created_by": null,
-    "last_patched_at": "2026-07-04T18:44:41.125892+00:00",
-    "last_used_at": "2026-07-06T00:24:01.149636+00:00",
-    "last_viewed_at": "2026-07-06T00:24:01.147867+00:00",
-    "patch_count": 5,
+    "last_patched_at": "2026-07-06T01:05:13.492329+00:00",
+    "last_used_at": "2026-07-06T00:47:47.207807+00:00",
+    "last_viewed_at": "2026-07-06T00:47:47.205078+00:00",
+    "patch_count": 12,
     "pinned": false,
     "state": "active",
-    "use_count": 18,
-    "view_count": 17
+    "use_count": 20,
+    "view_count": 19
   },
   "github-workflows": {
     "archived_at": null,
@@ -355,13 +355,13 @@
     "created_at": "2026-06-07T02:42:26.736437+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": null,
-    "last_viewed_at": null,
+    "last_used_at": "2026-07-06T00:43:54.502419+00:00",
+    "last_viewed_at": "2026-07-06T00:43:54.498933+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 0,
-    "view_count": 0
+    "use_count": 1,
+    "view_count": 1
   },
   "platform-device-integrations": {
     "archived_at": null,
@@ -428,6 +428,19 @@
     "use_count": 76,
     "view_count": 26
   },
+  "runelite-plugin-development": {
+    "archived_at": null,
+    "created_at": "2026-07-06T00:38:17.566913+00:00",
+    "created_by": "agent",
+    "last_patched_at": "2026-07-06T00:38:37.374662+00:00",
+    "last_used_at": null,
+    "last_viewed_at": null,
+    "patch_count": 1,
+    "pinned": false,
+    "state": "active",
+    "use_count": 0,
+    "view_count": 0
+  },
   "segment-anything-model": {
     "archived_at": null,
     "created_at": "2026-06-07T02:42:26.758871+00:00",
@@ -459,13 +472,13 @@
     "created_at": "2026-06-07T00:28:30.328615+00:00",
     "created_by": null,
     "last_patched_at": "2026-07-06T00:30:05.289414+00:00",
-    "last_used_at": "2026-07-06T00:24:26.092572+00:00",
-    "last_viewed_at": "2026-07-06T00:24:26.091165+00:00",
+    "last_used_at": "2026-07-06T00:40:34.690346+00:00",
+    "last_viewed_at": "2026-07-06T00:40:34.688237+00:00",
     "patch_count": 65,
     "pinned": false,
     "state": "active",
-    "use_count": 103,
-    "view_count": 38
+    "use_count": 104,
+    "view_count": 39
   },
   "software-development/osrs-plugins": {
     "archived_at": null,
@@ -497,27 +510,27 @@
     "archived_at": null,
     "created_at": "2026-06-24T19:16:07.723677+00:00",
     "created_by": null,
-    "last_patched_at": "2026-07-05T23:12:14.968517+00:00",
-    "last_used_at": "2026-07-05T08:45:55.085567+00:00",
-    "last_viewed_at": "2026-07-05T08:45:55.083844+00:00",
-    "patch_count": 3,
+    "last_patched_at": "2026-07-06T01:04:59.292028+00:00",
+    "last_used_at": "2026-07-06T00:51:02.456248+00:00",
+    "last_viewed_at": "2026-07-06T00:51:02.454493+00:00",
+    "patch_count": 16,
     "pinned": false,
     "state": "active",
-    "use_count": 6,
-    "view_count": 6
+    "use_count": 8,
+    "view_count": 8
   },
   "test-driven-development": {
     "archived_at": null,
     "created_at": "2026-05-29T05:53:03.366345+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-06-09T01:49:37.343576+00:00",
-    "last_viewed_at": "2026-06-09T01:49:37.341351+00:00",
+    "last_used_at": "2026-07-06T01:06:19.384097+00:00",
+    "last_viewed_at": "2026-07-06T01:06:19.382297+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 7,
-    "view_count": 7
+    "use_count": 9,
+    "view_count": 9
   },
   "visual-artifact-design": {
     "archived_at": null,
@@ -562,13 +575,13 @@
     "archived_at": null,
     "created_at": "2026-06-07T00:21:18.846681+00:00",
     "created_by": null,
-    "last_patched_at": "2026-07-04T06:10:08.787960+00:00",
-    "last_used_at": "2026-07-06T00:24:26.085335+00:00",
-    "last_viewed_at": "2026-07-06T00:24:26.080347+00:00",
-    "patch_count": 123,
+    "last_patched_at": "2026-07-06T01:06:35.158636+00:00",
+    "last_used_at": "2026-07-06T00:40:33.661786+00:00",
+    "last_viewed_at": "2026-07-06T00:40:33.659859+00:00",
+    "patch_count": 124,
     "pinned": false,
     "state": "active",
-    "use_count": 137,
-    "view_count": 72
+    "use_count": 138,
+    "view_count": 73
   }
 }

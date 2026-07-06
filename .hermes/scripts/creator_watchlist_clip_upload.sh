@@ -37,7 +37,9 @@ fi
 # allows this discovery-triggered lane to run even if the noon daily lane already ran.
 # Run once per discovered plan so discovery does not stop after one influencer.
 # Long-form seeding now defaults to at least 3 clips per video.
-export YOUTUBE_UPLOAD_TOKEN="${YOUTUBE_UPLOAD_TOKEN:-/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json}"
+# Viral Radar influencer clips always upload to Classical Echos. Override any
+# inherited token from faceless/newsletter jobs.
+export YOUTUBE_UPLOAD_TOKEN=/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
 export VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM="${VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM:-3}"
 PLAN_COUNT="$(printf '%s\n' "$PRIORITY_PLANS" | awk -F: '{print NF}')"
 if [[ -z "$PRIORITY_PLANS" ]]; then

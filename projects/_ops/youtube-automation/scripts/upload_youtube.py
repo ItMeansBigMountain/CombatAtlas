@@ -33,6 +33,7 @@ def main():
     ap.add_argument('--publish-at', default='', help='Optional RFC3339/ISO UTC timestamp for scheduled public release. YouTube expects privacyStatus=private with publishAt.')
     ap.add_argument('--category-id', default='22')
     ap.add_argument('--token', default=os.getenv('YOUTUBE_UPLOAD_TOKEN') or DEFAULT_TOKEN)
+    ap.add_argument('--expect-channel-id', default=os.getenv('YOUTUBE_EXPECT_CHANNEL_ID') or '', help='Fail before upload if the OAuth token does not own this channel ID')
     ap.add_argument('--project', default=os.getenv('YOUTUBE_UPLOAD_PROJECT') or '')
     ap.add_argument('--log-jsonl', default=os.getenv('YOUTUBE_UPLOAD_LOG') or '')
     ap.add_argument('--dry-run', action='store_true')
@@ -48,9 +49,15 @@ def main():
         body['status']['privacyStatus'] = 'private'
         body['status']['publishAt'] = args.publish_at
     if args.dry_run:
-        print(json.dumps({'mode':'dry-run','video':str(video),'bytes':video.stat().st_size,'body':body,'token_present':pathlib.Path(args.token).exists()}, indent=2)); return
+        print(json.dumps({'mode':'dry-run','video':str(video),'bytes':video.stat().st_size,'body':body,'token_present':pathlib.Path(args.token).exists(),'expect_channel_id':args.expect_channel_id or None}, indent=2)); return
     creds=load_token(args.token)
     yt=build('youtube','v3',credentials=creds, cache_discovery=False)
+    if args.expect_channel_id:
+        channels=yt.channels().list(part='snippet', mine=True).execute().get('items', [])
+        ids={c.get('id') for c in channels}
+        if args.expect_channel_id not in ids:
+            titles=[c.get('snippet', {}).get('title') for c in channels]
+            raise SystemExit(json.dumps({'status':'blocked_wrong_channel_token','expected_channel_id':args.expect_channel_id,'actual_channel_ids':sorted(i for i in ids if i),'actual_channel_titles':titles}, indent=2))
     media=MediaFileUpload(str(video), mimetype=mimetypes.guess_type(video.name)[0] or 'video/mp4', resumable=True)
     req=yt.videos().insert(part='snippet,status', body=body, media_body=media)
     response=None

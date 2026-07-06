@@ -21,25 +21,35 @@ Create, clone, fork, configure, and manage GitHub repositories. Each section sho
 
 ### Setup
 
+For this user's Hermes/HeRmEz workspace, prefer `GITHUB_ACCESS_TOKEN` for authenticated GitHub API and push operations. Do not claim GitHub access is unavailable just because `gh` is missing; try the token-backed curl/git fallback first.
+
 ```bash
 if command -v gh &>/dev/null && gh auth status &>/dev/null; then
   AUTH="gh"
 else
   AUTH="git"
-  if [ -z "$GITHUB_TOKEN" ]; then
-    if [ -f ~/.hermes/.env ] && grep -q "^GITHUB_TOKEN=" ~/.hermes/.env; then
-      GITHUB_TOKEN=$(grep "^GITHUB_TOKEN=" ~/.hermes/.env | head -1 | cut -d= -f2 | tr -d '\n\r')
-    elif grep -q "github.com" ~/.git-credentials 2>/dev/null; then
-      GITHUB_TOKEN=$(grep "github.com" ~/.git-credentials 2>/dev/null | head -1 | sed 's|https://[^:]*:\([^@]*\)@.*|\1|')
-    fi
+  # Prefer the user's durable Hermes GitHub token name before generic gh/GitHub names.
+  if [ -n "${GITHUB_ACCESS_TOKEN:-}" ]; then
+    GITHUB_TOKEN="$GITHUB_ACCESS_TOKEN"
+  elif [ -n "${GITHUB_TOKEN:-}" ]; then
+    GITHUB_TOKEN="$GITHUB_TOKEN"
+  elif [ -n "${GH_TOKEN:-}" ]; then
+    GITHUB_TOKEN="$GH_TOKEN"
+  elif [ -f ~/.hermes/.env ] && grep -q "^GITHUB_ACCESS_TOKEN=" ~/.hermes/.env; then
+    GITHUB_TOKEN=$(grep "^GITHUB_ACCESS_TOKEN=" ~/.hermes/.env | head -1 | cut -d= -f2- | tr -d '\n\r')
+  elif [ -f ~/.hermes/.env ] && grep -q "^GITHUB_TOKEN=" ~/.hermes/.env; then
+    GITHUB_TOKEN=$(grep "^GITHUB_TOKEN=" ~/.hermes/.env | head -1 | cut -d= -f2- | tr -d '\n\r')
+  elif grep -q "github.com" ~/.git-credentials 2>/dev/null; then
+    GITHUB_TOKEN=$(grep "github.com" ~/.git-credentials 2>/dev/null | head -1 | sed 's|https://[^:]*:\([^@]*\)@.*|\1|')
   fi
 fi
 
-# Get your GitHub username (needed for several operations)
+# Get your GitHub username (needed for several operations). Do not claim GitHub access is unavailable just because gh is missing;
+# use the token-backed curl/API fallback first, especially GITHUB_ACCESS_TOKEN in Hermes sessions.
 if [ "$AUTH" = "gh" ]; then
   GH_USER=$(gh api user --jq '.login')
 else
-  GH_USER=$(curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user | python3 -c "import sys,json; print(json.load(sys.stdin)['login'])")
+  GH_USER=$(curl -fsS -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/vnd.github+json" https://api.github.com/user | python3 -c "import sys,json; print(json.load(sys.stdin)['login'])")
 fi
 ```
 
@@ -373,7 +383,7 @@ Recommended sequence:
 6. Commit and push only the bundle, README, and parent `.gitignore` change.
 7. Verify the parent remote with `git ls-remote origin refs/heads/main`.
 
-See `references/nested-repo-backup-bundles.md` for a concrete command template and restore verification pattern, including the user's preferred `/opt/data/HeRmEz/projects/_backups/` layout. See `references/nested-repo-submodules-and-backup-cache-hygiene.md` when the user explicitly wants nested repos to remain live submodules and when backup scripts need cache/runtime exclusions.
+See `references/nested-repo-backup-bundles.md` for a concrete command template and restore verification pattern, including the user's preferred `/opt/data/HeRmEz/projects/_backups/` layout. See `references/nested-repo-submodules-and-backup-cache-hygiene.md` when the user explicitly wants nested repos to remain live submodules and when backup scripts need cache/runtime exclusions. For the user's active HeRmEz OSRS plugin workspace, see `references/hermez-osrs-submodule-sync.md`: use `GITHUB_ACCESS_TOKEN`, push child plugin repos first, verify remote/local SHAs, stage exact parent submodule pointers only, and then push the HeRmEz control repo.
 
 For broader imports of many unfinished legacy folders into the private workspace, use `references/legacy-project-imports.md` and treat the work as a secure migration: inventory, ignore runtime artifacts, remove nested git internals, secret-scan, create a deployment URL tracker, then commit/push.
 
@@ -388,6 +398,10 @@ When the user asks to create a **new standalone repo after reviewing an existing
 - If the push is still rejected after `git rm --cached`, inspect whether the large blobs live in earlier local commits that are ahead of the remote. For unpublished commits only, create a local backup branch, rewrite `origin/main..main` with an index-filter that removes the generated/cache paths, verify `git rev-list --objects origin/main..HEAD` contains no objects over 50MB, then push and manually run the backup script once. See `references/backup-cache-history-cleanup.md` for the exact recovery recipe and verification script.
 - When updating Hermes Agent itself from a gateway chat, `hermes update` may update code successfully but refuse an in-process gateway restart. Report that the gateway must be restarted from an external shell rather than attempting restart loops from inside Discord/Telegram.
 - When converting existing nested worktrees to submodules, do not just edit `.gitmodules`; stage the child path as a gitlink and run `git submodule absorbgitdirs` so clones understand the submodule relationship. When consolidating two submodule-backed child repos into one, push the surviving child repo commit first, then remove the obsolete submodule from the parent with `git submodule deinit -f <path>`, `git rm -f <path>`, cleanup `.git/modules/<path>`, stage `.gitmodules` plus the surviving submodule pointer, and commit/push the parent. For Windows handoff after parent pull, include `git submodule sync --recursive` and `git submodule update --init --recursive <surviving-path>`; plain `git pull` is not enough to populate/update submodule contents.
+- In Hermes sessions for this user, prefer `GITHUB_ACCESS_TOKEN` for authenticated GitHub API/git tasks. When `gh` is unavailable, build authenticated push/verify URLs without printing the token, and verify `git ls-remote <auth-url> refs/heads/<branch>` equals `git rev-parse HEAD`. If shell quoting around token URL construction becomes fragile, use a short Python `subprocess` snippet that constructs `url = 'https://x-access-token:' + os.environ['GITHUB_ACCESS_TOKEN'] + '@github.com/' + remote.split('github.com/', 1)[1]` and passes it directly to `git push`/`git ls-remote`.
+- For this user's HeRmEz workspace submodule updates, push and verify each child repo first, then stage only the child path gitlink in `/opt/data/HeRmEz` plus any intentional OSRS docs. Do not use broad `git add .` in HeRmEz because the control repo commonly has unrelated dirty automation/trading/video files. Build authenticated push URLs from the existing remote plus `GITHUB_ACCESS_TOKEN`, then verify `git ls-remote <auth-url> refs/heads/<branch>` equals `git rev-parse HEAD`. If unauthenticated `git fetch origin` fails after an authenticated push, update local tracking with `git update-ref refs/remotes/origin/main HEAD` only after remote/local SHA equality is proven.
+- For token-authenticated GitHub work in Hermes sessions, prefer the durable `GITHUB_ACCESS_TOKEN` fallback even when `gh` is absent. When pushing with an embedded token, avoid brittle shell quoting; use a small Python snippet to build `https://x-access-token:${TOKEN}@github.com/...`, run `git push`, then verify with `git ls-remote`. After a verified token-backed push, if ordinary `git fetch origin` fails because no credential helper is configured, it is acceptable to update the local tracking ref with `git update-ref refs/remotes/origin/<branch> HEAD` so `git status` reflects the verified remote state.
+- For submodule pointer updates: build/test and push the child repo first, verify child local SHA equals remote SHA, then stage exactly the parent submodule path (the gitlink) and any intended docs. Do not stage unrelated dirty files from the parent workspace; use exact pathspecs and verify `git diff --cached --stat` before committing.
 
 ## 9. Importing Legacy Project Collections into a Workspace
 

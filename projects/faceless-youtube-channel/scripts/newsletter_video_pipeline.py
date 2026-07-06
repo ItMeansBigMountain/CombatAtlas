@@ -197,7 +197,8 @@ def main():
             '--description', description,
             '--tags', 'discipline,self improvement,motivation,shorts',
             '--privacy', 'public',
-            '--token', os.getenv('YOUTUBE_UPLOAD_TOKEN') or '/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json',
+            '--token', '/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json',
+            '--expect-channel-id', 'UCsxzQlusqwmMUdjMvKAJDfA',
             '--project', PROJECT,
             '--log-jsonl', str(UPLOAD_LOG),
             '--delete-after-upload'
