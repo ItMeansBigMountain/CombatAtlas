@@ -193,7 +193,7 @@
     {
       "id": "bce8ebabac36",
       "name": "Daily Viral Radar / Creator clip generation + upload",
-      "prompt": "Run the user's bulletproof Daily Viral Radar creator clip release pipeline at 12:15 PM Central.\n\nWorking directory: /opt/data/HeRmEz/projects/viral-clip-radar\nScript: /opt/data/scripts/viral_radar_daily_upload.py\n\nCritical upload contract:\n- This job must upload a MINIMUM of 3 public Viral Radar Shorts per run, not 1.\n- 3 is only the floor. Use best judgment based on source duration, transcript quality, and clip opportunities; long/high-signal videos can produce more.\n- If fewer than 3 uploads are possible, report blocked_min_uploads_not_met with exact source/render/auth failures instead of ok_uploaded.\n- Viral Radar uploads must use classicalechos@gmail.com / Classical Echos only.\n- Keep hashtags out of titles; put #Shorts and related tags in description/tags.\n- Never publish internal planning labels like \u201cthe part people will replay\u201d or \u201cclip 1.\u201d Public title/on-screen hook/subtitle must be unique to the video, derived from source title + transcript/summary. Make it edgy, raunchy/catchy when the source supports it, but not explicit, misleading, or generic.\n- Description format must be skimmable with blank lines: title, context/subtitle, Source, Original source URL on its own line, edit/attribution note, hashtags.\n- Do NOT include cron cohort, run IDs, or other internal metadata in public descriptions.\n- Use transcript/context when available for title/description quality.\n- Preserve attribution and transformative framing.\n\nReport: metrics status, seeded candidates, uploaded_count, each URL/video_id, failures, and cleanup.",
+      "prompt": "Run the user's bulletproof Daily Viral Radar creator clip release pipeline at 12:15 PM Central.\n\nWorking directory: /opt/data/HeRmEz/projects/viral-clip-radar\nScript: /opt/data/scripts/viral_radar_daily_upload.py\n\nCritical upload contract:\n- This job must upload a MINIMUM of 3 public Viral Radar Shorts per run, not 1.\n- 3 is only the floor. Use best judgment based on source duration, transcript quality, and clip opportunities; long/high-signal videos can produce more.\n- If fewer than 3 uploads are possible, report blocked_min_uploads_not_met with exact source/render/auth failures instead of ok_uploaded.\n- Viral Radar uploads must use classicalechos@gmail.com / Classical Echos only.\n- Keep hashtags out of titles; put #Shorts and related tags in description/tags.\n- Description hashtags must follow what the title + transcript/context says. Keep #Shorts and #ViralRadar, but rotate topic tags such as #Fitness, #DatingAdvice, #Business, #Numerology, #Neuroscience, etc. based on the actual clip.\n- Never publish internal planning labels like \u201cthe part people will replay\u201d or \u201cclip 1.\u201d Public title/on-screen hook/subtitle must be unique to the video, derived from source title + transcript/summary. Make it edgy, raunchy/catchy when the source supports it, but not explicit, misleading, or generic.\n- Description format must be skimmable with blank lines: title, context/subtitle, Source, Original source URL on its own line, edit/attribution note, relevant hashtags.\n- Do NOT include cron cohort, run IDs, or other internal metadata in public descriptions.\n- Use transcript/context when available for title/description quality.\n- Preserve attribution and transformative framing.\n\nReport: metrics status, seeded candidates, uploaded_count, each URL/video_id, failures, and cleanup.",
       "skills": [
         "social-video-cron-growth-loop",
         "youtube-automation-with-tts"
@@ -262,15 +262,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 2476
+        "completed": 2477
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-07-06T20:49:59.391434+00:00",
-      "last_run_at": "2026-07-06T20:39:59.391434+00:00",
+      "next_run_at": "2026-07-06T21:00:59.482448+00:00",
+      "last_run_at": "2026-07-06T20:50:59.482448+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -676,5 +676,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-07-06T20:50:26.280385+00:00"
+  "updated_at": "2026-07-06T20:57:27.513074+00:00"
 }

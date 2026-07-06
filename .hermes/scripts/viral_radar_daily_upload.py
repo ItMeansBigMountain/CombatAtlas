@@ -316,6 +316,47 @@ def make_public_packaging(creator: str, source_title: str, window_text: str, idx
     return {"hook": f"{public_title} — {public_subtitle}"[:118], "public_title": public_title[:90], "public_subtitle": public_subtitle[:90]}
 
 
+def build_relevant_hashtags(*texts: str, max_topic_tags: int = 5) -> list[str]:
+    """Build description hashtags from title/transcript/context, not static filler."""
+    blob = " ".join(t for t in texts if t).lower()
+    tag_rules = [
+        (("sex", "dating", "women", "men", "desire", "attraction", "bedroom", "relationships"), ["DatingAdvice", "Relationships", "Attraction", "MaleFemaleDynamics"]),
+        (("money", "business", "sales", "entrepreneur", "broke", "rich", "profit", "customer"), ["Business", "Entrepreneurship", "Sales", "MoneyMindset"]),
+        (("fat", "fatloss", "muscle", "fitness", "hormone", "diet", "body", "testosterone", "lean"), ["Fitness", "FatLoss", "Muscle", "Hormones"]),
+        (("discipline", "confidence", "mindset", "focus", "motivation", "habits", "self improvement"), ["SelfImprovement", "Mindset", "Discipline", "Motivation"]),
+        (("dog", "calm", "assertive", "cesar", "training"), ["DogTraining", "CalmEnergy", "Leadership"]),
+        (("numerology", "lifepath", "astrology", "spiritual"), ["Numerology", "LifePath", "Spirituality"]),
+        (("dopamine", "brain", "neuroscience", "huberman", "sleep", "protocol"), ["Neuroscience", "Huberman", "Health", "Dopamine"]),
+    ]
+    tokens = set(re.findall(r"[a-z0-9]+", blob))
+    def matches(needle: str) -> bool:
+        return (" " in needle and needle in blob) or needle in tokens
+
+    topic_tags: list[str] = []
+    for needles, tags in tag_rules:
+        if any(matches(n) for n in needles):
+            for tag in tags:
+                if tag not in topic_tags:
+                    topic_tags.append(tag)
+    for w in _clean_words(blob):
+        if len(topic_tags) >= max_topic_tags:
+            break
+        if len(w) >= 4:
+            tag = re.sub(r"[^A-Za-z0-9]", "", w.title())[:28]
+            if tag and tag not in topic_tags and tag.lower() not in {"shorts", "viral", "radar"}:
+                topic_tags.append(tag)
+    return ["Shorts", *topic_tags[:max_topic_tags], "ViralRadar"]
+
+
+def build_youtube_tags(hashtags: list[str]) -> str:
+    tags = ["shorts", "viral radar", "clip analysis"]
+    for tag in hashtags:
+        plain = re.sub(r"(?<!^)([A-Z])", r" \1", tag).lower().strip()
+        if plain not in tags:
+            tags.append(plain)
+    return ",".join(tags[:12])
+
+
 def auto_clip_manifest_from_plan(plan_dir: Path) -> Path | None:
     """Create a minimal reviewed manifest for a newly discovered watchlist plan.
 
@@ -527,11 +568,20 @@ def upload_rendered(rendered: list[dict], manifest: dict, selected_clip: dict | 
         if source_url:
             # Keep the original URL on its own line so YouTube renders it as a clear hyperlink.
             description_parts += ["", "Original source:", source_url]
+        hashtags = build_relevant_hashtags(
+            title,
+            public_subtitle,
+            context,
+            hook,
+            str(manifest.get('source_title') or ''),
+            str((selected_clip or {}).get('transcript_excerpt') or ''),
+            str(manifest.get('transcript_summary') or ''),
+        )
         description_parts += [
             "",
             "Edited with vertical framing, burned captions, context, and source attribution.",
             "",
-            "#Shorts #ViralRadar #SelfImprovement",
+            " ".join(f"#{tag}" for tag in hashtags),
         ]
         description = "\n".join(description_parts)
         cmd = [
@@ -539,7 +589,7 @@ def upload_rendered(rendered: list[dict], manifest: dict, selected_clip: dict | 
             "--file", str(output),
             "--title", title,
             "--description", description,
-            "--tags", "shorts,viral radar,clip analysis,self improvement,dopamine,motivation",
+            "--tags", build_youtube_tags(hashtags),
             "--privacy", "public",
         ]
         proc = run(cmd)

@@ -45,6 +45,34 @@ def clean_text(s: str) -> str:
     return re.sub(r'\s+', ' ', s or '').strip(' .')
 
 
+def relevant_hashtags(*texts: str) -> str:
+    blob = ' '.join(t for t in texts if t).lower()
+    rules = [
+        (('sex','dating','women','men','desire','attraction','bedroom','relationship'), ['DatingAdvice','Relationships','Attraction','MaleFemaleDynamics']),
+        (('money','business','sales','entrepreneur','broke','rich','profit'), ['Business','Entrepreneurship','Sales','MoneyMindset']),
+        (('fat','muscle','fitness','hormone','diet','body','testosterone','lean'), ['Fitness','FatLoss','Muscle','Hormones']),
+        (('discipline','confidence','mindset','focus','motivation','habit'), ['SelfImprovement','Mindset','Discipline','Motivation']),
+        (('dog','calm','assertive','cesar','training'), ['DogTraining','CalmEnergy','Leadership']),
+        (('numerology','lifepath','astrology','spiritual'), ['Numerology','LifePath','Spirituality']),
+        (('dopamine','brain','neuroscience','huberman','sleep','protocol'), ['Neuroscience','Huberman','Health','Dopamine']),
+    ]
+    tokens = set(re.findall(r'[a-z0-9]+', blob))
+    def matches(needle: str) -> bool:
+        return (' ' in needle and needle in blob) or needle in tokens
+    tags=[]
+    for needles, vals in rules:
+        if any(matches(n) for n in needles):
+            for v in vals:
+                if v not in tags: tags.append(v)
+    if not tags:
+        for w in re.findall(r'[A-Za-z][A-Za-z]{3,}', blob):
+            tag=w.title()[:28]
+            if tag not in tags and tag.lower() not in {'shorts','viral','radar','source','original'}:
+                tags.append(tag)
+            if len(tags)>=4: break
+    return ' '.join('#'+t for t in ['Shorts', *tags[:5], 'ViralRadar'])
+
+
 def rebuild_description(title: str, old: str, row: dict) -> str:
     old_flat = clean_text(old)
     # Strip internal cohort marker and anything after it.
@@ -81,7 +109,8 @@ def rebuild_description(title: str, old: str, row: dict) -> str:
     parts += ['', 'Source:', source_line]
     if source_url:
         parts += ['', 'Original source:', source_url]
-    parts += ['', 'Edited with vertical framing, burned captions, context, and source attribution.', '', '#Shorts #ViralRadar #SelfImprovement']
+    hashtags = relevant_hashtags(title, context, source_line, row.get('creator') or '', row.get('source_url') or '')
+    parts += ['', 'Edited with vertical framing, burned captions, context, and source attribution.', '', hashtags]
     return '\n'.join(parts)
 
 
