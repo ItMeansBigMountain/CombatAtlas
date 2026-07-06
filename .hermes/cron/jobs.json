@@ -92,7 +92,7 @@
     {
       "id": "6355d735bb4a",
       "name": "Creator discovery feeder for Viral Radar",
-      "prompt": "Run the creator watchlist monitor for Viral Radar. This job now discovery-triggers the clip/render/upload lane: when new watchlisted creator videos are found, the script should create candidate plans, then attempt the Viral Radar render/upload pipeline and deliver stdout with the discovered videos plus pipeline status. If no new videos are found, the script should stay silent.",
+      "prompt": "Run the creator watchlist monitor for Viral Radar. This job discovery-triggers the clip/render/upload pipeline for newly found creator videos.\n\nCritical upload contract:\n- Upload at least 3 public Viral Radar Shorts when new source content is available. 3 is the minimum, not the target ceiling.\n- Use best judgment from duration/transcript/source quality to create more clips when the source supports it.\n- Do not stop after the first successful upload.\n- Viral Radar uploads must use classicalechos@gmail.com / Classical Echos only.\n- If fewer than 3 uploads are possible, fail/report blocked_min_uploads_not_met with exact reasons.\n- Keep hashtags out of titles; put them in description/tags.\n- Use transcript/context when available for better title/description.\n\nScript: creator_watchlist_clip_upload.sh",
       "skills": [],
       "skill": null,
       "model": null,
@@ -189,7 +189,7 @@
     {
       "id": "bce8ebabac36",
       "name": "Daily Viral Radar / Creator clip generation + upload",
-      "prompt": "Run the user's bulletproof Daily Viral Radar creator clip release pipeline at 12:15 PM Central.\n\nWorkflow:\n1. Run `/opt/data/scripts/youtube_metrics_monitor.py --json`; metrics must use the same OAuth account/token that uploaded each video.\n2. Refresh the candidate queue with Google/YouTube APIs by running `/opt/data/HeRmEz/projects/viral-clip-radar/scripts/seed_latest_longform_manifests.py --clips-per-video 2 --max-videos-per-channel 50`. The watchlist must cover Andrew Huberman, Chris Williamson, Greg O'Gallagher / Kinobody, Andrew Tate, Zerkaa, GG33, Luke Belmar, Nate Belmar, Alex Hormozi, Hamza, and configured adjacent channels.\n3. Run `/opt/data/scripts/viral_radar_daily_upload.py`. It should pick the next fresh `clip_manifest.json`, download/restore the source video, render a 1080x1920 Short with hook/context overlay and attribution, upload to YouTube with the Classical Echos OAuth upload token, log the returned YouTube ID/URL, and clean generated media only after verified upload.\n4. If direct source download fails due to YouTube bot checks, cookies, PO tokens, or cloud-IP blocks, report the exact log path and whether Opus Clips fallback credentials are configured. Do not pretend an upload succeeded.\n5. Avoid raw reuploads. Every clip must be transformative: hook/context/captions or overlay framing plus source attribution.\n\nKeep the final Discord report concise: selected creator/source, hook, upload URL or exact blocker, and cleanup status.",
+      "prompt": "Run the user's bulletproof Daily Viral Radar creator clip release pipeline at 12:15 PM Central.\n\nWorking directory: /opt/data/HeRmEz/projects/viral-clip-radar\nScript: /opt/data/scripts/viral_radar_daily_upload.py\n\nCritical upload contract:\n- This job must upload a MINIMUM of 3 public Viral Radar Shorts per run, not 1.\n- 3 is only the floor. Use best judgment based on source duration, transcript quality, and clip opportunities; long/high-signal videos can produce more.\n- If fewer than 3 uploads are possible, report blocked_min_uploads_not_met with exact source/render/auth failures instead of ok_uploaded.\n- Viral Radar uploads must use classicalechos@gmail.com / Classical Echos only.\n- Keep hashtags out of titles; put #Shorts and related tags in description/tags.\n- Use transcript/context when available for title/description quality.\n- Preserve attribution and transformative framing.\n\nReport: metrics status, seeded candidates, uploaded_count, each URL/video_id, failures, and cleanup.",
       "skills": [
         "social-video-cron-growth-loop",
         "youtube-automation-with-tts"
@@ -211,15 +211,15 @@
       "schedule_display": "15 17 * * *",
       "repeat": {
         "times": null,
-        "completed": 30
+        "completed": 31
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-07-06T17:15:00+00:00",
-      "last_run_at": "2026-07-05T17:17:58.302799+00:00",
+      "next_run_at": "2026-07-07T17:15:00+00:00",
+      "last_run_at": "2026-07-06T17:18:32.401653+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -258,15 +258,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 2445
+        "completed": 2460
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-07-06T15:08:57.667806+00:00",
-      "last_run_at": "2026-07-06T14:58:57.667806+00:00",
+      "next_run_at": "2026-07-06T17:53:58.473408+00:00",
+      "last_run_at": "2026-07-06T17:43:58.473408+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -548,15 +548,15 @@
       "schedule_display": "0 16 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 8
+        "completed": 9
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T18:35:06.052701+00:00",
-      "next_run_at": "2026-07-06T16:00:00+00:00",
-      "last_run_at": "2026-07-03T16:02:32.037087+00:00",
+      "next_run_at": "2026-07-07T16:00:00+00:00",
+      "last_run_at": "2026-07-06T16:02:51.939664+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -672,5 +672,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-07-06T15:05:07.005686+00:00"
+  "updated_at": "2026-07-06T17:51:22.186974+00:00"
 }

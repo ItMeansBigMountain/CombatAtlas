@@ -308,8 +308,34 @@ def auto_clip_manifest_from_plan(plan_dir: Path) -> Path | None:
     if not source_url:
         return None
     duration = parse_time_to_seconds(str(meta.get("duration") or meta.get("duration_seconds") or ""), 45)
-    clip_seconds = min(max(duration, 12), 58) if "/shorts/" in source_url else min(duration, 45)
     stem = slugify(f"{creator}-{title}", 64)
+    min_clips = max(1, int(os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", os.getenv("VIRAL_RADAR_MIN_UPLOADS", "3"))))
+    is_short_source = "/shorts/" in source_url or duration <= 75
+    clip_count = 1 if is_short_source else min(max(min_clips, duration // 900), 8)
+    clip_len = min(max(duration, 12), 58) if is_short_source else 45
+    clips = []
+    usable_span = max(clip_len, duration - clip_len)
+    for idx in range(clip_count):
+        if is_short_source:
+            start_seconds = 0
+        elif clip_count == 1:
+            start_seconds = max(0, min(duration - clip_len, duration // 3))
+        else:
+            # Spread candidate clips across the source so long interviews produce
+            # multiple distinct uploads. Transcript-aware seeded manifests can
+            # override these with better exact moments; this is the fallback.
+            start_seconds = int((usable_span * idx) / max(1, clip_count - 1))
+            start_seconds = max(0, min(start_seconds, max(0, duration - clip_len)))
+        end_seconds = min(duration, start_seconds + clip_len)
+        label = f"auto-{idx+1:02d}"
+        clips.append({
+            "file": f"EXPORTS/{stem}-{label}.mp4",
+            "captioned_file": f"EXPORTS/{stem}-{label}-captioned.mp4",
+            "start": format_seconds(start_seconds),
+            "end": format_seconds(end_seconds),
+            "hook": f"{creator}: {title[:62]} — clip {idx+1}",
+            "context": f"Auto-selected candidate {idx+1} from a {duration}s source. Use transcript/analysis manifests when available for sharper moments.",
+        })
     manifest = {
         "creator": creator,
         "source_title": title,
@@ -317,15 +343,7 @@ def auto_clip_manifest_from_plan(plan_dir: Path) -> Path | None:
         "source_video_id": video_id or stem,
         "source_file": f"SOURCES/{video_id or stem}/source.mp4",
         "auto_generated_from_watchlist": True,
-        "clips": [
-            {
-                "file": f"EXPORTS/{stem}-auto.mp4",
-                "captioned_file": f"EXPORTS/{stem}-auto-captioned.mp4",
-                "start": "00:00:00",
-                "end": format_seconds(clip_seconds),
-                "hook": f"{creator}: {title[:70]}",
-            }
-        ],
+        "clips": clips,
     }
     manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return manifest_path
@@ -506,12 +524,23 @@ def main() -> int:
     try:
         seed_result = seed_latest_manifests()
         candidates = iter_candidate_manifest_clips()
-        max_attempts = int(os.getenv("VIRAL_RADAR_MAX_SOURCE_ATTEMPTS", "8"))
+        min_uploads = max(1, int(os.getenv("VIRAL_RADAR_MIN_UPLOADS", os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", "3"))))
+        max_attempts = max(min_uploads, int(os.getenv("VIRAL_RADAR_MAX_SOURCE_ATTEMPTS", "12")))
         source_failures = []
+        render_failures = []
+        uploaded_batches = []
+        all_uploads = []
+        rendered_total = 0
+        source_cleanup = []
+        used_sources: set[str] = set()
+
         for manifest_path, manifest, selected_clip in candidates[:max_attempts]:
+            if len(all_uploads) >= min_uploads:
+                break
             single_manifest = write_single_clip_manifest(manifest_path, manifest, selected_clip, local_day)
             try:
                 source = ensure_source(manifest)
+                used_sources.add(str(source))
                 if source_failures and _is_evergreen_fallback_creator(manifest) and os.getenv("VIRAL_RADAR_ALLOW_EVERGREEN_FALLBACK") != "1":
                     source_failures.append({
                         "manifest": str(single_manifest),
@@ -521,7 +550,6 @@ def main() -> int:
                         "skipped_reason": "evergreen Huberman/NASA fallback suppressed so cron does not keep publishing the same influencer while other influencer sources are blocked",
                     })
                     continue
-                break
             except Exception as source_exc:
                 failure = {
                     "manifest": str(single_manifest),
@@ -537,63 +565,71 @@ def main() -> int:
                     provider_path = Path(provider_path_raw) if provider_path_raw else Path("/__no_provider_clip__")
                     if provider_path.is_file() and provider_path.stat().st_size > 1000:
                         uploads = upload_rendered([{"output": str(provider_path)}], manifest, selected_clip)
-                        result = {
-                            "job": "viral_radar_daily_upload",
-                            "status": "ok_external_provider",
+                        all_uploads.extend(uploads)
+                        uploaded_batches.append({
+                            "mode": "external_provider",
                             "manifest": str(single_manifest),
                             "selected_from_manifest": str(manifest_path),
                             "selected_hook": selected_clip.get("hook"),
-                            "seed_result": seed_result,
-                            "prior_source_failures": source_failures[:-1],
-                            "external_provider": provider_result,
                             "uploads": uploads,
-                            "cleanup": "external provider MP4 preserved for audit; upload logged after verified YouTube response",
-                        }
-                        marker.parent.mkdir(parents=True, exist_ok=True)
-                        marker.write_text(json.dumps({
-                            "completed_at": dt.datetime.now(dt.UTC).isoformat(),
-                            "result": result,
-                        }, indent=2), encoding="utf-8")
-                        print(json.dumps(result, indent=2))
-                        return 0
-                    failure["external_provider"] = provider_result
+                            "external_provider": provider_result,
+                        })
+                    else:
+                        failure["external_provider"] = provider_result
                 continue
-        else:
+
+            render_proc = run([sys.executable, str(RENDER), str(single_manifest), "--suffix=-daily", "--keep-source"])
+            if render_proc.returncode != 0:
+                render_failures.append({
+                    "manifest": str(single_manifest),
+                    "selected_from_manifest": str(manifest_path),
+                    "selected_hook": selected_clip.get("hook"),
+                    "source": str(source),
+                    "returncode": render_proc.returncode,
+                    "stdout_tail": render_proc.stdout[-2000:],
+                    "stderr_tail": render_proc.stderr[-2000:],
+                })
+                continue
+            render_payload = parse_json_output(render_proc.stdout)
+            uploads = upload_rendered(render_payload.get("rendered", []), manifest, selected_clip)
+            rendered_total += len(render_payload.get("rendered", []))
+            all_uploads.extend(uploads)
+            source_cleanup.extend(render_payload.get("source_cleanup") or [])
+            uploaded_batches.append({
+                "manifest": str(single_manifest),
+                "selected_from_manifest": str(manifest_path),
+                "selected_hook": selected_clip.get("hook"),
+                "rendered_count": len(render_payload.get("rendered", [])),
+                "uploads": uploads,
+            })
+
+        if len(all_uploads) < min_uploads:
             print(json.dumps({
                 "job": "viral_radar_daily_upload",
-                "status": "blocked_source_all_candidates",
+                "status": "blocked_min_uploads_not_met",
+                "min_uploads": min_uploads,
+                "uploaded_count": len(all_uploads),
                 "seed_result": seed_result,
-                "attempted_candidates": len(source_failures),
+                "uploaded_batches": uploaded_batches,
                 "source_failures": source_failures,
-                "next_step": "No usable source media after trying multiple manifests. Add YouTube cookies/residential proxy/local MP4 source, or use the pytubefix/yt-dlp direct downloader path. Opus Clips is intentionally disabled. This exits nonzero so cron no longer reports discovery-only work as success.",
+                "render_failures": render_failures,
+                "next_step": "Cron must publish at least the configured minimum. Add source-ready manifests/cookies/proxy/local MP4s, or increase candidate source reliability.",
             }, indent=2))
             return 2
 
-        render_proc = run([sys.executable, str(RENDER), str(single_manifest), "--suffix=-daily"])
-        if render_proc.returncode != 0:
-            print(json.dumps({
-                "job": "viral_radar_daily_upload",
-                "status": "failed_render",
-                "source": str(source),
-                "returncode": render_proc.returncode,
-                "stdout_tail": render_proc.stdout[-2000:],
-                "stderr_tail": render_proc.stderr[-2000:],
-            }, indent=2))
-            return render_proc.returncode
-        render_payload = parse_json_output(render_proc.stdout)
-        uploads = upload_rendered(render_payload.get("rendered", []), manifest, selected_clip)
         result = {
             "job": "viral_radar_daily_upload",
             "status": "ok",
-            "manifest": str(single_manifest),
-            "selected_from_manifest": str(manifest_path),
-            "selected_hook": selected_clip.get("hook"),
+            "min_uploads": min_uploads,
+            "uploaded_count": len(all_uploads),
             "seed_result": seed_result,
             "prior_source_failures": source_failures,
-            "rendered_count": len(render_payload.get("rendered", [])),
-            "uploads": uploads,
-            "source_cleanup": render_payload.get("source_cleanup"),
-            "cleanup": "source video deleted by renderer when safe; rendered exports deleted by uploader after successful public upload",
+            "render_failures": render_failures,
+            "rendered_count": rendered_total,
+            "uploaded_batches": uploaded_batches,
+            "uploads": all_uploads,
+            "source_cleanup": source_cleanup,
+            "cleanup": "rendered exports deleted by uploader after successful public upload; sources kept during batch so multiple clips can be produced from the same long-form source",
         }
         marker.parent.mkdir(parents=True, exist_ok=True)
         marker.write_text(json.dumps({
