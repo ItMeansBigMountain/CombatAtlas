@@ -1,6 +1,6 @@
 # Social Video Performance Learnings
 
-Last updated: `2026-07-06T20:58:02.355503+00:00`
+Last updated: `2026-07-06T22:33:22.643583+00:00`
 
 ## Metrics status
 
@@ -21,10 +21,10 @@ Last updated: `2026-07-06T20:58:02.355503+00:00`
 
 ## viral-clip-radar
 
-- Uploads logged: 57 total; 42 public/metric-eligible.
-- Median public views in latest snapshot: 66.
+- Uploads logged: 61 total; 46 public/metric-eligible.
+- Median public views in latest snapshot: 30.
 - Current winners to study:
-  - 1333 views / 18 likes / 0 comments — Alex Hormozi: Whoever You Blame Is Who You Give Power To — https://youtu.be/8vdPqKeijgw — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
+  - 1333 views / 19 likes / 0 comments — Alex Hormozi: Whoever You Blame Is Who You Give Power To — https://youtu.be/8vdPqKeijgw — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
   - 1231 views / 10 likes / 0 comments — Alex Hormozi: If the Truth Isn't Compelling, Fix That — https://youtu.be/BZ03CWhpuSk — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
   - 1036 views / 18 likes / 1 comments — Two types of procrastination and how activation changes behavior #Shorts — https://youtu.be/XJ4QzlHq2TE — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
   - 1086 views / 7 likes / 0 comments — GG33 #Shorts — https://youtu.be/sew5nLYII0A — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json

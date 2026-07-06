@@ -46,7 +46,7 @@ def seed_latest_manifests() -> dict:
     """Refresh queue from Google/YouTube APIs every job before selecting a clip."""
     if not SEED_LATEST.exists():
         return {"status": "missing_seed_script", "path": str(SEED_LATEST)}
-    min_clips = os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", "3")
+    min_clips = os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", os.getenv("VIRAL_RADAR_MIN_UPLOADS", "10"))
     env = os.environ.copy()
     # Viral Radar discovery/read scopes should use the same Classical Echos lane
     # token as upload unless an explicit discovery override is provided. Do not
@@ -383,9 +383,12 @@ def auto_clip_manifest_from_plan(plan_dir: Path) -> Path | None:
         return None
     duration = parse_time_to_seconds(str(meta.get("duration") or meta.get("duration_seconds") or ""), 45)
     stem = slugify(f"{creator}-{title}", 64)
-    min_clips = max(1, int(os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", os.getenv("VIRAL_RADAR_MIN_UPLOADS", "3"))))
+    min_clips = max(10, int(os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", os.getenv("VIRAL_RADAR_MIN_UPLOADS", "10"))))
+    max_clips = min(50, max(min_clips, int(os.getenv("VIRAL_RADAR_MAX_CLIPS_PER_SOURCE", "50"))))
     is_short_source = "/shorts/" in source_url or duration <= 75
-    clip_count = 1 if is_short_source else min(max(min_clips, duration // 900), 8)
+    # Shorts cannot always provide 3 distinct moments, but every long-form source
+    # must produce at least 3 and may produce up to 50 based on duration/opportunity.
+    clip_count = 1 if is_short_source else min(max(min_clips, max(3, duration // 300)), max_clips)
     clip_len = min(max(duration, 12), 58) if is_short_source else 45
     clips = []
     usable_span = max(clip_len, duration - clip_len)
@@ -594,11 +597,21 @@ def upload_rendered(rendered: list[dict], manifest: dict, selected_clip: dict | 
         ]
         proc = run(cmd)
         if proc.returncode != 0:
+            # User preference: upload clips as they are created; do not leave
+            # local-only rendered exports behind after an upload failure/quota hit.
+            try:
+                if output.exists():
+                    output.unlink()
+            except Exception:
+                pass
+            error_blob = proc.stderr[-4000:] + proc.stdout[-1000:]
             raise RuntimeError(json.dumps({
                 "upload_failed_for": str(output),
                 "returncode": proc.returncode,
                 "stdout_tail": proc.stdout[-2000:],
                 "stderr_tail": proc.stderr[-2000:],
+                "cleaned_unuploaded_export": True,
+                "blocked_upload_quota": "exceeded the number of videos" in error_blob.lower(),
             }, indent=2))
         upload_payload = parse_json_output(proc.stdout)
         upload_payload["creator"] = manifest.get("creator") or manifest.get("channel") or "source creator"
@@ -628,8 +641,8 @@ def main() -> int:
     try:
         seed_result = seed_latest_manifests()
         candidates = iter_candidate_manifest_clips()
-        min_uploads = max(1, int(os.getenv("VIRAL_RADAR_MIN_UPLOADS", os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", "3"))))
-        max_attempts = max(min_uploads, int(os.getenv("VIRAL_RADAR_MAX_SOURCE_ATTEMPTS", "12")))
+        min_uploads = max(10, int(os.getenv("VIRAL_RADAR_MIN_UPLOADS", os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", "10"))))
+        max_attempts = max(min_uploads, int(os.getenv("VIRAL_RADAR_MAX_SOURCE_ATTEMPTS", "50")))
         source_failures = []
         render_failures = []
         uploaded_batches = []
