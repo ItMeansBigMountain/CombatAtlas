@@ -71,3 +71,26 @@ Merged feature target:
 - For removed plugin submodules, use `git rm -f <path>` in the parent repo and remove the `.gitmodules` section.
 - Do not force-push parent HeRmEz; rebase or merge remote changes safely.
 - Preserve unrelated dirty work from automation/video/trading projects.
+
+## Concrete next implementation order
+
+1. **SmartHiscoreLookup account-intel merge**
+   - Pull AccountLegacyCard's local account summary/card concept into a tested `PlayerIntelCard` model.
+   - Pull NameChangeWatcher's previous/current name observation logic into a tested session service.
+   - Add a compact detail UI pattern that WhosGrindingPanel can mirror for clicked player rows.
+
+2. **RivalRadar consolidation merge**
+   - Start with non-network local modules: SkillNemesis analyzer, SkillStreaks tracker, BossStreaks parser/tracker.
+   - Then add race setup/progress models for skill and boss races.
+   - Add hiscore/Wise Old Man rival comparisons last, behind background-safe/cached helpers.
+
+3. **Standalone polish lane**
+   - Keep BossReadinessScore focused on boss readiness and gear.
+   - Keep IceBarrageTimer focused on PvP freeze/teleblock timing.
+   - Keep PersonalProgressTimeline focused on personal milestones.
+   - Keep CompetitionOverlay as the future larger competition surface; do not merge it into RivalRadar until the big idea is specified.
+
+4. **Parent workspace hygiene**
+   - Push every child repo before updating parent submodule pointers.
+   - Stage exact OSRS paths only from `/opt/data/HeRmEz`.
+   - Fix `projects/viral-clip-radar` submodule mapping separately from OSRS work.
