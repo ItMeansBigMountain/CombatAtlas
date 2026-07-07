@@ -472,12 +472,12 @@
     "created_at": "2026-06-07T00:28:30.328615+00:00",
     "created_by": null,
     "last_patched_at": "2026-07-06T22:47:27.203045+00:00",
-    "last_used_at": "2026-07-06T22:43:37.700366+00:00",
+    "last_used_at": "2026-07-07T01:45:18.452930+00:00",
     "last_viewed_at": "2026-07-06T22:43:37.697498+00:00",
     "patch_count": 72,
     "pinned": false,
     "state": "active",
-    "use_count": 114,
+    "use_count": 116,
     "view_count": 46
   },
   "software-development/osrs-plugins": {
@@ -576,12 +576,12 @@
     "created_at": "2026-06-07T00:21:18.846681+00:00",
     "created_by": null,
     "last_patched_at": "2026-07-06T01:06:35.158636+00:00",
-    "last_used_at": "2026-07-06T17:15:58.164684+00:00",
-    "last_viewed_at": "2026-07-06T15:02:26.565040+00:00",
+    "last_used_at": "2026-07-07T01:45:18.476062+00:00",
+    "last_viewed_at": "2026-07-06T23:19:16.722479+00:00",
     "patch_count": 124,
     "pinned": false,
     "state": "active",
-    "use_count": 142,
-    "view_count": 74
+    "use_count": 145,
+    "view_count": 75
   }
 }
