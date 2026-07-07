@@ -42,3 +42,6 @@
 	path = projects/osrs-plugins/_templates/osrs-plugins-boilerplate
 	url = https://github.com/ItMeansBigMountain/osrs-plugins-boilerplate-osrs.git
 	branch = main
+[submodule "projects/youtube-automation"]
+	path = projects/youtube-automation
+	url = https://github.com/ItMeansBigMountain/youtube-automation.git
