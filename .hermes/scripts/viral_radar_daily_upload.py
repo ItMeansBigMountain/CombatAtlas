@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Daily public Viral Clip Radar Shorts upload pipeline for cron.
+"""Daily public Viral Radar influencer Shorts upload pipeline for cron.
 
-Uses the currently reviewed NASA/JPL manifest as the safe evergreen upload lane:
-official NASA source -> vertical captioned render -> public YouTube upload ->
-log upload IDs -> delete generated exports and source media.
+Procedure: discover videos from the configured creator watchlist, clip the exact
+found influencer video into multiple vertical Shorts, and upload those clips.
+Do not use NASA/space/unknown placeholder filler to satisfy minimums.
 """
 from __future__ import annotations
 
@@ -178,10 +178,19 @@ def iter_candidate_manifest_clips() -> list[tuple[Path, dict, dict]]:
     forced_index = os.getenv("VIRAL_RADAR_CLIP_INDEX", "").strip()
     priority_manifests = priority_plan_manifests()
     priority_set = set(priority_manifests)
-    manifests = [MANIFEST] if os.getenv("VIRAL_RADAR_MANIFEST") else priority_manifests + [
-        p for p in sorted((ROOT / "CLIP_PLANS").glob("*/clip_manifest.json"), reverse=True)
-        if p not in priority_set
-    ]
+    strict_discovered_only = os.getenv("VIRAL_RADAR_STRICT_DISCOVERED_ONLY", "1") != "0"
+    if os.getenv("VIRAL_RADAR_MANIFEST"):
+        manifests = [MANIFEST]
+    elif priority_manifests and strict_discovered_only:
+        # User procedure: for discovery-triggered runs, clip/upload the actual
+        # videos found by the Viral Radar data pipeline. Do not fall back to old
+        # manifests/placeholders just to hit a quota/minimum.
+        manifests = priority_manifests
+    else:
+        manifests = priority_manifests + [
+            p for p in sorted((ROOT / "CLIP_PLANS").glob("*/clip_manifest.json"), reverse=True)
+            if p not in priority_set
+        ]
     seen = uploaded_public_keys()
     fresh: list[tuple[Path, dict, dict]] = []
     fallback: list[tuple[Path, dict, dict]] = []
@@ -227,8 +236,9 @@ def iter_candidate_manifest_clips() -> list[tuple[Path, dict, dict]]:
             out.append(candidate)
         return out
 
-    fresh = dedupe_remote_sources(fresh)
-    fallback = dedupe_remote_sources(fallback)
+    if not priority_manifests:
+        fresh = dedupe_remote_sources(fresh)
+        fallback = dedupe_remote_sources(fallback)
 
     recent_creators = set(recent_uploaded_creators())
 
@@ -539,11 +549,11 @@ def local_upload_day() -> str:
 
 
 def daily_upload_cap() -> int:
-    # YouTube has an account-level video upload limit that is separate from API
-    # quota and can be undocumented. We observed Classical Echos hit it after
-    # 13 successful uploads on 2026-07-06, so default to 12/day as a safety cap
-    # while still meeting the user's 10/day floor. Override after more evidence.
-    return max(1, int(os.getenv("VIRAL_RADAR_DAILY_UPLOAD_CAP", "12")))
+    # Official YouTube Data API docs list videos.insert at 100 calls/day in the
+    # Video Uploads bucket. User preference is to probe up to that documented
+    # ceiling and only stop when YouTube actually rate-limits the channel; failed
+    # uploads are queued for the next workflow run.
+    return max(1, int(os.getenv("VIRAL_RADAR_DAILY_UPLOAD_CAP", "100")))
 
 
 def uploaded_count_for_day(day: str | None = None) -> int:
@@ -572,6 +582,17 @@ def upload_capacity_remaining() -> int:
 
 def queue_failed_upload(output: Path, *, title: str, description: str, tags: str, manifest: dict, selected_clip: dict | None, proc: subprocess.CompletedProcess[str]) -> dict:
     UPLOAD_QUEUE.mkdir(parents=True, exist_ok=True)
+    signature = (str(manifest.get("source_url") or ""), str((selected_clip or {}).get("hook") or ""), title)
+    for existing_meta in UPLOAD_QUEUE.glob("*.upload.json"):
+        try:
+            existing = json.loads(existing_meta.read_text(encoding="utf-8"))
+            existing_sig = (str(existing.get("source_url") or ""), str(existing.get("selected_hook") or ""), str(existing.get("title") or ""))
+            if existing_sig == signature:
+                if output.exists():
+                    output.unlink()
+                return {"queued_file": str(existing.get("file") or ""), "queue_metadata": str(existing_meta), "queued_for_next_run": True, "duplicate_queue_item": True}
+        except Exception:
+            continue
     queued_file = UPLOAD_QUEUE / output.name
     if output.exists() and output.resolve() != queued_file.resolve():
         if queued_file.exists():
@@ -757,7 +778,8 @@ def main() -> int:
         return 0
     try:
         min_uploads = max(10, int(os.getenv("VIRAL_RADAR_MIN_UPLOADS", os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", "10"))))
-        queued_uploads = upload_pending_queue(limit=min_uploads)
+        upload_queue_first = os.getenv("VIRAL_RADAR_UPLOAD_QUEUE_FIRST", "1") != "0"
+        queued_uploads = upload_pending_queue(limit=min_uploads) if upload_queue_first else []
         seed_result = seed_latest_manifests()
         candidates = iter_candidate_manifest_clips()
         max_attempts = max(min_uploads, int(os.getenv("VIRAL_RADAR_MAX_SOURCE_ATTEMPTS", "50")))

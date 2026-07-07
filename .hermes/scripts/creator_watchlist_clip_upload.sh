@@ -11,8 +11,7 @@ if [[ -f /opt/data/secrets/youtube-cookies/youtube-cookies.txt ]]; then
   export YOUTUBE_COOKIES=/opt/data/secrets/youtube-cookies/youtube-cookies.txt
 fi
 
-# Discovery: keep the existing creator-watchlist behavior, but capture output so
-# this wrapper can decide whether there is anything new to process.
+# Discovery: find newly available videos from the configured creator watchlist.
 DISCOVERY_OUTPUT="$(python3 scripts/poll_watchlist.py --limit 15 --quiet-if-empty)"
 
 if [[ -z "${DISCOVERY_OUTPUT//[[:space:]]/}" ]]; then
@@ -21,36 +20,41 @@ if [[ -z "${DISCOVERY_OUTPUT//[[:space:]]/}" ]]; then
 fi
 
 printf '%s\n' "$DISCOVERY_OUTPUT"
-printf '\n---\nStarting clip/render/upload pipeline for newly discovered Viral Radar item(s)...\n'
+printf '\n---\nStarting strict Viral Radar procedure: discovered creator video -> >=10 clips -> upload those exact clips...\n'
 
-# Prioritize the exact plans that this poll discovered. If a plan only has
-# source_metadata.json, viral_radar_daily_upload.py will auto-create a minimal
-# clip_manifest.json and attempt immediate source -> vertical render -> public
-# upload. This keeps this cron as a true discovery-triggered publish lane.
+# Extract the exact plans discovered by the data pipeline. Each plan is processed
+# independently so every found influencer video gets its own minimum clip batch.
 PRIORITY_PLANS="$(printf '%s\n' "$DISCOVERY_OUTPUT" | awk '/^  Plan: /{sub(/^  Plan: /, ""); print}' | paste -sd ':' -)"
-if [[ -n "$PRIORITY_PLANS" ]]; then
-  export VIRAL_RADAR_PRIORITY_PLANS="$PRIORITY_PLANS"
-fi
 
-# The uploader selects the freshest not-yet-public manifest clip, renders it,
-# uploads public to YouTube, and logs the returned YouTube response. FORCE_UPLOAD
-# allows this discovery-triggered lane to run even if the noon daily lane already ran.
-# Run once per discovered plan so discovery does not stop after one influencer.
-# Long-form seeding now defaults to at least 3 clips per video.
 # Viral Radar influencer clips always upload to Classical Echos. Override any
 # inherited token from faceless/newsletter jobs.
 export YOUTUBE_UPLOAD_TOKEN=/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
-export VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM="${VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM:-3}"
-PLAN_COUNT="$(printf '%s\n' "$PRIORITY_PLANS" | awk -F: '{print NF}')"
-if [[ -z "$PRIORITY_PLANS" ]]; then
-  PLAN_COUNT=1
-fi
+export VIRAL_RADAR_MIN_UPLOADS="${VIRAL_RADAR_MIN_UPLOADS:-10}"
+export VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM="${VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM:-10}"
+export VIRAL_RADAR_MAX_CLIPS_PER_SOURCE="${VIRAL_RADAR_MAX_CLIPS_PER_SOURCE:-50}"
+export VIRAL_RADAR_DAILY_UPLOAD_CAP="${VIRAL_RADAR_DAILY_UPLOAD_CAP:-100}"
+export VIRAL_RADAR_STRICT_DISCOVERED_ONLY=1
+# Do not let old queued/stale clips satisfy the minimum for a new discovered video.
+export VIRAL_RADAR_UPLOAD_QUEUE_FIRST=0
+
 FAILURES=0
-for ((i=1; i<=PLAN_COUNT; i++)); do
+IFS=':' read -r -a PLANS <<< "$PRIORITY_PLANS"
+if [[ -z "$PRIORITY_PLANS" ]]; then
+  PLANS=("")
+fi
+
+for PLAN in "${PLANS[@]}"; do
+  if [[ -n "$PLAN" ]]; then
+    export VIRAL_RADAR_PRIORITY_PLANS="$PLAN"
+    printf '\n---\nProcessing discovered plan: %s\n' "$PLAN"
+  else
+    unset VIRAL_RADAR_PRIORITY_PLANS
+  fi
   if ! FORCE_UPLOAD=1 python3 /opt/data/scripts/viral_radar_daily_upload.py; then
     FAILURES=$((FAILURES + 1))
   fi
 done
+
 if [[ "$FAILURES" -gt 0 ]]; then
   exit 1
 fi

@@ -20,7 +20,7 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 51
+        "completed": 52
       },
       "enabled": true,
       "state": "scheduled",
@@ -28,7 +28,7 @@
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
       "next_run_at": "2026-07-08T03:00:00+00:00",
-      "last_run_at": "2026-07-06T03:01:17.155966+00:00",
+      "last_run_at": "2026-07-07T03:00:22.963668+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -60,15 +60,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 49
+        "completed": 50
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-07-07T13:30:00+00:00",
-      "last_run_at": "2026-07-06T13:31:26.801428+00:00",
+      "next_run_at": "2026-07-08T13:30:00+00:00",
+      "last_run_at": "2026-07-07T13:30:55.676007+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -92,7 +92,7 @@
     {
       "id": "6355d735bb4a",
       "name": "Creator discovery feeder for Viral Radar",
-      "prompt": "Run the creator watchlist monitor for Viral Radar. This job discovery-triggers the clip/render/upload pipeline for newly found creator videos.\n\nWorking directory: /opt/data/HeRmEz/projects/viral-clip-radar\nRun with a long terminal timeout because rendering/uploading 10+ Shorts can exceed 120 seconds:\n`cd /opt/data/HeRmEz/projects/viral-clip-radar && VIRAL_RADAR_MIN_UPLOADS=10 VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM=10 VIRAL_RADAR_MAX_CLIPS_PER_SOURCE=50 /opt/data/scripts/creator_watchlist_clip_upload.sh`\n\nCritical upload contract:\n- Upload queued clips first from /opt/data/HeRmEz/projects/viral-clip-radar/UPLOAD_QUEUE/ before creating new clips.\n- Upload at least 10 public Viral Radar Shorts per long-form source when new source content is available. 10 is the minimum, not the target ceiling.\n- A single long-form source may create/upload up to 50 clips when transcript quality, duration, and clip opportunities support it.\n- Upload each clip as it is created. If upload fails or the daily YouTube upload safety cap is reached, queue the rendered clip plus metadata in UPLOAD_QUEUE for the next workflow run; do not delete it.\n- Maximize usage without hitting YouTube hidden account-level limits. Default safety cap is VIRAL_RADAR_DAILY_UPLOAD_CAP=12/day for Classical Echos based on observed quota behavior; override only after evidence supports it.\n- Use best judgment from duration/transcript/source quality to create more clips when the source supports it.\n- Do not stop after the first successful upload.\n- Viral Radar uploads must use classicalechos@gmail.com / Classical Echos only.\n- If fewer than 10 uploads are possible for available long-form material, fail/report blocked_min_uploads_not_met with exact reasons and queue counts.\n- Keep hashtags out of titles; put them in description/tags.\n- Description hashtags must follow what the title + transcript/context says. Keep #Shorts and #ViralRadar, but rotate topic tags such as #Fitness, #DatingAdvice, #Business, #Numerology, #Neuroscience, etc. based on the actual clip.\n- Never publish internal planning labels like \u201cthe part people will replay\u201d or \u201cclip 1.\u201d Public title/on-screen hook/subtitle must be unique to the video, derived from source title + transcript/summary. Make it edgy, raunchy/catchy when the source supports it, but not explicit, misleading, or generic.\n- Description format must be skimmable with blank lines: title, context/subtitle, Source, Original source URL on its own line, edit/attribution note, relevant hashtags.\n- Do NOT include cron cohort, run IDs, or other internal metadata in public descriptions.\n- Use transcript/context when available for better title/description.\n\nAfter running, summarize stdout: queued_replay_uploaded_count, remaining_queue_count, daily cap/used count, new sources found, uploaded_count, URLs/video IDs, and blockers if any. If the script exits nonzero, report exact failure and latest log tail.",
+      "prompt": "Run the strict Viral Radar procedure for newly discovered creator videos.\n\nWorking directory: /opt/data/HeRmEz/projects/viral-clip-radar\nCommand:\n`cd /opt/data/HeRmEz/projects/viral-clip-radar && VIRAL_RADAR_MIN_UPLOADS=10 VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM=10 VIRAL_RADAR_MAX_CLIPS_PER_SOURCE=50 VIRAL_RADAR_DAILY_UPLOAD_CAP=100 VIRAL_RADAR_STRICT_DISCOVERED_ONLY=1 VIRAL_RADAR_UPLOAD_QUEUE_FIRST=0 /opt/data/scripts/creator_watchlist_clip_upload.sh`\n\nStrict Viral Radar procedure:\n- Find videos from the defined creator/influencer watchlist via the Viral Radar data pipeline.\n- For EACH influencer video found in that pipeline run, clip that exact source video.\n- Upload a minimum of 10 public Shorts for each influencer video found, up to 50 if transcript/duration supports it.\n- Do not satisfy the minimum with old queue items, old manifests, NASA/space/unknown/evergreen placeholders, stock filler, or unrelated fallback videos.\n- Upload the real clips from the found video or upload nothing/report the blocker.\n- If an upload fails after a real clip is rendered, queue that exact clip plus metadata for retry.\n- Viral Radar uploads must use classicalechos@gmail.com / Classical Echos only.\n- Keep hashtags out of titles; put #Shorts and relevant transcript/title-based tags in description/tags.\n- Never publish internal planning labels like \u201cthe part people will replay\u201d or \u201cclip 1.\u201d\n\nReport: discovered videos, per-source uploaded_count, URLs/video IDs, blockers, queue count, and whether any source failed to reach 10.",
       "skills": [
         "social-video-cron-growth-loop",
         "youtube-automation-with-tts"
@@ -112,15 +112,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 127
+        "completed": 129
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-07-07T07:31:32.314450+00:00",
-      "last_run_at": "2026-07-07T01:31:32.314450+00:00",
+      "next_run_at": "2026-07-07T19:36:44.008729+00:00",
+      "last_run_at": "2026-07-07T13:36:44.008729+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -193,7 +193,7 @@
     {
       "id": "bce8ebabac36",
       "name": "Daily Viral Radar / Creator clip generation + upload",
-      "prompt": "Run the user's bulletproof Daily Viral Radar creator clip release pipeline at 12:15 PM Central.\n\nWorking directory: /opt/data/HeRmEz/projects/viral-clip-radar\nScript: /opt/data/scripts/viral_radar_daily_upload.py\n\nCritical upload contract:\n- This job must upload a MINIMUM of 10 public Viral Radar Shorts per source/run when source material is available, not 1.\n- A single long-form source must create at least 10 candidate clips and can create/upload up to 50 clips when transcript quality, duration, and clip opportunities support it. Use VIRAL_RADAR_MAX_CLIPS_PER_SOURCE=50.\n- 10 is only the floor. Use best judgment based on source duration, transcript quality, and clip opportunities; long/high-signal videos can produce more.\n- Upload queued clips first from /opt/data/HeRmEz/projects/viral-clip-radar/UPLOAD_QUEUE/ before creating new clips.\n- Upload each clip as it is created. If upload fails or the daily YouTube upload safety cap is reached, queue the rendered clip plus metadata in UPLOAD_QUEUE for the next workflow run; do not delete it.\n- Maximize usage without hitting YouTube hidden account-level limits. Default safety cap is VIRAL_RADAR_DAILY_UPLOAD_CAP=12/day for Classical Echos based on observed quota behavior; override only after evidence supports it.\n- If fewer than 10 uploads are possible for available long-form material, report blocked_min_uploads_not_met with exact source/render/auth/quota failures and queue counts instead of ok_uploaded.\n- Viral Radar uploads must use classicalechos@gmail.com / Classical Echos only.\n- Keep hashtags out of titles; put #Shorts and related tags in description/tags.\n- Description hashtags must follow what the title + transcript/context says. Keep #Shorts and #ViralRadar, but rotate topic tags such as #Fitness, #DatingAdvice, #Business, #Numerology, #Neuroscience, etc. based on the actual clip.\n- Never publish internal planning labels like \u201cthe part people will replay\u201d or \u201cclip 1.\u201d Public title/on-screen hook/subtitle must be unique to the video, derived from source title + transcript/summary. Make it edgy, raunchy/catchy when the source supports it, but not explicit, misleading, or generic.\n- Description format must be skimmable with blank lines: title, context/subtitle, Source, Original source URL on its own line, edit/attribution note, relevant hashtags.\n- Do NOT include cron cohort, run IDs, or other internal metadata in public descriptions.\n- Use transcript/context when available for title/description quality.\n- Preserve attribution and transformative framing.\n\nReport: metrics status, queued_replay_uploaded_count, remaining_queue_count, daily cap/used count, seeded candidates, uploaded_count, each URL/video_id, failures, and cleanup.",
+      "prompt": "Run the strict Daily Viral Radar creator clip procedure.\n\nWorking directory: /opt/data/HeRmEz/projects/viral-clip-radar\nScript: /opt/data/scripts/viral_radar_daily_upload.py\n\nStrict Viral Radar procedure:\n- Find/seed videos from the defined creator/influencer watchlist via the Viral Radar data pipeline.\n- Clip the exact influencer video found by the pipeline.\n- Upload a minimum of 10 public Shorts for each influencer video selected/found, up to 50 if transcript/duration supports it.\n- Do not satisfy the minimum with old manifests, NASA/space/unknown/evergreen placeholders, stock filler, or unrelated fallback videos.\n- Upload the real clips from the found video or upload nothing/report the blocker.\n- If an upload fails after a real clip is rendered, queue that exact clip plus metadata for retry.\n- Official API docs list videos.insert at 100/day; use VIRAL_RADAR_DAILY_UPLOAD_CAP=100 and stop only on real YouTube upload/rate-limit errors.\n- Viral Radar uploads must use classicalechos@gmail.com / Classical Echos only.\n- Keep hashtags out of titles; put #Shorts and relevant transcript/title-based tags in description/tags.\n- Never publish internal planning labels like \u201cthe part people will replay\u201d or \u201cclip 1.\u201d\n\nReport: selected/found source video, uploaded_count, URLs/video IDs, blockers, queue count, and whether the source failed to reach 10.",
       "skills": [
         "social-video-cron-growth-loop",
         "youtube-automation-with-tts"
@@ -215,15 +215,15 @@
       "schedule_display": "15 17 * * *",
       "repeat": {
         "times": null,
-        "completed": 31
+        "completed": 32
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-07-07T17:15:00+00:00",
-      "last_run_at": "2026-07-06T17:18:32.401653+00:00",
+      "next_run_at": "2026-07-08T17:15:00+00:00",
+      "last_run_at": "2026-07-07T17:17:28.807141+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -262,15 +262,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 2510
+        "completed": 2592
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-07-07T03:04:01.378850+00:00",
-      "last_run_at": "2026-07-07T02:54:01.378850+00:00",
+      "next_run_at": "2026-07-07T18:06:05.982207+00:00",
+      "last_run_at": "2026-07-07T17:56:05.982207+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -308,15 +308,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 29
+        "completed": 30
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-07-07T14:00:00+00:00",
-      "last_run_at": "2026-07-06T14:00:58.731269+00:00",
+      "next_run_at": "2026-07-08T14:00:00+00:00",
+      "last_run_at": "2026-07-07T14:00:06.417529+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -355,15 +355,15 @@
       "schedule_display": "15 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 27
+        "completed": 28
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T04:20:40.734347+00:00",
-      "next_run_at": "2026-07-07T13:15:00+00:00",
-      "last_run_at": "2026-07-06T13:16:03.772431+00:00",
+      "next_run_at": "2026-07-08T13:15:00+00:00",
+      "last_run_at": "2026-07-07T13:15:13.455215+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -404,15 +404,15 @@
       "schedule_display": "50 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 15
+        "completed": 16
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T15:48:08.357771+00:00",
-      "next_run_at": "2026-07-07T13:50:00+00:00",
-      "last_run_at": "2026-07-06T13:53:12.693536+00:00",
+      "next_run_at": "2026-07-08T13:50:00+00:00",
+      "last_run_at": "2026-07-07T13:52:46.096591+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -452,15 +452,15 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 24
+        "completed": 25
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T17:32:19.594106+00:00",
-      "next_run_at": "2026-07-07T09:00:00+00:00",
-      "last_run_at": "2026-07-06T09:55:53.381434+00:00",
+      "next_run_at": "2026-07-08T09:00:00+00:00",
+      "last_run_at": "2026-07-07T09:30:11.603507+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -502,15 +502,15 @@
       "schedule_display": "30 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 18
+        "completed": 19
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T16:12:37.431999+00:00",
-      "next_run_at": "2026-07-07T13:30:00+00:00",
-      "last_run_at": "2026-07-06T13:32:39.748909+00:00",
+      "next_run_at": "2026-07-08T13:30:00+00:00",
+      "last_run_at": "2026-07-07T13:32:39.865812+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -552,15 +552,15 @@
       "schedule_display": "0 16 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 9
+        "completed": 10
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T18:35:06.052701+00:00",
-      "next_run_at": "2026-07-07T16:00:00+00:00",
-      "last_run_at": "2026-07-06T16:02:51.939664+00:00",
+      "next_run_at": "2026-07-08T16:00:00+00:00",
+      "last_run_at": "2026-07-07T16:01:41.689069+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -650,15 +650,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 3
+        "completed": 5
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-06T15:04:47.122120+00:00",
-      "next_run_at": "2026-07-07T08:50:04.881068+00:00",
-      "last_run_at": "2026-07-07T02:50:04.881068+00:00",
+      "next_run_at": "2026-07-07T20:52:08.249364+00:00",
+      "last_run_at": "2026-07-07T14:52:08.249364+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -676,5 +676,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-07-07T03:00:01.098041+00:00"
+  "updated_at": "2026-07-07T18:05:39.080157+00:00"
 }

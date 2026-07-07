@@ -139,6 +139,10 @@ def main() -> int:
         if not mp:
             continue
         m = json.loads(mp.read_text(encoding='utf-8'))
+        if vr._is_evergreen_fallback_creator(m) and os.getenv('VIRAL_RADAR_ALLOW_EVERGREEN_FALLBACK') != '1':
+            # User correction: do not top up NASA/space/placeholder evergreen filler.
+            # Viral Radar should upload real influencer clips or nothing.
+            continue
         if is_short_source(src, m) and not INCLUDE_SHORTS:
             continue
         clips = m.get('clips') or []
