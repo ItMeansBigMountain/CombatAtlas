@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-08T07:45:32.660568",
+  "updated_at": "2026-07-08T08:05:32.690021",
   "platforms": {
     "discord": [
       {
@@ -27,14 +27,14 @@
         "type": "channel"
       },
       {
-        "id": "1524312655894937623",
-        "name": "redteam",
+        "id": "1524259261281206332",
+        "name": "youtube-automation",
         "guild": "TRAPISTAN",
         "type": "channel"
       },
       {
-        "id": "1524259261281206332",
-        "name": "youtube-automation",
+        "id": "1524312655894937623",
+        "name": "redteam",
         "guild": "TRAPISTAN",
         "type": "channel"
       },

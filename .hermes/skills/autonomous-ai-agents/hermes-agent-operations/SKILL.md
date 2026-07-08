@@ -66,6 +66,8 @@ For security/red-team specialists, describe authorized defensive/lab uses and ex
 
 When a user asks for only one gateway lane/session to use a specialist profile while other sessions remain on default, do not assume per-channel routing exists. First distinguish a **model switch** from **profile isolation**: `/model` may switch the current chat's model, but the profile's memory, skills, config, and credentials stay unchanged. Full profile isolation requires gateway profile routing (`gateway.multiplex_profiles` plus an inbound source stamped with the target profile). For Discord, the robust pattern is a separate specialist Discord bot token/adapter restricted to that channel; two profiles should not share the same Discord bot token concurrently. See `references/profile-scoped-gateway-routing.md` for the routing model, Discord guidance, and verification checklist.
 
+For user-specific Discord lane organization, cron delivery routing, and the fallback watchdog pattern for keeping an additional profile gateway such as `redteam` alive after Docker/container reset, see `references/discord-channel-cron-routing-and-profile-autostart.md`.
+
 ## Cron Job Operations
 
 Use this pattern for scheduled Hermes jobs and script-backed automations.
@@ -73,11 +75,12 @@ Use this pattern for scheduled Hermes jobs and script-backed automations.
 1. List jobs and identify the exact job id before update/remove operations.
 2. Locate the referenced script and verify it exists, has expected permissions, and runs manually.
 3. Smoke-test the script directly before updating the job definition. For `no_agent=true`, empty stdout means silent success; design watchdog scripts accordingly.
-4. Update the job with explicit `script`, `workdir`, `profile`, `enabled_toolsets`, and delivery target as needed.
-5. Trigger one manual run after significant fixes and inspect returned output or errors.
-6. For prompt-injection scanner blocks, inspect the job prompt plus attached skills/references; rephrase risky literal wording transparently and rerun.
+4. For Discord/server delivery changes, map jobs to the user's channel taxonomy and ask for confirmation plus concrete channel mentions/IDs before changing `deliver` fields. Do not silently move reports between channels.
+5. Update the job with explicit `script`, `workdir`, `profile`, `enabled_toolsets`, and delivery target as needed.
+6. Trigger one manual run after significant fixes and inspect returned output or errors.
+7. For prompt-injection scanner blocks, inspect the job prompt plus attached skills/references; rephrase risky literal wording transparently and rerun.
 
-Common cron pitfalls: missing scripts, stale OAuth tokens, wrong workdir, non-executable files, silent no-agent jobs that should have emitted status, and wrappers that consume discovery state during smoke tests.
+Common cron pitfalls: missing scripts, stale OAuth tokens, wrong workdir, non-executable files, silent no-agent jobs that should have emitted status, wrappers that consume discovery state during smoke tests, and rerouting cron deliveries without first confirming the target Discord channel.
 
 ## Kanban Worker Operations
 

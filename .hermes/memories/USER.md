@@ -1,10 +1,8 @@
-Discord prefs: #general=ops; #coding=dev; #personal=life/career; #trading=markets; #business=monetization; #security-redteam=security/red-team/reliability. Natural, no auto threads.
+Discord prefs: #general=ops/global; #coding=dev/projects; #personal=life+gaming; #trading=markets; #business=monetization+Jared tutoring+school/career; #security-redteam=security. Natural, no auto threads; confirm before cron reroutes.
 §
 OSRS/RuneLite: consolidate overlaps; standalone plugins/no cross-plugin deps; panels fit default width/start empty/no fake players; remove ironman/GIM ideas.
 §
 Client websites: user prefers live Git auto-deploy first; Stripe/payments and custom domains afterward.
-§
-#personal lane: school/learning/career — Jared coding-school/Codewars/SoloLearn/homework/progress; GMF cloud/Azure/certs/resume/STAR/interview/salary/promotion/SMART goals. Use ELI5/Feynman; concise updates: goal, level, next action, blocker.
 §
 User wants project backups to live under /opt/data/HeRmEz/projects, specifically /opt/data/HeRmEz/projects/_backups for backup artifacts, rather than under /opt/data/HeRmEz/.hermes.
 §
