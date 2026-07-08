@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-07T18:30:31.752755",
+  "updated_at": "2026-07-08T02:55:32.314372",
   "platforms": {
     "discord": [
       {
@@ -11,6 +11,12 @@
       {
         "id": "1523247688689258586",
         "name": "coding",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1524172425393340516",
+        "name": "personal",
         "guild": "TRAPISTAN",
         "type": "channel"
       },
@@ -41,6 +47,12 @@
       {
         "id": "1523247688689258586",
         "name": "TRAPISTAN / #coding",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "1524172425393340516",
+        "name": "TRAPISTAN / #personal",
         "type": "group",
         "thread_id": null
       }

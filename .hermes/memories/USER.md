@@ -1,4 +1,4 @@
-Discord prefs: natural channel back-and-forth, no auto threads; use #coding for coding/dev, general for cron jobs and orchestration config.
+Discord prefs: #general=global commands/orchestration/cron/admin; #coding=dev/repos/debugging; #personal=personal life. Natural back-and-forth; no auto threads.
 §
 OSRS/RuneLite: consolidate overlaps; standalone plugins/no cross-plugin deps; panels fit default width/start empty/no fake players; remove ironman/GIM ideas.
 §

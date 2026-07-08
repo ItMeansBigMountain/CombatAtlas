@@ -371,7 +371,7 @@ Note: For secrets, `gh secret set` is dramatically simpler. If setting secrets i
 
 When a user wants an active project backed up inside a larger private workspace repo, first check whether the project is itself a Git repo. If it is nested inside the parent repo, prefer a **Git bundle** committed to the parent repo over trying to `git add` the nested worktree directly.
 
-If the user explicitly asks to make inner repos submodules, use real Git submodules instead of bundles: register each child path in `.gitmodules`, stage the child path as a `160000` gitlink, run `git submodule absorbgitdirs` for existing nested worktrees, and verify with `git submodule status` plus `git ls-files -s`. See `references/nested-repo-submodules-and-backup-cache-hygiene.md` for the command pattern and backup-cache cleanup checklist.
+If the user explicitly asks to make inner repos submodules, use real Git submodules instead of bundles: register each child path in `.gitmodules`, stage the child path as a `160000` gitlink, run `git submodule absorbgitdirs` for existing nested worktrees, and verify with `git submodule status` plus `git ls-files -s`. See `references/nested-repo-submodules-and-backup-cache-hygiene.md` for the command pattern and backup-cache cleanup checklist. When consolidating multiple existing workspace codebases into one new child repo and then placing that child back under `/opt/data/HeRmEz/projects` as a submodule, use `references/consolidated-child-repo-submodule.md`: inspect internal files before/after copy, preserve any pre-existing target files under `legacy-existing/`, exclude media/runtime/secrets, push/verify the child, then stage the parent gitlink.
 
 Recommended sequence:
 
