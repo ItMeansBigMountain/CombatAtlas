@@ -57,6 +57,7 @@ Use this when working on the user's OSRS/RuneLite plugin portfolio: fixing plugi
 ## UI preferences for this user's OSRS plugins
 
 - Panels should fit the default RuneLite side panel width.
+- Do not guess side-panel widths. Derive a safe content width from `PluginPanel.PANEL_WIDTH`, `SCROLLBAR_WIDTH`, and `BORDER_OFFSET`, then add a unit test for the budget. See `references/runelite-side-panel-dimensions.md`.
 - Start panels empty; do not fake players or sample clan data.
 - Prefer compact controls: dropdowns, icon buttons, short labels, and fixed dimensions for top rows.
 - If a control is not visible in screenshots, treat it as a real UI bug and constrain width/height rather than explaining it away.
@@ -66,6 +67,7 @@ Use this when working on the user's OSRS/RuneLite plugin portfolio: fixing plugi
 
 See `references/osrs-plugin-portfolio-cleanup.md` for the current user-approved consolidation map.
 See `references/osrs-consolidation-implementation-notes.md` for session-tested implementation notes, pure-service module patterns, RuneLite API probes, and child/parent push verification snippets.
+See `references/runelite-side-panel-dimensions.md` for the RuneLite side-panel width budget, WhosGrindingPanel dimensions helper pattern, and Windows submodule handoff pitfall.
 
 High-level rules:
 
@@ -82,4 +84,5 @@ High-level rules:
 - Do not `git add` nested plugin worktrees directly into the HeRmEz parent unless intentionally updating submodule gitlinks or backup artifacts.
 - Do not leave child repo changes unpushed while updating only the parent repo.
 - Do not preserve obsolete names like `WhosGrindingClanPanel` in user-facing display text when the direction is **Who's Grinding Panel**; internal package paths may change later as a deliberate migration.
+- When the user reports `fatal: No url found for submodule path ... in .gitmodules`, do not repeat broad `git submodule update --init --recursive` advice. Either fix the missing `.gitmodules` mapping or give a path-scoped OSRS submodule update for the plugin being worked on.
 - Do not consolidate repos before first producing and reviewing a cleanup plan; these plugins represent different product lanes.

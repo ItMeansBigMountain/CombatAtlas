@@ -13,7 +13,6 @@ claude-design:c1b63b7651b66fd15d096e57728ec686
 codebase-inspection:97bf36f290117abc11ffde72535713e2
 codex:66a8aa156673b5dd6e82c4e62f04ba3a
 comfyui:c9ac1497c123c607f98a547f8cf54fc5
-computer-use:c40a491ce9f5035bb9cdfc141d5f473e
 design-md:a09844075e6e856a4a256dbc5f9e899a
 dogfood:ae6e92c2cd27c3da8a0587f089d19fe3
 evaluating-llms-harness:ac24cf5202db5b024b3079023797a0f6
@@ -36,6 +35,7 @@ imessage:f545da0f5cc64dd9ee1ffd2b7733a11b
 jupyter-live-kernel:352c43dc28428592abbc8c91cb5ce295
 llama-cpp:fcfa4c23d52ac84abccf0b38e9844e07
 llm-wiki:90ca1bb67358ac2623775a0aefb949ff
+macos-computer-use:fb1787b32be343b87078d2ae2618dbcf
 manim-video:214a14c01596e85e915bc5f641352c44
 maps:75eb39eca308ae4defa6ee2f14499428
 nano-pdf:6c643bd0cfb0548ff0ddaf367d4da6d1
@@ -46,7 +46,6 @@ ocr-and-documents:af5fba9fa8ef003951ff5fe5a0a04adf
 opencode:d2a166c7f2c74f6e47d548ed1290c458
 openhue:ce1dd061d7f49d4752a4c0711ad2666c
 p5js:5f09fa1cb8494c93bc2f5bcbd34a2ead
-petdex:472d8fe96aa175cc1678d3f52dcdc624
 plan:96b15c8e9ad8ad4b278d833cf52f6e43
 polymarket:d6bf0fecd1ba32abd2b53f6df6c84958
 popular-web-designs:b3fd685e8fbcf981755609ce98a4eea9
@@ -54,7 +53,7 @@ powerpoint:00a6eb2ad4b7be22c1eabf6c19158836
 pretext:f17f2b6211eb81b96e1fc5d48ecc96a4
 python-debugpy:b87e0abf179c14ea51c7559dc99eb22c
 requesting-code-review:f76de34aee69387c297cf982c85fd6fe
-research-paper-writing:caf8f129ab2c78a43f27648868c667a1
+research-paper-writing:dbe2d301baeaab5c5b0539a733233a34
 segment-anything-model:7f1317da421fb8eada27aeacdbb21d30
 serving-llms-vllm:92d66ae1f1112924634fcdcff2f86bc7
 simplify-code:ce60afb0693d241e54dcb4eb73f98e4b

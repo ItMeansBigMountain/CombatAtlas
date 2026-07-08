@@ -1,0 +1,131 @@
+{
+  "updated_at": "2026-07-08T07:47:56.311258",
+  "platforms": {
+    "discord": [
+      {
+        "id": "850228787837009942",
+        "name": "join-logs",
+        "guild": "Oyama : bigMountain",
+        "type": "channel"
+      },
+      {
+        "id": "782685082052984873",
+        "name": "admin",
+        "guild": "Oyama : bigMountain",
+        "type": "channel"
+      },
+      {
+        "id": "783222603056807957",
+        "name": "dev-depoy-notes",
+        "guild": "Oyama : bigMountain",
+        "type": "channel"
+      },
+      {
+        "id": "782757423496036420",
+        "name": "close-friends-only",
+        "guild": "Oyama : bigMountain",
+        "type": "channel"
+      },
+      {
+        "id": "782665843640238134",
+        "name": "shitfest",
+        "guild": "Oyama : bigMountain",
+        "type": "channel"
+      },
+      {
+        "id": "1046082944902647908",
+        "name": "code",
+        "guild": "Oyama : bigMountain",
+        "type": "channel"
+      },
+      {
+        "id": "1140344454562205798",
+        "name": "day-z",
+        "guild": "Oyama : bigMountain",
+        "type": "channel"
+      },
+      {
+        "id": "1081428837172248646",
+        "name": "music-requests",
+        "guild": "Oyama : bigMountain",
+        "type": "channel"
+      },
+      {
+        "id": "1499990220077137943",
+        "name": "general",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1524259978167451689",
+        "name": "business",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1524259597232242831",
+        "name": "trading",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1524172425393340516",
+        "name": "personal",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1524312655894937623",
+        "name": "redteam",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1524259261281206332",
+        "name": "youtube-automation",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1523247688689258586",
+        "name": "coding",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1524312655894937623",
+        "name": "TRAPISTAN / #security-redteam",
+        "type": "group",
+        "thread_id": null
+      }
+    ],
+    "telegram": [],
+    "whatsapp": [],
+    "whatsapp_cloud": [],
+    "slack": [],
+    "signal": [],
+    "mattermost": [],
+    "matrix": [],
+    "homeassistant": [],
+    "email": [],
+    "sms": [],
+    "dingtalk": [],
+    "msgraph_webhook": [],
+    "feishu": [],
+    "wecom": [],
+    "wecom_callback": [],
+    "weixin": [],
+    "bluebubbles": [],
+    "qqbot": [],
+    "yuanbao": [],
+    "relay": [],
+    "google_chat": [],
+    "irc": [],
+    "line": [],
+    "ntfy": [],
+    "photon": [],
+    "raft": [],
+    "simplex": [],
+    "teams": []
+  }
+}

@@ -23,6 +23,8 @@ Use this skill when the work is not just writing content or sending a report, bu
 
 - Interviewing the user to discover, package, validate, or price a high-ticket offer.
 - Creating a content-led path from lived experience, story, or transformation into audience trust and paid products.
+- Turning Jared/kids coding tutoring into a business offer: curriculum, Codewars/SoloLearn/project-based lessons, parent-facing progress reports, pricing/packages, outreach, and student motivation loops.
+- Handling income-oriented career-growth work that the user routes into the business channel: GM Financial growth, cloud certs, resume/interview/salary planning, and SMART goals.
 - Configuring or troubleshooting TikTok, Instagram/Meta, YouTube, X/Twitter, GIF/media, or brokered social publishing flows.
 - Producing or maintaining the user's morning report, trend radar, Google Workspace context, email cleanup policy, or portfolio heartbeat.
 - Building scheduled creator operations that combine source acquisition, generated media, metadata, upload logs, cleanup, and human review gates.

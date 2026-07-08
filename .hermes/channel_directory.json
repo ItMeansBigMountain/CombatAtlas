@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-08T02:55:32.314372",
+  "updated_at": "2026-07-08T07:45:32.660568",
   "platforms": {
     "discord": [
       {
@@ -9,14 +9,38 @@
         "type": "channel"
       },
       {
-        "id": "1523247688689258586",
-        "name": "coding",
+        "id": "1524259978167451689",
+        "name": "business",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1524259597232242831",
+        "name": "trading",
         "guild": "TRAPISTAN",
         "type": "channel"
       },
       {
         "id": "1524172425393340516",
         "name": "personal",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1524312655894937623",
+        "name": "redteam",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1524259261281206332",
+        "name": "youtube-automation",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1523247688689258586",
+        "name": "coding",
         "guild": "TRAPISTAN",
         "type": "channel"
       },
@@ -53,6 +77,30 @@
       {
         "id": "1524172425393340516",
         "name": "TRAPISTAN / #personal",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "1524259261281206332",
+        "name": "TRAPISTAN / #youtube-automation",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "1524259597232242831",
+        "name": "TRAPISTAN / #trading",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "1524259978167451689",
+        "name": "TRAPISTAN / #business",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "1524312655894937623",
+        "name": "TRAPISTAN / #security-redteam",
         "type": "group",
         "thread_id": null
       }

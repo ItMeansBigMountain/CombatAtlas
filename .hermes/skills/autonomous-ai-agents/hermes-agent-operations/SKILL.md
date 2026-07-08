@@ -62,6 +62,10 @@ Use named profiles when a recurring class of work benefits from separate model/p
 
 For security/red-team specialists, describe authorized defensive/lab uses and explicit boundaries. Do not frame a profile/provider as a safety bypass.
 
+### Profile-scoped gateway sessions
+
+When a user asks for only one gateway lane/session to use a specialist profile while other sessions remain on default, do not assume per-channel routing exists. First distinguish a **model switch** from **profile isolation**: `/model` may switch the current chat's model, but the profile's memory, skills, config, and credentials stay unchanged. Full profile isolation requires gateway profile routing (`gateway.multiplex_profiles` plus an inbound source stamped with the target profile). For Discord, the robust pattern is a separate specialist Discord bot token/adapter restricted to that channel; two profiles should not share the same Discord bot token concurrently. See `references/profile-scoped-gateway-routing.md` for the routing model, Discord guidance, and verification checklist.
+
 ## Cron Job Operations
 
 Use this pattern for scheduled Hermes jobs and script-backed automations.
@@ -101,8 +105,9 @@ Archived source packages absorbed into this umbrella are preserved under `refere
 2. Editing another profile's skills/plugins/cron/memories without explicit direction.
 3. Reporting a cron fix without a direct script run or manual job run.
 4. Calling `clarify` from a headless Kanban worker; block the task instead.
-5. Leaking env values, tokens, or profile secrets while debugging.
-6. Using usage counters as proof that a skill should or should not exist.
+5. Leaking env values, tokens, or profile secrets while debugging; if a user pastes a token into chat, complete the immediate setup only if requested, then explicitly advise rotating the token after verification.
+6. Confusing Discord bot connection with server/channel access: `Connected as ...` means authentication worked, while `403 Missing Access` usually means the bot has not been invited or lacks channel permission.
+7. Using usage counters as proof that a skill should or should not exist.
 
 ## Verification Checklist
 

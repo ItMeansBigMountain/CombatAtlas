@@ -414,6 +414,7 @@ discord:
     users: true
     replied_user: true
   reply_to_mode: false
+  ignored_channels: 1524312655894937623
 whatsapp: {}
 telegram:
   reactions: false

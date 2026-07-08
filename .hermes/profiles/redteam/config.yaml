@@ -342,7 +342,7 @@ slack:
 discord:
   require_mention: false
   free_response_channels: ''
-  allowed_channels: ''
+  allowed_channels: 1524312655894937623
   auto_thread: false
   thread_require_mention: false
   history_backfill: true
@@ -357,6 +357,9 @@ discord:
     users: true
     replied_user: true
   reply_to_mode: false
+  home_channel:
+    channel_id: 1524312655894937623
+    chat_id: 1524312655894937623
 whatsapp: {}
 telegram:
   reactions: false

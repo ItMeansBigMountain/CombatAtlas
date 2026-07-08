@@ -43,5 +43,30 @@
     "watcher_interval": 5,
     "notify_on_complete": true,
     "watch_patterns": []
+  },
+  {
+    "session_id": "proc_bfef601bc38d",
+    "command": "hermes -p redteam gateway run",
+    "pid": 84182,
+    "pid_scope": "host",
+    "host_start_time": 418409227,
+    "cwd": "/opt/data/HeRmEz",
+    "started_at": 1783495728.6529608,
+    "task_id": "default",
+    "session_key": "agent:main:discord:group:1524312655894937623:219376861866754049",
+    "watcher_platform": "discord",
+    "watcher_chat_id": "1524312655894937623",
+    "watcher_user_id": "219376861866754049",
+    "watcher_user_name": "Oyama",
+    "watcher_thread_id": "",
+    "watcher_message_id": "1524315943319371797",
+    "watcher_interval": 0,
+    "notify_on_complete": false,
+    "watch_patterns": [
+      "Connected as",
+      "discord connected",
+      "already in use",
+      "error"
+    ]
   }
 ]
