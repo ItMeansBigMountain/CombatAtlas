@@ -66,9 +66,16 @@ Use this when working on the user's OSRS/RuneLite plugin portfolio: fixing plugi
 - Member rows should be dense and readable in RuneLite's narrow sidebar: smaller names/text, minimal explanatory copy, and “currently grinding” summaries over status-only rows.
 - Clicked-player details should become an in-panel profile/detail card with gains tables/charts/links, not just a basic `JOptionPane` text dump.
 - Add configurable gains windows for player tracking views when relevant: Day, 7 days, 30 days, and 365 days.
+- In Who's Grinding Panel detail cards, treat `Grinding` as selected-period activity from tracker data (top WOM XP/KC/score gains for the configured period), not as a social-source/location summary.
+- Keep social source details out of the selected-player detail card when WOM/TempleOSRS/hiscore profile links already provide context; preserve source filtering/list-row context separately.
 - For social tracker plugins, preserve all three user-visible social source lanes when applicable: Friends List, Friends Chat, and Clan Chat. Do not remove Clan Chat merely because the plugin is no longer clan-only.
 - A clicked social/profile row should become an in-panel selected-player detail/card view, not a basic `JOptionPane` modal. Show what the player is likely grinding using cached tracker data when available.
-- Use Wise Old Man/TempleOSRS-style gained tables and mini timelines as the model for progress detail UX: top gained skills/bosses, XP/KC/rank/EHP deltas, selected period, and source/last-updated labels.
+- Use Wise Old Man/TempleOSRS-style gained tables and mini timelines as the model for progress detail UX: top gained skills/bosses, XP/KC/rank/EHP deltas, selected period, and last-updated labels.
+- For Who's Grinding / social player detail cards, do **not** spend sidebar space on a separate `Sources` field when WOM/TempleOSRS/hiscore profile URLs are already shown; the links provide enough external-source context.
+- Be precise about `Grinding`: until WOM/TempleOSRS XP/KC enrichment is actually wired, the field is only a local social-scan activity summary (source/world/offline). Do not present it as real inferred training. The target meaning is recent gained data such as likely skill/boss, XP/KC gained, rank/level deltas, and selected period.
+- If the user says blocks are too big / text too small / panel trails off, immediately remove low-value visualizations (especially heatmaps), increase readable row/detail text around 10f, and move detail into a slim vertical card inside the panel rather than a modal.
+- When the user says a RuneLite side-panel block is too wide/big or wasting space, do not merely restyle it. Remove or replace the underlying UI section, config entries, model classes, and tests if the feature is no longer wanted; then grep the active source for the removed feature name before claiming it is gone.
+- For Who's Grinding-style player details, prefer a compact vertical in-panel selected-player card over modals: readable ~10f text, narrow wrapped rows, source/world/status/current-grind summary, selected gains period, and shareable external links such as Wise Old Man gained, TempleOSRS, and official hiscores.
 
 ## Current consolidation direction
 
@@ -76,7 +83,9 @@ See `references/osrs-plugin-portfolio-cleanup.md` for the current user-approved 
 See `references/osrs-consolidation-implementation-notes.md` for session-tested implementation notes, pure-service module patterns, RuneLite API probes, and child/parent push verification snippets.
 See `references/runelite-side-panel-dimensions.md` for the RuneLite side-panel width budget, WhosGrindingPanel dimensions helper pattern, and Windows submodule handoff pitfall.
 See `references/whos-grinding-panel-social-detail-pattern.md` for the current Who's Grinding Panel source model, profile detail UX, gains-period config, and WOM/TempleOSRS integration direction.
+See `references/whos-grinding-wom-period-summary.md` for the Wise Old Man gained API pattern used to populate the selected-player `Grinding` section from the configured period.
 See `references/runelite-social-progress-detail-panels.md` for corrected social-source handling (Friends List/Friends Chat/Clan Chat), side-panel profile-detail UX, and WOM/TempleOSRS progress API notes.
+See `references/whos-grinding-detail-card-lessons.md` for latest user-reviewed sidebar detail-card rules: no heatmap, no separate Sources line when profile URLs are present, precise `Grinding` semantics, and compact vertical fields.
 
 High-level rules:
 

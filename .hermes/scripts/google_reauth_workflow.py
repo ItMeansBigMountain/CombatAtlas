@@ -205,6 +205,22 @@ def verify_youtube(profile: str) -> int:
         resp = yt.channels().list(part="id,snippet", mine=True).execute()
         items = resp.get("items", [])
         result["channels"] = [{"id": i.get("id"), "title": (i.get("snippet") or {}).get("title")} for i in items]
+        expected_id = meta.get("channel_id")
+        if str(expected_id or '').startswith('PENDING_') and items:
+            chosen = items[0]
+            channel_id = chosen.get('id')
+            channel_title = (chosen.get('snippet') or {}).get('title')
+            reg = load_registry()
+            reg.setdefault('youtube_profiles', {}).setdefault(profile, {}).update({
+                'channel_id': channel_id,
+                'channel_title': channel_title,
+            })
+            REGISTRY.write_text(json.dumps(reg, indent=2) + '\n', encoding='utf-8')
+            meta['channel_id'] = channel_id
+            meta['channel_title'] = channel_title
+            result['expected_channel_id'] = channel_id
+            result['expected_channel_title'] = channel_title
+            result['auto_registered_channel'] = True
         result["channel_match"] = any(i.get("id") == meta.get("channel_id") for i in items)
     except Exception as e:
         result["error"] = f"{type(e).__name__}: {str(e)[:500]}"

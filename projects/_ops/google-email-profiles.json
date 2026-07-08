@@ -86,6 +86,21 @@
         "youtube.readonly",
         "yt-analytics.readonly"
       ]
+    },
+    "fareed320": {
+      "email": "fareed320@gmail.com",
+      "channel_title": "fareed320 YouTube failover (pending verification)",
+      "channel_id": "PENDING_FAREED320_CHANNEL_ID",
+      "token_path": "/opt/data/secrets/youtube-fareed320/youtube_upload_token.json",
+      "scopes": [
+        "youtube.upload",
+        "youtube.force-ssl",
+        "youtube.readonly",
+        "yt-analytics.readonly"
+      ],
+      "uses": [
+        "additional YouTube upload failover before rate limits"
+      ]
     }
   }
 }

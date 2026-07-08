@@ -35,6 +35,12 @@ EXPECTED = {
         'title': 'Classical Echos',
         'token': '/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json',
     },
+    'fareed320': {
+        'channel_id': 'PENDING_FAREED320_CHANNEL_ID',
+        'title': 'fareed320 YouTube failover',
+        'token': '/opt/data/secrets/youtube-fareed320/youtube_upload_token.json',
+        'optional_until_verified': True,
+    },
 }
 
 REQUIRED_SNIPPETS = {
@@ -50,7 +56,8 @@ REQUIRED_SNIPPETS = {
         "UCcIpxiU2CLEsBdHcc7_lcyA",
         "/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json",
         "UCsxzQlusqwmMUdjMvKAJDfA",
-        "Classical Echos upload limit hit; failed over to Trapiistan/Sosai",
+        "Classical Echos upload limit hit; failed over to",
+        "youtube-fareed320",
     ],
     str(VIRAL_DAILY): [
         '/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json',
@@ -90,10 +97,14 @@ def check_youtube_profiles() -> list[str]:
     for profile, exp in EXPECTED.items():
         token = Path(exp['token'])
         if not token.is_file():
+            if exp.get('optional_until_verified'):
+                continue
             problems.append(f'{profile}: missing token file {token}')
             continue
         ok, data = run_json([sys.executable, str(REAUTH), 'verify', 'youtube', profile])
         if not ok:
+            if exp.get('optional_until_verified'):
+                continue
             problems.append(f'{profile}: verify failed: {data}')
             continue
         if not data.get('valid'):
