@@ -48,6 +48,9 @@ REQUIRED_SNIPPETS = {
     str(VIRAL_UPLOADER): [
         "/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json",
         "UCcIpxiU2CLEsBdHcc7_lcyA",
+        "/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json",
+        "UCsxzQlusqwmMUdjMvKAJDfA",
+        "Classical Echos upload limit hit; failed over to Trapiistan/Sosai",
     ],
     str(VIRAL_DAILY): [
         '/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json',

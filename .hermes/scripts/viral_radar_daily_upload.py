@@ -30,10 +30,10 @@ EXTERNAL_PROVIDER = ROOT / "scripts" / "external_clip_provider.py"
 
 def run(cmd: list[str]) -> subprocess.CompletedProcess[str]:
     env = os.environ.copy()
-    # Viral Radar influencer clips belong on Classical Echos. Newsletter/faceless
-    # videos use the Trapiistan/Sosai token in their separate pipeline.
-    # Viral Radar influencer clips must always upload to Classical Echos.
-    # Override inherited faceless/newsletter token values.
+    # Viral Radar influencer clips prefer Classical Echos. If that channel hits
+    # YouTube's account upload limit, the upload wrapper may fail over to the
+    # Trapiistan/Sosai token so rendered real creator clips can keep publishing.
+    # Override inherited faceless/newsletter token values for the primary lane.
     env["YOUTUBE_UPLOAD_TOKEN"] = "/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json"
     cookie_path = "/opt/data/secrets/youtube-cookies/youtube-cookies.txt"
     if Path(cookie_path).is_file():

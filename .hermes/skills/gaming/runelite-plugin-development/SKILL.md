@@ -62,12 +62,21 @@ Use this when working on the user's OSRS/RuneLite plugin portfolio: fixing plugi
 - Prefer compact controls: dropdowns, icon buttons, short labels, and fixed dimensions for top rows.
 - If a control is not visible in screenshots, treat it as a real UI bug and constrain width/height rather than explaining it away.
 - Add at-a-glance icons/symbols for player activity, then put detailed tracker information behind a click/details interaction.
+- For social activity panels, keep Friends List, Friends Chat, and Clan Chat distinct when the game exposes each as a real source; do not remove Clan Chat just because a plugin is no longer clan-only.
+- Member rows should be dense and readable in RuneLite's narrow sidebar: smaller names/text, minimal explanatory copy, and “currently grinding” summaries over status-only rows.
+- Clicked-player details should become an in-panel profile/detail card with gains tables/charts/links, not just a basic `JOptionPane` text dump.
+- Add configurable gains windows for player tracking views when relevant: Day, 7 days, 30 days, and 365 days.
+- For social tracker plugins, preserve all three user-visible social source lanes when applicable: Friends List, Friends Chat, and Clan Chat. Do not remove Clan Chat merely because the plugin is no longer clan-only.
+- A clicked social/profile row should become an in-panel selected-player detail/card view, not a basic `JOptionPane` modal. Show what the player is likely grinding using cached tracker data when available.
+- Use Wise Old Man/TempleOSRS-style gained tables and mini timelines as the model for progress detail UX: top gained skills/bosses, XP/KC/rank/EHP deltas, selected period, and source/last-updated labels.
 
 ## Current consolidation direction
 
 See `references/osrs-plugin-portfolio-cleanup.md` for the current user-approved consolidation map.
 See `references/osrs-consolidation-implementation-notes.md` for session-tested implementation notes, pure-service module patterns, RuneLite API probes, and child/parent push verification snippets.
 See `references/runelite-side-panel-dimensions.md` for the RuneLite side-panel width budget, WhosGrindingPanel dimensions helper pattern, and Windows submodule handoff pitfall.
+See `references/whos-grinding-panel-social-detail-pattern.md` for the current Who's Grinding Panel source model, profile detail UX, gains-period config, and WOM/TempleOSRS integration direction.
+See `references/runelite-social-progress-detail-panels.md` for corrected social-source handling (Friends List/Friends Chat/Clan Chat), side-panel profile-detail UX, and WOM/TempleOSRS progress API notes.
 
 High-level rules:
 
@@ -84,5 +93,8 @@ High-level rules:
 - Do not `git add` nested plugin worktrees directly into the HeRmEz parent unless intentionally updating submodule gitlinks or backup artifacts.
 - Do not leave child repo changes unpushed while updating only the parent repo.
 - Do not preserve obsolete names like `WhosGrindingClanPanel` in user-facing display text when the direction is **Who's Grinding Panel**; internal package paths may change later as a deliberate migration.
+- Do not interpret "remove broken clan source" as "remove Clan Chat forever." The durable product correction is: keep Clan Chat as a real source/panel, alongside Friends List and Friends Chat, but do not make the whole plugin clan-only. In current RuneLite, clan channel classes live under `net.runelite.api.clan.*`.
+- Do not use `JOptionPane` as the final profile detail interaction for social/progress plugins. It is acceptable only as a temporary scaffold; replace it with an in-panel detail view before calling the UI polished.
+- When adding external player tracking sources (Wise Old Man, TempleOSRS, Crystal Math Labs, official hiscores), avoid polling every visible member every tick. Use click-to-fetch, explicit refresh, caching, and bulk endpoints where available; add Plugin Hub-compliant warnings for any third-party data sent.
 - When the user reports `fatal: No url found for submodule path ... in .gitmodules`, do not repeat broad `git submodule update --init --recursive` advice. Either fix the missing `.gitmodules` mapping or give a path-scoped OSRS submodule update for the plugin being worked on.
 - Do not consolidate repos before first producing and reviewing a cleanup plan; these plugins represent different product lanes.

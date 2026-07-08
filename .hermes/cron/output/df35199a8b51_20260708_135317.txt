@@ -1,0 +1,74 @@
+Cronjob Response: Post-morning Agentic portfolio market scan
+(job_id: df35199a8b51)
+-------------
+
+**Decision**
+- No new trade placed.
+- Active autonomous policy is present for Agentic account `433711041 / 1041`, but the account is already ~71.8% deployed, broad market tone is soft, and today’s best movers are extended gap trades that need retests.
+- Best watch candidate: **BABA** on a controlled retest/hold, not a chase at the open.
+
+**Agentic Portfolio**
+- Account value: **$190.87**
+- Equity value: **$137.13**
+- Cash / buying power: **$53.74**
+- Deployment: **~71.8%** in equities, inside the policy target zone.
+- Options: **$0**, no nonzero option positions.
+- Open equity orders: checked `new`, `queued`, `confirmed`, `unconfirmed`, `partially_filled`; **none found**.
+- Recent equity orders since 2026-07-01: **none returned**.
+- Positions:
+  - **SOFI**: 4.47758 shares, avg $17.87, live ~$17.30, approx value $77.46, unrealized about **-$2.55**.
+  - **AMD**: 0.115059 shares, avg $521.47, live ~$516.04, approx value $59.38, unrealized about **-$0.62**.
+
+**Market Read**
+- **SPY**: $743.45, **-0.57%**; near/above SMA10 but soft intraday.
+- **QQQ**: $707.31, **-0.30%**; below short moving averages, tech still repairing.
+- **IWM**: $293.83, **-0.80%**; small caps weaker.
+- One-line read: **neutral-to-bearish after the open; SPY holding better than QQQ/IWM, but not a clean risk-on tape for chasing gaps.**
+
+**Top Candidates**
+- **BABA**: $107.58, **+9.61%**
+  - Technicals: strong gap above SMA10 ~$97.39 and SMA15 ~$101.13; ATR14 ~$2.69 / 2.5%.
+  - Catalyst: AI/cloud and instant-commerce optimism, narrowing-loss narrative, favorable legal/court headline.
+  - Setup quality: best liquid candidate, but entry is extended. Prefer retest/hold.
+- **PENG**: $72.89, **+16.24%**
+  - Technicals: above SMA10 ~$66.54 and SMA15 ~$65.63; ATR14 ~$7.57 / 10.4%, too hot for sandbox chase.
+  - Catalyst: Q3 FY2026 beat, record revenue, raised EPS outlook, AI infrastructure/memory demand.
+  - Setup quality: strong story, poor immediate risk control unless it pulls back.
+- **BZH**: $31.32, **+14.24%**
+  - Technicals: clean gap above SMA10 ~$27.90; ATR14 ~$1.11 / 3.6%.
+  - Catalyst: thin confirmation in this scan; next earnings shown Aug. 4.
+  - Setup quality: avoid chase without stronger news.
+- **KC**: $10.29, **+9.00%**
+  - Technicals: rebound above SMA10 ~$9.10 and SMA15 ~$9.55.
+  - Catalyst: possible China/cloud sympathy, but no strong direct catalyst confirmed.
+  - Setup quality: watch only.
+- **FCEL**: $22.49, **-13.37%**
+  - Technicals: below SMA10 ~$26.85; ATR14 ~21.4%, very unstable.
+  - Catalyst: dilution/financing concern.
+  - Setup quality: rejected for long entry.
+
+**Best Setup**
+- **No trade now.**
+- Best watch setup: **BABA retest long**
+  - Trigger: hold/reclaim **$105–106** after first-hour volatility, or constructive retest of gap support.
+  - Stop / invalidation: below **$101.50–102.00**, or a failed gap that closes back under the breakout/short MA cluster.
+  - Target 1: **$112**
+  - Target 2: **$118**
+  - Sizing: small starter only if triggered later; current portfolio is already within target deployment.
+- Alternate watch: **PENG** only if it pulls back/holds above ~$68–70; too volatile to chase at +16%.
+
+**Risk / Invalidation**
+- Main reason for no trade: market softness + already-deployed account + movers are extended.
+- Do not add exposure just to use cash; policy allows 70%–90% deployment, and current deployment already qualifies.
+- Stop trading consideration if broker state becomes uncertain, risk cannot be calculated, or account value falls below $10.
+
+**Tool Upgrades**
+- Add compact Daily Movers scanner: quote + 30-day OHLCV → SMA10/SMA20, ATR14, gap %, relative volume, spread, fractional tradability.
+- Improve Gmail source queries for routed TLDR / Robinhood Snacks labels; today’s broad Gmail search only found a Robinhood SOL staking email.
+- Add catalyst confidence scoring that joins Robinhood movers with web headlines and filters out thin-news gaps.
+- Add explicit small-account deployment gate before proposing new entries.
+
+**Journal**
+- Updated: `/opt/data/HeRmEz/projects/trading-journal/2026-07-08/post-morning-market-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Post-morning Agentic portfolio market scan").
