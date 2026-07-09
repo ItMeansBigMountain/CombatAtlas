@@ -12,4 +12,4 @@ Email cleanup: known junk OK; source emails delete post-upload; Grammarly person
 §
 YT automation: faceless/newsletters→Trapiistan/Sosai; Viral Radar creator clips→Classical Echos. No filler/placeholders; use real sources, credit sources, hashtags not in titles; report URLs/blockers/queues/next action.
 §
-YouTube automation priority: Viral Radar is higher priority than faceless YouTube/newsletter videos when scheduling, retrying queues, or allocating upload capacity.
+YT priority: Viral Radar > faceless/newsletter; drain all Viral Radar clip/upload queues using failovers; no filler/placeholders; credit sources; hashtags not in titles.

@@ -193,7 +193,7 @@
     {
       "id": "bce8ebabac36",
       "name": "Daily Viral Radar / Creator clip generation + upload",
-      "prompt": "Run the strict Daily Viral Radar creator clip procedure.\n\nPriority rule: Viral Radar is higher priority than faceless/newsletter YouTube. Replay Viral Radar upload queues first, generate/upload real creator clips before faceless work consumes attention or shared upload capacity, and keep uploading until the configured minimum is met or a real blocker is reached.\n\nWorking directory: /opt/data/HeRmEz/projects/viral-clip-radar.\n\nExecute /opt/data/scripts/viral_radar_daily_upload.py with FORCE_UPLOAD=1 and VIRAL_RADAR_UPLOAD_QUEUE_FIRST=1. Use the configured account routing: Classical Echos first, Trapiistan/Sosai on upload-limit failover, then fareed320 if active. Report uploaded URLs, queued failures, and blockers. Do not use filler/placeholder sources.",
+      "prompt": "Run the strict Daily Viral Radar creator clip procedure.\n\nPriority rule: Viral Radar is higher priority than faceless/newsletter YouTube. If there is a Viral Radar queue/backlog of videos to clip or queued clips to upload, the goal is to finish uploading all of them. Replay the upload queue first, then continue clipping/uploading real creator backlog items until the queue/backlog is empty or a real blocker/rate-limit is reached. Use all configured failovers as needed: Classical Echos first, Trapiistan/Sosai on upload-limit failover, then fareed320 if needed/active. Do not preserve capacity for faceless work while Viral Radar has queued real clips.\n\nWorking directory: /opt/data/HeRmEz/projects/viral-clip-radar.\n\nExecute /opt/data/scripts/viral_radar_daily_upload.py with FORCE_UPLOAD=1 and VIRAL_RADAR_UPLOAD_QUEUE_FIRST=1. Set VIRAL_RADAR_MIN_UPLOADS high enough to drain the current upload queue when queued clips exist. Report uploaded URLs, remaining queue count, queued failures, and blockers. Do not use filler/placeholder sources.",
       "skills": [
         "social-video-cron-growth-loop",
         "youtube-automation-with-tts"
@@ -719,5 +719,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-07-09T06:52:19.515708+00:00"
+  "updated_at": "2026-07-09T06:54:53.967645+00:00"
 }
