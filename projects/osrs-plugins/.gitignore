@@ -5,3 +5,9 @@
 !README.md
 !_templates/
 !_templates/*
+!completed/
+!completed/.gitkeep
+!pr-review-pending/
+!pr-review-pending/.gitkeep
+!in-progress/
+!in-progress/.gitkeep
