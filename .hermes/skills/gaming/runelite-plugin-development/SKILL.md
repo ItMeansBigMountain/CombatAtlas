@@ -37,7 +37,12 @@ Use this when working on the user's OSRS/RuneLite plugin portfolio: fixing plugi
    export PATH="$JAVA_HOME/bin:$PATH"
    ./gradlew clean test assemble --no-daemon --console=plain
    ```
-4. Commit and push the child repo first, verify remote/local match, then update the parent/submodule pointer in `/opt/data/HeRmEz` if needed.
+   For Windows/local launch of these plugin repos, use:
+   ```bat
+   .\gradlew.bat runClient --args="--developer-mode --debug"
+   ```
+   Do not recommend `gradlew.bat run --no-daemon` as the primary local launch command; the user confirmed `runClient --args="--developer-mode --debug"` is the working command.
+   4. Commit and push the child repo first, verify remote/local match, then update the parent/submodule pointer in `/opt/data/HeRmEz` if needed.
 5. After child pushes, update parent documentation/cleanup plans and push HeRmEz so a fresh clone plus submodule update reproduces the workspace.
 6. Give Windows pull instructions when reporting completion:
    ```bat

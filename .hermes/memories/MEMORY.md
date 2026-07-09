@@ -1,5 +1,3 @@
-Workspace /opt/data/HeRmEz is global control repo backed up/pushed by cron; active projects in /opt/data/HeRmEz/projects. Use env GITHUB_ACCESS_TOKEN for authenticated GitHub tasks. Hermes git /opt/data/hermes-agent; launcher /opt/data/.local/bin/hermes.
-§
 Daily HeRmEz backup cron: cfcea697da5c, 03:00, /opt/data/scripts/backup_hermez.sh, no_agent, backs up /opt/data into /opt/data/HeRmEz/.hermes and pushes origin/main.
 §
 Hermes Kanban is consolidated to the canonical default board for the user's main workspace. DB path is /opt/data/kanban.db; current-board file is /opt/data/kanban/current with value "default". Use the default board for active HeRmEz project work; old hermez and nous-kanban-demo boards were removed after backup.
@@ -15,3 +13,5 @@ User has five Google Workspace email profiles: personal-main (primary personal),
 User wants Agentic Robinhood auto-trading: monitor/manage cron, high deployment; Venice/redteam pentest.
 §
 Google Workspace policy: affan.fareed@gmail.com and fareed320@gmail.com have user-approved full read/write Workspace permissions, incl. Gmail read/modify/send.
+§
+WhosGrindingClanPanel Windows run command is `gradlew.bat run --no-daemon --console=plain` (or `./gradlew.bat run`); `runClient` is not the working task for this repo.

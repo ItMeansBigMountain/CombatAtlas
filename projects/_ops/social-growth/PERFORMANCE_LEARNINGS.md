@@ -1,6 +1,6 @@
 # Social Video Performance Learnings
 
-Last updated: `2026-07-09T06:49:41.265370+00:00`
+Last updated: `2026-07-09T06:56:53.857752+00:00`
 
 ## Metrics status
 
@@ -21,8 +21,8 @@ Last updated: `2026-07-09T06:49:41.265370+00:00`
 
 ## viral-clip-radar
 
-- Uploads logged: 93 total; 78 public/metric-eligible.
-- Median public views in latest snapshot: 23.5.
+- Uploads logged: 123 total; 108 public/metric-eligible.
+- Median public views in latest snapshot: 3.5.
 - Current winners to study:
   - 1334 views / 19 likes / 0 comments — Alex Hormozi: Whoever You Blame Is Who You Give Power To — https://youtu.be/8vdPqKeijgw — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
   - 1233 views / 10 likes / 0 comments — Alex Hormozi: If the Truth Isn't Compelling, Fix That — https://youtu.be/BZ03CWhpuSk — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json

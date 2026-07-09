@@ -68,25 +68,5 @@
       "already in use",
       "error"
     ]
-  },
-  {
-    "session_id": "proc_ff8206998343",
-    "command": "q=$(find /opt/data/HeRmEz/projects/viral-clip-radar/UPLOAD_QUEUE -maxdepth 1 -name '*.upload.json' 2>/dev/null | wc -l)\necho \"queued_upload_metadata=$q\"\nif [ \"$q\" -gt 0 ]; then\n  FORCE_UPLOAD=1 VIRAL_RADAR_UPLOAD_QUEUE_FIRST=1 VIRAL_RADAR_MIN_UPLOADS=\"$q\" VIRAL_RADAR_MAX_SOURCE_ATTEMPTS=\"$q\" python3 /opt/data/scripts/viral_radar_daily_upload.py\nelse\n  echo 'No Viral Radar upload queue items found.'\nfi",
-    "pid": 95855,
-    "pid_scope": "host",
-    "host_start_time": 426847754,
-    "cwd": "/opt/data/HeRmEz/projects/viral-clip-radar",
-    "started_at": 1783580113.924787,
-    "task_id": "default",
-    "session_key": "agent:main:discord:group:1499990220077137943:219376861866754049",
-    "watcher_platform": "",
-    "watcher_chat_id": "",
-    "watcher_user_id": "",
-    "watcher_user_name": "",
-    "watcher_thread_id": "",
-    "watcher_message_id": "",
-    "watcher_interval": 0,
-    "notify_on_complete": false,
-    "watch_patterns": []
   }
 ]
