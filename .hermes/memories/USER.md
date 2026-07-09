@@ -11,3 +11,5 @@ Google/YT: Workspace R/W incl affan; burner login OK; Classical Echos for downlo
 Email cleanup: known junk OK; source emails delete post-upload; Grammarly personal; Robinhood→trading; Zoom→class archive.
 §
 YT automation: faceless/newsletters→Trapiistan/Sosai; Viral Radar creator clips→Classical Echos. No filler/placeholders; use real sources, credit sources, hashtags not in titles; report URLs/blockers/queues/next action.
+§
+YouTube automation priority: Viral Radar is higher priority than faceless YouTube/newsletter videos when scheduling, retrying queues, or allocating upload capacity.
