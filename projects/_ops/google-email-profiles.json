@@ -89,8 +89,8 @@
     },
     "fareed320": {
       "email": "fareed320@gmail.com",
-      "channel_title": "fareed320 YouTube failover (pending verification)",
-      "channel_id": "PENDING_FAREED320_CHANNEL_ID",
+      "channel_title": "A F",
+      "channel_id": "UCX_nUA3Yr9VR884DNanyMYA",
       "token_path": "/opt/data/secrets/youtube-fareed320/youtube_upload_token.json",
       "scopes": [
         "youtube.upload",
