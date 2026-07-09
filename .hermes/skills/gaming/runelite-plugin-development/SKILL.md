@@ -37,6 +37,11 @@ Use this when working on the user's OSRS/RuneLite plugin portfolio: fixing plugi
    export PATH="$JAVA_HOME/bin:$PATH"
    ./gradlew clean test assemble --no-daemon --console=plain
    ```
+   For locally launching `WhosGrindingClanPanel` on Windows, the verified task is:
+   ```bat
+   .\gradlew.bat run
+   ```
+   Do not tell the user to use `runClient` for this repo unless the Gradle task list confirms it exists.
    For Windows/local launch of these plugin repos, use:
    ```bat
    .\gradlew.bat runClient --args="--developer-mode --debug"
@@ -68,8 +73,9 @@ Use this when working on the user's OSRS/RuneLite plugin portfolio: fixing plugi
 - If a control is not visible in screenshots, treat it as a real UI bug and constrain width/height rather than explaining it away.
 - Add at-a-glance icons/symbols for player activity, then put detailed tracker information behind a click/details interaction.
 - For social activity panels, keep Friends List, Friends Chat, and Clan Chat distinct when the game exposes each as a real source; do not remove Clan Chat just because a plugin is no longer clan-only.
-- Member rows should be dense and readable in RuneLite's narrow sidebar: smaller names/text, minimal explanatory copy, and “currently grinding” summaries over status-only rows.
-- Clicked-player details should become an in-panel profile/detail card with gains tables/charts/links, not just a basic `JOptionPane` text dump.
+- Member rows should be dense and readable in RuneLite's narrow sidebar: compact height, minimal padding, no trailing text/buttons, and “currently grinding” summaries over status-only rows. If a screenshot shows text/buttons running off-screen, treat it as urgent: remove optional row controls, reduce left/right padding before shrinking text, and force wrapping inside the measured sidebar width.
+- For Who's Grinding-style panels, prefer inline expandable/collapsible player rows: clicking a row expands the grinding card directly under that player, clicking again collapses it. Avoid a separate bottom details card when it wastes vertical space or makes the selected row/card visually disconnected.
+- Clicked-player details should become an in-panel detail/card view, not a basic `JOptionPane` text dump. If the user decides not to share profile-source details, remove WOM/Temple/hiscore URL rows and any “Data links” section from the UI; keep only the grinding summary.
 - Add configurable gains windows for player tracking views when relevant: Day, 7 days, 30 days, and 365 days.
 - In Who's Grinding Panel detail cards, treat `Grinding` as selected-period activity from tracker data (top WOM XP/KC/score gains for the configured period), not as a social-source/location summary.
 - Keep social source details out of the selected-player detail card when WOM/TempleOSRS/hiscore profile links already provide context; preserve source filtering/list-row context separately.

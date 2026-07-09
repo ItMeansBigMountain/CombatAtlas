@@ -1,6 +1,6 @@
 # Social Video Performance Learnings
 
-Last updated: `2026-07-09T06:56:53.857752+00:00`
+Last updated: `2026-07-09T14:00:21.838856+00:00`
 
 ## Metrics status
 
@@ -9,7 +9,7 @@ Last updated: `2026-07-09T06:56:53.857752+00:00`
 
 ## faceless-youtube-channel
 
-- Uploads logged: 370 total; 359 public/metric-eligible.
+- Uploads logged: 380 total; 369 public/metric-eligible.
 - Median public views in latest snapshot: 3.0.
 - Current winners to study:
   - 203 views / 1 likes / 0 comments — Print On Demand (POD) Management — https://youtu.be/K2nMayJr8Oo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
@@ -21,8 +21,8 @@ Last updated: `2026-07-09T06:56:53.857752+00:00`
 
 ## viral-clip-radar
 
-- Uploads logged: 123 total; 108 public/metric-eligible.
-- Median public views in latest snapshot: 3.5.
+- Uploads logged: 178 total; 163 public/metric-eligible.
+- Median public views in latest snapshot: 0.
 - Current winners to study:
   - 1334 views / 19 likes / 0 comments — Alex Hormozi: Whoever You Blame Is Who You Give Power To — https://youtu.be/8vdPqKeijgw — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
   - 1233 views / 10 likes / 0 comments — Alex Hormozi: If the Truth Isn't Compelling, Fix That — https://youtu.be/BZ03CWhpuSk — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json

@@ -32,14 +32,14 @@ The user reviewed screenshots and said the current list panel looked bad. Durabl
 
 ## Detail view target
 
-For a clicked member, build toward a detail view inspired by Wise Old Man's gained page:
+For a clicked member, build toward a detail view inspired by Wise Old Man's gained page, but keep the RuneLite panel compact:
 
-- Header: name, online/source/world badges, period selector/label.
-- Current grinding summary: top recent gained skills/bosses.
-- Compact table: metric, XP/KC gained, levels/rank deltas where available.
-- Mini chart/sparkline for selected metric/time window.
-- Links: Wise Old Man gained page, TempleOSRS, official hiscores.
-- Last-updated/source/caching status.
+- Prefer inline expandable/collapsible rows: click a player row to expand the grinding card immediately below that row; click again to collapse.
+- The primary visible detail should be `Grinding <period>`: top selected-period skills/bosses/activities from Wise Old Man gained data.
+- If the user does not want profile/source details shown, remove the separate selected-player card, profile URLs, source lines, and any `Data links` section entirely.
+- Avoid a `JOptionPane` modal and avoid a visually detached bottom card unless explicitly requested.
+- If links are kept in a future variant, keep them behind a compact details interaction rather than always occupying sidebar space.
+- Last-updated/source/caching status should be short and only shown when it helps diagnose loading.
 
 ## Configurable gains windows
 
