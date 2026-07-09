@@ -1,0 +1,18 @@
+{
+  "profile": "personal-secondary",
+  "email": "fareed320@gmail.com",
+  "state": "XOiv0zcwf2857UK72DlaSTZQ3Hg4aQ",
+  "code_verifier": "uEGNg0N3yh4O8A5lJVZCXHnpSaTbk2rLw9.E.RvbFhnz9LAs0gVB.SkdODHH1xy~0y63TfZGZi2a0coGEa8qW22Ows3ZT70wsfFsqtGD2hGrtlkEjazQ2JUwJzzMgDBu",
+  "redirect_uri": "http://localhost:1",
+  "scopes": [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.send",
+    "https://www.googleapis.com/auth/gmail.modify",
+    "https://www.googleapis.com/auth/gmail.settings.basic",
+    "https://www.googleapis.com/auth/calendar",
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/contacts",
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/documents"
+  ]
+}

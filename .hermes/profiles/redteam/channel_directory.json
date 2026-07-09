@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-09T02:57:58.162730",
+  "updated_at": "2026-07-09T06:47:58.359296",
   "platforms": {
     "discord": [
       {
@@ -94,7 +94,7 @@
       },
       {
         "id": "1524312655894937623",
-        "name": "TRAPISTAN / #security-redteam",
+        "name": "TRAPISTAN / #redteam",
         "type": "group",
         "thread_id": null
       }
