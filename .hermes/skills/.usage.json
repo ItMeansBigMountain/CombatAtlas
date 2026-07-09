@@ -186,13 +186,13 @@
     "created_at": "2026-05-31T17:07:23.940211+00:00",
     "created_by": null,
     "last_patched_at": "2026-07-04T06:20:06.140452+00:00",
-    "last_used_at": "2026-07-09T13:50:19.556963+00:00",
-    "last_viewed_at": "2026-07-06T00:24:26.083971+00:00",
+    "last_used_at": "2026-07-09T14:50:34.508366+00:00",
+    "last_viewed_at": "2026-07-09T14:50:34.506355+00:00",
     "patch_count": 123,
     "pinned": false,
     "state": "active",
-    "use_count": 178,
-    "view_count": 99
+    "use_count": 181,
+    "view_count": 102
   },
   "hermes-agent": {
     "archived_at": null,
@@ -445,10 +445,10 @@
     "archived_at": null,
     "created_at": "2026-07-06T00:38:17.566913+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-07-09T07:15:27.135288+00:00",
+    "last_patched_at": "2026-07-09T14:51:39.734371+00:00",
     "last_used_at": "2026-07-08T20:40:20.707857+00:00",
     "last_viewed_at": "2026-07-08T20:40:20.706294+00:00",
-    "patch_count": 27,
+    "patch_count": 30,
     "pinned": false,
     "state": "active",
     "use_count": 7,
@@ -485,13 +485,13 @@
     "created_at": "2026-06-07T00:28:30.328615+00:00",
     "created_by": null,
     "last_patched_at": "2026-07-09T07:32:26.118699+00:00",
-    "last_used_at": "2026-07-09T13:59:19.585474+00:00",
-    "last_viewed_at": "2026-07-09T07:41:12.110779+00:00",
+    "last_used_at": "2026-07-09T14:39:18.441357+00:00",
+    "last_viewed_at": "2026-07-09T14:39:18.439153+00:00",
     "patch_count": 87,
     "pinned": false,
     "state": "active",
-    "use_count": 145,
-    "view_count": 58
+    "use_count": 146,
+    "view_count": 59
   },
   "software-development/osrs-plugins": {
     "archived_at": null,

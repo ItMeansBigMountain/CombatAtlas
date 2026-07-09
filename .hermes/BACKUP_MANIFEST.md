@@ -1,6 +1,6 @@
 # Hermes home backup manifest
 
-Last backup: 2026-07-09T14:13:25Z
+Last backup: 2026-07-09T14:51:43Z
 Source: /opt/data
 Destination: /opt/data/HeRmEz/.hermes
 

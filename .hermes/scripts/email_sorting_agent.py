@@ -32,6 +32,7 @@ TOKEN_ROOT = Path("/opt/data/google_profiles")
 PROFILES = [
     ("personal-main", "affan.fareed@gmail.com"),
     ("personal-secondary", "fareed320@gmail.com"),
+    ("trapiistan", "trapiistan@gmail.com"),
     ("classicalechos", "classicalechos@gmail.com"),
     ("burner", "laflametoast@gmail.com"),
 ]
