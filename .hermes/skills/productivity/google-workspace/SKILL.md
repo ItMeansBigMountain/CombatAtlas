@@ -34,6 +34,7 @@ Gmail, Calendar, Drive, Contacts, Sheets, and Docs — through Hermes-managed OA
 - `references/gmail-search-syntax.md` — Gmail search operators (is:unread, from:, newer_than:, etc.)
 - `references/gmail-inbox-audit-and-cleanup.md` — multi-profile Gmail Inbox audit/cleanup pattern, exact Inbox counting via `labelIds=['INBOX']`, approval-first cleanup workflow, and current user email triage policy.
 - `references/gmail-email-sorting-agent-rules.md` — Hermes-level deterministic Gmail sorting rules and labels, including the Robinhood account-vs-Robinhood Snacks newsletter split.
+- `references/email-sorting-full-scan-and-profile-expansion-2026-07.md` — Full-scan/profile-expansion workflow for adding all readable Google email accounts to the deterministic sorter, excluding stale aliases and revoked tokens.
 - `references/gmail-cron-auth-block-resilience.md` — Pattern for multi-profile Gmail cron jobs: catch per-profile auth/scope failures, continue healthy profiles, report structured `blocked` statuses, and avoid misleading traceback-only cron errors.
 - `references/junk-cleanup-newsletter-deletion-boundary.md` — user-specific boundary: known junk/spam cleanup is pre-approved, but newsletter/source emails are deleted only after use/verified YouTube upload.
 - `references/gmail-personal-cleanup-routing-2026-06-29.md` — personal Gmail full-permission policy, confirmed junk senders, Robinhood/Zoom/Grammarly routing rules, and duplicate-newsletter handling across `affan.fareed@gmail.com` and `fareed320@gmail.com`.

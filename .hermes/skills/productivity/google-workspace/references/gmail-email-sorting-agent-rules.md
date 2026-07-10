@@ -33,4 +33,12 @@ Local script path used in this environment:
 - `/opt/data/scripts/email_sorting_agent.py`
 - wrapper cron script: `/opt/data/scripts/email_sorting_agent_apply.sh`
 
-If maintaining this workflow, keep rules ordered from most-specific to broadest. Newsletter/source rules should run before broader finance/account rules.
+Default readable sorting profiles currently expected in the script:
+
+- `personal-main` / `affan.fareed@gmail.com`
+- `personal-secondary` / `fareed320@gmail.com`
+- `trapiistan` / `trapiistan@gmail.com`
+- `classicalechos` / `classicalechos@gmail.com`
+- `burner` / `laflametoast@gmail.com`
+
+If maintaining this workflow, keep rules ordered from most-specific to broadest. Newsletter/source rules should run before broader finance/account rules. For adding newly readable accounts or running a full scan, use `references/email-sorting-full-scan-and-profile-expansion-2026-07.md`; do not add stale aliases like `fareed320` or revoked-token profiles like `hermes-agent` until reauth and live Gmail identity verification pass.

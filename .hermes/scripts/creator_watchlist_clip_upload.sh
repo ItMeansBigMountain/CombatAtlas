@@ -12,7 +12,8 @@ if [[ -f /opt/data/secrets/youtube-cookies/youtube-cookies.txt ]]; then
 fi
 
 # Discovery: find newly available videos from the configured creator watchlist.
-DISCOVERY_OUTPUT="$(python3 scripts/poll_watchlist.py --limit 15 --quiet-if-empty)"
+PYTHON_BIN="${PYTHON_BIN:-/opt/hermes/.venv/bin/python3}"
+DISCOVERY_OUTPUT="$($PYTHON_BIN scripts/poll_watchlist.py --limit 15 --quiet-if-empty)"
 
 if [[ -z "${DISCOVERY_OUTPUT//[[:space:]]/}" ]]; then
   # Stay silent when there is nothing new; no_agent cron jobs deliver non-empty stdout.
@@ -50,7 +51,7 @@ for PLAN in "${PLANS[@]}"; do
   else
     unset VIRAL_RADAR_PRIORITY_PLANS
   fi
-  if ! FORCE_UPLOAD=1 python3 /opt/data/scripts/viral_radar_daily_upload.py; then
+  if ! FORCE_UPLOAD=1 $PYTHON_BIN /opt/data/scripts/viral_radar_daily_upload.py; then
     FAILURES=$((FAILURES + 1))
   fi
 done

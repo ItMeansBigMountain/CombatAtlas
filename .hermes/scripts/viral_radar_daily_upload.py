@@ -322,9 +322,20 @@ def make_public_packaging(creator: str, source_title: str, window_text: str, idx
         templates = ["The Body Hack Nobody Wants to Hear", "Why Your Fitness Plan Feels Rigged", "The Physique Lie That Keeps You Stuck", "This Is Why Discipline Gets Ugly"]
     else:
         templates = ["The Uncomfortable Truth Hiding Here", "This Sounds Wrong Until It Clicks", "The Part They Say Quietly", "Why This Hits Harder Than Expected"]
-    public_title = templates[(idx - 1) % len(templates)]
-    public_subtitle = " / ".join(w.title() for w in words[:3]) if words else re.sub(r"[^A-Za-z0-9 ,'-]", "", source_title).strip()[:54] or f"Moment {idx}"
-    return {"hook": f"{public_title} — {public_subtitle}"[:118], "public_title": public_title[:90], "public_subtitle": public_subtitle[:90]}
+    angle = templates[(idx - 1) % len(templates)]
+    clean_source = re.sub(r"[^A-Za-z0-9 ,'-]", " ", source_title).strip()
+    clean_source = re.sub(r"\s+", " ", clean_source)
+    if words:
+        public_subtitle = " / ".join(w.title() for w in words[:3])
+        specific = " ".join(w.title() for w in words[:4])
+    else:
+        public_subtitle = clean_source[:54] or f"Moment {idx}"
+        specific = clean_source[:42] or f"Moment {idx}"
+    creator_prefix = re.sub(r"[^A-Za-z0-9 ]", " ", creator).strip().split()
+    creator_prefix = " ".join(creator_prefix[:2])
+    base_title = f"{creator_prefix}: {specific}" if creator_prefix else specific
+    public_title = f"{base_title} — {angle}"
+    return {"hook": public_title[:118], "public_title": public_title[:90], "public_subtitle": public_subtitle[:90]}
 
 
 def build_relevant_hashtags(*texts: str, max_topic_tags: int = 5) -> list[str]:
@@ -694,7 +705,9 @@ def upload_rendered(rendered: list[dict], manifest: dict, selected_clip: dict | 
         # planning labels like "the part people will replay".
         title = re.sub(r"\s*#\w+", "", title_seed).replace("the part people will replay", "").strip()[:95]
         if not title:
-            title = "The Uncomfortable Truth Hiding Here"
+            creator_name = str(manifest.get('creator') or 'Creator').strip()
+            source_name = re.sub(r"[^A-Za-z0-9 ,'-]", " ", str(manifest.get('source_title') or output.stem)).strip()
+            title = f"{creator_name}: {source_name}"[:95]
         context_line = public_subtitle or context[:600]
         source_url = str(manifest.get('source_url') or '').strip()
         description_parts = [title]

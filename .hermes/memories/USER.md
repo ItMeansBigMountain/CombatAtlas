@@ -1,6 +1,6 @@
 Discord prefs: #general=ops/global; #coding=dev/projects; #personal=life+gaming; #trading=markets; #business=monetization+Jared tutoring+school/career; #security-redteam=security. Natural, no auto threads; confirm before cron reroutes.
 §
-OSRS/RuneLite: consolidate overlaps; standalone plugins/no cross-plugin deps; panels fit default width/start empty/no fake players; remove ironman/GIM ideas.
+OSRS/RuneLite prefs: standalone/no cross-plugin deps; no ironman/GIM; compact readable sidebar: no cutoff/trailing/blank space, tiny right pad, inline expandable rows, grinding-only; show all positive gains line-by-line w/icons, no redundant suffixes; editable search row autofilled w/logged-in name; rescan visibly refreshes data; visually verify screenshots.
 §
 Client websites: user prefers live Git auto-deploy first; Stripe/payments and custom domains afterward.
 §
@@ -10,6 +10,4 @@ Google/YT: Workspace R/W incl affan; burner login OK; Classical Echos for downlo
 §
 Email cleanup: known junk OK; source emails delete post-upload; Grammarly personal; Robinhood→trading; Zoom→class archive.
 §
-YT automation: faceless/newsletters→Trapiistan/Sosai; Viral Radar creator clips→Classical Echos. No filler/placeholders; use real sources, credit sources, hashtags not in titles; report URLs/blockers/queues/next action.
-§
-YT ops: Viral Radar > faceless/newsletter; drain VR clip/upload queues w/failovers; no filler/placeholders; credit sources; hashtags not in titles; keep email sorting independent of faceless jobs.
+YT automation: faceless/newsletters→Trapiistan/Sosai; Viral Radar→Classical Echos. Viral Radar: real sources only, no filler; credit sources; no title hashtags; titles unique+true to clip; report URLs/blockers/queues/next action.
