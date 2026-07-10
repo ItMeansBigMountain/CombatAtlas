@@ -1,6 +1,6 @@
 Discord prefs: #general=ops/global; #coding=dev/projects; #personal=life+gaming; #trading=markets; #business=monetization+Jared tutoring+school/career; #security-redteam=security. Natural, no auto threads; confirm before cron reroutes.
 §
-OSRS/RuneLite prefs: standalone/no cross-plugin deps; no ironman/GIM; compact readable sidebar: no cutoff/trailing/blank space, tiny right pad, inline expandable rows, grinding-only; show all positive gains line-by-line w/icons, no redundant suffixes; editable search row autofilled w/logged-in name; rescan visibly refreshes data; visually verify screenshots.
+OSRS/RuneLite prefs: standalone/no cross-plugin deps; no ironman/GIM; compact sidebar: no cutoff/trailing space, tiny right pad, inline expandable rows. Who's Grinding: grinding-only; all positive gains w/icons, no redundant suffixes; autofilled search; rescan visibly refreshes; auto-track/fallback seamlessly, never ask players to manually update WOM; verify screenshots.
 §
 Client websites: user prefers live Git auto-deploy first; Stripe/payments and custom domains afterward.
 §

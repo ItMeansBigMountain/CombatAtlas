@@ -72,11 +72,63 @@ Do **not** casually swap this path to the JSON endpoint in a final/passive clean
 
 The baseline/lookback period is selected in plugin settings (`GainsPeriod.days()`: Day/7/30/365). For period gains, save a current local snapshot and compare it only against a local baseline snapshot at or before the configured lookback. Do not compare against a too-recent baseline and present it as a full 7/30/365-day gain; show the baseline-needed message instead.
 
+Fallback lessons from live checks: TempleOSRS (`player_gains.php`) and Crystal Math Labs (`api.php?type=track`) may return “user not found” for names that official hiscores and WOM can read (tested with `tzaku`/`z7yn`). Keep them as optional middle fallbacks only after live validation. Official hiscores is the reliable last-resort source for saving a local baseline/current total, but it cannot produce immediate historical gains without an old-enough local snapshot.
+
 ## Search/rescan UX lessons
 
 - The logged-in profile row should be an editable search field, autofilled with the current RuneLite username but rewritable in-place; pressing Enter/search loads that player's grinding card even if they are not visible in social sources.
 - Rescan must feel like it refreshes real data, not merely updates a status message. Clear stale gained-summary cache on refresh and reload WOM/current fallback data for the selected/search player.
 - If the user says they cannot find players they previously could find, first restore the known-good WOM flow before extending fallback parsing.
+
+## Dual-source tracking model
+
+User goal for this plugin: players should find friends, clan chat, and friends-chat members and see what they have been doing over the selected day/week/month/year period without manual tracker setup. Treat social discovery and gain-data lookup as separate concerns.
+
+Display WOM and official hiscores as two separate sections when requested, not as a hidden replacement pipeline:
+
+```text
+WOM gains:
+...
+Official Hiscores tracked:
+...
+```
+
+Official hiscores should be tracked automatically for every inspected player that official hiscores can find. Compute official gains by saving local snapshots and diffing current totals against a baseline. For the configured period, prefer a strict old-enough baseline; if none exists but an older local snapshot exists, show best-available gains labeled clearly as partial (e.g. `Partial since first local snapshot`). If no prior snapshot exists, save the baseline and show a clear automatic-tracking message, not instructions for the user to go do something manually.
+
+Do not tell the user/player to manually open WOM as the main recovery path. If WOM `POST /players/{username}` is blocked or WOM lacks gains, continue seamlessly with fallback tracking and explain only what the plugin is doing automatically.
+
+When comparing tracker APIs and official hiscores, expose a config choice rather than assuming a single merged display is correct. Current preferred options are:
+
+```text
+Tracker APIs (WOM)
+Official Hiscores delta
+Both (development)
+```
+
+Use `Both (development)` for side-by-side debugging only; default user-facing behavior should favor tracker APIs unless the user selects official deltas. Include the selected data source in cache keys so switching config does not show stale summaries.
+
+Rescan must clear the gained-summary cache before rescanning social sources. Otherwise tiny post-baseline official-hiscores changes (e.g. a few XP after relogging) can appear missing because the UI is rendering cached data rather than refetching official hiscores.
+
+Official hiscores deltas are not immediate session XP trackers. They only show gains after Jagex public hiscores reflects the new total, the plugin has an earlier local baseline, and a fresh refetch occurs. For small gains, mention hiscores update latency as a likely cause before changing parsing logic.
+
+- When the user asks for a console command “only errors”, return just the command, no explanation; for this Gradle/RuneLite repo use `./gradlew.bat run --no-daemon --console=plain --quiet 1>NUL` on Windows to suppress stdout while leaving stderr visible.
+
+## WOM not-found / zero-gains handling
+
+WOM has multiple “no useful stats” states that must not be collapsed into the same generic message:
+
+1. `GET /players/{name}` or `/gained` returns 404: player is not tracked/found on WOM.
+2. `/gained?period=day|week|month|year` returns 200 with `startsAt:null`, `endsAt:null`, and all gains zero: player exists, but WOM has no usable gain snapshots for that period.
+3. `/gained` returns 200 with `startsAt == endsAt` and all gains zero: WOM has only one relevant snapshot or no change across snapshots.
+4. `/gained` returns positive gains: render the gains normally.
+
+Docs say `POST /v2/players/{username}` should “track or update” a player and return `PlayerDetails`, so the intended sequence is GET gains → POST update if missing/stale → retry GET gains. In practice, live probes from non-browser/server contexts returned Cloudflare 403 for POST while GET still worked. Do not describe this as a permanent WOM limitation; implement it as a handled runtime outcome. Important UX correction from the user: do **not** tell players to manually open/update WOM as the main recovery path. Keep the experience automatic and seamless: continue to official hiscores tracking, save a local baseline, label partial data when necessary, and only explain what the plugin is doing automatically.
+
+For known examples from the session: `tzaku` and `z7yn` existed on WOM but had no positive day gains; `tzaku` week gains had null start/end and zeros, while `z7yn` week had equal start/end and zeros. These are not player-not-found cases.
+
+## Git merge/pull recovery lesson
+
+When the user pulls plugin changes on Windows and creates a conflict/merge commit, do not assume their conflict resolution preserved the intended behavior. Pull/fetch their pushed merge commit, search for conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) and stale UI text/suffixes, inspect the touched Java files and docs, then run `./gradlew clean test assemble --no-daemon --console=plain` before pushing cleanup. Also update the parent HeRmEz submodule pointer after the plugin repo is corrected.
 
 ## Tests to add
 
