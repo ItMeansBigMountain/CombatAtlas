@@ -33,7 +33,9 @@ Local script path used in this environment:
 - `/opt/data/scripts/email_sorting_agent.py`
 - wrapper cron script: `/opt/data/scripts/email_sorting_agent_apply.sh`
 
-Default readable sorting profiles currently expected in the script:
+The sorter should cover all readable approved Workspace Gmail profiles, currently including `personal-main`, `personal-secondary`, `trapiistan`, `classicalechos`, and `burner`. Do not include a locally present profile such as `hermes-agent` unless a live Gmail verification succeeds; report `invalid_grant`/blocked tokens as needing reauth.
+
+If maintaining this workflow, keep rules ordered from most-specific to broadest. Newsletter/source rules should run before broader finance/account rules.
 
 - `personal-main` / `affan.fareed@gmail.com`
 - `personal-secondary` / `fareed320@gmail.com`
