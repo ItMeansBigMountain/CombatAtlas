@@ -74,10 +74,13 @@ The baseline/lookback period is selected in plugin settings (`GainsPeriod.days()
 
 Fallback lessons from live checks: TempleOSRS (`player_gains.php`) and Crystal Math Labs (`api.php?type=track`) may return “user not found” for names that official hiscores and WOM can read (tested with `tzaku`/`z7yn`). Keep them as optional middle fallbacks only after live validation. Official hiscores is the reliable last-resort source for saving a local baseline/current total, but it cannot produce immediate historical gains without an old-enough local snapshot.
 
-## Search/rescan UX lessons
+## Search/rescan and panel-control UX lessons
 
 - The logged-in profile row should be an editable search field, autofilled with the current RuneLite username but rewritable in-place; pressing Enter/search loads that player's grinding card even if they are not visible in social sources.
+- Put the manual refresh/rescan affordance next to the current-user row rather than beside the source dropdown, but keep it in its own small button box with a visible gap from the current-user card. The user visually associates refresh with the current profile/header area while still expecting it not to be visually merged into the same player row.
 - Rescan must feel like it refreshes real data, not merely updates a status message. Clear stale gained-summary cache on refresh and reload WOM/current fallback data for the selected/search player.
+- User-facing, frequently-toggled filters belong in the panel when they affect immediate list/card behavior. For Who's Grinding, move `Gains period` / lookback and `Show offline friends` out of visible RuneLite settings into compact panel controls: source dropdown on one row, lookback dropdown underneath, and a same-height checkbox button beside it. Keep the underlying config keys persisted but mark them hidden in the settings interface.
+- When panel controls write RuneLite config, inject `ConfigManager`, use `setConfiguration(CONFIG_GROUP, key, value)`, clear gain-summary cache when period/data display changes, and rescan social sources when offline-friend visibility changes. When toggling `Show offline friends` off, immediately prune cached offline friend rows before/without a full rescan; otherwise previously loaded offline friends remain visible even though new scans omit them.
 - If the user says they cannot find players they previously could find, first restore the known-good WOM flow before extending fallback parsing.
 
 ## Dual-source tracking model
@@ -109,7 +112,9 @@ Use `Both (development)` for side-by-side debugging only; default user-facing be
 
 Rescan must clear the gained-summary cache before rescanning social sources. Otherwise tiny post-baseline official-hiscores changes (e.g. a few XP after relogging) can appear missing because the UI is rendering cached data rather than refetching official hiscores.
 
-Official hiscores deltas are not immediate session XP trackers. They only show gains after Jagex public hiscores reflects the new total, the plugin has an earlier local baseline, and a fresh refetch occurs. For small gains, mention hiscores update latency as a likely cause before changing parsing logic.
+Official hiscores fallback deltas are not WOM-style weekly/monthly/yearly period trackers. They show the difference between the current plugin scan and the last saved plugin scan (after Jagex public hiscores reflects the new total). The UI should label this clearly as a fallback/local-scan delta and visually separate it from tracker APIs with a divider line. Mention fallback candidates in the card/source note: TempleOSRS, Crystal Math Labs, and official OSRS hiscores. For small gains, mention hiscores update latency as a likely cause before changing parsing logic.
+
+Official `index_lite.ws` row order must stay aligned with RuneLite `net.runelite.client.hiscore.HiscoreSkill` for the pinned client version. In RuneLite 1.12.32 / current OSRS hiscores, the skill block includes `Sailing` after Construction; activities do **not** include the old Deadman/BH Legacy rows; and boss rows include newer entries such as Brutus, Maggot King, Shellbane Gryphon, Royal Titans, Yama, and Zulrah at the current final row. If rows are stale, later rows shift and create false deltas like fake Araxxor/Lunar Chests KC while hiding real Fishing XP. Version local snapshot serialization when row order changes and ignore old snapshots so users get a clean new baseline rather than comparing mismatched schemas.
 
 - When the user asks for a console command “only errors”, return just the command, no explanation; for this Gradle/RuneLite repo use `./gradlew.bat run --no-daemon --console=plain --quiet 1>NUL` on Windows to suppress stdout while leaving stderr visible.
 

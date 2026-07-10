@@ -1,0 +1,123 @@
+Cronjob Response: Creator discovery feeder for Viral Radar
+(job_id: 6355d735bb4a)
+-------------
+
+Strict Viral Radar run completed with blockers.
+
+- Metrics preflight: ok
+  - OAuth metrics: true
+  - Stats fetched: 329
+  - Viral Radar median public views: 1
+  - Current winners still Alex Hormozi / Luke Belmar / GG33 style clips.
+
+- Command status:
+  - First run started strict discovered-only processing.
+  - It timed out at 600s while processing TOGI longform.
+  - I reran the same strict command in background.
+  - Rerun exited cleanly with no new output, likely because discovered items were already marked seen.
+
+Discovered creator videos this run:
+
+- Chris Williamson — Why Gen Z Can’t Get Jobs
+  - https://www.youtube.com/shorts/svRXt-c532s
+- Chris Williamson — The Stupid Reason More Income Won’t Fix Your Debt - Caleb Hammer
+  - https://www.youtube.com/watch?v=110TkoGDyC8
+- GG33 — Obscure secret behind Valentine's day
+  - https://www.youtube.com/shorts/-v2zwRJ8MUg
+- GG33 — The issue with Monkeys
+  - https://www.youtube.com/shorts/h1T-X9Tx7WA
+- GG33 — People born on these dates have ADHD
+  - https://www.youtube.com/shorts/ewsUt1654Q8
+- GG33 — 9's should avoid the 28 energy
+  - https://www.youtube.com/shorts/b3kJaqNt0xo
+- Alex Hormozi — Every Business Has a Shape
+  - https://www.youtube.com/shorts/IqLGXnGTYyA
+- Alex Hormozi — Hard Times Don't Build You, They Reveal You
+  - https://www.youtube.com/shorts/wCfgLWRZ5qA
+- Hamza Unfiltered — She's not into you
+  - https://www.youtube.com/watch?v=TBcW-QqKVZs
+- TOGI — Bro could not believe his ears
+  - https://www.youtube.com/shorts/-NfC0rFM8LY
+- TOGI — Batman we needed
+  - https://www.youtube.com/shorts/kD5VEIpxACc
+- TOGI — WHAT
+  - https://www.youtube.com/shorts/3kcNpNd7bUc
+- TOGI — Togi on How to Be Successful
+  - https://www.youtube.com/watch?v=2Z2UT5aX0cw
+- More TOGI Shorts were discovered, but the run hit timeout before full processing.
+
+Uploaded public Shorts:
+
+- Chris Williamson — Why Gen Z Can’t Get Jobs
+  - uploaded_count: 1 / 10
+  - https://youtu.be/6L3Rri4t7g0
+  - video_id: 6L3Rri4t7g0
+
+- GG33 discovered Shorts
+  - uploaded_count: 4 total, each source only got 1 / 10
+  - https://youtu.be/lPbYRClhRh8
+  - https://youtu.be/5WyOrlcaQzs
+  - https://youtu.be/RMinBeINiQA
+  - https://youtu.be/zjWlVAkw1h0
+
+- Alex Hormozi discovered Shorts
+  - uploaded_count: 2 total, each source only got 1 / 10
+  - https://youtu.be/dh0OT5j4akI
+  - https://youtu.be/vE4RnSwHnYw
+
+- TOGI Shorts
+  - Bro could not believe his ears: 1 / 10
+    - https://youtu.be/ebqlOlpgqBg
+  - Batman we needed: 1 / 10
+    - https://youtu.be/Toc48V80Ujs
+  - WHAT: 1 / 10
+    - https://youtu.be/ZU1R-uCT2-w
+
+- TOGI — Togi on How to Be Successful
+  - uploaded_count: 9 / 10 before timeout
+  - https://youtu.be/LjXKgk-hbzk
+  - https://youtu.be/QrQL1nVK3gw
+  - https://youtu.be/ypyN3CsutJg
+  - https://youtu.be/3a4AGmLDzLo
+  - https://youtu.be/vDy3Vka4q3U
+  - https://youtu.be/dvsZJssuVYM
+  - https://youtu.be/RLmNHRuQ-JU
+  - https://youtu.be/sSOR9d9Ip1E
+  - https://youtu.be/vE8W7Ft2ViI
+
+Totals:
+
+- Uploaded this run window: 19 public Shorts.
+- Upload account: Classical Echos.
+- Queue count:
+  - UPLOAD_QUEUE: 4
+  - UPLOAD_QUEUE_HOLD: 1
+
+Blockers:
+
+- Every processed source failed to reach the strict 10 minimum except none.
+- Longform source acquisition blocked for:
+  - Chris Williamson — 110TkoGDyC8
+  - Hamza Unfiltered — TBcW-QqKVZs
+- Source error pattern:
+  - yt-dlp skipped by config.
+  - pytubefix returned HTTP 403.
+  - pytube returned HTTP 400.
+  - Next needed: cookies, residential proxy, local MP4, official mirror, or pytubefix OAuth/device login.
+- Watchlist skips:
+  - TateSpeech / Andrew Tate: playlist not found.
+  - Capital Club / Luke Belmar: playlist not found.
+  - Luke Belmar: no recent long-form found.
+  - TOGI long-form discovery said none recent, though TOGI plan items existed from Shorts/watchlist.
+
+Failed to reach 10:
+
+- Chris Williamson — Why Gen Z Can’t Get Jobs: 1 / 10.
+- Chris Williamson — More Income Won’t Fix Your Debt: 0 / 10, blocked_source.
+- All GG33 Shorts processed: 1 / 10 each.
+- All Alex Hormozi Shorts processed: 1 / 10 each.
+- Hamza Unfiltered — She’s not into you: 0 / 10, blocked_source.
+- TOGI Shorts processed: 1 / 10 each.
+- TOGI — Togi on How to Be Successful: 9 / 10 before command timeout.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Creator discovery feeder for Viral Radar").

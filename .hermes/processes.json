@@ -68,25 +68,5 @@
       "already in use",
       "error"
     ]
-  },
-  {
-    "session_id": "proc_62ab6b1323d9",
-    "command": "VIRAL_RADAR_PRIORITY_PLANS='/opt/data/HeRmEz/projects/viral-clip-radar/CLIP_PLANS/2026-07-07-togi-togi-on-how-to-be-successful-2Z2UT5aX0cw' FORCE_UPLOAD=1 VIRAL_RADAR_STRICT_DISCOVERED_ONLY=1 VIRAL_RADAR_UPLOAD_QUEUE_FIRST=0 VIRAL_RADAR_MIN_UPLOADS=10 VIRAL_RADAR_MAX_SOURCE_ATTEMPTS=20 VIRAL_RADAR_DAILY_UPLOAD_CAP=100 /opt/hermes/.venv/bin/python3 /opt/data/scripts/viral_radar_daily_upload.py",
-    "pid": 125972,
-    "pid_scope": "host",
-    "host_start_time": 438939303,
-    "cwd": "/opt/data/HeRmEz/projects/viral-clip-radar",
-    "started_at": 1783701029.4084878,
-    "task_id": "default",
-    "session_key": "agent:main:discord:group:1499990220077137943:219376861866754049",
-    "watcher_platform": "",
-    "watcher_chat_id": "",
-    "watcher_user_id": "",
-    "watcher_user_name": "",
-    "watcher_thread_id": "",
-    "watcher_message_id": "",
-    "watcher_interval": 0,
-    "notify_on_complete": false,
-    "watch_patterns": []
   }
 ]

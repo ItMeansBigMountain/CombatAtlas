@@ -104,6 +104,14 @@ def clip_key(manifest_path: Path, clip: dict) -> str:
     return f"{manifest_path}:{Path(clip.get('captioned_file') or clip.get('file') or clip.get('hook','clip')).stem}"
 
 
+def normalized_upload_key(value: str) -> str:
+    stem = Path(str(value or "")).stem.lower()
+    for suffix in ("-captioned-daily", "-captioned-cron", "-captioned", "-daily", "-cron"):
+        if stem.endswith(suffix):
+            stem = stem[: -len(suffix)]
+    return stem.strip()
+
+
 def uploaded_public_keys() -> set[str]:
     log = ROOT / "UPLOADS" / "youtube_uploads.jsonl"
     keys = set()
@@ -118,10 +126,11 @@ def uploaded_public_keys() -> set[str]:
             continue
         path = str(row.get("video_path") or "")
         title = str(row.get("title") or "")
-        stem = Path(path).stem.replace("-cron", "").replace("-daily", "")
+        stem = normalized_upload_key(path)
         if stem:
             keys.add(stem)
-        keys.add(title.lower())
+        if title:
+            keys.add(title.lower().strip())
     return keys
 
 
@@ -209,13 +218,14 @@ def iter_candidate_manifest_clips() -> list[tuple[Path, dict, dict]]:
                 return [(manifest_path, manifest, clips[int(forced_index)])]
             continue
         for clip in clips:
-            stem = Path(clip.get("captioned_file") or clip.get("file") or "").stem
-            hook = str(clip.get("hook") or "").lower()
+            stem = normalized_upload_key(clip.get("captioned_file") or clip.get("file") or "")
+            hook = str(clip.get("hook") or "").lower().strip()
             candidate = (manifest_path, manifest, clip)
-            if stem not in seen and hook not in seen:
-                fresh.append(candidate)
-            else:
-                fallback.append(candidate)
+            if stem and stem in seen:
+                continue
+            if hook and hook in seen:
+                continue
+            fresh.append(candidate)
 
     # If a source is not local/source-ready, trying multiple clips from the same
     # manifest only repeats the same blocked downloader path. Keep the first clip
