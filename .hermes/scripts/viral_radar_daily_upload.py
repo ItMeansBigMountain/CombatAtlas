@@ -8,6 +8,7 @@ Do not use NASA/space/unknown placeholder filler to satisfy minimums.
 from __future__ import annotations
 
 import datetime as dt
+import fcntl
 import json
 import os
 import shutil
@@ -112,26 +113,52 @@ def normalized_upload_key(value: str) -> str:
     return stem.strip()
 
 
+def upload_signature(source_url: str, title: str) -> str:
+    return f"source_title::{str(source_url or '').strip().lower()}::{str(title or '').strip().lower()}"
+
+
 def uploaded_public_keys() -> set[str]:
-    log = ROOT / "UPLOADS" / "youtube_uploads.jsonl"
+    logs = [ROOT / "UPLOADS" / "youtube_uploads.jsonl", ROOT / "UPLOADS" / "viral_radar_enriched_uploads.jsonl"]
     keys = set()
-    if not log.exists():
-        return keys
-    for line in log.read_text(encoding="utf-8", errors="ignore").splitlines():
-        try:
-            row = json.loads(line)
-        except Exception:
+    for log in logs:
+        if not log.exists():
             continue
-        if row.get("privacy") != "public":
-            continue
-        path = str(row.get("video_path") or "")
-        title = str(row.get("title") or "")
-        stem = normalized_upload_key(path)
-        if stem:
-            keys.add(stem)
-        if title:
-            keys.add(title.lower().strip())
+        for line in log.read_text(encoding="utf-8", errors="ignore").splitlines():
+            try:
+                row = json.loads(line)
+            except Exception:
+                continue
+            if row.get("privacy") and row.get("privacy") != "public":
+                continue
+            path = str(row.get("video_path") or row.get("deleted_after_upload") or row.get("file") or "")
+            title = str(row.get("title") or "")
+            source_url = str(row.get("source_url") or "")
+            stem = normalized_upload_key(path)
+            if stem:
+                keys.add(stem)
+            if title:
+                keys.add(title.lower().strip())
+            if source_url and title:
+                keys.add(upload_signature(source_url, title))
     return keys
+
+
+def already_uploaded(*, output: Path | None = None, title: str = "", source_url: str = "", selected_clip: dict | None = None) -> bool:
+    keys = uploaded_public_keys()
+    if output and normalized_upload_key(str(output)) in keys:
+        return True
+    if title and title.lower().strip() in keys:
+        return True
+    if source_url and title and upload_signature(source_url, title) in keys:
+        return True
+    if selected_clip:
+        for value in (selected_clip.get("captioned_file"), selected_clip.get("file")):
+            if value and normalized_upload_key(str(value)) in keys:
+                return True
+        hook = str(selected_clip.get("hook") or "").lower().strip()
+        if hook and hook in keys:
+            return True
+    return False
 
 
 def _creator_name(manifest: dict) -> str:
@@ -666,6 +693,10 @@ def upload_pending_queue(limit: int | None = None) -> list[dict]:
         if not file_path.exists():
             meta_path.unlink(missing_ok=True)
             continue
+        if already_uploaded(output=file_path, title=str(meta.get("title") or file_path.stem), source_url=str(meta.get("source_url") or "")):
+            file_path.unlink(missing_ok=True)
+            meta_path.unlink(missing_ok=True)
+            continue
         proc = run([
             sys.executable, str(UPLOAD),
             "--file", str(file_path),
@@ -756,6 +787,10 @@ def upload_rendered(rendered: list[dict], manifest: dict, selected_clip: dict | 
             "--privacy", "public",
         ]
         tags = build_youtube_tags(hashtags)
+        if already_uploaded(output=output, title=title, source_url=source_url, selected_clip=selected_clip):
+            if output.exists():
+                output.unlink()
+            continue
         if upload_capacity_remaining() <= 0:
             proc = subprocess.CompletedProcess(cmd, 1, "", f"daily upload safety cap reached: {uploaded_count_for_day()}/{daily_upload_cap()}")
             queued = queue_failed_upload(output, title=title, description=description, tags=tags, manifest=manifest, selected_clip=selected_clip, proc=proc)
@@ -931,6 +966,23 @@ def main() -> int:
         return 1
 
 
+def run_main_locked() -> int:
+    lock_path = ROOT / "STATE" / "viral_radar_upload.lock"
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
+    with lock_path.open("w") as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            print(json.dumps({
+                "job": "viral_radar_daily_upload",
+                "status": "blocked_already_running",
+                "lock": str(lock_path),
+                "reason": "another Viral Radar upload run is active; refusing concurrent upload to prevent duplicates",
+            }, indent=2))
+            return 3
+        return main()
+
+
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(run_main_locked())
 

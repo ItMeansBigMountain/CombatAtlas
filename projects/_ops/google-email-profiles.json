@@ -9,7 +9,13 @@
     "calendar_profile": "trapiistan",
     "calendar_email": "trapiistan@gmail.com",
     "faceless_youtube_default_profile": "trapiistan",
-    "viral_clip_default_profile": "classicalechos"
+    "viral_clip_default_profile": "classicalechos",
+    "viral_radar_failover_order": [
+      "classicalechos",
+      "trapiistan",
+      "fareed320"
+    ],
+    "viral_radar_add_failover_account_note": "Add a new youtube_profiles.<profile> with token_path and channel_id, then append the profile key to viral_radar_failover_order."
   },
   "workspace_profiles": {
     "personal-secondary": {
