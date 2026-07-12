@@ -47,11 +47,19 @@ mweb,web_safari,tv,ios,android
 /opt/data/bgutil-ytdlp-pot-provider/server
 ```
 
-- Use a JS runtime only when available, e.g. Node:
+- Use a JS runtime only when available, e.g. Node. Current yt-dlp accepts `--js-runtimes node` reliably; `node:/path` may show `JS runtimes: none` in verbose output even when Node exists:
 
 ```text
-node:/usr/local/bin/node
+--js-runtimes node
 ```
+
+- If yt-dlp says `Remote component challenge solver script (node) was skipped` or `n challenge solving failed`, allow the official EJS remote component for that run:
+
+```bash
+yt-dlp --remote-components ejs:github --js-runtimes node ...
+```
+
+This can turn a bot-check/cookies failure into a successful authenticated download once fresh cookies are present.
 
 - Accept env-driven authentication/proxy inputs without printing secrets:
 

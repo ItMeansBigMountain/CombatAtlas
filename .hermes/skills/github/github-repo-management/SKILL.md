@@ -251,7 +251,27 @@ for r in json.load(sys.stdin)['items']:
     print(f\"  {r['full_name']:40}  ★{r['stargazers_count']:6}  {r['description'][:60] if r['description'] else ''}\")"
 ```
 
-## 5. Repository Settings
+## 5. Repository Cleanup / Deletion
+
+Use this when the user asks to clean up unused GitHub repositories. Deletion is irreversible, so do not delete from an inferred list without explicit confirmation of the exact repos.
+
+Recommended sequence:
+
+1. Inventory candidate repos with the GitHub API/gh, including `full_name`, URL, description, `archived`, `private`, and `updated_at`.
+2. Correlate against the active local workspace (directories, `.gitmodules`, remotes) before classifying repos as unused.
+3. Present two explicit lists: **keep** and **delete/archive candidates**.
+4. Ask for confirmation before destructive deletion; archiving is safer if the user is uncertain.
+5. For deletion with curl/API, call `DELETE /repos/{owner}/{repo}` and expect HTTP `204`.
+6. Verify each deleted repo by `GET /repos/{owner}/{repo}` returning `404`, then re-list related repos to prove only the active set remains.
+7. Update any workspace cleanup docs/tracking files and commit/push those docs separately from unrelated dirty work.
+
+Pitfalls:
+
+- Do not delete repositories solely because they are not currently cloned; confirm they are not active templates, plugin-hub repos, or canonical remotes used by a renamed local submodule.
+- When a repo was just renamed, keep the renamed repo and treat the old name as gone/redirected; update local submodule URLs before classifying anything as unused.
+- Avoid broad `git add .` in a large workspace after cleanup; stage only the docs/submodule paths relevant to the repo cleanup.
+
+## 6. Repository Settings
 
 **With gh:**
 
@@ -396,6 +416,7 @@ When the user asks to create a **new standalone repo after reviewing an existing
 - Do not bundle or track secrets, local SQLite DBs, uploaded media, caches, or environment files unless the user explicitly asks for a full machine/runtime snapshot and approves the security implications.
 - If a parent backup push is rejected for large `.hermes`/cache/runtime files, do not push harder or add Git LFS by default. Remove those artifacts from the index with `git rm --cached`, add ignore/exclude rules, verify no staged additions exceed 50MB, then recommit and rerun the backup script.
 - If the push is still rejected after `git rm --cached`, inspect whether the large blobs live in earlier local commits that are ahead of the remote. For unpublished commits only, create a local backup branch, rewrite `origin/main..main` with an index-filter that removes the generated/cache paths, verify `git rev-list --objects origin/main..HEAD` contains no objects over 50MB, then push and manually run the backup script once. See `references/backup-cache-history-cleanup.md` for the exact recovery recipe and verification script.
+- When deleting unused GitHub repositories, especially portfolio cleanup repos, first list all candidate repos, correlate them against active local project/submodule paths, present explicit keep/delete lists, and get final user confirmation. After deletion, verify each repo returns 404/gone and re-scan the remaining repo list before reporting success.
 - When updating Hermes Agent itself from a gateway chat, `hermes update` may update code successfully but refuse an in-process gateway restart. Report that the gateway must be restarted from an external shell rather than attempting restart loops from inside Discord/Telegram.
 - When converting existing nested worktrees to submodules, do not just edit `.gitmodules`; stage the child path as a gitlink and run `git submodule absorbgitdirs` so clones understand the submodule relationship. When consolidating two submodule-backed child repos into one, push the surviving child repo commit first, then remove the obsolete submodule from the parent with `git submodule deinit -f <path>`, `git rm -f <path>`, cleanup `.git/modules/<path>`, stage `.gitmodules` plus the surviving submodule pointer, and commit/push the parent. For Windows handoff after parent pull, include `git submodule sync --recursive` and `git submodule update --init --recursive <surviving-path>`; plain `git pull` is not enough to populate/update submodule contents.
 - In Hermes sessions for this user, prefer `GITHUB_ACCESS_TOKEN` for authenticated GitHub API/git tasks. When `gh` is unavailable, build authenticated push/verify URLs without printing the token, and verify `git ls-remote <auth-url> refs/heads/<branch>` equals `git rev-parse HEAD`. If shell quoting around token URL construction becomes fragile, use a short Python `subprocess` snippet that constructs `url = 'https://x-access-token:' + os.environ['GITHUB_ACCESS_TOKEN'] + '@github.com/' + remote.split('github.com/', 1)[1]` and passes it directly to `git push`/`git ls-remote`.

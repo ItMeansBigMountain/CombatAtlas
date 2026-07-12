@@ -1,6 +1,6 @@
 # BIS Loadouts item-data, gear logic, and sidebar lessons
 
-Use when working on `/opt/data/HeRmEz/projects/osrs-plugins/in-progress/BisLoadouts` (formerly BossReadinessScore). The GitHub repo is `ItMeansBigMountain/bis-loadouts-osrs`.
+Use when working on `/opt/data/HeRmEz/projects/osrs-plugins/pr-review-pending/BisLoadouts` (formerly BossReadinessScore). The GitHub repo is `ItMeansBigMountain/bis-loadouts-osrs`.
 
 ## Data-source stance
 
@@ -101,9 +101,22 @@ Boss attack style guide
 
 Avoid paragraph-looking text under the gear grid. If all defenses are zero/missing from the source, show a single bullet such as `• Unknown from this data source`.
 
+## Rename / repo cleanup checklist
+
+When renaming an OSRS plugin project, update every layer together and verify each one:
+
+1. Child repo internals: Gradle `rootProject.name`, `runelite-plugin.properties`, `plugin.json`, README/docs, Java package path, plugin/config/panel/test class names, config group, resource paths/icons, and user-agent/support URLs.
+2. Build verification: run `./gradlew clean test assemble --no-daemon --console=plain` from the renamed child repo before pushing.
+3. GitHub repo: rename the GitHub remote via API/gh, update local `origin`, push/verify local SHA equals `git ls-remote` on the new repo URL.
+4. Parent HeRmEz submodule: rename the submodule path with `git mv`, update `.gitmodules` section name/path/url, run `git submodule absorbgitdirs <path>` if the moved worktree still has a real `.git/` directory, then `git submodule init/sync <path>` and verify `git submodule status <path>` has no leading `-`.
+5. Parent docs: update OSRS cleanup plans / portfolio correlation docs, stage only exact OSRS paths, then commit/push parent.
+6. Windows handoff after a submodule rename: tell the user to run `git pull`, `git submodule sync --recursive`, `git submodule update --init --recursive <new-path>`, then delete the stale old folder locally if it remains.
+
+For GitHub cleanup of unused OSRS plugin repos, first compare current local active plugin directories + `.gitmodules` against GitHub OSRS/RuneLite repos. Present exact keep/delete lists and get explicit confirmation before destructive `DELETE /repos/{owner}/{repo}` calls. After deletion, verify each deleted repo returns 404 and re-scan remaining repos.
+
 ## UI preference
 
-For Boss Readiness, center the panel controls and status text inside RuneLite's narrow sidebar: boss selector, style buttons, Analyze button, headings, summary lines, muted notes, and equipment grid.
+For BIS Loadouts, center the panel controls and status text inside RuneLite's narrow sidebar: boss selector, style buttons, Analyze button, headings, summary lines, muted notes, and equipment grid.
 
 For explanatory text under gear recommendations, make it lighter/brighter than the previous muted gray, slightly bigger, and multi-line/bulleted. The user is comfortable using more vertical space; prioritize legibility over compactness.
 

@@ -16,4 +16,4 @@ Google Workspace policy: affan.fareed@gmail.com and fareed320@gmail.com have use
 §
 WhosGrindingClanPanel Windows run command is `gradlew.bat run --no-daemon --console=plain` (or `./gradlew.bat run`); `runClient` is not the working task for this repo.
 §
-BIS Loadouts OSRS plugin path: /opt/data/HeRmEz/projects/osrs-plugins/in-progress/BisLoadouts; repo: ItMeansBigMountain/bis-loadouts-osrs.
+BIS Loadouts OSRS plugin: /opt/data/HeRmEz/projects/osrs-plugins/pr-review-pending/BisLoadouts; repo ItMeansBigMountain/bis-loadouts-osrs.
