@@ -33,14 +33,14 @@
 - SkillStreaks
 - osrs-plugins-boilerplate from the top-level active plugin folder; it lives under `_templates/` instead
 
-The removed child repositories still exist remotely/history-wise, but they are no longer cloned by default from the HeRmEz parent workspace.
+The removed child repositories are no longer cloned by default from the HeRmEz parent workspace. Unused OSRS GitHub remotes listed below were deleted after user confirmation.
 
-## Remote cleanup candidates
+## Remote cleanup completed
 
-Do not delete or archive GitHub repositories without explicit final confirmation. Current consolidation direction:
+Do not delete or archive additional GitHub repositories without explicit final confirmation. Current consolidation state:
 
 - Keep active/canonical remotes: `bis-loadouts-osrs`, `whos-grinding-clan-panel-osrs`, `rival-radar-osrs`, `smart-hiscore-lookup-osrs`, `ice-barrage-timer-osrs`, `personal-progress-timeline-osrs`, `competition-overlay-osrs`, `plugin-hub`, and `_templates/osrs-plugins-boilerplate`.
-- Candidate archive/delete after feature capture: `group-iron-progress-board-osrs`, `account-legacy-card-osrs`, `name-change-watcher-osrs`, `skill-nemesis-osrs`, `skill-race-creator-osrs`, `skill-streaks-osrs`, `boss-race-creator-osrs`, `boss-k-c-rival-lookup-osrs`, `boss-streaks-osrs`, `clan-grind-heatmap-osrs`, and old one-off/test OSRS repos such as `breach-check-osrs` if no longer wanted.
+- Deleted unused remotes: `group-iron-progress-board-osrs`, `account-legacy-card-osrs`, `name-change-watcher-osrs`, `skill-nemesis-osrs`, `skill-race-creator-osrs`, `skill-streaks-osrs`, `boss-race-creator-osrs`, `boss-k-c-rival-lookup-osrs`, `boss-streaks-osrs`, `clan-grind-heatmap-osrs`, and `breach-check-osrs`.
 
 ## Merge direction: SmartHiscoreLookup
 
