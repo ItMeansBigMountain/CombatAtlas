@@ -18,18 +18,6 @@
 	path = projects/osrs-plugins/in-progress/IceBarrageTimer
 	url = https://github.com/ItMeansBigMountain/ice-barrage-timer-osrs.git
 	branch = main
-[submodule "projects/osrs-plugins/PersonalProgressTimeline"]
-	path = projects/osrs-plugins/in-progress/PersonalProgressTimeline
-	url = https://github.com/ItMeansBigMountain/personal-progress-timeline-osrs.git
-	branch = main
-[submodule "projects/osrs-plugins/RivalRadar"]
-	path = projects/osrs-plugins/in-progress/RivalRadar
-	url = https://github.com/ItMeansBigMountain/rival-radar-osrs.git
-	branch = main
-[submodule "projects/osrs-plugins/SmartHiscoreLookup"]
-	path = projects/osrs-plugins/in-progress/SmartHiscoreLookup
-	url = https://github.com/ItMeansBigMountain/smart-hiscore-lookup-osrs.git
-	branch = main
 [submodule "projects/osrs-plugins/WhosGrindingClanPanel"]
 	path = projects/osrs-plugins/pr-review-pending/WhosGrindingClanPanel
 	url = https://github.com/ItMeansBigMountain/whos-grinding-clan-panel-osrs.git

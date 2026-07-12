@@ -2,23 +2,21 @@
 
 ## Current decisions
 
-- Remove `GroupIronProgressBoard`; user does not want ironman/GIM-focused plugins.
-- Remove thin/overlapping source repos from the parent HeRmEz workspace once their product direction is captured in the canonical repos.
-- Keep `RivalRadar` as the canonical repo for race/streak/rival/competition consolidation.
-- Make `SmartHiscoreLookup` the canonical account/player intel repo.
-- Keep `WhosGrindingPanel` standalone. It should implement similar account-detail functionality locally rather than depending on SmartHiscoreLookup.
-- `BisLoadouts` is the canonical name/repo for the former boss readiness gear recommendation plugin (`bis-loadouts-osrs`).
+- `BisLoadouts` is the canonical boss/PvM gear recommendation plugin and is in PR review pending.
+- Keep `WhosGrindingPanel` / `WhosGrindingClanPanel` as the standalone social grinding plugin.
+- Keep `IceBarrageTimer` as the PvP freeze/teleblock timing utility.
+- Keep `CompetitionOverlay` as the remaining competition surface for now.
+- Keep `_templates/osrs-plugins-boilerplate` as the RuneLite starter template/reference, not an active plugin product.
+- Scrap/remove `PersonalProgressTimeline`, `RivalRadar`, and `SmartHiscoreLookup`; the user no longer wants those project ideas.
 
 ## Active parent submodules after cleanup
 
-- BisLoadouts (PR review pending)
-- WhosGrindingClanPanel / WhosGrindingPanel
-- SmartHiscoreLookup / Account Intel
-- RivalRadar
-- IceBarrageTimer
-- PersonalProgressTimeline
-- CompetitionOverlay
-- `_templates/osrs-plugins-boilerplate` as the RuneLite starter template/reference, not an active plugin product
+- `projects/osrs-plugins/pr-review-pending/BisLoadouts` -> `bis-loadouts-osrs`
+- `projects/osrs-plugins/pr-review-pending/WhosGrindingClanPanel` -> `whos-grinding-clan-panel-osrs`
+- `projects/osrs-plugins/in-progress/IceBarrageTimer` -> `ice-barrage-timer-osrs`
+- `projects/osrs-plugins/in-progress/CompetitionOverlay` -> `competition-overlay-osrs`
+- `projects/osrs-plugins/_templates/osrs-plugins-boilerplate` -> `osrs-plugins-boilerplate-osrs`
+- `projects/plugin-hub` -> `plugin-hub`
 
 ## Removed from parent submodules
 
@@ -31,74 +29,52 @@
 - BossKCRivalLookup
 - BossStreaks
 - SkillStreaks
+- PersonalProgressTimeline
+- RivalRadar
+- SmartHiscoreLookup
 - osrs-plugins-boilerplate from the top-level active plugin folder; it lives under `_templates/` instead
-
-The removed child repositories are no longer cloned by default from the HeRmEz parent workspace. Unused OSRS GitHub remotes listed below were deleted after user confirmation.
 
 ## Remote cleanup completed
 
-Do not delete or archive additional GitHub repositories without explicit final confirmation. Current consolidation state:
+Do not delete or archive additional GitHub repositories without explicit final confirmation.
 
-- Keep active/canonical remotes: `bis-loadouts-osrs`, `whos-grinding-clan-panel-osrs`, `rival-radar-osrs`, `smart-hiscore-lookup-osrs`, `ice-barrage-timer-osrs`, `personal-progress-timeline-osrs`, `competition-overlay-osrs`, `plugin-hub`, and `_templates/osrs-plugins-boilerplate`.
-- Deleted unused remotes: `group-iron-progress-board-osrs`, `account-legacy-card-osrs`, `name-change-watcher-osrs`, `skill-nemesis-osrs`, `skill-race-creator-osrs`, `skill-streaks-osrs`, `boss-race-creator-osrs`, `boss-k-c-rival-lookup-osrs`, `boss-streaks-osrs`, `clan-grind-heatmap-osrs`, and `breach-check-osrs`.
+Deleted unused OSRS remotes:
 
-## Merge direction: SmartHiscoreLookup
+- `group-iron-progress-board-osrs`
+- `account-legacy-card-osrs`
+- `name-change-watcher-osrs`
+- `skill-nemesis-osrs`
+- `skill-race-creator-osrs`
+- `skill-streaks-osrs`
+- `boss-race-creator-osrs`
+- `boss-k-c-rival-lookup-osrs`
+- `boss-streaks-osrs`
+- `clan-grind-heatmap-osrs`
+- `breach-check-osrs`
+- `personal-progress-timeline-osrs`
+- `rival-radar-osrs`
+- `smart-hiscore-lookup-osrs`
 
-- AccountLegacyCard
-- NameChangeWatcher
+Remaining OSRS/plugin-related remotes after cleanup should be:
 
-Merged feature target:
-
-- local account card
-- player lookup panel
-- hiscore links
-- previous/current name detection
-- external tracker enrichment from OSRS APIs
-
-## Merge direction: RivalRadar
-
-- SkillNemesis
-- SkillRaceCreator
-- BossRaceCreator
-- BossKCRivalLookup
-- BossStreaks
-- SkillStreaks
-
-Merged feature target:
-
-- rival comparison
-- skill/boss races
-- skill/boss streaks
-- nemesis/weakness analysis
-- competition-ready progress views
+- `bis-loadouts-osrs`
+- `competition-overlay-osrs`
+- `ice-barrage-timer-osrs`
+- `osrs-plugins-boilerplate-osrs`
+- `plugin-hub`
+- `whos-grinding-clan-panel-osrs`
 
 ## Git/submodule cleanup rules
 
-- Push child repo changes first.
-- Then update/remove parent submodule pointers.
-- For removed plugin submodules, use `git rm -f <path>` in the parent repo and remove the `.gitmodules` section.
+- For removed plugin submodules, use `git submodule deinit -f <path>` then `git rm -f <path>` in the parent repo and remove the `.gitmodules` section.
+- Remove stale `.git/modules/<path>` directories after submodule removal.
 - Do not force-push parent HeRmEz; rebase or merge remote changes safely.
 - Preserve unrelated dirty work from automation/video/trading projects.
+- Stage exact OSRS paths only from `/opt/data/HeRmEz`; do not use broad `git add .` in the HeRmEz parent workspace.
 
 ## Concrete next implementation order
 
-1. **SmartHiscoreLookup account-intel merge**
-   - Pull AccountLegacyCard's local account summary/card concept into a tested `PlayerIntelCard` model.
-   - Pull NameChangeWatcher's previous/current name observation logic into a tested session service.
-   - Add a compact detail UI pattern that WhosGrindingPanel can mirror for clicked player rows.
-
-2. **RivalRadar consolidation merge**
-   - Start with non-network local modules: SkillNemesis analyzer, SkillStreaks tracker, BossStreaks parser/tracker.
-   - Then add race setup/progress models for skill and boss races.
-   - Add hiscore/Wise Old Man rival comparisons last, behind background-safe/cached helpers.
-
-3. **Standalone polish lane**
-   - Keep BisLoadouts focused on BIS/best-available boss loadout recommendations.
-   - Keep IceBarrageTimer focused on PvP freeze/teleblock timing.
-   - Keep PersonalProgressTimeline focused on personal milestones.
-   - Keep CompetitionOverlay as the future larger competition surface; do not merge it into RivalRadar until the big idea is specified.
-
-4. **Parent workspace hygiene**
-   - Push every child repo before updating parent submodule pointers.
-   - Stage exact OSRS paths only from `/opt/data/HeRmEz`.
-   - Fix `projects/viral-clip-radar` submodule mapping separately from OSRS work.
+1. Keep polishing/submitting `BisLoadouts` from PR review pending.
+2. Keep `WhosGrindingClanPanel` as the other main RuneLite plugin lane.
+3. Only revisit `IceBarrageTimer` or `CompetitionOverlay` if the user asks.
+4. Fix `projects/viral-clip-radar` submodule mapping separately from OSRS work.
