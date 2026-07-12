@@ -11,7 +11,7 @@ Generated: 2026-06-14T19:42:48.191727Z
 ## Correlations: GitHub repo → local project
 
 - **account-legacy-card-osrs** → `projects/account-legacy-card-osrs`; lang=Java; default=main; branches=main
-- **boss-readiness-score-osrs** → `projects/boss-readiness-score-osrs`; lang=Java; default=main; branches=main
+- **bis-loadouts-osrs** → `projects/bis-loadouts-osrs`; lang=Java; default=main; branches=main
 - **whos-grinding-clan-panel-osrs** → `projects/whos-grinding-clan-panel-osrs`; lang=Java; default=main; branches=main
 - **skill-streaks-osrs** → `projects/skill-streaks-osrs`; lang=Java; default=main; branches=main
 - **smart-hiscore-lookup-osrs** → `projects/smart-hiscore-lookup-osrs`; lang=Java; default=main; branches=main
@@ -97,7 +97,7 @@ Generated: 2026-06-14T19:42:48.191727Z
 
 ## Project clusters / likely consolidation lanes
 
-- **OSRS RuneLite plugins:** account-legacy-card-osrs, boss-readiness-score-osrs, whos-grinding-clan-panel-osrs, skill-streaks-osrs, smart-hiscore-lookup-osrs, skill-race-creator-osrs, skill-nemesis-osrs, rival-radar-osrs, personal-progress-timeline-osrs, name-change-watcher-osrs, ice-barrage-timer-osrs, group-iron-progress-board-osrs, competition-overlay-osrs, clan-grind-heatmap-osrs, boss-streaks-osrs, boss-race-creator-osrs, boss-k-c-rival-lookup-osrs, osrs-plugins, plugin-hub, breach-check-osrs
+- **OSRS RuneLite plugins:** account-legacy-card-osrs, bis-loadouts-osrs, whos-grinding-clan-panel-osrs, skill-streaks-osrs, smart-hiscore-lookup-osrs, skill-race-creator-osrs, skill-nemesis-osrs, rival-radar-osrs, personal-progress-timeline-osrs, name-change-watcher-osrs, ice-barrage-timer-osrs, group-iron-progress-board-osrs, competition-overlay-osrs, clan-grind-heatmap-osrs, boss-streaks-osrs, boss-race-creator-osrs, boss-k-c-rival-lookup-osrs, osrs-plugins, plugin-hub, breach-check-osrs
 - **Finance/market/news:** stockNews, wutHappened, Financial.Market.ML, Fintech, robinhood-daily-portfolio-report, portfolio-sentiment-subscription-app, robinhood-email-reports
 - **Security/networking/labs:** penTest, networking, Kubernetes-Docker, CloudAutomation, WebCrawl, selenium, utilityScripts, mcp-servers
 - **Education/school/CRM:** school, tutoring.Repl, coding-school-platform, survey-analytics-website
@@ -107,7 +107,7 @@ Generated: 2026-06-14T19:42:48.191727Z
 ## Unfinished / refinement candidates
 
 - **account-legacy-card-osrs** (OSRS plugin/product) — RuneLite/OSRS plugin repo; local `projects/account-legacy-card-osrs`
-- **boss-readiness-score-osrs** (OSRS plugin/product) — RuneLite/OSRS plugin repo; local `projects/boss-readiness-score-osrs`
+- **bis-loadouts-osrs** (OSRS plugin/product) — RuneLite/OSRS plugin repo; local `projects/bis-loadouts-osrs`
 - **whos-grinding-clan-panel-osrs** (OSRS plugin/product) — RuneLite/OSRS plugin repo; local `projects/whos-grinding-clan-panel-osrs`
 - **skill-streaks-osrs** (OSRS plugin/product) — RuneLite/OSRS plugin repo; local `projects/skill-streaks-osrs`
 - **smart-hiscore-lookup-osrs** (OSRS plugin/product) — RuneLite/OSRS plugin repo; local `projects/smart-hiscore-lookup-osrs`

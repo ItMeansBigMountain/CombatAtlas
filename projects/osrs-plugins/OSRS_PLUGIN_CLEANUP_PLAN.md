@@ -7,13 +7,14 @@
 - Keep `RivalRadar` as the canonical repo for race/streak/rival/competition consolidation.
 - Make `SmartHiscoreLookup` the canonical account/player intel repo.
 - Keep `WhosGrindingPanel` standalone. It should implement similar account-detail functionality locally rather than depending on SmartHiscoreLookup.
+- `BisLoadouts` is the canonical name/repo for the former boss readiness gear recommendation plugin (`bis-loadouts-osrs`).
 
 ## Active parent submodules after cleanup
 
 - WhosGrindingClanPanel / WhosGrindingPanel
 - SmartHiscoreLookup / Account Intel
 - RivalRadar
-- BossReadinessScore
+- BisLoadouts
 - IceBarrageTimer
 - PersonalProgressTimeline
 - CompetitionOverlay
@@ -33,6 +34,13 @@
 - osrs-plugins-boilerplate from the top-level active plugin folder; it lives under `_templates/` instead
 
 The removed child repositories still exist remotely/history-wise, but they are no longer cloned by default from the HeRmEz parent workspace.
+
+## Remote cleanup candidates
+
+Do not delete or archive GitHub repositories without explicit final confirmation. Current consolidation direction:
+
+- Keep active/canonical remotes: `bis-loadouts-osrs`, `whos-grinding-clan-panel-osrs`, `rival-radar-osrs`, `smart-hiscore-lookup-osrs`, `ice-barrage-timer-osrs`, `personal-progress-timeline-osrs`, `competition-overlay-osrs`, `plugin-hub`, and `_templates/osrs-plugins-boilerplate`.
+- Candidate archive/delete after feature capture: `group-iron-progress-board-osrs`, `account-legacy-card-osrs`, `name-change-watcher-osrs`, `skill-nemesis-osrs`, `skill-race-creator-osrs`, `skill-streaks-osrs`, `boss-race-creator-osrs`, `boss-k-c-rival-lookup-osrs`, `boss-streaks-osrs`, `clan-grind-heatmap-osrs`, and old one-off/test OSRS repos such as `breach-check-osrs` if no longer wanted.
 
 ## Merge direction: SmartHiscoreLookup
 
@@ -85,7 +93,7 @@ Merged feature target:
    - Add hiscore/Wise Old Man rival comparisons last, behind background-safe/cached helpers.
 
 3. **Standalone polish lane**
-   - Keep BossReadinessScore focused on boss readiness and gear.
+   - Keep BisLoadouts focused on BIS/best-available boss loadout recommendations.
    - Keep IceBarrageTimer focused on PvP freeze/teleblock timing.
    - Keep PersonalProgressTimeline focused on personal milestones.
    - Keep CompetitionOverlay as the future larger competition surface; do not merge it into RivalRadar until the big idea is specified.

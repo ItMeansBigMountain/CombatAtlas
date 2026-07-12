@@ -6,9 +6,9 @@
 	path = projects/cox-elementary-pta
 	url = https://github.com/ItMeansBigMountain/cox-elementary-pta.git
 	branch = main
-[submodule "projects/osrs-plugins/BossReadinessScore"]
-	path = projects/osrs-plugins/in-progress/BossReadinessScore
-	url = https://github.com/ItMeansBigMountain/boss-readiness-score-osrs.git
+[submodule "projects/osrs-plugins/BisLoadouts"]
+	path = projects/osrs-plugins/in-progress/BisLoadouts
+	url = https://github.com/ItMeansBigMountain/bis-loadouts-osrs.git
 	branch = main
 [submodule "projects/osrs-plugins/CompetitionOverlay"]
 	path = projects/osrs-plugins/in-progress/CompetitionOverlay
