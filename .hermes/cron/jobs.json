@@ -20,15 +20,15 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 55
+        "completed": 56
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-07-12T03:00:00+00:00",
-      "last_run_at": "2026-07-10T03:00:45.684896+00:00",
+      "next_run_at": "2026-07-13T03:00:00+00:00",
+      "last_run_at": "2026-07-11T03:00:59.402189+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -60,15 +60,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 53
+        "completed": 54
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-07-11T13:30:00+00:00",
-      "last_run_at": "2026-07-10T13:31:16.335147+00:00",
+      "next_run_at": "2026-07-12T13:30:00+00:00",
+      "last_run_at": "2026-07-11T13:31:32.391292+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -112,19 +112,19 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 143
+        "completed": 147
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-07-11T08:31:29.447543+00:00",
-      "last_run_at": "2026-07-11T02:31:29.447543+00:00",
+      "next_run_at": "2026-07-12T08:42:10.493269+00:00",
+      "last_run_at": "2026-07-12T02:42:10.493269+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
-      "deliver": "origin",
+      "deliver": "discord:1524259261281206332",
       "origin": {
         "platform": "discord",
         "chat_id": "1499990220077137943",
@@ -215,19 +215,19 @@
       "schedule_display": "0 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 35
+        "completed": 36
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-07-12T01:00:00+00:00",
-      "last_run_at": "2026-07-11T01:10:15.781228+00:00",
+      "next_run_at": "2026-07-13T01:00:00+00:00",
+      "last_run_at": "2026-07-12T01:33:06.968284+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
-      "deliver": "origin",
+      "deliver": "discord:1524259261281206332",
       "origin": {
         "platform": "discord",
         "chat_id": "1499990220077137943",
@@ -262,15 +262,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 3034
+        "completed": 3165
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-07-11T03:07:34.733585+00:00",
-      "last_run_at": "2026-07-11T02:57:34.733585+00:00",
+      "next_run_at": "2026-07-12T03:08:42.337815+00:00",
+      "last_run_at": "2026-07-12T02:58:42.337815+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -308,15 +308,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 33
+        "completed": 34
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-07-11T14:00:00+00:00",
-      "last_run_at": "2026-07-10T14:00:33.373121+00:00",
+      "next_run_at": "2026-07-12T14:00:00+00:00",
+      "last_run_at": "2026-07-11T14:00:40.858199+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -355,15 +355,15 @@
       "schedule_display": "15 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 31
+        "completed": 32
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T04:20:40.734347+00:00",
-      "next_run_at": "2026-07-11T13:15:00+00:00",
-      "last_run_at": "2026-07-10T13:15:39.943723+00:00",
+      "next_run_at": "2026-07-12T13:15:00+00:00",
+      "last_run_at": "2026-07-11T13:15:45.603172+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -650,17 +650,17 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 18
+        "completed": 22
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-06T15:04:47.122120+00:00",
-      "next_run_at": "2026-07-11T03:05:37.507417+00:00",
-      "last_run_at": "2026-07-10T21:05:37.507417+00:00",
-      "last_status": "ok",
-      "last_error": null,
+      "next_run_at": "2026-07-12T03:09:44.411664+00:00",
+      "last_run_at": "2026-07-11T21:09:44.411664+00:00",
+      "last_status": "error",
+      "last_error": "Script exited with code 1\nstdout:\n{\n  \"status\": \"blocked_auth_hardening\",\n  \"problems\": [\n    \"code_guards: /opt/data/HeRmEz/projects/viral-clip-radar/scripts/upload_to_youtube.py: missing guard snippet 'Classical Echos upload limit hit; failed over to'\"\n  ],\n  \"checks\": null,\n  \"next_steps\": [\n    \"If a YouTube profile fails, run: python3 /opt/data/scripts/google_reauth_workflow.py youtube-auth-url <profile>\",\n    \"Exchange callback with: python3 /opt/data/scripts/google_reauth_workflow.py youtube-exchange <profile> <localhost callback URL> --verify\",\n    \"Then rerun: python3 /opt/data/scripts/youtube_auth_healthcheck.py --verbose\"\n  ]\n}",
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": {
@@ -695,15 +695,15 @@
       "schedule_display": "0 0 * * 0",
       "repeat": {
         "times": null,
-        "completed": 3
+        "completed": 4
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-08T07:49:16.802140+00:00",
-      "next_run_at": "2026-07-12T00:00:00+00:00",
-      "last_run_at": "2026-07-08T07:53:10.101723+00:00",
+      "next_run_at": "2026-07-19T00:00:00+00:00",
+      "last_run_at": "2026-07-12T00:00:40.996699+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -719,5 +719,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-07-11T03:00:34.456619+00:00"
+  "updated_at": "2026-07-12T03:00:42.047985+00:00"
 }

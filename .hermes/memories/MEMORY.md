@@ -15,3 +15,5 @@ User wants Agentic Robinhood auto-trading: monitor/manage cron, high deployment;
 Google Workspace policy: affan.fareed@gmail.com and fareed320@gmail.com have user-approved full read/write Workspace permissions, incl. Gmail read/modify/send.
 §
 WhosGrindingClanPanel Windows run command is `gradlew.bat run --no-daemon --console=plain` (or `./gradlew.bat run`); `runClient` is not the working task for this repo.
+§
+BIS Loadouts OSRS plugin path: /opt/data/HeRmEz/projects/osrs-plugins/in-progress/BisLoadouts; repo: ItMeansBigMountain/bis-loadouts-osrs.

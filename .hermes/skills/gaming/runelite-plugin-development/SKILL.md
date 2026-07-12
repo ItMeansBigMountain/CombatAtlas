@@ -59,6 +59,7 @@ Use this when working on the user's OSRS/RuneLite plugin portfolio: fixing plugi
 - Use `javap` against cached `runelite-api` jars to confirm methods before wiring code.
 - Social/friends/clan APIs can differ by RuneLite version. If a clan/friends-chat source returns empty, verify the exact `Client`, friends chat manager, clan channel, and container APIs exposed by the installed jar.
 - Keep plugin side panels within RuneLite's narrow default panel width. Avoid wide tabs, long labels, and horizontally expanding controls.
+- For screenshot-driven RuneLite UI polish, preserve the user's approved alignment even while changing font size. If the user says the smaller text alignment is better but the bigger font is preferred, keep the smaller-text left edge/section width and only increase font/line height.
 
 ## UI preferences for this user's OSRS plugins
 
@@ -114,6 +115,7 @@ See `references/whos-grinding-card-alignment-and-no-stats.md` for the latest car
 See `references/whos-grinding-wom-grinding-summary.md` for the current Who's Grinding Panel wrap-up target: compact expandable rows, grinding-only card UX, WOM gained API sections, start-tracking fallback, and Windows `gradlew.bat run` command.
 See `references/whos-grinding-wom-rollback-and-no-wom.md` for the rollback/no-WOM lessons: known-good WOM commit, suffix removal, live `oyama` WOM probe, and explicit not-on-WOM message when POST update is blocked.
 See `references/whos-grinding-card-final-polish.md` for final screenshot-driven card polish rules: every stat line-by-line, readable fonts, tight left edge, slight right padding, inline category markers, no-stats fallback, and live `oyama`-style visual verification.
+See `references/boss-readiness-item-data-and-ui.md` for Boss Readiness Score item-source and gear logic: research OSRS/GearScape data before filters, keep GearScape combat stats plus OSRS Wiki validation, allow main-game minigame rewards, exclude DMM/BH/seasonal rows, split 1H/2H weapon cycles, match ranged ammo compatibility, order boss defenses weakest-to-strongest, curate missing current items, and center the sidebar UI.
 See `references/osrs-slang-acronyms.md` for OSRS slang/acronym labels to use in narrow RuneLite UI, especially boss/raid/activity labels such as CoX, ToB, ToA, CG, KQ, KBD, LMS, BH, SW, etc.
 See `references/runelite-plugin-hub-lifecycle-and-hiscore-fallback.md` for the current OSRS plugin lifecycle folder model, RuneLite Plugin Hub PR submission checklist, and WOM -> official hiscores local snapshot fallback pattern.
 See `references/whos-grinding-self-row-and-acronyms.md` for the latest final-shipping lesson: pinned current-player row, concise distinct WOM error/no-gain states, and acronym verification.

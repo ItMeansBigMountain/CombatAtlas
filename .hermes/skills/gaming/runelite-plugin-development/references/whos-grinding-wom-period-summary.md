@@ -135,6 +135,21 @@ For known examples from the session: `tzaku` and `z7yn` existed on WOM but had n
 
 When the user pulls plugin changes on Windows and creates a conflict/merge commit, do not assume their conflict resolution preserved the intended behavior. Pull/fetch their pushed merge commit, search for conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`) and stale UI text/suffixes, inspect the touched Java files and docs, then run `./gradlew clean test assemble --no-daemon --console=plain` before pushing cleanup. Also update the parent HeRmEz submodule pointer after the plugin repo is corrected.
 
+## Final README / Plugin Hub documentation pass
+
+For final-phase RuneLite plugin polish, update the README as a user-facing product page, not just a developer note. Include screenshots under `docs/screenshots/` and embed them with relative Markdown paths. The README should clearly answer:
+
+- What the plugin does in one paragraph.
+- What social sources it scans.
+- What panel controls do: source dropdown, lookback dropdown, offline checkbox, refresh button.
+- What a clicked/expanded player card shows.
+- That **all** positive tracked changes are shown, grouped into Skills/Bosses/Activities.
+- How WOM tracker periods differ from fallback official-hiscores scan deltas.
+- What fallback APIs are checked/planned.
+- Build/test and manual RuneLite verification steps.
+
+When screenshots from the live client are unavailable or visually stale, create clear representative sidebar-width PNGs that match the current UI state and labels, then replace them with live RuneLite screenshots before Plugin Hub submission if possible. Do not show real usernames/RSNs in README, Plugin Hub screenshots, public docs, or generated representative screenshots; use synthetic names (`SampleYou`, `Skill Panda`) or blur/anonymize every username before committing. After the user manually edits README/docs, pull first and preserve their edits before further changes. Always verify generated screenshot files open and have sane dimensions, then run `./gradlew clean test assemble --no-daemon --console=plain` before committing docs/assets.
+
 ## Tests to add
 
 - Unit-test the gained JSON parser with skills, bosses, and activities.

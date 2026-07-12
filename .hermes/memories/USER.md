@@ -1,6 +1,6 @@
 Discord: #general ops; #coding dev; #personal life/game; #trading markets+Robinhood cron; #youtube-automation Viral Radar/YT cron; #business monetization/school; #security-redteam security. Natural, no threads; confirm new cron reroutes.
 §
-OSRS/RuneLite prefs: standalone/no cross-plugin deps; no ironman/GIM; compact sidebar: no cutoff/trailing space, tiny right pad, inline expandable rows. Who's Grinding: grinding-only; show every positive tracked gain (no top caps) w/icons/no redundant suffixes; refresh beside current user; lookback+offline controls in panel, not settings; autofilled search; rescan visibly refreshes; auto-track/fallback seamlessly, never ask players to manually update WOM; verify screenshots.
+OSRS/RuneLite prefs: standalone/no deps; no ironman/GIM; compact sidebar no cutoff/trailing space, tiny right pad, inline rows. Who's Grinding: grinding-only; show every positive gain; icons/no redundant suffixes; refresh beside current user w/gap; lookback+offline in panel; autofilled search; rescan refreshes; auto fallback/no manual WOM; screenshots verified and anonymized.
 §
 Client websites: user prefers live Git auto-deploy first; Stripe/payments and custom domains afterward.
 §
@@ -10,4 +10,4 @@ Google/YT: Workspace R/W incl affan; burner login OK; Classical Echos for downlo
 §
 Email cleanup: known junk OK; source emails delete post-upload; Grammarly personal; Robinhood→trading; Zoom→class archive.
 §
-YT automation: faceless/newsletters→Trapiistan/Sosai; Viral Radar→Classical Echos, track TOGI; real sources/no filler; credit sources; no title hashtags; titles unique+true; report URLs/blockers/queues/next action.
+YT automation: Viral Radar is high priority and separate from faceless YouTube. Faceless/newsletter jobs are paused unless user resumes them. Viral Radar→Classical Echos/failovers; track TOGI; real sources/no filler; credit sources; no title hashtags; titles unique+true; report URLs/blockers/queues/next action.
