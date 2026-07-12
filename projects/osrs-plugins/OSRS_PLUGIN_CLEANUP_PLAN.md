@@ -11,10 +11,10 @@
 
 ## Active parent submodules after cleanup
 
+- BisLoadouts (PR review pending)
 - WhosGrindingClanPanel / WhosGrindingPanel
 - SmartHiscoreLookup / Account Intel
 - RivalRadar
-- BisLoadouts
 - IceBarrageTimer
 - PersonalProgressTimeline
 - CompetitionOverlay
