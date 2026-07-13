@@ -21,6 +21,8 @@ Use this umbrella for application delivery work that crosses local code, cloud p
 
 For Vercel portfolio audits, first load `references/vercel-portfolio-audit-pattern.md`; the user cares about primary alias vs latest deployment health and end-user product readiness, not just HTTP 200.
 
+For Azure near-free backend/service planning, load `references/azure-free-tier-service-planning.md`; the user prefers service-owned `infra/` directories and explicit cost/security guardrails before deployment.
+
 1. Identify provider/platform, target account/project, and deployment environment.
 2. Verify CLI installation and authentication without printing secrets.
 3. Inspect existing project configuration before changing build/output settings.
@@ -33,6 +35,7 @@ For Vercel portfolio audits, first load `references/vercel-portfolio-audit-patte
 - `references/cloud-provider-cli-setup/original-skill.md` plus provider credential/setup references.
 - `references/vercel-app-deployments/original-skill.md` plus Vercel deployment, OAuth, database, static shell, alias, and project-decommission references.
 - `references/vercel-live-portfolio-audit-2026-06-29.md` — live Vercel portfolio audit pattern: compare primary aliases, configured aliases, and latest deployment URLs; distinguish alias drift from actual app breakage.
+- `references/azure-near-free-serverless-backend.md` — Azure MVP pattern for low/near-free hosted services using Static Web Apps Free, Functions Consumption, and Cosmos DB Free Tier with budget/cost guardrails.
 
 ## Pitfalls
 

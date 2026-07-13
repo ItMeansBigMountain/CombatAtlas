@@ -27,7 +27,7 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-07-13T03:00:00+00:00",
+      "next_run_at": "2026-07-14T03:00:00+00:00",
       "last_run_at": "2026-07-12T03:01:11.003678+00:00",
       "last_status": "ok",
       "last_error": null,
@@ -92,7 +92,7 @@
     {
       "id": "6355d735bb4a",
       "name": "Creator discovery feeder for Viral Radar",
-      "prompt": "Run the strict Viral Radar procedure for newly discovered creator videos.\n\nWorking directory: /opt/data/HeRmEz/projects/viral-clip-radar\nCommand:\n`cd /opt/data/HeRmEz/projects/viral-clip-radar && VIRAL_RADAR_MIN_UPLOADS=10 VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM=10 VIRAL_RADAR_MAX_CLIPS_PER_SOURCE=50 VIRAL_RADAR_DAILY_UPLOAD_CAP=100 VIRAL_RADAR_STRICT_DISCOVERED_ONLY=1 VIRAL_RADAR_UPLOAD_QUEUE_FIRST=0 /opt/data/scripts/creator_watchlist_clip_upload.sh`\n\nStrict Viral Radar procedure:\n- Find videos from the defined creator/influencer watchlist via the Viral Radar data pipeline.\n- For EACH influencer video found in that pipeline run, clip that exact source video.\n- Upload a minimum of 10 public Shorts for each influencer video found, up to 50 if transcript/duration supports it.\n- Do not satisfy the minimum with old queue items, old manifests, NASA/space/unknown/evergreen placeholders, stock filler, or unrelated fallback videos.\n- Upload the real clips from the found video or upload nothing/report the blocker.\n- If an upload fails after a real clip is rendered, queue that exact clip plus metadata for retry.\n- Viral Radar uploads must use classicalechos@gmail.com / Classical Echos only.\n- Keep hashtags out of titles; put #Shorts and relevant transcript/title-based tags in description/tags.\n- Never publish internal planning labels like \u201cthe part people will replay\u201d or \u201cclip 1.\u201d\n\nReport: discovered videos, per-source uploaded_count, URLs/video IDs, blockers, queue count, and whether any source failed to reach 10.",
+      "prompt": "Run the strict Viral Radar procedure for newly discovered creator videos.\n\nWorking directory: /opt/data/HeRmEz/projects/viral-clip-radar.\n\nFor every newly discovered creator/source video, target at least 5 public clips when the source duration supports distinct clips. Never present 1/5 or 1/10 as OK. If a source video is a YouTube Short or too short for 5 distinct clips, either find a longer source-ready creator video from the watchlist or report BLOCKED/PARTIAL with that exact reason.\n\nRequired behavior:\n- Drain existing UPLOAD_QUEUE first.\n- Seed latest watchlist manifests.\n- Clip/render/upload the actual discovered source video, not filler.\n- If rendered clips fail upload, ensure they remain in UPLOAD_QUEUE and report queue_count.\n- If queue is empty because the remaining deficits were never rendered/planned (source missing, botcheck, too short, only 1 viable clip), report that explicitly as a blocker/backlog, not as success.\n- Final Discord report must include uploaded URLs, per-source uploaded_count/5, queue_count, blockers, and next action.\n- Final status must be BLOCKED/PARTIAL unless each selected source hit >=5 public uploads or the deficit is explicitly explained.\n\nDo not use NASA/space/unknown placeholders or old queued clips to satisfy newly discovered source minimums.",
       "skills": [
         "social-video-cron-growth-loop",
         "youtube-automation-with-tts"
@@ -112,15 +112,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 149
+        "completed": 151
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-07-12T20:47:15.943599+00:00",
-      "last_run_at": "2026-07-12T14:47:15.943599+00:00",
+      "next_run_at": "2026-07-13T08:52:19.022174+00:00",
+      "last_run_at": "2026-07-13T02:52:19.022174+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -193,7 +193,7 @@
     {
       "id": "bce8ebabac36",
       "name": "Daily Viral Radar / Creator clip generation + upload",
-      "prompt": "Run the strict Daily Viral Radar creator clip procedure.\n\nPriority rule: Viral Radar is higher priority than faceless/newsletter YouTube. If there is a Viral Radar queue/backlog of videos to clip or queued clips to upload, the goal is to finish uploading all of them. Replay the upload queue first, then continue clipping/uploading real creator backlog items until the queue/backlog is empty or a real blocker/rate-limit is reached. Use all configured failovers as needed: Classical Echos first, Trapiistan/Sosai on upload-limit failover, then fareed320 if needed/active. Do not preserve capacity for faceless work while Viral Radar has queued real clips.\n\nWorking directory: /opt/data/HeRmEz/projects/viral-clip-radar.\n\nExecute /opt/data/scripts/viral_radar_daily_upload.py with FORCE_UPLOAD=1 and VIRAL_RADAR_UPLOAD_QUEUE_FIRST=1. Set VIRAL_RADAR_MIN_UPLOADS high enough to drain the current upload queue when queued clips exist. Report uploaded URLs, remaining queue count, queued failures, and blockers. Do not use filler/placeholder sources.",
+      "prompt": "Run the strict Daily Viral Radar creator clip procedure.\n\nPriority: Viral Radar over faceless. Goal is at least 5 public clips per selected/source video when the source duration supports it; never report 1/N as success. Drain /opt/data/HeRmEz/projects/viral-clip-radar/UPLOAD_QUEUE first, then run /opt/data/scripts/viral_radar_daily_upload.py from /opt/data/HeRmEz/projects/viral-clip-radar.\n\nHard rules:\n- If uploaded_count < 5 for any selected source/video, final status must be BLOCKED/PARTIAL, not OK.\n- Include exact blockers: source download/auth/botcheck, source too short to make 5 distinct clips, render error, upload quota/rate limit, duplicate guard, or missing files.\n- If rendered clips fail upload, verify they remain in UPLOAD_QUEUE and report queue_count. Queue must not be empty for failed rendered uploads.\n- If queue is empty because remaining clips were never rendered/planned (e.g. source Short only has 1 viable segment), say that clearly and report source-ready/backlog next action.\n- Do not use old queue, NASA/space/unknown, or filler to satisfy the minimum.\n- Notify the user in Discord with concise bullets: uploaded URLs, uploaded_count/5, queue_count, blockers, next action.\n\nUse terminal/file tools only. Do not claim success unless the command output proves >=5 public uploads or all deficits are explicitly reported as blockers.",
       "skills": [
         "social-video-cron-growth-loop",
         "youtube-automation-with-tts"
@@ -215,15 +215,15 @@
       "schedule_display": "0 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 36
+        "completed": 37
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-07-13T01:00:00+00:00",
-      "last_run_at": "2026-07-12T01:33:06.968284+00:00",
+      "next_run_at": "2026-07-14T01:00:00+00:00",
+      "last_run_at": "2026-07-13T01:16:45.010341+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -262,15 +262,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 3237
+        "completed": 3296
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-07-12T16:20:46.514001+00:00",
-      "last_run_at": "2026-07-12T16:10:46.514001+00:00",
+      "next_run_at": "2026-07-13T03:09:49.903455+00:00",
+      "last_run_at": "2026-07-13T02:59:49.903455+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -650,17 +650,17 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 25
+        "completed": 26
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-06T15:04:47.122120+00:00",
-      "next_run_at": "2026-07-12T21:12:50.689012+00:00",
-      "last_run_at": "2026-07-12T15:12:50.689012+00:00",
-      "last_status": "error",
-      "last_error": "Script exited with code 1\nstdout:\n{\n  \"status\": \"blocked_auth_hardening\",\n  \"problems\": [\n    \"code_guards: /opt/data/HeRmEz/projects/viral-clip-radar/scripts/upload_to_youtube.py: missing guard snippet 'Classical Echos upload limit hit; failed over to'\"\n  ],\n  \"checks\": null,\n  \"next_steps\": [\n    \"If a YouTube profile fails, run: python3 /opt/data/scripts/google_reauth_workflow.py youtube-auth-url <profile>\",\n    \"Exchange callback with: python3 /opt/data/scripts/google_reauth_workflow.py youtube-exchange <profile> <localhost callback URL> --verify\",\n    \"Then rerun: python3 /opt/data/scripts/youtube_auth_healthcheck.py --verbose\"\n  ]\n}",
+      "next_run_at": "2026-07-13T03:13:52.205725+00:00",
+      "last_run_at": "2026-07-12T21:13:52.205725+00:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": {
@@ -719,5 +719,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-07-12T16:10:46.514167+00:00"
+  "updated_at": "2026-07-13T03:00:49.616801+00:00"
 }

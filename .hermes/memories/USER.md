@@ -1,6 +1,6 @@
 Discord: #general ops; #coding dev; #personal life/game; #trading markets+Robinhood cron; #youtube-automation Viral Radar/YT cron; #business monetization/school; #security-redteam security. Natural, no threads; confirm new cron reroutes.
 §
-OSRS/RuneLite prefs: standalone/no deps; no ironman/GIM; compact sidebar no cutoff/trailing space, tiny right pad, inline rows. Who's Grinding: grinding-only; show every positive gain; icons/no redundant suffixes; refresh beside current user w/gap; lookback+offline in panel; autofilled search; rescan refreshes; auto fallback/no manual WOM; screenshots verified and anonymized.
+OSRS/RuneLite: standalone/no deps; no ironman/GIM; compact sidebar no cutoff/trailing space, tiny right pad, inline rows. Clan War Board: no local/share-code-only storage; wants near-free Azure global service, infra separate from Plugin Hub plugin. Who's Grinding: grinding-only; all positive gains; icons/no redundant suffixes; verified anonymized screenshots.
 §
 Client websites: user prefers live Git auto-deploy first; Stripe/payments and custom domains afterward.
 §

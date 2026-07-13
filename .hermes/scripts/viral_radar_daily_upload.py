@@ -48,7 +48,7 @@ def seed_latest_manifests() -> dict:
     """Refresh queue from Google/YouTube APIs every job before selecting a clip."""
     if not SEED_LATEST.exists():
         return {"status": "missing_seed_script", "path": str(SEED_LATEST)}
-    min_clips = os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", os.getenv("VIRAL_RADAR_MIN_UPLOADS", "10"))
+    min_clips = os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", os.getenv("VIRAL_RADAR_MIN_UPLOADS", "5"))
     env = os.environ.copy()
     # Viral Radar discovery/read scopes should use the same Classical Echos lane
     # token as upload unless an explicit discovery override is provided. Do not
@@ -442,7 +442,7 @@ def auto_clip_manifest_from_plan(plan_dir: Path) -> Path | None:
         return None
     duration = parse_time_to_seconds(str(meta.get("duration") or meta.get("duration_seconds") or ""), 45)
     stem = slugify(f"{creator}-{title}", 64)
-    min_clips = max(10, int(os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", os.getenv("VIRAL_RADAR_MIN_UPLOADS", "10"))))
+    min_clips = max(5, int(os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", os.getenv("VIRAL_RADAR_MIN_UPLOADS", "5"))))
     max_clips = min(50, max(min_clips, int(os.getenv("VIRAL_RADAR_MAX_CLIPS_PER_SOURCE", "50"))))
     is_short_source = "/shorts/" in source_url or duration <= 75
     # Shorts cannot always provide 3 distinct moments, but every long-form source
@@ -835,7 +835,7 @@ def main() -> int:
         }, indent=2))
         return 0
     try:
-        min_uploads = max(10, int(os.getenv("VIRAL_RADAR_MIN_UPLOADS", os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", "10"))))
+        min_uploads = max(5, int(os.getenv("VIRAL_RADAR_MIN_UPLOADS", os.getenv("VIRAL_RADAR_MIN_CLIPS_PER_LONGFORM", "5"))))
         upload_queue_first = os.getenv("VIRAL_RADAR_UPLOAD_QUEUE_FIRST", "1") != "0"
         queued_uploads = upload_pending_queue(limit=min_uploads) if upload_queue_first else []
         seed_result = seed_latest_manifests()
