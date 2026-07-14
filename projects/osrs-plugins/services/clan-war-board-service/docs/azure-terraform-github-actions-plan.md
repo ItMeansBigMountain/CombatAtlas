@@ -7,9 +7,60 @@ Give GitHub Actions secure Azure access for the Clan War Board service without s
 1. **Infrastructure pipeline** — runs Terraform from `infra/` and changes Azure resources only after approval.
 2. **Application pipeline** — builds/tests/deploys the API/web app into the already-created Azure resources, with its own approval gate.
 
-## Existing AZ-204 / MusicAI pattern observed
+## Existing Azure patterns observed
 
-I found the older Azure/Terraform pattern in `projects/MusicAI`:
+### Public `ItMeansBigMountain/az204` repo
+
+I found the AZ-204 example on GitHub at:
+
+```text
+https://github.com/ItMeansBigMountain/az204
+```
+
+Important patterns from that repo:
+
+- `.github/workflows/function-app-cicd.yml` deploys a Python Azure Function app from `labs/function_apps/app`.
+- Function deployment uses a publish profile secret:
+
+  ```yaml
+  uses: Azure/functions-action@v1
+  with:
+    app-name: daily-portfolio-func
+    package: labs/function_apps/app
+    publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+    scm-do-build-during-deployment: true
+    enable-oryx-build: true
+  ```
+
+- `.github/workflows/docker-acr-deploy.yml` uses `azure/login@v1` with:
+
+  ```yaml
+  creds: ${{ secrets.AZURE_CREDENTIALS }}
+  ```
+
+- The Docker workflow also uses ACR username/password secrets:
+
+  ```yaml
+  ACR_USERNAME
+  ACR_PASSWORD
+  ```
+
+- Function app Terraform lives at `labs/function_apps/infra` and creates:
+  - resource group
+  - storage account
+  - Linux consumption service plan `sku_name = "Y1"`
+  - Application Insights
+  - Cosmos DB account/database/container
+  - Linux Function App
+
+- Terraform variables mark sensitive values like subscription ID, SMTP password, and API keys as `sensitive = true`.
+- Terraform outputs include function hostname and sensitive Cosmos key.
+
+This confirms the style: separate app folders, path-filtered workflows, Azure secrets in GitHub Actions, Terraform infra dirs per lab/service, and publish-profile based app deploys.
+
+### Local `projects/MusicAI` pattern
+
+I also found the older Azure/Terraform pattern in `projects/MusicAI`:
 
 - `simple-setup.md` used `az login`, then `az ad sp create-for-rbac --name "musicai-sp" --role contributor --scopes /subscriptions/$(az account show --query id -o tsv)`.
 - GitHub Actions secrets expected there were:
@@ -22,8 +73,7 @@ I found the older Azure/Terraform pattern in `projects/MusicAI`:
 - Terraform lived under `infra/terraform` and used `azurerm` with `subscription_id = var.subscription_id` in one provider file.
 - The older deployment model combined infra/app deployment concepts around a simple push-to-main deploy.
 
-For Clan War Board, keep the same practical style of repo variables/secrets, but modernize Azure auth to GitHub OIDC so we avoid storing `AZURE_CREDENTIALS` or `AZURE_CLIENT_SECRET` for Azure deploys.
-
+For Clan War Board, keep the same practical style of path-filtered workflows and repo/environment variables/secrets, but modernize Azure auth to GitHub OIDC so we avoid storing `AZURE_CREDENTIALS` or `AZURE_CLIENT_SECRET` for Azure infra deploys. For app deploy, prefer OIDC + `az functionapp deployment source config-zip` over publish profiles unless Static Web Apps requires a deployment token.
 ## Recommended auth model: GitHub OIDC to Azure
 
 Use GitHub Actions OpenID Connect (OIDC) with an Azure Microsoft Entra app registration/service principal. This is better than sharing `az login` browser state or storing `AZURE_CREDENTIALS` JSON because GitHub receives short-lived tokens only during an approved workflow run.
