@@ -33,3 +33,7 @@
 [submodule "projects/youtube-automation"]
 	path = projects/youtube-automation
 	url = https://github.com/ItMeansBigMountain/youtube-automation.git
+[submodule "projects/osrs-plugins/services/clan-war-board-service"]
+	path = projects/osrs-plugins/services/clan-war-board-service
+	url = https://github.com/ItMeansBigMountain/clan-war-board-service.git
+	branch = main
