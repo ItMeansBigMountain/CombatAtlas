@@ -1,6 +1,6 @@
 # Social Video Performance Learnings
 
-Last updated: `2026-07-13T02:51:52.693557+00:00`
+Last updated: `2026-07-14T01:03:12.821826+00:00`
 
 ## Metrics status
 
@@ -17,7 +17,7 @@ Last updated: `2026-07-13T02:51:52.693557+00:00`
 
 ## viral-clip-radar
 
-- Uploads logged: 240 total; 222 public/metric-eligible.
+- Uploads logged: 245 total; 227 public/metric-eligible.
 - Live metrics unavailable for metric-eligible videos in this snapshot; inspect token/account errors above.
 
 ## Operating rule for future cron runs

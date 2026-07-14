@@ -20,15 +20,15 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 57
+        "completed": 58
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-07-14T03:00:00+00:00",
-      "last_run_at": "2026-07-12T03:01:11.003678+00:00",
+      "next_run_at": "2026-07-15T03:00:00+00:00",
+      "last_run_at": "2026-07-13T03:01:19.971615+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -60,15 +60,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 55
+        "completed": 56
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-07-13T13:30:00+00:00",
-      "last_run_at": "2026-07-12T13:31:27.532954+00:00",
+      "next_run_at": "2026-07-14T13:30:00+00:00",
+      "last_run_at": "2026-07-13T13:31:25.795849+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -112,15 +112,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 151
+        "completed": 154
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-07-13T08:52:19.022174+00:00",
-      "last_run_at": "2026-07-13T02:52:19.022174+00:00",
+      "next_run_at": "2026-07-14T03:19:11.453386+00:00",
+      "last_run_at": "2026-07-13T21:19:11.453386+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -215,15 +215,15 @@
       "schedule_display": "0 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 37
+        "completed": 38
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-07-14T01:00:00+00:00",
-      "last_run_at": "2026-07-13T01:16:45.010341+00:00",
+      "next_run_at": "2026-07-15T01:00:00+00:00",
+      "last_run_at": "2026-07-14T01:13:56.695369+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -262,15 +262,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 3296
+        "completed": 3427
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-07-13T03:09:49.903455+00:00",
-      "last_run_at": "2026-07-13T02:59:49.903455+00:00",
+      "next_run_at": "2026-07-14T03:10:57.486375+00:00",
+      "last_run_at": "2026-07-14T03:00:57.486375+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -308,15 +308,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 35
+        "completed": 36
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-07-13T14:00:00+00:00",
-      "last_run_at": "2026-07-12T14:00:49.222331+00:00",
+      "next_run_at": "2026-07-14T14:00:00+00:00",
+      "last_run_at": "2026-07-13T14:00:53.940411+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -355,15 +355,15 @@
       "schedule_display": "15 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 33
+        "completed": 34
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T04:20:40.734347+00:00",
-      "next_run_at": "2026-07-13T13:15:00+00:00",
-      "last_run_at": "2026-07-12T13:15:49.207119+00:00",
+      "next_run_at": "2026-07-14T13:15:00+00:00",
+      "last_run_at": "2026-07-13T13:15:53.924174+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -404,15 +404,15 @@
       "schedule_display": "50 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 19
+        "completed": 20
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T15:48:08.357771+00:00",
-      "next_run_at": "2026-07-13T13:50:00+00:00",
-      "last_run_at": "2026-07-10T13:53:09.497798+00:00",
+      "next_run_at": "2026-07-14T13:50:00+00:00",
+      "last_run_at": "2026-07-13T13:52:43.090836+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -502,15 +502,15 @@
       "schedule_display": "30 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 22
+        "completed": 23
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T16:12:37.431999+00:00",
-      "next_run_at": "2026-07-13T13:30:00+00:00",
-      "last_run_at": "2026-07-10T13:33:19.619287+00:00",
+      "next_run_at": "2026-07-14T13:30:00+00:00",
+      "last_run_at": "2026-07-13T13:36:03.509444+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -552,15 +552,15 @@
       "schedule_display": "0 16 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 13
+        "completed": 14
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T18:35:06.052701+00:00",
-      "next_run_at": "2026-07-13T16:00:00+00:00",
-      "last_run_at": "2026-07-10T16:03:54.133383+00:00",
+      "next_run_at": "2026-07-14T16:00:00+00:00",
+      "last_run_at": "2026-07-13T16:03:03.197113+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -602,15 +602,15 @@
       "schedule_display": "0 19 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 15
+        "completed": 16
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T18:35:07.056543+00:00",
-      "next_run_at": "2026-07-13T19:00:00+00:00",
-      "last_run_at": "2026-07-10T19:02:24.656797+00:00",
+      "next_run_at": "2026-07-14T19:00:00+00:00",
+      "last_run_at": "2026-07-13T19:03:07.190188+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -650,17 +650,17 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 26
+        "completed": 30
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-06T15:04:47.122120+00:00",
-      "next_run_at": "2026-07-13T03:13:52.205725+00:00",
-      "last_run_at": "2026-07-12T21:13:52.205725+00:00",
-      "last_status": "ok",
-      "last_error": null,
+      "next_run_at": "2026-07-14T03:17:59.344962+00:00",
+      "last_run_at": "2026-07-13T21:17:59.344962+00:00",
+      "last_status": "error",
+      "last_error": "Script exited with code 1\nstdout:\n{\n  \"status\": \"blocked_auth_hardening\",\n  \"problems\": [\n    \"youtube_profiles: trapiistan: verify failed: {\\n  \\\"profile\\\": \\\"trapiistan\\\",\\n  \\\"expected_channel_title\\\": \\\"Sosai Oyama\\\",\\n  \\\"expected_channel_id\\\": \\\"UCsxzQlusqwmMUdjMvKAJDfA\\\",\\n  \\\"token_path\\\": \\\"/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json\\\",\\n  \\\"valid\\\": false,\\n  \\\"scopes\\\": [\\n    \\\"https://www.googleapis.com/auth/youtube.upload\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.force-ssl\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.readonly\\\",\\n    \\\"https://www.googleapis.com/auth/yt-analytics.readonly\\\"\\n  ],\\n  \\\"refresh_error\\\": \\\"RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})\\\",\\n  \\\"next_step\\\": \\\"Run: python3 /opt/data/scripts/google_reauth_workflow.py youtube-auth-url trapiistan\\\"\\n}\\n\",\n    \"youtube_profiles: classicalechos: verify failed: {\\n  \\\"profile\\\": \\\"classicalechos\\\",\\n  \\\"expected_channel_title\\\": \\\"Classical Echos\\\",\\n  \\\"expected_channel_id\\\": \\\"UCcIpxiU2CLEsBdHcc7_lcyA\\\",\\n  \\\"token_path\\\": \\\"/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json\\\",\\n  \\\"valid\\\": false,\\n  \\\"scopes\\\": [\\n    \\\"https://www.googleapis.com/auth/youtube.upload\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.force-ssl\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.readonly\\\",\\n    \\\"https://www.googleapis.com/auth/yt-analytics.readonly\\\"\\n  ],\\n  \\\"refresh_error\\\": \\\"RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})\\\",\\n  \\\"next_step\\\": \\\"Run: python3 /opt/data/scripts/google_reauth_workflow.py youtube-auth-url classicalechos\\\"\\n}\\n\"\n  ],\n  \"checks\": null,\n  \"next_steps\": [\n    \"If a YouTube profile fails, run: python3 /opt/data/scripts/google_reauth_workflow.py youtube-auth-url <profile>\",\n    \"Exchange callback with: python3 /opt/data/scripts/google_reauth_workflow.py youtube-exchange <profile> <localhost callback URL> --verify\",\n    \"Then rerun: python3 /opt/data/scripts/youtube_auth_healthcheck.py --verbose\"\n  ]\n}",
       "last_delivery_error": null,
       "deliver": "origin",
       "origin": {
@@ -719,5 +719,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-07-13T03:00:49.616801+00:00"
+  "updated_at": "2026-07-14T03:00:57.486509+00:00"
 }

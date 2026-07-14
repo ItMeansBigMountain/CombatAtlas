@@ -1,0 +1,108 @@
+Cronjob Response: Morning operator report
+(job_id: 92f873723241)
+-------------
+
+**Top line**
+- Google morning scan is blocked today
+  - All 5 Workspace profiles returned revoked/expired token errors
+  - No Gmail/Calendar/Drive signals could be safely read
+  - Main operator move: repair OAuth before trusting any email/calendar silence
+
+**Work source / operating pulse**
+- Google Workspace pulse
+  - Blocked profiles:
+    - `trapiistan@gmail.com`
+    - `Affan.fareed@gmail.com`
+    - `fareed320@gmail.com`
+    - `classicalechos@gmail.com`
+    - `laflametoast@gmail.com`
+  - Error pattern:
+    - `invalid_grant: Token has been expired or revoked`
+  - Why it matters:
+    - Morning triage, billing alerts, security notices, Calendar prep, and content-source queues are blind today
+  - Best next move:
+    - Run the unified Google reauth flow for all five profiles, then replay the morning collector
+
+**Email priority + cleanup**
+- Priority emails
+  - Unknown today
+    - Gmail access failed across every authorized profile
+- Interesting/source emails
+  - Unknown today
+    - TLDR / Kino Body / Daily Stoic / Grammarly source checks could not run
+- Cleanup actions
+  - No deletion/labeling performed
+  - Approved junk cleanup is paused until inbox visibility returns
+- Needs review
+  - OAuth repair
+    - This is the only real blocker surfaced today
+
+**Calendar / prep notes**
+- Calendar unavailable
+  - No events could be read because all Workspace tokens failed refresh
+  - If there’s any Jared coding prep today, use Codewars.com or SoloLearn.com as lightweight warmup/context; modules give him that quick accomplishment hit
+
+**Chicago local pulse**
+- Weather
+  - Sunny around 78°F at 8:15 AM CDT
+  - Feels like ~81°F
+  - Light NNW wind
+  - Low rain chance reported
+- Move
+  - Good morning window for errands/walks before afternoon heat builds
+
+**Market pulse**
+- Market source signal is thin this morning
+  - IBD headline says futures fell and oil jumped amid U.S./Iran strike tension
+  - Treat as risk-on/off context, not a trade signal
+- Watch
+  - Oil/geopolitical headlines
+  - Big-bank / semiconductor earnings setup if you’re scanning equities
+
+**Google search / social pulse**
+- Search trend signal
+  - Ahrefs July 2026 ranking says “chatgpt” is the top Google search, followed by YouTube/Amazon/Gmail/Wordle/Facebook
+  - Google’s Summergeist trend report flags consumer curiosity around Android 17, Google Home Speaker, AI skills, and summer drink/entertainment trends
+- Useful angle
+  - “Learn AI skills” remains mainstream enough to package into content, onboarding, or micro-course material
+
+**AI + coding news**
+- Source-backed highlights
+  - BuildFastWithAI reports July 13 AI headlines around:
+    - Apple suing OpenAI
+    - Musk/Altman public fight
+    - Google/Microsoft/Salesforce/Snowflake/ServiceNow backing shared enterprise AI backend protocol
+    - OpenAI shipping a full-duplex voice model
+    - Anthropic expanding an AI cybersecurity program
+  - CNBC context:
+    - Microsoft and Google are pushing harder into AI coding against Anthropic/OpenAI
+    - Google’s agentic coding story emphasizes parallel agent orchestration
+- Operator read
+  - Coding-agent competition is shifting from “who writes code” to “who orchestrates multi-agent work reliably”
+
+**Interesting item**
+- The AI trend to watch:
+  - Enterprise protocol wars
+    - If Google/Microsoft/Salesforce/Snowflake/ServiceNow align around shared AI backend plumbing, useful automation may start depending less on single-model cleverness and more on integrations/protocol reliability
+
+**Numerology**
+- 7/13/2026 → 21 → **3**
+  - Good “ship, communicate, make it visible” day
+  - Don’t over-polish private systems; expose the useful output
+
+**Daily challenge**
+- Fix one blind spot before noon
+  - Today’s obvious one: Google OAuth health
+  - Success condition: all five profiles verify, then the morning collector reruns cleanly
+
+**One big priority prompt**
+- “What account or pipeline am I currently assuming is working, but have not verified with a live probe?”
+
+**Hard truth / leverage move**
+- The report is quiet because the sensors are broken, not because life/admin is quiet.
+  - Leverage move:
+    - Repair Google auth first
+    - Then rerun the collector
+    - Then only act on surfaced priorities, not vibes
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Morning operator report").
