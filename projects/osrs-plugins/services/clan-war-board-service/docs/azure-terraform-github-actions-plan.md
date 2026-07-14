@@ -7,11 +7,30 @@ Give GitHub Actions secure Azure access for the Clan War Board service without s
 1. **Infrastructure pipeline** — runs Terraform from `infra/` and changes Azure resources only after approval.
 2. **Application pipeline** — builds/tests/deploys the API/web app into the already-created Azure resources, with its own approval gate.
 
+## Existing AZ-204 / MusicAI pattern observed
+
+I found the older Azure/Terraform pattern in `projects/MusicAI`:
+
+- `simple-setup.md` used `az login`, then `az ad sp create-for-rbac --name "musicai-sp" --role contributor --scopes /subscriptions/$(az account show --query id -o tsv)`.
+- GitHub Actions secrets expected there were:
+  - `AZURE_CREDENTIALS`
+  - `AZURE_SUBSCRIPTION_ID`
+  - `AZURE_TENANT_ID`
+  - `AZURE_CLIENT_ID`
+  - `AZURE_CLIENT_SECRET`
+- App/API secrets were also kept in GitHub Actions encrypted secrets.
+- Terraform lived under `infra/terraform` and used `azurerm` with `subscription_id = var.subscription_id` in one provider file.
+- The older deployment model combined infra/app deployment concepts around a simple push-to-main deploy.
+
+For Clan War Board, keep the same practical style of repo variables/secrets, but modernize Azure auth to GitHub OIDC so we avoid storing `AZURE_CREDENTIALS` or `AZURE_CLIENT_SECRET` for Azure deploys.
+
 ## Recommended auth model: GitHub OIDC to Azure
 
 Use GitHub Actions OpenID Connect (OIDC) with an Azure Microsoft Entra app registration/service principal. This is better than sharing `az login` browser state or storing `AZURE_CREDENTIALS` JSON because GitHub receives short-lived tokens only during an approved workflow run.
 
 Do **not** copy long-lived Azure credentials into this repo.
+
+When the user says **“pim up”**, start Azure CLI device-code login and return the Microsoft login URL/code so the user can authenticate/PIM-elevate interactively.
 
 ### What Hermes needs locally
 
