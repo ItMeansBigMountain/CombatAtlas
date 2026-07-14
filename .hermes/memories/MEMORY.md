@@ -2,7 +2,7 @@ Daily HeRmEz backup cron: cfcea697da5c, 03:00, /opt/data/scripts/backup_hermez.s
 §
 Hermes Kanban is consolidated to the canonical default board for the user's main workspace. DB path is /opt/data/kanban.db; current-board file is /opt/data/kanban/current with value "default". Use the default board for active HeRmEz project work; old hermez and nous-kanban-demo boards were removed after backup.
 §
-Email/YT rules: faceless/newsletters→Trapiistan/Sosai; Viral Radar→Classical Echos first, then Trapiistan/Sosai + fareed320 if rate-limited. Use Hermes/HeRmEz Google OAuth client. Delete source emails only after verified correct-channel upload. Viral Radar: strict watchlist, 10–50 real clips/source, no filler; queue failed uploads.
+Email/YT rules: faceless paused unless resumed; Viral Radar high priority→Classical Echos, failovers Trapiistan/Sosai+fareed320. Strict watchlist, 10–50 real clips/source, no filler, queue failures, delete source emails only after verified upload. Auth watchdog failures must include per-account login URLs + callback instructions.
 §
 Cox Elementary PTA dynamic Django site is deployed at https://cox-elementary-pta.onrender.com from repo /opt/data/HeRmEz/projects/cox-elementary-pta.
 §

@@ -176,6 +176,31 @@ def check_recent_cron_errors() -> list[str]:
     return problems
 
 
+def youtube_auth_url(profile: str) -> dict:
+    """Generate a fresh OAuth URL for a failed YouTube profile.
+
+    The URL is safe to show to the user. It creates/updates that profile's
+    youtube_oauth_pending.json so the user can paste the localhost callback
+    back for `youtube-exchange`.
+    """
+    ok, data = run_json([sys.executable, str(REAUTH), 'youtube-auth-url', profile], timeout=120)
+    if ok:
+        return data.get(profile, data)
+    return {'status': 'failed_to_generate_auth_url', 'error': str(data)[-1000:]}
+
+
+def failed_youtube_profiles(problems: list[str]) -> list[str]:
+    profiles: list[str] = []
+    for problem in problems:
+        if not problem.startswith('youtube_profiles: '):
+            continue
+        rest = problem.split(': ', 1)[1]
+        profile = rest.split(':', 1)[0].strip()
+        if profile and profile in EXPECTED and profile not in profiles:
+            profiles.append(profile)
+    return profiles
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument('--verbose', action='store_true')
@@ -194,14 +219,21 @@ def main() -> int:
 
     problems = [f'{section}: {problem}' for section, items in checks.items() for problem in items]
     if problems or args.verbose:
+        failed_profiles = failed_youtube_profiles(problems)
+        reauth_urls = {profile: youtube_auth_url(profile) for profile in failed_profiles}
         payload = {
             'status': 'blocked_auth_hardening' if problems else 'ok',
             'problems': problems,
             'checks': checks if args.verbose else None,
+            'reauth_urls': reauth_urls,
+            'callback_instructions': [
+                f"After logging in, send back: youtube:{profile}: <full localhost callback URL>" for profile in failed_profiles
+            ],
             'next_steps': [
-                'If a YouTube profile fails, run: python3 /opt/data/scripts/google_reauth_workflow.py youtube-auth-url <profile>',
-                'Exchange callback with: python3 /opt/data/scripts/google_reauth_workflow.py youtube-exchange <profile> <localhost callback URL> --verify',
-                'Then rerun: python3 /opt/data/scripts/youtube_auth_healthcheck.py --verbose',
+                'Open each reauth_urls.<profile>.auth_url in a browser and approve the expected YouTube account/channel.',
+                'Send me each full localhost callback URL exactly as redirected, prefixed as shown in callback_instructions.',
+                'I will exchange with: python3 /opt/data/scripts/google_reauth_workflow.py youtube-exchange <profile> <localhost callback URL> --verify',
+                'Then I will rerun: python3 /opt/data/scripts/youtube_auth_healthcheck.py --verbose',
             ] if problems else [],
         }
         print(json.dumps(payload, indent=2))

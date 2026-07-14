@@ -42,6 +42,7 @@ This umbrella covers GitHub work across authentication, issue management, PR lif
 - Create a clean branch, commit focused changes, push, and open a PR with a test plan.
 - Monitor CI status and fetch logs before changing code.
 - Do not merge until checks and requested reviews are satisfied unless the user explicitly directs otherwise.
+- For Azure deployments, see `references/azure-oidc-environment-gates.md`: prefer GitHub OIDC + environment-gated federated credentials, and split Terraform infra workflows from app deploy workflows.
 
 ### Code Review
 

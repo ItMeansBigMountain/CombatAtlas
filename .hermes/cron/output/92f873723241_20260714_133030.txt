@@ -1,0 +1,128 @@
+Cronjob Response: Morning operator report
+(job_id: 92f873723241)
+-------------
+
+**Top line**
+- Google Workspace morning scan is blocked across all 5 profiles.
+  - Every token returned `invalid_grant: expired or revoked`.
+  - No reliable Gmail / Calendar / Drive pulse could be collected today.
+  - Main action: reauth the profiles before trusting any inbox/calendar automation.
+
+**Work source / operating pulse**
+- **Google Workspace pulse**
+  - Blocked profiles:
+    - `trapiistan@gmail.com` — Hermes / YouTube / operator
+    - `Affan.fareed@gmail.com` — personal main
+    - `fareed320@gmail.com` — personal secondary
+    - `classicalechos@gmail.com` — Classical Echos
+    - `laflametoast@gmail.com` — burner
+  - Impact:
+    - No unread priority email scan.
+    - No calendar scan.
+    - No Drive / Docs / Sheets movement scan.
+    - No newsletter/source-material triage.
+  - Best fix:
+    - Run the Google reauth workflow for all Workspace profiles.
+    - After reauth, replay the morning collector so the report can resume normal signal extraction.
+
+**Email priority + cleanup**
+- **Priority emails**
+  - Unavailable today.
+  - Cause: all Gmail profile tokens expired/revoked.
+
+- **Interesting/source emails**
+  - Unavailable today.
+  - TLDR / Kino Body / Daily Stoic / Grammarly could not be checked.
+
+- **Cleanup actions**
+  - No cleanup performed.
+  - Approved junk categories remain safe to clean once auth is restored:
+    - FoundersCard
+    - Yieldi
+    - Crunch
+    - Higgsfield
+    - Fundrise
+    - Kling AI
+    - Instagram notifications
+    - Lumen marketing
+    - Chess.com nags
+    - YEEZY
+    - City Experiences
+    - LELO
+    - GNC
+    - generic consumer promos
+
+- **Needs review**
+  - Newsletter/source emails still should not be deleted until used or explicitly approved:
+    - TLDR
+    - Kino Body / Kinobody
+    - Daily Stoic
+    - Grammarly Insights
+
+**Calendar / prep notes**
+- Calendar unavailable today due OAuth failure.
+- No Jared coding prep/event detected from live calendar context.
+
+**Chicago local pulse**
+- Weather:
+  - Around 8:15am: sunny, ~75°F, feels like ~78°F.
+  - Humid: ~82%.
+  - Low immediate rain signal from the weather source.
+- Local note:
+  - Chicago-area heat is expected to build again today.
+  - Keep errands / walks earlier if possible.
+
+**Market pulse**
+- Premarket signal is mixed / incomplete from available sources.
+  - European indexes shown down sharply on Business Insider’s premarket page.
+  - Nikkei shown up strongly.
+  - No clean live U.S. futures snapshot surfaced in the quick search results.
+- Practical read:
+  - Treat today as risk-aware, not prediction-heavy.
+  - If trading/investing: wait for U.S. open confirmation rather than acting off thin premarket snippets.
+
+**Google search / social pulse**
+- No concrete personal/social signal available from Workspace because auth is down.
+- Public Chicago news surfaced:
+  - WTTW reports police reform uncertainty around Larry Snelling’s retirement.
+  - ABC7 notes Chicago-area heat returning.
+
+**AI + coding news**
+- Concrete item:
+  - Z.ai launched **ZCode**, an agentic coding environment positioned against Copilot, Cursor, and Anthropic.
+    - Angle: coding-agent competition is getting more global and price-aggressive.
+    - Useful lens: watch for cheaper open-weight coding workflows that can run validation loops, not just autocomplete.
+- Security item:
+  - AI Now Institute published a prompt-injection/RCE exploit brief targeting defensive AI coding-agent workflows.
+    - Relevant because you use agentic coding tools.
+    - Leverage move: keep “auto-review / auto-mode” away from untrusted repos unless sandboxed.
+
+**Interesting item**
+- The useful thread today is not “more tools.”
+  - It’s reliability:
+    - All five Google profiles failing at once means the daily ops layer is blind.
+    - Fixing auth restores a lot of downstream automation value immediately.
+
+**Numerology**
+- 7/14/2026 → 7 + 1 + 4 + 2 + 0 + 2 + 6 = **22**
+  - Short read: builder number.
+  - Good day for repairing infrastructure, not chasing novelty.
+
+**Daily challenge**
+- Do one infrastructure repair that compounds:
+  - Reauth Google profiles.
+  - Verify each account.
+  - Rerun the collector.
+  - Save the result as the baseline for tomorrow.
+
+**One big priority prompt**
+- “What single broken system, if fixed today, makes tomorrow’s work easier without needing motivation?”
+
+**Hard truth / leverage move**
+- Hard truth:
+  - If the inbox/calendar layer is blind, the morning report becomes vibes plus public web scraps.
+- Leverage move:
+  - Treat Google OAuth repair as today’s operator task #1.
+  - Once restored, the report can again surface receipts, deadlines, content inputs, and cleanup buckets automatically.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Morning operator report").
