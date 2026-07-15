@@ -57,6 +57,8 @@ permissions:
 
 These are variables, not secrets. Azure app/runtime secrets still belong in GitHub secrets or Azure Key Vault.
 
-## Pitfall
+## Pitfalls
 
-Do not combine Terraform apply and app code deployment in one broad push-to-main workflow for services with approval gates. It blurs blast radius and makes it hard to approve infra separately from ordinary code changes.
+- Do not combine Terraform apply and app code deployment in one broad push-to-main workflow for services with approval gates. It blurs blast radius and makes it hard to approve infra separately from ordinary code changes.
+- Add preflight checks for required GitHub variables before `azure/login`; missing variables surface as blank `ARM_CLIENT_ID` / `ARM_TENANT_ID` and `azure/login` errors like “Not all values are present”. A simple Bash loop over required vars gives a clearer failure.
+- If a failed Terraform apply leaves `state blob is already locked`, verify no active workflow is still using it before force-unlocking; often the Azure blob lock clears shortly after the failed runner exits.

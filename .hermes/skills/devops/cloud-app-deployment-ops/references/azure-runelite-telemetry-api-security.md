@@ -7,7 +7,7 @@ Use this when planning/deploying an Azure backend for a public RuneLite plugin t
 - RuneLite plugin: authenticated write client for leader actions and telemetry observations.
 - Azure Functions API: validation, rate limits, append-only event ingestion, aggregation/materialization.
 - Cosmos DB Free Tier: clans, availability posts, fight applications, confirmed fights, observations, public summaries.
-- Static Web Apps Free: website and public completed analytics.
+- Static Web Apps Free: website and public completed analytics; for MVP/no-quota deployments, use Static Web Apps managed API for read-only/public API routes instead of a separate Function App.
 - Public website: read-only. It must not receive tokens or endpoints capable of creating fights, accepting fights, submitting events, or editing results.
 
 ## Do not rely on a static plugin secret

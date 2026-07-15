@@ -40,6 +40,14 @@ az account set --subscription "<subscription>"
 az account show --query '{tenantId:tenantId, subscriptionId:id, name:name}' -o table
 ```
 
+If device-code login shows a subscription selection prompt in a tracked PTY, submit Enter to accept the `*` default. If MFA is required or the initial login reports a tenant-specific error, rerun with the tenant explicitly:
+
+```bash
+az login --use-device-code --tenant "<tenant-id>"
+```
+
+After login, verify the account was actually stored with `az account show`; browser success alone is not enough.
+
 ## Environment-gated federated credentials
 
 Create one federated credential per GitHub Environment so approval gates matter:
@@ -90,8 +98,10 @@ paths:
 Rules:
 
 - Infra pipeline runs `terraform fmt`, `init`, `validate`, `plan`, and only applies on manual dispatch + approval.
+- Add an explicit preflight step before `azure/login` that fails clearly if `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_SUBSCRIPTION_ID`, or `TFSTATE_*` variables are missing; otherwise `azure/login` fails with a less helpful “Not all values are present”.
 - App pipeline tests/packages/deploys Function App or Static Web App code; it does not run Terraform.
 - Terraform state should live outside the app resource group, e.g. `rg-cwb-tfstate` + storage container `tfstate`.
+- If an apply fails and the immediate retry reports `state blob is already locked`, wait briefly/check the lock; many locks clear after the failed runner exits. Only `terraform force-unlock` a known stale lock after confirming no active run is using it.
 
 ## Terraform layout
 

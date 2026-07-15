@@ -23,6 +23,8 @@ For Vercel portfolio audits, first load `references/vercel-portfolio-audit-patte
 
 For Azure near-free backend/service planning, load `references/azure-free-tier-service-planning.md`; the user prefers service-owned `infra/` directories and explicit cost/security guardrails before deployment.
 For Azure Terraform + GitHub Actions deployment setup, load `references/azure-terraform-github-actions-oidc.md`; use OIDC + GitHub Environment approval gates instead of long-lived Azure deploy secrets. If the user says “pim up,” start `az login --use-device-code` and give them the code/link.
+For Azure service-account/persistent-login setup, load `references/azure-service-principal-persistent-login.md`; use GitHub OIDC for pipelines, a local service-principal helper outside repos for Hermes CLI sessions, and verify no paid resources were created by identity bootstrap.
+For Azure Static Web Apps managed API fallback / no-quota MVP deployment, load `references/azure-static-webapps-managed-api-fallback.md`; use it when a separate Azure Functions/App Service Plan hits quota or the MVP can run as Static Web Apps Free + managed API.
 For public RuneLite/plugin telemetry APIs on Azure, load `references/azure-runelite-telemetry-api-security.md`; keep the website read-only, avoid static plugin secrets, batch telemetry, rate-limit aggressively, and use public static/sanitized snapshots for low-latency website analytics.
 
 1. Identify provider/platform, target account/project, and deployment environment.
@@ -40,6 +42,8 @@ For public RuneLite/plugin telemetry APIs on Azure, load `references/azure-runel
 - `references/azure-near-free-serverless-backend.md` — Azure MVP pattern for low/near-free hosted services using Static Web Apps Free, Functions Consumption, and Cosmos DB Free Tier with budget/cost guardrails.
 - `references/azure-near-free-serverless-backend.md` — Azure MVP pattern for low/near-free hosted services using Static Web Apps Free, Functions Consumption, and Cosmos DB Free Tier with budget/cost guardrails.
 - `references/azure-terraform-github-actions-oidc.md` — service-owned Terraform layout, GitHub OIDC setup, environment-gated federated credentials, split infra/app workflows, and `pim up` Azure device-code login convention.
+- `references/azure-service-principal-persistent-login.md` — service-principal deployer identity pattern for GitHub OIDC plus local Hermes CLI/Terraform persistent login, including secret-safe helper scripts and free/cost guardrails.
+- `references/azure-static-webapps-managed-api-fallback.md` — fallback from separate Function App/App Service Plan to Static Web Apps Free managed API when Azure quota blocks Functions Consumption or a lower-quota MVP is preferred.
 
 ## Pitfalls
 

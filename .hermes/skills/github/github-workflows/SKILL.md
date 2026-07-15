@@ -43,6 +43,7 @@ This umbrella covers GitHub work across authentication, issue management, PR lif
 - Monitor CI status and fetch logs before changing code.
 - Do not merge until checks and requested reviews are satisfied unless the user explicitly directs otherwise.
 - For Azure deployments, see `references/azure-oidc-environment-gates.md`: prefer GitHub OIDC + environment-gated federated credentials, and split Terraform infra workflows from app deploy workflows.
+- If Azure Actions fail at `azure/login` with blank `ARM_CLIENT_ID`/`ARM_TENANT_ID`/`ARM_SUBSCRIPTION_ID`, load `references/azure-actions-oidc-variable-preflight.md`; inspect repo/environment variables and add a preflight step before `azure/login`. If `azure/login` reports missing `client-id`/`tenant-id`, check `references/azure-actions-oidc-variable-preflight.md` and add a preflight step before `azure/login` so missing repo/environment variables fail clearly.
 
 ### Code Review
 

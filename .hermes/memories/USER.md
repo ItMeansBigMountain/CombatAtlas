@@ -1,6 +1,6 @@
 Discord: #general ops; #coding dev; #personal life/game; #trading markets+Robinhood cron; #youtube-automation Viral Radar/YT cron; #business monetization/school; #security-redteam security. Natural, no threads; confirm new cron reroutes.
 §
-OSRS/RuneLite: standalone/no deps; compact sidebar/no cutoff/tiny right pad/inline rows. Clan War Board: no local/share-code-only storage; wants near-free Azure global service, service-owned infra separate from Plugin Hub plugin; “pim up” means start Azure device-code login. Who’s Grinding: grinding-only; all positive gains; icons/no redundant suffixes.
+OSRS/RuneLite: standalone/no deps; compact fixed-width sidebar/no cutoff/tiny pad/vertical tabs. Clan War Board: global backend; no surprise-cost Azure; service-owned Terraform; infra/app Actions trigger only on relevant paths; read-only public site; secure RuneLite API. Likes Django-style same-service REST+HTML but cost guardrails win; “pim up”=Azure device login.
 §
 Client websites: user prefers live Git auto-deploy first; Stripe/payments and custom domains afterward.
 §
