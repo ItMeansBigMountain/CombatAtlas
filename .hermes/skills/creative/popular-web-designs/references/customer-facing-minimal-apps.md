@@ -30,7 +30,8 @@ Use this reference when a user says a web app feels cluttered, jumbled, too data
 ## Verification checklist
 
 - Landing page has one obvious primary action.
-- No customer-visible words like API, Vercel, seed data, developer, source panel, credentials, build, import hook, or implementation details.
+- No customer-visible words like API, Vercel, seed data, developer, source panel, credentials, build, import hook, implementation details, or agent-to-user phrasing such as “fake data”, “real data”, “development tweak”, “write endpoints”, or “this is from me to you”. Treat those as internal requirements and translate them into polished product copy.
+- If the user says tabs are too cramped or asks for tabs to become pages, make real routes/pages with progressive disclosure rather than a single long scroller; verify direct route loads, not only client-side navigation.
 - Search works globally across primary objects and child content.
 - Click path is obvious: landing → object → item detail.
 - Browser visual check confirms no broken images, no crowded panels, no awkward developer copy.

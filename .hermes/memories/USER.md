@@ -1,8 +1,8 @@
 Discord: #general ops; #coding dev; #personal life/game; #trading markets+Robinhood cron; #youtube-automation Viral Radar/YT cron; #business monetization/school; #security-redteam security. Natural, no threads; confirm new cron reroutes.
 §
-OSRS/RuneLite: standalone/no deps; compact fixed-width sidebar/no cutoff/tiny pad/vertical tabs. Clan War Board: global backend; no surprise-cost Azure; service-owned Terraform; infra/app Actions trigger only on relevant paths; read-only public site; secure RuneLite API. Likes Django-style same-service REST+HTML but cost guardrails win; “pim up”=Azure device login.
+OSRS/RuneLite: no deps, compact fixed-width sidebar/vertical tabs. Clan War Board: real data only/no faux clans, OSRS-themed production site, separate pages, match terms home bottom; global backend; no-surprise-cost Azure/free-tier; service Terraform; infra/app Actions path-scoped; read-only public site; opt-in RuneLite API. Likes Django REST+HTML if free; cost guardrails win; “pim up”=Azure login.
 §
-Client websites: user prefers live Git auto-deploy first; Stripe/payments and custom domains afterward.
+Client sites: live Git auto-deploy first; Stripe/domains later.
 §
 Project backups should live under /opt/data/HeRmEz/projects/_backups, not /opt/data/HeRmEz/.hermes.
 §

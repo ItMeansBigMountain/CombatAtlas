@@ -25,6 +25,7 @@ For Azure near-free backend/service planning, load `references/azure-free-tier-s
 For Azure Terraform + GitHub Actions deployment setup, load `references/azure-terraform-github-actions-oidc.md`; use OIDC + GitHub Environment approval gates instead of long-lived Azure deploy secrets. If the user says “pim up,” start `az login --use-device-code` and give them the code/link.
 For Azure service-account/persistent-login setup, load `references/azure-service-principal-persistent-login.md`; use GitHub OIDC for pipelines, a local service-principal helper outside repos for Hermes CLI sessions, and verify no paid resources were created by identity bootstrap.
 For Azure Static Web Apps managed API fallback / no-quota MVP deployment, load `references/azure-static-webapps-managed-api-fallback.md`; use it when a separate Azure Functions/App Service Plan hits quota or the MVP can run as Static Web Apps Free + managed API.
+For Azure reusable Hermes deployment identities, persistent local service-principal login, GitHub OIDC, cost-safe roles, Azure tags, and resource-group portal links, load `references/azure-hermes-service-account-and-resource-governance.md`.
 For public RuneLite/plugin telemetry APIs on Azure, load `references/azure-runelite-telemetry-api-security.md`; keep the website read-only, avoid static plugin secrets, batch telemetry, rate-limit aggressively, and use public static/sanitized snapshots for low-latency website analytics.
 
 1. Identify provider/platform, target account/project, and deployment environment.
@@ -44,6 +45,15 @@ For public RuneLite/plugin telemetry APIs on Azure, load `references/azure-runel
 - `references/azure-terraform-github-actions-oidc.md` — service-owned Terraform layout, GitHub OIDC setup, environment-gated federated credentials, split infra/app workflows, and `pim up` Azure device-code login convention.
 - `references/azure-service-principal-persistent-login.md` — service-principal deployer identity pattern for GitHub OIDC plus local Hermes CLI/Terraform persistent login, including secret-safe helper scripts and free/cost guardrails.
 - `references/azure-static-webapps-managed-api-fallback.md` — fallback from separate Function App/App Service Plan to Static Web Apps Free managed API when Azure quota blocks Functions Consumption or a lower-quota MVP is preferred.
+- `references/azure-static-webapps-managed-api-oidc.md` — end-to-end near-free Azure Static Web Apps managed API pattern with Terraform remote state, GitHub OIDC, app/infra workflow split, SWA token retrieval, Hermes Agent tags, and portal URL return format.
+
+## References
+
+- `references/azure-static-webapps-terraform-near-free.md` captures the Azure Static Web Apps managed-API fallback, GitHub OIDC/service-principal pattern, Terraform state/tagging conventions, path-scoped pipeline triggers, and no-surprise-cost guardrails used for near-free Azure app deployments.
+
+## Azure Static Web Apps / pipeline support notes
+
+- See `references/azure-static-web-apps-pipelines.md` for Static Web Apps app-root routing config, path-scoped GitHub Actions triggers, Hermes Agent Azure tags, OIDC/service-account deployment pattern, and live route verification commands.
 
 ## Pitfalls
 
@@ -51,6 +61,14 @@ For public RuneLite/plugin telemetry APIs on Azure, load `references/azure-runel
 - Do not print tokens, API keys, or credential file contents.
 - Do not claim deployment success until the live app or provider deployment status is checked.
 - Do not assume Vercel marketplace databases are free or available; verify current plan constraints.
+
+## Azure Static Web Apps Free Pattern
+
+For near-free Azure website/API deployments, see `references/azure-static-webapps-free-python-api.md`. It covers Static Web Apps managed Python APIs, clean-route config placement, GitHub OIDC pipelines, free-tier cost guardrails, service-principal login handling, and resource tagging conventions.
+
+## Related References
+
+- `references/azure-static-webapps-free-tier-pattern.md` — Azure Static Web Apps Free + managed API deployment, OIDC service account, path-scoped pipelines, cost guardrails, route fallback config, and Hermes tagging.
 
 ## Verification Checklist
 

@@ -30,6 +30,8 @@ The default standard is: inspect first, implement the smallest useful slice, ver
 
 ## Universal Delivery Workflow
 
+When explaining customer/user experience flows for this user, keep it in very small, short bullets if requested. Avoid long narrative product prose; use concise start-to-finish bullets for each actor/persona.
+
 1. **Inspect before changing.** Read project files, trackers, README/direction docs, git status, and relevant branches or child repos.
 2. **Classify the job.** Is this a portfolio decision, new scaffold, feature slice, bugfix, QA pass, deployment, or handoff?
 3. **Write or update source-of-truth docs.** Use `PRODUCT_DIRECTION.md`, `MERGE_INTO_*.md`, `DEVELOPMENT_PLAN.md`, `DEVELOPER_CHEATSHEET.md`, trackers, or client guides where appropriate.
@@ -72,6 +74,8 @@ Treat lookup as the baseline and video/AR overlay as the product direction.
 - Show source, recency, confidence, and marketplace spread instead of one opaque price.
 
 ### OSRS / RuneLite plugins
+
+For OSRS clan competition products that go beyond a local plugin into a public website/backend/service, load `references/osrs-clan-competition-service-pattern.md`; model clan type/bracket, member overview, Wise Old Man linkage, upcoming fight posts, agreed match terms, and completed battle analytics while keeping sensitive worlds/rally notes private until agreement.
 
 For OSRS plugins, each child plugin should be its own Gradle/RuneLite repo under the user's portfolio container, except when the user explicitly decides related ideas should become one plugin/product. For merge workflow details, see `references/absorbed/osrs-plugins/merge-related-runelite-submodules.md`. For current portfolio/UI lessons from recent work, see `references/osrs-runelite-plugin-portfolio-lessons.md`. For the latest portfolio-refinement notes, standalone-plugin policy, social API examples, Swing control pitfalls, and submodule cleanup patterns, see `references/osrs-plugin-portfolio-refinement.md`.
 
@@ -127,6 +131,10 @@ For QA passes:
 5. Classify by severity/category and produce a structured report.
 
 ## Support Package Index
+
+Additional active references:
+
+- `references/osrs-clan-competition-service-pattern.md` — public OSRS clan competition service pattern: live Wise Old Man clan/member data, OSRS Wiki theme/image usage, no-faux-data empty states, and RuneLite leader fight-agreement fields.
 
 Archived source packages absorbed into this umbrella are preserved under `references/absorbed/<old-skill-name>/` when available:
 
