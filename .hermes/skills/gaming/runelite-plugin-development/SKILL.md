@@ -100,6 +100,8 @@ Use this when working on the user's OSRS/RuneLite plugin portfolio: fixing plugi
 
 See `references/osrs-plugin-portfolio-cleanup.md` for the current user-approved consolidation map.
 See `references/osrs-plugin-lifecycle-and-plugin-hub-pr.md` for OSRS plugin lifecycle bucket rules (`in-progress`, `pr-review-pending`, `completed`), RuneLite Plugin Hub PR manifest requirements, and the current Who's Grinding Panel run command/finalization notes.
+See `references/plugin-hub-upstream-pr-validation.md` for the verified end-to-end upstream submission loop: one marker per PR, immutable SHA pinning, official packager monitoring, bundled Gson compatibility, CI log-driven fixes, and the difference between a real failure and the expected maintainer-review gate.
+See `references/plugin-hub-production-hardening.md` for the post-submission production pass: inspect issue comments/reviews/check runs, remove every user-accessible development mode, address maintainer-prohibited patterns, update the existing marker PR, and verify exact parent gitlink SHAs.
 See `references/osrs-consolidation-implementation-notes.md` for session-tested implementation notes, pure-service module patterns, RuneLite API probes, and child/parent push verification snippets.
 See `references/runelite-side-panel-dimensions.md` for the RuneLite side-panel width budget, WhosGrindingPanel dimensions helper pattern, and Windows submodule handoff pitfall.
 See `references/whos-grinding-panel-social-detail-pattern.md` for the current Who's Grinding Panel source model, profile detail UX, gains-period config, and WOM/TempleOSRS integration direction.
@@ -126,7 +128,8 @@ See `references/clan-war-board-live-service-and-plugin-sync.md` for the latest l
 See `references/clan-war-board-real-time-zero-state.md` for the Clan War Board stale-data audit checklist: plugin-only clan source, valid zero registered clans, rendered-site counters, RuneLite panel wording, no fake/default fight fixtures, and live API/browser/Java smoke verification.
 See `references/clan-war-board-pvp-tracking-research.md` for PvP telemetry research from PvP Performance Tracker, PvP Leaderboard, PvP-Hub, WOM/Temple/hiscores/wiki sources, recommended Clan War Board event model, scoring/confidence policy, privacy boundaries, and static snapshot scaling.
 See `references/clan-war-board-telemetry-privacy-and-batching.md` for the current Clan War Board telemetry implementation rules: required sync, member public-player privacy defaulting off, public world policy, low-lag batched event uploads, live `/api/plugin/events/batch` contract, and the next Cosmos persistence slice.
-See `references/clan-war-board-azure-infra.md` for the user's preferred online service direction: no local/share-code-only storage, keep Azure infra under `projects/osrs-plugins/infra/`, and use a near-free Static Web Apps + Functions + Cosmos DB Free Tier architecture while keeping Plugin Hub repo clean.
+See `references/clan-war-board-cosmos-registration.md` for the durable registration pattern: persistent UUIDv4 installation identity, real-clan-only upserts, private-by-default member records, development-role isolation, Cosmos production gating, and live deployment verification.
+See `references/clan-war-board-secure-match-workflow.md` for canonical fight terms, deterministic terms hashing, mutual acceptance/reconfirmation, server-authority limitations, and fight-scoped telemetry gates.
 See `references/clan-war-board-azure-infra.md` for the user's preferred online service direction: no local/share-code-only storage, keep Azure infra under `projects/osrs-plugins/infra/`, and use a near-free Static Web Apps + Functions + Cosmos DB Free Tier architecture while keeping Plugin Hub repo clean.
 See `references/osrs-slang-acronyms.md` for OSRS slang/acronym labels to use in narrow RuneLite UI, especially boss/raid/activity labels such as CoX, ToB, ToA, CG, KQ, KBD, LMS, BH, SW, etc.
 See `references/runelite-plugin-hub-lifecycle-and-hiscore-fallback.md` for the current OSRS plugin lifecycle folder model, RuneLite Plugin Hub PR submission checklist, and WOM -> official hiscores local snapshot fallback pattern.
@@ -136,16 +139,21 @@ See `references/whos-grinding-detail-card-lessons.md` for latest user-reviewed s
 
 High-level rules:
 
-- Current OSRS active lanes are BIS Loadouts, Who's Grinding/WhosGrindingClanPanel, IceBarrageTimer, Clan War Board/CompetitionOverlay, the boilerplate template, and plugin-hub.
-- PersonalProgressTimeline, RivalRadar, and SmartHiscoreLookup were scrapped and their GitHub repos/submodules deleted after explicit user confirmation.
+- Current OSRS active lanes are BIS Loadouts, Who's Grinding/WhosGrindingClanPanel, Clan War Board/CompetitionOverlay, the boilerplate template, and plugin-hub.
+- Treat Plugin Hub submission as a production sprint: PR-ready plugins must expose no developer, debug, mock, pretend-role, test-mode, experimental-endpoint, or development-comparison option. Remove the underlying branch/config/docs/tests, not just the label. Inspect issue comments, formal reviews, and check runs because actionable maintainer feedback may appear only in PR issue comments.
+- PersonalProgressTimeline, RivalRadar, SmartHiscoreLookup, and IceBarrageTimer were scrapped and their GitHub repos/submodules deleted after explicit user direction.
+- Before polishing or submitting any Plugin Hub candidate, screen its core feature against RuneLite's current `Rejected-or-Rolled-Back-Features` policy and Jagex third-party-client guidelines. A standalone build passing does not make a policy-rejected concept viable; do not submit opponent freeze/barrage timers.
 - Do not revive deleted OSRS plugin ideas unless the user explicitly asks.
 - Clean project dirs and submodules only after code-level bugs are verified and pushed.
 
 - For Clan War Board specifically: do not repopulate `/clans` or the public directory from Wise Old Man/public clan directories. Clans should appear only after plugin registration/telemetry/leader registration. External sources may enrich an already-registered clan, but must not promote clans that are not using the plugin.
-- For Clan War Board status or user-experience explanations, the user prefers very small, short bullets unless they asks for deep detail.
+- Clan War Board development role previews must be explicitly labeled development-only, default to automatic real-rank detection, and support pretend-leader/pretend-member UI modes. Keep the override local to panel/login-message rendering; never let it grant backend write authority or alter real clan-rank telemetry. Subscribe to config changes so switching modes refreshes the panel immediately, and cover automatic/leader/member behavior with a failing test before implementation.
+- Clan War Board online sync is required; do not reintroduce a disable toggle. Player-level public website visibility remains opt-in/private by default, while fight worlds are public.
+- For Clan War Board status or user-experience explanations, the user prefers very small, short bullets unless they ask for deep detail.
 
 ## Pitfalls
 
+- Do not call a Plugin Hub candidate ready based only on its standalone Gradle build. Open the real upstream marker PR and treat the official `build` check as authoritative because `build=standard` compiles against RuneLite's bundled dependencies. If upstream fails, fix the standalone plugin, push a new immutable SHA, update the existing marker, and wait for the rerun. A red `RuneLite Plugin Hub Checks` result titled **Requires maintainer review** is the expected human-review gate, not a build defect; `Changes are needed` is actionable. See `references/plugin-hub-upstream-pr-validation.md`.
 - For Clan War Board, treat “0 registered plugin clans” as a correct real-time state until actual plugin registrations exist. Audit API JSON, rendered website counters, browser view, RuneLite panel wording, plugin defaults, and tests before saying stale/fake clan data is gone. Remove fake defaults and fixture names from user-facing code; external directories can enrich already-registered plugin clans but must not populate/promote clans by themselves.
 - Do not claim GitHub access is unavailable just because `gh` is missing; use `GITHUB_ACCESS_TOKEN` and the GitHub API fallback.
 - When pushing with `GITHUB_ACCESS_TOKEN`, avoid nested single-quoted shell/Python URL construction; use a simple double-quoted/f-string token URL and verify `ls-remote` SHA equals local `HEAD` after every child and parent push.

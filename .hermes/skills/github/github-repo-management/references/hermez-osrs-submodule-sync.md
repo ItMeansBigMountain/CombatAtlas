@@ -61,18 +61,16 @@ git update-ref refs/remotes/origin/main HEAD
 
 ## Windows handoff
 
+For this user, provide Windows `cmd` handoff commands as one-liners only; do not use multi-line continuations.
+
 ```bat
-cd C:\Users\faree\Desktop\HeRmEz
-git pull origin main
-git submodule sync --recursive
-git submodule update --init --recursive
+cd C:\Users\faree\Desktop\HeRmEz && git pull origin main && git submodule sync --recursive && git submodule update --init --recursive
 ```
 
 Then run an individual plugin, for example:
 
 ```bat
-cd C:\Users\faree\Desktop\HeRmEz\projects\osrs-plugins\WhosGrindingClanPanel
-git switch main
-git pull origin main
-.\gradlew.bat run --no-daemon
+cd C:\Users\faree\Desktop\HeRmEz\projects\osrs-plugins\WhosGrindingClanPanel && git switch main && git pull origin main && gradlew.bat run --no-daemon
 ```
+
+If full recursive update fails with a missing `.gitmodules` mapping, use `references/stale-submodule-gitlinks.md` from the parent repo before telling the user to retry.

@@ -160,6 +160,16 @@ The response JSON includes the PR `number` — save it for later commands.
 
 To create as a draft, add `"draft": true` to the JSON body.
 
+### Review Every PR Feedback Surface
+
+Before concluding that a PR has no comments or requested changes, inspect all three GitHub surfaces:
+
+1. Issue comments: `GET /repos/{owner}/{repo}/issues/{pr}/comments` — normal PR conversation and many bot/maintainer requests.
+2. Formal reviews: `GET /repos/{owner}/{repo}/pulls/{pr}/reviews` — approval/change-request state.
+3. Inline review comments: `GET /repos/{owner}/{repo}/pulls/{pr}/comments` — line-specific feedback.
+
+An empty `/pulls/{pr}/comments` response does **not** mean the PR has no feedback. Also inspect check runs for machine-generated actionable titles/details. When fixing feedback on an immutable-SHA manifest workflow, push the child change first, update the existing PR branch to the new full SHA, reply with the fix and SHA, and wait for checks again.
+
 ## 4. Monitoring CI Status
 
 ### Check CI Status

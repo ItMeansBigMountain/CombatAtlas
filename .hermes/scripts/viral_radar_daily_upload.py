@@ -55,8 +55,11 @@ def seed_latest_manifests() -> dict:
     # fall back to Trapiistan here; cross-lane token defaults caused recurring
     # wrong-channel/auth confusion.
     env["YOUTUBE_UPLOAD_TOKEN"] = os.getenv("YOUTUBE_DISCOVERY_TOKEN") or "/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json"
+    seed_python = Path("/opt/hermes/.venv/bin/python3")
+    if not seed_python.exists():
+        seed_python = Path(sys.executable)
     proc = subprocess.run(
-        [sys.executable, str(SEED_LATEST), "--clips-per-video", min_clips, "--max-videos-per-channel", "50"],
+        [str(seed_python), str(SEED_LATEST), "--clips-per-video", min_clips, "--max-videos-per-channel", "50"],
         cwd=ROOT,
         text=True,
         capture_output=True,

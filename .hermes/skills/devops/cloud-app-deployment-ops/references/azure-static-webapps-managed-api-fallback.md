@@ -42,6 +42,25 @@ token=$(az staticwebapp secrets list \
 
 Then pass it to `Azure/static-web-apps-deploy@v1`.
 
+## Cosmos-backed managed API settings
+
+Static Web Apps application settings become environment variables for the managed API. For an OIDC deployment, do not store the Cosmos key in GitHub or the public client. Fetch it after `azure/login`, then set backend settings immediately before deployment:
+
+```bash
+cosmos_endpoint=$(az cosmosdb show --name "$AZURE_COSMOS_ACCOUNT_NAME" --resource-group "$AZURE_RESOURCE_GROUP" --query documentEndpoint -o tsv)
+cosmos_key=$(az cosmosdb keys list --name "$AZURE_COSMOS_ACCOUNT_NAME" --resource-group "$AZURE_RESOURCE_GROUP" --type keys --query primaryMasterKey -o tsv)
+az staticwebapp appsettings set --name "$AZURE_STATIC_WEB_APP_NAME" --setting-names STORAGE_BACKEND=cosmos COSMOS_ENDPOINT="$cosmos_endpoint" COSMOS_KEY="$cosmos_key" COSMOS_DATABASE="$COSMOS_DATABASE" COSMOS_CLANS_CONTAINER=clans >/dev/null
+```
+
+Durable-storage rules:
+
+- Keep a memory repository only for unit tests/local development; production must explicitly select Cosmos.
+- Make `/api/health` expose the actual backend and a boolean such as `productionReadyStorage`.
+- Gate the deploy on live health returning `storage=cosmos` and `productionReadyStorage=true`; do not call an acknowledged-but-ephemeral write path production-ready.
+- Hash installation identifiers before persistence and never return internal installation hashes from public clan/member responses.
+- Keep client-side development role simulation out of registration/auth payloads; server authorization must remain independent.
+- Verify Cosmos connectivity without inserting fabricated business records. An empty real container is preferable to fake clan/member data.
+
 ## Region pitfall
 
 Static Web Apps does not support every Azure region. If Terraform fails with:

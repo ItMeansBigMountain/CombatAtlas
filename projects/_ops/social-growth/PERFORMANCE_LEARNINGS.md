@@ -1,24 +1,35 @@
 # Social Video Performance Learnings
 
-Last updated: `2026-07-16T01:02:29.898736+00:00`
+Last updated: `2026-07-17T15:33:30.359216+00:00`
 
 ## Metrics status
 
 - Live YouTube metrics are fetched with OAuth tokens from the same upload lane/account, not a generic API key.
 - This preserves private/unlisted visibility and prevents mixing channel accounts.
-- Token/account errors:
-  - `/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json`: RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
-  - `/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json`: RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
 
 ## faceless-youtube-channel
 
-- Uploads logged: 380 total; 364 public/metric-eligible.
-- Live metrics unavailable for metric-eligible videos in this snapshot; inspect token/account errors above.
+- Uploads logged: 380 total; 369 public/metric-eligible.
+- Median public views in latest snapshot: 3.0.
+- Current winners to study:
+  - 203 views / 1 likes / 0 comments — Print On Demand (POD) Management — https://youtu.be/K2nMayJr8Oo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 203 views / 1 likes / 0 comments — Print On Demand (POD) Management — https://youtu.be/K2nMayJr8Oo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 108 views / 0 likes / 0 comments — Anthropic Fable shutdown , GLM-5.2 , OpenRouter Fusion — https://youtu.be/hjwDcBryTQ8 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 108 views / 0 likes / 0 comments — Anthropic Fable shutdown , GLM-5.2 , OpenRouter Fusion — https://youtu.be/hjwDcBryTQ8 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+  - 93 views / 0 likes / 0 comments — Devin Fusion , DeepSeek DSpark , economy of tokens — https://youtu.be/ZiFPfJuMoTo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
+- Hook/title words showing up in better performers: https, cash, sosaioyama, venmo, will, people, tools, output, more, linktr, sosai, oyama.
 
 ## viral-clip-radar
 
-- Uploads logged: 251 total; 233 public/metric-eligible.
-- Live metrics unavailable for metric-eligible videos in this snapshot; inspect token/account errors above.
+- Uploads logged: 278 total; 254 public/metric-eligible.
+- Median public views in latest snapshot: 2.
+- Current winners to study:
+  - 1335 views / 19 likes / 0 comments — Alex Hormozi: Whoever You Blame Is Who You Give Power To — https://youtu.be/8vdPqKeijgw — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
+  - 1252 views / 10 likes / 0 comments — Alex Hormozi: Download Free Scaling Roadmap — The Desire Gap Nobody Admits — https://youtu.be/lrkae-8_njY — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
+  - 1234 views / 10 likes / 0 comments — Alex Hormozi: If the Truth Isn't Compelling, Fix That — https://youtu.be/BZ03CWhpuSk — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
+  - 1157 views / 10 likes / 0 comments — Luke Belmar: the part people will replay — https://youtu.be/NfjW1diW8NM — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
+  - 1036 views / 18 likes / 1 comments — Two types of procrastination and how activation changes behavior #Shorts — https://youtu.be/XJ4QzlHq2TE — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
+- Hook/title words showing up in better performers: source, alex, youtube, hormozi, https, vertical, captions, context, attribution, radar, original, burned.
 
 ## Operating rule for future cron runs
 

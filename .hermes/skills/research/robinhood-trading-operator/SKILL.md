@@ -25,7 +25,7 @@ mcp_servers:
     auth: oauth
 ```
 
-The MCP is authenticated in the default Hermes profile and has discovered 33 tools including account, portfolio, quote, historical, position, order-review, and real order placement tools.
+The MCP is authenticated in the default Hermes profile. Tool discovery is dynamic and may expand over time; verify the current inventory with `hermes mcp test robinhood_trading` rather than relying on a fixed tool count. Expected capabilities include account, portfolio, quote, historical, fundamentals/financials, technical indicators, scanners, positions, order review, and real order placement.
 
 The user has funded the AI automation / Agentic account with **$200**. Autonomous trading is active only for Agentic account **433711041 / ending 1041**, under `/opt/data/HeRmEz/projects/trading-journal/playbook/autonomous-policy.md`: equities only by default, fractional shares allowed, options/shorts disabled unless separately authorized, and kill switch if account value drops below $10 or broker/tool/risk state is uncertain. User update 2026-06-19: bias toward using most available buying power when clean setups exist; target roughly 70%–90% deployment across open equity positions when live account/market state and written trade plans justify entries. Do not trade any other Robinhood account.
 
@@ -163,7 +163,7 @@ For scheduled post-morning scans, if the default Google Workspace CLI reports un
 
 When reporting open orders in Agentic scans, check all practical open-ish equity states (`new`, `queued`, `confirmed`, `unconfirmed`, `partially_filled`) before saying there are no open equity orders. If only one state was queried, state the limitation rather than implying certainty.
 
-For post-morning candidate scans using Robinhood Daily Movers or broad symbol batches, avoid dumping raw historical payloads into the context. Fetch quotes/tradability first to narrow candidates, then request OHLCV only for the shortlist. If a historicals tool response is persisted as an oversized output file, parse that file programmatically to compute compact scanner fields (SMA10/SMA20, ATR14, 20-day high/low, average volume, daily % move) and journal the summary plus any data-source gaps instead of hand-reading the full payload.
+For post-morning candidate scans using Robinhood Daily Movers or broad symbol batches, avoid dumping raw historical payloads into the context. Fetch quotes/tradability first to narrow candidates, then request OHLCV only for the shortlist. If a historicals tool response is persisted as an oversized output file, parse that file programmatically to compute compact scanner fields (SMA10/SMA20, ATR14, 20-day high/low, average volume, daily % move) and journal the summary plus any data-source gaps instead of hand-reading the full payload. Historical `results` may be dictionary- or list-shaped; normalize both and fail visibly on an empty indicator map. See `references/historical-response-normalization.md` for the defensive parsing and verification pattern.
 
 ### Step 1 — Parse Intent
 

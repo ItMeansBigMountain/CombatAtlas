@@ -152,3 +152,6 @@
 /projects/viral-clip-radar/
 /projects/youtube-high-ticket-leverage/
 /projects/plugin-hub/
+
+# Generated YouTube metrics (may exceed GitHub file limits)
+projects/faceless-youtube-channel/ANALYTICS/youtube_metrics.jsonl

@@ -1,6 +1,6 @@
-Discord: #general ops; #coding dev; #personal life/game; #trading markets+Robinhood cron; #youtube-automation Viral Radar/YT cron; #business monetization/school; #security-redteam security. Natural, no threads; confirm new cron reroutes.
+Discord cron routing: General 1499990220077137943 only daily stand-up/orchestrator; coding 1523247688689258586 backups/dev; personal 1524172425393340516 email/life; YouTube 1524259261281206332; trading 1524259597232242831; business 1524259978167451689; redteam 1524312655894937623.
 §
-OSRS/RuneLite: no deps, compact fixed-width sidebar/vertical tabs. Clan War Board: real data only/no faux clans, OSRS-themed production site, separate pages, match terms home bottom; global backend; no-surprise-cost Azure/free-tier; service Terraform; infra/app Actions path-scoped; read-only public site; opt-in RuneLite API. Likes Django REST+HTML if free; cost guardrails win; “pim up”=Azure login.
+OSRS/RuneLite: no deps; compact fixed-width sidebar/vertical tabs. Ice Barrage Timer was explicitly scrapped; do not revive or submit it.
 §
 Client sites: live Git auto-deploy first; Stripe/domains later.
 §
@@ -11,3 +11,5 @@ Google/YT: Workspace R/W incl affan; burner login OK; Classical Echos for downlo
 Email cleanup: known junk OK; source emails delete post-upload; Grammarly personal; Robinhood→trading; Zoom→class archive.
 §
 YT automation: Viral Radar is high priority and separate from faceless YouTube. Faceless/newsletter jobs are paused unless user resumes them. Viral Radar→Classical Echos/failovers; track TOGI; real sources/no filler; credit sources; no title hashtags; titles unique+true; report URLs/blockers/queues/next action.
+§
+User wants commands as single-line commands only, not multi-line continuations, because Windows cmd handles one-liners better.
