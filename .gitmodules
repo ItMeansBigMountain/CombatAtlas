@@ -14,10 +14,6 @@
 	path = projects/osrs-plugins/in-progress/ClanWarBoard
 	url = https://github.com/ItMeansBigMountain/clan-war-board-osrs.git
 	branch = main
-[submodule "projects/osrs-plugins/IceBarrageTimer"]
-	path = projects/osrs-plugins/in-progress/IceBarrageTimer
-	url = https://github.com/ItMeansBigMountain/ice-barrage-timer-osrs.git
-	branch = main
 [submodule "projects/osrs-plugins/WhosGrindingClanPanel"]
 	path = projects/osrs-plugins/pr-review-pending/WhosGrindingClanPanel
 	url = https://github.com/ItMeansBigMountain/whos-grinding-clan-panel-osrs.git
