@@ -56,6 +56,7 @@ This umbrella covers GitHub work across authentication, issue management, PR lif
 
 - Clone/create/fork repositories, manage remotes, releases, branch protection, and secrets.
 - Be careful with destructive settings changes; confirm scope first.
+- When an automated backup branch diverges and GitHub also rejects oversized generated blobs, do not blindly pull/rebase the dirty checkout. Use the clean-clone/net-diff recovery and verification workflow in `references/diverged-backup-large-artifact-recovery.md`.
 
 ## Fallback Ladder
 

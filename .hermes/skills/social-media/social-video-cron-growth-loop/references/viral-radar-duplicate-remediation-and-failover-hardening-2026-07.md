@@ -34,6 +34,8 @@ A TOGI manual run uploaded 10 clips, then a second run uploaded 9 duplicate titl
    - selected clip file/captioned file/hook
 5. Queue replay also checks already-public signatures before upload. If a queued MP4 is already public, remove the queue item instead of reuploading it. Do **not** count skipped duplicates toward the upload minimum.
 6. Rendered duplicate outputs are deleted and skipped, not queued or uploaded.
+7. Treat a bare MP4 in `UPLOAD_QUEUE` with no `.upload.json` as an orphan, not as upload-ready media. Before deleting or reconstructing metadata, run the same public-ledger check with its normalized stem and known source/title. If it is already public, delete only that redundant local orphan and verify the active queue has zero MP4/metadata files. If it is not public, reconstruct metadata from its manifest/source record or move it to HOLD; never guess a title/source or upload it blindly.
+8. Source MP4 cleanup is part of the upload transaction in `/opt/data/scripts/viral_radar_daily_upload.py`, not a later contextual/manual sweep. `cleanup_source_after_successful_upload()` runs immediately after a successful direct upload and after successful queue replay. It may delete only sources under Viral Radar `SOURCES`, `TMP`, `DOWNLOADS`, or `RAW_VIDEO`; it must retain the source while any associated manifest clip is absent from the public upload ledger or active queue metadata still references the source. Successful deletions are audited in `UPLOADS/source_cleanup.jsonl`.
 
 ## Failover account model
 

@@ -164,6 +164,129 @@ def already_uploaded(*, output: Path | None = None, title: str = "", source_url:
     return False
 
 
+DISPOSABLE_SOURCE_DIRS = [ROOT / "SOURCES", ROOT / "TMP", ROOT / "DOWNLOADS", ROOT / "RAW_VIDEO"]
+
+
+def resolve_manifest_source(manifest: dict, manifest_path: Path | None = None) -> Path | None:
+    raw = str(manifest.get("source_file") or "").strip()
+    if not raw:
+        return None
+    path = Path(raw)
+    if path.is_absolute():
+        return path
+    candidates = []
+    if manifest_path:
+        candidates.append(manifest_path.parent / path)
+    candidates.append(ROOT / path)
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return candidates[-1] if candidates else None
+
+
+def is_disposable_source(path: Path) -> bool:
+    resolved = path.resolve(strict=False)
+    for folder in DISPOSABLE_SOURCE_DIRS:
+        try:
+            resolved.relative_to(folder.resolve())
+            return True
+        except ValueError:
+            continue
+    return False
+
+
+def matching_source_manifests(source_url: str = "", source_path: Path | None = None) -> list[tuple[Path, dict]]:
+    matches: list[tuple[Path, dict]] = []
+    source_url = source_url.strip()
+    resolved_source = source_path.resolve(strict=False) if source_path else None
+    for manifest_path in sorted((ROOT / "CLIP_PLANS").glob("*/clip_manifest.json")):
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        same_url = bool(source_url and str(manifest.get("source_url") or "").strip() == source_url)
+        manifest_source = resolve_manifest_source(manifest, manifest_path)
+        same_file = bool(resolved_source and manifest_source and manifest_source.resolve(strict=False) == resolved_source)
+        if same_url or same_file:
+            matches.append((manifest_path, manifest))
+    return matches
+
+
+def clip_recorded_as_uploaded(clip: dict, source_url: str, keys: set[str]) -> bool:
+    for value in (clip.get("captioned_file"), clip.get("file")):
+        if value and normalized_upload_key(str(value)) in keys:
+            return True
+    for value in (clip.get("public_title"), clip.get("hook")):
+        title = str(value or "").strip()
+        if title and (title.lower() in keys or (source_url and upload_signature(source_url, title) in keys)):
+            return True
+    return False
+
+
+def cleanup_source_after_successful_upload(*, manifest: dict | None = None, manifest_path: Path | None = None, source_url: str = "", source_path: Path | None = None) -> dict:
+    """Delete a consumed source immediately after its final associated upload.
+
+    Deletion is permitted only when the file is inside a disposable Viral Radar
+    media directory, every clip in every matching plan appears in the public
+    upload ledger, and no active queue metadata still references the source.
+    """
+    manifest = manifest or {}
+    source_url = source_url or str(manifest.get("source_url") or "").strip()
+    source_path = source_path or resolve_manifest_source(manifest, manifest_path)
+    matches = matching_source_manifests(source_url, source_path)
+    if not matches and manifest:
+        matches = [(manifest_path or Path("<runtime>"), manifest)]
+    if source_path is None:
+        for matched_path, matched_manifest in matches:
+            source_path = resolve_manifest_source(matched_manifest, matched_path)
+            if source_path:
+                break
+    result = {
+        "checked_at": dt.datetime.now(dt.UTC).isoformat(),
+        "source_url": source_url,
+        "source": str(source_path) if source_path else "",
+        "matching_manifests": [str(path) for path, _ in matches],
+        "source_deleted": False,
+    }
+    if not source_path or not source_path.exists():
+        result["reason"] = "source_missing_or_unresolved"
+        return result
+    if not is_disposable_source(source_path):
+        result["reason"] = "source_outside_disposable_viral_radar_directories"
+        return result
+    for meta_path in UPLOAD_QUEUE.glob("*.upload.json") if UPLOAD_QUEUE.exists() else []:
+        try:
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        queued_url = str(meta.get("source_url") or "").strip()
+        queued_source = str(meta.get("source_file") or "").strip()
+        if (source_url and queued_url == source_url) or (queued_source and Path(queued_source).resolve(strict=False) == source_path.resolve(strict=False)):
+            result["reason"] = "active_upload_queue_still_references_source"
+            result["queue_metadata"] = str(meta_path)
+            return result
+    keys = uploaded_public_keys()
+    pending = []
+    for matched_path, matched_manifest in matches:
+        matched_url = str(matched_manifest.get("source_url") or source_url).strip()
+        for clip in matched_manifest.get("clips") or []:
+            if not clip_recorded_as_uploaded(clip, matched_url, keys):
+                pending.append({"manifest": str(matched_path), "clip": str(clip.get("public_title") or clip.get("hook") or clip.get("file") or "unknown")})
+    if pending:
+        result["reason"] = "associated_clips_not_all_uploaded"
+        result["pending_count"] = len(pending)
+        result["pending"] = pending[:20]
+        return result
+    source_path.unlink()
+    result["source_deleted"] = True
+    result["reason"] = "all_associated_clips_uploaded_and_no_queue_references"
+    audit = ROOT / "UPLOADS" / "source_cleanup.jsonl"
+    audit.parent.mkdir(parents=True, exist_ok=True)
+    with audit.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(result, ensure_ascii=False) + "\n")
+    return result
+
+
 def _creator_name(manifest: dict) -> str:
     return str(manifest.get("creator") or manifest.get("channel") or "unknown").strip()
 
@@ -659,6 +782,7 @@ def queue_failed_upload(output: Path, *, title: str, description: str, tags: str
         "creator": manifest.get("creator") or manifest.get("channel") or "source creator",
         "source_url": manifest.get("source_url", ""),
         "source_title": manifest.get("source_title", ""),
+        "source_file": str(resolve_manifest_source(manifest) or manifest.get("source_file") or ""),
         "selected_hook": (selected_clip or {}).get("hook"),
         "last_error": {
             "returncode": proc.returncode,
@@ -722,6 +846,10 @@ def upload_pending_queue(limit: int | None = None) -> list[dict]:
         with enriched_log.open("a", encoding="utf-8") as f:
             f.write(json.dumps(payload, ensure_ascii=False) + "\n")
         meta_path.unlink(missing_ok=True)
+        payload["source_cleanup"] = cleanup_source_after_successful_upload(
+            source_url=str(meta.get("source_url") or ""),
+            source_path=Path(str(meta.get("source_file"))) if str(meta.get("source_file") or "").strip() else None,
+        )
     return uploads
 
 
@@ -820,6 +948,7 @@ def upload_rendered(rendered: list[dict], manifest: dict, selected_clip: dict | 
             }, indent=2))
         upload_payload = parse_json_output(proc.stdout)
         append_enriched_upload(upload_payload, manifest)
+        upload_payload["source_cleanup"] = cleanup_source_after_successful_upload(manifest=manifest)
         uploads.append(upload_payload)
     return uploads
 
@@ -913,6 +1042,7 @@ def main() -> int:
             rendered_total += len(render_payload.get("rendered", []))
             all_uploads.extend(uploads)
             source_cleanup.extend(render_payload.get("source_cleanup") or [])
+            source_cleanup.extend([item["source_cleanup"] for item in uploads if item.get("source_cleanup")])
             uploaded_batches.append({
                 "manifest": str(single_manifest),
                 "selected_from_manifest": str(manifest_path),
@@ -951,7 +1081,7 @@ def main() -> int:
             "uploaded_batches": uploaded_batches,
             "uploads": all_uploads,
             "source_cleanup": source_cleanup,
-            "cleanup": "rendered exports deleted by uploader after successful public upload; sources kept during batch so multiple clips can be produced from the same long-form source",
+            "cleanup": "rendered exports are deleted after successful upload; shared source MP4s are kept while clips remain, then deleted immediately after the final associated upload succeeds and no active queue metadata references the source",
         }
         marker.parent.mkdir(parents=True, exist_ok=True)
         marker.write_text(json.dumps({

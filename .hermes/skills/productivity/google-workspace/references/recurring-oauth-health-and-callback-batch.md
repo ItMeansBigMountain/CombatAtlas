@@ -31,7 +31,7 @@ python3 /opt/data/scripts/google_reauth_workflow.py verify youtube trapiistan
 python3 /opt/data/scripts/google_reauth_workflow.py verify youtube classicalechos
 ```
 
-3. If a verify call fails, generate a fresh auth URL immediately and tell the user to use only the newest URL. Old localhost callbacks should not be retried.
+3. If a verify call fails, generate a fresh auth URL immediately and tell the user to use only the newest URL. Old localhost callbacks should not be retried. Recurring watchdog output must be actionable: include one fresh URL per failed profile, the expected account/channel identity, and the exact labeled callback format. Never emit only `invalid_grant` or a profile name without a recovery link.
 
 4. Ask the user to return callbacks in labeled batch format:
 
