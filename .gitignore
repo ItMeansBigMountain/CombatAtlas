@@ -154,4 +154,4 @@
 /projects/plugin-hub/
 
 # Generated YouTube metrics (may exceed GitHub file limits)
-projects/faceless-youtube-channel/ANALYTICS/youtube_metrics.jsonl
+/projects/faceless-youtube-channel/ANALYTICS/youtube_metrics.jsonl

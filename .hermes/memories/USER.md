@@ -1,6 +1,6 @@
-Discord cron routing: General 1499990220077137943 only daily stand-up/orchestrator; coding 1523247688689258586 backups/dev; personal 1524172425393340516 email/life; YouTube 1524259261281206332; trading 1524259597232242831; business 1524259978167451689; redteam 1524312655894937623.
+Discord routing: General 1499990220077137943 stand-up only; coding 1523247688689258586; personal 1524172425393340516; YouTube 1524259261281206332; trading 1524259597232242831; business 1524259978167451689; redteam 1524312655894937623.
 §
-OSRS/RuneLite: no deps; compact fixed-width sidebar/vertical tabs. Ice Barrage Timer was explicitly scrapped; do not revive or submit it.
+OSRS/RuneLite: wants production-ready plugins based on current official RuneLite/accepted Plugin Hub patterns; no user-accessible dev/pretend modes or endpoint overrides. Prefers compact fixed-width vertical-tab sidebars. Ice Barrage Timer is scrapped; never revive/submit.
 §
 Client sites: live Git auto-deploy first; Stripe/domains later.
 §

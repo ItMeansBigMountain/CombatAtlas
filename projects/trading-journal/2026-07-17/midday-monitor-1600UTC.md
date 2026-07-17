@@ -56,3 +56,16 @@ Required-list observations: HOOD -3.69%, NVDA -1.21%, AMD -0.39%, AVGO -0.73%, S
 
 - Order preview: none; no order candidate passed policy gates.
 - New order IDs: none.
+
+## 16:13 UTC verification addendum
+
+A fresh broker snapshot at 16:13 UTC confirmed the same policy decision:
+
+- Account 433711041 remained active and `agentic_allowed=true`; no other account was used.
+- Total value $185.5231; equity $102.1731; cash and buying power $83.35; options/crypto/futures exposure $0.
+- Current deployment was 55.07%. With no pending orders, liquid buying power was $83.35; the policy's 80% deployable tranche was $66.68 and required 20% reserve was $16.67.
+- All open-ish order states remained empty: `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled`. No new fill appeared; the latest fill remained the July 16 AVGO exit.
+- Kill switches remained clear: value was above $10, live account/quote/order state was internally consistent, and the account was approximately +1.11% versus the opening snapshot rather than at the 5% daily drawdown pause.
+- NVDA was $204.86 (-1.22% day; bid/ask $204.87/$204.90), still holding the repaired $201–$202 zone but lagging its semiconductor benchmark and not suitable for an add. SOFI was $17.2701 (-0.29%; bid/ask $17.27/$17.28), above $17 repair support but still below the prior SMA10/SMA20 and approaching July 29 earnings; hold without averaging down.
+- Regime remained negative despite recovery: SPY -0.63%, QQQ -0.92%, IWM -0.40%, XLK -0.41%, XLF -0.46%, SMH -0.85%, XLY -1.04%. Relative-strength leaders remained RKLB +3.33%, UNH +1.79%, and ABT +1.46%; RKLB remained extended, UNH had not cleared the $437.50 trigger, and ABT had faded from its post-earnings high. None offered a clean fresh entry with realistic invalidation and >=1.5:1 reward/risk at the verification time.
+- Action: no review, placement, cancellation, exit, or rotation. The $66.68 nominal deployment target was deliberately not forced because no candidate passed the clean-setup gate. Reserve actually retained: $83.35 (100% of current liquid balance), including and exceeding the required $16.67 buffer.

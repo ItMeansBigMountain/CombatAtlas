@@ -10,6 +10,24 @@ BACKUP_DIR="$REPO/.hermes"
 PROJECTS_DIR="$REPO/projects"
 STAMP="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
+# Use the runtime GitHub token non-interactively when available. The helper
+# contains no credential; it prints the token from the process environment and
+# is removed on exit.
+ASKPASS_HELPER=""
+if [ -n "${GITHUB_ACCESS_TOKEN:-}" ]; then
+  ASKPASS_HELPER="$(mktemp)"
+  printf '%s\n' '#!/usr/bin/env bash' > "$ASKPASS_HELPER"
+  printf '%s\n' 'case "$1" in' >> "$ASKPASS_HELPER"
+  printf '%s\n' '  *Username*) printf "%s\\n" "x-access-token" ;;' >> "$ASKPASS_HELPER"
+  printf '%s\n' '  *Password*) printf "%s\\n" "$GITHUB_ACCESS_TOKEN" ;;' >> "$ASKPASS_HELPER"
+  printf '%s\n' '  *) exit 1 ;;' >> "$ASKPASS_HELPER"
+  printf '%s\n' 'esac' >> "$ASKPASS_HELPER"
+  chmod 700 "$ASKPASS_HELPER"
+  export GIT_ASKPASS="$ASKPASS_HELPER"
+  export GIT_TERMINAL_PROMPT=0
+  trap 'rm -f "$ASKPASS_HELPER"' EXIT
+fi
+
 if [ ! -d "$REPO/.git" ]; then
   echo "ERROR: $REPO is not a git repository" >&2
   exit 1

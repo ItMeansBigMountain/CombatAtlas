@@ -147,7 +147,7 @@ High-level rules:
 - Clean project dirs and submodules only after code-level bugs are verified and pushed.
 
 - For Clan War Board specifically: do not repopulate `/clans` or the public directory from Wise Old Man/public clan directories. Clans should appear only after plugin registration/telemetry/leader registration. External sources may enrich an already-registered clan, but must not promote clans that are not using the plugin.
-- Clan War Board development role previews must be explicitly labeled development-only, default to automatic real-rank detection, and support pretend-leader/pretend-member UI modes. Keep the override local to panel/login-message rendering; never let it grant backend write authority or alter real clan-rank telemetry. Subscribe to config changes so switching modes refreshes the panel immediately, and cover automatic/leader/member behavior with a failing test before implementation.
+- Clan War Board production builds must expose no development role preview, pretend-leader/member mode, configurable service endpoint, debug authority path, or experimental network toggle. Delete the config items, enum/branches, docs, and tests—not merely the labels. Render leader controls only when both the live RuneLite clan rank and a server-issued `leader:write` capability agree. Keep the production HTTPS endpoint pinned in code.
 - Clan War Board online sync is required; do not reintroduce a disable toggle. Player-level public website visibility remains opt-in/private by default, while fight worlds are public.
 - For Clan War Board status or user-experience explanations, the user prefers very small, short bullets unless they ask for deep detail.
 

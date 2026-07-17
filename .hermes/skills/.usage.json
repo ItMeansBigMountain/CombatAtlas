@@ -160,13 +160,13 @@
     "created_at": "2026-06-07T02:46:17.695916+00:00",
     "created_by": null,
     "last_patched_at": "2026-07-15T03:23:24.499053+00:00",
-    "last_used_at": "2026-07-17T06:53:33.390235+00:00",
-    "last_viewed_at": "2026-07-17T06:53:33.388208+00:00",
+    "last_used_at": "2026-07-17T17:01:52.666499+00:00",
+    "last_viewed_at": "2026-07-17T17:01:52.664211+00:00",
     "patch_count": 11,
     "pinned": false,
     "state": "active",
-    "use_count": 10,
-    "view_count": 10
+    "use_count": 11,
+    "view_count": 11
   },
   "godmode": {
     "archived_at": null,
@@ -186,13 +186,13 @@
     "created_at": "2026-05-31T17:07:23.940211+00:00",
     "created_by": null,
     "last_patched_at": "2026-07-10T02:16:18.332296+00:00",
-    "last_used_at": "2026-07-17T13:50:24.657478+00:00",
-    "last_viewed_at": "2026-07-16T05:03:24.598700+00:00",
+    "last_used_at": "2026-07-17T16:20:30.277984+00:00",
+    "last_viewed_at": "2026-07-17T16:20:30.276074+00:00",
     "patch_count": 129,
     "pinned": false,
     "state": "active",
-    "use_count": 199,
-    "view_count": 106
+    "use_count": 200,
+    "view_count": 107
   },
   "hermes-agent": {
     "archived_at": null,
@@ -342,13 +342,13 @@
     "created_at": "2026-06-07T02:42:26.708320+00:00",
     "created_by": null,
     "last_patched_at": "2026-06-12T14:46:06.300902+00:00",
-    "last_used_at": "2026-07-17T13:50:36.406399+00:00",
-    "last_viewed_at": "2026-07-17T13:50:36.404258+00:00",
+    "last_used_at": "2026-07-17T16:11:28.301711+00:00",
+    "last_viewed_at": "2026-07-17T16:11:28.299125+00:00",
     "patch_count": 8,
     "pinned": false,
     "state": "active",
-    "use_count": 9,
-    "view_count": 9
+    "use_count": 10,
+    "view_count": 10
   },
   "parrot-ai-creative-pipeline": {
     "archived_at": null,
@@ -407,13 +407,13 @@
     "created_at": "2026-05-28T15:54:00.459720+00:00",
     "created_by": null,
     "last_patched_at": "2026-06-19T03:45:23.896125+00:00",
-    "last_used_at": "2026-07-09T21:42:49.205057+00:00",
-    "last_viewed_at": "2026-07-09T21:42:49.203058+00:00",
+    "last_used_at": "2026-07-17T16:20:31.307008+00:00",
+    "last_viewed_at": "2026-07-17T16:20:31.304995+00:00",
     "patch_count": 2,
     "pinned": false,
     "state": "active",
-    "use_count": 2,
-    "view_count": 2
+    "use_count": 3,
+    "view_count": 3
   },
   "research-intelligence-sources": {
     "archived_at": null,
@@ -445,27 +445,27 @@
     "archived_at": null,
     "created_at": "2026-06-12T15:23:13.659551+00:00",
     "created_by": null,
-    "last_patched_at": "2026-07-17T13:54:41.033646+00:00",
-    "last_used_at": "2026-07-17T16:00:25.311999+00:00",
-    "last_viewed_at": "2026-07-17T13:50:36.400575+00:00",
-    "patch_count": 34,
+    "last_patched_at": "2026-07-17T16:12:47.847373+00:00",
+    "last_used_at": "2026-07-17T16:12:48.882963+00:00",
+    "last_viewed_at": "2026-07-17T16:11:27.265256+00:00",
+    "patch_count": 35,
     "pinned": false,
     "state": "active",
-    "use_count": 129,
-    "view_count": 40
+    "use_count": 132,
+    "view_count": 42
   },
   "runelite-plugin-development": {
     "archived_at": null,
     "created_at": "2026-07-06T00:38:17.566913+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-07-17T15:49:16.297950+00:00",
-    "last_used_at": "2026-07-17T16:03:49.173120+00:00",
-    "last_viewed_at": "2026-07-17T16:03:49.171346+00:00",
-    "patch_count": 157,
+    "last_patched_at": "2026-07-17T16:30:51.587163+00:00",
+    "last_used_at": "2026-07-17T16:30:05.734404+00:00",
+    "last_viewed_at": "2026-07-17T16:30:05.732358+00:00",
+    "patch_count": 159,
     "pinned": false,
     "state": "active",
-    "use_count": 63,
-    "view_count": 63
+    "use_count": 65,
+    "view_count": 65
   },
   "segment-anything-model": {
     "archived_at": null,
@@ -497,14 +497,14 @@
     "archived_at": null,
     "created_at": "2026-06-07T00:28:30.328615+00:00",
     "created_by": null,
-    "last_patched_at": "2026-07-13T01:10:22.349528+00:00",
-    "last_used_at": "2026-07-17T16:07:32.996160+00:00",
-    "last_viewed_at": "2026-07-17T16:07:32.993913+00:00",
-    "patch_count": 99,
+    "last_patched_at": "2026-07-17T16:10:43.435677+00:00",
+    "last_used_at": "2026-07-17T16:09:51.821287+00:00",
+    "last_viewed_at": "2026-07-17T16:09:51.818124+00:00",
+    "patch_count": 104,
     "pinned": false,
     "state": "active",
-    "use_count": 199,
-    "view_count": 71
+    "use_count": 200,
+    "view_count": 72
   },
   "software-development/osrs-plugins": {
     "archived_at": null,

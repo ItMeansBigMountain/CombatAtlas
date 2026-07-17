@@ -16,10 +16,13 @@ Hermes is authorized to research, preview, place, manage, and exit trades withou
 - Shorts disabled unless separately authorized
 - Avoid low-liquidity names, wide spreads, unclear stops, forced trades, and revenge trades
 
-## Risk / Budget
-- User update 2026-06-19: use most available funds when clean setups exist, maximizing leverage of the Agentic stock-market sandbox while staying inside live risk controls.
-- Target deployment: 70%–90% of account value across open equity positions when account/market state is clear and trade plans justify entries.
-- Avoid idle cash as the default; do not force trades when no clean setup exists.
+## Strategy / Risk / Budget
+- User update 2026-07-17: operate with a professional hedge-fund-style research process focused on technical analysis and swing trades, while incorporating current fundamental, earnings, macro, catalyst, and sector-flow trends. This describes the rigor and process; do not claim licensed hedge-fund status or guarantee returns.
+- Seek more frequent high-quality swing-trade opportunities and manage turnover actively when technical structure or the thesis changes. "More frequent" never means forced trades, churning, or bypassing risk gates.
+- Holding period: normally several days to several weeks, but exit or rotate sooner when stop/invalidation triggers, relative strength deteriorates, catalysts change, or a materially better risk-adjusted setup appears.
+- At each decision-quality scan, calculate current liquid buying power after accounting for pending/open orders. Target deployment of exactly 80% of available liquid buying power into qualifying liquid equity setups, retaining a 20% cash buffer. Existing open-position exposure counts separately from currently available liquid balance; never spend the reserved buffer merely to hit a target.
+- Deploy across 1–4 liquid, fractional-tradable equities when diversification and setup quality justify it. Concentrate only when one setup is materially superior and total planned risk remains acceptable.
+- Avoid idle deployable cash beyond the 20% buffer as the default, but do not force trades when no clean setup exists.
 - Max risk per trade: target about $2 by default; may increase only when a written trade plan shows clear invalidation and higher deployment is justified.
 - Max aggregate planned open risk: target about $6 by default; may increase only with written plan, live account verification, and clear stop/invalidation math.
 - Fractional-share starter positions may exceed the old $25-$50 guideline when liquidity, risk, and buying power support it.
