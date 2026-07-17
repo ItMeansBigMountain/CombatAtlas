@@ -4,7 +4,7 @@
 
 - `BisLoadouts` is the canonical boss/PvM gear recommendation plugin and is in PR review pending.
 - Keep `WhosGrindingPanel` / `WhosGrindingClanPanel` as the standalone social grinding plugin.
-- Keep `IceBarrageTimer` as the PvP freeze/teleblock timing utility.
+- `IceBarrageTimer` was scrapped because opponent freeze timers are not suitable for Plugin Hub submission.
 - Keep `CompetitionOverlay` as the remaining competition surface for now.
 - Keep `_templates/osrs-plugins-boilerplate` as the RuneLite starter template/reference, not an active plugin product.
 - Scrap/remove `PersonalProgressTimeline`, `RivalRadar`, and `SmartHiscoreLookup`; the user no longer wants those project ideas.
@@ -13,7 +13,6 @@
 
 - `projects/osrs-plugins/pr-review-pending/BisLoadouts` -> `bis-loadouts-osrs`
 - `projects/osrs-plugins/pr-review-pending/WhosGrindingClanPanel` -> `whos-grinding-clan-panel-osrs`
-- `projects/osrs-plugins/in-progress/IceBarrageTimer` -> `ice-barrage-timer-osrs`
 - `projects/osrs-plugins/in-progress/CompetitionOverlay` -> `competition-overlay-osrs`
 - `projects/osrs-plugins/_templates/osrs-plugins-boilerplate` -> `osrs-plugins-boilerplate-osrs`
 - `projects/plugin-hub` -> `plugin-hub`
@@ -32,6 +31,7 @@
 - PersonalProgressTimeline
 - RivalRadar
 - SmartHiscoreLookup
+- IceBarrageTimer
 - osrs-plugins-boilerplate from the top-level active plugin folder; it lives under `_templates/` instead
 
 ## Remote cleanup completed
@@ -54,12 +54,12 @@ Deleted unused OSRS remotes:
 - `personal-progress-timeline-osrs`
 - `rival-radar-osrs`
 - `smart-hiscore-lookup-osrs`
+- `ice-barrage-timer-osrs`
 
 Remaining OSRS/plugin-related remotes after cleanup should be:
 
 - `bis-loadouts-osrs`
 - `competition-overlay-osrs`
-- `ice-barrage-timer-osrs`
 - `osrs-plugins-boilerplate-osrs`
 - `plugin-hub`
 - `whos-grinding-clan-panel-osrs`
@@ -76,5 +76,5 @@ Remaining OSRS/plugin-related remotes after cleanup should be:
 
 1. Keep polishing/submitting `BisLoadouts` from PR review pending.
 2. Keep `WhosGrindingClanPanel` as the other main RuneLite plugin lane.
-3. Only revisit `IceBarrageTimer` or `CompetitionOverlay` if the user asks.
+3. Continue `CompetitionOverlay`/Clan War Board separately; do not revive `IceBarrageTimer`.
 4. Fix `projects/viral-clip-radar` submodule mapping separately from OSRS work.
