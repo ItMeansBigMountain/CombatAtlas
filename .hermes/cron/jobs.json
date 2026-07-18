@@ -27,7 +27,7 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-07-18T03:00:00+00:00",
+      "next_run_at": "2026-07-19T03:00:00+00:00",
       "last_run_at": "2026-07-17T03:01:12.438529+00:00",
       "last_status": "error",
       "last_error": "Script exited with code 1\nstderr:\nremote: error: Trace: c6269be54e381d449d330187d85ec4dd48cd23418b9e14f754e7f0b6ec4dcd6b        \nremote: error: See https://gh.io/lfs for more information.        \nremote: error: File projects/faceless-youtube-channel/ANALYTICS/youtube_metrics.jsonl is 110.24 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        \nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [remote rejected]     main -> main (pre-receive hook declined)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'",
@@ -112,15 +112,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 170
+        "completed": 171
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-07-18T00:58:15.456627+00:00",
-      "last_run_at": "2026-07-17T18:58:15.456627+00:00",
+      "next_run_at": "2026-07-18T07:04:37.212141+00:00",
+      "last_run_at": "2026-07-18T01:04:37.212141+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -215,15 +215,15 @@
       "schedule_display": "0 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 42
+        "completed": 43
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-07-18T01:00:00+00:00",
-      "last_run_at": "2026-07-17T01:13:38.169252+00:00",
+      "next_run_at": "2026-07-19T01:00:00+00:00",
+      "last_run_at": "2026-07-18T01:13:24.289172+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -262,15 +262,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 3909
+        "completed": 3950
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-07-17T19:33:26.790261+00:00",
-      "last_run_at": "2026-07-17T19:23:26.790261+00:00",
+      "next_run_at": "2026-07-18T03:04:29.138515+00:00",
+      "last_run_at": "2026-07-18T02:54:29.138515+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -649,15 +649,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 45
+        "completed": 46
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-06T15:04:47.122120+00:00",
-      "next_run_at": "2026-07-17T21:33:30.414981+00:00",
-      "last_run_at": "2026-07-17T15:33:30.414981+00:00",
+      "next_run_at": "2026-07-18T03:34:32.149656+00:00",
+      "last_run_at": "2026-07-17T21:34:32.149656+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -767,5 +767,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-07-17T19:33:06.475627+00:00"
+  "updated_at": "2026-07-18T03:00:28.872063+00:00"
 }
