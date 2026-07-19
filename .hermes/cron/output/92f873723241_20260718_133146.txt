@@ -1,0 +1,89 @@
+Cronjob Response: Morning operator report
+(job_id: 92f873723241)
+-------------
+
+**Top line**
+- Google Workspace is fully blind this morning.
+  - OAuth refresh tokens are expired/revoked across all five profiles.
+  - Gmail, Calendar, Drive, Docs, and Sheets could not be reviewed.
+
+**Work source / operating pulse**
+- **Google Workspace pulse**
+  - Blocked: `trapiistan`, `personal-main`, `personal-secondary`, `classicalechos`, and `burner`.
+  - No reliable read on urgent mail, receipts, renewals, calendar commitments, or Drive movement.
+  - Leverage move: batch-reauthorize all five Workspace profiles before relying on any Google-dependent automation.
+
+**Email priority + cleanup**
+- **Priority emails**
+  - Unavailable because of the OAuth outage.
+- **Interesting/source emails**
+  - TLDR, Kino Body/Kinobody, Daily Stoic, and Grammarly Insights could not be checked.
+- **Cleanup actions**
+  - None performed.
+- **Needs review**
+  - Treat today’s inbox as untriaged—not empty.
+  - Billing, security, tickets, garage alerts, and official notices may be waiting unseen.
+
+**Calendar / prep notes**
+- Calendar unavailable across all profiles.
+  - Check today’s commitments manually until access is restored.
+
+**Chicago local pulse**
+- **Warm and muggy start**
+  - 79°F at 8:15 AM, partly cloudy.
+  - Feels around 84°F with 82% humidity.
+- **Air-quality caution**
+  - Chicago has published an extended air-quality alert notice.
+  - Sensitive groups should limit strenuous outdoor activity; an indoor workout is the safer default.
+- **Weekend option**
+  - Chicago’s official events calendar lists neighborhood festivals, public art, and World Cup watch events today.
+  - Sources: [Chicago OEMC](https://www.chicago.gov/city/en/depts/oem/provdrs/emerg_mang/news/2026/July/air-quality-alert-extended.html) · [Choose Chicago](https://www.choosechicago.com/events)
+
+**Market pulse**
+- **Risk-off Friday**
+  - S&P 500: **−1.0%**, closing at **7,475.69**.
+  - Dow: **−0.8%**, closing at **52,146.42**.
+  - Nasdaq also finished negative.
+- **Signal**
+  - Chip stocks led weakness as investors questioned whether escalating AI spending can justify valuations.
+  - June retail sales rose 0.2%, but core sales excluding autos declined 0.2%.
+  - Translation: avoid reflexively chasing AI names; execution and monetization matter again.
+  - Sources: [AP market close](https://www.kare11.com/article/syndication/associatedpress/how-major-us-stock-indexes-fared-friday-7172026/616-ef92054e-2373-41ef-b683-d816d04a002d) · [Bloomberg](https://www.bloomberg.com/news/articles/2026-07-16/stock-market-today-dow-s-p-live-updates)
+
+**Google search / social pulse**
+- Google’s summer search report says “maxxing” searches are at record highs.
+  - Useful content angle: practical self-improvement without exaggerated optimization claims.
+- FIFA World Cup 2026 remains a concrete global search theme.
+  - Source: [Google Summergeist](https://blog.google/products-and-platforms/products/search/summergeist-google-trends)
+
+**AI + coding news**
+- **AI coding competition is tightening**
+  - Google is reportedly dealing with Gemini delays, coding-performance issues, clashing teams, and frustrated engineers.
+  - Anthropic and OpenAI continue to pressure Google in coding tools.
+- **Market implication**
+  - AI capability alone is not the moat; reliable product integration and developer workflow win.
+  - Source: [Los Angeles Times](https://www.latimes.com/business/story/2026-07-17/inside-googles-gemini-delay-coding-stumbles-clashing-teams-frustrated-engineers)
+
+**Interesting item**
+- AI infrastructure spending is facing a credibility test.
+  - Yesterday’s semiconductor selloff suggests investors now want measurable returns, not merely larger capex announcements.
+  - Good lens for evaluating tools too: keep what demonstrably saves time or produces output.
+
+**Numerology**
+- **8 day** from today’s date.
+  - Theme: authority, money, systems, and tangible results.
+  - Best expression: fix the operating bottleneck, then ship something measurable.
+
+**Daily challenge**
+- Produce one visible artifact before entertainment:
+  - Published content, repaired automation, finished code, or a completed admin task.
+
+**One big priority prompt**
+- **Restore the five Google Workspace profiles and verify each account identity.**
+  - This reopens email triage, calendar awareness, content sourcing, and operator automation in one move.
+
+**Hard truth / leverage move**
+- Five simultaneous token failures are not five isolated annoyances—they are one operational dependency failure.
+- Repair authentication first. Everything built on top of blind inboxes and calendars is false confidence.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Morning operator report").

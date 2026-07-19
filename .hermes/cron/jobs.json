@@ -20,17 +20,17 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 62
+        "completed": 63
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-07-19T03:00:00+00:00",
-      "last_run_at": "2026-07-17T03:01:12.438529+00:00",
-      "last_status": "error",
-      "last_error": "Script exited with code 1\nstderr:\nremote: error: Trace: c6269be54e381d449d330187d85ec4dd48cd23418b9e14f754e7f0b6ec4dcd6b        \nremote: error: See https://gh.io/lfs for more information.        \nremote: error: File projects/faceless-youtube-channel/ANALYTICS/youtube_metrics.jsonl is 110.24 MB; this exceeds GitHub's file size limit of 100.00 MB        \nremote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        \nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [remote rejected]     main -> main (pre-receive hook declined)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'",
+      "next_run_at": "2026-07-20T03:00:00+00:00",
+      "last_run_at": "2026-07-18T03:00:50.227303+00:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "deliver": "discord:1523247688689258586",
       "origin": null,
@@ -60,15 +60,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 60
+        "completed": 61
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-07-18T13:30:00+00:00",
-      "last_run_at": "2026-07-17T13:31:01.444237+00:00",
+      "next_run_at": "2026-07-19T13:30:00+00:00",
+      "last_run_at": "2026-07-18T13:31:47.250180+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -112,15 +112,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 171
+        "completed": 175
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-07-18T07:04:37.212141+00:00",
-      "last_run_at": "2026-07-18T01:04:37.212141+00:00",
+      "next_run_at": "2026-07-19T07:38:15.359250+00:00",
+      "last_run_at": "2026-07-19T01:38:15.359250+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -215,15 +215,15 @@
       "schedule_display": "0 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 43
+        "completed": 44
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-07-19T01:00:00+00:00",
-      "last_run_at": "2026-07-18T01:13:24.289172+00:00",
+      "next_run_at": "2026-07-20T01:00:00+00:00",
+      "last_run_at": "2026-07-19T01:10:13.775537+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -262,15 +262,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 3950
+        "completed": 4081
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-07-18T03:04:29.138515+00:00",
-      "last_run_at": "2026-07-18T02:54:29.138515+00:00",
+      "next_run_at": "2026-07-19T03:05:36.510635+00:00",
+      "last_run_at": "2026-07-19T02:55:36.510635+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -308,15 +308,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 40
+        "completed": 41
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-07-18T14:00:00+00:00",
-      "last_run_at": "2026-07-17T14:00:28.916850+00:00",
+      "next_run_at": "2026-07-19T14:00:00+00:00",
+      "last_run_at": "2026-07-18T14:00:35.091656+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -355,15 +355,15 @@
       "schedule_display": "15 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 38
+        "completed": 39
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T04:20:40.734347+00:00",
-      "next_run_at": "2026-07-18T13:15:00+00:00",
-      "last_run_at": "2026-07-17T13:15:25.619995+00:00",
+      "next_run_at": "2026-07-19T13:15:00+00:00",
+      "last_run_at": "2026-07-18T13:15:33.236156+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -452,17 +452,17 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 27
+        "completed": 28
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T17:32:19.594106+00:00",
-      "next_run_at": "2026-07-18T09:00:00+00:00",
-      "last_run_at": "2026-07-09T09:18:13.772153+00:00",
-      "last_status": "ok",
-      "last_error": null,
+      "next_run_at": "2026-07-19T09:00:00+00:00",
+      "last_run_at": "2026-07-18T09:02:31.091551+00:00",
+      "last_status": "error",
+      "last_error": "Script timed out after 120s: /opt/data/scripts/viral_radar_backlog_drain.sh",
       "last_delivery_error": null,
       "deliver": "discord:1524259261281206332",
       "origin": {
@@ -649,15 +649,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 46
+        "completed": 50
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-06T15:04:47.122120+00:00",
-      "next_run_at": "2026-07-18T03:34:32.149656+00:00",
-      "last_run_at": "2026-07-17T21:34:32.149656+00:00",
+      "next_run_at": "2026-07-19T03:38:39.123997+00:00",
+      "last_run_at": "2026-07-18T21:38:39.123997+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -694,15 +694,15 @@
       "schedule_display": "0 0 * * 0",
       "repeat": {
         "times": null,
-        "completed": 4
+        "completed": 5
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-08T07:49:16.802140+00:00",
-      "next_run_at": "2026-07-19T00:00:00+00:00",
-      "last_run_at": "2026-07-12T00:00:40.996699+00:00",
+      "next_run_at": "2026-07-26T00:00:00+00:00",
+      "last_run_at": "2026-07-19T00:00:35.261634+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -767,5 +767,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-07-18T03:00:28.872063+00:00"
+  "updated_at": "2026-07-19T03:00:36.244718+00:00"
 }
