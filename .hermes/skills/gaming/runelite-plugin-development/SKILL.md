@@ -64,6 +64,12 @@ Use this when working on the user's OSRS/RuneLite plugin portfolio: fixing plugi
 ## UI preferences for this user's OSRS plugins
 
 - Panels should fit the default RuneLite side panel width.
+- Keep domain workflows (posting fights, accepting records, private setup) inside role-aware panel pages; RuneLite config should contain durable preferences, not operational forms. Pin production service endpoints in code rather than exposing URL overrides.
+- For multi-page sidebars, preserve the active top-level tab and secondary filter while drilling into details; Back should pop only the nested view. Read-only members may see cards without receiving leader click/accept actions.
+- When leaders create records from a listing tab, place a compact role-gated `+` action in that tab’s header and route it into the existing setup form. Do not make record creation discoverable only through a separate setup tab.
+- Treat `ClanSettings` as late-loading RuneLite state: login-time `0/0` or missing rank must self-correct on primary clan changes plus a change-detected short game-tick poll. Use `ClanSettings.findMember`, `titleForRank`, and `getMembers().size()` for primary-clan rank title and roster denominator; ignore guest events and use `ClanChannel` only as a temporary/online-presence fallback.
+- Snapshot clan/player data on `ClientThread`, run HTTP/JSON work off-thread, and mutate Swing only on the EDT. Return network completions through `ClientThread` before posting chat or taking a fresh client snapshot.
+- Delay count/next-event login messages until live board refresh completes, and use explicit RuneLite color tags for legibility.
 - Do not guess side-panel widths. Derive a safe content width from `PluginPanel.PANEL_WIDTH`, `SCROLLBAR_WIDTH`, and `BORDER_OFFSET`, then add a unit test for the budget. See `references/runelite-side-panel-dimensions.md`.
 - Start panels empty; do not fake players or sample clan data.
 - Prefer compact controls: dropdowns, icon buttons, short labels, and fixed dimensions for top rows.
@@ -130,6 +136,7 @@ See `references/clan-war-board-pvp-tracking-research.md` for PvP telemetry resea
 See `references/clan-war-board-telemetry-privacy-and-batching.md` for the current Clan War Board telemetry implementation rules: required sync, member public-player privacy defaulting off, public world policy, low-lag batched event uploads, live `/api/plugin/events/batch` contract, and the next Cosmos persistence slice.
 See `references/clan-war-board-cosmos-registration.md` for the durable registration pattern: persistent UUIDv4 installation identity, real-clan-only upserts, private-by-default member records, development-role isolation, Cosmos production gating, and live deployment verification.
 See `references/clan-war-board-secure-match-workflow.md` for canonical fight terms, deterministic terms hashing, mutual acceptance/reconfirmation, server-authority limitations, and fight-scoped telemetry gates.
+See `references/runelite-role-aware-board-workflow.md` for durable panel-vs-config placement, three-tab/nested-back navigation, member read-only gating, ClanSettings roster counts, ClientThread/EDT boundaries, refreshed colored login messages, sanitized public fight projections, and unrelated-overlay stack-trace triage.
 See `references/clan-war-board-azure-infra.md` for the user's preferred online service direction: no local/share-code-only storage, keep Azure infra under `projects/osrs-plugins/infra/`, and use a near-free Static Web Apps + Functions + Cosmos DB Free Tier architecture while keeping Plugin Hub repo clean.
 See `references/osrs-slang-acronyms.md` for OSRS slang/acronym labels to use in narrow RuneLite UI, especially boss/raid/activity labels such as CoX, ToB, ToA, CG, KQ, KBD, LMS, BH, SW, etc.
 See `references/runelite-plugin-hub-lifecycle-and-hiscore-fallback.md` for the current OSRS plugin lifecycle folder model, RuneLite Plugin Hub PR submission checklist, and WOM -> official hiscores local snapshot fallback pattern.

@@ -406,6 +406,18 @@ git push origin main
 
 Before bundling media-heavy projects, commit only code/manifests/metadata in the nested repo and keep generated media ignored. If local artifact cleanup is requested, verify the bundle first, then remove disposable ignored media directories.
 
+### Publishing exact submodule pointers from a clean clone
+
+When the parent workspace is dirty, publish only reviewed gitlinks from an isolated clone:
+
+1. Clone the parent to a fresh path.
+2. **Run every subsequent `git update-index`, commit, and push with that clone as the actual working directory.** Creating a clone inside a shell command does not change the shell's current directory.
+3. Set each exact gitlink with `git update-index --cacheinfo 160000,<full-child-sha>,<path>`.
+4. Inspect `git diff --cached --submodule=short`, commit, and push.
+5. Read back with `git ls-files -s <paths>` and verify the remote parent SHA.
+
+Pitfall: if a clone succeeds but the following commit output mentions unrelated dirty files from the original workspace, stop—the command is still running in the original directory. Do not report the pointer as published until the clean clone itself has pushed it.
+
 ## Useful PR Commands Reference
 
 | Action | gh | git + curl |

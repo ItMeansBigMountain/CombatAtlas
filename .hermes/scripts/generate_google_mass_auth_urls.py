@@ -33,7 +33,8 @@ READONLY_WORKSPACE_SCOPES = [
 ]
 
 YOUTUBE_AUTOMATION_SCOPES = [
-    # Upload + edit status/metadata/comments/captions, and read channel/video info
+    # Full channel management plus upload, metadata/comments/captions, and read access
+    'https://www.googleapis.com/auth/youtube',
     'https://www.googleapis.com/auth/youtube.upload',
     'https://www.googleapis.com/auth/youtube.force-ssl',
     'https://www.googleapis.com/auth/youtube.readonly',

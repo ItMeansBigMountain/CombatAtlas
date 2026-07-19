@@ -1,28 +1,16 @@
-# Social Video Performance Learnings
+# Viral Radar Performance Learnings
 
-Last updated: `2026-07-19T01:28:52.822487+00:00`
+Last updated: `2026-07-19T09:03:27.392577+00:00`
 
 ## Metrics status
 
 - Live YouTube metrics are fetched with OAuth tokens from the same upload lane/account, not a generic API key.
 - This preserves private/unlisted visibility and prevents mixing channel accounts.
 
-## faceless-youtube-channel
-
-- Uploads logged: 380 total; 369 public/metric-eligible.
-- Median public views in latest snapshot: 3.0.
-- Current winners to study:
-  - 203 views / 1 likes / 0 comments — Print On Demand (POD) Management — https://youtu.be/K2nMayJr8Oo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
-  - 203 views / 1 likes / 0 comments — Print On Demand (POD) Management — https://youtu.be/K2nMayJr8Oo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
-  - 108 views / 0 likes / 0 comments — Anthropic Fable shutdown , GLM-5.2 , OpenRouter Fusion — https://youtu.be/hjwDcBryTQ8 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
-  - 108 views / 0 likes / 0 comments — Anthropic Fable shutdown , GLM-5.2 , OpenRouter Fusion — https://youtu.be/hjwDcBryTQ8 — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
-  - 93 views / 0 likes / 0 comments — Devin Fusion , DeepSeek DSpark , economy of tokens — https://youtu.be/ZiFPfJuMoTo — metrics account: Sosai Oyama (UCsxzQlusqwmMUdjMvKAJDfA) via /opt/data/secrets/youtube-trapiistan/youtube_upload_token.json
-- Hook/title words showing up in better performers: https, cash, sosaioyama, venmo, will, people, tools, output, more, linktr, sosai, oyama.
-
 ## viral-clip-radar
 
-- Uploads logged: 278 total; 254 public/metric-eligible.
-- Median public views in latest snapshot: 2.
+- Uploads logged: 283 total; 259 public/metric-eligible.
+- Median public views in latest snapshot: 2.0.
 - Current winners to study:
   - 1335 views / 19 likes / 0 comments — Alex Hormozi: Whoever You Blame Is Who You Give Power To — https://youtu.be/8vdPqKeijgw — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
   - 1252 views / 10 likes / 0 comments — Alex Hormozi: Download Free Scaling Roadmap — The Desire Gap Nobody Admits — https://youtu.be/lrkae-8_njY — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
@@ -31,8 +19,8 @@ Last updated: `2026-07-19T01:28:52.822487+00:00`
   - 1036 views / 18 likes / 1 comments — Two types of procrastination and how activation changes behavior #Shorts — https://youtu.be/XJ4QzlHq2TE — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
 - Hook/title words showing up in better performers: source, alex, youtube, hormozi, https, vertical, captions, context, attribution, radar, original, burned.
 
-## Operating rule for future cron runs
+## Operating rule for future Viral Radar runs
 
-- Before generating the next video, read this file and avoid repeating low-signal titles/hooks.
+- Before clipping the next influencer video, read this file and avoid repeating low-signal titles/hooks.
 - Double down on topics whose public videos beat the channel median views and comments.
 - Treat missing metrics as a setup issue, not as proof the content failed.

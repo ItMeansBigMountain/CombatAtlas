@@ -112,7 +112,13 @@ def check_youtube_profiles() -> list[str]:
         if not data.get('channel_match'):
             problems.append(f"{profile}: channel mismatch; expected {exp['channel_id']}, got {data.get('channels')}")
         scopes = set(data.get('scopes') or [])
-        needed = {'https://www.googleapis.com/auth/youtube.upload', 'https://www.googleapis.com/auth/youtube.readonly'}
+        needed = {
+            'https://www.googleapis.com/auth/youtube',
+            'https://www.googleapis.com/auth/youtube.upload',
+            'https://www.googleapis.com/auth/youtube.readonly',
+            'https://www.googleapis.com/auth/youtube.force-ssl',
+            'https://www.googleapis.com/auth/yt-analytics.readonly',
+        }
         missing = sorted(needed - scopes)
         if missing:
             problems.append(f'{profile}: missing scopes {missing}')

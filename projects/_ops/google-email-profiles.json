@@ -75,6 +75,7 @@
       "channel_id": "UCsxzQlusqwmMUdjMvKAJDfA",
       "token_path": "/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json",
       "scopes": [
+        "youtube",
         "youtube.upload",
         "youtube.force-ssl",
         "youtube.readonly",
@@ -87,6 +88,7 @@
       "channel_id": "UCcIpxiU2CLEsBdHcc7_lcyA",
       "token_path": "/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json",
       "scopes": [
+        "youtube",
         "youtube.upload",
         "youtube.force-ssl",
         "youtube.readonly",
@@ -99,6 +101,7 @@
       "channel_id": "UCX_nUA3Yr9VR884DNanyMYA",
       "token_path": "/opt/data/secrets/youtube-fareed320/youtube_upload_token.json",
       "scopes": [
+        "youtube",
         "youtube.upload",
         "youtube.force-ssl",
         "youtube.readonly",

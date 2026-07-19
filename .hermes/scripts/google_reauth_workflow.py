@@ -23,6 +23,7 @@ from googleapiclient.discovery import build
 REGISTRY = Path("/opt/data/HeRmEz/projects/_ops/google-email-profiles.json")
 WORKSPACE_HELPER = Path("/opt/data/scripts/google_profile_oauth.py")
 YOUTUBE_SCOPES = [
+    "https://www.googleapis.com/auth/youtube",
     "https://www.googleapis.com/auth/youtube.upload",
     "https://www.googleapis.com/auth/youtube.force-ssl",
     "https://www.googleapis.com/auth/youtube.readonly",
@@ -50,11 +51,11 @@ def yt_paths(profile: str) -> tuple[dict, Path, Path, Path]:
     return meta, client, token, pending
 
 
-def make_yt_flow(client: Path, redirect_uri: str | None = None) -> Flow:
+def make_yt_flow(client: Path, redirect_uri: str | None = None, scopes: list[str] | None = None) -> Flow:
     data = json.loads(client.read_text(encoding="utf-8"))
     obj = data.get("installed") or data.get("web") or {}
     redirect = redirect_uri or (obj.get("redirect_uris") or ["http://localhost:5000/"])[0]
-    flow = Flow.from_client_secrets_file(str(client), scopes=YOUTUBE_SCOPES)
+    flow = Flow.from_client_secrets_file(str(client), scopes=scopes or YOUTUBE_SCOPES)
     flow.redirect_uri = redirect
     return flow
 
@@ -108,7 +109,7 @@ def cmd_youtube_auth_url(args) -> int:
         meta, client, token, pending = yt_paths(profile)
         flow = make_yt_flow(client)
         auth_url, state = flow.authorization_url(access_type="offline", include_granted_scopes="false", prompt="consent", login_hint=meta.get("email"))
-        pending.write_text(json.dumps({"profile": profile, "state": state, "redirect_uri": flow.redirect_uri, "client_secret": str(client), "token": str(token), "code_verifier": getattr(flow, "code_verifier", None)}, indent=2), encoding="utf-8")
+        pending.write_text(json.dumps({"profile": profile, "state": state, "redirect_uri": flow.redirect_uri, "client_secret": str(client), "token": str(token), "scopes": YOUTUBE_SCOPES, "code_verifier": getattr(flow, "code_verifier", None)}, indent=2), encoding="utf-8")
         os.chmod(pending, 0o600)
         out[profile] = {"status": "pending", "expected_channel_title": meta.get("channel_title"), "expected_email": meta.get("email"), "token_path": str(token), "auth_url": auth_url, "callback_format": f"youtube:{profile}: <full localhost URL>"}
     print(json.dumps(out, indent=2))
@@ -120,7 +121,7 @@ def cmd_youtube_exchange(args) -> int:
     if not pending.exists():
         raise SystemExit(f"No pending YouTube OAuth for {args.profile}; run youtube-auth-url first")
     data = json.loads(pending.read_text(encoding="utf-8"))
-    flow = make_yt_flow(Path(data.get("client_secret") or client), data.get("redirect_uri"))
+    flow = make_yt_flow(Path(data.get("client_secret") or client), data.get("redirect_uri"), data.get("scopes") or YOUTUBE_SCOPES)
     if data.get("code_verifier"):
         flow.code_verifier = data["code_verifier"]
     os.environ.setdefault("OAUTHLIB_INSECURE_TRANSPORT", "1")

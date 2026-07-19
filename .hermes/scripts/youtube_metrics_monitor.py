@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Collect YouTube performance metrics for social-video cron jobs.
+"""Collect YouTube performance metrics for the active Viral Radar lane.
 
-Reads project upload logs, fetches video statistics using the same OAuth account
-that uploaded each lane, and writes durable performance learnings that future
-cron runs can use for topic/title/hook selection.
+The paused faceless/newsletter lane is intentionally excluded. Reads Viral Radar
+upload logs, fetches video statistics using the same OAuth account that uploaded
+each video, and writes durable performance learnings for future clipping runs.
 """
 from __future__ import annotations
 
@@ -23,16 +23,12 @@ from googleapiclient.discovery import build
 
 ROOT = Path("/opt/data/HeRmEz/projects")
 PROJECTS = {
-    "faceless-youtube-channel": ROOT / "faceless-youtube-channel" / "UPLOADS" / "youtube_uploads.jsonl",
     "viral-clip-radar": ROOT / "viral-clip-radar" / "UPLOADS" / "youtube_uploads.jsonl",
 }
-EXTRA_LOGS = {
-    "faceless-youtube-channel": [ROOT / "faceless-youtube-channel" / "UPLOADS" / "newsletter_youtube_uploads.jsonl"],
-}
+EXTRA_LOGS: dict[str, list[Path]] = {}
 # Default token for each upload lane. Rows may override this with token_path,
 # youtube_token_path, upload_token_path, or uploader_token_path.
 PROJECT_TOKENS = {
-    "faceless-youtube-channel": Path("/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json"),
     "viral-clip-radar": Path("/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json"),
 }
 SCOPES = [
@@ -155,7 +151,7 @@ def is_public_row(row: dict[str, Any], item: dict[str, Any] | None) -> bool:
 
 def summarize(project_rows: dict[str, list[dict[str, Any]]], stats: dict[str, dict[str, Any]], token_for_video: dict[str, str], token_errors: dict[str, str]) -> str:
     now = dt.datetime.now(dt.UTC).isoformat()
-    lines = ["# Social Video Performance Learnings", "", f"Last updated: `{now}`", ""]
+    lines = ["# Viral Radar Performance Learnings", "", f"Last updated: `{now}`", ""]
     lines += [
         "## Metrics status",
         "",
@@ -202,9 +198,9 @@ def summarize(project_rows: dict[str, list[dict[str, Any]]], stats: dict[str, di
             lines.append("- Live metrics unavailable for metric-eligible videos in this snapshot; inspect token/account errors above.")
         lines.append("")
     lines += [
-        "## Operating rule for future cron runs",
+        "## Operating rule for future Viral Radar runs",
         "",
-        "- Before generating the next video, read this file and avoid repeating low-signal titles/hooks.",
+        "- Before clipping the next influencer video, read this file and avoid repeating low-signal titles/hooks.",
         "- Double down on topics whose public videos beat the channel median views and comments.",
         "- Treat missing metrics as a setup issue, not as proof the content failed.",
         "",
