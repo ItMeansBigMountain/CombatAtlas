@@ -41,16 +41,23 @@ Current plugin classes:
 Current event types:
 
 - `heartbeat`
-- `damage_dealt`
+- `location_sample`
+- `damage_dealt` (non-own-clan target during a confirmed fight)
+- `friendly_fire_damage` (target found in the local primary-clan roster)
 - `damage_taken`
+- `third_party_damage`
 - `death`
 - `kill_candidate`
+- `return`
 
-Current service endpoint:
+Current service endpoints:
 
 ```text
 POST /api/plugin/events/batch
+GET  /api/plugin/me/metrics
 ```
+
+Failed client batches are requeued. Server event IDs are deterministic so retries upsert rather than double-count.
 
 Response policy currently includes:
 
@@ -63,16 +70,28 @@ Response policy currently includes:
 }
 ```
 
-## Current limitation / next slice
+## Current persistence and aggregation state
 
-The live endpoint validates and accepts batches, but the first slice does not persist them into Cosmos yet. The next vertical slice should add persistence/materialization:
+The live service persists accepted telemetry into Cosmos and exposes authenticated private player aggregates through `GET /api/plugin/me/metrics`.
 
-- wire service managed API to Cosmos settings/dependency,
-- persist raw telemetry batches/events,
-- aggregate fight summaries,
-- calculate winner/confidence,
-- update public leaderboard snapshots,
-- apply member public-player privacy during public materialization.
+Persistence rules:
+
+- Store only events matched to a confirmed fight's participating clan, accepted world, and scheduled time window.
+- Use deterministic event IDs so failed-batch retries upsert instead of double-counting.
+- Requeue failed client batches ahead of newer events.
+- Key private aggregates by a one-way normalized player/clan hash so totals survive plugin reinstalls without exposing private display names publicly.
+- Keep public player identity opt-in; authenticated private metrics remain available to that player.
+
+Pre-submission correctness rules:
+
+- Retain observed opponent/attacker display names because completed-fight analytics provide per-opponent and per-event verbose insights. Escape all names before website DOM insertion.
+- Store evidence, confidence, relation, world/tick/time, and region/tile/plane with each accepted event so derived claims remain auditable.
+- A `kill_candidate` requires recent local damage to the same normalized target name and remains labeled observed rather than authoritative.
+- A `return` is the first confirmed combat observation after the local player's death, counted once per death.
+- Incoming damage amount is exact. Include attacker identity only when exactly one nearby player is interacting with the local player; label this source inference separately from amount confidence.
+- Classify actors outside the primary clan roster as `non_own_clan`, not definitively as the agreed opposing clan or a third party.
+- Publish individual event timelines, cumulative clan/player/opponent metrics, evidence/confidence distributions, and location hotspots only after the agreed fight window ends. Before completion, keep exact rally terms and telemetry private to authenticated participants.
+- Players with public tracking disabled use a stable anonymous label in completed public analytics.
 
 ## Verification pattern
 
@@ -93,9 +112,7 @@ python3 -m unittest discover -s tests -v
 Live endpoint smoke shape:
 
 ```bash
-curl -fsS -X POST 'https://salmon-dune-01c80c60f.7.azurestaticapps.net/api/plugin/events/batch' \
-  -H 'Content-Type: application/json' \
-  --data '{"events":[{"type":"heartbeat","playerName":"private","clanName":"TRAPISTAN","world":330,"tick":1,"timestamp":123,"playerPublic":false}]}'
+curl -i 'https://salmon-dune-01c80c60f.7.azurestaticapps.net/api/plugin/me/metrics'
 ```
 
-Expected: `ok: true`, `accepted >= 1`, `worldIsPublic: true`, `playerWebsiteTrackingDefaultsPrivate: true`.
+Expected without a plugin session: HTTP `401` with `invalid_session`. Do not create synthetic production installations or fights for smoke tests. Verify authenticated persistence/aggregation with the service regression suite and use consenting real clans for production end-to-end validation.

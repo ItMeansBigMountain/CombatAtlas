@@ -17,9 +17,14 @@ if [[ "$queue_count" =~ ^[0-9]+$ ]] && (( queue_count > min_uploads )); then
   min_uploads="$queue_count"
 fi
 
-output=$(mktemp)
-trap 'rm -f "$output"' EXIT
+log_dir="$ROOT/OUTPUTS/backlog-processor-logs"
+mkdir -p "$log_dir"
+output="$log_dir/$(date -u +%Y-%m-%dT%H%M%SZ).log"
+printf 'raw_log: %s\n' "$output"
 
+# Stream the application's stdout/stderr to the cron capture while preserving a
+# durable raw log. If the scheduler kills this wrapper at its timeout, both the
+# partial application output and the on-disk log survive for diagnosis.
 set +e
 FORCE_UPLOAD=1 \
 VIRAL_RADAR_UPLOAD_QUEUE_FIRST=1 \
@@ -27,8 +32,8 @@ VIRAL_RADAR_STRICT_DISCOVERED_ONLY=1 \
 VIRAL_RADAR_MIN_UPLOADS="$min_uploads" \
 VIRAL_RADAR_MAX_SOURCE_ATTEMPTS=50 \
 VIRAL_RADAR_DAILY_UPLOAD_CAP=100 \
-"$PYTHON" "$RUNNER" >"$output" 2>&1
-rc=$?
+"$PYTHON" "$RUNNER" 2>&1 | tee "$output"
+rc=${PIPESTATUS[0]}
 set -e
 
 remaining_queue=$(find "$ROOT/UPLOAD_QUEUE" -maxdepth 1 -type f -name '*.upload.json' 2>/dev/null | wc -l | tr -d ' ')
