@@ -1,0 +1,142 @@
+Cronjob Response: Post-morning Agentic portfolio market scan
+(job_id: df35199a8b51)
+-------------
+
+# Post-Open Agentic Portfolio Scan
+
+**Account:** Robinhood Agentic ••••1041 only  
+**Scan time:** July 20, 2026, 9:53 AM ET  
+**Mode:** Autonomous policy-gated equity execution
+
+## Decision
+
+**Bought JPMorgan (JPM).** The order was reviewed, placed, and filled. No other trades were forced.
+
+## Current State
+
+### Before execution
+
+- Account value: **$185.11**
+- Equity value: **$101.76**
+- Liquid buying power: **$83.35**
+- Open-ish equity orders checked: `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled`
+- Open orders found: **None**
+- Kill switch: **Clear** — account value remains above $10
+
+Existing positions:
+
+- **NVDA:** 0.121165 shares at $206.33 average
+- **SOFI:** 4.477580 shares at $17.87 average
+
+### After execution
+
+- Account value: **$184.69**
+- Equity value: **$168.02**
+- Cash/buying power: **$16.67**
+- Positions: **NVDA, SOFI, JPM**
+
+## Market Regime
+
+Early trading was risk-on:
+
+- SPY: **+0.52%**
+- QQQ: **+1.09%**
+- IWM: **+0.44%**
+- XLK: **+1.11%**
+- SMH: **+2.07%**
+
+Technology and semiconductors led the rebound. However, QQQ and SMH remained below their 10-, 20-, and 50-day averages following the recent selloff. This is therefore a **constructive rebound, not yet a fully repaired intermediate trend**.
+
+Financials were flat at the sector level, but JPM displayed better individual relative strength following strong earnings.
+
+## Ranked Swing Candidates
+
+### 1. JPM — Executed
+
+- Entry/fill: **$341.6699**
+- Stop/invalidation: **$332**
+- Target 1: **$361**
+- Target 2: **$370**
+- Risk/reward: **2.00:1 / 2.93:1**
+- Planned maximum loss: approximately **$1.89**
+- Potential profit: approximately **$3.77 / $5.53**
+
+**Rationale:** JPM is above its 10-, 20-, and 50-day averages, with identifiable support around $332–$335 and a 20-day high of $351.24. Reuters reported record Q2 profit supported by dealmaking and trading strength. Higher expense guidance is the main fundamental counterweight.
+
+### 2. AMZN — No trade
+
+- Preferred entry/retest: **$248–$250**
+- Stop: **$242**
+- Targets: **$266 / $274**
+- Risk/reward: approximately **1.96:1 / 2.95:1**
+
+Strong Q1 revenue and AWS growth support the fundamental thesis. It is above its 20-day average but below its 50-day average. With earnings scheduled for July 30 and existing technology exposure already present, the binary-event risk did not justify an additional entry today.
+
+### 3. GOOGL — No trade
+
+- Trigger: Hold above **$355**
+- Stop: **$346**
+- Targets: **$376 / $387**
+- Risk/reward: approximately **1.61:1 / 2.56:1**
+
+The opening rebound was strong, but GOOGL remained below its 10-, 20-, and 50-day averages. July 22 earnings create immediate gap risk.
+
+### 4. NVDA — Hold; no add
+
+- Current reference price: approximately **$206.26**
+- Review/stop level: **$198**
+- Targets: **$220 / $228**
+
+NVDA reclaimed its 20-day average intraday but remained below its 50-day average. The current position already provides semiconductor exposure, so adding during an early rebound would unnecessarily increase concentration.
+
+### 5. AVGO — No trade
+
+- Trigger: Successful **$379–$383** retest
+- Stop: **$365**
+- Targets: **$402 / $414**
+- Risk/reward: approximately **1.73:1 / 2.61:1**
+
+The semiconductor rebound is supportive, but AVGO remains below its 10-, 20-, and 50-day averages and substantially duplicates the existing NVDA exposure.
+
+## Existing Position Management
+
+- **NVDA:** Hold; no add.
+- **SOFI:** Hold; no add. SOFI was approximately 4.1% below cost and trading below its 10- and 20-day averages. Earnings are due July 29. Invalidation remains a decisive break below the **$16.45–$16.47** support area. It has not reached the policy’s roughly 8% mandatory review threshold.
+
+## Exact Execution
+
+- Action: **Buy JPM**
+- Order type: **Market, regular hours**
+- Notional: **$66.68**
+- Status: **Filled**
+- Quantity: **0.195159 shares**
+- Average fill: **$341.6699**
+- Fees: **$0**
+- Fill time: **2026-07-20 13:53:25.4 UTC**
+- Order ID: `6a5e2855-17cf-4546-937b-b6a129da1933`
+
+Broker review returned no alerts, and JPM was confirmed active and fractional-tradable.
+
+Required broker quote disclosure:
+
+> Bid $341.49 × 40 Q · Ask $341.68 × 80 N · Last $341.60 × 100 D. Updated 9:53 AM ET.
+
+## Cash Deployment
+
+- Pre-trade liquid buying power: **$83.35**
+- Deployed: **$66.68 — exactly 80%**
+- Retained buffer: **$16.67 — exactly 20%**
+
+No pending order reduced the available balance. The allocation target was met with one qualifying setup rather than forcing weaker or overlapping trades.
+
+## Tools and Journal
+
+Robinhood MCP successfully provided live account state, positions, all practical open-order states, quotes, tradability, OHLCV, fundamentals, earnings data, review, execution, and fill verification.
+
+Gmail read access worked. A Robinhood execution email found during the source scan concerned another account ending **3352** and was excluded from all trading decisions. Calendar and Drive scopes remain insufficient on that Google token, but this did not block the trading scan.
+
+Journal saved to:
+
+`projects/trading-journal/2026-07-20/post-open-agentic-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Post-morning Agentic portfolio market scan").

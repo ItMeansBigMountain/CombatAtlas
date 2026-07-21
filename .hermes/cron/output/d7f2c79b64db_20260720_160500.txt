@@ -1,0 +1,99 @@
+Cronjob Response: Agentic Robinhood Trade Account Monitor — Midday
+(job_id: d7f2c79b64db)
+-------------
+
+# Midday Decision — HOLD / No New Trade
+
+## Current State
+
+**Account:** Agentic ••••1041 only  
+**Account value:** **$185.10**  
+**Equities:** **$168.43** — **90.99% deployed**  
+**Cash / buying power:** **$16.67** — **9.01% cash**
+
+- Kill switch clear: account value remains above $10.
+- No options, shorts, or activity in other accounts.
+- All open-ish equity states checked: `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled` — **none open**.
+- Current unrealized loss versus position costs is approximately **$3.34**, about **1.8%** of account value; the 5% pause threshold is not triggered.
+- Broker connectivity, account identity, buying power, positions, and risk calculations were verified.
+
+## Fill Confirmed
+
+Today’s opening order filled successfully:
+
+- **JPM:** Bought **$66.68**
+- **Quantity:** 0.195159 shares
+- **Average fill:** **$341.6699**
+- **Time:** 13:53:25 UTC
+- **Status:** Filled; no pending remainder
+
+## Holdings
+
+### NVDA — Hold
+
+- **0.121165 shares**
+- Cost: **$206.33**
+- Midday price: **$205.90**
+- Value: **$24.95**
+- P/L: approximately **-$0.05 (-0.21%)**
+
+NVDA is above its 10- and 20-day averages, near intraday VWAP, and outperforming alongside QQQ and SMH. Semiconductor-sector flow is positive today. Fundamentals remain supported by repeated EPS beats and AI-inference demand; next verified earnings are August 26.
+
+**Risk plan:** Review for exit on a decisive break below **$198.50–$200**. Targets remain approximately **$213.90**, then **$220**. No addition below cost.
+
+### SOFI — Hold, Closely Watched
+
+- **4.477580 shares**
+- Cost: **$17.87**
+- Midday price: **$17.205**
+- Value: **$77.04**
+- P/L: approximately **-$2.98 (-3.72%)**
+
+SOFI remains below its 10- and 20-day averages but is holding near its 50-day average and recovered above intraday VWAP after touching $16.97. Relative strength versus XLF is weak. Earnings on July 29 introduce near-term event risk.
+
+**Risk plan:** Hold while **$16.90 intraday support** and **$16.47 swing support** remain intact. Review for exit below **$16.45**. Targets: **$18.50**, then **$19.70**. No averaging down.
+
+### JPM — Hold
+
+- **0.195159 shares**
+- Cost: **$341.67**
+- Midday price: **$340.055**
+- Value: **$66.36**
+- P/L: approximately **-$0.32 (-0.47%)**
+
+JPM remains above its 10-, 20-, and 50-day averages despite modest intraday weakness. The broader financial sector is flat today but retains a strong intermediate trend. JPM’s July 14 EPS of $6.14 exceeded the $5.59 estimate; valuation remains comparatively moderate at roughly 14.7 times earnings.
+
+**Risk plan:** Hold above **$334–$335** support. Review for exit below **$334**. Targets: **$351**, then **$360**. No addition below entry.
+
+## Ranked Opportunities
+
+1. **NVDA — 8.0/10:** Best liquidity, relative strength, earnings quality, and invalidation clarity. Already held; adding below cost is prohibited.
+2. **JPM — 7.6/10:** Strong daily trend and fresh earnings beat. Already held; no addition below entry.
+3. **CLS — 6.7/10:** Profitable with repeated EPS beats and positive intraday action, but below declining key averages with July 27 earnings risk.
+4. **ACHR — 6.1/10:** Approximately 19% high-volume rebound, but still countertrend, unprofitable, and extended from the open. Wait for a retest.
+5. **IREN — 5.8/10:** Approximately 18% bounce, but remains below major moving averages with expensive valuation and recent earnings misses.
+
+CIFR, CLSK, and HUT were rejected as extended countertrend crypto-compute rebounds with volatile or negative earnings. AMKR was rejected ahead of July 27 earnings while below key moving averages.
+
+## Deployment and Reserve
+
+- Buying power after pending orders: **$16.67**
+- Policy deployment target for a qualifying new setup: **$13.336**
+- Required 20% reserve: **$3.334**
+- **Actual new deployment: $0**
+
+No candidate provided a clean entry, credible invalidation, and at least 1.5:1 risk-to-reward without chasing a large intraday gap. Existing exposure is already **90.99% of account value**, so forcing another position would reduce portfolio quality rather than improve it.
+
+## Actions
+
+- **No sells**
+- **No new buys**
+- **No cancellations**
+- **No widened stops**
+- **No averaging down**
+
+The completed scan and decision were journaled at:
+
+`projects/trading-journal/2026-07-20/MIDDAY-decision.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Trade Account Monitor — Midday").
