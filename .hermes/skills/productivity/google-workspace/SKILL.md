@@ -267,6 +267,25 @@ $GAPI gmail modify MESSAGE_ID --remove-labels UNREAD
 
 For this user's personal Gmail cleanup and routing, load `references/user-gmail-routing-cleanup-rules.md` before modifying labels or trashing messages. It covers full Gmail permissions for both personal accounts, Grammarly personal-information handling, Robinhood/Zoom routing, and duplicate newsletter cleanup from `affan.fareed@gmail.com`.
 
+#### Recurring Gmail sorting reports
+
+When a recurring email sorter modifies messages, its user-facing report must be auditable rather than count-only. Group results by the named Google Workspace profile **and full account email address**, then list every sorted message with at least:
+
+- subject (or `(no subject)`),
+- sender/from header (or `Unknown sender`), and
+- destination label.
+
+A compact preferred shape is:
+
+```text
+**personal-main — affan.fareed@gmail.com** (2 sorted)
+- **Message subject** — Sender <sender@example.com> → `Hermes/Newsletters`
+```
+
+Keep the total count as a summary, but never use profile counts as a substitute for the per-message list. If a profile is blocked, continue healthy profiles and report the blocked profile with both its profile name and account email address.
+
+For `no_agent` cron jobs, remember that delivery is the script's stdout verbatim: update and verify the formatter in the script itself rather than only changing the cron prompt. Prefer consuming the sorter's structured JSON (`email`, `matches[].subject`, `matches[].from`, `matches[].label`) and run both a shell syntax check and a small synthetic-format fixture before considering the change complete. Do not rerun an `--apply` sorter merely to test report formatting, because that can cause unintended additional mailbox changes.
+
 #### Gmail audits and subscription cleanup
 
 When auditing email, subscriptions, billing notices, newsletters, or junk mail, use the read-only workflows in `references/gmail-inbox-audit-and-cleanup.md` and `references/gmail-inbox-audit-pattern.md` before proposing cleanup. Key rules:

@@ -1,0 +1,108 @@
+Cronjob Response: Post-morning Agentic portfolio market scan
+(job_id: df35199a8b51)
+-------------
+
+# Decision
+
+**Hold NVDA, SOFI, JPM, and UNH. No new trade, preview, cancellation, or exit.**
+
+The account is already **98.2% invested**, current positions remain within management levels, and the best new opportunity—GM—is extended above its preferred retest entry. Spending the remaining tiny buying-power tranche would add complexity without materially improving expected return.
+
+# Current State — Agentic ••••1041 Only
+
+- **Portfolio value:** $186.61
+- **Equities:** $183.28
+- **Cash / buying power:** $3.33
+- **Pending deposits:** $0
+- **Open-ish equity orders:** None across `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled`
+- **Options/shorts:** None
+- **Kill switch:** Clear; value remains above $10
+- **Current-liquid allocation math:** $2.664 nominally deployable at 80%, with $0.666 reserved
+- **Actual total deployment:** approximately 98.2%; no trade was forced to deploy another $2.66
+
+| Position | Live price | Value | P/L vs. average | Stop/invalidation | Action |
+|---|---:|---:|---:|---:|---|
+| NVDA 0.121165 @ $206.33 | $207.41 | $25.13 | +$0.13 | $198 | Hold; no add before a clean $210–$214 reclaim |
+| SOFI 4.477580 @ $17.87 | $17.215 | $77.08 | -$2.93 | $16.90 | Hold/watch closely; exit review on sustained loss of $16.90 |
+| JPM 0.195159 @ $341.67 | $346.15 | $67.55 | +$0.87 | $337 | Hold; approaching $351.24 resistance |
+| UNH 0.031089 @ $429.09 | $435.56 | $13.54 | +$0.20 | $423 | Hold; targets remain $450/$461.62 |
+
+Approximate aggregate marked risk to management stops is **$4.73**, inside the default ~$6 soft cap. No stop was widened.
+
+# Market Regime
+
+- **SPY:** $747.69, -0.08%; below SMA10 but above SMA20/50
+- **QQQ:** $705.99, -0.42%; below SMA10/20/50—technology repair remains incomplete
+- **IWM:** $295.48, -0.36%; mixed structure
+- **Leading sectors:** Energy +1.39%, utilities +1.15%
+- **Lagging sectors:** Technology -0.64%, semiconductors -0.44%
+
+**Regime:** Mixed and rotational, not broad risk-on. Selective strength favors energy, financials, and isolated earnings winners, while technology lacks full trend confirmation.
+
+# Ranked Swing Candidates
+
+1. **GM — 8.0/10**
+   - Earnings-gap retest; $83.60, +5.13%, above all key averages and prior $80.57 high
+   - Catalyst: stronger adjusted EBIT/free cash flow and raised 2026 guidance
+   - Entry: retest/hold at $80.50–$81.50
+   - Stop: $78
+   - Targets: $87 / $91
+   - R:R from $81: **2.0 / 3.33**
+   - **Action:** Wait; do not chase at $83.60
+
+2. **JPM — 7.8/10**
+   - Strong post-earnings trend; already held
+   - Catalyst: record Q2 profit, strong markets and investment-banking revenue
+   - Fresh trigger: breakout/retest above $351.25
+   - Stop: $342
+   - Targets: $366 / $375
+   - R:R: approximately **1.6 / 2.6**
+   - **Action:** Hold existing position; no add near resistance
+
+3. **UNH — 7.7/10**
+   - Above SMA10/20/50; already held
+   - Catalyst: Q2 adjusted EPS beat and raised full-year profit guidance
+   - Trigger: hold $430 and clear $438
+   - Stop: $423
+   - Targets: $461.62 / $475
+   - R:R: approximately **1.57 / 2.47**
+   - **Action:** Hold
+
+4. **XLE — 7.2/10**
+   - Sector breakout above prior $58.53 20-day high
+   - Catalyst: energy leadership and geopolitical/oil sensitivity
+   - Entry: $58.50–$58.70 retest
+   - Stop: $57.40
+   - Targets: $61 / $62
+   - R:R: approximately **2.1 / 3.0**
+   - **Action:** Watch for retest; avoid opening extension
+
+5. **AMD — 6.8/10**
+   - Above key averages, but semiconductor sector remains technically impaired
+   - Entry: controlled $530–$535 pullback and reclaim
+   - Stop: $515
+   - Targets: $575 / $585
+   - R:R from $535: **2.0 / 2.5**
+   - **Action:** Watch only; volatility remains high
+
+# Exact Actions and Fills
+
+- No order reviewed
+- No order placed
+- No fill
+- No cancellation
+- No options, shorts, or other-account activity
+
+# Tool and Source Status
+
+- Robinhood live portfolio, positions, buying power, five open-order states, quotes, tradability, earnings/fundamental data, and daily/intraday OHLCV were checked.
+- Initial calls using obsolete `nonzero` and `span` parameters failed; both were corrected and successfully retried with current schemas. Broker state remained certain.
+- Gmail `personal-main` read-only access worked. Recent Robinhood confirmations/prospectuses were found, but no actionable market-newsletter signal. No email changes were made.
+- Calendar and Drive remain blocked by insufficient OAuth scopes, but this did not affect trading research.
+- Current market and earnings context was cross-checked against Reuters and company/financial-result reporting.
+
+Journal saved to:
+
+`projects/trading-journal/2026-07-22/post-open-agentic-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Post-morning Agentic portfolio market scan").

@@ -12,8 +12,16 @@ lines = []
 if count:
     lines.append(f"**Email sorting agent** moved {count} newsletter/source emails into Hermes labels.")
     for p in profiles:
-        if p.get("match_count", 0):
-            lines.append(f"- **{p['profile']}**: {p.get('match_count', 0)}")
+        matches = p.get("matches", [])
+        if not matches:
+            continue
+        account = p.get("email", "unknown")
+        lines.append(f"\n**{p['profile']} — {account}** ({len(matches)} sorted)")
+        for m in matches:
+            sender = m.get("from") or "Unknown sender"
+            subject = m.get("subject") or "(no subject)"
+            label = m.get("label") or "Hermes"
+            lines.append(f"- **{subject}** — {sender} → `{label}`")
 if blocked:
     lines.append("**Email sorting agent auth/service blocks:**")
     for p in blocked:
