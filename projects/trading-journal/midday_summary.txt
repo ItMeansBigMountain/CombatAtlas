@@ -1,0 +1,1888 @@
+
+SCAN KEYS dict_keys(['result'])
+{
+  "result": {
+    "scan_id": "8b91f5ef-1f90-4dea-8115-35238c26dfc4",
+    "scan_title": "Agentic 1041 Afternoon Daily Gainers 2026-07-17",
+    "total_items": 272,
+    "results": [
+      {
+        "ticker": "PAVS",
+        "instrument_id": "883023f5-e98e-4bee-aa3e-61e981d06d27",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.6831185567010309",
+          "Asset type": "STOCK",
+          "Last": "6.5305",
+          "Market cap": "3.348334e+06",
+          "Name": "Paranovus",
+          "Net change": "2.6505",
+          "Relative volume": "178.4233986500127",
+          "Symbol": "PAVS",
+          "Volume": "6.764250154963e+06"
+        }
+      },
+      {
+        "ticker": "LGCL",
+        "instrument_id": "77352e58-85f2-42c7-9be6-8f686a3a7584",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.6184971098265896",
+          "Asset type": "STOCK",
+          "Last": "1.54",
+          "Market cap": "4.1955991e+07",
+          "Name": "Lucas GC Limited",
+          "Net change": "0.5885",
+          "Relative volume": "4.18882285389625",
+          "Symbol": "LGCL",
+          "Volume": "4.9796234107935e+07"
+        }
+      },
+      {
+        "ticker": "AEHL",
+        "instrument_id": "43ddc89c-64c1-442e-a763-337d01cbc1da",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.5657327586206898",
+          "Asset type": "STOCK",
+          "Last": "0.8718",
+          "Market cap": "1.0163553e+07",
+          "Name": "Antelope Enterprise",
+          "Net change": "0.31500000000000006",
+          "Relative volume": "1.0818314705471792",
+          "Symbol": "AEHL",
+          "Volume": "7.2726523245305e+07"
+        }
+      },
+      {
+        "ticker": "NVVE",
+        "instrument_id": "121da6f0-5b9d-4fad-9dbb-86fcfa8c839a",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.5259067357512954",
+          "Asset type": "STOCK",
+          "Last": "8.835",
+          "Market cap": "2.990949e+06",
+          "Name": "Nuvve",
+          "Net change": "3.045000000000001",
+          "Relative volume": "5.676260236980242",
+          "Symbol": "NVVE",
+          "Volume": "5.8705282509e+06"
+        }
+      },
+      {
+        "ticker": "NVEC",
+        "instrument_id": "a6c35480-8c6c-4263-8c90-a5a78981da96",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.5206506691278264",
+          "Asset type": "STOCK",
+          "Last": "131.81",
+          "Market cap": "4.15947904e+08",
+          "Name": "NVE",
+          "Net change": "45.129999999999995",
+          "Relative volume": "2.376209620496651",
+          "Symbol": "NVEC",
+          "Volume": "379405.499166"
+        }
+      },
+      {
+        "ticker": "WBUY",
+        "instrument_id": "e0c0fa00-9908-4db7-a78b-1660e6a57413",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.41820580474934027",
+          "Asset type": "STOCK",
+          "Last": "1.075",
+          "Market cap": "4.154676e+06",
+          "Name": "WEBUY GLOBAL LTD.",
+          "Net change": "0.31699999999999995",
+          "Relative volume": "6102.224252335737",
+          "Symbol": "WBUY",
+          "Volume": "1.56177716854599e+08"
+        }
+      },
+      {
+        "ticker": "YOUL",
+        "instrument_id": "079a17fa-691c-43ce-a5ae-29f06fcdde58",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.35181485181485167",
+          "Asset type": "STOCK",
+          "Last": "0.8119",
+          "Market cap": "4.8650293e+07",
+          "Name": "Youlife Group",
+          "Net change": "0.21129999999999993",
+          "Relative volume": "25.937112651395466",
+          "Symbol": "YOUL",
+          "Volume": "4.047378569067e+06"
+        }
+      },
+      {
+        "ticker": "EHGO",
+        "instrument_id": "d79945e1-bd41-4783-8d09-e06d581adad1",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.3131250000000001",
+          "Asset type": "STOCK",
+          "Last": "2.3111",
+          "Market cap": "5.615983e+06",
+          "Name": "Eshallgo",
+          "Net change": "0.5511000000000001",
+          "Relative volume": "573.8648833080241",
+          "Symbol": "EHGO",
+          "Volume": "7.4182160862829e+07"
+        }
+      },
+      {
+        "ticker": "RBNE",
+        "instrument_id": "d36e9218-9804-40d8-a772-a7b30ae08cb3",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.3026905829596412",
+          "Asset type": "STOCK",
+          "Last": "5.81",
+          "Market cap": "2.597044e+06",
+          "Name": "Robin Energy",
+          "Net change": "1.3499999999999996",
+          "Relative volume": "2.0976562642223615",
+          "Symbol": "RBNE",
+          "Volume": "190792.735644"
+        }
+      },
+      {
+        "ticker": "LICN",
+        "instrument_id": "b96167ed-3ee2-40b0-a6b1-2d4730f1d770",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.26298881134374646",
+          "Asset type": "STOCK",
+          "Last": "1.1401",
+          "Market cap": "1.5112016e+07",
+          "Name": "Lichen International",
+          "Net change": "0.23739999999999994",
+          "Relative volume": "0.07205898448628019",
+          "Symbol": "LICN",
+          "Volume": "1.705652995031e+06"
+        }
+      },
+      {
+        "ticker": "OMH",
+        "instrument_id": "f2395a42-d09b-4362-929e-1077ed6b3a0c",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.2609418282548477",
+          "Asset type": "STOCK",
+          "Last": "0.4552",
+          "Market cap": "8.424981e+06",
+          "Name": "Ohmyhome Limited Class A",
+          "Net change": "0.0942",
+          "Relative volume": "1.466384447850355",
+          "Symbol": "OMH",
+          "Volume": "1.743363399133e+07"
+        }
+      },
+      {
+        "ticker": "DOMO",
+        "instrument_id": "d0c52a36-37b5-4124-ab8b-6d20151fe366",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.2555555555555556",
+          "Asset type": "STOCK",
+          "Last": "3.955",
+          "Market cap": "1.42224272e+08",
+          "Name": "Domo",
+          "Net change": "0.8050000000000002",
+          "Relative volume": "8.843989039590815",
+          "Symbol": "DOMO",
+          "Volume": "2.5234314984111e+07"
+        }
+      },
+      {
+        "ticker": "NVCR",
+        "instrument_id": "4d591f16-7f0a-4fe7-a369-5346a61c0dfb",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.25305073859987165",
+          "Asset type": "STOCK",
+          "Last": "19.51",
+          "Market cap": "1.801594721e+09",
+          "Name": "NovoCure",
+          "Net change": "3.9400000000000013",
+          "Relative volume": "3.8734939832883017",
+          "Symbol": "NVCR",
+          "Volume": "4.124424703077e+06"
+        }
+      },
+      {
+        "ticker": "SKYQ",
+        "instrument_id": "c005fd52-cdc9-4cc7-ac90-1d78758ea17b",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.23242130750605333",
+          "Asset type": "STOCK",
+          "Last": "5.0899",
+          "Market cap": "1.9801887e+07",
+          "Name": "Sky Quarry",
+          "Net change": "0.9599000000000002",
+          "Relative volume": "4.313922964221718",
+          "Symbol": "SKYQ",
+          "Volume": "1.8173589396602e+07"
+        }
+      },
+      {
+        "ticker": "CJMB",
+        "instrument_id": "f051f2b9-8a09-4fff-88da-5d5983602245",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.22529761904761908",
+          "Asset type": "STOCK",
+          "Last": "2.0585",
+          "Market cap": "9.429017e+06",
+          "Name": "Callan JMB Inc.",
+          "Net change": "0.37850000000000006",
+          "Relative volume": "14.066693441687153",
+          "Symbol": "CJMB",
+          "Volume": "2.7464755029044e+07"
+        }
+      },
+      {
+        "ticker": "GSUN",
+        "instrument_id": "3c6ab427-c2a5-4090-a623-ae8026cf49d0",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.22129055778344892",
+          "Asset type": "STOCK",
+          "Last": "0.335",
+          "Market cap": "2.750918e+06",
+          "Name": "Golden Sun Technology Group",
+          "Net change": "0.06070000000000003",
+          "Relative volume": "0.8496028005692917",
+          "Symbol": "GSUN",
+          "Volume": "3.442548652974e+06"
+        }
+      },
+      {
+        "ticker": "JEM",
+        "instrument_id": "f1ee94c9-a6bb-4018-948b-80434b8da5bb",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.2183002832861191",
+          "Asset type": "STOCK",
+          "Last": "4.3006",
+          "Market cap": "2.372103e+06",
+          "Name": "707 Cayman Holdings Limited",
+          "Net change": "0.7706000000000004",
+          "Relative volume": "200.54444421322196",
+          "Symbol": "JEM",
+          "Volume": "2.3436700547879e+07"
+        }
+      },
+      {
+        "ticker": "NEUP",
+        "instrument_id": "1aa4f7b6-4ef2-4f8a-a81e-f3cd9f2fdb5d",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.21471471471471468",
+          "Asset type": "STOCK",
+          "Last": "4.045",
+          "Market cap": "1.7835018e+07",
+          "Name": "Neuphoria Therapeutics Inc.",
+          "Net change": "0.7149999999999999",
+          "Relative volume": "146.15287446650586",
+          "Symbol": "NEUP",
+          "Volume": "6.931739776443e+06"
+        }
+      },
+      {
+        "ticker": "THRM",
+        "instrument_id": "5df5dc91-839d-4d8d-b806-a9223c18c5fc",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.2026352288488211",
+          "Asset type": "STOCK",
+          "Last": "43.355",
+          "Market cap": "1.105544737e+09",
+          "Name": "Gentherm",
+          "Net change": "7.305",
+          "Relative volume": "0.9277950548258722",
+          "Symbol": "THRM",
+          "Volume": "531847.80313"
+        }
+      },
+      {
+        "ticker": "RELL",
+        "instrument_id": "0a269c8c-3af3-437d-879e-5e34138715a2",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.20155469183786778",
+          "Asset type": "STOCK",
+          "Last": "21.64",
+          "Market cap": "2.63407502e+08",
+          "Name": "Richardson Electronics",
+          "Net change": "3.629999999999999",
+          "Relative volume": "1.2347668477227474",
+          "Symbol": "RELL",
+          "Volume": "628843.462691"
+        }
+      },
+      {
+        "ticker": "CLF",
+        "instrument_id": "e1c703cd-d36e-4592-bf1c-06caf0bb0fe8",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.18091005291005294",
+          "Asset type": "STOCK",
+          "Last": "11.1596",
+          "Market cap": "5.390418508e+09",
+          "Name": "Cleveland-Cliffs",
+          "Net change": "1.7096",
+          "Relative volume": "1.4764879283441228",
+          "Symbol": "CLF",
+          "Volume": "2.9837142930511e+07"
+        }
+      },
+      {
+        "ticker": "ZYBT",
+        "instrument_id": "c3fdcf10-0856-4e68-bc77-7b809ea1ab81",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.17753623188405807",
+          "Asset type": "STOCK",
+          "Last": "1.625",
+          "Market cap": "6.5400098e+07",
+          "Name": "Zhengye Biotechnology Holding",
+          "Net change": "0.2450000000000001",
+          "Relative volume": "1.1605923980205184",
+          "Symbol": "ZYBT",
+          "Volume": "1.2606735249684e+07"
+        }
+      },
+      {
+        "ticker": "JZ",
+        "instrument_id": "a0004af4-7338-4215-a1ac-920937c6045d",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.17220264317180609",
+          "Asset type": "STOCK",
+          "Last": "2.6609",
+          "Market cap": "5.490952e+06",
+          "Name": "Jianzhi Education Technology Group",
+          "Net change": "0.3908999999999998",
+          "Relative volume": "1.7003397824287554",
+          "Symbol": "JZ",
+          "Volume": "104354.953467"
+        }
+      },
+      {
+        "ticker": "DSY",
+        "instrument_id": "759d21d2-0d8d-4fce-9b94-d4a19b04da7b",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.16883116883116883",
+          "Asset type": "STOCK",
+          "Last": "3.6",
+          "Market cap": "1.5065338e+07",
+          "Name": "Big Tree Cloud Holdings Limited",
+          "Net change": "0.52",
+          "Relative volume": "1.1230587292903276",
+          "Symbol": "DSY",
+          "Volume": "39372.370441"
+        }
+      },
+      {
+        "ticker": "TGHL",
+        "instrument_id": "7ff8a94f-7614-4bbe-85c2-b63fd804d294",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.1671209540034073",
+          "Asset type": "STOCK",
+          "Last": "0.6851",
+          "Market cap": "1.4792798e+07",
+          "Name": "The GrowHub Limited Class A",
+          "Net change": "0.09810000000000008",
+          "Relative volume": "1.2788206109613869",
+          "Symbol": "TGHL",
+          "Volume": "899845.011737"
+        }
+      },
+      {
+        "ticker": "OTLY",
+        "instrument_id": "0d6d025a-c3c5-4a02-8522-7b8abb973197",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.16419294990723576",
+          "Asset type": "STOCK",
+          "Last": "12.55",
+          "Market cap": "3.29267625e+08",
+          "Name": "Oatly Group",
+          "Net change": "1.7700000000000014",
+          "Relative volume": "0.393846118340279",
+          "Symbol": "OTLY",
+          "Volume": "403389.276043"
+        }
+      },
+      {
+        "ticker": "VIVK",
+        "instrument_id": "14043a6d-6442-4260-b80c-2a8d2515e923",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.15337423312883436",
+          "Asset type": "STOCK",
+          "Last": "1.88",
+          "Market cap": "1.0842e+06",
+          "Name": "Vivakor",
+          "Net change": "0.25",
+          "Relative volume": "3.4152000570817056",
+          "Symbol": "VIVK",
+          "Volume": "1.8312304982361e+07"
+        }
+      },
+      {
+        "ticker": "TMDE",
+        "instrument_id": "cb43e972-382d-4407-a3c8-96ecd6aaa2b2",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.15102895012207884",
+          "Asset type": "STOCK",
+          "Last": "0.99",
+          "Market cap": "2.0268256e+07",
+          "Name": "TMD Energy Limited",
+          "Net change": "0.12990000000000002",
+          "Relative volume": "7.584440200561145",
+          "Symbol": "TMDE",
+          "Volume": "1.0557416773e+06"
+        }
+      },
+      {
+        "ticker": "ADVB",
+        "instrument_id": "591918d1-918d-4350-bb4b-272fb642464a",
+        "instrument_type": "EQUITY",
+        "columns": {
+          "% Change": "0.1505224489795918",
+          "Asset 
+
+MOVERS {
+  "items": [
+    {
+      "object_id": "e39ed23a-7bd1-4587-b060-71988d9ef483",
+      "object_type": "instrument",
+      "symbol": "TSLA"
+    },
+    {
+      "object_id": "e1c703cd-d36e-4592-bf1c-06caf0bb0fe8",
+      "object_type": "instrument",
+      "symbol": "CLF"
+    },
+    {
+      "object_id": "df1ae3bc-40b1-4b9a-81b3-82bf3fffe6cb",
+      "object_type": "instrument",
+      "symbol": "URI"
+    },
+    {
+      "object_id": "030e29b1-751b-40d6-afb0-b264407aa259",
+      "object_type": "instrument",
+      "symbol": "CHCJY"
+    },
+    {
+      "object_id": "67d7bb04-8c2e-4338-b72a-18857809ec8d",
+      "object_type": "instrument",
+      "symbol": "STM"
+    },
+    {
+      "object_id": "d2734bc7-c4ae-44ab-8098-304207b3ab9e",
+      "object_type": "instrument",
+      "symbol": "MEDP"
+    },
+    {
+      "object_id": "27bd8213-e141-4566-bfe9-f9d383867fd6",
+      "object_type": "instrument",
+      "symbol": "ALLE"
+    },
+    {
+      "object_id": "59dffc04-b8a8-4e22-a18e-1a143750a1e6",
+      "object_type": "instrument",
+      "symbol": "MOH"
+    },
+    {
+      "object_id": "fb52e783-eff0-4ac0-98ca-8c83d0cb88f6",
+      "object_type": "instrument",
+      "symbol": "MBLY"
+    },
+    {
+      "object_id": "562dec38-d0d6-4f93-9bd5-dc4bf087d4c7",
+      "object_type": "instrument",
+      "symbol": "ACI"
+    },
+    {
+      "object_id": "09dd15fe-20dd-4f1e-a920-5e6399bd7cde",
+      "object_type": "instrument",
+      "symbol": "LBRT"
+    },
+    {
+      "object_id": "a9e9b508-25b1-4d95-94a5-7ed9fc62e38d",
+      "object_type": "instrument",
+      "symbol": "QS"
+    },
+    {
+      "object_id": "4d591f16-7f0a-4fe7-a369-5346a61c0dfb",
+      "object_type": "instrument",
+      "symbol": "NVCR"
+    },
+    {
+      "object_id": "5df5dc91-839d-4d8d-b806-a9223c18c5fc",
+      "object_type": "instrument",
+      "symbol": "THRM"
+    },
+    {
+      "object_id": "98f1c752-c913-4c6f-8ac7-621ced0df465",
+      "object_type": "instrument",
+      "symbol": "DFNS"
+    },
+    {
+      "object_id": "a6c35480-8c6c-4263-8c90-a5a78981da96",
+      "object_type": "instrument",
+      "symbol": "NVEC"
+    },
+    {
+      "object_id": "e154a4ac-771e-47b6-9bc7-e1fb0a25bcc3",
+      "object_type": "instrument",
+      "symbol": "TSLY"
+    },
+    {
+      "object_id": "7f6dd304-c040-4bc2-bfb9-f40142ef4e71",
+      "object_type": "instrument",
+      "symbol": "EVH"
+    },
+    {
+      "object_id": "0d6d025a-c3c5-4a02-8522-7b8abb973197",
+      "object_type": "instrument",
+      "symbol": "OTLY"
+    },
+    {
+      "object_id": "0a269c8c-3af3-437d-879e-5e34138715a2",
+      "object_type": "instrument",
+      "symbol": "RELL"
+    }
+  ],
+  "has_futures_contracts": false
+}
+
+QUOTES
+NVDA 208.19 -1.82 bidask 208.180000 208.190000 2026-07-23T16:01:35.322584123Z
+JPM 347.46 -0.22 bidask 347.270000 347.510000 2026-07-23T16:01:25.941566335Z
+UNH 421.68 -2.23 bidask 421.680000 421.860000 2026-07-23T16:01:26.860071604Z
+RTX 210.05 7.78 bidask 209.930000 210.090000 2026-07-23T16:01:29.93339438Z
+CSX 52.47 5.09 bidask 52.430000 52.440000 2026-07-23T16:01:27.114233708Z
+TMO 578.84 9.95 bidask 578.510000 579.170000 2026-07-23T16:01:30.735219223Z
+XOM 157.43 1.93 bidask 157.420000 157.450000 2026-07-23T16:01:33.485529164Z
+IMAX 43.365 10.34 bidask 43.300000 43.430000 2026-07-23T16:01:26.013803689Z
+
+HIST day
+
+HIST 30minute
+NVDA {'n': 44, 'last': 208.1801, 'sma10': 210.6531, 'sma20': 210.42, 'sma50': 207.6017, 'high20': 214.39, 'low20': 204.95, 'avgvol20': 4131183.0, 'first': 205.85, 'session_high': 213.4, 'session_low': 206.0401, 'lastvol': 1722050.0}
+JPM {'n': 44, 'last': 347.4601, 'sma10': 347.412, 'sma20': 347.1905, 'sma50': 344.1978, 'high20': 349.2299, 'low20': 344.03, 'avgvol20': 134024.35, 'first': 341.76, 'session_high': 349.2299, 'session_low': 345.5001, 'lastvol': 108244.0}
+UNH {'n': 44, 'last': 421.84, 'sma10': 428.1863, 'sma20': 431.1316, 'sma50': 429.124, 'high20': 436.95, 'low20': 420.685, 'avgvol20': 120630.45, 'first': 425.15, 'session_high': 431.9499, 'session_low': 420.685, 'lastvol': 50316.0}
+RTX {'n': 44, 'last': 210.3401, 'sma10': 202.4955, 'sma20': 198.7368, 'sma50': 197.2943, 'high20': 213.49, 'low20': 193.41, 'avgvol20': 193408.4, 'first': 196.595, 'session_high': 213.49, 'session_low': 193.79, 'lastvol': 218126.0}
+CSX {'n': 44, 'last': 52.54, 'sma10': 51.221, 'sma20': 50.573, 'sma50': 50.2722, 'high20': 53.3, 'low20': 49.535, 'avgvol20': 536747.0, 'first': 50.69, 'session_high': 53.3, 'session_low': 49.535, 'lastvol': 201505.0}
+TMO {'n': 44, 'last': 579.075, 'sma10': 551.172, 'sma20': 536.6676, 'sma50': 529.4309, 'high20': 587.49, 'low20': 518.54, 'avgvol20': 117140.45, 'first': 528.59, 'session_high': 587.49, 'session_low': 522.8605, 'lastvol': 26972.0}
+XOM {'n': 44, 'last': 157.6701, 'sma10': 156.0105, 'sma20': 154.821, 'sma50': 151.9858, 'high20': 158.57, 'low20': 151.0, 'avgvol20': 353481.35, 'first': 147.73, 'session_high': 158.57, 'session_low': 154.06, 'lastvol': 276070.0}
+IMAX {'n': 44, 'last': 43.4, 'sma10': 41.166, 'sma20': 39.7178, 'sma50': 38.9588, 'high20': 45.08, 'low20': 37.32, 'avgvol20': 99608.4, 'first': 39.575, 'session_high': 45.08, 'session_low': 38.93, 'lastvol': 140928.0}
+
+FUNDS {
+  "results": [
+    {
+      "symbol": "NVDA",
+      "open": "209.460000",
+      "high": "210.868700",
+      "low": "205.960000",
+      "volume": "45999672.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-07-23",
+      "average_volume_2_weeks": "125334686.387095",
+      "average_volume": "125334686.387095",
+      "average_volume_30_days": "136789610.360000",
+      "high_52_weeks": "236.540000",
+      "high_52_weeks_date": "2026-05-14",
+      "low_52_weeks": "164.070000",
+      "low_52_weeks_date": "2025-09-05",
+      "float": "23268832400.000000",
+      "market_cap": "5120874094000.000000",
+      "pb_ratio": "25.698800",
+      "pe_ratio": "31.762075",
+      "shares_outstanding": "24598300000.000000",
+      "dividend_yield": "0.135005",
+      "dividend_per_share": "0.250000",
+      "distribution_frequency": "Quarterly",
+      "payable_date": "2026-06-26",
+      "ex_dividend_date": "2026-06-04",
+      "record_date": "2026-06-04",
+      "thirty_day_sec_yield": null,
+      "description": "NVIDIA Corp. engages in the design and manufacture of computer graphics processors, chipsets, and related multimedia software. It operates through the following segments: Graphics Processing Unit (GPU) and Compute & Networking. The Graphics segment includes GeForce GPUs for gaming and PCs, the GeForce NOW game streaming service and related infrastructure, Quadro and NVIDIA RTX GPUs for enterprise workstation graphics, virtual GPU, or vGPU, software for cloud-based visual and virtual computing, automotive platforms for infotainment systems, and Omniverse Enterprise software for building and operating metaverse and 3D internet applications. The Compute & Networking segment consists of Data Center accelerated computing platforms and end-to-end networking platforms including Quantum for InfiniBand and Spectrum for Ethernet, NVIDIA DRIVE automated-driving platform and automotive development agreements, Jetson robotics and other embedded platforms, NVIDIA AI Enterprise and other software, and DGX Cloud software and services. The company was founded by Jen Hsun Huang, Chris A. Malachowsky, and Curtis R. Priem in April 1993 and is headquartered in Santa Clara, CA.",
+      "ceo": "Jen Hsun Huang",
+      "headquarters_city": "Santa Clara",
+      "headquarters_state": "California",
+      "sector": "Electronic Technology",
+      "industry": "Semiconductors",
+      "num_employees": 42000,
+      "year_founded": 1993,
+      "financial_status_indicator": "CC0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "JPM",
+      "open": "346.580000",
+      "high": "349.229900",
+      "low": "345.420000",
+      "volume": "2087692.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-07-23",
+      "average_volume_2_weeks": "9773983.880210",
+      "average_volume": "9773983.880210",
+      "average_volume_30_days": "10233419.950600",
+      "high_52_weeks": "351.240000",
+      "high_52_weeks_date": "2026-07-15",
+      "low_52_weeks": "279.100000",
+      "low_52_weeks_date": "2026-03-12",
+      "float": "2667481679.610000",
+      "market_cap": "950279137832.528687",
+      "pb_ratio": "2.579950",
+      "pe_ratio": "14.700338",
+      "shares_outstanding": "2735364021.336851",
+      "dividend_yield": "1.719365",
+      "dividend_per_share": "1.500000",
+      "distribution_frequency": "Quarterly",
+      "payable_date": "2026-07-31",
+      "ex_dividend_date": "2026-07-06",
+      "record_date": "2026-07-06",
+      "thirty_day_sec_yield": null,
+      "description": "JPMorgan Chase & Co. is a financial holding company, which engages in the provision of financial and investment banking services. The firm focuses on investment banking, financial services for consumers and small businesses, commercial banking, financial transaction processing, and asset management. It operates through the following segments: Consumer and Community Banking (CCB), Commercial and Investment Bank (CIB), Asset and Wealth Management (AWM), and Corporate. The CCB segment originates and services mortgage loans. The CIB segment makes markets and services clients across fixed income, foreign exchange, equities, and commodities. The AWM segment provides initial capital investments in products such as mutual funds and capital invested alongside third-party investors. The Corporate segment manages its liquidity, funding, capital, structural interest rate, and foreign exchange risks. The company was founded in 1799 and is headquartered in New York, NY.",
+      "ceo": "James Dimon",
+      "headquarters_city": "New York",
+      "headquarters_state": "New York",
+      "sector": "Finance",
+      "industry": "Major Banks",
+      "num_employees": 318512,
+      "year_founded": 1799,
+      "financial_status_indicator": "CA0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "UNH",
+      "open": "427.530000",
+      "high": "430.485000",
+      "low": "420.685000",
+      "volume": "1700939.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-07-23",
+      "average_volume_2_weeks": "6501559.892190",
+      "average_volume": "6501559.892190",
+      "average_volume_30_days": "6240972.818780",
+      "high_52_weeks": "461.620000",
+      "high_52_weeks_date": "2026-07-16",
+      "low_52_weeks": "234.600000",
+      "low_52_weeks_date": "2025-08-01",
+      "float": "906003504.592000",
+      "market_cap": "387637756064.390381",
+      "pb_ratio": "3.927510",
+      "pe_ratio": "27.225259",
+      "shares_outstanding": "919269958.414889",
+      "dividend_yield": "2.113940",
+      "dividend_per_share": "2.320000",
+      "distribution_frequency": "Quarterly",
+      "payable_date": "2026-06-23",
+      "ex_dividend_date": "2026-06-15",
+      "record_date": "2026-06-15",
+      "thirty_day_sec_yield": null,
+      "description": "UnitedHealth Group, Inc. engages in the provision of health care coverage, software, and data consultancy services. It operates through the following segments: UnitedHealthcare, OptumHealth, OptumInsight, and OptumRx. The UnitedHealthcare segment utilizes Optum's capabilities to help coordinate patient care, improve affordability of medical care, analyze cost trends, manage pharmacy benefits, work with care providers more effectively, and create a simpler consumer experience. The OptumHealth segment provides health and wellness care, serving the broad health care marketplace including payers, care providers, employers, government, life sciences companies, and consumers. The OptumInsight segment focuses on data and analytics, technology, and information to help major participants in the healthcare industry. The OptumRx segment offers pharmacy care services. The company was founded by Richard T. Burke in January 1977 and is headquartered in Eden Prairie, MN.",
+      "ceo": "Stephen J. Hemsley",
+      "headquarters_city": "Eden Prairie",
+      "headquarters_state": "Minnesota",
+      "sector": "Health Services",
+      "industry": "Managed Health Care",
+      "num_employees": 390000,
+      "year_founded": 1977,
+      "financial_status_indicator": "CA0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "RTX",
+      "open": "205.310000",
+      "high": "213.490000",
+      "low": "202.510000",
+      "volume": "4958772.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-07-23",
+      "average_volume_2_weeks": "3936577.414265",
+      "average_volume": "3936577.414265",
+      "average_volume_30_days": "4339459.150500",
+      "high_52_weeks": "214.500000",
+      "high_52_weeks_date": "2026-03-03",
+      "low_52_weeks": "149.110000",
+      "low_52_weeks_date": "2025-07-23",
+      "float": "1345563602.280000",
+      "market_cap": "283104721188.686218",
+      "pb_ratio": "3.949030",
+      "pe_ratio": "36.425653",
+      "shares_outstanding": "1347796815.942329",
+      "dividend_yield": "1.425190",
+      "dividend_per_share": "0.730000",
+      "distribution_frequency": "Quarterly",
+      "payable_date": "2026-09-03",
+      "ex_dividend_date": "2026-08-14",
+      "record_date": "2026-08-14",
+      "thirty_day_sec_yield": null,
+      "description": "RTX Corp. is an aerospace and defense company, which engages in the provision of aerospace and defense systems and services for commercial, military, and government customers. It operates through the following segments: Collins Aerospace Systems (Collins), Pratt and Whitney, Raytheon Intelligence and Space (RIS), and Raytheon Missiles and Defense (RMD). The Collins segment manufactures and sells aero structures, avionics, interiors, mechanical systems, mission systems, and power controls. The Pratt and Whitney segment includes the design and manufacture of aircraft engines and auxiliary power systems for commercial, military, and business aircraft. The RIS segment is involved in the development of sensors, training, and cyber and software solutions. The RMD segment offers end-to-end solutions to detect, track, and engage threats. The company was founded in 1922 and is headquartered in Arlington, VA.",
+      "ceo": "Christopher T. Calio",
+      "headquarters_city": "Arlington",
+      "headquarters_state": "Virginia",
+      "sector": "Electronic Technology",
+      "industry": "Aerospace & Defense",
+      "num_employees": 180000,
+      "year_founded": 1922,
+      "financial_status_indicator": "CA0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "CSX",
+      "open": "52.050000",
+      "high": "53.300000",
+      "low": "51.620000",
+      "volume": "11172149.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-07-23",
+      "average_volume_2_weeks": "12236094.727477",
+      "average_volume": "12236094.727477",
+      "average_volume_30_days": "12275584.822200",
+      "high_52_weeks": "53.300000",
+      "high_52_weeks_date": "2026-07-23",
+      "low_52_weeks": "31.800000",
+      "low_52_weeks_date": "2025-09-10",
+      "float": "1855109373.660000",
+      "market_cap": "97496605800.000000",
+      "pb_ratio": "6.965790",
+      "pe_ratio": "31.127286",
+      "shares_outstanding": "1858140000.000000",
+      "dividend_yield": "1.061112",
+      "dividend_per_share": "0.140000",
+      "distribution_frequency": "Quarterly",
+      "payable_date": "2026-06-15",
+      "ex_dividend_date": "2026-05-29",
+      "record_date": "2026-05-29",
+      "thirty_day_sec_yield": null,
+      "description": "CSX Corp. engages in the provision of rail-based freight transportation services. Its services include rail service, the transport of intermodal containers and trailers, rail-to-truck transfers, and bulk commodity operations. It operates through Rail and Trucking segments. The Rail segment provides rail-based transportation services including traditional rail service and the transport of intermodal containers. The Trucking segment relates to quality carriers. The company was founded in 1827 and is headquartered in Jacksonville, FL.",
+      "ceo": "Stephen F. Angel",
+      "headquarters_city": "Jacksonville",
+      "headquarters_state": "Florida",
+      "sector": "Transportation",
+      "industry": "Railroads",
+      "num_employees": 23000,
+      "year_founded": 1827,
+      "financial_status_indicator": "CC0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "TMO",
+      "open": "573.680000",
+      "high": "587.490000",
+      "low": "570.600000",
+      "volume": "3166266.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-07-23",
+      "average_volume_2_weeks": "1881857.944433",
+      "average_volume": "1881857.944433",
+      "average_volume_30_days": "2123915.941400",
+      "high_52_weeks": "643.990000",
+      "high_52_weeks_date": "2026-01-22",
+      "low_52_weeks": "435.270000",
+      "low_52_weeks_date": "2026-05-18",
+      "float": "370739143.367000",
+      "market_cap": "215109099640.000000",
+      "pb_ratio": "3.886880",
+      "pe_ratio": "29.864146",
+      "shares_outstanding": "371621000.000000",
+      "dividend_yield": "0.331376",
+      "dividend_per_share": "0.470000",
+      "distribution_frequency": "Quarterly",
+      "payable_date": "2026-10-15",
+      "ex_dividend_date": "2026-09-15",
+      "record_date": "2026-09-15",
+      "thirty_day_sec_yield": null,
+      "description": "Thermo Fisher Scientific Inc. offers products and services to customers working in pharmaceutical and biotech companies, hospitals and clinical diagnostic labs, universities, research institutions and government agencies. It operates through the following segments: Life Sciences Solutions, Analytical Instruments, Specialty Diagnostics, and Laboratory Products and Biopharma Services. The Life Sciences Solutions segment provides reagents, instruments and consumables used in biological and medical research, discovery and production of new drugs and vaccines, and diagnosis of disease. The Analytical Instruments segment offers instruments and supporting consumables, software and services. The Specialty Diagnostics segment provides diagnostic test kits, reagents, culture media, instruments and associated products to healthcare, clinical, pharmaceutical, industrial, and food safety laboratories. The Laboratory Products and Biopharma Services segment offers outsourced services used by the pharmaceutical and biotech industries for drug development, clinical research, clinical trials services and commercial drug manufacturing. The company was founded in July 1956 and is headquartered in Waltham, MA.",
+      "ceo": "Marc N. Casper",
+      "headquarters_city": "Waltham",
+      "headquarters_state": "Massachusetts",
+      "sector": "Health Technology",
+      "industry": "Medical Specialties",
+      "num_employees": 125000,
+      "year_founded": 1956,
+      "financial_status_indicator": "CA0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "XOM",
+      "open": "156.230000",
+      "high": "158.570000",
+      "low": "156.060000",
+      "volume": "6017750.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-07-23",
+      "average_volume_2_weeks": "14376160.565927",
+      "average_volume": "14376160.565927",
+      "average_volume_30_days": "15401322.560000",
+      "high_52_weeks": "176.410000",
+      "high_52_weeks_date": "2026-03-30",
+      "low_52_weeks": "105.525000",
+      "low_52_weeks_date": "2025-08-11",
+      "float": "4134786830.360000",
+      "market_cap": "683853815682.743652",
+      "pb_ratio": "2.378180",
+      "pe_ratio": "24.628339",
+      "shares_outstanding": "4343859592.725298",
+      "dividend_yield": "2.795478",
+      "dividend_per_share": "1.030000",
+      "distribution_frequency": "Quarterly",
+      "payable_date": "2026-06-10",
+      "ex_dividend_date": "2026-05-15",
+      "record_date": "2026-05-15",
+      "thirty_day_sec_yield": null,
+      "description": "
+
+EARN NVDA {
+  "results": [
+    {
+      "symbol": "NVDA",
+      "year": 2025,
+      "quarter": 4,
+      "eps": {
+        "estimate": "0.840000",
+        "actual": "0.890000"
+      },
+      "report": {
+        "date": "2025-02-26",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "year": 2026,
+      "quarter": 1,
+      "eps": {
+        "estimate": "0.750000",
+        "actual": "0.960000"
+      },
+      "report": {
+        "date": "2025-05-28",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "year": 2026,
+      "quarter": 2,
+      "eps": {
+        "estimate": "0.980000",
+        "actual": "1.040000"
+      },
+      "report": {
+        "date": "2025-08-27",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "1.220000",
+        "actual": "1.300000"
+      },
+      "report": {
+        "date": "2025-11-19",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "year": 2026,
+      "quarter": 4,
+      "eps": {
+        "estimate": "1.500000",
+        "actual": "1.620000"
+      },
+      "report": {
+        "date": "2026-02-25",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "year": 2027,
+      "quarter": 1,
+      "eps": {
+        "estimate": "1.760000",
+        "actual": "1.870000"
+      },
+      "report": {
+        "date": "2026-05-20",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "year": 2027,
+      "quarter": 2,
+      "eps": {
+        "estimate": "2.020000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-08-26",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "year": 2027,
+      "quarter": 3,
+      "eps": {
+        "estimate": "2.330000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-11-18",
+        "timing": "pm",
+        "verified": false
+      }
+    }
+  ]
+}
+
+EARN JPM {
+  "results": [
+    {
+      "symbol": "JPM",
+      "year": 2024,
+      "quarter": 4,
+      "eps": {
+        "estimate": "4.110000",
+        "actual": "4.810000"
+      },
+      "report": {
+        "date": "2025-01-15",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "JPM",
+      "year": 2025,
+      "quarter": 1,
+      "eps": {
+        "estimate": "4.610000",
+        "actual": "5.070000"
+      },
+      "report": {
+        "date": "2025-04-11",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "JPM",
+      "year": 2025,
+      "quarter": 2,
+      "eps": {
+        "estimate": "4.490000",
+        "actual": "4.960000"
+      },
+      "report": {
+        "date": "2025-07-15",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "JPM",
+      "year": 2025,
+      "quarter": 3,
+      "eps": {
+        "estimate": "4.860000",
+        "actual": "5.070000"
+      },
+      "report": {
+        "date": "2025-10-14",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "JPM",
+      "year": 2025,
+      "quarter": 4,
+      "eps": {
+        "estimate": "4.920000",
+        "actual": "5.230000"
+      },
+      "report": {
+        "date": "2026-01-13",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "JPM",
+      "year": 2026,
+      "quarter": 1,
+      "eps": {
+        "estimate": "5.490000",
+        "actual": "5.940000"
+      },
+      "report": {
+        "date": "2026-04-14",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "JPM",
+      "year": 2026,
+      "quarter": 2,
+      "eps": {
+        "estimate": "5.590000",
+        "actual": "6.140000"
+      },
+      "report": {
+        "date": "2026-07-14",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "JPM",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "5.460000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-10-13",
+        "timing": "am",
+        "verified": true
+      }
+    }
+  ]
+}
+
+EARN UNH {
+  "results": [
+    {
+      "symbol": "UNH",
+      "year": 2024,
+      "quarter": 4,
+      "eps": {
+        "estimate": "6.740000",
+        "actual": "6.810000"
+      },
+      "report": {
+        "date": "2025-01-16",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "UNH",
+      "year": 2025,
+      "quarter": 1,
+      "eps": {
+        "estimate": "7.290000",
+        "actual": "7.200000"
+      },
+      "report": {
+        "date": "2025-04-17",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "UNH",
+      "year": 2025,
+      "quarter": 2,
+      "eps": {
+        "estimate": "4.630000",
+        "actual": "4.080000"
+      },
+      "report": {
+        "date": "2025-07-29",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "UNH",
+      "year": 2025,
+      "quarter": 3,
+      "eps": {
+        "estimate": "2.800000",
+        "actual": "2.920000"
+      },
+      "report": {
+        "date": "2025-10-28",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "UNH",
+      "year": 2025,
+      "quarter": 4,
+      "eps": {
+        "estimate": "2.100000",
+        "actual": "2.110000"
+      },
+      "report": {
+        "date": "2026-01-27",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "UNH",
+      "year": 2026,
+      "quarter": 1,
+      "eps": {
+        "estimate": "6.560000",
+        "actual": "7.230000"
+      },
+      "report": {
+        "date": "2026-04-21",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "UNH",
+      "year": 2026,
+      "quarter": 2,
+      "eps": {
+        "estimate": "4.850000",
+        "actual": "6.380000"
+      },
+      "report": {
+        "date": "2026-07-16",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "UNH",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "3.710000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-10-27",
+        "timing": "am",
+        "verified": false
+      }
+    }
+  ]
+}
+
+EARN RTX {
+  "results": [
+    {
+      "symbol": "RTX",
+      "year": 2024,
+      "quarter": 4,
+      "eps": {
+        "estimate": "1.380000",
+        "actual": "1.540000"
+      },
+      "report": {
+        "date": "2025-01-28",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "RTX",
+      "year": 2025,
+      "quarter": 1,
+      "eps": {
+        "estimate": "1.350000",
+        "actual": "1.470000"
+      },
+      "report": {
+        "date": "2025-04-22",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "RTX",
+      "year": 2025,
+      "quarter": 2,
+      "eps": {
+        "estimate": "1.440000",
+        "actual": "1.560000"
+      },
+      "report": {
+        "date": "2025-07-22",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "RTX",
+      "year": 2025,
+      "quarter": 3,
+      "eps": {
+        "estimate": "1.410000",
+        "actual": "1.700000"
+      },
+      "report": {
+        "date": "2025-10-21",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "RTX",
+      "year": 2025,
+      "quarter": 4,
+      "eps": {
+        "estimate": "1.470000",
+        "actual": "1.550000"
+      },
+      "report": {
+        "date": "2026-01-27",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "RTX",
+      "year": 2026,
+      "quarter": 1,
+      "eps": {
+        "estimate": "1.520000",
+        "actual": "1.780000"
+      },
+      "report": {
+        "date": "2026-04-21",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "RTX",
+      "year": 2026,
+      "quarter": 2,
+      "eps": {
+        "estimate": "1.660000",
+        "actual": "1.890000"
+      },
+      "report": {
+        "date": "2026-07-23",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "RTX",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "1.730000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-10-20",
+        "timing": "am",
+        "verified": false
+      }
+    }
+  ]
+}
+
+EARN CSX {
+  "results": [
+    {
+      "symbol": "CSX",
+      "year": 2024,
+      "quarter": 4,
+      "eps": {
+        "estimate": "0.420000",
+        "actual": "0.420000"
+      },
+      "report": {
+        "date": "2025-01-23",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "CSX",
+      "year": 2025,
+      "quarter": 1,
+      "eps": {
+        "estimate": "0.370000",
+        "actual": "0.340000"
+      },
+      "report": {
+        "date": "2025-04-16",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "CSX",
+      "year": 2025,
+      "quarter": 2,
+      "eps": {
+        "estimate": "0.420000",
+        "actual": "0.440000"
+      },
+      "report": {
+        "date": "2025-07-23",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "CSX",
+      "year": 2025,
+      "quarter": 3,
+      "eps": {
+        "estimate": "0.430000",
+        "actual": "0.440000"
+      },
+      "report": {
+        "date": "2025-10-16",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "CSX",
+      "year": 2025,
+      "quarter": 4,
+      "eps": {
+        "estimate": "0.410000",
+        "actual": "0.390000"
+      },
+      "report": {
+        "date": "2026-01-22",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "CSX",
+      "year": 2026,
+      "quarter": 1,
+      "eps": {
+        "estimate": "0.390000",
+        "actual": "0.430000"
+      },
+      "report": {
+        "date": "2026-04-22",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "CSX",
+      "year": 2026,
+      "quarter": 2,
+      "eps": {
+        "estimate": "0.490000",
+        "actual": "0.540000"
+      },
+      "report": {
+        "date": "2026-07-22",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "CSX",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "0.510000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-10-15",
+        "timing": "pm",
+        "verified": false
+      }
+    }
+  ]
+}
+
+EARN TMO {
+  "results": [
+    {
+      "symbol": "TMO",
+      "year": 2024,
+      "quarter": 4,
+      "eps": {
+        "estimate": "5.940000",
+        "actual": "6.100000"
+      },
+      "report": {
+        "date": "2025-01-30",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "TMO",
+      "year": 2025,
+      "quarter": 1,
+      "eps": {
+        "estimate": "5.100000",
+        "actual": "5.150000"
+      },
+      "report": {
+        "date": "2025-04-23",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "TMO",
+      "year": 2025,
+      "quarter": 2,
+      "eps": {
+        "estimate": "5.230000",
+        "actual": "5.360000"
+      },
+      "report": {
+        "date": "2025-07-23",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "TMO",
+      "year": 2025,
+      "quarter": 3,
+      "eps": {
+        "estimate": "5.500000",
+        "actual": "5.790000"
+      },
+      "report": {
+        "date": "2025-10-22",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "TMO",
+      "year": 2025,
+      "quarter": 4,
+      "eps": {
+        "estimate": "6.440000",
+        "actual": "6.570000"
+      },
+      "report": {
+        "date": "2026-01-29",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "TMO",
+      "year": 2026,
+      "quarter": 1,
+      "eps": {
+        "estimate": "5.230000",
+        "actual": "5.440000"
+      },
+      "report": {
+        "date": "2026-04-23",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "TMO",
+      "year": 2026,
+      "quarter": 2,
+      "eps": {
+        "estimate": "5.710000",
+        "actual": "6.030000"
+      },
+      "report": {
+        "date": "2026-07-23",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "TMO",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "6.360000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-10-21",
+        "timing": "am",
+        "verified": false
+      }
+    }
+  ]
+}
+
+EARN XOM {
+  "results": [
+    {
+      "symbol": "XOM",
+      "year": 2024,
+      "quarter": 4,
+      "eps": {
+        "estimate": "1.550000",
+        "actual": "1.670000"
+      },
+      "report": {
+        "date": "2025-01-31",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "XOM",
+      "year": 2025,
+      "quarter": 1,
+      "eps": {
+        "estimate": "1.700000",
+        "actual": "1.760000"
+      },
+      "report": {
+        "date": "2025-05-02",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "XOM",
+      "year": 2025,
+      "quarter": 2,
+      "eps": {
+        "estimate": "1.530000",
+        "actual": "1.640000"
+      },
+      "report": {
+        "date": "2025-08-01",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "XOM",
+      "year": 2025,
+      "quarter": 3,
+      "eps": {
+        "estimate": "1.810000",
+        "actual": "1.880000"
+      },
+      "report": {
+        "date": "2025-10-31",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "XOM",
+      "year": 2025,
+      "quarter": 4,
+      "eps": {
+        "estimate": "1.690000",
+        "actual": "1.710000"
+      },
+      "report": {
+        "date": "2026-01-30",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "XOM",
+      "year": 2026,
+      "quarter": 1,
+      "eps": {
+        "estimate": "1.020000",
+        "actual": "1.160000"
+      },
+      "report": {
+        "date": "2026-05-01",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "XOM",
+      "year": 2026,
+      "quarter": 2,
+      "eps": {
+        "estimate": "3.760000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-07-31",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "XOM",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "3.410000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-10-30",
+        "timing": "am",
+        "verified": false
+      }
+    }
+  ]
+}
+
+EARN IMAX {
+  "results": [
+    {
+      "symbol": "IMAX",
+      "year": 2024,
+      "quarter": 4,
+      "eps": {
+        "estimate": "0.310000",
+        "actual": "0.270000"
+      },
+      "report": {
+        "date": "2025-02-19",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "IMAX",
+      "year": 2025,
+      "quarter": 1,
+      "eps": {
+        "estimate": "0.110000",
+        "actual": "0.130000"
+      },
+      "report": {
+        "date": "2025-04-23",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "IMAX",
+      "year": 2025,
+      "quarter": 2,
+      "eps": {
+        "estimate": "0.180000",
+        "actual": "0.260000"
+      },
+      "report": {
+        "date": "2025-07-24",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "IMAX",
+      "year": 2025,
+      "quarter": 3,
+      "eps": {
+        "estimate": "0.350000",
+        "actual": "0.470000"
+      },
+      "report": {
+        "date": "2025-10-23",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "IMAX",
+      "year": 2025,
+      "quarter": 4,
+      "eps": {
+        "estimate": "0.420000",
+        "actual": "0.580000"
+      },
+      "report": {
+        "date": "2026-02-25",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "IMAX",
+      "year": 2026,
+      "quarter": 1,
+      "eps": {
+        "estimate": "0.140000",
+        "actual": "0.170000"
+      },
+      "report": {
+        "date": "2026-04-30",
+        "timing": "pm",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "IMAX",
+      "year": 2026,
+      "quarter": 2,
+      "eps": {
+        "estimate": "0.300000",
+        "actual": "0.430000"
+      },
+      "report": {
+        "date": "2026-07-23",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    {
+      "symbol": "IMAX",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "0.480000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-10-22",
+        "timing": "am",
+        "verified": false
+      }
+    }
+  ]
+}
+
+TRAD {
+  "results": [
+    {
+      "symbol": "RTX",
+      "name": "RTX Corporation",
+      "simple_name": "RTX Corporation",
+      "state": "active",
+      "country": "US",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": false,
+      "all_day_tradability": "tradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    },
+    {
+      "symbol": "CSX",
+      "name": "CSX Corporation Common Stock",
+      "simple_name": "CSX",
+      "state": "active",
+      "country": "US",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": false,
+      "all_day_tradability": "tradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    },
+    {
+      "symbol": "TMO",
+      "name": "Thermo Fisher Scientific, Inc.",
+      "simple_name": "Thermo Fisher Scientific",
+      "state": "active",
+      "country": "US",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": false,
+      "all_day_tradability": "tradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    },
+    {
+      "symbol": "XOM",
+      "name": "ExxonMobil Holdings Corporation",
+      "simple_name": "ExxonMobil Holdings Corporation",
+      "state": "active",
+      "country": "US",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": false,
+      "all_day_tradability": "untradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    },
+    {
+      "symbol": "IMAX",
+      "name": "Imax Corp",
+      "simple_name": "IMAX",
+      "state": "active",
+      "country": "CA",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": false,
+      "all_day_tradability": "untradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    }
+  ]
+}

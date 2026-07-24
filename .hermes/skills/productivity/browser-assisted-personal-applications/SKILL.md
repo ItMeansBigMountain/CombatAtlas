@@ -25,6 +25,8 @@ Use this skill when the user asks Hermes to start, apply for, sign up for, sched
 5. **Summarize requirements before submission.** List eligibility constraints, location/visit frequency, compensation/costs if shown, and contact info.
 6. **Ask for explicit submit permission.** Filling fields may be okay after the user provides data, but do not submit personal, medical, financial, legal, or identity-related applications without a final confirmation.
 7. **Protect sensitive data.** Do not save completed form contents or personal medical details in memory/skills. Store only reusable workflow notes or public provider quirks.
+8. **Handle account credentials separately.** Do not ask users to paste an existing/reused password into chat. Prefer a user-entered browser handoff when available; otherwise ask for a newly generated, site-unique password only when the account page is ready, never repeat it in summaries, and do not retain it after entry.
+9. **Advance one page at a time.** For long medical or identity applications, collect only the fields visible on the current page, fill them, inspect the next page, and continue iteratively. Do not ask for the entire medical history before seeing the actual field wording.
 
 ## Browser/Form Tactics
 

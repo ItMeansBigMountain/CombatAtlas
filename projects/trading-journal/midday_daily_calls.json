@@ -1,0 +1,4 @@
+[
+ {"tool":"get_equity_historicals","args":{"symbols":["NVDA","JPM","UNH","RTX","CSX","TMO","XOM","IMAX","SPY","QQQ"],"start_time":"2026-04-01T00:00:00Z","end_time":"2026-07-23T16:05:00Z","interval":"day","bounds":"regular","adjustment_type":"split"}},
+ {"tool":"get_equity_historicals","args":{"symbols":["IWM"],"start_time":"2026-04-01T00:00:00Z","end_time":"2026-07-23T16:05:00Z","interval":"day","bounds":"regular","adjustment_type":"split"}}
+]

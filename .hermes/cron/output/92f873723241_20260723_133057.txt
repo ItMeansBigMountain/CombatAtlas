@@ -1,0 +1,98 @@
+Cronjob Response: Morning operator report
+(job_id: 92f873723241)
+-------------
+
+**Top line**
+- Workspace email access is live across all five Google profiles, but today’s collector returned no message-level triage.
+- Calendar visibility is blocked everywhere by missing OAuth scopes.
+  - No reliable schedule or deadline readout this morning.
+
+**Work source / operating pulse**
+- **Google Workspace pulse**
+  - Gmail connected:
+    - `trapiistan@gmail.com`
+    - `affan.fareed@gmail.com`
+    - `fareed320@gmail.com`
+    - `classicalechos@gmail.com`
+    - `laflametoast@gmail.com`
+  - Calendar blocked on all five profiles:
+    - Google returned `403 insufficient authentication scopes`.
+    - Calendar items for July 23–30 could not be checked.
+  - No Drive, Docs, or Sheets movement was included in the collected context.
+  - No account changes were made.
+
+**Email priority + cleanup**
+- **Priority emails**
+  - None surfaced with enough message-level detail to verify.
+  - Billing, security, receipts, tickets, garage alerts, and official notices remain unconfirmed—not necessarily absent.
+- **Interesting/source emails**
+  - No TLDR, Kino Body/Kinobody, Daily Stoic, or Grammarly Insights items were exposed by today’s collector.
+- **Cleanup actions**
+  - None performed.
+  - No approved-junk messages were specifically identified in the output.
+- **Needs review**
+  - Restore detailed message collection before making any email-priority claims.
+  - Newsletter/source emails remain protected until used with a verified upload or explicitly approved for deletion.
+
+**Calendar / prep notes**
+- Schedule unavailable due to the scope blocker.
+- Any Jared event or coding prep could not be verified.
+  - If one exists, Codewars and SoloLearn remain the useful prep options he enjoys.
+
+**Chicago local pulse**
+- **8:30 AM:** Sunny, **66°F**, light west wind, low immediate rain chance.
+- The city is warning residents about upcoming extreme heat and possible severe-weather impacts.
+- Concrete evening option:
+  - **Broadway Sings America**
+    - Grant Park/Millennium Park
+    - **6:30 PM**
+    - Free outdoor Grant Park Music Festival performance.
+
+**Market pulse**
+- Premarket leaned risk-off around 7:23 AM:
+  - Dow futures: **−0.47%**
+  - S&P 500 futures: **−0.45%**
+  - Nasdaq 100 futures: **−0.57%**
+- Big-tech earnings are driving the tape.
+  - Alphabet highlighted cloud, Gemini, and AI-infrastructure spending.
+  - Tesla reportedly delivered a profit miss with a revenue beat.
+  - Expect AI-capex and margin narratives to matter more than broad macro chatter today.
+
+**Google search / social pulse**
+- A concrete search spike centers on **Inter Miami vs. Chicago Fire**.
+- Google’s summer trend report also shows rising interest in:
+  - Fiber-rich diets
+  - “Maxxing” themes
+  - AI video generation
+- The AI-video angle is the only directly relevant content signal:
+  - Demand is real, but generic AI-generated visuals will face increasingly heavy competition.
+
+**AI + coding news**
+- Current competitive direction: Microsoft and Google are pushing harder into agentic coding against Anthropic and OpenAI.
+- Google’s pitch includes parallel orchestration:
+  - One agent can code while another generates assets.
+- Practical implication:
+  - Judge tools on completed, verified workflows—not model demos or benchmark headlines.
+
+**Interesting item**
+- Tonight’s free Broadway/orchestral event is a clean Classical Echos scouting opportunity.
+  - Useful for studying recognizable repertoire, emotional framing, and audience-friendly packaging.
+  - Recording or reuse rights would still need separate verification.
+
+**Numerology**
+- **22/4 day**
+  - Builder energy: turn one ambitious idea into a concrete, repeatable system.
+
+**Daily challenge**
+- Ship one measurable artifact before noon:
+  - A verified upload, a completed automation repair, or a finished content package.
+  - No “research-only” substitute.
+
+**One big priority prompt**
+- Make the first work block a **calendar OAuth scope repair**, then rerun the collector and recover reliable cross-account schedule visibility.
+
+**Hard truth / leverage move**
+- Five authenticated accounts without calendar scope create the appearance of an operating dashboard, not a dependable one.
+- Repair the shared visibility layer once; stop accepting partial morning context as normal.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Morning operator report").

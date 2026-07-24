@@ -36,6 +36,9 @@ PROFILES = [
     ("classicalechos", "classicalechos@gmail.com"),
     ("burner", "laflametoast@gmail.com"),
 ]
+# Mail sent by the user from any managed account must remain untouched in the
+# destination Inbox, even if its subject/body resembles a sortable newsletter.
+OWN_EMAILS = frozenset(email.lower() for _profile, email in PROFILES)
 
 SOURCE_LABELS = {
     "tldr": "Hermes/Source/TLDR",
@@ -96,6 +99,11 @@ def classify(account_email: str, msg: dict[str, Any]) -> RuleResult | None:
     sender = sender_addr(h.get("from", ""))
     raw = f"{h.get('from','')} {sender} {h.get('subject','')} {msg.get('snippet','')}".lower()
     account = account_email.lower()
+
+    # Never sort messages the user sends between/among their own accounts.
+    # This must run before every content/sender rule (including 💌 day-ahead mail).
+    if sender in OWN_EMAILS:
+        return None
 
     if sender == "dan@tldrnewsletter.com" and account == "fareed320@gmail.com":
         return RuleResult("tldr", SOURCE_LABELS["tldr"], "preferred TLDR source on personal-secondary")

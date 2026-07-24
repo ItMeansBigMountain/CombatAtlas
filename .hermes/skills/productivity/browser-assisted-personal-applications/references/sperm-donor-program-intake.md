@@ -55,6 +55,21 @@ The Downers Grove donor information request form exposed these fields via input 
 - Attending a four-year university or already holds a bachelor's/advanced degree
 - In good health
 
+## Fairfax Cryobank multi-step application pattern
+
+The official Fairfax donor portal at `https://beaspermdonor.com/application/step/registration` exposes six stages:
+
+1. Create Account
+2. Initial Information
+3. Your Medical Profile
+4. Your Personal Profile
+5. Essay
+6. Donor Profile Items
+
+The registration page fields observed were legal first name, optional middle name, legal last name, location selector, phone number, phone confirmation, email address, password, and a required yes/no choice for SMS reminders. The location selector is a custom Material UI combobox rather than a native `<select>`; click the `[role="combobox"]`, then inspect the rendered listbox/options instead of querying `select option`. When the user requests Denver, choose a Denver, Colorado option shown by the portal, but do not guess a branch name before inspecting the live options.
+
+Work page-by-page: collect and fill registration fields first, create the account only with explicit permission, then inspect each later page before asking for medical/personal answers. Treat account creation as a submission checkpoint and the completed application as a separate final submission checkpoint. Recommend a new site-unique password rather than requesting an existing credential, and never retain or quote it.
+
 ## Practical lessons
 
 - When the application link button does not navigate visibly, inspect anchors and navigate directly to the discovered href.

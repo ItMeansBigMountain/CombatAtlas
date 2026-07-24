@@ -1,0 +1,141 @@
+[
+  {
+    "tool": "get_equity_quotes",
+    "args": {
+      "symbols": [
+        "UNH",
+        "NVDA",
+        "JPM"
+      ]
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"quote\":{\"symbol\":\"UNH\",\"last_trade_price\":\"421.640000\",\"venue_last_trade_time\":\"2026-07-23T16:03:37.630820686Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"431.310000\",\"previous_close\":\"431.310000\",\"previous_close_date\":\"2026-07-22\",\"bid_price\":\"421.560000\",\"venue_bid_time\":\"2026-07-23T16:03:38.831820823Z\",\"ask_price\":\"421.730000\",\"venue_ask_time\":\"2026-07-23T16:03:38.831820823Z\",\"has_traded\":true,\"state\":\"active\"},\"close\":{\"symbol\":\"UNH\",\"date\":\"2026-07-22\",\"price\":\"431.31\",\"interpolated\":false,\"source\":\"sip-list-exchange-close\"}},{\"quote\":{\"symbol\":\"NVDA\",\"last_trade_price\":\"208.895000\",\"venue_last_trade_time\":\"2026-07-23T16:03:39.347529295Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"212.060000\",\"previous_close\":\"212.060000\",\"previous_close_date\":\"2026-07-22\",\"bid_price\":\"208.880000\",\"venue_bid_time\":\"2026-07-23T16:03:38.776812287Z\",\"ask_price\":\"208.900000\",\"venue_ask_time\":\"2026-07-23T16:03:38.776812287Z\",\"has_traded\":true,\"state\":\"active\"},\"close\":{\"symbol\":\"NVDA\",\"date\":\"2026-07-22\",\"price\":\"212.06\",\"interpolated\":false,\"source\":\"sip-list-exchange-close\"}},{\"quote\":{\"symbol\":\"JPM\",\"last_trade_price\":\"347.530000\",\"venue_last_trade_time\":\"2026-07-23T16:03:26.455677933Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"348.210000\",\"previous_close\":\"348.210000\",\"previous_close_date\":\"2026-07-22\",\"bid_price\":\"347.380000\",\"venue_bid_time\":\"2026-07-23T16:03:32.645896386Z\",\"ask_price\":\"347.540000\",\"venue_ask_time\":\"2026-07-23T16:03:32.645896386Z\",\"has_traded\":true,\"state\":\"active\"},\"close\":{\"symbol\":\"JPM\",\"date\":\"2026-07-22\",\"price\":\"348.21\",\"interpolated\":false,\"source\":\"sip-list-exchange-close\"}}]},\"guide\":\"Each entry in results pairs the live quote with the official prior-session close for the same symbol. Current price: pick whichever of quote.last_trade_price / quote.last_non_reg_trade_price has the more recent timestamp, then verify that timestamp is recent before calling it \\\"current\\\" \u2014 otherwise phrase as \\\"as of \\u003ctime\\u003e\\\". Daily change uses quote.adjusted_previous_close. \\\"Yesterday's close\\\" uses results[].close.price (official settled close); when a result is missing close \u2014 either closes_error is set tool-wide, or this symbol had no close in an otherwise-successful batch \u2014 fall back to quote.previous_close and tell the user the official close lookup is unavailable. Drop bid/ask when zero. Surface has_traded=false or any non-'active' state before quoting a price.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "results": [
+          {
+            "quote": {
+              "symbol": "UNH",
+              "last_trade_price": "421.640000",
+              "venue_last_trade_time": "2026-07-23T16:03:37.630820686Z",
+              "last_non_reg_trade_price": null,
+              "venue_last_non_reg_trade_time": null,
+              "adjusted_previous_close": "431.310000",
+              "previous_close": "431.310000",
+              "previous_close_date": "2026-07-22",
+              "bid_price": "421.560000",
+              "venue_bid_time": "2026-07-23T16:03:38.831820823Z",
+              "ask_price": "421.730000",
+              "venue_ask_time": "2026-07-23T16:03:38.831820823Z",
+              "has_traded": true,
+              "state": "active"
+            },
+            "close": {
+              "symbol": "UNH",
+              "date": "2026-07-22",
+              "price": "431.31",
+              "interpolated": false,
+              "source": "sip-list-exchange-close"
+            }
+          },
+          {
+            "quote": {
+              "symbol": "NVDA",
+              "last_trade_price": "208.895000",
+              "venue_last_trade_time": "2026-07-23T16:03:39.347529295Z",
+              "last_non_reg_trade_price": null,
+              "venue_last_non_reg_trade_time": null,
+              "adjusted_previous_close": "212.060000",
+              "previous_close": "212.060000",
+              "previous_close_date": "2026-07-22",
+              "bid_price": "208.880000",
+              "venue_bid_time": "2026-07-23T16:03:38.776812287Z",
+              "ask_price": "208.900000",
+              "venue_ask_time": "2026-07-23T16:03:38.776812287Z",
+              "has_traded": true,
+              "state": "active"
+            },
+            "close": {
+              "symbol": "NVDA",
+              "date": "2026-07-22",
+              "price": "212.06",
+              "interpolated": false,
+              "source": "sip-list-exchange-close"
+            }
+          },
+          {
+            "quote": {
+              "symbol": "JPM",
+              "last_trade_price": "347.530000",
+              "venue_last_trade_time": "2026-07-23T16:03:26.455677933Z",
+              "last_non_reg_trade_price": null,
+              "venue_last_non_reg_trade_time": null,
+              "adjusted_previous_close": "348.210000",
+              "previous_close": "348.210000",
+              "previous_close_date": "2026-07-22",
+              "bid_price": "347.380000",
+              "venue_bid_time": "2026-07-23T16:03:32.645896386Z",
+              "ask_price": "347.540000",
+              "venue_ask_time": "2026-07-23T16:03:32.645896386Z",
+              "has_traded": true,
+              "state": "active"
+            },
+            "close": {
+              "symbol": "JPM",
+              "date": "2026-07-22",
+              "price": "348.21",
+              "interpolated": false,
+              "source": "sip-list-exchange-close"
+            }
+          }
+        ]
+      },
+      "guide": "Each entry in results pairs the live quote with the official prior-session close for the same symbol. Current price: pick whichever of quote.last_trade_price / quote.last_non_reg_trade_price has the more recent timestamp, then verify that timestamp is recent before calling it \"current\" \u2014 otherwise phrase as \"as of <time>\". Daily change uses quote.adjusted_previous_close. \"Yesterday's close\" uses results[].close.price (official settled close); when a result is missing close \u2014 either closes_error is set tool-wide, or this symbol had no close in an otherwise-successful batch \u2014 fall back to quote.previous_close and tell the user the official close lookup is unavailable. Drop bid/ask when zero. Surface has_traded=false or any non-'active' state before quoting a price."
+    }
+  },
+  {
+    "tool": "review_equity_order",
+    "args": {
+      "account_number": "433711041",
+      "symbol": "UNH",
+      "side": "sell",
+      "type": "market",
+      "quantity": "0.031089",
+      "time_in_force": "gfd",
+      "market_hours": "regular_hours"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"symbol\":\"UNH\",\"side\":\"sell\",\"type\":\"market\",\"quantity\":\"0.031089\",\"order_checks\":{},\"quote_data\":{\"symbol\":\"UNH\",\"last_trade_price\":\"421.640000\",\"venue_last_trade_time\":\"2026-07-23T16:03:37.630820686Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"431.310000\",\"previous_close\":\"431.310000\",\"previous_close_date\":\"2026-07-22\",\"bid_price\":\"421.560000\",\"venue_bid_time\":\"2026-07-23T16:03:38.831820823Z\",\"ask_price\":\"421.730000\",\"venue_ask_time\":\"2026-07-23T16:03:38.831820823Z\",\"has_traded\":true,\"state\":\"active\"},\"market_data_disclosure\":\"Bid $421.50 \u00d7 80 P \u00b7 Ask $421.73 \u00d7 80 N \u00b7 Last $421.64 \u00d7 40 D. Updated 12:03 PM ET.\"},\"guide\":\"This tool does NOT place the order \u2014 it returns a preview for the user to review. Reaching this tool means the user opted into the review step, so you MUST present the preview to the user (symbol, side, type, quantity or dollar_amount, limit/stop prices, estimated execution) and get explicit confirmation before calling place_equity_order. This holds even when order_checks is empty ({}) \u2014 empty means no broker alerts, NOT that confirmation can be skipped; the user asked to review, so let them review. Surface any non-empty alert in order_checks verbatim alongside the preview. In addition, you MUST always show the quotes to the user for compliance reasons: whenever market_data_disclosure is present, display it to the user exactly as provided \u2014 verbatim and unmodified \u2014 as the required compliance quote disclosure. Market orders: estimate execution from quote_data.last_trade_price (ask for buys, bid for sells when spreads are wide). Limit orders: compare limit_price to quote_data bid/ask so the user knows the distance from market.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "symbol": "UNH",
+        "side": "sell",
+        "type": "market",
+        "quantity": "0.031089",
+        "order_checks": {},
+        "quote_data": {
+          "symbol": "UNH",
+          "last_trade_price": "421.640000",
+          "venue_last_trade_time": "2026-07-23T16:03:37.630820686Z",
+          "last_non_reg_trade_price": null,
+          "venue_last_non_reg_trade_time": null,
+          "adjusted_previous_close": "431.310000",
+          "previous_close": "431.310000",
+          "previous_close_date": "2026-07-22",
+          "bid_price": "421.560000",
+          "venue_bid_time": "2026-07-23T16:03:38.831820823Z",
+          "ask_price": "421.730000",
+          "venue_ask_time": "2026-07-23T16:03:38.831820823Z",
+          "has_traded": true,
+          "state": "active"
+        },
+        "market_data_disclosure": "Bid $421.50 \u00d7 80 P \u00b7 Ask $421.73 \u00d7 80 N \u00b7 Last $421.64 \u00d7 40 D. Updated 12:03 PM ET."
+      },
+      "guide": "This tool does NOT place the order \u2014 it returns a preview for the user to review. Reaching this tool means the user opted into the review step, so you MUST present the preview to the user (symbol, side, type, quantity or dollar_amount, limit/stop prices, estimated execution) and get explicit confirmation before calling place_equity_order. This holds even when order_checks is empty ({}) \u2014 empty means no broker alerts, NOT that confirmation can be skipped; the user asked to review, so let them review. Surface any non-empty alert in order_checks verbatim alongside the preview. In addition, you MUST always show the quotes to the user for compliance reasons: whenever market_data_disclosure is present, display it to the user exactly as provided \u2014 verbatim and unmodified \u2014 as the required compliance quote disclosure. Market orders: estimate execution from quote_data.last_trade_price (ask for buys, bid for sells when spreads are wide). Limit orders: compare limit_price to quote_data bid/ask so the user knows the distance from market."
+    }
+  }
+]

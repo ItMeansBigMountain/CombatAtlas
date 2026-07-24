@@ -1,0 +1,209 @@
+[
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "order_id": "6a623b68-596e-4ea1-9a09-dde909e0b6fe"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[{\"id\":\"6a623b68-596e-4ea1-9a09-dde909e0b6fe\",\"instrument_id\":\"1abfbfc7-6c65-4ded-8a97-1e7f82220b64\",\"symbol\":\"UNH\",\"side\":\"sell\",\"type\":\"market\",\"state\":\"filled\",\"quantity\":\"0.031089\",\"cumulative_quantity\":\"0.031089\",\"price\":null,\"stop_price\":null,\"average_price\":\"421.635000\",\"fees\":\"0.000000\",\"dollar_based_amount\":null,\"time_in_force\":\"gfd\",\"market_hours\":\"regular_hours\",\"trigger\":\"immediate\",\"placed_agent\":\"agentic\",\"created_at\":\"2026-07-23T16:03:52.19881Z\",\"last_transaction_at\":\"2026-07-23T16:03:52.306Z\",\"executions\":[{\"id\":\"6a623b68-de1c-468c-8d5e-ee796a4add27\",\"price\":\"421.635000\",\"quantity\":\"0.031089\",\"timestamp\":\"2026-07-23T16:03:52.306Z\",\"fees\":\"0.000000\"}]}]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "orders": [
+          {
+            "id": "6a623b68-596e-4ea1-9a09-dde909e0b6fe",
+            "instrument_id": "1abfbfc7-6c65-4ded-8a97-1e7f82220b64",
+            "symbol": "UNH",
+            "side": "sell",
+            "type": "market",
+            "state": "filled",
+            "quantity": "0.031089",
+            "cumulative_quantity": "0.031089",
+            "price": null,
+            "stop_price": null,
+            "average_price": "421.635000",
+            "fees": "0.000000",
+            "dollar_based_amount": null,
+            "time_in_force": "gfd",
+            "market_hours": "regular_hours",
+            "trigger": "immediate",
+            "placed_agent": "agentic",
+            "created_at": "2026-07-23T16:03:52.19881Z",
+            "last_transaction_at": "2026-07-23T16:03:52.306Z",
+            "executions": [
+              {
+                "id": "6a623b68-de1c-468c-8d5e-ee796a4add27",
+                "price": "421.635000",
+                "quantity": "0.031089",
+                "timestamp": "2026-07-23T16:03:52.306Z",
+                "fees": "0.000000"
+              }
+            ]
+          }
+        ]
+      },
+      "guide": "For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked."
+    }
+  },
+  {
+    "tool": "get_portfolio",
+    "args": {
+      "account_number": "433711041"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"total_value\":\"184.559944456\",\"equity_value\":\"93.119944456\",\"options_value\":\"0\",\"futures_value\":\"0\",\"event_contracts_value\":\"0\",\"crypto_value\":\"0\",\"cash\":\"91.44\",\"pending_deposits\":\"0\",\"mutual_funds_value\":\"0\",\"fixed_income_value\":\"0\",\"currency\":\"USD\",\"buying_power\":{\"buying_power\":\"3.3300\",\"unleveraged_buying_power\":\"3.3300\",\"display_currency\":\"USD\"}},\"guide\":\"Show total_value as \\\"account value\\\" or \\\"portfolio value\\\". The breakdown fields show how value is distributed across asset types. Zero-value fields mean the user has no holdings in that asset class \u2014 omit them from display unless the user explicitly asks. For \\\"how much cash do I have?\\\" use the cash field. buying_power is the real-time authoritative spendable figure from the broker; quote buying_power.buying_power as the primary affordability answer with buying_power.display_currency. For \\\"how much can I spend on crypto?\\\" quote crypto_buying_power.buying_power instead \u2014 crypto is cash-only (not marginable), so the top-level buying_power may overstate it; crypto_buying_power is omitted when unavailable. crypto_value reflects the user's crypto holdings value.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "total_value": "184.559944456",
+        "equity_value": "93.119944456",
+        "options_value": "0",
+        "futures_value": "0",
+        "event_contracts_value": "0",
+        "crypto_value": "0",
+        "cash": "91.44",
+        "pending_deposits": "0",
+        "mutual_funds_value": "0",
+        "fixed_income_value": "0",
+        "currency": "USD",
+        "buying_power": {
+          "buying_power": "3.3300",
+          "unleveraged_buying_power": "3.3300",
+          "display_currency": "USD"
+        }
+      },
+      "guide": "Show total_value as \"account value\" or \"portfolio value\". The breakdown fields show how value is distributed across asset types. Zero-value fields mean the user has no holdings in that asset class \u2014 omit them from display unless the user explicitly asks. For \"how much cash do I have?\" use the cash field. buying_power is the real-time authoritative spendable figure from the broker; quote buying_power.buying_power as the primary affordability answer with buying_power.display_currency. For \"how much can I spend on crypto?\" quote crypto_buying_power.buying_power instead \u2014 crypto is cash-only (not marginable), so the top-level buying_power may overstate it; crypto_buying_power is omitted when unavailable. crypto_value reflects the user's crypto holdings value."
+    }
+  },
+  {
+    "tool": "get_equity_positions",
+    "args": {
+      "account_number": "433711041"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"positions\":[{\"symbol\":\"NVDA\",\"quantity\":\"0.121165\",\"intraday_quantity\":\"0.000000\",\"average_buy_price\":\"206.330000\",\"shares_available_for_sells\":\"0.121165\",\"shares_held_for_sells\":\"0.000000\",\"shares_held_for_stock_grants\":\"0.000000\",\"shares_held_for_options_events\":\"0.000000\",\"shares_held_for_asset_transfer\":\"0.000000\",\"shares_pending_from_options_events\":\"0.000000\",\"type\":\"long\"},{\"symbol\":\"JPM\",\"quantity\":\"0.195159\",\"intraday_quantity\":\"0.000000\",\"average_buy_price\":\"341.670000\",\"shares_available_for_sells\":\"0.195159\",\"shares_held_for_sells\":\"0.000000\",\"shares_held_for_stock_grants\":\"0.000000\",\"shares_held_for_options_events\":\"0.000000\",\"shares_held_for_asset_transfer\":\"0.000000\",\"shares_pending_from_options_events\":\"0.000000\",\"type\":\"long\"}]},\"guide\":\"Sellable shares: use shares_available_for_sells, not quantity. Yesterday's quantity = quantity - intraday_quantity. average_buy_price is the average cost per share shown in the Robinhood app (it already reflects partial sells) \u2014 use it as the user's average cost; it may be omitted for positions still reconciling. No market price here \u2014 for current value or PnL, call get_equity_quotes and multiply by quantity. Present symbol, quantity, average_buy_price, and type when not 'long'; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "positions": [
+          {
+            "symbol": "NVDA",
+            "quantity": "0.121165",
+            "intraday_quantity": "0.000000",
+            "average_buy_price": "206.330000",
+            "shares_available_for_sells": "0.121165",
+            "shares_held_for_sells": "0.000000",
+            "shares_held_for_stock_grants": "0.000000",
+            "shares_held_for_options_events": "0.000000",
+            "shares_held_for_asset_transfer": "0.000000",
+            "shares_pending_from_options_events": "0.000000",
+            "type": "long"
+          },
+          {
+            "symbol": "JPM",
+            "quantity": "0.195159",
+            "intraday_quantity": "0.000000",
+            "average_buy_price": "341.670000",
+            "shares_available_for_sells": "0.195159",
+            "shares_held_for_sells": "0.000000",
+            "shares_held_for_stock_grants": "0.000000",
+            "shares_held_for_options_events": "0.000000",
+            "shares_held_for_asset_transfer": "0.000000",
+            "shares_pending_from_options_events": "0.000000",
+            "type": "long"
+          }
+        ]
+      },
+      "guide": "Sellable shares: use shares_available_for_sells, not quantity. Yesterday's quantity = quantity - intraday_quantity. average_buy_price is the average cost per share shown in the Robinhood app (it already reflects partial sells) \u2014 use it as the user's average cost; it may be omitted for positions still reconciling. No market price here \u2014 for current value or PnL, call get_equity_quotes and multiply by quantity. Present symbol, quantity, average_buy_price, and type when not 'long'; suppress other fields unless asked."
+    }
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "new"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "orders": []
+      },
+      "guide": "For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked."
+    }
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "queued"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "orders": []
+      },
+      "guide": "For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked."
+    }
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "confirmed"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "orders": []
+      },
+      "guide": "For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked."
+    }
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "unconfirmed"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "orders": []
+      },
+      "guide": "For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked."
+    }
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "partially_filled"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "orders": []
+      },
+      "guide": "For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked."
+    }
+  }
+]

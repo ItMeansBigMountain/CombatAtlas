@@ -18,6 +18,10 @@ Keep Inbox clean without losing high-signal source material. Sorting should usua
 
 Do not classify `hello@snacks.robinhood.com` / `snacks.robinhood.com` as Robinhood finance/account mail just because the domain includes `robinhood.com`. Route it before the broader Robinhood rule, to `Hermes/Source/Robinhood Snacks`.
 
+## Self-sent mail exemption
+
+Never sort, relabel, archive, or remove `INBOX` from a message whose parsed `From` address is one of the user's managed account addresses. Apply this exemption before every content/sender classification rule so mail the user sends between their own accounts— including the `💌` “your day ahead” message—stays unsorted in the general Inbox.
+
 ## Safe action pattern
 
 1. Dry-run first across all profiles and show counts/examples when exploring a new sender class.
