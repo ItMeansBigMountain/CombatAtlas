@@ -66,7 +66,9 @@ The official Fairfax donor portal at `https://beaspermdonor.com/application/step
 5. Essay
 6. Donor Profile Items
 
-The registration page fields observed were legal first name, optional middle name, legal last name, location selector, phone number, phone confirmation, email address, password, and a required yes/no choice for SMS reminders. The location selector is a custom Material UI combobox rather than a native `<select>`; click the `[role="combobox"]`, then inspect the rendered listbox/options instead of querying `select option`. When the user requests Denver, choose a Denver, Colorado option shown by the portal, but do not guess a branch name before inspecting the live options.
+The registration page fields observed were legal first name, optional middle name, legal last name, location selector, phone number, phone confirmation, email address, password, and a required yes/no choice for SMS reminders. The location selector is a custom Material UI combobox rather than a native `<select>`. A normal click may appear to do nothing: focus `[role="combobox"]`, press `Space`, then inspect the rendered listbox/options.
+
+In the July 2026 portal check, the live application options were Austin, Fairfax, Houston, Philadelphia, Roseville, Pasadena, Miami, Chicago, and Las Vegas; **Denver was not offered**, despite separate Fairfax web pages mentioning Denver-area recipient/fertility services. This list may change, so always inspect it live. Never promise or select a requested branch until it appears in the applicant portal. If absent, leave location unset and ask whether to choose an offered branch or find a different local donor program.
 
 Work page-by-page: collect and fill registration fields first, create the account only with explicit permission, then inspect each later page before asking for medical/personal answers. Treat account creation as a submission checkpoint and the completed application as a separate final submission checkpoint. Recommend a new site-unique password rather than requesting an existing credential, and never retain or quote it.
 
