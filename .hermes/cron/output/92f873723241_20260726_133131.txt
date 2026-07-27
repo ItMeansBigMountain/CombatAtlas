@@ -1,0 +1,85 @@
+Cronjob Response: Morning operator report
+(job_id: 92f873723241)
+-------------
+
+**Top line**
+- Google Workspace is fully blind this morning.
+  - All 5 account tokens are expired or revoked.
+  - Email, calendar, and Drive priorities could not be safely reviewed.
+
+**Work source / operating pulse**
+- **Google Workspace pulse**
+  - Blocked: `trapiistan`, `personal-main`, `personal-secondary`, `classicalechos`, and `burner`.
+  - Impact:
+    - No reliable inbox triage
+    - No calendar/prep visibility
+    - No Drive, Docs, or Sheets movement
+  - Leverage move: restore the five profile-scoped Workspace tokens before relying on any Google-connected automation.
+
+**Email priority + cleanup**
+- **Priority emails**
+  - Unavailable because all Gmail profiles failed authentication.
+- **Interesting/source emails**
+  - TLDR, Kino Body/Kinobody, Daily Stoic, and Grammarly Insights could not be checked.
+- **Cleanup actions**
+  - None performed.
+- **Needs review**
+  - Treat today’s inbox as untriaged—not empty.
+  - Approved junk and newsletter cleanup must wait until access is restored.
+
+**Calendar / prep notes**
+- Calendar unavailable across every profile.
+  - Manually check Google Calendar before committing the day.
+  - No Jared event could be confirmed; if one exists, Codewars or SoloLearn modules remain good prep.
+
+**Chicago local pulse**
+- Sunny and humid around 75°F at 8:30 AM; forecast near 84°F this afternoon with little rain risk.
+- Expect extra city traffic and crowds from a packed event weekend.
+  - White Sox vs. Astros: 1:10 PM at Rate Field
+  - Slightly Stoopid: 6:30 PM at the Salt Shed
+  - Daniel Caesar: 7:30 PM at the United Center
+  - iO Fest concludes today in Lincoln Park
+
+**Market pulse**
+- Markets enter a high-risk week after a losing stretch.
+  - Amazon, Meta, and Microsoft report Wednesday/Thursday.
+  - The Federal Reserve decision lands Wednesday.
+  - Rising bond yields and renewed Middle East escalation are key volatility drivers.
+- Practical posture:
+  - Avoid impulsive positioning before the Fed and megacap reports.
+  - Watch hyperscaler AI-spending commentary—it will matter more than headline revenue alone.
+
+**Google search / social pulse**
+- No trustworthy live daily trend list surfaced.
+- Google’s broader Summergeist data shows active seasonal interest, but nothing concrete enough to justify a content pivot today.
+
+**AI + coding news**
+- Anthropic’s official newsroom does **not** substantiate third-party claims of a July 24 “Claude Opus 5” launch.
+  - Latest official model item found: Claude Sonnet 5, announced June 30.
+  - Good reminder: verify model-launch hype against primary sources before building content around it.
+- Oracle’s July OCI update added:
+  - GLM 5.2 model-import support
+  - Image moderation in OCI AI Guardrails
+  - Guardrail version pinning for stable production behavior
+- Useful angle: version-pinned guardrails are relevant anywhere repeatable automation matters more than demo performance.
+
+**Interesting item**
+- Chicago’s iO Fest closes today after featuring more than 135 improv acts.
+  - Potential creative reset if you want something social that still sharpens timing, pattern recognition, and storytelling.
+
+**Numerology**
+- Universal day: **7**
+  - Best use: analysis, verification, and fixing foundational problems rather than forcing noisy output.
+
+**Daily challenge**
+- Complete one uninterrupted 45-minute block on the highest-value task before consuming feeds or market commentary.
+
+**One big priority prompt**
+- What single deliverable would make Monday materially easier—and can you finish its irreversible core today?
+
+**Hard truth / leverage move**
+- Your Google-connected operating system is currently offline across every identity.
+  - Until OAuth is repaired, morning reports can miss bills, security notices, events, and source material.
+  - Restoring authentication is higher leverage than adding another automation today.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Morning operator report").
