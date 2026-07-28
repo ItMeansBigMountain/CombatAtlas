@@ -1,0 +1,11 @@
+[
+ {"tool":"get_equity_historicals","args":{"symbols":["NVDA","JPM","SLB","SPY","QQQ","IWM","GOOGL","PLTR","RTX","VZ"],"start_time":"2026-04-01T00:00:00Z","end_time":"2026-07-27T16:03:00Z","interval":"day","bounds":"regular","adjustment_type":"split"}},
+ {"tool":"get_equity_historicals","args":{"symbols":["NVDA","JPM","SLB","SPY","QQQ","GOOGL","PLTR","RTX","VZ","XLF"],"start_time":"2026-07-27T13:30:00Z","end_time":"2026-07-27T16:03:00Z","interval":"5minute","bounds":"regular","adjustment_type":"split"}},
+ {"tool":"get_equity_fundamentals","args":{"symbols":["NVDA","JPM","SLB","GOOGL","PLTR","RTX","VZ","BAC","GE","UNH"],"bounds":"regular"}},
+ {"tool":"get_financials","args":{"symbols":["NVDA","JPM","SLB","GOOGL","PLTR","RTX","VZ","BAC","GE","UNH"],"period":"quarterly","limit":4}},
+ {"tool":"get_earnings_calendar","args":{"start_date":"2026-07-27","days":8,"filter":"high_market_cap"}},
+ {"tool":"get_earnings_results","args":{"symbol":"NVDA"}},
+ {"tool":"get_earnings_results","args":{"symbol":"JPM"}},
+ {"tool":"get_earnings_results","args":{"symbol":"SLB"}},
+ {"tool":"get_equity_price_book","args":{"symbols":["NVDA","JPM","SLB","PLTR"]}}
+]

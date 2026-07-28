@@ -1,0 +1,4 @@
+[
+ {"tool":"get_equity_quotes","args":{"symbols":["NVDA"]}},
+ {"tool":"review_equity_order","args":{"account_number":"433711041","symbol":"NVDA","side":"sell","type":"market","quantity":"0.121165","time_in_force":"gfd","market_hours":"regular_hours"}}
+]

@@ -1,0 +1,15 @@
+[
+ {"tool":"get_accounts","args":{}},
+ {"tool":"get_portfolio","args":{"account_number":"433711041"}},
+ {"tool":"get_equity_positions","args":{"account_number":"433711041"}},
+ {"tool":"get_equity_orders","args":{"account_number":"433711041","created_at_gte":"2026-07-24"}},
+ {"tool":"get_equity_orders","args":{"account_number":"433711041","state":"new"}},
+ {"tool":"get_equity_orders","args":{"account_number":"433711041","state":"queued"}},
+ {"tool":"get_equity_orders","args":{"account_number":"433711041","state":"confirmed"}},
+ {"tool":"get_equity_orders","args":{"account_number":"433711041","state":"unconfirmed"}},
+ {"tool":"get_equity_orders","args":{"account_number":"433711041","state":"partially_filled"}},
+ {"tool":"get_equity_quotes","args":{"symbols":["NVDA","JPM","SLB","SPY","QQQ","IWM","DIA","XLK","SMH","XLF","XLE","XLI","XLV","XLY","XLC","XLP","XLU","XLB","XLRE"]}},
+ {"tool":"get_equity_quotes","args":{"symbols":["AAPL","MSFT","META","AMZN","GOOGL","AVGO","AMD","PLTR","BAC","GS","RTX","GE","CAT","XOM","CVX","COP","UNH","LLY","VZ"]}},
+ {"tool":"get_equity_tradability","args":{"account_number":"433711041","symbols":["NVDA","JPM","SLB","GOOGL","PLTR","BAC","RTX","GE","UNH","LLY"]}},
+ {"tool":"get_earnings_calendar","args":{"start_date":"2026-07-27","end_date":"2026-08-03"}}
+]
