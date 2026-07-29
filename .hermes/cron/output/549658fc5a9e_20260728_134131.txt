@@ -1,0 +1,107 @@
+Cronjob Response: Agentic Robinhood Trade Account Monitor — Market Open
+(job_id: 549658fc5a9e)
+-------------
+
+# Robinhood Agentic OPEN Scan — July 28, 2026
+
+## Decision
+
+**Hold JPM and SLB. No new trade, exit, order review, or cancellation.**
+
+The account is already **77.23% invested**, while technology is in an active risk-off breakdown and the best new candidates opened extended above support. Forcing the policy’s nominal $33.83 deployment into an opening gap would violate the no-forced-trade rule.
+
+## Live Account State
+
+- Authorized account: **433711041 / ending 1041 only**
+- Portfolio value: **$185.72**
+- Equity value: **$143.43**
+- Cash and liquid buying power: **$42.29**
+- Pending-order notional: **$0**
+- Open equity orders: **none**
+  - `new`: 0
+  - `queued`: 0
+  - `confirmed`: 0
+  - `unconfirmed`: 0
+  - `partially_filled`: 0
+- No orders or fills today
+- Latest fill: July 27 NVDA exit, **0.121165 shares at $198.0666**
+
+Kill switches are clear:
+
+- Account value remains above $10
+- Drawdown from the conservative $200 funding/high-water reference: **7.14%**, below the 10% pause
+- Change from yesterday’s power-hour snapshot: approximately **-0.21%**, below the 5% daily pause
+- Broker, position, quote, and risk state were available
+
+## Market Regime
+
+- **SPY:** $737.76, -0.18%
+- **QQQ:** $672.45, -1.42%
+- **IWM:** $292.11, -0.27%
+
+QQQ opened below its prior 20-day low and remained far below its 10/20/50-day averages. Sector rotation was sharply defensive:
+
+- Leadership: healthcare, staples, communications, financials
+- Weakness: XLK approximately -2.4%; SMH approximately -3.8%
+
+Current reporting attributes the technology rout to AI-capital-intensity concerns and Chinese semiconductor competition. The July 29 Fed decision and concentrated mega-cap earnings create additional gap risk. Oil’s geopolitical premium also weakened, creating a headwind for SLB.
+
+## Position Management
+
+### JPM — Hold
+
+- Shares: **0.195159**
+- Live price: **$355.39**
+- Market value: **$69.36**
+- Unrealized P/L: **+$2.68 / +4.02%**
+- Technical condition: above rising SMA10/20/50; reached a new 52-week high of $359.25 this morning
+- Reassessment/exit level: **$346**
+- Targets: **$365 / $375**
+- Marked risk to invalidation: **$1.83**
+
+The opening fade and light early volume argue against adding, but the trend and financial-sector relative strength remain intact.
+
+### SLB — Hold, Monitor Closely
+
+- Shares: **1.443558**
+- Live price: **$51.33**
+- Market value: **$74.10**
+- Unrealized P/L: **+$0.95 / +1.30%**
+- Technical condition: above SMA10/20 and near SMA50; resistance around $53.20
+- Reassessment/exit level: **$50.00**
+- Targets: **$54.80 / $57.00**
+- Marked risk to invalidation: **$1.92**
+
+The post-earnings thesis remains viable, but lower oil prices and fading geopolitical risk require close monitoring. Do not average down or widen the invalidation.
+
+**Aggregate marked open risk: $3.75**, within the approximately $6 soft target.
+
+## Ranked Candidates
+
+1. **VZ — 7.8/10:** Defensive post-earnings breakout, but extended. Wait for a $47.55–$47.90 retest; stop $46.50; targets $50.50/$51.70.
+2. **INCY — 7.6/10:** Revenue reportedly increased 38% and guidance rose, but the opening breakout faded from $122.98. Wait for support around $118.50–$119.50 and a reclaim of $122.50.
+3. **JPM — 7.5/10:** Existing breakout leader. Hold current exposure; no add after the opening high.
+4. **ITRI — 7.2/10:** Approximately +19% earnings gap. Too extended before guidance/call confirmation. Wait for a $94–$96 retest.
+5. **DINO — 6.9/10:** Strong refining trend but close to $94.22 resistance and exposed to unstable oil/geopolitical conditions.
+
+GLW, UPS, and CNC were rejected after earnings breakdowns. GOOGL remained below major moving averages, while semiconductors were in an active breakdown.
+
+## Allocation and Actions
+
+- Current equity exposure: **77.23%**
+- Current cash: **22.77%**
+- Liquid buying power after pending orders: **$42.29**
+- Mechanical 80% deployment amount: **$33.83**
+- Mechanical 20% reserve: **$8.46**
+- Actual new deployment: **$0**
+- Cash retained: **$42.29**
+- Orders reviewed/placed/cancelled: **none**
+- Fills during scan: **none**
+
+The complete decision and tool record was journaled to:
+
+`projects/trading-journal/2026-07-28/OPEN-agentic-scan.md`
+
+One non-critical order-book request exceeded the tool’s four-symbol maximum; live quote bid/ask data remained available. MCP session shutdown also emitted HTTP 400 after successful responses, but final broker state was refreshed successfully and the no-action decision was not affected.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Trade Account Monitor — Market Open").

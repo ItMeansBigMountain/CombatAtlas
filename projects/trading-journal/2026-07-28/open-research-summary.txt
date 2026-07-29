@@ -1,0 +1,263 @@
+
+TOOL 0 get_equity_quotes ERR False None
+CNC 60.195000 64.080000 59.950000 60.330000
+GLW 120.430000 143.360000 120.400000 120.500000
+UPS 105.660000 112.950000 105.510000 105.660000
+INCY 121.810000 118.870000 121.500000 122.110000
+ITRI 100.710000 84.780000 100.380000 100.830000
+DINO 91.715000 90.780000 91.480000 91.990000
+SHW 349.230000 327.270000 348.860000 349.850000
+PII 77.115000 74.700000 76.320000 77.470000
+VZ 48.535000 47.320000 48.530000 48.540000
+GOOGL 327.980000 326.560000 327.970000 328.020000
+JPM 355.590000 356.200000 355.500000 355.910000
+SLB 51.290000 51.530000 51.270000 51.320000
+
+TOOL 1 get_equity_historicals ERR False None
+JPM last 356.2 sma 346.57 340.25 323.48 atr14 7.72 20hi/lo 359.05 325.01 volrat 0.76
+SLB last 51.53 sma 48.1 47.3 51.4 atr14 1.47 20hi/lo 53.2 44.59 volrat 1.32
+SPY last 739.09 sma 745.46 746.66 745.0 atr14 7.29 20hi/lo 755.58 732.09 volrat 0.86
+QQQ last 682.12 sma 700.74 710.49 717.64 atr14 13.04 20hi/lo 737.62 675.95 volrat 1.12
+IWM last 292.91 sma 293.87 295.52 291.4 atr14 3.88 20hi/lo 302.72 290.17 volrat 0.89
+VZ last 47.32 sma 44.19 43.35 45.46 atr14 1.15 20hi/lo 47.55 40.76 volrat 0.88
+GOOGL last 326.56 sma 343.69 351.65 363.18 atr14 11.79 20hi/lo 375.27 314.9 volrat 0.84
+CNC last 64.08 sma 65.62 66.18 63.33 atr14 2.44 20hi/lo 69.36 62.53 volrat 1.62
+GLW last 143.36 sma 159.07 182.49 187.1 atr14 12.17 20hi/lo 271.78 136.31 volrat 0.97
+UPS last 112.95 sma 114.87 112.62 108.13 atr14 2.99 20hi/lo 118.42 106.03 volrat 1.54
+
+TOOL 2 get_equity_historicals ERR False None
+INCY last 118.87 sma 116.59 116.25 106.82 atr14 3.23 20hi/lo 120.71 110.56 volrat 1.62
+ITRI last 84.78 sma 84.4 84.63 82.89 atr14 2.28 20hi/lo 88.66 81.13 volrat 3.95
+DINO last 90.78 sma 88.36 81.67 74.23 atr14 3.22 20hi/lo 93.66 68.65 volrat 1.75
+SHW last 327.27 sma 324.75 332.58 319.81 atr14 9.29 20hi/lo 353.67 301.1 volrat 1.35
+PII last 74.7 sma 72.66 69.42 68.71 atr14 2.7 20hi/lo 75.92 61.52 volrat 1.45
+RTX last 218.42 sma 200.05 197.66 187.12 atr14 5.71 20hi/lo 220.39 186.83 volrat 1.72
+XLF last 56.88 sma 56.3 55.76 53.73 atr14 0.7 20hi/lo 57.13 53.4 volrat 0.88
+XLV last 163.4 sma 160.58 161.08 154.83 atr14 2.54 20hi/lo 165.6 157.23 volrat 0.78
+XLP last 85.36 sma 84.39 84.24 84.19 atr14 1.39 20hi/lo 87.43 82.77 volrat 1.14
+XLC last 107.66 sma 109.75 109.81 111.46 atr14 1.91 20hi/lo 114.03 105.25 volrat 0.95
+
+TOOL 3 get_equity_historicals ERR False None
+JPM bars 12 open 357.300000 last 355.59 hi/lo 359.25 355.2607 vol 86840.0
+SLB bars 12 open 51.595000 last 51.29 hi/lo 51.7 51.195 vol 115730.0
+SPY bars 12 open 739.210000 last 738.235 hi/lo 739.46 738.03 vol 1086886.0
+QQQ bars 12 open 676.290000 last 673.465 hi/lo 677.3 673.15 vol 1520812.0
+VZ bars 12 open 47.850000 last 48.535 hi/lo 48.5501 47.85 vol 616748.0
+GOOGL bars 12 open 327.890000 last 327.98 hi/lo 330.3 326.85 vol 1247709.0
+CNC bars 12 open 59.393000 last 60.23 hi/lo 60.23 56.67 vol 434715.0
+GLW bars 12 open 121.840000 last 120.8 hi/lo 125.0 120.05 vol 1355656.0
+UPS bars 12 open 108.170000 last 105.63 hi/lo 109.07 103.09 vol 370786.0
+INCY bars 12 open 119.080000 last 121.81 hi/lo 122.98 118.645 vol 103150.0
+
+TOOL 4 get_equity_fundamentals ERR False None
+{'symbol': 'JPM', 'open': '357.300000', 'high': '359.250000', 'low': '355.260700', 'volume': '382812.000000', 'overnight_volume': '0.000000', 'bounds': 'regular', 'market_date': '2026-07-28', 'average_volume_2_weeks': '9507258.701653', 'average_volume': '9507258.701653', 'average_volume_30_days': '9902225.452260', 'high_52_weeks': '359.250000', 'high_52_weeks_date': '2026-07-28', 'low_52_weeks': '279.100000', 'low_52_weeks_date': '2026-03-12', 'float': '2667481679.610000', 'market_cap': '986385063047.876099', 'pb_ratio': '2.579950', 'pe_ratio': '14.700338', 'shares_outstanding': '2774641527.560833', 'dividend_yield': '1.719365', 'dividend_per_share': '1.500000', 'distribution_frequency': 'Quarterly', 'payable_date': '2026-07-31', 'ex_dividend_date': '2026-07-06', 'record_date': '2026-07-06', 'thirty_day_sec_yield': None, 'description': 'JPMorgan Chase & Co. is a financial holding company, which engages in the provision of financial and investment banking services. The firm focuses on investment banking, financial services for consumers and small businesses, commercial banking, financial transaction processing, and asset management. It operates through the following segments: Consumer and Community Banking (CCB), Commercial and Investment Bank (CIB), Asset and Wealth Management (AWM), and Corporate. The CCB segment originates and services mortgage loans. The CIB segment makes markets and services clients across fixed income, foreign exchange, equities, and commodities. The AWM segment provides initial capital investments in products such as mutual funds and capital invested alongside third-party investors. The Corporate segment manages its liquidity, funding, capital, structural interest rate, and foreign exchange risks. The company was founded in 1799 and is headquartered in New York, NY.', 'ceo': 'James Dimon', 'headquarters_city': 'New York', 'headquarters_state': 'New York', 'sector': 'Finance', 'industry': 'Major Banks', 'num_employees': 318512, 'year_founded': 1799, 'financial_status_indicator': 'CA0', 'financial_status_description': ''}
+{'symbol': 'SLB', 'open': '51.595000', 'high': '51.700000', 'low': '51.195000', 'volume': '509722.000000', 'overnight_volume': '0.000000', 'bounds': 'regular', 'market_date': '2026-07-28', 'average_volume_2_weeks': '13943871.370453', 'average_volume': '13943871.370453', 'average_volume_30_days': '12726066.202500', 'high_52_weeks': '58.819900', 'high_52_weeks_date': '2026-05-26', 'low_52_weeks': '31.640000', 'low_52_weeks_date': '2025-10-13', 'float': '1489386247.300000', 'market_cap': '85542548657.074921', 'pb_ratio': '2.688900', 'pe_ratio': '20.643690', 'shares_outstanding': '1667821186.529049', 'dividend_yield': '2.463891', 'dividend_per_share': '0.295000', 'distribution_frequency': 'Quarterly', 'payable_date': '2026-07-09', 'ex_dividend_date': '2026-06-03', 'record_date': '2026-06-03', 'thirty_day_sec_yield': None, 'description': 'SLB Ltd. engages in the provision of energy technology. It operates through the following business segments: Digital, Reservoir Performance, Well Construction, Production Systems, and All Other. The Digital segment involves the combination of digital solutions and data products with its Asset Performance Solutions. The Reservoir Performance segment consists of technologies and services for productivity and performance optimization. The Well Construction segment includes the full portfolio of products and services for well placement and performance, drilling, and wellbore assurance. The Production Systems segment focuses on the development of technologies and provides services to production and recovery from subsurface reservoirs to the surface, into pipelines, and refineries. The company was founded by Conrad Schlumberger and Marcel Schlumberger in 1926 and is headquartered in Houston, TX.', 'ceo': 'Olivier Le Peuch', 'headquarters_city': 'Houston', 'headquarters_state': 'Texas', 'sector': 'Industrial Services', 'industry': 'Contract Drilling', 'num_employees': 109000, 'year_founded': 1926, 'financial_status_indicator': 'CA0', 'financial_status_description': ''}
+{'symbol': 'VZ', 'open': '47.850000', 'high': '48.550100', 'low': '47.850000', 'volume': '1922719.000000', 'overnight_volume': '0.000000', 'bounds': 'regular', 'market_date': '2026-07-28', 'average_volume_2_weeks': '26141982.256844', 'average_volume': '26141982.256844', 'average_volume_30_days': '34368066.180100', 'high_52_weeks': '51.680000', 'high_52_weeks_date': '2026-03-24', 'low_52_weeks': '38.390000', 'low_52_weeks_date': '2025-10-23', 'float': '4173196633.040000', 'market_cap': '220002457066.449738', 'pb_ratio': '1.773550', 'pe_ratio': '10.692268', 'shares_outstanding': '4532861997.866483', 'dividend_yield': '6.301276', 'dividend_per_share': '0.707500', 'distribution_frequency': 'Quarterly', 'payable_date': '2026-08-03', 'ex_dividend_date': '2026-07-10', 'record_date': '2026-07-10', 'thirty_day_sec_yield': None, 'description': 'Verizon Communications, Inc. is a holding company, which engages in the provision of communications, information, and entertainment products and services. It operates through the Consumer and Business segments. The Consumer segment provides consumer-focused wireless and wire line communications services and products. The Business segment offers wireless and wireline communications services and products, including FWA broadband, data, video and conferencing services, corporate networking solutions, security and managed network services, local and long-distance voice services, and network access to deliver various IoT services and products. The company was founded in 1983 and is headquartered in New York, NY.', 'ceo': 'Daniel H. Schulman', 'headquarters_city': 'New York', 'headquarters_state': 'New York', 'sector': 'Communications', 'industry': 'Wireless Telecommunications', 'num_employees': 89900, 'year_founded': 1983, 'financial_status_indicator': 'CA0', 'financial_status_description': ''}
+{'symbol': 'GOOGL', 'open': '327.890000', 'high': '330.300000', 'low': '326.850000', 'volume': '2394859.000000', 'overnight_volume': '0.000000', 'bounds': 'regular', 'market_date': '2026-07-28', 'average_volume_2_weeks': '33480013.666304', 'average_volume': '33480013.666304', 'average_volume_30_days': '29441011.268800', 'high_52_weeks': '408.610000', 'high_52_weeks_date': '2026-05-18', 'low_52_weeks': '187.820000', 'low_52_weeks_date': '2025-08-01', 'float': '5832512562.560000', 'market_cap': '3992939718667.180176', 'pb_ratio': '8.970600', 'pe_ratio': '27.039232', 'shares_outstanding': '12174339041.000000', 'dividend_yield': '0.239801', 'dividend_per_share': '0.220000', 'distribution_frequency': 'Quarterly', 'payable_date': '2026-06-15', 'ex_dividend_date': '2026-06-08', 'record_date': '2026-06-08', 'thirty_day_sec_yield': None, 'description': 'Alphabet, Inc. is a holding company, which engages in software, health care, transportation, and other technologies. It operates through the following segments: Google Services, Google Cloud, and Other Bets. The Google Services segment includes products and services, such as ads, Android, Chrome, devices, Google Maps, Google Play, Search, and YouTube. The Google Cloud segment refers to infrastructure and platform services, collaboration tools, and other services for enterprise customers. The Other Bets segment relates to the sale of healthcare-related services and internet services. The company was founded by Lawrence E. Page and Sergey Mikhaylovich Brin on October 2, 2015 and is headquartered in Mountain View, CA.', 'ceo': 'Sundar Pichai', 'headquarters_city': 'Mountain View', 'headquarters_state': 'California', 'sector': 'Technology Services', 'industry': 'Internet Software/Services', 'num_employees': 190820, 'year_founded': 2015, 'financial_status_indicator': 'CC0', 'financial_status_description': ''}
+{'symbol': 'CNC', 'open': '59.393000', 'high': '60.230000', 'low': '56.670000', 'volume': '1303657.000000', 'overnight_volume': '0.000000', 'bounds': 'regular', 'market_date': '2026-07-28', 'average_volume_2_weeks': '4319371.835655', 'average_volume': '4319371.835655', 'average_volume_30_days': '4298360.123480', 'high_52_weeks': '69.355000', 'high_52_weeks_date': '2026-07-14', 'low_52_weeks': '25.075000', 'low_52_weeks_date': '2025-08-07', 'float': '483085555.476000', 'market_cap': '29761145190.000000', 'pb_ratio': '1.472300', 'pe_ratio': '-4.880000', 'shares_outstanding': '493797000.000000', 'dividend_yield': None, 'dividend_per_share': None, 'distribution_frequency': None, 'payable_date': None, 'ex_dividend_date': None, 'record_date': None, 'thirty_day_sec_yield': None, 'description': "Centene Corp. is a healthcare enterprise, which engages in the provision of programs and services to government sponsored healthcare programs. It operates through the following segments: Medicaid, Medicare, Commercial, and Other. The Medicaid segment includes the Temporary Assistance for Needy Families program, Medicaid Expansion programs, the Aged, Blind or Disabled program, the Children's Health Insurance Program, Long-Term Services and Supports, Foster Care, Medicare-Medicaid Plans, which cover beneficiaries who are dually eligible for Medicaid and Medicare, and other state-based programs. The Medicare segment consists of Medicare Advantage, Medicare Supplement, Dual Eligible Special Needs Plans, and Medicare Prescription Drug Plans. The Commercial segment is involved in the Health Insurance Marketplace product along with individual, small group, and large group commercial health insurance products. The Other segment refers to pharmacy operations, Envolve Benefit Options’ vision and dental services, clinical healthcare, behavioral health, the TRICARE program, and corporate management companies. The company was founded in 1984 and is headquartered in St. Louis, MO.", 'ceo': 'Sarah McGinty London', 'headquarters_city': 'St. Louis', 'headquarters_state': 'Missouri', 'sector': 'Health Services', 'industry': 'Managed Health Care', 'num_employees': 61100, 'year_founded': 1984, 'financial_status_indicator': 'CA0', 'financial_status_description': ''}
+{'symbol': 'GLW', 'open': '121.840000', 'high': '125.000000', 'low': '120.050000', 'volume': '7016367.000000', 'overnight_volume': '0.000000', 'bounds': 'regular', 'market_date': '2026-07-28', 'average_volume_2_weeks': '11221435.289564', 'average_volume': '11221435.289564', 'average_volume_30_days': '12975978.164900', 'high_52_weeks': '271.780000', 'high_52_weeks_date': '2026-06-30', 'low_52_weeks': '54.920000', 'low_52_weeks_date': '2025-07-28', 'float': '788035438.958000', 'market_cap': '103551964160.000000', 'pb_ratio': '12.162200', 'pe_ratio': '76.021118', 'shares_outstanding': '860638000.000000', 'dividend_yield': '0.707115', 'dividend_per_share': '0.280000', 'distribution_frequency': 'Quarterly', 'payable_date': '2026-09-29', 'ex_dividend_date': '2026-08-31', 'record_date': '2026-08-31', 'thirty_day_sec_yield': None, 'description': 'Corning, Inc. engages in the provision of glass for notebook computers, flat panel desktop monitors, display televisions, and other information display applications, carrier network and enterprise network products for the telecommunications industry, ceramic substrates for gasoline and diesel engines in automotive and heavy-duty vehicle markets, laboratory products for the scientific community and polymer products for biotechnology applications, optical materials for the semiconductor industry and the scientific community, and polycrystalline silicon products and other technologies. It operates through the following segments: Optical Communications, Display, Specialty Materials, Automotive, and Life Sciences. The Optical Communications segment is classified into two main product groupings: carrier and enterprise network. The carrier network group consists of products and solutions for optical-based communications infrastructure for services such as video, data, and voice communications. The enterprise network group consists primarily of optical-based communication networks sold to businesses, governments, and individuals for their own use. The Display Technologies segment manufactures glass substrates for flat panel displays, including organic light-emitting diodes and liquid crystal displays that are used primarily in televisions, notebook computers, desktop monitors, tablets, and handheld devices. The Specialty Materials segment is involved in the manufacture of products that provide material formulations for glass, glass ceramics and crystals, and precision metrology instruments and software. The Automotive segment manufactures ceramic substrates and filter products for emissions control in mobile applications around the world as well as technical glass and optic products and solutions for the interior and exterior of vehicles. The Life Sciences segment develops, manufactures, and supplies laboratory products. The company was founded by Amory Houghton Sr. in 1851 and is headquartered in Corning, NY.', 'ceo': 'Wendell P. Weeks', 'headquarters_city': 'Corning', 'headquarters_state': 'New York', 'sector': 'Electronic Technology', 'industry': 'Electronic Components', 'num_employees': 67200, 'year_founded': 1851, 'financial_status_indicator': 'CA0', 'financial_status_description': ''}
+{'symbol': 'UPS', 'open': '108.170000', 'high': '109.070000', 'low': '103.090000', 'volume': '1379621.000000', 'overnight_volume': '0.000000', 'bounds': 'regular', 'market_date': '2026-07-28', 'average_volume_2_weeks': '4934714.726366', 'average_volume': '4934714.726366', 'average_volume_30_days': '4373812.274480', 'high_52_weeks': '122.410000', 'high_52_weeks_date': '2026-02-12', 'low_52_weeks': '82.000000', 'low_52_weeks_date': '2025-09-11', 'float': '746424471.198000', 'market_cap': '89747932395.854996', 'pb_ratio': '6.318040', 'pe_ratio': '18.970681', 'shares_outstanding': '850006463.000000', 'dividend_yield': '5.598225', 'dividend_per_share': '1.640000', 'distribution_frequency': 'Quarterly', 'payable_date': '2026-06-04', 'ex_dividend_date': '2026-05-18', 'record_date': '2026-05-18', 'thirty_day_sec_yield': None, 'description': 'United Parcel Service, Inc. is a package delivery company, which engages in the provision of global supply chain management solutions. It operates through the following segments: U.S. Domestic Package and International Package. The U.S. Domestic Package segment includes time-definite delivery of letters, documents, and packages. The International Package segment focuses on delivery and shipments in Europe, Asia, the Indian sub-continent, the Middle East, Africa, Canada, and Latin America. The company was founded by James E. Casey and Claude Ryan on August 28, 1907 and is headquartered in Atlanta, GA.', 'ceo': 'Carol B. Tomé', 'headquarters_city': 'Atlanta', 'headquarters_state': 'Georgia', 'sector': 'Transportation', 'industry': 'Air Freight/Couriers', 'num_employees': 460000, 'year_founded': 1907, 'financial_status_indicator': 'CA0', 'financial_status_description': ''}
+{'symbol': 'INCY', 'open': '119.080000', 'high': '122.980000', 'low': '118.645000', 'volume': '212331.000000', 'overnight_volume': '0.000000', 'bounds': 'regular', 'market_date': '2026-07-28', 'average_volume_2_weeks': '1551827.214533', 'average_volume': '1551827.214533', 'average_volume_30_days': '1626339.365850', 'high_52_weeks': '122.980000', 'high_52_weeks_date': '2026-07-28', 'low_52_weeks': '69.695000', 'low_52_weeks_date': '2025-07-28', 'float': '197929621.296000', 'market_cap': '24422635154.229042', 'pb_ratio': '4.148070', 'pe_ratio': '16.495326', 'shares_outstanding': '200497784.699360', 'dividend_yield': None, 'dividend_per_share': None, 'distribution_frequency': None, 'payable_date': None, 'ex_dividend_date': None, 'record_date': None, 'thirty_day_sec_yield': None, 'description': 'Incyte Corp. is a biopharmaceutical company, which engages in the discovery, development, and commercialization of proprietary therapeutics. It focuses on hematology and oncology, and inflammation and autoimmunity therapeutic areas. The company was founded on April 8, 1991 and is headquartered in Wilmington, DE.', 'ceo': 'William J. Meury', 'headquarters_city': 'Wilmington', 'headquarters_state': 'Delaware', 'sector': 'Health Technology', 'industry': 'Pharmaceuticals: Major', 'num_employees': 2844, 'year_founded': 1991, 'financial_status_indicator': 'CC0', 'financial_status_description': ''}
+{'symbol': 'ITRI', 'open': '92.080000', 'high': '102.200000', 'low': '91.200000', 'volume': '453445.000000', 'overnight_volume': '0.000000', 'bounds': 'regular', 'market_date': '2026-07-28', 'average_volume_2_weeks': '678485.713164', 'average_volume': '678485.713164', 'average_volume_30_days': '613161.621523', 'high_52_weeks': '142.000000', 'high_52_weeks_date': '2025-10-30', 'low_52_weeks': '77.770000', 'low_52_weeks_date': '2026-05-19', 'float': '43582206.452500', 'market_cap': '4465410903.000000', 'pb_ratio': '2.368850', 'pe_ratio': '13.720291', 'shares_outstanding': '44339300.000000', 'dividend_yield': None, 'dividend_per_share': None, 'distribution_frequency': None, 'payable_date': None, 'ex_dividend_date': None, 'record_date': None, 'thirty_day_sec_yield': None, 'description': 'Itron, Inc. is a technology and services company, which engages in the provision of solutions that measure, manage, and analyze energy and water use. It operates through the following segments: Device Solutions, Networked Solutions, and Outcomes. The Device Solutions segment includes hardware products used for measurement, control, or sensing that do not have communications capability embedded for use with its broader Itron systems. The Networked Solutions segment offers a combination of communication devices, network infrastructure, and associated application software designed and sold as a complete solution for acquiring and transporting robust application-specific data. The Outcomes segment consists of the firm’s value-added, enhanced software and services operating segment. The company was founded in 1977 and is headquartered in Liberty Lake, WA.', 'ceo': 'Thomas L. Deitrich', 'headquarters_city': 'Liberty Lake', 'headquarters_state': 'Washington', 'sector': 'Electronic Technology', 'industry': 'Electronic Equipment/Instruments', 'num_employees': 5550, 'year_founded': 1977, 'financial_status_indicator': 'CC0', 'financial_status_description': ''}
+{'symbol': 'DINO', 'open': '92.120000', 'high': '94.220000', 'low': '90.000000', 'volume': '280647.000000', 'overnight_volume': '0.000000', 'bounds': 'regular', 'market_date': '2026-07-28', 'average_volume_2_weeks': '3116441.811934', 'average_volume': '3116441.811934', 'average_volume_30_days': '2766255.188370', 'high_52_weeks': '94.220000', 'high_52_weeks_date': '2026-07-28', 'low_52_weeks': '42.160000', 'low_52_weeks_date': '2025-08-01', 'float': '167925261.125000', 'market_cap': '16532118875.000000', 'pb_ratio': '1.619920', 'pe_ratio': '13.077329', 'shares_outstanding': '180275000.000000', 'dividend_yield': '2.303086', 'dividend_per_share': '0.500000', 'distribution_frequency': 'Quarterly', 'payable_date': '2026-06-02', 'ex_dividend_date': '2026-05-11', 'record_date': '2026-05-11', 'thirty_day_sec_yield': None, 'description': 'HF Sinclair Corp. is an independent energy company. It manufactures and sells products such as gasoline, diesel fuel, jet fuel, renewable diesel, specialty lubricant products, specialty chemicals, and specialty and modified asphalt. The company operates through five segments: Refining, Marketing, Renewables, Lubricants and Specialty Products, and Midstream. The company was founded in 1947 and is headquartered in Dallas, TX.', 'ceo': 'Franklin Myers', 'headquarters_city': 'Dallas', 'headquarters_state': 'Texas', 'sector': 'Energy Minerals', 'industry': 'Oil Refining/Marketing', 'num_employees': 5165, 'year_founded': 1947, 'financial_status_indicator': 'CA0', 'financial_status_description': ''}
+
+TOOL 5 get_financials ERR False None
+JPM [{'fiscal_year': 2026, 'fiscal_quarter': 1, 'revenue': '49836000000.000000', 'net_income': '16494000000.000000', 'operating_cash_flow': None, 'free_cash_flow': None, 'total_debt': None, 'cash_and_equivalents': None}, {'fiscal_year': 2025, 'fiscal_quarter': 4, 'revenue': '49174000000.000000', 'net_income': '14201000000.000000', 'operating_cash_flow': None, 'free_cash_flow': None, 'total_debt': None, 'cash_and_equivalents': None}]
+SLB [{'fiscal_year': 2026, 'fiscal_quarter': 1, 'revenue': '8721000000.000000', 'net_income': '752000000.000000', 'operating_cash_flow': None, 'free_cash_flow': None, 'total_debt': None, 'cash_and_equivalents': None}, {'fiscal_year': 2025, 'fiscal_quarter': 4, 'revenue': '9744000000.000000', 'net_income': '824000000.000000', 'operating_cash_flow': None, 'free_cash_flow': None, 'total_debt': None, 'cash_and_equivalents': None}]
+VZ [{'fiscal_year': 2026, 'fiscal_quarter': 1, 'revenue': '34440000000.000000', 'net_income': '5045000000.000000', 'operating_cash_flow': None, 'free_cash_flow': None, 'total_debt': None, 'cash_and_equivalents': None}, {'fiscal_year': 2025, 'fiscal_quarter': 4, 'revenue': '36381000000.000000', 'net_income': '2342000000.000000', 'operating_cash_flow': None, 'free_cash_flow': None, 'total_debt': None, 'cash_and_equivalents': None}]
+GOOGL [{'fiscal_year': 2026, 'fiscal_quarter': 2, 'revenue': '119796000000.000000', 'net_income': '112193000000.000000', 'operating_cash_flow': None, 'free_cash_flow': None, 'total_debt': None, 'cash_and_equivalents': None}, {'fiscal_year': 2026, 'fiscal_quarter': 1, 'revenue': '109896000000.000000', 'net_income': '62578000000.000000', 'operating_cash_flow': None, 'free_cash_flow': None, 'total_debt': None, 'cash_and_equivalents': None}]
+NULL_RESULT
+GLW [{'fiscal_year': 2026, 'fiscal_quarter': 1, 'revenue': '4144000000.000000', 'net_income': '371000000.000000', 'operating_cash_flow': None, 'free_cash_flow': None, 'total_debt': None, 'cash_and_equivalents': None}, {'fiscal_year': 2025, 'fiscal_quarter': 4, 'revenue': '4215000000.000000', 'net_income': '540000000.000000', 'operating_cash_flow': None, 'free_cash_flow': None, 'total_debt': None, 'cash_and_equivalents': None}]
+UPS [{'fiscal_year': 2026, 'fiscal_quarter': 1, 'revenue': '21202000000.000000', 'net_income': '864000000.000000', 'operating_cash_flow': None, 'free_cash_flow': None, 'total_debt': None, 'cash_and_equivalents': None}, {'fiscal_year': 2025, 'fiscal_quarter': 4, 'revenue': '24479000000.000000', 'net_income': '1791000000.000000', 'operating_cash_flow': None, 'free_cash_flow': None, 'total_debt': None, 'cash_and_equivalents': None}]
+INCY [{'fiscal_year': 2026, 'fiscal_quarter': 1, 'revenue': '1272676000.000000', 'net_income': '303330000.000000', 'operating_cash_flow': None, 'free_cash_flow': None, 'total_debt': None, 'cash_and_equivalents': None}, {'fiscal_year': 2025, 'fiscal_quarter': 4, 'revenue': '1506835000.000000', 'net_income': '299279000.000000', 'operating_cash_flow': None, 'free_cash_flow': None, 'total_debt': None, 'cash_and_equivalents': None}]
+NULL_RESULT
+NULL_RESULT
+
+TOOL 6 get_equity_tradability ERR False None
+{
+  "results": [
+    {
+      "symbol": "JPM",
+      "name": "JPMorgan Chase & Co.",
+      "simple_name": "JPMorgan Chase",
+      "state": "active",
+      "country": "US",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": false,
+      "all_day_tradability": "tradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    },
+    {
+      "symbol": "SLB",
+      "name": "SLB Limited",
+      "simple_name": "SLB Limited",
+      "state": "active",
+      "country": "US",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": false,
+      "all_day_tradability": "tradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    },
+    {
+      "symbol": "VZ",
+      "name": "Verizon Communications",
+      "simple_name": "Verizon",
+      "state": "active",
+      "country": "US",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": true,
+      "all_day_tradability": "tradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc. Class A Common Stock",
+      "simple_name": "Alphabet Class A",
+      "state": "active",
+      "country": "US",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": false,
+      "all_day_tradability": "tradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    },
+    {
+      "symbol": "CNC",
+      "name": "Centene Corporation",
+      "simple_name": "Centene",
+      "state": "active",
+      "country": "US",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": false,
+      "all_day_tradability": "tradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    },
+    {
+      "symbol": "GLW",
+      "name": "Corning Incorporated",
+      "simple_name": "Corning",
+      "state": "active",
+      "country": "US",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": false,
+      "all_day_tradability": "tradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    },
+    {
+      "symbol": "UPS",
+      "name": "United Parcel Service, Inc. Class B",
+      "simple_name": "UPS",
+      "state": "active",
+      "country": "US",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": false,
+      "all_day_tradability": "tradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    },
+    {
+      "symbol": "INCY",
+      "name": "Incyte Corp. Common Stock",
+      "simple_name": "Incyte",
+      "state": "active",
+      "country": "US",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": false,
+      "all_day_tradability": "untradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    },
+    {
+      "symbol": "ITRI",
+      "name": "Itron, Inc. Common Stock",
+      "simple_name": "Itron",
+      "state": "active",
+      "country": "US",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": false,
+      "all_day_tradability": "untradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    },
+    {
+      "symbol": "DINO",
+      "name": "HF Sinclair Corporation",
+      "simple_name": "HF Sinclair",
+      "state": "active",
+      "country": "US",
+      "tradeable": true,
+      "fractional_tradability": "tradable",
+      "extended_hours_fractional_tradability": false,
+      "all_day_tradability": "tradable",
+      "short_selling_tradability": "tradable",
+      "account_type_tradabilities": [
+        {
+          "account_type": "individual",
+          "account_type_tradability": "tradable"
+        }
+      ]
+    }
+  ]
+}
+
+TOOL 7 get_equity_price_book ERR True None
+['too many symbols: this tool returns the order book for up to 4 symbols per call, got 8 — split into batches of 4 or fewer']
