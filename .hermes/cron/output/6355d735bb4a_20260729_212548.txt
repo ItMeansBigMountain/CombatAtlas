@@ -1,0 +1,73 @@
+Cronjob Response: Creator discovery feeder for Viral Radar
+(job_id: 6355d735bb4a)
+-------------
+
+## BLOCKED/PARTIAL — Viral Radar strict run
+
+**Uploaded URLs:** None  
+**New sources selected:** 0  
+**Queue count:** 1  
+**Metrics:** 383 video IDs seen; 0 statistics fetched because Classical Echos OAuth is invalid.
+
+### Per-source progress
+
+- **Kinobody / Greg O’Gallagher — “A Follower Called Me Out For Using Tirzepatide”**
+  - Source: https://www.youtube.com/watch?v=aGHkzgJFZxI
+  - **Uploaded: 0/5**
+  - One rendered clip remains safely in `UPLOAD_QUEUE`.
+  - Four additional clips were **never rendered or planned**. They are backlog deficits, not queue items.
+  - This is existing exact-source backlog and was not counted toward a newly discovered source minimum.
+
+### Blockers
+
+- `blocked_auth`: Classical Echos token expired or was revoked.
+- `blocked_auth`: Trapiistan/Sosai token expired or was revoked.
+- `blocked_auth`: fareed320 reauthorization remains pending after `invalid_grant`.
+- `blocked_discovery`: latest watchlist manifests could not be seeded because discovery requires valid YouTube OAuth.
+- `blocked_upload`: the queued Kinobody render could not be published.
+- No placeholders, unrelated clips, old queue items, NASA/space footage, or unknown creators were used.
+
+```text
+youtube_auth_healthcheck status=blocked_auth_hardening
+trapiistan refresh_error=invalid_grant: Token has been expired or revoked.
+classicalechos refresh_error=invalid_grant: Token has been expired or revoked.
+fareed320 queued-last-error=invalid_grant; fresh OAuth pending state generated
+metrics video_ids_seen=383 stats_fetched=0
+QUEUE_MP4=1
+QUEUE_METADATA=1
+```
+
+### Required OAuth recovery
+
+**Classical Echos:**  
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=9vPCMIPQqSRuNffeHRU9bnOKuVR93x&code_challenge=PXZrp17I2TrvFRQDjIRxxPhrW3h-AOEwzpJ5u88d9hw&code_challenge_method=S256&access_type=offline&include_granted_scopes=false&prompt=consent&login_hint=classicalechos%40gmail.com
+
+Return:
+
+```text
+youtube:classicalechos: <full localhost callback URL>
+```
+
+**Trapiistan/Sosai:**  
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=Jl0zjJYpSQUydKClBNOKKiTEPWk5xQ&code_challenge=b2VPTZgAS2opgp4ny-o_lln5xjn4xFBXHqjtSWb-_Ds&code_challenge_method=S256&access_type=offline&include_granted_scopes=false&prompt=consent&login_hint=trapiistan%40gmail.com
+
+Return:
+
+```text
+youtube:trapiistan: <full localhost callback URL>
+```
+
+**fareed320:**  
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=5CiMEQJLOHN3RzL6A4A7NwkEXscKwv&code_challenge=Ae5b2mos91XAI85u1TPn3ENyXb2Q9WbT7byHk3_-hcg&code_challenge_method=S256&access_type=offline&include_granted_scopes=false&prompt=consent&login_hint=fareed320%40gmail.com
+
+Return:
+
+```text
+youtube:fareed320: <full localhost callback URL>
+```
+
+**Next action:** Complete OAuth for all three profiles and verify channel identities. Then rerun queue-first, seed the latest watchlist manifests, and produce at least **5/5 distinct public clips per selected creator video**.
+
+Run artifact: `OUTPUTS/strict-viral-radar-run-2026-07-29T212436Z.json`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Creator discovery feeder for Viral Radar").

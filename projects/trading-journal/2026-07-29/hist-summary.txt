@@ -1,0 +1,35 @@
+
+TOOL 0 get_equity_historicals ERR False None
+F last 14.96 sma 14.34 14.03 14.42 atr14 0.41 20hi/lo 15.02 13.22 volrat 1.5
+BE last 166.84 sma 205.98 236.02 265.1 atr14 25.14 20hi/lo 320.0 157.65 volrat 2.12
+STX last 747.3 sma 829.32 854.44 886.31 atr14 77.51 20hi/lo 998.49 698.99 volrat 1.84
+GRMN last 253.65 sma 244.35 243.44 238.89 atr14 6.66 20hi/lo 255.6 231.37 volrat 1.47
+GNRC last 195.6 sma 210.48 228.63 253.37 atr14 9.38 20hi/lo 295.41 187.55 volrat 2.02
+MAS last 81.61 sma 78.85 78.95 74.46 atr14 2.21 20hi/lo 83.64 75.5 volrat 2.86
+BIIB last 205.61 sma 202.16 203.85 199.63 atr14 8.9 20hi/lo 219.01 186.03 volrat 1.31
+GD last 393.19 sma 376.54 373.69 357.17 atr14 7.76 20hi/lo 395.43 346.56 volrat 1.52
+SOFI last 16.74 sma 17.09 17.68 17.16 atr14 0.83 20hi/lo 19.74 16.17 volrat 1.02
+
+TOOL 1 get_equity_historicals ERR False None
+JPM last 357.31 sma 348.01 341.64 324.62 atr14 7.44 20hi/lo 359.3 325.01 volrat 0.66
+SLB last 49.98 sma 48.34 47.48 51.29 atr14 1.54 20hi/lo 53.2 44.59 volrat 1.21
+UL last 66.87 sma 62.06 61.76 59.37 atr14 1.5 20hi/lo 67.44 59.9 volrat 3.59
+SPY last 740.86 sma 744.37 746.65 744.86 atr14 7.19 20hi/lo 755.58 735.21 volrat 1.02
+QQQ last 675.49 sma 696.32 708.06 716.75 atr14 13.24 20hi/lo 737.62 667.88 volrat 1.36
+IWM last 293.37 sma 293.76 295.24 291.57 atr14 3.73 20hi/lo 302.72 290.17 volrat 0.98
+
+TOOL 2 get_equity_historicals ERR False None
+F bars 4 open 15.570000 last 16.06 hi/lo 16.07 15.24 vol 8907313.0
+BE bars 4 open 183.490000 last 173.055 hi/lo 185.66 170.9423 vol 2319610.0
+STX bars 4 open 788.550000 last 768.1 hi/lo 806.9861 763.38 vol 743728.0
+GRMN bars 4 open 262.820000 last 293.83 hi/lo 297.885 261.8 vol 112754.0
+GNRC bars 4 open 210.000000 last 200.61 hi/lo 210.0 198.0 vol 111644.0
+MAS bars 4 open 75.815000 last 72.1601 hi/lo 75.97 71.82 vol 508171.0
+BIIB bars 4 open 210.630000 last 215.305 hi/lo 216.0 206.67 vol 115747.0
+GD bars 4 open 398.670000 last 392.03 hi/lo 399.02 391.67 vol 50902.0
+SOFI bars 4 open 15.495000 last 15.1299 hi/lo 15.77 15.03 vol 19359926.0
+
+TOOL 3 get_equity_historicals ERR False None
+JPM bars 4 open 355.700000 last 352.88 hi/lo 357.37 352.875 vol 151998.0
+SLB bars 4 open 51.010000 last 50.665 hi/lo 51.32 50.56 vol 190581.0
+UL bars 4 open 65.320000 last 66.07 hi/lo 66.13 65.13 vol 647938.0

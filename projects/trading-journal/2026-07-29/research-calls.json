@@ -1,0 +1,12 @@
+[
+ {"tool":"get_equity_quotes","args":{"symbols":["F","BE","STX","GRMN","GNRC","MAS","BIIB","GD","SOFI"]}},
+ {"tool":"get_equity_tradability","args":{"symbols":["F","BE","STX","GRMN","GNRC","MAS","BIIB","GD","SOFI"],"account_number":"433711041"}},
+ {"tool":"get_equity_fundamentals","args":{"symbols":["F","BE","STX","GRMN","GNRC","MAS","BIIB","GD","SOFI"]}},
+ {"tool":"get_equity_historicals","args":{"symbols":["F","BE","STX","GRMN","GNRC","MAS","BIIB","GD","SOFI","JPM","SLB","UL","SPY","QQQ","IWM"],"interval":"day","span":"3month","bounds":"regular"}},
+ {"tool":"get_equity_historicals","args":{"symbols":["F","BE","STX","GRMN","GNRC","MAS","BIIB","GD","SOFI","JPM","SLB","UL"],"interval":"5minute","span":"day","bounds":"regular"}},
+ {"tool":"get_earnings_results","args":{"symbol":"F"}},
+ {"tool":"get_earnings_results","args":{"symbol":"BE"}},
+ {"tool":"get_earnings_results","args":{"symbol":"STX"}},
+ {"tool":"get_earnings_results","args":{"symbol":"GRMN"}},
+ {"tool":"get_earnings_results","args":{"symbol":"GNRC"}}
+]

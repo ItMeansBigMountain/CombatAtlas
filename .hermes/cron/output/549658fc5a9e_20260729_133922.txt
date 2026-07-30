@@ -1,0 +1,97 @@
+Cronjob Response: Agentic Robinhood Trade Account Monitor — Market Open
+(job_id: 549658fc5a9e)
+-------------
+
+# Robinhood Agentic OPEN Scan — July 29, 2026
+
+## Decision
+
+**Hold JPM, SLB, and UL. No new entry, exit, rotation, order review, or cancellation.**
+
+Opening breadth was unconvincing, technology remained weak, and today’s FOMC decision creates substantial reversal risk. Existing equity exposure already exceeds the deployment target, so investing the remaining cash would constitute forced trading.
+
+## Live Account State
+
+- **Account:** Agentic 433711041 / ending 1041 only
+- **Account status:** Active cash account; Agentic trading enabled
+- **Portfolio value:** **$185.56**
+- **Equity value:** **$177.10**
+- **Cash/buying power:** **$8.46**
+- **Pending-order notional:** **$0**
+- **Equity exposure:** **95.44%**
+- **Cash reserve:** **4.56%**
+
+All open-order states were checked and empty: `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled`. No July 29 fills were found.
+
+Kill switches remain clear: portfolio value is above $10, broker state is certain, and calculated drawdown remains below the policy pause threshold.
+
+## Market Regime
+
+- **SPY:** $740.07, -0.11%; below its completed 10/20/50-day averages
+- **QQQ:** $676.13, +0.09%; below all three key averages
+- **IWM:** $293.51, +0.05%; below its 10/20-day averages
+- **Energy:** Strongest opening sector, XLE +2.78%
+- **Financials/healthcare:** Retain stronger intermediate structures
+- **Technology/semiconductors:** Remain technically weak
+
+The FOMC decision and press conference are due today. Heavy earnings, tariff uncertainty, and oil-sensitive geopolitical developments further elevate event risk.
+
+## Position Management
+
+### JPM — Hold
+
+- Live price: **$356.73**
+- Position value: approximately **$69.62**
+- Unrealized result: approximately **+$2.94**
+- Trend: Above SMA10/20/50; near $359.30 resistance
+- **Binding reassessment:** $346
+- **Targets:** $365 / $375
+
+Strong Q2 performance, upward earnings revisions, and financial-sector relative strength support the position. Do not add near resistance before the Fed decision.
+
+### SLB — Hold
+
+- Live price: **$51.13**
+- Position value: approximately **$73.81**
+- Unrealized result: approximately **+$0.66**
+- Structure: Above SMA10/20 and near SMA50; $53.20 resistance
+- **Binding reassessment:** $50.00
+- **Targets:** $54.80 / $57.00
+
+The earnings beat, growth guidance, and energy-sector leadership support the thesis. Oil reversal and geopolitical risks remain material. No chase or averaging down.
+
+### UL — Hold; monitor post-earnings retest
+
+- Live price: **$65.57**
+- Position value: approximately **$33.37**
+- Unrealized result: approximately **-$0.46**
+- Structure: Still above SMA10/20/50 despite a 1.94% opening pullback
+- **Binding reassessment:** $63.70
+- **Targets:** $70.75 / $74.90
+
+Unilever’s reported 5.8% underlying sales growth and 5.5% volume growth support the fundamental thesis. The post-gap pullback has not breached invalidation. Do not add.
+
+## Ranked Candidates
+
+1. **JPM — 8.0/10:** Existing relative-strength holding; no add near resistance.
+2. **AAPL — 7.5/10:** Strong trend, but close to $342.89 resistance without technology-sector confirmation.
+3. **XOM — 7.3/10:** Energy leader, but its +3.33% opening move is too extended to chase.
+4. **RTX — 7.1/10:** Strong intermediate trend but near resistance while industrials weaken.
+5. **UL — 7.0/10:** Existing defensive catalyst trade; manage rather than add.
+
+## Allocation and Actions
+
+- Mechanical allocation of current buying power: **$6.77 deployable / $1.69 reserved**
+- Actual action: **$0 deployed**
+- Final liquid reserve: **$8.46**
+- Approximate marked risk to binding reassessment levels: **$4.68**, within the roughly $6 aggregate target
+- Orders reviewed or placed: **None**
+- Fills this scan: **None**
+
+Existing exposure is already 95.44%. Preserving the remaining cash through opening volatility and the FOMC event is preferable to forcing another position.
+
+Journal written to:
+
+`projects/trading-journal/2026-07-29/OPEN-agentic-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Trade Account Monitor — Market Open").
