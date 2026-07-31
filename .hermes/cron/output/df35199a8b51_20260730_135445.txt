@@ -1,0 +1,100 @@
+Cronjob Response: Post-morning Agentic portfolio market scan
+(job_id: df35199a8b51)
+-------------
+
+# Post-Open Agentic Scan — July 30, 2026
+
+## Decision
+
+**No additional trade placed.** Hold and manage **UL, MA, and SHEL**.
+
+The account already deployed **$117.75** into MA and SHEL shortly after the open. Current portfolio deployment is **83.64%**, while the strongest new candidates are extended opening gaps or carry near-term earnings risk. I did not force another order merely to spend remaining buying power.
+
+## Current State
+
+- **Account:** Robinhood Agentic ••••1041 only
+- **Portfolio value:** **$179.93**
+- **Equities:** **$150.49**
+- **Cash/buying power:** **$29.44**
+- **Open-ish orders:** None across `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled`
+- **Kill switch:** Clear; account remains above $10
+- **Options/shorts:** None
+
+Approximate position state around 14:00 UTC:
+
+| Position | Shares | Cost | Mark | Value | Unrealized |
+|---|---:|---:|---:|---:|---:|
+| UL | 0.508952 | $66.47 | $65.34 | $33.25 | -$0.58 |
+| MA | 0.101447 | $580.40 | $578.56 | $58.69 | -$0.19 |
+| SHEL | 0.651145 | $90.41 | $90.02 | $58.62 | -$0.25 |
+
+## Today’s Fills
+
+These fills occurred before this scan through the Agentic lane:
+
+- **MA:** Bought **$58.88**, filling **0.101447 shares at $580.3999**
+- **SHEL:** Bought **$58.87**, filling **0.651145 shares at $90.4099**
+
+This scan placed, reviewed, canceled, or sold **no orders**.
+
+## Market Regime
+
+A powerful rebound is concentrated in technology and semiconductors:
+
+- SPY **+1.19%**
+- QQQ **+2.82%**
+- XLK **+4.84%**
+- SMH **+6.26%**
+- IWM **+0.96%**
+- DIA **+0.69%**
+
+However, SPY, QQQ, and SMH entered today below their short- and intermediate-term moving averages. The move is therefore best treated as a **reclaim attempt from damaged daily structures**, not yet a fully repaired uptrend.
+
+Defensive sectors reversed lower: XLV **-1.93%** and XLP **-2.25%**. Financials were flat and energy slightly weak.
+
+## Position Management
+
+- **UL:** Hold above **$64.80**. No averaging down. Targets **$67.40/$70.00**.
+- **MA:** Q2 EPS was **$5.04 versus $4.76 expected**. Hold above **$569**; targets **$601.77/$620**. Approximate risk from cost to invalidation: **$1.16**.
+- **SHEL:** Q2 EPS was **$3.52 versus $2.83 expected**. Hold above **$88.20**; targets **$94.90/$98**. Approximate risk: **$1.44**.
+
+Estimated aggregate planned risk, including UL, is approximately **$3.45**, within the default roughly $6 portfolio-risk target.
+
+## Ranked Swing Opportunities
+
+1. **MA — 8.2/10, already owned**  
+   Earnings-breakout continuation. Hold/retest zone $575–$580; stop $569; targets $601.77/$620. Approximately **1.9:1** to Target 1 from actual cost.
+
+2. **SHEL — 8.0/10, already owned**  
+   Earnings continuation with attractive valuation and strong technical trend. Retest zone $89.50–$90.40; stop $88.20; targets $94.90/$98. Approximately **2.0:1** to Target 1.
+
+3. **MSFT — 7.6/10, watch only**  
+   EPS **$4.74 versus $4.23 expected**, with strong AI/cloud-spending reaction. At **+14.86%**, the opening gap is too extended to chase. Preferred retest near $438; stop $428; targets $458/$475; **2.0:1/3.7:1**.
+
+4. **AMZN — 7.0/10, watch only**  
+   Strength ahead of after-close earnings, but event risk remains unresolved. Trigger only after earnings confirmation or a $232 retest hold; stop $226; targets $246/$258; approximately **2.3:1/4.3:1**.
+
+5. **AMD — 6.5/10, watch only**  
+   **+11.43%** semiconductor rebound, but the prior daily structure was damaged and earnings are due August 4. Retest trigger $458; stop $442; targets $490/$520; **2.0:1/3.9:1**. Do not chase.
+
+## Cash Deployment
+
+- Current portfolio deployment: **83.64%**
+- Cash as a percentage of account value: **16.36%**
+- Strict remaining-liquid-balance calculation:
+  - 80% deployable: **$23.55**
+  - 20% reserve: **$5.89**
+
+The additional $23.55 was not deployed because exposure already increased substantially today and the remaining candidates lack clean, non-extended entries. The **$29.44** is being retained for risk management and confirmed retests.
+
+## Tool Blockers
+
+- Robinhood account, positions, portfolio, orders, quotes, tradability, historicals, fundamentals, and symbol-level earnings tools worked.
+- The market-wide earnings-calendar call rejected the attempted `date` parameter. Relevant earnings were verified through symbol-level results instead.
+- Gmail source checks were unavailable because `personal-main` OAuth returned **`invalid_grant`—token expired or revoked**. No Gmail changes were attempted.
+
+Journal saved to:
+
+`projects/trading-journal/2026-07-30/post-open-market-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Post-morning Agentic portfolio market scan").

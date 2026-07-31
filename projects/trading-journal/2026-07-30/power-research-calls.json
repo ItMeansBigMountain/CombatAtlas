@@ -1,0 +1,14 @@
+[
+ {"tool":"get_equity_quotes","args":{"symbols":["UL","MA","SHEL","MSFT","AMD","NVDA","AMZN","AAPL","PWR","EME","TT","GEV","CAT","SPY","QQQ","IWM","XLK","SMH","XLE","XLI"]}},
+ {"tool":"get_equity_fundamentals","args":{"symbols":["UL","MA","SHEL","MSFT","AMD","NVDA","AMZN","AAPL","PWR","EME"],"bounds":"regular"}},
+ {"tool":"get_equity_fundamentals","args":{"symbols":["TT","GEV","CAT"],"bounds":"regular"}},
+ {"tool":"get_equity_historicals","args":{"symbols":["UL","MA","SHEL","MSFT","AMD","NVDA","AMZN","AAPL","PWR","EME"],"start_time":"2026-04-30T00:00:00Z","end_time":"2026-07-30T19:32:00Z","interval":"day","bounds":"regular","adjustment_type":"split"}},
+ {"tool":"get_equity_historicals","args":{"symbols":["TT","GEV","CAT","SPY","QQQ","IWM","XLK","SMH","XLE","XLI"],"start_time":"2026-04-30T00:00:00Z","end_time":"2026-07-30T19:32:00Z","interval":"day","bounds":"regular","adjustment_type":"split"}},
+ {"tool":"get_equity_historicals","args":{"symbols":["UL","MA","SHEL","SPY","QQQ","XLE","XLK"],"start_time":"2026-07-30T13:30:00Z","end_time":"2026-07-30T19:32:00Z","interval":"5minute","bounds":"regular","adjustment_type":"split"}},
+ {"tool":"get_earnings_results","args":{"symbol":"UL"}},
+ {"tool":"get_earnings_results","args":{"symbol":"MA"}},
+ {"tool":"get_earnings_results","args":{"symbol":"SHEL"}},
+ {"tool":"get_earnings_results","args":{"symbol":"MSFT"}},
+ {"tool":"get_earnings_results","args":{"symbol":"AMZN"}},
+ {"tool":"get_earnings_results","args":{"symbol":"AAPL"}}
+]

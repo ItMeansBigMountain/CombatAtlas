@@ -1,0 +1,86 @@
+Cronjob Response: Creator discovery feeder for Viral Radar
+(job_id: 6355d735bb4a)
+-------------
+
+## BLOCKED/PARTIAL — Viral Radar strict run
+
+**Uploaded URLs:** None  
+**Queue count:** 1  
+**Metrics:** 383 video IDs seen; 0 statistics fetched because Classical Echos OAuth returned `invalid_grant`.
+
+### Per-source results
+
+- Andrew Huberman — “My book Protocols releases September 15th” — **0/5**  
+  https://www.youtube.com/shorts/vmRWUqkTtKA  
+  Blocker: YouTube Short; too short for five distinct transformative clips.
+
+- Chris Williamson — “What Used To Make A Man Acceptable Now Makes You Extraordinary” — **0/5**  
+  https://www.youtube.com/shorts/8_p4zXTmqlU  
+  Blocker: YouTube Short; too short for five distinct clips.
+
+- Chris Williamson — “Why Success Is So Lonely” — **0/5**  
+  https://www.youtube.com/shorts/i02fc1hOPiU  
+  Blocker: YouTube Short. Its description links to longer episode `0AfsC-9pIo4`, which should replace it after authentication is restored.
+
+- GG33 — “My Broadcast” — **0/5**  
+  https://www.youtube.com/watch?v=_DFn1G4_J_8  
+  Blocker: Duration/source readiness could not be authenticated; no five-window manifest or renders were created.
+
+- GG33 — “NO ONE ON THE EPSTEIN LIST IS IN PRISON... BUT THE TATES ARE?” — **0/5**  
+  https://www.youtube.com/watch?v=jGwCghac56c  
+  Blocker: Manifest seeding and rendering blocked by authentication.
+
+- GG33 — same-titled second source — **0/5**  
+  https://www.youtube.com/watch?v=ab_8lojZOnk  
+  Blocker: Manifest seeding and rendering blocked by authentication.
+
+- GG33 — “Astrology makes life easier” — **0/5**  
+  https://www.youtube.com/shorts/HOnTo1vuhgM  
+  Blocker: YouTube Short; too short for five distinct clips.
+
+- Alex Hormozi — “Alex Hormozi Answers Your Questions” — **0/5**  
+  https://www.youtube.com/watch?v=DfXy_PzlC0o  
+  Blocker: Manifest seeding and rendering blocked by authentication.
+
+### Queue handling
+
+The existing queue was checked first. Its rendered Kinobody clip remains safely preserved:
+
+`UPLOAD_QUEUE/kinobody-greg-o-gallagher-a-follower-called-me-out-for-using-tir-auto-01-captioned-daily.mp4.upload.json`
+
+It was not counted toward newly discovered source minimums.
+
+### Raw blocker
+
+```text
+google.auth.exceptions.RefreshError:
+('invalid_grant: Token has been expired or revoked.',
+ {'error': 'invalid_grant',
+  'error_description': 'Token has been expired or revoked.'})
+```
+
+Both Classical Echos and Trapiistan/Sosai tokens failed verification.
+
+### Required reauthorization
+
+**Classical Echos:**
+
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=uFCnTR363VBft4kGAMDtGMzvRx0hJq&code_challenge=tHTdZfxyVEzFukYy5K6gNE0laiaJk0XI6SjeH9Ppamc&code_challenge_method=S256&access_type=offline&include_granted_scopes=false&prompt=consent&login_hint=classicalechos%40gmail.com
+
+Return:
+
+`youtube:classicalechos: <full localhost callback URL>`
+
+**Trapiistan/Sosai:**
+
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=PeOUZRIY9yPUa9l9z6Buq69sXTAqx8&code_challenge=WVmPk6pElUdN42FxJIDdy1Zq7NozqaNdpI_OV4-yCAQ&code_challenge_method=S256&access_type=offline&include_granted_scopes=false&prompt=consent&login_hint=trapiistan%40gmail.com
+
+Return:
+
+`youtube:trapiistan: <full localhost callback URL>`
+
+**Next action:** Reauthorize both profiles, drain the preserved queue item, process the four potentially long sources to **5/5**, and replace all four Shorts with longer source-ready watchlist videos.
+
+Run artifact: `OUTPUTS/strict-viral-radar-run-2026-07-30T214008Z.json`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Creator discovery feeder for Viral Radar").

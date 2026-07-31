@@ -1,0 +1,1130 @@
+[
+  {
+    "tool": "get_watchlist_items",
+    "args": {
+      "watchlist_id": "eddbebe5-34cc-4df1-953c-d3e3cb55bc19"
+    },
+    "exception": "McpError('invalid params: validating \"arguments\": validating root: unexpected additional properties [\"watchlist_id\"]')"
+  },
+  {
+    "tool": "get_equity_historicals",
+    "args": {
+      "symbols": [
+        "UL",
+        "SPY",
+        "QQQ",
+        "IWM",
+        "XLK",
+        "SMH",
+        "XLF",
+        "XLE",
+        "XLI",
+        "XLV",
+        "XLY",
+        "XLC",
+        "XLP",
+        "XLU",
+        "MSFT",
+        "AMZN",
+        "NVDA",
+        "AVGO",
+        "AMD",
+        "MA",
+        "SHEL",
+        "GEV",
+        "CAT",
+        "PWR",
+        "EME",
+        "BMY"
+      ],
+      "interval": "day",
+      "span": "3month",
+      "bounds": "regular"
+    },
+    "exception": "McpError('invalid params: validating \"arguments\": validating root: unexpected additional properties [\"span\"]')"
+  },
+  {
+    "tool": "get_equity_fundamentals",
+    "args": {
+      "symbols": [
+        "UL",
+        "MSFT",
+        "AMZN",
+        "NVDA",
+        "AVGO",
+        "AMD",
+        "MA",
+        "SHEL",
+        "GEV",
+        "CAT",
+        "PWR",
+        "EME",
+        "BMY"
+      ]
+    },
+    "isError": true,
+    "content": [
+      "too many symbols (max 10, got 13)"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_equity_tradability",
+    "args": {
+      "account_number": "433711041",
+      "symbols": [
+        "MSFT",
+        "AMZN",
+        "NVDA",
+        "AVGO",
+        "AMD",
+        "MA",
+        "SHEL",
+        "GEV",
+        "CAT",
+        "PWR"
+      ]
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"MSFT\",\"name\":\"Microsoft Corporation Common Stock\",\"simple_name\":\"Microsoft\",\"state\":\"active\",\"country\":\"US\",\"tradeable\":true,\"fractional_tradability\":\"tradable\",\"extended_hours_fractional_tradability\":false,\"all_day_tradability\":\"tradable\",\"short_selling_tradability\":\"tradable\",\"account_type_tradabilities\":[{\"account_type\":\"individual\",\"account_type_tradability\":\"tradable\"}]},{\"symbol\":\"AMZN\",\"name\":\"Amazon.com, Inc. Common Stock\",\"simple_name\":\"Amazon\",\"state\":\"active\",\"country\":\"US\",\"tradeable\":true,\"fractional_tradability\":\"tradable\",\"extended_hours_fractional_tradability\":false,\"all_day_tradability\":\"tradable\",\"short_selling_tradability\":\"tradable\",\"account_type_tradabilities\":[{\"account_type\":\"individual\",\"account_type_tradability\":\"tradable\"}]},{\"symbol\":\"NVDA\",\"name\":\"NVIDIA Corporation Common Stock\",\"simple_name\":\"NVIDIA\",\"state\":\"active\",\"country\":\"US\",\"tradeable\":true,\"fractional_tradability\":\"tradable\",\"extended_hours_fractional_tradability\":true,\"all_day_tradability\":\"tradable\",\"short_selling_tradability\":\"tradable\",\"account_type_tradabilities\":[{\"account_type\":\"individual\",\"account_type_tradability\":\"tradable\"}]},{\"symbol\":\"AVGO\",\"name\":\"Broadcom Inc. Common Stock\",\"simple_name\":\"Broadcom\",\"state\":\"active\",\"country\":\"US\",\"tradeable\":true,\"fractional_tradability\":\"tradable\",\"extended_hours_fractional_tradability\":true,\"all_day_tradability\":\"tradable\",\"short_selling_tradability\":\"tradable\",\"account_type_tradabilities\":[{\"account_type\":\"individual\",\"account_type_tradability\":\"tradable\"}]},{\"symbol\":\"AMD\",\"name\":\"Advanced Micro Devices, Inc. Common Stock\",\"simple_name\":\"AMD\",\"state\":\"active\",\"country\":\"US\",\"tradeable\":true,\"fractional_tradability\":\"tradable\",\"extended_hours_fractional_tradability\":true,\"all_day_tradability\":\"tradable\",\"short_selling_tradability\":\"tradable\",\"account_type_tradabilities\":[{\"account_type\":\"individual\",\"account_type_tradability\":\"tradable\"}]},{\"symbol\":\"MA\",\"name\":\"Mastercard Incorporated\",\"simple_name\":\"Mastercard\",\"state\":\"active\",\"country\":\"US\",\"tradeable\":true,\"fractional_tradability\":\"tradable\",\"extended_hours_fractional_tradability\":false,\"all_day_tradability\":\"tradable\",\"short_selling_tradability\":\"tradable\",\"account_type_tradabilities\":[{\"account_type\":\"individual\",\"account_type_tradability\":\"tradable\"}]},{\"symbol\":\"SHEL\",\"name\":\"Shell plc American Depositary Shares (Each represents two Ordinary shares)\",\"simple_name\":\"Shell\",\"state\":\"active\",\"country\":\"GB\",\"tradeable\":true,\"fractional_tradability\":\"tradable\",\"extended_hours_fractional_tradability\":true,\"all_day_tradability\":\"untradable\",\"short_selling_tradability\":\"tradable\",\"account_type_tradabilities\":[{\"account_type\":\"individual\",\"account_type_tradability\":\"tradable\"}]},{\"symbol\":\"GEV\",\"name\":\"GE Vernova Inc.\",\"simple_name\":\"GE Vernova\",\"state\":\"active\",\"country\":\"US\",\"tradeable\":true,\"fractional_tradability\":\"tradable\",\"extended_hours_fractional_tradability\":false,\"all_day_tradability\":\"tradable\",\"short_selling_tradability\":\"tradable\",\"account_type_tradabilities\":[{\"account_type\":\"individual\",\"account_type_tradability\":\"tradable\"}]},{\"symbol\":\"CAT\",\"name\":\"Caterpillar Inc.\",\"simple_name\":\"Caterpillar\",\"state\":\"active\",\"country\":\"US\",\"tradeable\":true,\"fractional_tradability\":\"tradable\",\"extended_hours_fractional_tradability\":false,\"all_day_tradability\":\"tradable\",\"short_selling_tradability\":\"tradable\",\"account_type_tradabilities\":[{\"account_type\":\"individual\",\"account_type_tradability\":\"tradable\"}]},{\"symbol\":\"PWR\",\"name\":\"Quanta Services, Inc.\",\"simple_name\":\"Quanta\",\"state\":\"active\",\"country\":\"US\",\"tradeable\":true,\"fractional_tradability\":\"tradable\",\"extended_hours_fractional_tradability\":false,\"all_day_tradability\":\"tradable\",\"short_selling_tradability\":\"tradable\",\"account_type_tradabilities\":[{\"account_type\":\"individual\",\"account_type_tradability\":\"tradable\"}]}]},\"guide\":\"Headline answer: use the account_type_tradabilities entry matching the user's account_type. If account_type_tradabilities is empty, report that account-type tradability could not be determined and rely on tradeable + state alone. Any of tradeable=false, state='inactive', or 'untradable' overrides everything below \u2014 surface first. Session mapping: regular_hours uses the headline; extended_hours / all_day_hours need all_day_tradability='all_day_tradability_tradable'; 24/7 needs twenty_four_seven_tradability='twenty_four_seven_tradability_tradable'. Mention internal_halt_* only when internal_halt_sessions overlaps the session the user wants. Fractional and dollar-based orders place only in regular_hours regardless of the flags. See trading://market-hours for session clock times.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "results": [
+          {
+            "symbol": "MSFT",
+            "name": "Microsoft Corporation Common Stock",
+            "simple_name": "Microsoft",
+            "state": "active",
+            "country": "US",
+            "tradeable": true,
+            "fractional_tradability": "tradable",
+            "extended_hours_fractional_tradability": false,
+            "all_day_tradability": "tradable",
+            "short_selling_tradability": "tradable",
+            "account_type_tradabilities": [
+              {
+                "account_type": "individual",
+                "account_type_tradability": "tradable"
+              }
+            ]
+          },
+          {
+            "symbol": "AMZN",
+            "name": "Amazon.com, Inc. Common Stock",
+            "simple_name": "Amazon",
+            "state": "active",
+            "country": "US",
+            "tradeable": true,
+            "fractional_tradability": "tradable",
+            "extended_hours_fractional_tradability": false,
+            "all_day_tradability": "tradable",
+            "short_selling_tradability": "tradable",
+            "account_type_tradabilities": [
+              {
+                "account_type": "individual",
+                "account_type_tradability": "tradable"
+              }
+            ]
+          },
+          {
+            "symbol": "NVDA",
+            "name": "NVIDIA Corporation Common Stock",
+            "simple_name": "NVIDIA",
+            "state": "active",
+            "country": "US",
+            "tradeable": true,
+            "fractional_tradability": "tradable",
+            "extended_hours_fractional_tradability": true,
+            "all_day_tradability": "tradable",
+            "short_selling_tradability": "tradable",
+            "account_type_tradabilities": [
+              {
+                "account_type": "individual",
+                "account_type_tradability": "tradable"
+              }
+            ]
+          },
+          {
+            "symbol": "AVGO",
+            "name": "Broadcom Inc. Common Stock",
+            "simple_name": "Broadcom",
+            "state": "active",
+            "country": "US",
+            "tradeable": true,
+            "fractional_tradability": "tradable",
+            "extended_hours_fractional_tradability": true,
+            "all_day_tradability": "tradable",
+            "short_selling_tradability": "tradable",
+            "account_type_tradabilities": [
+              {
+                "account_type": "individual",
+                "account_type_tradability": "tradable"
+              }
+            ]
+          },
+          {
+            "symbol": "AMD",
+            "name": "Advanced Micro Devices, Inc. Common Stock",
+            "simple_name": "AMD",
+            "state": "active",
+            "country": "US",
+            "tradeable": true,
+            "fractional_tradability": "tradable",
+            "extended_hours_fractional_tradability": true,
+            "all_day_tradability": "tradable",
+            "short_selling_tradability": "tradable",
+            "account_type_tradabilities": [
+              {
+                "account_type": "individual",
+                "account_type_tradability": "tradable"
+              }
+            ]
+          },
+          {
+            "symbol": "MA",
+            "name": "Mastercard Incorporated",
+            "simple_name": "Mastercard",
+            "state": "active",
+            "country": "US",
+            "tradeable": true,
+            "fractional_tradability": "tradable",
+            "extended_hours_fractional_tradability": false,
+            "all_day_tradability": "tradable",
+            "short_selling_tradability": "tradable",
+            "account_type_tradabilities": [
+              {
+                "account_type": "individual",
+                "account_type_tradability": "tradable"
+              }
+            ]
+          },
+          {
+            "symbol": "SHEL",
+            "name": "Shell plc American Depositary Shares (Each represents two Ordinary shares)",
+            "simple_name": "Shell",
+            "state": "active",
+            "country": "GB",
+            "tradeable": true,
+            "fractional_tradability": "tradable",
+            "extended_hours_fractional_tradability": true,
+            "all_day_tradability": "untradable",
+            "short_selling_tradability": "tradable",
+            "account_type_tradabilities": [
+              {
+                "account_type": "individual",
+                "account_type_tradability": "tradable"
+              }
+            ]
+          },
+          {
+            "symbol": "GEV",
+            "name": "GE Vernova Inc.",
+            "simple_name": "GE Vernova",
+            "state": "active",
+            "country": "US",
+            "tradeable": true,
+            "fractional_tradability": "tradable",
+            "extended_hours_fractional_tradability": false,
+            "all_day_tradability": "tradable",
+            "short_selling_tradability": "tradable",
+            "account_type_tradabilities": [
+              {
+                "account_type": "individual",
+                "account_type_tradability": "tradable"
+              }
+            ]
+          },
+          {
+            "symbol": "CAT",
+            "name": "Caterpillar Inc.",
+            "simple_name": "Caterpillar",
+            "state": "active",
+            "country": "US",
+            "tradeable": true,
+            "fractional_tradability": "tradable",
+            "extended_hours_fractional_tradability": false,
+            "all_day_tradability": "tradable",
+            "short_selling_tradability": "tradable",
+            "account_type_tradabilities": [
+              {
+                "account_type": "individual",
+                "account_type_tradability": "tradable"
+              }
+            ]
+          },
+          {
+            "symbol": "PWR",
+            "name": "Quanta Services, Inc.",
+            "simple_name": "Quanta",
+            "state": "active",
+            "country": "US",
+            "tradeable": true,
+            "fractional_tradability": "tradable",
+            "extended_hours_fractional_tradability": false,
+            "all_day_tradability": "tradable",
+            "short_selling_tradability": "tradable",
+            "account_type_tradabilities": [
+              {
+                "account_type": "individual",
+                "account_type_tradability": "tradable"
+              }
+            ]
+          }
+        ]
+      },
+      "guide": "Headline answer: use the account_type_tradabilities entry matching the user's account_type. If account_type_tradabilities is empty, report that account-type tradability could not be determined and rely on tradeable + state alone. Any of tradeable=false, state='inactive', or 'untradable' overrides everything below \u2014 surface first. Session mapping: regular_hours uses the headline; extended_hours / all_day_hours need all_day_tradability='all_day_tradability_tradable'; 24/7 needs twenty_four_seven_tradability='twenty_four_seven_tradability_tradable'. Mention internal_halt_* only when internal_halt_sessions overlaps the session the user wants. Fractional and dollar-based orders place only in regular_hours regardless of the flags. See trading://market-hours for session clock times."
+    }
+  },
+  {
+    "tool": "get_equity_tradability",
+    "args": {
+      "account_number": "433711041",
+      "symbols": [
+        "EME",
+        "BMY",
+        "UL"
+      ]
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"EME\",\"name\":\"EMCOR Group, Inc.\",\"simple_name\":\"Emcor\",\"state\":\"active\",\"country\":\"US\",\"tradeable\":true,\"fractional_tradability\":\"tradable\",\"extended_hours_fractional_tradability\":false,\"all_day_tradability\":\"tradable\",\"short_selling_tradability\":\"tradable\",\"account_type_tradabilities\":[{\"account_type\":\"individual\",\"account_type_tradability\":\"tradable\"}]},{\"symbol\":\"BMY\",\"name\":\"Bristol-Myers Squibb Co.\",\"simple_name\":\"Bristol-Myers Squibb\",\"state\":\"active\",\"country\":\"US\",\"tradeable\":true,\"fractional_tradability\":\"tradable\",\"extended_hours_fractional_tradability\":false,\"all_day_tradability\":\"tradable\",\"short_selling_tradability\":\"tradable\",\"account_type_tradabilities\":[{\"account_type\":\"individual\",\"account_type_tradability\":\"tradable\"}]},{\"symbol\":\"UL\",\"name\":\"Unilever plc\",\"simple_name\":\"Unilever\",\"state\":\"active\",\"country\":\"GB\",\"tradeable\":true,\"fractional_tradability\":\"tradable\",\"extended_hours_fractional_tradability\":false,\"all_day_tradability\":\"untradable\",\"short_selling_tradability\":\"tradable\",\"account_type_tradabilities\":[{\"account_type\":\"individual\",\"account_type_tradability\":\"tradable\"}]}]},\"guide\":\"Headline answer: use the account_type_tradabilities entry matching the user's account_type. If account_type_tradabilities is empty, report that account-type tradability could not be determined and rely on tradeable + state alone. Any of tradeable=false, state='inactive', or 'untradable' overrides everything below \u2014 surface first. Session mapping: regular_hours uses the headline; extended_hours / all_day_hours need all_day_tradability='all_day_tradability_tradable'; 24/7 needs twenty_four_seven_tradability='twenty_four_seven_tradability_tradable'. Mention internal_halt_* only when internal_halt_sessions overlaps the session the user wants. Fractional and dollar-based orders place only in regular_hours regardless of the flags. See trading://market-hours for session clock times.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "results": [
+          {
+            "symbol": "EME",
+            "name": "EMCOR Group, Inc.",
+            "simple_name": "Emcor",
+            "state": "active",
+            "country": "US",
+            "tradeable": true,
+            "fractional_tradability": "tradable",
+            "extended_hours_fractional_tradability": false,
+            "all_day_tradability": "tradable",
+            "short_selling_tradability": "tradable",
+            "account_type_tradabilities": [
+              {
+                "account_type": "individual",
+                "account_type_tradability": "tradable"
+              }
+            ]
+          },
+          {
+            "symbol": "BMY",
+            "name": "Bristol-Myers Squibb Co.",
+            "simple_name": "Bristol-Myers Squibb",
+            "state": "active",
+            "country": "US",
+            "tradeable": true,
+            "fractional_tradability": "tradable",
+            "extended_hours_fractional_tradability": false,
+            "all_day_tradability": "tradable",
+            "short_selling_tradability": "tradable",
+            "account_type_tradabilities": [
+              {
+                "account_type": "individual",
+                "account_type_tradability": "tradable"
+              }
+            ]
+          },
+          {
+            "symbol": "UL",
+            "name": "Unilever plc",
+            "simple_name": "Unilever",
+            "state": "active",
+            "country": "GB",
+            "tradeable": true,
+            "fractional_tradability": "tradable",
+            "extended_hours_fractional_tradability": false,
+            "all_day_tradability": "untradable",
+            "short_selling_tradability": "tradable",
+            "account_type_tradabilities": [
+              {
+                "account_type": "individual",
+                "account_type_tradability": "tradable"
+              }
+            ]
+          }
+        ]
+      },
+      "guide": "Headline answer: use the account_type_tradabilities entry matching the user's account_type. If account_type_tradabilities is empty, report that account-type tradability could not be determined and rely on tradeable + state alone. Any of tradeable=false, state='inactive', or 'untradable' overrides everything below \u2014 surface first. Session mapping: regular_hours uses the headline; extended_hours / all_day_hours need all_day_tradability='all_day_tradability_tradable'; 24/7 needs twenty_four_seven_tradability='twenty_four_seven_tradability_tradable'. Mention internal_halt_* only when internal_halt_sessions overlaps the session the user wants. Fractional and dollar-based orders place only in regular_hours regardless of the flags. See trading://market-hours for session clock times."
+    }
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "MSFT"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"MSFT\",\"year\":2025,\"quarter\":2,\"eps\":{\"estimate\":\"3.100000\",\"actual\":\"3.230000\"},\"report\":{\"date\":\"2025-01-29\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"MSFT\",\"year\":2025,\"quarter\":3,\"eps\":{\"estimate\":\"3.220000\",\"actual\":\"3.460000\"},\"report\":{\"date\":\"2025-04-30\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"MSFT\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"3.370000\",\"actual\":\"3.650000\"},\"report\":{\"date\":\"2025-07-30\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"MSFT\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"3.660000\",\"actual\":\"4.130000\"},\"report\":{\"date\":\"2025-10-29\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"MSFT\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"3.860000\",\"actual\":\"4.140000\"},\"report\":{\"date\":\"2026-01-28\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"MSFT\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"4.070000\",\"actual\":\"4.270000\"},\"report\":{\"date\":\"2026-04-29\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"MSFT\",\"year\":2026,\"quarter\":4,\"eps\":{\"estimate\":\"4.230000\",\"actual\":\"4.740000\"},\"report\":{\"date\":\"2026-07-29\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"MSFT\",\"year\":2027,\"quarter\":1,\"eps\":{\"estimate\":\"4.610000\",\"actual\":null},\"report\":{\"date\":\"2026-10-28\",\"timing\":\"pm\",\"verified\":false}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "results": [
+          {
+            "symbol": "MSFT",
+            "year": 2025,
+            "quarter": 2,
+            "eps": {
+              "estimate": "3.100000",
+              "actual": "3.230000"
+            },
+            "report": {
+              "date": "2025-01-29",
+              "timing": "pm",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "MSFT",
+            "year": 2025,
+            "quarter": 3,
+            "eps": {
+              "estimate": "3.220000",
+              "actual": "3.460000"
+            },
+            "report": {
+              "date": "2025-04-30",
+              "timing": "pm",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "MSFT",
+            "year": 2025,
+            "quarter": 4,
+            "eps": {
+              "estimate": "3.370000",
+              "actual": "3.650000"
+            },
+            "report": {
+              "date": "2025-07-30",
+              "timing": "pm",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "MSFT",
+            "year": 2026,
+            "quarter": 1,
+            "eps": {
+              "estimate": "3.660000",
+              "actual": "4.130000"
+            },
+            "report": {
+              "date": "2025-10-29",
+              "timing": "pm",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "MSFT",
+            "year": 2026,
+            "quarter": 2,
+            "eps": {
+              "estimate": "3.860000",
+              "actual": "4.140000"
+            },
+            "report": {
+              "date": "2026-01-28",
+              "timing": "pm",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "MSFT",
+            "year": 2026,
+            "quarter": 3,
+            "eps": {
+              "estimate": "4.070000",
+              "actual": "4.270000"
+            },
+            "report": {
+              "date": "2026-04-29",
+              "timing": "pm",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "MSFT",
+            "year": 2026,
+            "quarter": 4,
+            "eps": {
+              "estimate": "4.230000",
+              "actual": "4.740000"
+            },
+            "report": {
+              "date": "2026-07-29",
+              "timing": "pm",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "MSFT",
+            "year": 2027,
+            "quarter": 1,
+            "eps": {
+              "estimate": "4.610000",
+              "actual": null
+            },
+            "report": {
+              "date": "2026-10-28",
+              "timing": "pm",
+              "verified": false
+            }
+          }
+        ]
+      },
+      "guide": "Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \"upcoming\" from \"reported\" by eps.actual: null means the company has not yet reported. For \"will earnings happen by date X\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \"no data for X\" rather than treating it as a tool failure. This tool does NOT return an \"expected move\" \u2014 pair with options data for implied-volatility-based moves."
+    }
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "META"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"META\",\"year\":2024,\"quarter\":4,\"eps\":{\"estimate\":\"6.760000\",\"actual\":\"8.020000\"},\"report\":{\"date\":\"2025-01-29\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"META\",\"year\":2025,\"quarter\":1,\"eps\":{\"estimate\":\"5.280000\",\"actual\":\"6.430000\"},\"report\":{\"date\":\"2025-04-30\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"META\",\"year\":2025,\"quarter\":2,\"eps\":{\"estimate\":\"5.870000\",\"actual\":\"7.140000\"},\"report\":{\"date\":\"2025-07-30\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"META\",\"year\":2025,\"quarter\":3,\"eps\":{\"estimate\":\"6.660000\",\"actual\":\"7.250000\"},\"report\":{\"date\":\"2025-10-29\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"META\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"8.190000\",\"actual\":\"8.880000\"},\"report\":{\"date\":\"2026-01-28\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"META\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"6.670000\",\"actual\":\"7.310000\"},\"report\":{\"date\":\"2026-04-29\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"META\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"7.180000\",\"actual\":\"6.180000\"},\"report\":{\"date\":\"2026-07-29\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"META\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"7.020000\",\"actual\":null},\"report\":{\"date\":\"2026-10-28\",\"timing\":\"pm\",\"verified\":false}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "results": [
+          {
+            "symbol": "META",
+            "year": 2024,
+            "quarter": 4,
+            "eps": {
+              "estimate": "6.760000",
+              "actual": "8.020000"
+            },
+            "report": {
+              "date": "2025-01-29",
+              "timing": "pm",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "META",
+            "year": 2025,
+            "quarter": 1,
+            "eps": {
+              "estimate": "5.280000",
+              "actual": "6.430000"
+            },
+            "report": {
+              "date": "2025-04-30",
+              "timing": "pm",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "META",
+            "year": 2025,
+            "quarter": 2,
+            "eps": {
+              "estimate": "5.870000",
+              "actual": "7.140000"
+            },
+            "report": {
+              "date": "2025-07-30",
+              "timing": "pm",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "META",
+            "year": 2025,
+            "quarter": 3,
+            "eps": {
+              "estimate": "6.660000",
+              "actual": "7.250000"
+            },
+            "report": {
+              "date": "2025-10-29",
+              "timing": "pm",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "META",
+            "year": 2025,
+            "quarter": 4,
+            "eps": {
+              "estimate": "8.190000",
+              "actual": "8.880000"
+            },
+            "report": {
+              "date": "2026-01-28",
+              "timing": "pm",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "META",
+            "year": 2026,
+            "quarter": 1,
+            "eps": {
+              "estimate": "6.670000",
+              "actual": "7.310000"
+            },
+            "report": {
+              "date": "2026-04-29",
+              "timing": "pm",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "META",
+            "year": 2026,
+            "quarter": 2,
+            "eps": {
+              "estimate": "7.180000",
+              "actual": "6.180000"
+            },
+            "report": {
+              "date": "2026-07-29",
+              "timing": "pm",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "META",
+            "year": 2026,
+            "quarter": 3,
+            "eps": {
+              "estimate": "7.020000",
+              "actual": null
+            },
+            "report": {
+              "date": "2026-10-28",
+              "timing": "pm",
+              "verified": false
+            }
+          }
+        ]
+      },
+      "guide": "Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \"upcoming\" from \"reported\" by eps.actual: null means the company has not yet reported. For \"will earnings happen by date X\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \"no data for X\" rather than treating it as a tool failure. This tool does NOT return an \"expected move\" \u2014 pair with options data for implied-volatility-based moves."
+    }
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "MA"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"MA\",\"year\":2024,\"quarter\":4,\"eps\":{\"estimate\":\"3.690000\",\"actual\":\"3.820000\"},\"report\":{\"date\":\"2025-01-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"MA\",\"year\":2025,\"quarter\":1,\"eps\":{\"estimate\":\"3.570000\",\"actual\":\"3.730000\"},\"report\":{\"date\":\"2025-05-01\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"MA\",\"year\":2025,\"quarter\":2,\"eps\":{\"estimate\":\"4.030000\",\"actual\":\"4.150000\"},\"report\":{\"date\":\"2025-07-31\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"MA\",\"year\":2025,\"quarter\":3,\"eps\":{\"estimate\":\"4.310000\",\"actual\":\"4.380000\"},\"report\":{\"date\":\"2025-10-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"MA\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"4.220000\",\"actual\":\"4.760000\"},\"report\":{\"date\":\"2026-01-29\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"MA\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"4.410000\",\"actual\":\"4.600000\"},\"report\":{\"date\":\"2026-04-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"MA\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"4.760000\",\"actual\":\"5.040000\"},\"report\":{\"date\":\"2026-07-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"MA\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"5.110000\",\"actual\":null},\"report\":{\"date\":\"2026-10-29\",\"timing\":\"am\",\"verified\":false}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "results": [
+          {
+            "symbol": "MA",
+            "year": 2024,
+            "quarter": 4,
+            "eps": {
+              "estimate": "3.690000",
+              "actual": "3.820000"
+            },
+            "report": {
+              "date": "2025-01-30",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "MA",
+            "year": 2025,
+            "quarter": 1,
+            "eps": {
+              "estimate": "3.570000",
+              "actual": "3.730000"
+            },
+            "report": {
+              "date": "2025-05-01",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "MA",
+            "year": 2025,
+            "quarter": 2,
+            "eps": {
+              "estimate": "4.030000",
+              "actual": "4.150000"
+            },
+            "report": {
+              "date": "2025-07-31",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "MA",
+            "year": 2025,
+            "quarter": 3,
+            "eps": {
+              "estimate": "4.310000",
+              "actual": "4.380000"
+            },
+            "report": {
+              "date": "2025-10-30",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "MA",
+            "year": 2025,
+            "quarter": 4,
+            "eps": {
+              "estimate": "4.220000",
+              "actual": "4.760000"
+            },
+            "report": {
+              "date": "2026-01-29",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "MA",
+            "year": 2026,
+            "quarter": 1,
+            "eps": {
+              "estimate": "4.410000",
+              "actual": "4.600000"
+            },
+            "report": {
+              "date": "2026-04-30",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "MA",
+            "year": 2026,
+            "quarter": 2,
+            "eps": {
+              "estimate": "4.760000",
+              "actual": "5.040000"
+            },
+            "report": {
+              "date": "2026-07-30",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "MA",
+            "year": 2026,
+            "quarter": 3,
+            "eps": {
+              "estimate": "5.110000",
+              "actual": null
+            },
+            "report": {
+              "date": "2026-10-29",
+              "timing": "am",
+              "verified": false
+            }
+          }
+        ]
+      },
+      "guide": "Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \"upcoming\" from \"reported\" by eps.actual: null means the company has not yet reported. For \"will earnings happen by date X\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \"no data for X\" rather than treating it as a tool failure. This tool does NOT return an \"expected move\" \u2014 pair with options data for implied-volatility-based moves."
+    }
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "BMY"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"BMY\",\"year\":2024,\"quarter\":4,\"eps\":{\"estimate\":\"1.470000\",\"actual\":\"1.670000\"},\"report\":{\"date\":\"2025-02-06\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"BMY\",\"year\":2025,\"quarter\":1,\"eps\":{\"estimate\":\"1.490000\",\"actual\":\"1.800000\"},\"report\":{\"date\":\"2025-04-24\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"BMY\",\"year\":2025,\"quarter\":2,\"eps\":{\"estimate\":\"1.150000\",\"actual\":\"1.460000\"},\"report\":{\"date\":\"2025-07-31\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"BMY\",\"year\":2025,\"quarter\":3,\"eps\":{\"estimate\":\"1.510000\",\"actual\":\"1.630000\"},\"report\":{\"date\":\"2025-10-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"BMY\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"1.190000\",\"actual\":\"1.260000\"},\"report\":{\"date\":\"2026-02-05\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"BMY\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"1.430000\",\"actual\":\"1.580000\"},\"report\":{\"date\":\"2026-04-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"BMY\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"1.610000\",\"actual\":\"2.040000\"},\"report\":{\"date\":\"2026-07-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"BMY\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"1.600000\",\"actual\":null},\"report\":{\"date\":\"2026-10-29\",\"timing\":\"am\",\"verified\":false}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "results": [
+          {
+            "symbol": "BMY",
+            "year": 2024,
+            "quarter": 4,
+            "eps": {
+              "estimate": "1.470000",
+              "actual": "1.670000"
+            },
+            "report": {
+              "date": "2025-02-06",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "BMY",
+            "year": 2025,
+            "quarter": 1,
+            "eps": {
+              "estimate": "1.490000",
+              "actual": "1.800000"
+            },
+            "report": {
+              "date": "2025-04-24",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "BMY",
+            "year": 2025,
+            "quarter": 2,
+            "eps": {
+              "estimate": "1.150000",
+              "actual": "1.460000"
+            },
+            "report": {
+              "date": "2025-07-31",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "BMY",
+            "year": 2025,
+            "quarter": 3,
+            "eps": {
+              "estimate": "1.510000",
+              "actual": "1.630000"
+            },
+            "report": {
+              "date": "2025-10-30",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "BMY",
+            "year": 2025,
+            "quarter": 4,
+            "eps": {
+              "estimate": "1.190000",
+              "actual": "1.260000"
+            },
+            "report": {
+              "date": "2026-02-05",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "BMY",
+            "year": 2026,
+            "quarter": 1,
+            "eps": {
+              "estimate": "1.430000",
+              "actual": "1.580000"
+            },
+            "report": {
+              "date": "2026-04-30",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "BMY",
+            "year": 2026,
+            "quarter": 2,
+            "eps": {
+              "estimate": "1.610000",
+              "actual": "2.040000"
+            },
+            "report": {
+              "date": "2026-07-30",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "BMY",
+            "year": 2026,
+            "quarter": 3,
+            "eps": {
+              "estimate": "1.600000",
+              "actual": null
+            },
+            "report": {
+              "date": "2026-10-29",
+              "timing": "am",
+              "verified": false
+            }
+          }
+        ]
+      },
+      "guide": "Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \"upcoming\" from \"reported\" by eps.actual: null means the company has not yet reported. For \"will earnings happen by date X\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \"no data for X\" rather than treating it as a tool failure. This tool does NOT return an \"expected move\" \u2014 pair with options data for implied-volatility-based moves."
+    }
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "PWR"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"PWR\",\"year\":2024,\"quarter\":4,\"eps\":{\"estimate\":\"2.620000\",\"actual\":\"2.940000\"},\"report\":{\"date\":\"2025-02-20\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"PWR\",\"year\":2025,\"quarter\":1,\"eps\":{\"estimate\":\"1.670000\",\"actual\":\"1.780000\"},\"report\":{\"date\":\"2025-05-01\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"PWR\",\"year\":2025,\"quarter\":2,\"eps\":{\"estimate\":\"2.360000\",\"actual\":\"2.480000\"},\"report\":{\"date\":\"2025-07-31\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"PWR\",\"year\":2025,\"quarter\":3,\"eps\":{\"estimate\":\"3.180000\",\"actual\":\"3.330000\"},\"report\":{\"date\":\"2025-10-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"PWR\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"2.920000\",\"actual\":\"3.160000\"},\"report\":{\"date\":\"2026-02-19\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"PWR\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"1.980000\",\"actual\":\"2.680000\"},\"report\":{\"date\":\"2026-04-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"PWR\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"3.250000\",\"actual\":\"4.240000\"},\"report\":{\"date\":\"2026-07-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"PWR\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"4.160000\",\"actual\":null},\"report\":{\"date\":\"2026-10-29\",\"timing\":\"am\",\"verified\":false}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "results": [
+          {
+            "symbol": "PWR",
+            "year": 2024,
+            "quarter": 4,
+            "eps": {
+              "estimate": "2.620000",
+              "actual": "2.940000"
+            },
+            "report": {
+              "date": "2025-02-20",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "PWR",
+            "year": 2025,
+            "quarter": 1,
+            "eps": {
+              "estimate": "1.670000",
+              "actual": "1.780000"
+            },
+            "report": {
+              "date": "2025-05-01",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "PWR",
+            "year": 2025,
+            "quarter": 2,
+            "eps": {
+              "estimate": "2.360000",
+              "actual": "2.480000"
+            },
+            "report": {
+              "date": "2025-07-31",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "PWR",
+            "year": 2025,
+            "quarter": 3,
+            "eps": {
+              "estimate": "3.180000",
+              "actual": "3.330000"
+            },
+            "report": {
+              "date": "2025-10-30",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "PWR",
+            "year": 2025,
+            "quarter": 4,
+            "eps": {
+              "estimate": "2.920000",
+              "actual": "3.160000"
+            },
+            "report": {
+              "date": "2026-02-19",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "PWR",
+            "year": 2026,
+            "quarter": 1,
+            "eps": {
+              "estimate": "1.980000",
+              "actual": "2.680000"
+            },
+            "report": {
+              "date": "2026-04-30",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "PWR",
+            "year": 2026,
+            "quarter": 2,
+            "eps": {
+              "estimate": "3.250000",
+              "actual": "4.240000"
+            },
+            "report": {
+              "date": "2026-07-30",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "PWR",
+            "year": 2026,
+            "quarter": 3,
+            "eps": {
+              "estimate": "4.160000",
+              "actual": null
+            },
+            "report": {
+              "date": "2026-10-29",
+              "timing": "am",
+              "verified": false
+            }
+          }
+        ]
+      },
+      "guide": "Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \"upcoming\" from \"reported\" by eps.actual: null means the company has not yet reported. For \"will earnings happen by date X\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \"no data for X\" rather than treating it as a tool failure. This tool does NOT return an \"expected move\" \u2014 pair with options data for implied-volatility-based moves."
+    }
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "EME"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"EME\",\"year\":2024,\"quarter\":4,\"eps\":{\"estimate\":\"5.760000\",\"actual\":\"6.320000\"},\"report\":{\"date\":\"2025-02-26\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"EME\",\"year\":2025,\"quarter\":1,\"eps\":{\"estimate\":\"4.620000\",\"actual\":\"5.260000\"},\"report\":{\"date\":\"2025-04-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"EME\",\"year\":2025,\"quarter\":2,\"eps\":{\"estimate\":\"5.710000\",\"actual\":\"6.720000\"},\"report\":{\"date\":\"2025-07-31\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"EME\",\"year\":2025,\"quarter\":3,\"eps\":{\"estimate\":\"6.580000\",\"actual\":\"6.570000\"},\"report\":{\"date\":\"2025-10-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"EME\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"6.680000\",\"actual\":\"7.190000\"},\"report\":{\"date\":\"2026-02-26\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"EME\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"5.890000\",\"actual\":\"6.840000\"},\"report\":{\"date\":\"2026-04-29\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"EME\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"7.260000\",\"actual\":\"9.060000\"},\"report\":{\"date\":\"2026-07-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"EME\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"7.490000\",\"actual\":null},\"report\":{\"date\":\"2026-10-29\",\"timing\":\"am\",\"verified\":false}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "results": [
+          {
+            "symbol": "EME",
+            "year": 2024,
+            "quarter": 4,
+            "eps": {
+              "estimate": "5.760000",
+              "actual": "6.320000"
+            },
+            "report": {
+              "date": "2025-02-26",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "EME",
+            "year": 2025,
+            "quarter": 1,
+            "eps": {
+              "estimate": "4.620000",
+              "actual": "5.260000"
+            },
+            "report": {
+              "date": "2025-04-30",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "EME",
+            "year": 2025,
+            "quarter": 2,
+            "eps": {
+              "estimate": "5.710000",
+              "actual": "6.720000"
+            },
+            "report": {
+              "date": "2025-07-31",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "EME",
+            "year": 2025,
+            "quarter": 3,
+            "eps": {
+              "estimate": "6.580000",
+              "actual": "6.570000"
+            },
+            "report": {
+              "date": "2025-10-30",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "EME",
+            "year": 2025,
+            "quarter": 4,
+            "eps": {
+              "estimate": "6.680000",
+              "actual": "7.190000"
+            },
+            "report": {
+              "date": "2026-02-26",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "EME",
+            "year": 2026,
+            "quarter": 1,
+            "eps": {
+              "estimate": "5.890000",
+              "actual": "6.840000"
+            },
+            "report": {
+              "date": "2026-04-29",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "EME",
+            "year": 2026,
+            "quarter": 2,
+            "eps": {
+              "estimate": "7.260000",
+              "actual": "9.060000"
+            },
+            "report": {
+              "date": "2026-07-30",
+              "timing": "am",
+              "verified": true
+            }
+          },
+          {
+            "symbol": "EME",
+            "year": 2026,
+            "quarter": 3,
+            "eps": {
+              "estimate": "7.490000",
+              "actual": null
+            },
+            "report": {
+              "date": "2026-10-29",
+              "timing": "am",
+              "verified": false
+            }
+          }
+        ]
+      },
+      "guide": "Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \"upcoming\" from \"reported\" by eps.actual: null means the company has not yet reported. For \"will earnings happen by date X\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \"no data for X\" rather than treating it as a tool failure. This tool does NOT return an \"expected move\" \u2014 pair with options data for implied-volatility-based moves."
+    }
+  }
+]

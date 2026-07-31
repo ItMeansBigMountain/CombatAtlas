@@ -1,0 +1,104 @@
+Cronjob Response: Agentic Robinhood Trade Account Monitor — Market Open
+(job_id: 549658fc5a9e)
+-------------
+
+# OPEN Agentic Swing Scan — July 30, 2026
+
+## Decision
+
+**Held UL and opened two policy-compliant fractional equity positions:**
+
+- **MA:** Bought **$58.88**, filled **0.101447 shares at $580.3999**
+- **SHEL:** Bought **$58.87**, filled **0.651145 shares at $90.4099**
+
+Both orders were reviewed before placement and independently verified as filled. No options, shorts, or other accounts were used.
+
+## Live Account State
+
+- Account: **433711041 / Agentic ending 1041**
+- Post-trade value: **$180.42**
+- Equity exposure: **$150.98**
+- Cash/buying power: **$29.44**
+- Pending order notional: **$0**
+- Open positions: **UL, MA, SHEL**
+- Aggregate planned risk: **approximately $4.57**, within the policy’s ~$6 soft target
+- Kill switches: **Clear**
+
+Before trading, all open-order states were checked and empty: `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled`.
+
+## Market Regime
+
+The opening tape was a strong rebound but not yet a fully repaired uptrend:
+
+- **SPY:** approximately +0.8%
+- **QQQ:** approximately +2.0%
+- **IWM:** approximately +0.6%
+
+Technology and semiconductors led following Microsoft’s earnings beat and 43% Azure growth. Nevertheless, SPY, QQQ, and IWM remained below important completed daily moving averages after the prior selloff. The regime was classified as **high-volatility rebound with selective risk-on leadership**.
+
+Core PCE reportedly eased to 3.3% year over year but remains above the Fed target. Higher Treasury yields and upcoming AAPL/AMZN earnings add event risk.
+
+## Position Plans
+
+### MA — New Position
+
+- Fill: **0.101447 shares at $580.3999**
+- Cost: **$58.88**
+- Stop/reassessment: **$566**
+- Targets: **$603 / $615**
+- Planned maximum loss: **~$1.46**
+- Reward/risk: **1.57:1 to Target 1; 2.40:1 to Target 2**
+- Thesis: Verified Q2 EPS of **$5.04 versus $4.76 expected**, accompanied by a breakout above the prior 20-day high and strong completed trend.
+- Invalidation: Failed earnings breakout below $566 or deterioration in payment-volume/guidance fundamentals.
+
+Order ID: `6a6b5412-7705-44a0-ae9c-221c91a2598b`
+
+Compliance quote: **Bid $579.01 × 160 Q · Ask $580.40 × 80 N · Last $579.77 × 41 D. Updated 9:39 AM ET.**
+
+### SHEL — New Position
+
+- Fill: **0.651145 shares at $90.4099**
+- Cost: **$58.87**
+- Stop/reassessment: **$87.80**
+- Targets: **$94.90 / $98.00**
+- Planned maximum loss: **~$1.70**
+- Reward/risk: **1.72:1 to Target 1; 2.91:1 to Target 2**
+- Thesis: Q2 adjusted earnings of **$9.8 billion**, operating cash flow of **$21.4 billion**, another **$3 billion buyback**, declining net debt, and a technical breakout above the prior 20-day high.
+- Invalidation: Loss of $87.80, material oil/energy reversal, or deterioration in the cash-flow and shareholder-return thesis.
+
+Order ID: `6a6b5412-fce8-4e3e-b65a-77778744c7c7`
+
+Compliance quote: **Bid $90.40 × 200 Q · Ask $90.41 × 300 Q · Last $90.40 × 200 D. Updated 9:39 AM ET.**
+
+### UL — Hold
+
+- Position: **0.508952 shares at $66.47**
+- Live price after execution: approximately **$65.58**
+- Stop/reassessment: **$63.70**
+- Targets: **$70.75 / $74.90**
+- Planned risk: **~$1.41**
+- Thesis remains supported by upgraded guidance, volume-led growth, and defensive exposure. No averaging down.
+
+## Allocation
+
+- Pre-trade liquid buying power: **$147.19**
+- 80% deployment target: **$117.752**
+- Actually deployed: **$117.75**
+- Required 20% reserve: **$29.438**
+- Final cash reserve: **$29.44**
+
+The liquid-balance deployment target was met to the cent while retaining the required buffer.
+
+## Ranked Candidates
+
+1. **MA — 8.4/10:** Bought; earnings-backed breakout and strong relative strength.
+2. **SHEL — 8.2/10:** Bought; strong cash flow, buyback, and technical breakout.
+3. **MSFT — 7.8/10:** No trade; excellent results, but the roughly 15% opening gap was too extended.
+4. **BMY — 7.3/10:** Wait; strong EPS beat but insufficient breakout confirmation.
+5. **PWR/EME — 6.8/10:** Avoid for now; major EPS beats did not repair damaged trends.
+
+Stops are scan-managed reassessment levels rather than broker-native protective orders. The full decision, previews, executions, fills, risk math, and recovered tool failures were journaled at:
+
+`projects/trading-journal/2026-07-30/OPEN-agentic-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Trade Account Monitor — Market Open").

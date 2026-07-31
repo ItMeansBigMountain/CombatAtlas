@@ -1,0 +1,81 @@
+Cronjob Response: Agentic Robinhood Trade Account Monitor — Midday
+(job_id: d7f2c79b64db)
+-------------
+
+# Midday Decision — HOLD / No Trade
+
+**Account:** Robinhood Agentic ending **1041** only  
+**Scan:** July 30, 2026, approximately 12:00 ET
+
+## Current State
+
+- **Portfolio value:** $179.13
+- **Equities:** $149.69 — **83.56%**
+- **Cash/buying power:** $29.44 — **16.44%**
+- **Pending-order commitment:** $0
+- **Open-ish orders:** None across `new`, `queued`, `confirmed`, `unconfirmed`, or `partially_filled`
+- **Kill switches:** Clear
+  - Account value exceeds $10
+  - Broker and risk state were calculable
+  - Intraday decline from the documented morning value was approximately 0.72%, below the 5% pause threshold
+
+Morning deployment was verified: **$117.75, exactly 80.00% of the then-available $147.19**, with **$29.44, exactly 20.00%, retained as reserve**. The remaining buying power is therefore the policy reserve, not deployable cash.
+
+## Holdings
+
+| Holding | Midday price | Cost | Unrealized P/L | Decision | Invalidation | Targets |
+|---|---:|---:|---:|---|---:|---:|
+| **UL** | $65.365 | $66.47 | -$0.56 / -1.66% | Hold | $63.70 | $70.75 / $74.90 |
+| **MA** | $572.95 | $580.40 | -$0.76 / -1.28% | Hold | $566.00 | $603 / $615 |
+| **SHEL** | $89.53 | $90.41 | -$0.57 / -0.97% | Hold | $87.80 | $94.90 / $98.00 |
+
+### UL
+Daily structure remains constructive: prior close $66 versus SMA10 $62.51, SMA20 $62.06, and SMA50 $59.56, with +9.78% 20-day strength and elevated volume. The defensive thesis remains intact, and price is still above $63.70 invalidation.
+
+### MA
+The opening earnings breakout pulled back but did not invalidate. Price held above the $566 risk level and near the prior $569.99 breakout area. Daily structure remains above SMA10/20/50, while verified Q2 EPS was **$5.04 versus $4.76 expected**.
+
+### SHEL
+Price retested the prior $89.41 breakout vicinity and remained above $87.80 invalidation. Daily structure remains above SMA10/20/50 with +13.93% 20-day strength. Verified Q2 EPS was **$3.52 versus $2.83 expected**. Midday energy-sector softness argues against adding, not exiting.
+
+## Market Regime
+
+- SPY: **+1.11%**
+- QQQ: **+2.81%**
+- IWM: **+0.75%**
+- XLK: **+4.81%**
+- SMH: **+6.39%**
+- XLE: **-0.43%**
+
+Technology and semiconductors led a strong intraday rebound, but completed daily structure remains damaged: SPY, QQQ, XLK, and SMH are still below important moving averages. The regime remains a **high-volatility countertrend rebound**, not a fully repaired broad uptrend.
+
+## Ranked Opportunities
+
+1. **MA — 8.1/10:** Best blend of intact trend, earnings support, liquidity, and clear invalidation. Hold existing position.
+2. **SHEL — 7.9/10:** Strong relative strength, approximately 13.1× P/E, earnings beat, and clean risk level. Hold; no add during sector weakness.
+3. **UL — 7.3/10:** Constructive defensive trend and useful diversification. Hold.
+4. **MSFT — 7.0/10:** Strong catalyst and technology leadership, but the rebound is too extended to chase.
+5. **PWR/EME — 6.2/10:** Large verified EPS beats, but both remain deeply below declining SMA10/20/50 structures.
+
+TT, AMD, NVDA, GEV, CAT, AMG, and AMZN did not offer sufficiently superior risk-adjusted entries. Several have damaged daily trends, gap-chase risk, insufficient liquidity, or near-term event risk.
+
+## Action and Risk
+
+**No orders placed or reviewed at midday.**
+
+- No holding breached its written invalidation.
+- Stops were not widened.
+- No materially superior setup justified rotation or churn.
+- Spending the remaining $29.44 would violate the required 20% reserve.
+- Aggregate planned risk remains approximately **$4.57**, within the roughly $6 policy target.
+
+Today's MA and SHEL purchases were independently confirmed filled:
+
+- **MA:** 0.101447 shares at $580.3999
+- **SHEL:** 0.651145 shares at $90.4099
+
+Full scan and tool record journaled at:
+
+`projects/trading-journal/2026-07-30/MIDDAY-agentic-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Trade Account Monitor — Midday").

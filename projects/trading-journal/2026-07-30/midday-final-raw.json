@@ -1,0 +1,510 @@
+[
+  {
+    "tool": "get_portfolio",
+    "args": {
+      "account_number": "433711041"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"total_value\":\"179.12871798\",\"equity_value\":\"149.68871798\",\"options_value\":\"0\",\"futures_value\":\"0\",\"event_contracts_value\":\"0\",\"crypto_value\":\"0\",\"cash\":\"29.44\",\"pending_deposits\":\"0\",\"mutual_funds_value\":\"0\",\"fixed_income_value\":\"0\",\"currency\":\"USD\",\"buying_power\":{\"buying_power\":\"29.4400\",\"unleveraged_buying_power\":\"29.4400\",\"display_currency\":\"USD\"}},\"guide\":\"Show total_value as \\\"account value\\\" or \\\"portfolio value\\\". The breakdown fields show how value is distributed across asset types. Zero-value fields mean the user has no holdings in that asset class \u2014 omit them from display unless the user explicitly asks. For \\\"how much cash do I have?\\\" use the cash field. buying_power is the real-time authoritative spendable figure from the broker; quote buying_power.buying_power as the primary affordability answer with buying_power.display_currency. For \\\"how much can I spend on crypto?\\\" quote crypto_buying_power.buying_power instead \u2014 crypto is cash-only (not marginable), so the top-level buying_power may overstate it; crypto_buying_power is omitted when unavailable. crypto_value reflects the user's crypto holdings value.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "total_value": "179.12871798",
+        "equity_value": "149.68871798",
+        "options_value": "0",
+        "futures_value": "0",
+        "event_contracts_value": "0",
+        "crypto_value": "0",
+        "cash": "29.44",
+        "pending_deposits": "0",
+        "mutual_funds_value": "0",
+        "fixed_income_value": "0",
+        "currency": "USD",
+        "buying_power": {
+          "buying_power": "29.4400",
+          "unleveraged_buying_power": "29.4400",
+          "display_currency": "USD"
+        }
+      },
+      "guide": "Show total_value as \"account value\" or \"portfolio value\". The breakdown fields show how value is distributed across asset types. Zero-value fields mean the user has no holdings in that asset class \u2014 omit them from display unless the user explicitly asks. For \"how much cash do I have?\" use the cash field. buying_power is the real-time authoritative spendable figure from the broker; quote buying_power.buying_power as the primary affordability answer with buying_power.display_currency. For \"how much can I spend on crypto?\" quote crypto_buying_power.buying_power instead \u2014 crypto is cash-only (not marginable), so the top-level buying_power may overstate it; crypto_buying_power is omitted when unavailable. crypto_value reflects the user's crypto holdings value."
+    }
+  },
+  {
+    "tool": "get_equity_positions",
+    "args": {
+      "account_number": "433711041"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"positions\":[{\"symbol\":\"UL\",\"quantity\":\"0.508952\",\"intraday_quantity\":\"0.000000\",\"average_buy_price\":\"66.470000\",\"shares_available_for_sells\":\"0.508952\",\"shares_held_for_sells\":\"0.000000\",\"shares_held_for_stock_grants\":\"0.000000\",\"shares_held_for_options_events\":\"0.000000\",\"shares_held_for_asset_transfer\":\"0.000000\",\"shares_pending_from_options_events\":\"0.000000\",\"type\":\"long\"},{\"symbol\":\"MA\",\"quantity\":\"0.101447\",\"intraday_quantity\":\"0.101447\",\"average_buy_price\":\"580.400000\",\"shares_available_for_sells\":\"0.101447\",\"shares_held_for_sells\":\"0.000000\",\"shares_held_for_stock_grants\":\"0.000000\",\"shares_held_for_options_events\":\"0.000000\",\"shares_held_for_asset_transfer\":\"0.000000\",\"shares_pending_from_options_events\":\"0.000000\",\"type\":\"long\"},{\"symbol\":\"SHEL\",\"quantity\":\"0.651145\",\"intraday_quantity\":\"0.651145\",\"average_buy_price\":\"90.410000\",\"shares_available_for_sells\":\"0.651145\",\"shares_held_for_sells\":\"0.000000\",\"shares_held_for_stock_grants\":\"0.000000\",\"shares_held_for_options_events\":\"0.000000\",\"shares_held_for_asset_transfer\":\"0.000000\",\"shares_pending_from_options_events\":\"0.000000\",\"type\":\"long\"}]},\"guide\":\"Sellable shares: use shares_available_for_sells, not quantity. Yesterday's quantity = quantity - intraday_quantity. average_buy_price is the average cost per share shown in the Robinhood app (it already reflects partial sells) \u2014 use it as the user's average cost; it may be omitted for positions still reconciling. No market price here \u2014 for current value or PnL, call get_equity_quotes and multiply by quantity. Present symbol, quantity, average_buy_price, and type when not 'long'; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "positions": [
+          {
+            "symbol": "UL",
+            "quantity": "0.508952",
+            "intraday_quantity": "0.000000",
+            "average_buy_price": "66.470000",
+            "shares_available_for_sells": "0.508952",
+            "shares_held_for_sells": "0.000000",
+            "shares_held_for_stock_grants": "0.000000",
+            "shares_held_for_options_events": "0.000000",
+            "shares_held_for_asset_transfer": "0.000000",
+            "shares_pending_from_options_events": "0.000000",
+            "type": "long"
+          },
+          {
+            "symbol": "MA",
+            "quantity": "0.101447",
+            "intraday_quantity": "0.101447",
+            "average_buy_price": "580.400000",
+            "shares_available_for_sells": "0.101447",
+            "shares_held_for_sells": "0.000000",
+            "shares_held_for_stock_grants": "0.000000",
+            "shares_held_for_options_events": "0.000000",
+            "shares_held_for_asset_transfer": "0.000000",
+            "shares_pending_from_options_events": "0.000000",
+            "type": "long"
+          },
+          {
+            "symbol": "SHEL",
+            "quantity": "0.651145",
+            "intraday_quantity": "0.651145",
+            "average_buy_price": "90.410000",
+            "shares_available_for_sells": "0.651145",
+            "shares_held_for_sells": "0.000000",
+            "shares_held_for_stock_grants": "0.000000",
+            "shares_held_for_options_events": "0.000000",
+            "shares_held_for_asset_transfer": "0.000000",
+            "shares_pending_from_options_events": "0.000000",
+            "type": "long"
+          }
+        ]
+      },
+      "guide": "Sellable shares: use shares_available_for_sells, not quantity. Yesterday's quantity = quantity - intraday_quantity. average_buy_price is the average cost per share shown in the Robinhood app (it already reflects partial sells) \u2014 use it as the user's average cost; it may be omitted for positions still reconciling. No market price here \u2014 for current value or PnL, call get_equity_quotes and multiply by quantity. Present symbol, quantity, average_buy_price, and type when not 'long'; suppress other fields unless asked."
+    }
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "created_at_gte": "2026-07-30"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[{\"id\":\"6a6b5412-fce8-4e3e-b65a-77778744c7c7\",\"instrument_id\":\"900c67cd-c655-45af-a041-011074f6df73\",\"symbol\":\"SHEL\",\"side\":\"buy\",\"type\":\"market\",\"state\":\"filled\",\"quantity\":\"0.651145\",\"cumulative_quantity\":\"0.651145\",\"price\":\"90.400000\",\"stop_price\":null,\"average_price\":\"90.409900\",\"fees\":\"0.000000\",\"dollar_based_amount\":{\"amount\":\"58.870000\",\"currency_code\":\"USD\"},\"time_in_force\":\"gfd\",\"market_hours\":\"regular_hours\",\"trigger\":\"immediate\",\"placed_agent\":\"agentic\",\"created_at\":\"2026-07-30T13:39:30.86704Z\",\"last_transaction_at\":\"2026-07-30T13:39:31.021Z\",\"executions\":[{\"id\":\"6a6b5413-f666-47a8-b4c0-b6738f254075\",\"price\":\"90.409900\",\"quantity\":\"0.651145\",\"timestamp\":\"2026-07-30T13:39:31.021Z\",\"fees\":\"0.000000\"}]},{\"id\":\"6a6b5412-7705-44a0-ae9c-221c91a2598b\",\"instrument_id\":\"8373dfad-6a18-481e-a6da-b6d754fa7937\",\"symbol\":\"MA\",\"side\":\"buy\",\"type\":\"market\",\"state\":\"filled\",\"quantity\":\"0.101447\",\"cumulative_quantity\":\"0.101447\",\"price\":\"580.110000\",\"stop_price\":null,\"average_price\":\"580.399900\",\"fees\":\"0.000000\",\"dollar_based_amount\":{\"amount\":\"58.880000\",\"currency_code\":\"USD\"},\"time_in_force\":\"gfd\",\"market_hours\":\"regular_hours\",\"trigger\":\"immediate\",\"placed_agent\":\"agentic\",\"created_at\":\"2026-07-30T13:39:30.367043Z\",\"last_transaction_at\":\"2026-07-30T13:39:30.527Z\",\"executions\":[{\"id\":\"6a6b5412-d6a1-4dad-a103-ecbbc4752cdf\",\"price\":\"580.399900\",\"quantity\":\"0.101447\",\"timestamp\":\"2026-07-30T13:39:30.527Z\",\"fees\":\"0.000000\"}]}]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "orders": [
+          {
+            "id": "6a6b5412-fce8-4e3e-b65a-77778744c7c7",
+            "instrument_id": "900c67cd-c655-45af-a041-011074f6df73",
+            "symbol": "SHEL",
+            "side": "buy",
+            "type": "market",
+            "state": "filled",
+            "quantity": "0.651145",
+            "cumulative_quantity": "0.651145",
+            "price": "90.400000",
+            "stop_price": null,
+            "average_price": "90.409900",
+            "fees": "0.000000",
+            "dollar_based_amount": {
+              "amount": "58.870000",
+              "currency_code": "USD"
+            },
+            "time_in_force": "gfd",
+            "market_hours": "regular_hours",
+            "trigger": "immediate",
+            "placed_agent": "agentic",
+            "created_at": "2026-07-30T13:39:30.86704Z",
+            "last_transaction_at": "2026-07-30T13:39:31.021Z",
+            "executions": [
+              {
+                "id": "6a6b5413-f666-47a8-b4c0-b6738f254075",
+                "price": "90.409900",
+                "quantity": "0.651145",
+                "timestamp": "2026-07-30T13:39:31.021Z",
+                "fees": "0.000000"
+              }
+            ]
+          },
+          {
+            "id": "6a6b5412-7705-44a0-ae9c-221c91a2598b",
+            "instrument_id": "8373dfad-6a18-481e-a6da-b6d754fa7937",
+            "symbol": "MA",
+            "side": "buy",
+            "type": "market",
+            "state": "filled",
+            "quantity": "0.101447",
+            "cumulative_quantity": "0.101447",
+            "price": "580.110000",
+            "stop_price": null,
+            "average_price": "580.399900",
+            "fees": "0.000000",
+            "dollar_based_amount": {
+              "amount": "58.880000",
+              "currency_code": "USD"
+            },
+            "time_in_force": "gfd",
+            "market_hours": "regular_hours",
+            "trigger": "immediate",
+            "placed_agent": "agentic",
+            "created_at": "2026-07-30T13:39:30.367043Z",
+            "last_transaction_at": "2026-07-30T13:39:30.527Z",
+            "executions": [
+              {
+                "id": "6a6b5412-d6a1-4dad-a103-ecbbc4752cdf",
+                "price": "580.399900",
+                "quantity": "0.101447",
+                "timestamp": "2026-07-30T13:39:30.527Z",
+                "fees": "0.000000"
+              }
+            ]
+          }
+        ]
+      },
+      "guide": "For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked."
+    }
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "new"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "orders": []
+      },
+      "guide": "For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked."
+    }
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "queued"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "orders": []
+      },
+      "guide": "For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked."
+    }
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "confirmed"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "orders": []
+      },
+      "guide": "For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked."
+    }
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "unconfirmed"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "orders": []
+      },
+      "guide": "For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked."
+    }
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "partially_filled"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "orders": []
+      },
+      "guide": "For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked."
+    }
+  },
+  {
+    "tool": "get_equity_quotes",
+    "args": {
+      "symbols": [
+        "UL",
+        "MA",
+        "SHEL",
+        "SPY",
+        "QQQ",
+        "IWM",
+        "XLE",
+        "XLK",
+        "SMH"
+      ]
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"quote\":{\"symbol\":\"UL\",\"last_trade_price\":\"65.365000\",\"venue_last_trade_time\":\"2026-07-30T16:02:50.57841617Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"66.000000\",\"previous_close\":\"66.000000\",\"previous_close_date\":\"2026-07-29\",\"bid_price\":\"65.360000\",\"venue_bid_time\":\"2026-07-30T16:02:52.357217573Z\",\"ask_price\":\"65.370000\",\"venue_ask_time\":\"2026-07-30T16:02:52.357217573Z\",\"has_traded\":true,\"state\":\"active\"},\"close\":{\"symbol\":\"UL\",\"date\":\"2026-07-29\",\"price\":\"66\",\"interpolated\":false,\"source\":\"sip-list-exchange-close\"}},{\"quote\":{\"symbol\":\"MA\",\"last_trade_price\":\"572.950000\",\"venue_last_trade_time\":\"2026-07-30T16:02:44.029315384Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"563.320000\",\"previous_close\":\"563.320000\",\"previous_close_date\":\"2026-07-29\",\"bid_price\":\"572.760000\",\"venue_bid_time\":\"2026-07-30T16:02:51.437614959Z\",\"ask_price\":\"573.040000\",\"venue_ask_time\":\"2026-07-30T16:02:51.437614959Z\",\"has_traded\":true,\"state\":\"active\"},\"close\":{\"symbol\":\"MA\",\"date\":\"2026-07-29\",\"price\":\"563.32\",\"interpolated\":false,\"source\":\"sip-list-exchange-close\"}},{\"quote\":{\"symbol\":\"SHEL\",\"last_trade_price\":\"89.530000\",\"venue_last_trade_time\":\"2026-07-30T16:02:49.47889974Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"88.340000\",\"previous_close\":\"88.340000\",\"previous_close_date\":\"2026-07-29\",\"bid_price\":\"89.520000\",\"venue_bid_time\":\"2026-07-30T16:02:51.412456195Z\",\"ask_price\":\"89.540000\",\"venue_ask_time\":\"2026-07-30T16:02:51.412456195Z\",\"has_traded\":true,\"state\":\"active\"},\"close\":{\"symbol\":\"SHEL\",\"date\":\"2026-07-29\",\"price\":\"88.34\",\"interpolated\":false,\"source\":\"sip-list-exchange-close\"}},{\"quote\":{\"symbol\":\"SPY\",\"last_trade_price\":\"737.560000\",\"venue_last_trade_time\":\"2026-07-30T16:02:51.10751622Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"729.460000\",\"previous_close\":\"729.460000\",\"previous_close_date\":\"2026-07-29\",\"bid_price\":\"737.580000\",\"venue_bid_time\":\"2026-07-30T16:02:51.776742311Z\",\"ask_price\":\"737.600000\",\"venue_ask_time\":\"2026-07-30T16:02:51.776742311Z\",\"has_traded\":true,\"state\":\"active\"},\"close\":{\"symbol\":\"SPY\",\"date\":\"2026-07-29\",\"price\":\"729.46\",\"interpolated\":false,\"source\":\"sip-list-exchange-close\"}},{\"quote\":{\"symbol\":\"QQQ\",\"last_trade_price\":\"680.290000\",\"venue_last_trade_time\":\"2026-07-30T16:02:51.551665971Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"661.730000\",\"previous_close\":\"661.730000\",\"previous_close_date\":\"2026-07-29\",\"bid_price\":\"680.260000\",\"venue_bid_time\":\"2026-07-30T16:02:51.370257929Z\",\"ask_price\":\"680.290000\",\"venue_ask_time\":\"2026-07-30T16:02:51.370257929Z\",\"has_traded\":true,\"state\":\"active\"},\"close\":{\"symbol\":\"QQQ\",\"date\":\"2026-07-29\",\"price\":\"661.73\",\"interpolated\":false,\"source\":\"sip-list-exchange-close\"}},{\"quote\":{\"symbol\":\"IWM\",\"last_trade_price\":\"290.730000\",\"venue_last_trade_time\":\"2026-07-30T16:02:52.15396426Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"288.570000\",\"previous_close\":\"288.570000\",\"previous_close_date\":\"2026-07-29\",\"bid_price\":\"290.730000\",\"venue_bid_time\":\"2026-07-30T16:02:52.275174822Z\",\"ask_price\":\"290.740000\",\"venue_ask_time\":\"2026-07-30T16:02:52.275174822Z\",\"has_traded\":true,\"state\":\"active\"},\"close\":{\"symbol\":\"IWM\",\"date\":\"2026-07-29\",\"price\":\"288.57\",\"interpolated\":false,\"source\":\"sip-list-exchange-close\"}},{\"quote\":{\"symbol\":\"XLE\",\"last_trade_price\":\"58.400000\",\"venue_last_trade_time\":\"2026-07-30T16:02:48.184514281Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"58.650000\",\"previous_close\":\"58.650000\",\"previous_close_date\":\"2026-07-29\",\"bid_price\":\"58.390000\",\"venue_bid_time\":\"2026-07-30T16:02:49.755739445Z\",\"ask_price\":\"58.400000\",\"venue_ask_time\":\"2026-07-30T16:02:49.755739445Z\",\"has_traded\":true,\"state\":\"active\"},\"close\":{\"symbol\":\"XLE\",\"date\":\"2026-07-29\",\"price\":\"58.65\",\"interpolated\":false,\"source\":\"sip-list-exchange-close\"}},{\"quote\":{\"symbol\":\"XLK\",\"last_trade_price\":\"174.590000\",\"venue_last_trade_time\":\"2026-07-30T16:02:52.259410801Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"166.570000\",\"previous_close\":\"166.570000\",\"previous_close_date\":\"2026-07-29\",\"bid_price\":\"174.580000\",\"venue_bid_time\":\"2026-07-30T16:02:52.392929643Z\",\"ask_price\":\"174.600000\",\"venue_ask_time\":\"2026-07-30T16:02:52.392929643Z\",\"has_traded\":true,\"state\":\"active\"},\"close\":{\"symbol\":\"XLK\",\"date\":\"2026-07-29\",\"price\":\"166.57\",\"interpolated\":false,\"source\":\"sip-list-exchange-close\"}},{\"quote\":{\"symbol\":\"SMH\",\"last_trade_price\":\"536.460000\",\"venue_last_trade_time\":\"2026-07-30T16:02:51.790833755Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"504.220000\",\"previous_close\":\"504.220000\",\"previous_close_date\":\"2026-07-29\",\"bid_price\":\"536.230000\",\"venue_bid_time\":\"2026-07-30T16:02:52.183420973Z\",\"ask_price\":\"536.510000\",\"venue_ask_time\":\"2026-07-30T16:02:52.183420973Z\",\"has_traded\":true,\"state\":\"active\"},\"close\":{\"symbol\":\"SMH\",\"date\":\"2026-07-29\",\"price\":\"504.22\",\"interpolated\":false,\"source\":\"sip-list-exchange-close\"}}]},\"guide\":\"Each entry in results pairs the live quote with the official prior-session close for the same symbol. Current price: pick whichever of quote.last_trade_price / quote.last_non_reg_trade_price has the more recent timestamp, then verify that timestamp is recent before calling it \\\"current\\\" \u2014 otherwise phrase as \\\"as of \\u003ctime\\u003e\\\". Daily change uses quote.adjusted_previous_close. \\\"Yesterday's close\\\" uses results[].close.price (official settled close); when a result is missing close \u2014 either closes_error is set tool-wide, or this symbol had no close in an otherwise-successful batch \u2014 fall back to quote.previous_close and tell the user the official close lookup is unavailable. Drop bid/ask when zero. Surface has_traded=false or any non-'active' state before quoting a price.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "results": [
+          {
+            "quote": {
+              "symbol": "UL",
+              "last_trade_price": "65.365000",
+              "venue_last_trade_time": "2026-07-30T16:02:50.57841617Z",
+              "last_non_reg_trade_price": null,
+              "venue_last_non_reg_trade_time": null,
+              "adjusted_previous_close": "66.000000",
+              "previous_close": "66.000000",
+              "previous_close_date": "2026-07-29",
+              "bid_price": "65.360000",
+              "venue_bid_time": "2026-07-30T16:02:52.357217573Z",
+              "ask_price": "65.370000",
+              "venue_ask_time": "2026-07-30T16:02:52.357217573Z",
+              "has_traded": true,
+              "state": "active"
+            },
+            "close": {
+              "symbol": "UL",
+              "date": "2026-07-29",
+              "price": "66",
+              "interpolated": false,
+              "source": "sip-list-exchange-close"
+            }
+          },
+          {
+            "quote": {
+              "symbol": "MA",
+              "last_trade_price": "572.950000",
+              "venue_last_trade_time": "2026-07-30T16:02:44.029315384Z",
+              "last_non_reg_trade_price": null,
+              "venue_last_non_reg_trade_time": null,
+              "adjusted_previous_close": "563.320000",
+              "previous_close": "563.320000",
+              "previous_close_date": "2026-07-29",
+              "bid_price": "572.760000",
+              "venue_bid_time": "2026-07-30T16:02:51.437614959Z",
+              "ask_price": "573.040000",
+              "venue_ask_time": "2026-07-30T16:02:51.437614959Z",
+              "has_traded": true,
+              "state": "active"
+            },
+            "close": {
+              "symbol": "MA",
+              "date": "2026-07-29",
+              "price": "563.32",
+              "interpolated": false,
+              "source": "sip-list-exchange-close"
+            }
+          },
+          {
+            "quote": {
+              "symbol": "SHEL",
+              "last_trade_price": "89.530000",
+              "venue_last_trade_time": "2026-07-30T16:02:49.47889974Z",
+              "last_non_reg_trade_price": null,
+              "venue_last_non_reg_trade_time": null,
+              "adjusted_previous_close": "88.340000",
+              "previous_close": "88.340000",
+              "previous_close_date": "2026-07-29",
+              "bid_price": "89.520000",
+              "venue_bid_time": "2026-07-30T16:02:51.412456195Z",
+              "ask_price": "89.540000",
+              "venue_ask_time": "2026-07-30T16:02:51.412456195Z",
+              "has_traded": true,
+              "state": "active"
+            },
+            "close": {
+              "symbol": "SHEL",
+              "date": "2026-07-29",
+              "price": "88.34",
+              "interpolated": false,
+              "source": "sip-list-exchange-close"
+            }
+          },
+          {
+            "quote": {
+              "symbol": "SPY",
+              "last_trade_price": "737.560000",
+              "venue_last_trade_time": "2026-07-30T16:02:51.10751622Z",
+              "last_non_reg_trade_price": null,
+              "venue_last_non_reg_trade_time": null,
+              "adjusted_previous_close": "729.460000",
+              "previous_close": "729.460000",
+              "previous_close_date": "2026-07-29",
+              "bid_price": "737.580000",
+              "venue_bid_time": "2026-07-30T16:02:51.776742311Z",
+              "ask_price": "737.600000",
+              "venue_ask_time": "2026-07-30T16:02:51.776742311Z",
+              "has_traded": true,
+              "state": "active"
+            },
+            "close": {
+              "symbol": "SPY",
+              "date": "2026-07-29",
+              "price": "729.46",
+              "interpolated": false,
+              "source": "sip-list-exchange-close"
+            }
+          },
+          {
+            "quote": {
+              "symbol": "QQQ",
+              "last_trade_price": "680.290000",
+              "venue_last_trade_time": "2026-07-30T16:02:51.551665971Z",
+              "last_non_reg_trade_price": null,
+              "venue_last_non_reg_trade_time": null,
+              "adjusted_previous_close": "661.730000",
+              "previous_close": "661.730000",
+              "previous_close_date": "2026-07-29",
+              "bid_price": "680.260000",
+              "venue_bid_time": "2026-07-30T16:02:51.370257929Z",
+              "ask_price": "680.290000",
+              "venue_ask_time": "2026-07-30T16:02:51.370257929Z",
+              "has_traded": true,
+              "state": "active"
+            },
+            "close": {
+              "symbol": "QQQ",
+              "date": "2026-07-29",
+              "price": "661.73",
+              "interpolated": false,
+              "source": "sip-list-exchange-close"
+            }
+          },
+          {
+            "quote": {
+              "symbol": "IWM",
+              "last_trade_price": "290.730000",
+              "venue_last_trade_time": "2026-07-30T16:02:52.15396426Z",
+              "last_non_reg_trade_price": null,
+              "venue_last_non_reg_trade_time": null,
+              "adjusted_previous_close": "288.570000",
+              "previous_close": "288.570000",
+              "previous_close_date": "2026-07-29",
+              "bid_price": "290.730000",
+              "venue_bid_time": "2026-07-30T16:02:52.275174822Z",
+              "ask_price": "290.740000",
+              "venue_ask_time": "2026-07-30T16:02:52.275174822Z",
+              "has_traded": true,
+              "state": "active"
+            },
+            "close": {
+              "symbol": "IWM",
+              "date": "2026-07-29",
+              "price": "288.57",
+              "interpolated": false,
+              "source": "sip-list-exchange-close"
+            }
+          },
+          {
+            "quote": {
+              "symbol": "XLE",
+              "last_trade_price": "58.400000",
+              "venue_last_trade_time": "2026-07-30T16:02:48.184514281Z",
+              "last_non_reg_trade_price": null,
+              "venue_last_non_reg_trade_time": null,
+              "adjusted_previous_close": "58.650000",
+              "previous_close": "58.650000",
+              "previous_close_date": "2026-07-29",
+              "bid_price": "58.390000",
+              "venue_bid_time": "2026-07-30T16:02:49.755739445Z",
+              "ask_price": "58.400000",
+              "venue_ask_time": "2026-07-30T16:02:49.755739445Z",
+              "has_traded": true,
+              "state": "active"
+            },
+            "close": {
+              "symbol": "XLE",
+              "date": "2026-07-29",
+              "price": "58.65",
+              "interpolated": false,
+              "source": "sip-list-exchange-close"
+            }
+          },
+          {
+            "quote": {
+              "symbol": "XLK",
+              "last_trade_price": "174.590000",
+              "venue_last_trade_time": "2026-07-30T16:02:52.259410801Z",
+              "last_non_reg_trade_price": null,
+              "venue_last_non_reg_trade_time": null,
+              "adjusted_previous_close": "166.570000",
+              "previous_close": "166.570000",
+              "previous_close_date": "2026-07-29",
+              "bid_price": "174.580000",
+              "venue_bid_time": "2026-07-30T16:02:52.392929643Z",
+              "ask_price": "174.600000",
+              "venue_ask_time": "2026-07-30T16:02:52.392929643Z",
+              "has_traded": true,
+              "state": "active"
+            },
+            "close": {
+              "symbol": "XLK",
+              "date": "2026-07-29",
+              "price": "166.57",
+              "interpolated": false,
+              "source": "sip-list-exchange-close"
+            }
+          },
+          {
+            "quote": {
+              "symbol": "SMH",
+              "last_trade_price": "536.460000",
+              "venue_last_trade_time": "2026-07-30T16:02:51.790833755Z",
+              "last_non_reg_trade_price": null,
+              "venue_last_non_reg_trade_time": null,
+              "adjusted_previous_close": "504.220000",
+              "previous_close": "504.220000",
+              "previous_close_date": "2026-07-29",
+              "bid_price": "536.230000",
+              "venue_bid_time": "2026-07-30T16:02:52.183420973Z",
+              "ask_price": "536.510000",
+              "venue_ask_time": "2026-07-30T16:02:52.183420973Z",
+              "has_traded": true,
+              "state": "active"
+            },
+            "close": {
+              "symbol": "SMH",
+              "date": "2026-07-29",
+              "price": "504.22",
+              "interpolated": false,
+              "source": "sip-list-exchange-close"
+            }
+          }
+        ]
+      },
+      "guide": "Each entry in results pairs the live quote with the official prior-session close for the same symbol. Current price: pick whichever of quote.last_trade_price / quote.last_non_reg_trade_price has the more recent timestamp, then verify that timestamp is recent before calling it \"current\" \u2014 otherwise phrase as \"as of <time>\". Daily change uses quote.adjusted_previous_close. \"Yesterday's close\" uses results[].close.price (official settled close); when a result is missing close \u2014 either closes_error is set tool-wide, or this symbol had no close in an otherwise-successful batch \u2014 fall back to quote.previous_close and tell the user the official close lookup is unavailable. Drop bid/ask when zero. Surface has_traded=false or any non-'active' state before quoting a price."
+    }
+  }
+]
