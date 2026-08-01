@@ -1,0 +1,36 @@
+
+TOOL get_equity_orders {'account_number': '433711041', 'order_id': '6a6ca54a-ad63-4a51-af51-7f25679342ce'}
+[{'id': '6a6ca54a-ad63-4a51-af51-7f25679342ce', 'symbol': 'UL', 'side': 'sell', 'type': 'market', 'state': 'filled', 'quantity': '0.508952', 'cumulative_quantity': '0.508952', 'average_price': '63.550100', 'dollar_based_amount': None, 'created_at': '2026-07-31T13:38:18.56943Z', 'last_transaction_at': '2026-07-31T13:38:18.711Z'}]
+
+TOOL get_portfolio {'account_number': '433711041'}
+{'total_value': '179.078522175', 'equity_value': '117.298522175', 'options_value': '0', 'futures_value': '0', 'event_contracts_value': '0', 'crypto_value': '0', 'cash': '61.78', 'pending_deposits': '0', 'mutual_funds_value': '0', 'fixed_income_value': '0', 'currency': 'USD', 'buying_power': {'buying_power': '29.4400', 'unleveraged_buying_power': '29.4400', 'display_currency': 'USD'}}
+
+TOOL get_equity_positions {'account_number': '433711041'}
+{'positions': [{'symbol': 'MA', 'quantity': '0.101447', 'intraday_quantity': '0.000000', 'average_buy_price': '580.400000', 'shares_available_for_sells': '0.101447', 'shares_held_for_sells': '0.000000', 'shares_held_for_stock_grants': '0.000000', 'shares_held_for_options_events': '0.000000', 'shares_held_for_asset_transfer': '0.000000', 'shares_pending_from_options_events': '0.000000', 'type': 'long'}, {'symbol': 'SHEL', 'quantity': '0.651145', 'intraday_quantity': '0.000000', 'average_buy_price': '90.410000', 'shares_available_for_sells': '0.651145', 'shares_held_for_sells': '0.000000', 'shares_held_for_stock_grants': '0.000000', 'shares_held_for_options_events': '0.000000', 'shares_held_for_asset_transfer': '0.000000', 'shares_pending_from_options_events': '0.000000', 'type': 'long'}]}
+
+TOOL get_equity_quotes {'symbols': ['MA', 'SHEL', 'UL', 'SPY', 'QQQ', 'IWM', 'AMZN', 'CVX', 'CBOE', 'BMY']}
+MA 569.725000 577.350000 569.060000 570.340000
+SHEL 91.380000 90.510000 91.380000 91.400000
+UL 63.600000 65.270000 63.590000 63.620000
+SPY 745.040000 741.690000 745.040000 745.080000
+QQQ 692.980000 683.550000 693.000000 693.020000
+IWM 292.760000 292.590000 292.720000 292.730000
+AMZN 268.955200 235.500000 268.840000 268.920000
+CVX 193.384500 192.310000 193.390000 193.500000
+CBOE 297.025000 296.520000 295.520000 297.640000
+BMY 64.650000 64.860000 64.610000 64.690000
+
+TOOL get_equity_orders {'account_number': '433711041', 'state': 'new'}
+[]
+
+TOOL get_equity_orders {'account_number': '433711041', 'state': 'queued'}
+[]
+
+TOOL get_equity_orders {'account_number': '433711041', 'state': 'confirmed'}
+[]
+
+TOOL get_equity_orders {'account_number': '433711041', 'state': 'unconfirmed'}
+[]
+
+TOOL get_equity_orders {'account_number': '433711041', 'state': 'partially_filled'}
+[]

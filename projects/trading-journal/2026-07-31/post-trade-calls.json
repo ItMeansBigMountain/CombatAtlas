@@ -1,0 +1,11 @@
+[
+ {"tool":"get_equity_orders","args":{"account_number":"433711041","order_id":"6a6ca583-5eab-4be4-add4-f9f958a9bc89"}},
+ {"tool":"get_portfolio","args":{"account_number":"433711041"}},
+ {"tool":"get_equity_positions","args":{"account_number":"433711041"}},
+ {"tool":"get_equity_quotes","args":{"symbols":["MA","SHEL","SPY","QQQ","IWM"]}},
+ {"tool":"get_equity_orders","args":{"account_number":"433711041","state":"new"}},
+ {"tool":"get_equity_orders","args":{"account_number":"433711041","state":"queued"}},
+ {"tool":"get_equity_orders","args":{"account_number":"433711041","state":"confirmed"}},
+ {"tool":"get_equity_orders","args":{"account_number":"433711041","state":"unconfirmed"}},
+ {"tool":"get_equity_orders","args":{"account_number":"433711041","state":"partially_filled"}}
+]

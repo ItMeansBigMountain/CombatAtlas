@@ -1,0 +1,92 @@
+Cronjob Response: Creator discovery feeder for Viral Radar
+(job_id: 6355d735bb4a)
+-------------
+
+## Viral Radar — **BLOCKED/PARTIAL**
+
+- **Public uploads this run:** 0
+- **Uploaded URLs:** None
+- **UPLOAD_QUEUE drained first:** Attempted; 0 uploaded
+- **Queue count:** 1 rendered clip, safely preserved with metadata
+- **Metrics monitor:** 383 video IDs found; 0 live statistics fetched because Classical Echos OAuth is revoked/expired
+
+### Per-source progress
+
+- **Andrew Huberman — “Raising a Dog: Mastering Calm-Assertive Energy”**  
+  Source: https://www.youtube.com/watch?v=n_qKxNcMvtM  
+  **Uploaded: 0/5**  
+  The source file could not be acquired. Pytubefix returned HTTP 403 and pytube returned HTTP 400. The planned clips were therefore never rendered or queued.
+
+- **Andrew Huberman — “The Science of Eating for Health, Fat Loss & Lean Muscle”**  
+  Source: https://www.youtube.com/watch?v=WWe4up63hb4  
+  **Uploaded: 0/5**  
+  Source acquisition failed with the same cloud-IP/session restrictions.
+
+- **New latest watchlist sources**  
+  **Uploaded: 0/5**  
+  Fresh manifest seeding failed before discovery because the Classical Echos YouTube OAuth token returned `invalid_grant`. This is a never-planned/never-rendered deficit, not success.
+
+### Existing queued clip
+
+A real Kinobody clip remains preserved:
+
+`UPLOAD_QUEUE/kinobody-greg-o-gallagher-a-follower-called-me-out-for-using-tir-auto-01-captioned-daily.mp4`
+
+It was not counted toward any newly discovered source minimum.
+
+### Blockers
+
+1. **blocked_auth:** Classical Echos OAuth token expired or was revoked.
+2. **blocked_auth:** Trapiistan/Sosai OAuth token expired or was revoked.
+3. **blocked_source:** YouTube source acquisition returned pytubefix HTTP 403 and pytube HTTP 400.
+4. **never_rendered_deficit:** No selected source reached five rendered clips, so an empty new-source queue does not indicate completion.
+
+Raw application lines:
+
+```json
+{
+  "status": "blocked_min_uploads_not_met",
+  "min_uploads": 5,
+  "uploaded_count": 0,
+  "queued_replay_uploaded_count": 0,
+  "remaining_queue_count": 1,
+  "seed_result": {
+    "status": "seed_failed",
+    "returncode": 1
+  }
+}
+```
+
+```text
+google.auth.exceptions.RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+pytubefix: urllib.error.HTTPError: HTTP Error 403: Forbidden
+pytube: urllib.error.HTTPError: HTTP Error 400: Bad Request
+```
+
+### Required next action
+
+Reauthorize both upload profiles, then return each **full localhost callback URL**.
+
+**Classical Echos:**  
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=VWe2JtNp5AVzOu1SJE5IY59jPjEuLI&code_challenge=9j5BYdKhq0GUhAqwVbSVURTgb0_e4997yk4ivpzobnY&code_challenge_method=S256&access_type=offline&include_granted_scopes=false&prompt=consent&login_hint=classicalechos%40gmail.com
+
+Return as:
+
+```text
+youtube:classicalechos: <full localhost callback URL>
+```
+
+**Trapiistan/Sosai:**  
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=ReEyENrnQ8jYB1Pfx5aXbK8tdtX4LD&code_challenge=FEfk9TRMwAT-GBmDzBg2InUvliN7j3TeoLSURbjIBsU&code_challenge_method=S256&access_type=offline&include_granted_scopes=false&prompt=consent&login_hint=trapiistan%40gmail.com
+
+Return as:
+
+```text
+youtube:trapiistan: <full localhost callback URL>
+```
+
+After OAuth recovery, the workflow should drain the preserved queue item, reseed current long-form watchlist manifests with five distinct windows, and retry source acquisition using authenticated cookies/OAuth or a residential proxy.
+
+Full run log: `OUTPUTS/strict-cron-logs/2026-07-31T-strict-latest.log`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Creator discovery feeder for Viral Radar").

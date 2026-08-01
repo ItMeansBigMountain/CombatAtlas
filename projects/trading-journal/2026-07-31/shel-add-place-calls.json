@@ -1,0 +1,3 @@
+[
+ {"tool":"place_equity_order","args":{"account_number":"433711041","symbol":"SHEL","side":"buy","type":"market","dollar_amount":"23.55","time_in_force":"gfd","market_hours":"regular_hours","ref_id":"8f25a6b3-4cff-43d5-8853-057820baed32"}}
+]

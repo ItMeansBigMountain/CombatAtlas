@@ -1,0 +1,115 @@
+Cronjob Response: Post-morning Agentic portfolio market scan
+(job_id: df35199a8b51)
+-------------
+
+# Post-Open Agentic Scan — Account 1041
+
+## Decision
+
+**Sold MA after its documented $566 invalidation was breached. Hold SHEL. No new entry.**
+
+The market remains a narrow, high-volatility rebound rather than a repaired broad uptrend. Available settled buying power is too small to justify forcing a new fractional position before candidates retest support.
+
+## Current State
+
+- **Portfolio value:** $179.30
+- **Equity:** $83.16
+- **Cash:** $96.14
+- **Settled buying power:** $5.89
+- **Position:** SHEL only
+- **Open equity orders:** None across `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled`
+- Account remains above the $10 kill switch.
+- No options, shorts, or other accounts were touched.
+
+Cash exceeds buying power because today’s MA and UL sale proceeds remain unsettled.
+
+## Exact Action
+
+### MA — Sold and filled
+
+MA traded as low as **$563.42**, breaching its written $566 exit threshold. The recovery toward $571 did not erase the technical invalidation.
+
+- Sold: **0.101447 MA**
+- Fill: **$570.8887**
+- Proceeds: approximately **$57.91**
+- Fee: **$0**
+- Order: `6a6ca8c6-9025-4ef7-b90b-932bd9f7c38c`
+- Approximate realized result: **-$0.96 / -1.64%**
+
+Review returned no broker alerts.
+
+**Compliance quote:** Bid $570.61 × 120 Q · Ask $571.19 × 40 K · Last $570.865 × 40 D. Updated 9:52 AM ET.
+
+The fill, updated positions, portfolio, and absence of open orders were independently verified.
+
+## Remaining Position
+
+### SHEL — Hold
+
+- Shares: **0.908550**
+- Average: **$90.72**
+- Live during scan: approximately **$91.55**
+- Value: approximately **$83.18**
+- Unrealized: approximately **+$0.75 / +0.91%**
+- Stop/invalidation: **$87.80**
+- Targets: **$95.10 / $98.00**
+- Planned risk: approximately **$2.65**
+- R:R: **1.50:1 / 2.49:1**
+
+SHEL remains above its completed SMA10/20/50, with +18.21% 20-session strength. Q2 adjusted earnings of $9.8B, $21.4B operating cash flow, and a new $3B buyback support the thesis. Do not widen the stop or average down.
+
+## Market Regime
+
+- SPY: approximately **+0.11%**
+- QQQ: approximately **+0.54%**
+- IWM: approximately **-0.48%**
+- Semiconductors and consumer discretionary led, but all major benchmarks faded sharply from their opening bars.
+- Energy and financials retain the strongest completed medium-term relative strength.
+- QQQ remains below its completed SMA10/20/50.
+
+**Regime:** selective risk-on rebound with weak breadth and elevated volatility—not a confirmed broad-market repair.
+
+## Ranked Opportunities
+
+1. **SHEL — 8.4/10, hold**
+   - Existing position already captures energy leadership.
+   - Stop $87.80; targets $95.10/$98.00.
+
+2. **AMZN — 7.8/10, wait for retest**
+   - Verified Q2 EPS $5.75 versus $1.82 estimate; strong AWS/earnings catalyst.
+   - The roughly 14% earnings gap is too extended.
+   - Entry $262–$264 retest; stop $258; targets $278/$290.
+   - From $264: R:R **2.33/4.33**.
+
+3. **DXCM — 7.4/10, wait for retest**
+   - Q2 EPS $0.70 versus $0.61 estimate; improving revenue and margin.
+   - Entry $79.50–$80 retest; stop $76; targets $87/$94.
+   - From $80: R:R **1.75/3.50**.
+
+4. **CVX — 7.2/10, wait**
+   - Q2 EPS $6.06 versus $5.27 estimate; strong 20-session trend.
+   - Entry near $193 with support confirmation; stop $188; targets $202/$210.
+   - Rejected now because it duplicates SHEL exposure.
+
+5. **CBOE — 6.9/10, wait**
+   - Strong relative strength, but excessive intraday volatility and a comparatively wide spread.
+   - Retest $299; stop $287; targets $323/$335.
+   - R:R **2.0/3.0**.
+
+## Deployment
+
+- Liquid buying power: **$5.89**
+- Nominal 80% deployment target: **$4.71**
+- Required 20% reserve: **$1.18**
+
+No $4.71 micro-position was opened. None of the qualifying candidates had completed the required retest, and such a small order would not materially improve the portfolio. Final written portfolio risk is approximately **$2.65**, below the ~$6 soft cap.
+
+## Blockers and Journal
+
+- Robinhood MCP and all broker operations succeeded; no unresolved broker blocker.
+- `personal-main` Gmail research remains unavailable because its OAuth token returned `invalid_grant`—expired or revoked.
+- Full research, execution, fill, no-trade rationale, and verification were journaled at:
+
+`projects/trading-journal/2026-07-31/post-open-agentic-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Post-morning Agentic portfolio market scan").

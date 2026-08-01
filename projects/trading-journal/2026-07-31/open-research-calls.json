@@ -1,0 +1,13 @@
+[
+ {"tool":"get_watchlist_items","args":{"list_id":"eddbebe5-34cc-4df1-953c-d3e3cb55bc19"}},
+ {"tool":"get_equity_historicals","args":{"symbols":["UL","MA","SHEL","SPY","QQQ","IWM","XLK","SMH","XLF","XLE","XLI","XLV","XLY","XLP","AMZN","MSFT","NVDA","AMD","CAT","PWR","CVX","ETN","NVT","CBOE"],"interval":"day","start_time":"2026-04-30T00:00:00Z","end_time":"2026-07-31T14:30:00Z","bounds":"regular"}},
+ {"tool":"get_equity_fundamentals","args":{"symbols":["UL","MA","SHEL","AMZN","MSFT","NVDA","AMD","CAT","PWR","CVX"]}},
+ {"tool":"get_equity_fundamentals","args":{"symbols":["ETN","NVT","CBOE","AAPL","META","GOOG","AVGO","BMY","XOM","GEV"]}},
+ {"tool":"get_equity_tradability","args":{"account_number":"433711041","symbols":["AMZN","MSFT","NVDA","AMD","CAT","PWR","CVX","ETN","NVT","CBOE"]}},
+ {"tool":"get_earnings_results","args":{"symbol":"AMZN"}},
+ {"tool":"get_earnings_results","args":{"symbol":"CVX"}},
+ {"tool":"get_earnings_results","args":{"symbol":"ETN"}},
+ {"tool":"get_earnings_results","args":{"symbol":"NVT"}},
+ {"tool":"get_earnings_results","args":{"symbol":"CBOE"}},
+ {"tool":"get_earnings_results","args":{"symbol":"UL"}}
+]

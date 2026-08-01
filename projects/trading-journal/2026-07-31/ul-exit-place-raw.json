@@ -1,0 +1,46 @@
+[
+  {
+    "tool": "place_equity_order",
+    "args": {
+      "account_number": "433711041",
+      "symbol": "UL",
+      "side": "sell",
+      "type": "market",
+      "quantity": "0.508952",
+      "time_in_force": "gfd",
+      "market_hours": "regular_hours",
+      "ref_id": "618bb90f-d8dc-43e6-8ad2-d4d9841202c4"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"order\":{\"id\":\"6a6ca54a-ad63-4a51-af51-7f25679342ce\",\"instrument_id\":\"7dfc877e-1e8b-4c06-a7f7-b516697be755\",\"symbol\":\"\",\"side\":\"sell\",\"type\":\"market\",\"state\":\"unconfirmed\",\"quantity\":\"0.508952\",\"cumulative_quantity\":\"0.000000\",\"price\":null,\"stop_price\":null,\"average_price\":null,\"fees\":\"0.000000\",\"dollar_based_amount\":null,\"time_in_force\":\"gfd\",\"market_hours\":\"regular_hours\",\"trigger\":\"immediate\",\"placed_agent\":\"agentic\",\"created_at\":\"2026-07-31T13:38:18.569429Z\",\"last_transaction_at\":\"2026-07-31T13:38:18.569429Z\",\"executions\":[]}},\"guide\":\"The order has been submitted \u2014 not necessarily filled. Describe with state. Tell the user the order was placed and summarize symbol, side, type, quantity (or dollar_based_amount), and limit/stop prices; remind them it may not have filled yet and that they can check status or cancel via id. On error, the order was NOT placed \u2014 report the error verbatim.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "order": {
+          "id": "6a6ca54a-ad63-4a51-af51-7f25679342ce",
+          "instrument_id": "7dfc877e-1e8b-4c06-a7f7-b516697be755",
+          "symbol": "",
+          "side": "sell",
+          "type": "market",
+          "state": "unconfirmed",
+          "quantity": "0.508952",
+          "cumulative_quantity": "0.000000",
+          "price": null,
+          "stop_price": null,
+          "average_price": null,
+          "fees": "0.000000",
+          "dollar_based_amount": null,
+          "time_in_force": "gfd",
+          "market_hours": "regular_hours",
+          "trigger": "immediate",
+          "placed_agent": "agentic",
+          "created_at": "2026-07-31T13:38:18.569429Z",
+          "last_transaction_at": "2026-07-31T13:38:18.569429Z",
+          "executions": []
+        }
+      },
+      "guide": "The order has been submitted \u2014 not necessarily filled. Describe with state. Tell the user the order was placed and summarize symbol, side, type, quantity (or dollar_based_amount), and limit/stop prices; remind them it may not have filled yet and that they can check status or cancel via id. On error, the order was NOT placed \u2014 report the error verbatim."
+    }
+  }
+]

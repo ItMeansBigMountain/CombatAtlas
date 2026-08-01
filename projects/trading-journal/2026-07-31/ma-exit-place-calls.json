@@ -1,0 +1,15 @@
+[
+  {
+    "tool": "place_equity_order",
+    "args": {
+      "account_number": "433711041",
+      "symbol": "MA",
+      "side": "sell",
+      "type": "market",
+      "quantity": "0.101447",
+      "time_in_force": "gfd",
+      "market_hours": "regular_hours",
+      "ref_id": "b6d39228-42b5-4582-8cd4-e4ee972b5977"
+    }
+  }
+]
