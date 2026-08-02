@@ -20,15 +20,15 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 76
+        "completed": 77
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-08-02T03:00:00+00:00",
-      "last_run_at": "2026-07-31T03:00:45.346622+00:00",
+      "next_run_at": "2026-08-03T03:00:00+00:00",
+      "last_run_at": "2026-08-01T03:00:47.643521+00:00",
       "last_status": "error",
       "last_error": "Script exited with code 1\nstderr:\nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [rejected]            main -> main (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'\nhint: Updates were rejected because the tip of your current branch is behind\nhint: its remote counterpart. If you want to integrate the remote changes,\nhint: use 'git pull' before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.",
       "last_delivery_error": null,
@@ -60,15 +60,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 75
+        "completed": 76
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-08-01T13:30:00+00:00",
-      "last_run_at": "2026-07-31T13:30:58.376676+00:00",
+      "next_run_at": "2026-08-02T13:30:00+00:00",
+      "last_run_at": "2026-08-01T13:31:03.256496+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -112,15 +112,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 226
+        "completed": 230
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-08-01T03:56:25.729105+00:00",
-      "last_run_at": "2026-07-31T21:56:25.729105+00:00",
+      "next_run_at": "2026-08-02T04:13:05.260755+00:00",
+      "last_run_at": "2026-08-01T22:13:05.260755+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -215,15 +215,15 @@
       "schedule_display": "0 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 57
+        "completed": 58
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-08-02T01:00:00+00:00",
-      "last_run_at": "2026-08-01T01:05:21.871432+00:00",
+      "next_run_at": "2026-08-03T01:00:00+00:00",
+      "last_run_at": "2026-08-02T01:05:39.907348+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -262,15 +262,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 5783
+        "completed": 5914
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-08-01T03:09:18.192387+00:00",
-      "last_run_at": "2026-08-01T02:59:18.192387+00:00",
+      "next_run_at": "2026-08-02T03:10:26.046697+00:00",
+      "last_run_at": "2026-08-02T03:00:26.046697+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -308,15 +308,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 55
+        "completed": 56
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-08-01T14:00:00+00:00",
-      "last_run_at": "2026-07-31T14:00:14.468851+00:00",
+      "next_run_at": "2026-08-02T14:00:00+00:00",
+      "last_run_at": "2026-08-01T14:00:22.224858+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -355,15 +355,15 @@
       "schedule_display": "15 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 53
+        "completed": 54
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T04:20:40.734347+00:00",
-      "next_run_at": "2026-08-01T13:15:00+00:00",
-      "last_run_at": "2026-07-31T13:15:14.650306+00:00",
+      "next_run_at": "2026-08-02T13:15:00+00:00",
+      "last_run_at": "2026-08-01T13:15:22.444703+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -452,15 +452,15 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 41
+        "completed": 42
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T17:32:19.594106+00:00",
-      "next_run_at": "2026-08-01T09:00:00+00:00",
-      "last_run_at": "2026-07-31T09:02:12.465654+00:00",
+      "next_run_at": "2026-08-02T09:00:00+00:00",
+      "last_run_at": "2026-08-01T09:02:20.330403+00:00",
       "last_status": "error",
       "last_error": "Script timed out after 120s: /opt/data/scripts/viral_radar_backlog_drain.sh",
       "last_delivery_error": null,
@@ -649,17 +649,17 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 102
+        "completed": 106
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-06T15:04:47.122120+00:00",
-      "next_run_at": "2026-08-01T04:16:20.289600+00:00",
-      "last_run_at": "2026-07-31T22:16:20.289600+00:00",
+      "next_run_at": "2026-08-02T04:20:28.277668+00:00",
+      "last_run_at": "2026-08-01T22:20:28.277668+00:00",
       "last_status": "error",
-      "last_error": "Script exited with code 1\nstdout:\n{\n  \"status\": \"blocked_auth_hardening\",\n  \"problems\": [\n    \"youtube_profiles: trapiistan: verify failed: {\\n  \\\"profile\\\": \\\"trapiistan\\\",\\n  \\\"expected_channel_title\\\": \\\"Sosai Oyama\\\",\\n  \\\"expected_channel_id\\\": \\\"UCsxzQlusqwmMUdjMvKAJDfA\\\",\\n  \\\"token_path\\\": \\\"/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json\\\",\\n  \\\"valid\\\": false,\\n  \\\"scopes\\\": [\\n    \\\"https://www.googleapis.com/auth/youtube\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.upload\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.force-ssl\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.readonly\\\",\\n    \\\"https://www.googleapis.com/auth/yt-analytics.readonly\\\"\\n  ],\\n  \\\"refresh_error\\\": \\\"RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})\\\",\\n  \\\"next_step\\\": \\\"Run: python3 /opt/data/scripts/google_reauth_workflow.py youtube-auth-url trapiistan\\\"\\n}\\n\",\n    \"youtube_profiles: classicalechos: verify failed: {\\n  \\\"profile\\\": \\\"classicalechos\\\",\\n  \\\"expected_channel_title\\\": \\\"Classical Echos\\\",\\n  \\\"expected_channel_id\\\": \\\"UCcIpxiU2CLEsBdHcc7_lcyA\\\",\\n  \\\"token_path\\\": \\\"/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json\\\",\\n  \\\"valid\\\": false,\\n  \\\"scopes\\\": [\\n    \\\"https://www.googleapis.com/auth/youtube\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.upload\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.force-ssl\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.readonly\\\",\\n    \\\"https://www.googleapis.com/auth/yt-analytics.readonly\\\"\\n  ],\\n  \\\"refresh_error\\\": \\\"RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})\\\",\\n  \\\"next_step\\\": \\\"Run: python3 /opt/data/scripts/google_reauth_workflow.py youtube-auth-url classicalechos\\\"\\n}\\n\"\n  ],\n  \"checks\": null,\n  \"reauth_urls\": {\n    \"trapiistan\": {\n      \"status\": \"pending\",\n      \"expected_channel_title\": \"Sosai Oyama\",\n      \"expected_email\": \"trapiistan@gmail.com\",\n      \"token_path\": \"/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json\",\n      \"auth_url\": \"https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=KR1Flwdo8B0kdlVu2rqkjfhKIMqgZx&code_challenge=r4OQ11o7BwSTS5gCykkILUMCM8JTuIANg3rq0RGin-U&code_challenge_method=S256&access_type=offline&include_granted_scopes=false&prompt=consent&login_hint=trapiistan%40gmail.com\",\n      \"callback_format\": \"youtube:trapiistan: <full localhost URL>\"\n    },\n    \"classicalechos\": {\n      \"status\": \"pending\",\n      \"expected_channel_title\": \"Classical Echos\",\n      \"expected_email\": \"classicalechos@gmail.com\",\n      \"token_path\": \"/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json\",\n      \"auth_url\": \"https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=SVkTM8LWONIhwd6j9kzrxzseVoNEba&code_challenge=uzoPuEFOP3_cHic_y79rDt1RkpOFDz77gIIWyO6fSDw&code_challenge_method=S256&access_type=offline&include_granted_scopes=false&prompt=consent&login_hint=classicalechos%40gmail.com\",\n      \"callback_format\": \"youtube:classicalechos: <full localhost URL>\"\n    }\n  },\n  \"callback_instructions\": [\n    \"After logging in, send back: youtube:trapiistan: <full localhost callback URL>\",\n    \"After logging in, send back: youtube:classicalechos: <full localhost callback URL>\"\n  ],\n  \"next_steps\": [\n    \"Open each reauth_urls.<profile>.auth_url in a browser and approve the expected YouTube account/channel.\",\n    \"Send me each full localhost callback URL exactly as redirected, prefixed as shown in callback_instructions.\",\n    \"I will exchange with: python3 /opt/data/scripts/google_reauth_workflow.py youtube-exchange <profile> <localhost callback URL> --verify\",\n    \"Then I will rerun: python3 /opt/data/scripts/youtube_auth_healthcheck.py --verbose\"\n  ]\n}",
+      "last_error": "Script exited with code 1\nstdout:\n{\n  \"status\": \"blocked_auth_hardening\",\n  \"problems\": [\n    \"youtube_profiles: trapiistan: verify failed: {\\n  \\\"profile\\\": \\\"trapiistan\\\",\\n  \\\"expected_channel_title\\\": \\\"Sosai Oyama\\\",\\n  \\\"expected_channel_id\\\": \\\"UCsxzQlusqwmMUdjMvKAJDfA\\\",\\n  \\\"token_path\\\": \\\"/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json\\\",\\n  \\\"valid\\\": false,\\n  \\\"scopes\\\": [\\n    \\\"https://www.googleapis.com/auth/youtube\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.upload\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.force-ssl\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.readonly\\\",\\n    \\\"https://www.googleapis.com/auth/yt-analytics.readonly\\\"\\n  ],\\n  \\\"refresh_error\\\": \\\"RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})\\\",\\n  \\\"next_step\\\": \\\"Run: python3 /opt/data/scripts/google_reauth_workflow.py youtube-auth-url trapiistan\\\"\\n}\\n\",\n    \"youtube_profiles: classicalechos: verify failed: {\\n  \\\"profile\\\": \\\"classicalechos\\\",\\n  \\\"expected_channel_title\\\": \\\"Classical Echos\\\",\\n  \\\"expected_channel_id\\\": \\\"UCcIpxiU2CLEsBdHcc7_lcyA\\\",\\n  \\\"token_path\\\": \\\"/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json\\\",\\n  \\\"valid\\\": false,\\n  \\\"scopes\\\": [\\n    \\\"https://www.googleapis.com/auth/youtube\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.upload\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.force-ssl\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.readonly\\\",\\n    \\\"https://www.googleapis.com/auth/yt-analytics.readonly\\\"\\n  ],\\n  \\\"refresh_error\\\": \\\"RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})\\\",\\n  \\\"next_step\\\": \\\"Run: python3 /opt/data/scripts/google_reauth_workflow.py youtube-auth-url classicalechos\\\"\\n}\\n\"\n  ],\n  \"checks\": null,\n  \"reauth_urls\": {\n    \"trapiistan\": {\n      \"status\": \"pending\",\n      \"expected_channel_title\": \"Sosai Oyama\",\n      \"expected_email\": \"trapiistan@gmail.com\",\n      \"token_path\": \"/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json\",\n      \"auth_url\": \"https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=XLjuFS1MrikSJp3AOd1rVKXmc5DKxE&code_challenge=REh5X7EIqMR8K0NWh22YG3Vh7SdGw-rbWC8layX3Te4&code_challenge_method=S256&access_type=offline&include_granted_scopes=false&prompt=consent&login_hint=trapiistan%40gmail.com\",\n      \"callback_format\": \"youtube:trapiistan: <full localhost URL>\"\n    },\n    \"classicalechos\": {\n      \"status\": \"pending\",\n      \"expected_channel_title\": \"Classical Echos\",\n      \"expected_email\": \"classicalechos@gmail.com\",\n      \"token_path\": \"/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json\",\n      \"auth_url\": \"https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=RdRKSnm4juy0mlEin7pcbIncsDQlM7&code_challenge=HdY62YtsMk6FC2yNxsN90HIuRNQSdaEQpoTEbcRMdD4&code_challenge_method=S256&access_type=offline&include_granted_scopes=false&prompt=consent&login_hint=classicalechos%40gmail.com\",\n      \"callback_format\": \"youtube:classicalechos: <full localhost URL>\"\n    }\n  },\n  \"callback_instructions\": [\n    \"After logging in, send back: youtube:trapiistan: <full localhost callback URL>\",\n    \"After logging in, send back: youtube:classicalechos: <full localhost callback URL>\"\n  ],\n  \"next_steps\": [\n    \"Open each reauth_urls.<profile>.auth_url in a browser and approve the expected YouTube account/channel.\",\n    \"Send me each full localhost callback URL exactly as redirected, prefixed as shown in callback_instructions.\",\n    \"I will exchange with: python3 /opt/data/scripts/google_reauth_workflow.py youtube-exchange <profile> <localhost callback URL> --verify\",\n    \"Then I will rerun: python3 /opt/data/scripts/youtube_auth_healthcheck.py --verbose\"\n  ]\n}",
       "last_delivery_error": null,
       "deliver": "discord:1524259261281206332",
       "origin": {
@@ -694,15 +694,15 @@
       "schedule_display": "0 0 * * 0",
       "repeat": {
         "times": null,
-        "completed": 6
+        "completed": 7
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-08T07:49:16.802140+00:00",
-      "next_run_at": "2026-08-02T00:00:00+00:00",
-      "last_run_at": "2026-07-26T00:00:29.792321+00:00",
+      "next_run_at": "2026-08-09T00:00:00+00:00",
+      "last_run_at": "2026-08-02T00:00:24.760793+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -767,5 +767,5 @@
       "fire_claim": null
     }
   ],
-  "updated_at": "2026-08-01T03:00:17.908911+00:00"
+  "updated_at": "2026-08-02T03:00:26.046860+00:00"
 }
