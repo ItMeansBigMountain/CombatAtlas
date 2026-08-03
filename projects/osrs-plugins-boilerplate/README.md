@@ -59,41 +59,32 @@ You can also generate Gradle's standard build-local JavaDoc output with:
 ./gradlew javadoc
 ```
 
-## API reference
+## External APIs
 
-Package: `com.itmeansbigmountain.osrsapi`
+Package: `com.itmeansbigmountain.osrsapi`. These synchronous helpers make read-only `GET` requests and return raw response bodies. Merely adding the library sends nothing; a consumer must call a method.
 
-The clients intentionally return raw JSON strings. Plugin authors can parse responses with their preferred JSON library, DTOs, or existing RuneLite project conventions.
+### Wise Old Man (`https://api.wiseoldman.net/v2`)
 
-### Wise Old Man
+| Route | Purpose |
+| --- | --- |
+| `/player/{username}` | Public player profile. |
+| `/player/{username}/stats` | Skills/activities. |
+| `/player/{username}/gains` | Gains. |
+| `/player/{username}/achievements` | Achievements. |
+| `/player/{username}/names` | Name history. |
 
-Base URL: `https://api.wiseoldman.net/v2`
+### TempleOSRS (`https://templeosrs.com/api/v2`)
 
-| Method | Endpoint | Purpose |
-| --- | --- | --- |
-| `WOMApiClient.getPlayerInfo(username)` | `/player/{username}` | Player profile document. |
-| `WOMApiClient.getPlayerStats(username)` | `/player/{username}/stats` | Player skill/activity stats. |
-| `WOMApiClient.getPlayerGains(username)` | `/player/{username}/gains` | Player gains. |
-| `WOMApiClient.getPlayerAchievements(username)` | `/player/{username}/achievements` | Recent achievements. |
-| `WOMApiClient.getPlayerNames(username)` | `/player/{username}/names` | Name history. |
+| Route | Purpose |
+| --- | --- |
+| `/player/{username}/info`, `/stats`, `/gains`, `/names` | Public player profile datasets. |
+| `/current-top`, `/recent-records` | Current top snapshot and records. |
+| `/skill-hiscores?skill={skill}` | Skill hiscores. |
+| `/groups?name={groupid}`, `/groups/{groupid}/memberstats` | Group search and member stats. |
+| `/pets/leaderboards` | Pet leaderboard. |
+| `/player/{username}/collections` | Collection-log data. |
 
-### TempleOSRS
-
-Base URL: `https://templeosrs.com/api/v2`
-
-| Method | Endpoint | Purpose |
-| --- | --- | --- |
-| `TempleApiClient.getPlayerInfo(username)` | `/player/{username}/info` | Player profile information. |
-| `TempleApiClient.getPlayerStats(username)` | `/player/{username}/stats` | Player stats. |
-| `TempleApiClient.getPlayerGains(username)` | `/player/{username}/gains` | Player gains. |
-| `TempleApiClient.getPlayerNames(username)` | `/player/{username}/names` | Name history. |
-| `TempleApiClient.getPlayerCurrentTop()` | `/current-top` | Current top-player snapshot. |
-| `TempleApiClient.getRecentRecords()` | `/recent-records` | Recent records. |
-| `TempleApiClient.getSkillHiscores(skill)` | `/skill-hiscores?skill={skill}` | Skill hiscores. |
-| `TempleApiClient.getGroupInfo(groupid)` | `/groups?name={groupid}` | Group search/details. |
-| `TempleApiClient.getGroupMemberStats(groupid)` | `/groups/{groupid}/memberstats` | Group member stats. |
-| `TempleApiClient.getPetLeaderboard()` | `/pets/leaderboards` | Pet leaderboard. |
-| `TempleApiClient.getCollectionLog(username)` | `/player/{username}/collections` | Collection log data. |
+Requests use Java `HttpClient`, 10-second connection and 15-second request timeouts, and `User-Agent: OSRS-Plugin/1.0`. No API key, cookie, authorization header, analytics, telemetry, write operation, cache, retry, status validation, or offline fallback is included. Player/group/skill values are transmitted in URLs and are currently concatenated without URL encoding; consumers must validate/encode them. Calls must run off the RuneLite game thread.
 
 ## Quick usage
 

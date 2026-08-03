@@ -14,7 +14,7 @@ import java.time.Duration;
  * 10 second connection timeout, a 15 second request timeout, and the default
  * {@code OSRS-Plugin/1.0} user agent.</p>
  */
-public class TempleApiClient {
+public class WOMApiClient {
     static final String BASE_URL = "https://api.wiseoldman.net/v2";
     static final String USER_AGENT = "OSRS-Plugin/1.0";
 
