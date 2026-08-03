@@ -6,6 +6,16 @@ Use this when Viral Radar needs creator source media but YouTube downloads fail 
 
 The user does not want Opus Clips and is scrapping that dependency. Do not produce `OPUSCLIP_API_KEY unset` / Opus fallback warnings as the normal path. Source acquisition should be resilient without Opus.
 
+The user will not provide source videos for Viral Radar. Never ask for a local/Drive MP4 or imply that acquisition is waiting on the user. When a download fails, report that the automation must redownload the source, classify the failure, delete only verified corrupt/partial artifacts, and continue through automated fallbacks. The only user interaction that may be requested is account authorization, fresh browser cookies, or approval/configuration of infrastructure such as a proxy—not the video itself.
+
+Before retrying any existing source artifact:
+
+1. Run `ffprobe` and require a valid video stream, nonzero duration, and a plausible container.
+2. Treat HTML saved as `.mp4`, zero-byte/truncated files, missing `moov` atoms, and incomplete downloader fragments as corrupt.
+3. Delete corrupt media plus `.part`, `.ytdl`, and temporary fragments for that source, while preserving manifests, metadata, attribution, logs, and successfully rendered/queued clips.
+4. Redownload to a temporary path, verify with `ffprobe`, then atomically move it into the manifest source path.
+5. If every automated fallback fails, emit `blocked_source` with the exact URL, attempted methods, raw errors, corrupt files removed, and the next automated/infrastructure remedy. Do not ask the user to supply the media.
+
 ## Preferred fallback ladder
 
 1. Use existing local/cached `source.mp4` if present.
@@ -24,7 +34,7 @@ The user does not want Opus Clips and is scrapping that dependency. Do not produ
    - `site:facebook.com/<official page>/videos <topic>`
    - creator/brand sites, podcast pages, Instagram/Facebook reposts, or official short excerpts
 5. Prefer official creator/page reposts over fan pages. If using a non-YouTube source, update manifest attribution (`source_url`, `source_url_original_youtube`, `source_attribution`) and keep clips transformative.
-6. Only then report `blocked_source` with the missing proof path: cookies, residential proxy, local/Drive MP4, or a configured non-Opus provider.
+6. Only then report `blocked_source` with the missing proof/remedy path: refreshed cookies or OAuth, a residential proxy, another automated egress/downloader worker, an official creator repost, a direct/archive source, or a configured non-Opus provider. Never ask the user to provide the source video.
 
 ## Why this matters
 
