@@ -15,7 +15,7 @@ SCOPES = [
     'https://www.googleapis.com/auth/youtube.upload',
     'https://www.googleapis.com/auth/youtube.force-ssl',
 ]
-creds = Credentials.from_authorized_user_file(str(TOKEN), scopes=SCOPES)
+creds = Credentials.from_authorized_user_file(str(TOKEN))
 if not creds.valid and creds.expired and creds.refresh_token:
     creds.refresh(Request())
     TOKEN.write_text(creds.to_json())

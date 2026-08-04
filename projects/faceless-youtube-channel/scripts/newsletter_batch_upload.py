@@ -208,8 +208,67 @@ def loosen_story_voice(text: str) -> str:
     return re.sub(r'\s+',' ',text).strip()
 
 
+def build_stoic_retention_script(src):
+    """Build a tension-first Stoic story instead of stitching facts with boilerplate."""
+    subject=clean_text(src['subject']); body=clean_text(src.get('body',''))
+    persona=narrator_persona('stoic', subject)
+    facts=[humanize_fact(s) for s in sentence_candidates(body)]
+    joined=' '.join(facts)
+
+    if 'Marcus Aurelius' in joined:
+        hook="Marcus Aurelius never outgrew the same lessons—and that may be why they saved him."
+    else:
+        concrete=scene_keyword(joined, safe_title(subject))
+        hook=f"The Stoics never treated {concrete} as a lesson you learn once."
+
+    selected=[]
+    for fact in facts:
+        low=fact.lower()
+        if any(k in low for k in ('marcus aurelius','epictetus','rusticus','meditations','true freedom','control','anger','difficult people','duty')):
+            if fact not in selected:
+                selected.append(fact)
+        if len(selected) >= 5:
+            break
+    if len(selected) < 4:
+        selected=(selected + [f for f in facts if f not in selected])[:5]
+
+    # Hook -> historical image -> escalating proof -> reversal -> practical payoff.
+    story=[hook]
+    if selected:
+        story.append(selected[0])
+    if len(selected)>1:
+        story.append(selected[1])
+    story.append("He returned to those ideas on anger, death, difficult people, and duty—not because he had mastered them, but because he had not.")
+    if len(selected)>2:
+        story.append(selected[2])
+    story.append("That is the part most people miss: reading can introduce an idea, but repetition is what makes it available when pressure arrives.")
+    story.append("You do not stop when the words sound familiar. You stop when your behavior finally does.")
+
+    captions=['HE STILL FAILED','ONE BOOK. AGAIN.','THE IDEAS RETURNED','NOT MASTERY','PRESSURE WAS THE TEST','FAMILIAR ISN’T ENOUGH','WHEN YOU CAN STOP']
+    beats=[(captions[i], line) for i,line in enumerate(story[:7])]
+    visual_queries=[
+        'Marcus Aurelius statue dramatic close up',
+        'ancient philosophy book candle hands',
+        'Roman emperor statue dark cinematic',
+        'angry man calming down alone',
+        'person under pressure rain cinematic',
+        'journaling repeated practice morning',
+        'disciplined person walking sunrise',
+    ][:len(beats)]
+    narration=' '.join(line for _,line in beats)
+    title=safe_title(subject)
+    desc=(f"{title}\n\nMarcus Aurelius kept returning to the same lessons for a reason: recognition is not mastery.\n\n"
+          "More from me: https://linktr.ee/sosai.oyama\n"
+          "Support the channel: https://buymeacoffee.com/affanfareev\n"
+          "Cash App: https://cash.app/$sosaioyama\n"
+          "Venmo: https://venmo.com/u/SosaiOyama\n\n#Shorts")
+    return {'type':'stoic','persona':persona,'beats':beats,'visual_queries':visual_queries,'narration':narration,'title':title,'description':desc}
+
+
 def build_script(src):
     typ=source_type(src); subject=clean_text(src['subject'])
+    if typ == 'stoic':
+        return build_stoic_retention_script(src)
     persona=narrator_persona(typ, subject)
     spoken_subject=safe_title(subject)
     body=clean_text(src.get('body',''))
@@ -599,6 +658,13 @@ def background_input(asset: Path | None, dur: float) -> tuple[list[str], list[st
     return ['-f','lavfi','-i',f'color=c=black:s=1080x1920:d={dur:.2f}'], ['[0:v]scale=1080:1920[bg]']
 
 
+def scene_audio_too_long(text: str, duration: float) -> bool:
+    # Natural narration is usually 2-3 words/sec. This generous ceiling catches
+    # provider responses containing long silence/corrupt timing without rejecting
+    # deliberate dramatic pacing.
+    return duration > max(12.0, len(text.split()) * 0.8 + 4.0)
+
+
 def render(work:Path, script):
     scenes=work/'scenes'; scenes.mkdir(exist_ok=True)
     assets_dir=work/'visual_assets'; assets_dir.mkdir(exist_ok=True)
@@ -607,8 +673,15 @@ def render(work:Path, script):
     for i,(cap,body) in enumerate(script['beats'],1):
         audio=scenes/f'{i:02d}.mp3'
         voice_provider=generate_voiceover(body, audio)  # never read overlay captions aloud
-        voice_manifest.append({'scene':i,'provider':voice_provider,'caption_display_only':cap})
-        dur=float(sh(['ffprobe','-v','error','-show_entries','format=duration','-of','default=nw=1:nk=1',str(audio)],60)) + 0.8
+        raw_dur=float(sh(['ffprobe','-v','error','-show_entries','format=duration','-of','default=nw=1:nk=1',str(audio)],60))
+        if scene_audio_too_long(body, raw_dur):
+            google_tts(body, audio)
+            voice_provider='google_tts_after_elevenlabs_duration_guard'
+            raw_dur=float(sh(['ffprobe','-v','error','-show_entries','format=duration','-of','default=nw=1:nk=1',str(audio)],60))
+            if scene_audio_too_long(body, raw_dur):
+                raise RuntimeError(f'TTS duration gate blocked scene {i}: {raw_dur:.2f}s for {len(body.split())} words')
+        voice_manifest.append({'scene':i,'provider':voice_provider,'caption_display_only':cap,'duration':raw_dur})
+        dur=raw_dur + 0.8
         query=queries[i-1] if i-1 < len(queries) else f"{script.get('type','technology')} people working laptop"
         asset, meta=visual_asset(query, assets_dir/f'{i:02d}')
         if not asset:
@@ -636,7 +709,9 @@ def render(work:Path, script):
     (work/'visual_manifest.json').write_text(json.dumps(visual_manifest,indent=2),encoding='utf-8')
     (work/'voice_manifest.json').write_text(json.dumps(voice_manifest,indent=2),encoding='utf-8')
     concat=work/'concat.txt'; concat.write_text(''.join(f"file {p.resolve()}\n" for p in final_parts),encoding='utf-8')
-    final=work/'final.mp4'; sh(['ffmpeg','-y','-hide_banner','-f','concat','-safe','0','-i',str(concat),'-c','copy',str(final)],300)
+    # Re-encode concat to reset timestamps inherited from heterogeneous stock
+    # inputs. Stream-copy produced a 7-minute container from ~2 minutes of scenes.
+    final=work/'final.mp4'; sh(['ffmpeg','-y','-hide_banner','-f','concat','-safe','0','-i',str(concat),'-vf','setpts=PTS-STARTPTS','-af','asetpts=PTS-STARTPTS','-c:v','libx264','-pix_fmt','yuv420p','-c:a','aac','-movflags','+faststart',str(final)],300)
     return final
 
 
@@ -689,8 +764,7 @@ def process(profile,msg_id, upload_enabled=True):
     result={'profile':profile,'message_id':msg_id,'subject':src['subject'],'workspace':str(work),'video':str(video),'probe':probe,'uploaded':False}
     if upload_enabled:
         if duration_gate_failed:
-            result['warning'] = 'duration_outside_ideal_range_public_upload_continued'
-            result['detail'] = {'duration': duration, 'ideal_seconds': list(TARGET_SHORT_SECONDS), 'policy': 'faceless_public_upload_no_quality_gate'}
+            raise RuntimeError(f'upload blocked by duration quality gate: {duration:.2f}s outside {TARGET_SHORT_SECONDS}')
         up=upload(video,script); result['upload']=up; result['uploaded']=up.get('status')=='UPLOADED'
         if result['uploaded'] and up.get('video_id'):
             # append source id marker to upload log for idempotency even if Gmail cleanup fails

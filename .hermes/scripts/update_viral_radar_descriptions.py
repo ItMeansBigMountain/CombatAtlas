@@ -17,7 +17,7 @@ ENRICHED = pathlib.Path('/opt/data/HeRmEz/projects/viral-clip-radar/UPLOADS/vira
 
 
 def load_token():
-    creds = Credentials.from_authorized_user_file(TOKEN, scopes=[SCOPE])
+    creds = Credentials.from_authorized_user_file(TOKEN)
     if creds.expired and creds.refresh_token:
         creds.refresh(Request())
         pathlib.Path(TOKEN).write_text(creds.to_json())

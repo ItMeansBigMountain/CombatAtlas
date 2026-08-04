@@ -28,13 +28,19 @@ if command -v gh &>/dev/null && gh auth status &>/dev/null; then
   AUTH="gh"
 else
   AUTH="git"
-  # Ensure we have a token for API calls
-  if [ -z "$GITHUB_TOKEN" ]; then
-    if [ -f ~/.hermes/.env ] && grep -q "^GITHUB_TOKEN=" ~/.hermes/.env; then
-      GITHUB_TOKEN=$(grep "^GITHUB_TOKEN=" ~/.hermes/.env | head -1 | cut -d= -f2 | tr -d '\n\r')
-    elif grep -q "github.com" ~/.git-credentials 2>/dev/null; then
-      GITHUB_TOKEN=$(grep "github.com" ~/.git-credentials 2>/dev/null | head -1 | sed 's|https://[^:]*:\([^@]*\)@.*|\1|')
-    fi
+  # Ensure we have a token for API/Git fallbacks. Prefer the user's Hermes token name.
+  if [ -n "${GITHUB_ACCESS_TOKEN:-}" ]; then
+    GITHUB_TOKEN="$GITHUB_ACCESS_TOKEN"
+  elif [ -n "${GITHUB_TOKEN:-}" ]; then
+    :
+  elif [ -n "${GH_TOKEN:-}" ]; then
+    GITHUB_TOKEN="$GH_TOKEN"
+  elif [ -f ~/.hermes/.env ] && grep -q "^GITHUB_ACCESS_TOKEN=" ~/.hermes/.env; then
+    GITHUB_TOKEN=$(grep "^GITHUB_ACCESS_TOKEN=" ~/.hermes/.env | head -1 | cut -d= -f2- | tr -d '\n\r')
+  elif [ -f ~/.hermes/.env ] && grep -q "^GITHUB_TOKEN=" ~/.hermes/.env; then
+    GITHUB_TOKEN=$(grep "^GITHUB_TOKEN=" ~/.hermes/.env | head -1 | cut -d= -f2- | tr -d '\n\r')
+  elif grep -q "github.com" ~/.git-credentials 2>/dev/null; then
+    GITHUB_TOKEN=$(grep "github.com" ~/.git-credentials 2>/dev/null | head -1 | sed 's|https://[^:]*:\([^@]*\)@.*|\1|')
   fi
 fi
 echo "Using: $AUTH"
@@ -169,6 +175,15 @@ Before concluding that a PR has no comments or requested changes, inspect all th
 3. Inline review comments: `GET /repos/{owner}/{repo}/pulls/{pr}/comments` — line-specific feedback.
 
 An empty `/pulls/{pr}/comments` response does **not** mean the PR has no feedback. Also inspect check runs for machine-generated actionable titles/details. When fixing feedback on an immutable-SHA manifest workflow, push the child change first, update the existing PR branch to the new full SHA, reply with the fix and SHA, and wait for checks again.
+
+### RuneLite Plugin Hub submissions
+
+For `runelite/plugin-hub`, load and follow `references/runelite-plugin-hub.md`. Two independent constraints matter:
+
+- **One plugin per PR:** the live PR diff must contain exactly one `plugins/<plugin-id>` marker.
+- **One open PR per author:** two correctly isolated PRs may still be disallowed simultaneously. Never combine plugins to work around this; prioritize one, defer the other, and preserve its child SHA/branch for later.
+
+If reopening a closed submission returns HTTP 422 after a maintainer requests fresh artifacts, do not loop on reopening. Start a replacement branch from current upstream `master`, carry forward resolved review feedback, and verify the replacement PR's live files before reporting success.
 
 ## 4. Monitoring CI Status
 
@@ -417,6 +432,10 @@ When the parent workspace is dirty, publish only reviewed gitlinks from an isola
 5. Read back with `git ls-files -s <paths>` and verify the remote parent SHA.
 
 Pitfall: if a clone succeeds but the following commit output mentions unrelated dirty files from the original workspace, stop—the command is still running in the original directory. Do not report the pointer as published until the clean clone itself has pushed it.
+
+Pitfall on persistent-shell agents: do not globally `export GIT_ASKPASS` to an ephemeral helper that is deleted on shell exit/trap; the exported path can persist into later terminal calls and break authenticated reads. Scope it to each Git command (`GIT_ASKPASS="$helper" GIT_TERMINAL_PROMPT=0 git ...`) or explicitly `unset GIT_ASKPASS GIT_TERMINAL_PROMPT` before deleting the helper. Verify remote heads after cleanup.
+
+Fallback for very large parent repositories: if a fresh clone times out, do not commit from a dirty or divergent current checkout. Authenticated-fetch `origin/main`, verify ancestry, then create a temporary detached worktree from the fetched remote tip (`git worktree add --detach <tmp> origin/main`). Make and inspect the single gitlink commit there, push `HEAD:main` as a fast-forward, remove the worktree, and remotely read back both the parent head and gitlink SHA.
 
 ## Useful PR Commands Reference
 

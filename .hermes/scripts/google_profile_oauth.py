@@ -60,6 +60,12 @@ def scopes_for_profile(profile: str, meta: dict) -> list[str]:
     return FULL_WORKSPACE_SCOPES
 
 
+def missing_required_scopes(granted: list[str] | None, required: list[str]) -> list[str]:
+    """Return canonical scopes absent from Google's actual grant."""
+    granted_set = set(granted or [])
+    return [scope for scope in required if scope not in granted_set]
+
+
 def profile_dir(profile: str) -> Path:
     if not re.fullmatch(r"[a-zA-Z0-9_-]+", profile):
         raise SystemExit("Profile must be alphanumeric plus -/_ only")
@@ -115,7 +121,8 @@ def auth_url(profile: str) -> None:
     )
     url, state = flow.authorization_url(
         access_type="offline",
-        prompt="consent",
+        prompt="consent select_account",
+        include_granted_scopes="true",
         login_hint=email,
     )
     d = profile_dir(profile)
@@ -145,10 +152,17 @@ def auth_code(profile: str, callback: str) -> None:
 
     from google_auth_oauthlib.flow import Flow
 
-    scopes = granted or pending.get("scopes") or []
+    required_scopes = pending.get("scopes") or []
+    if granted:
+        missing = missing_required_scopes(granted, required_scopes)
+        if missing:
+            raise SystemExit(
+                "Google returned an incomplete Workspace grant; token was not replaced. "
+                f"Missing scopes: {', '.join(missing)}. Generate a fresh URL and approve every permission."
+            )
     flow = Flow.from_client_secrets_file(
         str(CLIENT_SECRET_PATH),
-        scopes=scopes,
+        scopes=required_scopes,
         redirect_uri=pending.get("redirect_uri", REDIRECT_URI),
         state=pending["state"],
         code_verifier=pending["code_verifier"],
@@ -156,15 +170,31 @@ def auth_code(profile: str, callback: str) -> None:
     os.environ["OAUTHLIB_RELAX_TOKEN_SCOPE"] = "1"
     flow.fetch_token(code=code)
     token_payload = normalize_token(json.loads(flow.credentials.to_json()))
+    actual_granted = list(
+        getattr(flow.credentials, "granted_scopes", None)
+        or granted
+        or token_payload.get("scopes")
+        or []
+    )
+    missing = missing_required_scopes(actual_granted, required_scopes)
+    if missing:
+        raise SystemExit(
+            "OAuth exchange produced an incomplete Workspace token; existing token was not replaced. "
+            f"Missing scopes: {', '.join(missing)}"
+        )
+    if not flow.credentials.refresh_token:
+        raise SystemExit(
+            "Google did not return an offline refresh token; existing token was not replaced. "
+            "Revoke this app grant once in Google Account permissions, then authorize the newest URL."
+        )
     token_payload["hermes_profile"] = profile
     token_payload["expected_email"] = pending.get("email")
-    if getattr(flow.credentials, "granted_scopes", None):
-        token_payload["scopes"] = list(flow.credentials.granted_scopes)
-    elif granted:
-        token_payload["scopes"] = granted
+    token_payload["scopes"] = actual_granted
     token_path = d / "google_token.json"
-    token_path.write_text(json.dumps(token_payload, indent=2))
-    os.chmod(token_path, 0o600)
+    staged_path = d / "google_token.json.new"
+    staged_path.write_text(json.dumps(token_payload, indent=2))
+    os.chmod(staged_path, 0o600)
+    staged_path.replace(token_path)
     pending_path.unlink(missing_ok=True)
     print(json.dumps({"status": "authenticated", "profile": profile, "expected_email": pending.get("email"), "token_path": str(token_path)}, indent=2))
 

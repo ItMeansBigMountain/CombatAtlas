@@ -51,6 +51,7 @@ REVIEW_LABELS = {
     "important": "Hermes/Review/Important",
     "needs_human": "Hermes/Review/Needs Human",
     "robinhood": "Hermes/Finance/Robinhood",
+    "robinhood_order_receipts": "Hermes/Finance/Robinhood/Order Receipts",
     "zoom_assets": "Hermes/Archive/Zoom Meeting Assets",
     "personal_info": "Hermes/Personal Info",
     "known_junk": "Hermes/Junk/Known",
@@ -77,7 +78,7 @@ def sender_addr(from_header: str) -> str:
 
 def load_creds(profile: str) -> Credentials:
     path = TOKEN_ROOT / profile / "google_token.json"
-    creds = Credentials.from_authorized_user_file(str(path), SCOPES)
+    creds = Credentials.from_authorized_user_file(str(path))
     if creds.expired and creds.refresh_token:
         creds.refresh(Request())
         path.write_text(creds.to_json())
@@ -119,6 +120,23 @@ def classify(account_email: str, msg: dict[str, Any]) -> RuleResult | None:
         return RuleResult("zoom_assets", REVIEW_LABELS["zoom_assets"], "Zoom meeting/class assets archive")
     if sender == "hello@snacks.robinhood.com" or "snacks.robinhood.com" in sender:
         return RuleResult("robinhood_snacks", SOURCE_LABELS["robinhood_snacks"], "Robinhood Snacks financial markets newsletter")
+    # Keep brokerage order confirmations separate from general Robinhood account mail.
+    # Match only Robinhood's account sender, then use explicit order-receipt subjects so
+    # newsletters or unrelated messages mentioning an order are not swept up.
+    robinhood_order_subjects = (
+        "your order has been executed",
+        "your order was canceled",
+        "your order was cancelled",
+        "your order has been canceled",
+        "your order has been cancelled",
+        "your order has been placed",
+    )
+    if sender == "noreply@robinhood.com" and any(subject in h.get("subject", "").lower() for subject in robinhood_order_subjects):
+        return RuleResult(
+            "robinhood_order_receipts",
+            REVIEW_LABELS["robinhood_order_receipts"],
+            "Robinhood brokerage order receipt",
+        )
     if "robinhood" in raw or "robinhood.com" in sender:
         return RuleResult("robinhood", REVIEW_LABELS["robinhood"], "Robinhood financial/account email for Agentic trading context")
     return None

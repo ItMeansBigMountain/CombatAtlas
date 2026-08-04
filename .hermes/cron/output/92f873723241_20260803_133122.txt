@@ -1,0 +1,96 @@
+Cronjob Response: Morning operator report
+(job_id: 92f873723241)
+-------------
+
+**Top line**
+- Monday’s move: protect the operating lane, then ship one visible output.
+  - Google email access worked across all five profiles.
+  - Calendar collection is blocked by missing OAuth scopes.
+
+**Work source / operating pulse**
+- **Google Workspace pulse**
+  - Gmail profiles were reachable:
+    - `trapiistan@gmail.com`
+    - `affan.fareed@gmail.com`
+    - `fareed320@gmail.com`
+    - `classicalechos@gmail.com`
+    - `laflametoast@gmail.com`
+  - The collector returned mailbox totals but no message-level digest.
+    - No specific priority email, receipt, renewal, or content lead can be responsibly surfaced today.
+  - Calendar failed on every profile with `insufficient authentication scopes`.
+    - Today’s events and next-seven-day commitments are unverified.
+    - Workspace OAuth needs Calendar scope added before this report can resume calendar coverage.
+  - No useful Drive, Docs, or Sheets movement appeared in the collected context.
+
+**Email priority + cleanup**
+- **Priority emails**
+  - None identifiable from today’s incomplete message-level collection.
+- **Interesting/source emails**
+  - No TLDR, Kino Body/Kinobody, Daily Stoic, or Grammarly Insights content was exposed for review.
+- **Cleanup actions**
+  - None performed.
+  - Approved junk categories remain eligible when message-level results return.
+- **Needs review**
+  - Treat today’s email pulse as incomplete—not an empty inbox.
+  - Newsletter/source mail must remain untouched until used with a verified upload or explicitly approved for deletion.
+
+**Calendar / prep notes**
+- Calendar visibility is blocked across all five Google profiles.
+  - Do not rely on this report for today’s schedule.
+  - No Jared event could be verified; if one exists, Codewars and SoloLearn remain the useful prep options.
+
+**Chicago local pulse**
+- Sunny and about **69°F** at 8:15 AM, with light ENE wind and low near-term rain odds.
+- Transit:
+  - Washington/Wells elevator is temporarily unavailable.
+  - King Drive’s exit-only elevator toward Cottage Grove remains unavailable.
+- Recent heavy rain left localized flooding and standing-water concerns around parts of the region.
+  - Use extra caution on affected roads even with this morning’s clear weather.
+
+**Market pulse**
+- Friday finished positively:
+  - Dow: **+0.53%**
+  - S&P 500: **+0.70%**
+  - Nasdaq: **+1.00%**
+- Today’s catalysts:
+  - July ISM Manufacturing
+  - Earnings from Palantir, Marriott, Vertex, ONEOK, Williams, and Diamondback Energy
+- Read-through:
+  - Tech momentum is intact, but today’s manufacturing data and PLTR reaction can quickly reset sentiment.
+
+**Google search / social pulse**
+- Google’s summer trend report calls 2026 the summer of “maxxing.”
+  - Concrete content angle: package disciplined self-improvement as a specific transformation—focus-maxxing, posture-maxxing, or confidence-maxxing—rather than generic motivation.
+  - Best fit is a tightly evidenced short, not trend-chasing filler.
+
+**AI + coding news**
+- GitHub’s Agent HQ public preview now brings Claude and Codex directly into GitHub, VS Code, and mobile for eligible Copilot plans.
+  - Practical leverage: route separate issues to different agents and compare patches instead of committing the whole workflow to one model.
+- Security caveat:
+  - Reported prompt-injection incidents affected coding agents from multiple vendors.
+  - Keep secrets out of agent-readable repositories and review tool-enabled changes before execution.
+
+**Interesting item**
+- A useful product signal is emerging around model-agnostic development.
+  - The durable advantage is no longer loyalty to one coding model.
+  - It is having strong tests, clear issue specs, and a workflow that can evaluate competing agent outputs.
+
+**Numerology**
+- **Universal day 3**
+  - Communication, creativity, and visible expression.
+  - Favor publishing or presenting over quietly polishing.
+
+**Daily challenge**
+- Produce one concrete artifact before noon:
+  - a shipped video,
+  - a merged fix,
+  - or a finished operating document.
+
+**One big priority prompt**
+- What single deliverable would make the rest of today feel like upside rather than recovery?
+
+**Hard truth / leverage move**
+- Five connected inboxes create the appearance of visibility, but today’s collector did not expose actionable messages and every calendar lane is blind.
+  - Repair Calendar scopes and message-level briefing output before adding another automation layer.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Morning operator report").

@@ -20,7 +20,7 @@ def pkg(row):
     return 'The Uncomfortable Truth Hiding Here'
 
 def creds():
-    c=Credentials.from_authorized_user_file(TOKEN, scopes=[SCOPE])
+    c=Credentials.from_authorized_user_file(TOKEN)
     if c.expired and c.refresh_token:
         c.refresh(Request()); pathlib.Path(TOKEN).write_text(c.to_json()); os.chmod(TOKEN,0o600)
     return c

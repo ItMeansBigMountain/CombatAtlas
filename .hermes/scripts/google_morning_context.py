@@ -108,7 +108,7 @@ def classify_email_for_report(account_email: str, msg: dict[str, Any]) -> str:
 
 def load_creds(profile: str) -> Credentials:
     path = TOKEN_ROOT / profile / "google_token.json"
-    creds = Credentials.from_authorized_user_file(str(path), SCOPES)
+    creds = Credentials.from_authorized_user_file(str(path))
     if creds.expired and creds.refresh_token:
         creds.refresh(Request())
         path.write_text(creds.to_json())

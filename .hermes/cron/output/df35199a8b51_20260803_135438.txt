@@ -1,0 +1,114 @@
+Cronjob Response: Post-morning Agentic portfolio market scan
+(job_id: df35199a8b51)
+-------------
+
+# Decision
+
+**Hold SHEL; no new trade.** The best candidates are extended post-earnings leaders without clean pullback/retest entries. No trade was forced merely to reach the 80% deployment target.
+
+## Current State — Agentic Account ••••1041 Only
+
+- **Portfolio value:** $178.67
+- **Equity value:** $82.53
+- **Cash / buying power:** $96.14
+- **Unsettled funds:** $0
+- **Pending deposits:** $0
+- **Open position:** SHEL 0.908550 shares at $90.72 average
+- **SHEL live value:** $82.53 at approximately $90.84
+- **Unrealized result:** +$0.11 / +0.13%
+- **Open-ish equity orders:** None across `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled`
+- Account is active, Agentic-enabled, and above the $10 kill switch. No other account was operated.
+
+## Market Regime
+
+At approximately 9:52 ET:
+
+- SPY: **+0.72%**
+- QQQ: **+0.28%**
+- IWM: **+1.05%**
+- XLY: **+2.19%**
+- XLF: **+0.97%**
+- XLI: **+0.71%**
+- XLK: **-0.73%**
+- SMH: **-2.61%**
+- XLE: **-1.68%**
+
+**Regime:** Constructive index rebound with narrow mega-cap/cloud leadership, but continued semiconductor and energy weakness. QQQ remains below its completed 20- and 50-day averages, so this is not yet a clean broad risk-on confirmation.
+
+## Position Management
+
+### SHEL — Hold, No Add
+
+- Daily trend remains above SMA10/20/50: approximately $88.09 / $85.62 / $83.86
+- Completed 20-session return: approximately +17.9%
+- ATR14: approximately $1.65
+- Current pullback has not breached structure, but falling oil and XLE weakness are headwinds.
+- **Binding stop/reassessment:** $87.80
+- **Targets:** $95.10 / $98.00
+- **Planned risk:** approximately $2.65
+- **R:R:** 1.50 / 2.49
+- Do not widen the stop or average down.
+
+## Ranked Swing Candidates
+
+1. **MSFT — 8.1/10, wait for retest**
+   - Strong earnings: $90.0B revenue, Microsoft Cloud +27%, Azure +43%; broker EPS $4.74 versus $4.23 estimate.
+   - Live near $490 after another +5.45% move—too extended.
+   - Entry: $478–$482 retest; plan at $480
+   - Stop: $469
+   - Targets: $510 / $530
+   - R:R: 2.73 / 4.55
+
+2. **GOOGL — 7.8/10, wait for retest**
+   - Strong opening relative strength and reclaim above completed SMA50.
+   - Broker earnings: EPS $9.11 versus $2.87 estimate.
+   - Entry: $363–$366 hold; plan at $365
+   - Stop: $356
+   - Targets: $390 / $408
+   - R:R: 2.78 / 4.78
+
+3. **DXCM — 7.5/10, wait for pullback**
+   - New 52-week high, above SMA10/20/50, with improving revenue and net margin.
+   - Entry: $84–$85 retest; plan at $84.70
+   - Stop: $81
+   - Targets: $92 / $98
+   - R:R: 1.97 / 3.59
+
+4. **AMZN — 7.3/10, wait for retest**
+   - Q2 revenue $200.606B and EPS $5.75 versus $1.82 estimate.
+   - Fresh 52-week high but extended multiple ATRs following Friday’s earnings gap.
+   - Entry: $274–$278 hold; plan at $276
+   - Stop: $270
+   - Targets: $290 / $305
+   - R:R: 2.33 / 4.83
+
+5. **SHEL — 7.0/10, hold existing only**
+   - Strong completed trend, approximately 10 PE, and roughly 3.2% dividend yield.
+   - No add while XLE and oil-sensitive assets weaken.
+   - Stop: $87.80
+   - Targets: $95.10 / $98.00
+
+PLTR, ON, and VRTX were rejected for new entries ahead of earnings after today’s close. NVDA lacked semiconductor-sector confirmation, while ETN had an unattractive early spread and volatile structure.
+
+## Cash Deployment
+
+- **Liquid buying power:** $96.14
+- **80% target deployment:** $76.91
+- **Required 20% buffer:** $19.23
+- **New capital deployed:** $0
+- **Current total equity deployment:** 46.19%
+
+No candidate reached its planned retest trigger. Buying the extended gaps would compromise entry quality, so the allocation target remains subordinate to the no-forced-trade rule.
+
+## Exact Actions and Tool Status
+
+- No order reviewed, placed, canceled, or sold.
+- No fills.
+- No options, shorts, or activity in another account.
+- Robinhood MCP account, portfolio, position, order, quote, historical, fundamental, earnings, and tradability checks succeeded.
+- Gmail access for `personal-main` succeeded. The only relevant recent result was a Robinhood login-confirmation notice; no actionable newsletter signal was found and no mailbox changes were made.
+- An obsolete local collector initially failed because `httpx2` was unavailable; the maintained MCP collector succeeded immediately, leaving no broker-state uncertainty.
+- Full journal saved to:
+  `/opt/data/HeRmEz/projects/trading-journal/2026-08-03/post-open-agentic-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Post-morning Agentic portfolio market scan").

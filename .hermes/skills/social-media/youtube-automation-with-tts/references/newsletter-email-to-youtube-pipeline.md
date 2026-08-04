@@ -11,6 +11,8 @@ For the current channel quality bar, also load `references/faceless-newsletter-q
    - Treat TLDR from `personal-secondary` / `fareed320@gmail.com` as the preferred TLDR source.
    - Treat Daily Stoic and Kino Body as source-worthy: summarize/use before deleting.
    - Keep priority/security/billing messages out of bulk cleanup.
+   - When the user names a specific newsletter class (for example, “make a Daily Stoic video”), do **source-specific discovery first** rather than running the mixed newsletter batch queue. Search the approved Gmail profiles for that sender, select the newest eligible unprocessed message, inspect its subject/date, and pass its explicit Gmail message ID to the renderer. This prevents an earlier TLDR/Kino result from taking precedence merely because of batch query ordering.
+   - For Daily Stoic, search `from:info@dailystoic.com -in:trash` across `personal-secondary` first and then `personal-main`; prefer the newest eligible message unless the user identifies a particular issue. Render with an explicit command such as `newsletter_batch_upload.py --profile personal-secondary --message <gmail_id>`.
 
 2. **Generate one real video per email — quality bar**
    - Each source email gets its **own** video. Do not combine multiple newsletters into one generic upload.

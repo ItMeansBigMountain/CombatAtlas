@@ -12,7 +12,8 @@ Keep Inbox clean without losing high-signal source material. Sorting should usua
 - `Hermes/Source/Daily Stoic` — Daily Stoic lessons/source emails.
 - `Hermes/Source/Kino Body` — Kino Body health/fitness source emails.
 - `Hermes/Source/Robinhood Snacks` — **Robinhood Snacks is a financial markets newsletter**, not Robinhood account mail.
-- `Hermes/Finance/Robinhood` — Robinhood account, transaction, deposit, statement, trade-confirmation, and brokerage/security-related mail.
+- `Hermes/Finance/Robinhood/Order Receipts` — Robinhood brokerage order lifecycle receipts from `noreply@robinhood.com`, including executed, placed, and canceled/cancelled order confirmations. This specific rule must run before the broader Robinhood account-mail rule.
+- `Hermes/Finance/Robinhood` — other Robinhood account, deposit, statement, trade-confirmation, brokerage, and security-related mail.
 
 ## Important pitfall
 

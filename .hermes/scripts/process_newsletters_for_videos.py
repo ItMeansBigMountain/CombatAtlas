@@ -68,7 +68,7 @@ def gmail_service(profile: str):
     from googleapiclient.discovery import build
     
     token = TOKEN_BASE / profile / 'google_token.json'
-    creds = Credentials.from_authorized_user_file(str(token), scopes=[GMAIL_SCOPE])
+    creds = Credentials.from_authorized_user_file(str(token))
     if creds.expired and creds.refresh_token:
         creds.refresh(Request())
         token.write_text(creds.to_json())

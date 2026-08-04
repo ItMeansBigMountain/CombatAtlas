@@ -30,6 +30,17 @@ YOUTUBE_SCOPES = [
     "https://www.googleapis.com/auth/yt-analytics.readonly",
 ]
 YOUTUBE_BASE = Path("/opt/data/secrets")
+WORKSPACE_SCOPES = [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.send",
+    "https://www.googleapis.com/auth/gmail.modify",
+    "https://www.googleapis.com/auth/gmail.settings.basic",
+    "https://www.googleapis.com/auth/calendar",
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/contacts",
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/documents",
+]
 
 
 def load_registry() -> dict:
@@ -108,7 +119,7 @@ def cmd_youtube_auth_url(args) -> int:
     for profile in profiles:
         meta, client, token, pending = yt_paths(profile)
         flow = make_yt_flow(client)
-        auth_url, state = flow.authorization_url(access_type="offline", include_granted_scopes="false", prompt="consent", login_hint=meta.get("email"))
+        auth_url, state = flow.authorization_url(access_type="offline", include_granted_scopes="true", prompt="consent select_account", login_hint=meta.get("email"))
         pending.write_text(json.dumps({"profile": profile, "state": state, "redirect_uri": flow.redirect_uri, "client_secret": str(client), "token": str(token), "scopes": YOUTUBE_SCOPES, "code_verifier": getattr(flow, "code_verifier", None)}, indent=2), encoding="utf-8")
         os.chmod(pending, 0o600)
         out[profile] = {"status": "pending", "expected_channel_title": meta.get("channel_title"), "expected_email": meta.get("email"), "token_path": str(token), "auth_url": auth_url, "callback_format": f"youtube:{profile}: <full localhost URL>"}
@@ -125,9 +136,25 @@ def cmd_youtube_exchange(args) -> int:
     if data.get("code_verifier"):
         flow.code_verifier = data["code_verifier"]
     os.environ.setdefault("OAUTHLIB_INSECURE_TRANSPORT", "1")
+    callback_params = parse_qs(urlparse(args.callback).query)
+    returned_state = (callback_params.get("state") or [None])[0]
+    if returned_state and returned_state != data.get("state"):
+        raise SystemExit("OAuth state mismatch; YouTube token was not replaced")
+    callback_scopes = ((callback_params.get("scope") or [""])[0]).split()
+    missing_callback_scopes = [scope for scope in YOUTUBE_SCOPES if callback_scopes and scope not in set(callback_scopes)]
+    if missing_callback_scopes:
+        raise SystemExit(f"Incomplete YouTube grant; token was not replaced. Missing scopes: {', '.join(missing_callback_scopes)}")
     flow.fetch_token(authorization_response=args.callback)
-    token.write_text(flow.credentials.to_json(), encoding="utf-8")
-    os.chmod(token, 0o600)
+    granted = list(getattr(flow.credentials, "granted_scopes", None) or callback_scopes or flow.credentials.scopes or [])
+    missing = [scope for scope in YOUTUBE_SCOPES if scope not in set(granted)]
+    if missing:
+        raise SystemExit(f"YouTube exchange produced an incomplete token; existing token was not replaced. Missing scopes: {', '.join(missing)}")
+    if not flow.credentials.refresh_token:
+        raise SystemExit("Google did not return an offline YouTube refresh token; existing token was not replaced")
+    staged = token.with_suffix(token.suffix + ".new")
+    staged.write_text(flow.credentials.to_json(), encoding="utf-8")
+    os.chmod(staged, 0o600)
+    staged.replace(token)
     pending.unlink(missing_ok=True)
     print(json.dumps({"status": "TOKEN_SAVED", "profile": args.profile, "token_path": str(token), "has_refresh_token": bool(flow.credentials.refresh_token)}, indent=2))
     if args.verify:
@@ -141,6 +168,20 @@ def token_scopes(token: Path, fallback: list[str] | None = None) -> list[str]:
         return data.get("scopes") or data.get("scope", "").split() or fallback or []
     except Exception:
         return fallback or []
+
+
+def workspace_verification_ok(result: dict) -> bool:
+    """A token is healthy only when durable, complete, identity-matched, and live-probed."""
+    probes = result.get("probes") or {}
+    required_probes = {"gmail_profile", "gmail_labels", "calendar", "drive", "contacts"}
+    return bool(
+        result.get("valid")
+        and result.get("identity_match")
+        and result.get("scope_complete")
+        and result.get("has_refresh_token")
+        and required_probes.issubset(probes)
+        and all(bool((probes[name] or {}).get("ok")) for name in required_probes)
+    )
 
 
 def verify_workspace(profile: str) -> int:
@@ -157,7 +198,18 @@ def verify_workspace(profile: str) -> int:
             os.chmod(token, 0o600)
         except Exception as e:
             refresh_error = f"{type(e).__name__}: {str(e)[:500]}"
-    result = {"profile": profile, "expected_email": meta.get("email"), "token_path": str(token), "valid": bool(creds.valid), "probes": {}}
+    missing_scopes = [scope for scope in WORKSPACE_SCOPES if scope not in set(scopes)]
+    result = {
+        "profile": profile,
+        "expected_email": meta.get("email"),
+        "token_path": str(token),
+        "valid": bool(creds.valid),
+        "has_refresh_token": bool(creds.refresh_token),
+        "scope_complete": not missing_scopes,
+        "missing_scopes": missing_scopes,
+        "identity_match": False,
+        "probes": {},
+    }
     if refresh_error:
         result["refresh_error"] = refresh_error
         result["next_step"] = f"Run: python3 /opt/data/scripts/google_reauth_workflow.py workspace-auth-url {profile}"
@@ -166,22 +218,31 @@ def verify_workspace(profile: str) -> int:
     try:
         gmail = build("gmail", "v1", credentials=creds, cache_discovery=False)
         prof = gmail.users().getProfile(userId="me").execute()
-        result["probes"]["gmail_profile"] = {"emailAddress": prof.get("emailAddress"), "ok": True}
+        email = prof.get("emailAddress")
+        result["probes"]["gmail_profile"] = {"emailAddress": email, "ok": True}
+        result["identity_match"] = str(email or "").lower() == str(meta.get("email") or "").lower()
         gmail.users().labels().list(userId="me").execute()
         result["probes"]["gmail_labels"] = {"ok": True}
     except Exception as e:
-        result["probes"]["gmail"] = {"ok": False, "error": f"{type(e).__name__}: {str(e)[:300]}"}
+        result["probes"]["gmail_profile"] = {"ok": False, "error": f"{type(e).__name__}: {str(e)[:300]}"}
+        result["probes"]["gmail_labels"] = {"ok": False, "error": "Gmail identity probe failed"}
     for service, version, call in [
         ("calendar", "v3", lambda svc: svc.calendarList().list(maxResults=1).execute()),
         ("drive", "v3", lambda svc: svc.files().list(pageSize=1, fields="files(id,name)").execute()),
+        ("people", "v1", lambda svc: svc.people().connections().list(resourceName="people/me", pageSize=1, personFields="names").execute()),
     ]:
         try:
             call(build(service, version, credentials=creds, cache_discovery=False))
-            result["probes"][service] = {"ok": True}
+            probe_name = "contacts" if service == "people" else service
+            result["probes"][probe_name] = {"ok": True}
         except Exception as e:
-            result["probes"][service] = {"ok": False, "error": f"{type(e).__name__}: {str(e)[:300]}"}
+            probe_name = "contacts" if service == "people" else service
+            result["probes"][probe_name] = {"ok": False, "error": f"{type(e).__name__}: {str(e)[:300]}"}
+    result["verification_ok"] = workspace_verification_ok(result)
+    if not result["verification_ok"]:
+        result["next_step"] = "Do not install or trust this grant; repair missing scopes/identity before use."
     print(json.dumps(result, indent=2))
-    return 0 if result["valid"] else 1
+    return 0 if result["verification_ok"] else 1
 
 
 def verify_youtube(profile: str) -> int:
