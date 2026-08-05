@@ -1,0 +1,12 @@
+[
+ {"tool":"get_equity_historicals","args":{"symbols":["SPY","QQQ","IWM","SMH","AVGO","MA","BAC","NVDA","PLTR"],"start_time":"2026-08-04T13:30:00Z","interval":"5minute","bounds":"regular"}},
+ {"tool":"get_equity_historicals","args":{"symbols":["AVGO","MA","BAC","NVDA","PLTR"],"start_time":"2026-05-01T00:00:00Z","interval":"day","bounds":"regular"}},
+ {"tool":"get_financials","args":{"symbols":["AVGO","MA","BAC","NVDA","PLTR"],"period":"quarterly","limit":4}},
+ {"tool":"run_scan","args":{"scan_id":"8b91f5ef-1f90-4dea-8115-35238c26dfc4"}},
+ {"tool":"run_scan","args":{"scan_id":"10497ef1-584d-4bce-b953-1566d14c4336"}},
+ {"tool":"get_equity_technical_indicators","args":{"symbol":"AVGO","type":"rsi","interval":"day","start_time":"2026-05-01T00:00:00Z","output":"latest","period":14}},
+ {"tool":"get_equity_technical_indicators","args":{"symbol":"MA","type":"rsi","interval":"day","start_time":"2026-05-01T00:00:00Z","output":"latest","period":14}},
+ {"tool":"get_equity_technical_indicators","args":{"symbol":"BAC","type":"rsi","interval":"day","start_time":"2026-05-01T00:00:00Z","output":"latest","period":14}},
+ {"tool":"get_equity_technical_indicators","args":{"symbol":"NVDA","type":"rsi","interval":"day","start_time":"2026-05-01T00:00:00Z","output":"latest","period":14}},
+ {"tool":"get_equity_technical_indicators","args":{"symbol":"PLTR","type":"rsi","interval":"day","start_time":"2026-05-01T00:00:00Z","output":"latest","period":14}}
+]

@@ -1,0 +1,120 @@
+[
+  {
+    "tool": "get_watchlist_items",
+    "args": {
+      "list_id": "eddbebe5-34cc-4df1-953c-d3e3cb55bc19"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"items\":[{\"object_id\":\"f90de184-4f73-4aad-9a5f-407858013eb1\",\"object_type\":\"instrument\",\"symbol\":\"PLTR\"},{\"object_id\":\"6390d8af-27a8-4768-b483-c4f7abd1f602\",\"object_type\":\"instrument\",\"symbol\":\"W\"},{\"object_id\":\"c5d56754-11d1-40bb-89ed-b1a7a292ed05\",\"object_type\":\"instrument\",\"symbol\":\"BRKR\"},{\"object_id\":\"b678c1b7-4ea3-4109-8ee4-2e244d001c7e\",\"object_type\":\"instrument\",\"symbol\":\"SECYF\"},{\"object_id\":\"48ef9509-64c1-491e-be42-8af41d368932\",\"object_type\":\"instrument\",\"symbol\":\"VOYG\"},{\"object_id\":\"2f4dcc7e-90a1-4db4-8d77-e29f253d2c38\",\"object_type\":\"instrument\",\"symbol\":\"LIFE\"},{\"object_id\":\"105849a7-6e28-4b02-826e-e712de0e5d21\",\"object_type\":\"instrument\",\"symbol\":\"INSP\"},{\"object_id\":\"77df187e-dc62-463f-88db-7f8bec2407ec\",\"object_type\":\"instrument\",\"symbol\":\"AMRC\"},{\"object_id\":\"69e9e822-6928-4b55-a4e0-ff444cf53362\",\"object_type\":\"instrument\",\"symbol\":\"BLZE\"},{\"object_id\":\"4eb867f0-56b9-42e4-a59b-1c4fae69011a\",\"object_type\":\"instrument\",\"symbol\":\"BCHEY\"},{\"object_id\":\"a6afb888-634c-4842-90a8-24206bdf93ef\",\"object_type\":\"instrument\",\"symbol\":\"BRBR\"},{\"object_id\":\"95875469-9ffd-4373-a5bd-84befbd1614a\",\"object_type\":\"instrument\",\"symbol\":\"CERT\"},{\"object_id\":\"0f530e6c-2d68-4e27-a6a0-4300b9767d6c\",\"object_type\":\"instrument\",\"symbol\":\"AHCO\"},{\"object_id\":\"169b4fcd-34b4-4064-b742-33447cacb556\",\"object_type\":\"instrument\",\"symbol\":\"IBTA\"},{\"object_id\":\"e236ca7a-9822-4ccc-97b9-6c02ef60de3a\",\"object_type\":\"instrument\",\"symbol\":\"MOVE\"},{\"object_id\":\"f9c13d63-145f-4104-a648-9ebacb77dc27\",\"object_type\":\"instrument\",\"symbol\":\"CLPT\"},{\"object_id\":\"b84f1374-8f15-462c-aa77-97b0a02876f0\",\"object_type\":\"instrument\",\"symbol\":\"WETO\"},{\"object_id\":\"ebe30b2b-e5c7-4495-a6b6-ab87d390cb52\",\"object_type\":\"instrument\",\"symbol\":\"VMD\"},{\"object_id\":\"7701dfe0-715b-43b4-b8e9-4ec672c9e9a1\",\"object_type\":\"instrument\",\"symbol\":\"PLTY\"},{\"object_id\":\"07572580-e336-43ba-9dbe-104322c1133c\",\"object_type\":\"instrument\",\"symbol\":\"BETR\"}],\"has_futures_contracts\":false},\"guide\":\"For instruments (object_type=instrument) the symbol is the ticker \u2014 pass to get_quotes for prices. For crypto (currency_pair), symbol is the pair (BTC-USD). The has_futures_contracts flag at the top tells you whether any futures items are present \u2014 futures behavior is different (the object_id is the active contract, not the product). When presenting to the user, lead with symbol + object_type; omit object_id unless asked.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "items": [
+          {
+            "object_id": "f90de184-4f73-4aad-9a5f-407858013eb1",
+            "object_type": "instrument",
+            "symbol": "PLTR"
+          },
+          {
+            "object_id": "6390d8af-27a8-4768-b483-c4f7abd1f602",
+            "object_type": "instrument",
+            "symbol": "W"
+          },
+          {
+            "object_id": "c5d56754-11d1-40bb-89ed-b1a7a292ed05",
+            "object_type": "instrument",
+            "symbol": "BRKR"
+          },
+          {
+            "object_id": "b678c1b7-4ea3-4109-8ee4-2e244d001c7e",
+            "object_type": "instrument",
+            "symbol": "SECYF"
+          },
+          {
+            "object_id": "48ef9509-64c1-491e-be42-8af41d368932",
+            "object_type": "instrument",
+            "symbol": "VOYG"
+          },
+          {
+            "object_id": "2f4dcc7e-90a1-4db4-8d77-e29f253d2c38",
+            "object_type": "instrument",
+            "symbol": "LIFE"
+          },
+          {
+            "object_id": "105849a7-6e28-4b02-826e-e712de0e5d21",
+            "object_type": "instrument",
+            "symbol": "INSP"
+          },
+          {
+            "object_id": "77df187e-dc62-463f-88db-7f8bec2407ec",
+            "object_type": "instrument",
+            "symbol": "AMRC"
+          },
+          {
+            "object_id": "69e9e822-6928-4b55-a4e0-ff444cf53362",
+            "object_type": "instrument",
+            "symbol": "BLZE"
+          },
+          {
+            "object_id": "4eb867f0-56b9-42e4-a59b-1c4fae69011a",
+            "object_type": "instrument",
+            "symbol": "BCHEY"
+          },
+          {
+            "object_id": "a6afb888-634c-4842-90a8-24206bdf93ef",
+            "object_type": "instrument",
+            "symbol": "BRBR"
+          },
+          {
+            "object_id": "95875469-9ffd-4373-a5bd-84befbd1614a",
+            "object_type": "instrument",
+            "symbol": "CERT"
+          },
+          {
+            "object_id": "0f530e6c-2d68-4e27-a6a0-4300b9767d6c",
+            "object_type": "instrument",
+            "symbol": "AHCO"
+          },
+          {
+            "object_id": "169b4fcd-34b4-4064-b742-33447cacb556",
+            "object_type": "instrument",
+            "symbol": "IBTA"
+          },
+          {
+            "object_id": "e236ca7a-9822-4ccc-97b9-6c02ef60de3a",
+            "object_type": "instrument",
+            "symbol": "MOVE"
+          },
+          {
+            "object_id": "f9c13d63-145f-4104-a648-9ebacb77dc27",
+            "object_type": "instrument",
+            "symbol": "CLPT"
+          },
+          {
+            "object_id": "b84f1374-8f15-462c-aa77-97b0a02876f0",
+            "object_type": "instrument",
+            "symbol": "WETO"
+          },
+          {
+            "object_id": "ebe30b2b-e5c7-4495-a6b6-ab87d390cb52",
+            "object_type": "instrument",
+            "symbol": "VMD"
+          },
+          {
+            "object_id": "7701dfe0-715b-43b4-b8e9-4ec672c9e9a1",
+            "object_type": "instrument",
+            "symbol": "PLTY"
+          },
+          {
+            "object_id": "07572580-e336-43ba-9dbe-104322c1133c",
+            "object_type": "instrument",
+            "symbol": "BETR"
+          }
+        ],
+        "has_futures_contracts": false
+      },
+      "guide": "For instruments (object_type=instrument) the symbol is the ticker \u2014 pass to get_quotes for prices. For crypto (currency_pair), symbol is the pair (BTC-USD). The has_futures_contracts flag at the top tells you whether any futures items are present \u2014 futures behavior is different (the object_id is the active contract, not the product). When presenting to the user, lead with symbol + object_type; omit object_id unless asked."
+    }
+  }
+]
