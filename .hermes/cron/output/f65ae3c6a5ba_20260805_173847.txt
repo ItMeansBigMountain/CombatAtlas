@@ -1,0 +1,103 @@
+Cronjob Response: Agentic Robinhood Swing Opportunity Scan — Afternoon
+(job_id: f65ae3c6a5ba)
+-------------
+
+# Afternoon Swing & Rotation Scan — 2026-08-05
+
+## Decision
+
+**HOLD — no new orders or rotations.**
+
+All four positions retain valid technical and fundamental theses. None breached its manual stop, and the account already holds the policy maximum of four equities. Remaining buying power is the intended cash reserve; deploying it recursively or replacing a valid holding with an extended post-earnings mover would create unnecessary churn.
+
+No order qualified for review or placement.
+
+## Live Account State
+
+- **Account:** Robinhood Agentic 433711041 / ending 1041 only
+- **Account value:** **$329.17**
+- **Equity exposure:** **$298.12**
+- **Liquid buying power/cash:** **$31.05**
+- **Positions:** Four long fractional equities
+- **Pending deposits:** None
+- **Options, shorts, or non-equity exposure:** None
+- **Aggregate planned risk:** Approximately **$4.35**, below the $6 target cap
+- **Daily change from journaled opening value:** Approximately **+0.62%**
+- **Drawdown from recent observed high:** Approximately **-0.07%**
+- **Kill switches:** Not triggered
+
+All required open-order states were checked individually:
+
+- `new`: none
+- `queued`: none
+- `confirmed`: none
+- `unconfirmed`: none
+- `partially_filled`: none
+
+Today’s confirmed execution before this scan was the SHOP purchase:
+
+- **Quantity:** 0.862075 shares
+- **Average fill:** $144.0941
+- **Total:** $124.22
+- **Filled:** 12:06:47 ET
+
+## Market Regime
+
+The afternoon tape remained broadly risk-on:
+
+- **SPY:** approximately +1.33%
+- **QQQ:** approximately +1.83%
+- **IWM:** approximately +1.13%
+- Technology and semiconductors led, while financials and industrials also participated.
+- Earnings remained the dominant single-stock catalyst.
+- QQQ recovered key short-term averages, while SPY and IWM traded near their recent highs.
+
+## Position Management
+
+| Symbol | Quantity | Avg. cost | Live price | Est. P/L | Manual stop | Target | Decision |
+|---|---:|---:|---:|---:|---:|---:|---|
+| AVGO | 0.095750 | $411.28 | $419.63 | +$0.80 | $407.50 | $430.00 | Hold |
+| MA | 0.113541 | $572.48 | $571.76 | -$0.08 | $560.00 | $596.00 | Hold |
+| BAC | 1.046363 | $62.12 | $63.37 | +$1.31 | $61.80 | $64.90 | Hold |
+| SHOP | 0.862075 | $144.09 | $146.70 | +$2.25 | $141.50 | $155.00 | Hold |
+
+Stops remain manual thesis exits, not resting broker orders. No stop was widened, and no losing position was averaged down.
+
+## Ranked Opportunities
+
+1. **SHOP — held:** Best confirmed catalyst and breakout hold. Q2 revenue increased 33.7% YoY, EPS beat expectations, and free-cash-flow margin reached 18%. Do not add after the gap.
+2. **ANET — watch:** Strong earnings and revenue growth, but price is extended above its previous 20-day high. Wait for a retest.
+3. **NVDA — watch:** Reclaimed important averages, but lacks a low-risk retest and overlaps existing AVGO semiconductor exposure.
+4. **AMGN — watch:** Strong earnings response and useful defensive diversification, but technically extended.
+5. **DT — watch:** EPS beat, but the intraday fade prevents defining a clean entry and invalidation.
+6. **ZETA — watch:** Strong revenue growth, offset by an EPS miss and volatile post-earnings action.
+7. **APPS — reject today:** Approximately 33% post-earnings extension, substantial fade from the session high, and incomplete financial-series data.
+
+Existing MA, BAC, and AVGO setups remain preferable to rotating into the extended candidates.
+
+## Deployment and Reserve
+
+- Qualifying liquid buying power before today’s SHOP allocation: **$155.27**
+- SHOP deployment: **$124.22 — 80.0026%**
+- Retained reserve: **$31.05 — 19.9974%**
+- Final equity exposure: **$298.12 — approximately 90.57% of account value**
+
+The reserve remains intact and is not being recursively redeployed.
+
+## Actions
+
+- **Order reviews:** None; no new order qualified
+- **Orders placed:** None during this scan
+- **Orders canceled or modified:** None
+- **Positions exited or rotated:** None
+- **Management:** Held AVGO, MA, BAC, and SHOP unchanged
+
+## Data Limitations
+
+A complete rolling broker equity curve was unavailable, so drawdown was evaluated using live and journaled observations. Robinhood also lacked quarterly financial-series data for APPS and DT; both were downgraded rather than evaluated using assumptions. Fractional positions lack native resting stops in this workflow, so future scans must execute exits when manual invalidations are breached.
+
+Journal saved at:
+
+`/opt/data/HeRmEz/projects/trading-journal/2026-08-05/AFTERNOON-agentic-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Swing Opportunity Scan — Afternoon").

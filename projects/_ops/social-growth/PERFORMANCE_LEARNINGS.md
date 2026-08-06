@@ -1,6 +1,6 @@
 # Viral Radar Performance Learnings
 
-Last updated: `2026-08-05T01:03:05.954773+00:00`
+Last updated: `2026-08-06T01:03:11.298423+00:00`
 
 ## Metrics status
 
@@ -9,8 +9,8 @@ Last updated: `2026-08-05T01:03:05.954773+00:00`
 
 ## viral-clip-radar
 
-- Uploads logged: 410 total; 386 public/metric-eligible.
-- Median public views in latest snapshot: 2.
+- Uploads logged: 423 total; 399 public/metric-eligible.
+- Median public views in latest snapshot: 2.0.
 - Current winners to study:
   - 1335 views / 18 likes / 0 comments — Alex Hormozi: Whoever You Blame Is Who You Give Power To — https://youtu.be/8vdPqKeijgw — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
   - 1253 views / 10 likes / 0 comments — Alex Hormozi: Download Free Scaling Roadmap — The Desire Gap Nobody Admits — https://youtu.be/lrkae-8_njY — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json
