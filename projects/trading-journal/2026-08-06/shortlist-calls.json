@@ -1,0 +1,16 @@
+[
+ {"tool":"get_equity_historicals","args":{"symbols":["AVGO","MA","BAC","SHOP","NVDA","MSFT","DIS","COP","CEG","PH"],"start_time":"2026-05-01T00:00:00Z","interval":"day","bounds":"regular","adjustment_type":"split"}},
+ {"tool":"get_equity_fundamentals","args":{"symbols":["AVGO","MA","BAC","SHOP","NVDA","MSFT","DIS","COP","CEG","PH"],"bounds":"regular"}},
+ {"tool":"get_financials","args":{"symbols":["AVGO","MA","BAC","SHOP","NVDA","MSFT","DIS","COP","CEG","PH"],"period":"quarterly","limit":4}},
+ {"tool":"get_earnings_results","args":{"symbol":"AVGO"}},
+ {"tool":"get_earnings_results","args":{"symbol":"MA"}},
+ {"tool":"get_earnings_results","args":{"symbol":"BAC"}},
+ {"tool":"get_earnings_results","args":{"symbol":"SHOP"}},
+ {"tool":"get_earnings_results","args":{"symbol":"NVDA"}},
+ {"tool":"get_earnings_results","args":{"symbol":"MSFT"}},
+ {"tool":"get_earnings_results","args":{"symbol":"DIS"}},
+ {"tool":"get_earnings_results","args":{"symbol":"COP"}},
+ {"tool":"get_earnings_results","args":{"symbol":"CEG"}},
+ {"tool":"get_earnings_results","args":{"symbol":"PH"}},
+ {"tool":"get_equity_tradability","args":{"account_number":"433711041","symbols":["NVDA","MSFT","DIS","COP","CEG","PH"]}}
+]

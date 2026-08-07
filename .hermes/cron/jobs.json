@@ -20,15 +20,15 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 81
+        "completed": 82
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-08-07T03:00:00+00:00",
-      "last_run_at": "2026-08-05T03:01:20.898925+00:00",
+      "next_run_at": "2026-08-08T03:00:00+00:00",
+      "last_run_at": "2026-08-06T03:01:28.191160+00:00",
       "last_status": "error",
       "last_error": "Script exited with code 1\nstderr:\nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [rejected]            main -> main (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'\nhint: Updates were rejected because the tip of your current branch is behind\nhint: its remote counterpart. If you want to integrate the remote changes,\nhint: use 'git pull' before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.",
       "last_delivery_error": null,
@@ -60,15 +60,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 80
+        "completed": 81
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-08-06T13:30:00+00:00",
-      "last_run_at": "2026-08-05T13:31:57.146915+00:00",
+      "next_run_at": "2026-08-07T13:30:00+00:00",
+      "last_run_at": "2026-08-06T13:31:15.225893+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -112,15 +112,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 245
+        "completed": 249
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-08-06T04:29:39.822156+00:00",
-      "last_run_at": "2026-08-05T22:29:39.822156+00:00",
+      "next_run_at": "2026-08-07T04:49:12.702928+00:00",
+      "last_run_at": "2026-08-06T22:49:12.702928+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -215,15 +215,15 @@
       "schedule_display": "0 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 62
+        "completed": 63
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-08-07T01:00:00+00:00",
-      "last_run_at": "2026-08-06T01:30:00.262917+00:00",
+      "next_run_at": "2026-08-08T01:00:00+00:00",
+      "last_run_at": "2026-08-07T01:13:17.957228+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -262,15 +262,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 6437
+        "completed": 6568
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-08-06T03:02:57.870501+00:00",
-      "last_run_at": "2026-08-06T02:52:57.870501+00:00",
+      "next_run_at": "2026-08-07T03:04:05.944405+00:00",
+      "last_run_at": "2026-08-07T02:54:05.944405+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -308,15 +308,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 60
+        "completed": 61
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-08-06T14:00:00+00:00",
-      "last_run_at": "2026-08-05T14:00:55.869764+00:00",
+      "next_run_at": "2026-08-07T14:00:00+00:00",
+      "last_run_at": "2026-08-06T14:00:04.356540+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -355,15 +355,15 @@
       "schedule_display": "15 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 58
+        "completed": 59
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T04:20:40.734347+00:00",
-      "next_run_at": "2026-08-06T13:15:00+00:00",
-      "last_run_at": "2026-08-05T13:16:01.464420+00:00",
+      "next_run_at": "2026-08-07T13:15:00+00:00",
+      "last_run_at": "2026-08-06T13:15:12.680092+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -404,15 +404,15 @@
       "schedule_display": "50 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 37
+        "completed": 38
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T15:48:08.357771+00:00",
-      "next_run_at": "2026-08-06T13:50:00+00:00",
-      "last_run_at": "2026-08-05T13:55:09.689779+00:00",
+      "next_run_at": "2026-08-07T13:50:00+00:00",
+      "last_run_at": "2026-08-06T13:52:36.694574+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -454,15 +454,15 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 48
+        "completed": 49
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T17:32:19.594106+00:00",
-      "next_run_at": "2026-08-06T09:00:00+00:00",
-      "last_run_at": "2026-08-05T09:12:08.247868+00:00",
+      "next_run_at": "2026-08-07T09:00:00+00:00",
+      "last_run_at": "2026-08-06T09:11:49.348591+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -503,15 +503,15 @@
       "schedule_display": "35 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 40
+        "completed": 41
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T16:12:37.431999+00:00",
-      "next_run_at": "2026-08-06T13:35:00+00:00",
-      "last_run_at": "2026-08-05T13:40:10.508056+00:00",
+      "next_run_at": "2026-08-07T13:35:00+00:00",
+      "last_run_at": "2026-08-06T13:40:34.164680+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -553,15 +553,15 @@
       "schedule_display": "0 16 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 32
+        "completed": 33
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T18:35:06.052701+00:00",
-      "next_run_at": "2026-08-06T16:00:00+00:00",
-      "last_run_at": "2026-08-05T16:10:20.174661+00:00",
+      "next_run_at": "2026-08-07T16:00:00+00:00",
+      "last_run_at": "2026-08-06T16:03:00.789701+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -603,15 +603,15 @@
       "schedule_display": "30 19 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 33
+        "completed": 34
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T18:35:07.056543+00:00",
-      "next_run_at": "2026-08-06T19:30:00+00:00",
-      "last_run_at": "2026-08-05T19:34:46.321902+00:00",
+      "next_run_at": "2026-08-07T19:30:00+00:00",
+      "last_run_at": "2026-08-06T19:37:47.686751+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -651,15 +651,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 122
+        "completed": 126
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-06T15:04:47.122120+00:00",
-      "next_run_at": "2026-08-06T04:37:00.029059+00:00",
-      "last_run_at": "2026-08-05T22:37:00.029059+00:00",
+      "next_run_at": "2026-08-07T04:41:08.750105+00:00",
+      "last_run_at": "2026-08-06T22:41:08.750105+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -741,15 +741,15 @@
       "schedule_display": "30 17 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 14
+        "completed": 15
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-17T16:12:35.294628+00:00",
-      "next_run_at": "2026-08-06T17:30:00+00:00",
-      "last_run_at": "2026-08-05T17:38:47.829681+00:00",
+      "next_run_at": "2026-08-07T17:30:00+00:00",
+      "last_run_at": "2026-08-06T17:32:31.982308+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -767,55 +767,7 @@
       ],
       "workdir": null,
       "fire_claim": null
-    },
-    {
-      "id": "7defda5e24a6",
-      "name": "Monitor BIS Loadouts Plugin Hub PR 14682",
-      "prompt": "Monitor RuneLite Plugin Hub PR https://github.com/runelite/plugin-hub/pull/14682 for BIS Loadouts. This PR must remain a single-plugin submission changing only plugins/bis-loadouts and currently points to ItMeansBigMountain/bis-loadouts-osrs commit da1cf0329c7b9013f27bc1c9798a372d55958606. Inspect all GitHub feedback surfaces: issue comments, formal reviews, inline review comments, check runs, and PR state. Use GITHUB_ACCESS_TOKEN from the environment with GitHub REST API if needed; never print the token. If checks or maintainers request a straightforward code correction, inspect /opt/data/HeRmEz/projects/osrs-plugins/pr-review-pending/BisLoadouts, implement and test it with Java 11, push the child commit, update only the PR manifest SHA on branch add-bis-loadouts-v2 in ItMeansBigMountain/plugin-hub, and reply concisely with evidence. Never add a second plugin to the PR. Do not close/reopen or create another PR. If merged, report the merge URL and final state. If blocked by a decision or credentials, report the exact blocker. If there is no material change and no action needed, respond with a concise status rather than inventing activity. Cron-run sessions must not schedule additional cron jobs.",
-      "skills": [
-        "github-pr-workflow"
-      ],
-      "skill": "github-pr-workflow",
-      "model": null,
-      "provider": null,
-      "base_url": null,
-      "script": null,
-      "no_agent": false,
-      "context_from": null,
-      "schedule": {
-        "kind": "interval",
-        "minutes": 120,
-        "display": "every 120m"
-      },
-      "schedule_display": "every 120m",
-      "repeat": {
-        "times": 36,
-        "completed": 30
-      },
-      "enabled": true,
-      "state": "scheduled",
-      "paused_at": null,
-      "paused_reason": null,
-      "created_at": "2026-08-03T14:14:06.926798+00:00",
-      "next_run_at": "2026-08-06T04:47:15.791263+00:00",
-      "last_run_at": "2026-08-06T02:47:15.791263+00:00",
-      "last_status": "ok",
-      "last_error": null,
-      "last_delivery_error": null,
-      "deliver": "origin",
-      "origin": {
-        "platform": "discord",
-        "chat_id": "1523247688689258586",
-        "chat_name": "TRAPISTAN / #coding",
-        "thread_id": null
-      },
-      "enabled_toolsets": [
-        "terminal",
-        "web"
-      ],
-      "workdir": "/opt/data/HeRmEz/projects/osrs-plugins/pr-review-pending/BisLoadouts",
-      "fire_claim": null
     }
   ],
-  "updated_at": "2026-08-06T03:00:57.608021+00:00"
+  "updated_at": "2026-08-07T03:00:05.669558+00:00"
 }

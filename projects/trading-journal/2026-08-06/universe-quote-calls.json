@@ -1,0 +1,4 @@
+[
+ {"tool":"get_equity_quotes","args":{"symbols":["PODD","MTRN","TDC","SEDG","LMAT","PRGO","APPS","TYRA","FTK","TBLA","BV","VPG","BLMN","SWIM","ATTO","ALTI","LMB","ADV","GTE","TBI"]}},
+ {"tool":"get_equity_quotes","args":{"symbols":["NVDA","AAPL","TSLA","AMZN","MSFT","META","GOOGL","AMD","PLTR","DIS","MU","HOOD","TSM","WMT","LLY","CRWD","V","JPM","CAT","COP","PH","CEG","PZZA","GCT","AVNT","HIMX"]}}
+]

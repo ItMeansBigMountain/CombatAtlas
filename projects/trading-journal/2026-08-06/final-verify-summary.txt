@@ -1,0 +1,36 @@
+
+ get_portfolio {'account_number': '433711041'}
+{'total_value': '327.736704195', 'equity_value': '296.686704195', 'options_value': '0', 'futures_value': '0', 'event_contracts_value': '0', 'crypto_value': '0', 'cash': '31.05', 'pending_deposits': '0', 'mutual_funds_value': '0', 'fixed_income_value': '0', 'currency': 'USD', 'buying_power': {'buying_power': '31.0500', 'unleveraged_buying_power': '31.0500', 'display_currency': 'USD'}}
+
+ get_equity_positions {'account_number': '433711041'}
+{'positions': [{'symbol': 'AVGO', 'quantity': '0.095750', 'intraday_quantity': '0.000000', 'average_buy_price': '411.280000', 'shares_available_for_sells': '0.095750', 'shares_held_for_sells': '0.000000', 'shares_held_for_stock_grants': '0.000000', 'shares_held_for_options_events': '0.000000', 'shares_held_for_asset_transfer': '0.000000', 'shares_pending_from_options_events': '0.000000', 'type': 'long'}, {'symbol': 'MA', 'quantity': '0.113541', 'intraday_quantity': '0.000000', 'average_buy_price': '572.480000', 'shares_available_for_sells': '0.113541', 'shares_held_for_sells': '0.000000', 'shares_held_for_stock_grants': '0.000000', 'shares_held_for_options_events': '0.000000', 'shares_held_for_asset_transfer': '0.000000', 'shares_pending_from_options_events': '0.000000', 'type': 'long'}, {'symbol': 'BAC', 'quantity': '1.046363', 'intraday_quantity': '0.000000', 'average_buy_price': '62.120000', 'shares_available_for_sells': '1.046363', 'shares_held_for_sells': '0.000000', 'shares_held_for_stock_grants': '0.000000', 'shares_held_for_options_events': '0.000000', 'shares_held_for_asset_transfer': '0.000000', 'shares_pending_from_options_events': '0.000000', 'type': 'long'}, {'symbol': 'SHOP', 'quantity': '0.862075', 'intraday_quantity': '0.000000', 'average_buy_price': '144.090000', 'shares_available_for_sells': '0.862075', 'shares_held_for_sells': '0.000000', 'shares_held_for_stock_grants': '0.000000', 'shares_held_for_options_events': '0.000000', 'shares_held_for_asset_transfer': '0.000000', 'shares_pending_from_options_events': '0.000000', 'type': 'long'}]}
+
+ get_equity_orders {'account_number': '433711041', 'state': 'new'}
+0
+
+ get_equity_orders {'account_number': '433711041', 'state': 'queued'}
+0
+
+ get_equity_orders {'account_number': '433711041', 'state': 'confirmed'}
+0
+
+ get_equity_orders {'account_number': '433711041', 'state': 'unconfirmed'}
+0
+
+ get_equity_orders {'account_number': '433711041', 'state': 'partially_filled'}
+0
+
+ get_equity_quotes {'symbols': ['AVGO', 'MA', 'BAC', 'SHOP', 'SPY', 'QQQ', 'IWM', 'NVDA', 'MSFT', 'DIS', 'COP', 'CEG', 'PH']}
+AVGO 414.28 -0.96 414.140000 414.280000
+MA 570.59 0.02 570.010000 571.250000
+BAC 63.66 0.65 63.650000 63.660000
+SHOP 145.845 1.11 145.740000 145.920000
+SPY 770.255 0.06 770.250000 770.270000
+QQQ 712.42 -0.68 712.390000 712.450000
+IWM 299.18 -0.2 299.210000 299.240000
+NVDA 222.8701 1.67 222.850000 222.860000
+MSFT 493.68 1.28 493.520000 493.830000
+DIS 103.58 1.79 103.580000 103.660000
+COP 116.975 1.68 116.810000 117.040000
+CEG 272.105 2.63 271.720000 272.890000
+PH 1082.0 8.54 1080.000000 1084.970000

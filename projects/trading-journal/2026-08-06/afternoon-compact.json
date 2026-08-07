@@ -1,0 +1,1020 @@
+{
+  "timestamp": "2026-08-06T17:31:00Z",
+  "accounts": {
+    "accounts": [
+      {
+        "account_number": "5QY17335",
+        "rhs_account_number": "108173352",
+        "type": "margin",
+        "unsettled_funds": "0.0000",
+        "brokerage_account_type": "individual",
+        "is_default": true,
+        "agentic_allowed": false,
+        "option_level": "option_level_2",
+        "management_type": "self_directed",
+        "affiliate": "rhf",
+        "state": "active",
+        "deactivated": false,
+        "permanently_deactivated": false
+      },
+      {
+        "account_number": "816993596",
+        "rhs_account_number": "816993596",
+        "type": "margin",
+        "unsettled_funds": "0.0000",
+        "brokerage_account_type": "ira_roth",
+        "is_default": false,
+        "agentic_allowed": false,
+        "option_level": "",
+        "management_type": "self_directed",
+        "affiliate": "rhf",
+        "state": "active",
+        "deactivated": false,
+        "permanently_deactivated": false
+      },
+      {
+        "account_number": "181713026274",
+        "rhs_account_number": "181713026274",
+        "type": "margin",
+        "unsettled_funds": "0.0000",
+        "brokerage_account_type": "individual",
+        "is_default": false,
+        "agentic_allowed": false,
+        "option_level": "",
+        "management_type": "managed",
+        "affiliate": "rhf",
+        "state": "active",
+        "deactivated": false,
+        "permanently_deactivated": false
+      },
+      {
+        "account_number": "433711041",
+        "rhs_account_number": "433711041",
+        "type": "cash",
+        "unsettled_funds": "0.0000",
+        "brokerage_account_type": "individual",
+        "nickname": "Agentic",
+        "is_default": false,
+        "agentic_allowed": true,
+        "option_level": "",
+        "management_type": "self_directed",
+        "affiliate": "rhf",
+        "state": "active",
+        "deactivated": false,
+        "permanently_deactivated": false
+      }
+    ]
+  },
+  "portfolio": {
+    "total_value": "329.150228295",
+    "equity_value": "298.100228295",
+    "options_value": "0",
+    "futures_value": "0",
+    "event_contracts_value": "0",
+    "crypto_value": "0",
+    "cash": "31.05",
+    "pending_deposits": "0",
+    "mutual_funds_value": "0",
+    "fixed_income_value": "0",
+    "currency": "USD",
+    "buying_power": {
+      "buying_power": "31.0500",
+      "unleveraged_buying_power": "31.0500",
+      "display_currency": "USD"
+    }
+  },
+  "positions": {
+    "positions": [
+      {
+        "symbol": "AVGO",
+        "quantity": "0.095750",
+        "intraday_quantity": "0.000000",
+        "average_buy_price": "411.280000",
+        "shares_available_for_sells": "0.095750",
+        "shares_held_for_sells": "0.000000",
+        "shares_held_for_stock_grants": "0.000000",
+        "shares_held_for_options_events": "0.000000",
+        "shares_held_for_asset_transfer": "0.000000",
+        "shares_pending_from_options_events": "0.000000",
+        "type": "long"
+      },
+      {
+        "symbol": "MA",
+        "quantity": "0.113541",
+        "intraday_quantity": "0.000000",
+        "average_buy_price": "572.480000",
+        "shares_available_for_sells": "0.113541",
+        "shares_held_for_sells": "0.000000",
+        "shares_held_for_stock_grants": "0.000000",
+        "shares_held_for_options_events": "0.000000",
+        "shares_held_for_asset_transfer": "0.000000",
+        "shares_pending_from_options_events": "0.000000",
+        "type": "long"
+      },
+      {
+        "symbol": "BAC",
+        "quantity": "1.046363",
+        "intraday_quantity": "0.000000",
+        "average_buy_price": "62.120000",
+        "shares_available_for_sells": "1.046363",
+        "shares_held_for_sells": "0.000000",
+        "shares_held_for_stock_grants": "0.000000",
+        "shares_held_for_options_events": "0.000000",
+        "shares_held_for_asset_transfer": "0.000000",
+        "shares_pending_from_options_events": "0.000000",
+        "type": "long"
+      },
+      {
+        "symbol": "SHOP",
+        "quantity": "0.862075",
+        "intraday_quantity": "0.000000",
+        "average_buy_price": "144.090000",
+        "shares_available_for_sells": "0.862075",
+        "shares_held_for_sells": "0.000000",
+        "shares_held_for_stock_grants": "0.000000",
+        "shares_held_for_options_events": "0.000000",
+        "shares_held_for_asset_transfer": "0.000000",
+        "shares_pending_from_options_events": "0.000000",
+        "type": "long"
+      }
+    ]
+  },
+  "open_counts": {
+    "new": 0,
+    "queued": 0,
+    "confirmed": 0,
+    "unconfirmed": 0,
+    "partially_filled": 0
+  },
+  "fills_today": {
+    "orders": []
+  },
+  "quotes": {
+    "SPY": {
+      "last_trade_price": "768.040000",
+      "previous_close": "769.790000",
+      "bid_price": "768.020000",
+      "ask_price": "768.040000",
+      "pct": -0.23
+    },
+    "QQQ": {
+      "last_trade_price": "715.625000",
+      "previous_close": "717.300000",
+      "bid_price": "715.660000",
+      "ask_price": "715.690000",
+      "pct": -0.23
+    },
+    "IWM": {
+      "last_trade_price": "299.029900",
+      "previous_close": "299.770000",
+      "bid_price": "299.020000",
+      "ask_price": "299.030000",
+      "pct": -0.25
+    },
+    "DIA": {
+      "last_trade_price": "538.290000",
+      "previous_close": "542.810000",
+      "bid_price": "538.270000",
+      "ask_price": "538.300000",
+      "pct": -0.83
+    },
+    "XLK": {
+      "last_trade_price": "185.940000",
+      "previous_close": "185.910000",
+      "bid_price": "185.980000",
+      "ask_price": "185.990000",
+      "pct": 0.02
+    },
+    "SMH": {
+      "last_trade_price": "576.060000",
+      "previous_close": "569.700000",
+      "bid_price": "576.000000",
+      "ask_price": "576.180000",
+      "pct": 1.12
+    },
+    "XLF": {
+      "last_trade_price": "57.619500",
+      "previous_close": "58.000000",
+      "bid_price": "57.610000",
+      "ask_price": "57.620000",
+      "pct": -0.66
+    },
+    "XLI": {
+      "last_trade_price": "185.355000",
+      "previous_close": "186.350000",
+      "bid_price": "185.370000",
+      "ask_price": "185.380000",
+      "pct": -0.53
+    },
+    "XLE": {
+      "last_trade_price": "57.970000",
+      "previous_close": "57.310000",
+      "bid_price": "57.980000",
+      "ask_price": "57.990000",
+      "pct": 1.15
+    },
+    "XLV": {
+      "last_trade_price": "163.130000",
+      "previous_close": "164.160000",
+      "bid_price": "163.130000",
+      "ask_price": "163.150000",
+      "pct": -0.63
+    },
+    "XLY": {
+      "last_trade_price": "117.770000",
+      "previous_close": "118.640000",
+      "bid_price": "117.770000",
+      "ask_price": "117.780000",
+      "pct": -0.73
+    },
+    "XLP": {
+      "last_trade_price": "84.720000",
+      "previous_close": "85.330000",
+      "bid_price": "84.720000",
+      "ask_price": "84.730000",
+      "pct": -0.71
+    },
+    "XLC": {
+      "last_trade_price": "111.045000",
+      "previous_close": "110.870000",
+      "bid_price": "111.050000",
+      "ask_price": "111.060000",
+      "pct": 0.16
+    },
+    "XLU": {
+      "last_trade_price": "43.200000",
+      "previous_close": "43.660000",
+      "bid_price": "43.200000",
+      "ask_price": "43.210000",
+      "pct": -1.05
+    },
+    "AVGO": {
+      "last_trade_price": "424.180000",
+      "previous_close": "418.280000",
+      "bid_price": "424.060000",
+      "ask_price": "424.250000",
+      "pct": 1.41
+    },
+    "MA": {
+      "last_trade_price": "569.400000",
+      "previous_close": "570.480000",
+      "bid_price": "569.290000",
+      "ask_price": "569.510000",
+      "pct": -0.19
+    },
+    "BAC": {
+      "last_trade_price": "62.765000",
+      "previous_close": "63.250000",
+      "bid_price": "62.760000",
+      "ask_price": "62.770000",
+      "pct": -0.77
+    },
+    "SHOP": {
+      "last_trade_price": "147.465000",
+      "previous_close": "144.240000",
+      "bid_price": "147.430000",
+      "ask_price": "147.500000",
+      "pct": 2.24
+    },
+    "DIS": {
+      "last_trade_price": "103.290000",
+      "previous_close": "101.760000",
+      "bid_price": "103.280000",
+      "ask_price": "103.290000",
+      "pct": 1.5
+    },
+    "COP": {
+      "last_trade_price": "115.970000",
+      "previous_close": "115.040000",
+      "bid_price": "115.960000",
+      "ask_price": "115.990000",
+      "pct": 0.81
+    },
+    "CEG": {
+      "last_trade_price": "264.430000",
+      "previous_close": "265.120000",
+      "bid_price": "264.350000",
+      "ask_price": "264.630000",
+      "pct": -0.26
+    },
+    "NVDA": {
+      "last_trade_price": "219.170000",
+      "previous_close": "219.220000",
+      "bid_price": "219.160000",
+      "ask_price": "219.170000",
+      "pct": -0.02
+    },
+    "MSFT": {
+      "last_trade_price": "496.490000",
+      "previous_close": "487.460000",
+      "bid_price": "496.460000",
+      "ask_price": "496.530000",
+      "pct": 1.85
+    },
+    "GOOGL": {
+      "last_trade_price": "358.170000",
+      "previous_close": "362.430000",
+      "bid_price": "358.160000",
+      "ask_price": "358.190000",
+      "pct": -1.18
+    },
+    "META": {
+      "last_trade_price": "587.880000",
+      "previous_close": "588.770000",
+      "bid_price": "587.900000",
+      "ask_price": "588.060000",
+      "pct": -0.15
+    },
+    "AMZN": {
+      "last_trade_price": "272.000000",
+      "previous_close": "272.650000",
+      "bid_price": "272.000000",
+      "ask_price": "272.020000",
+      "pct": -0.24
+    },
+    "AAPL": {
+      "last_trade_price": "311.205000",
+      "previous_close": "311.000000",
+      "bid_price": "311.190000",
+      "ask_price": "311.210000",
+      "pct": 0.07
+    },
+    "AMD": {
+      "last_trade_price": "494.210000",
+      "previous_close": "482.050000",
+      "bid_price": "494.060000",
+      "ask_price": "494.390000",
+      "pct": 2.52
+    },
+    "PLTR": {
+      "last_trade_price": "155.905000",
+      "previous_close": "158.430000",
+      "bid_price": "155.880000",
+      "ask_price": "155.930000",
+      "pct": -1.59
+    },
+    "JPM": {
+      "last_trade_price": "355.090000",
+      "previous_close": "359.240000",
+      "bid_price": "355.090000",
+      "ask_price": "355.270000",
+      "pct": -1.16
+    },
+    "V": {
+      "last_trade_price": "367.840000",
+      "previous_close": "368.540000",
+      "bid_price": "367.780000",
+      "ask_price": "367.870000",
+      "pct": -0.19
+    },
+    "WMT": {
+      "last_trade_price": "111.182500",
+      "previous_close": "112.340000",
+      "bid_price": "111.160000",
+      "ask_price": "111.180000",
+      "pct": -1.03
+    },
+    "COST": {
+      "last_trade_price": "944.550000",
+      "previous_close": "941.990000",
+      "bid_price": "944.410000",
+      "ask_price": "944.760000",
+      "pct": 0.27
+    },
+    "LLY": {
+      "last_trade_price": "1177.055000",
+      "previous_close": "1169.860000",
+      "bid_price": "1176.510000",
+      "ask_price": "1177.630000",
+      "pct": 0.62
+    },
+    "UNH": {
+      "last_trade_price": "403.955000",
+      "previous_close": "412.750000",
+      "bid_price": "403.860000",
+      "ask_price": "404.040000",
+      "pct": -2.13
+    },
+    "XOM": {
+      "last_trade_price": "154.000200",
+      "previous_close": "151.630000",
+      "bid_price": "153.990000",
+      "ask_price": "154.000000",
+      "pct": 1.56
+    },
+    "CVX": {
+      "last_trade_price": "188.880000",
+      "previous_close": "186.410000",
+      "bid_price": "188.830000",
+      "ask_price": "188.860000",
+      "pct": 1.33
+    },
+    "CAT": {
+      "last_trade_price": "869.390000",
+      "previous_close": "871.080000",
+      "bid_price": "869.190000",
+      "ask_price": "869.590000",
+      "pct": -0.19
+    },
+    "GE": {
+      "last_trade_price": "375.370000",
+      "previous_close": "381.220000",
+      "bid_price": "375.430000",
+      "ask_price": "375.510000",
+      "pct": -1.53
+    },
+    "RTX": {
+      "last_trade_price": "222.485000",
+      "previous_close": "222.310000",
+      "bid_price": "222.440000",
+      "ask_price": "222.540000",
+      "pct": 0.08
+    },
+    "UBER": {
+      "last_trade_price": "70.025000",
+      "previous_close": "68.180000",
+      "bid_price": "70.020000",
+      "ask_price": "70.030000",
+      "pct": 2.71
+    },
+    "CRM": {
+      "last_trade_price": "185.375000",
+      "previous_close": "192.980000",
+      "bid_price": "185.310000",
+      "ask_price": "185.410000",
+      "pct": -3.94
+    },
+    "ORCL": {
+      "last_trade_price": "144.450000",
+      "previous_close": "144.390000",
+      "bid_price": "144.390000",
+      "ask_price": "144.510000",
+      "pct": 0.04
+    },
+    "NFLX": {
+      "last_trade_price": "73.490000",
+      "previous_close": "74.200000",
+      "bid_price": "73.480000",
+      "ask_price": "73.490000",
+      "pct": -0.96
+    },
+    "TSLA": {
+      "last_trade_price": "318.055000",
+      "previous_close": "321.550000",
+      "bid_price": "318.030000",
+      "ask_price": "318.110000",
+      "pct": -1.09
+    },
+    "MU": {
+      "last_trade_price": "893.590100",
+      "previous_close": "893.190000",
+      "bid_price": "893.590000",
+      "ask_price": "893.800000",
+      "pct": 0.04
+    },
+    "PANW": {
+      "last_trade_price": "356.810000",
+      "previous_close": "362.660000",
+      "bid_price": "356.550000",
+      "ask_price": "357.080000",
+      "pct": -1.61
+    },
+    "CRWD": {
+      "last_trade_price": "205.850000",
+      "previous_close": "209.860000",
+      "bid_price": "205.850000",
+      "ask_price": "205.910000",
+      "pct": -1.91
+    },
+    "HOOD": {
+      "last_trade_price": "90.980000",
+      "previous_close": "92.800000",
+      "bid_price": "90.950000",
+      "ask_price": "91.020000",
+      "pct": -1.96
+    },
+    "COIN": {
+      "last_trade_price": "147.510000",
+      "previous_close": "149.890000",
+      "bid_price": "147.430000",
+      "ask_price": "147.590000",
+      "pct": -1.59
+    }
+  },
+  "daily": {
+    "AVGO": {
+      "sma10": 391.463,
+      "sma20": 389.49475,
+      "sma50": 394.95129999999995,
+      "hi20": 427.0,
+      "lo20": 357.8,
+      "atr14": 16.545235714285717,
+      "avgvol20": 19762904.95,
+      "lastvol": 16880445.0
+    },
+    "MA": {
+      "sma10": 561.0730000000001,
+      "sma20": 549.2230000000001,
+      "sma50": 518.4590000000001,
+      "hi20": 583.7089,
+      "lo20": 515.11,
+      "atr14": 11.951357142857148,
+      "avgvol20": 3021242.7,
+      "lastvol": 2432104.0
+    },
+    "BAC": {
+      "sma10": 62.146,
+      "sma20": 61.405499999999996,
+      "sma50": 57.929399999999994,
+      "hi20": 63.565,
+      "lo20": 58.41,
+      "atr14": 1.0477071428571425,
+      "avgvol20": 33226327.15,
+      "lastvol": 30265954.0
+    },
+    "SHOP": {
+      "sma10": 123.61800000000001,
+      "sma20": 123.5205,
+      "sma50": 117.50200000000001,
+      "hi20": 153.88,
+      "lo20": 111.055,
+      "atr14": 8.11885714285714,
+      "avgvol20": 10560093.7,
+      "lastvol": 41541496.0
+    },
+    "DIS": {
+      "sma10": 97.213,
+      "sma20": 96.937,
+      "sma50": 98.8998,
+      "hi20": 103.21,
+      "lo20": 92.49,
+      "atr14": 2.5066428571428596,
+      "avgvol20": 11808624.85,
+      "lastvol": 20809012.0
+    },
+    "COP": {
+      "sma10": 117.98499999999999,
+      "sma20": 115.63050000000001,
+      "sma50": 113.389,
+      "hi20": 122.375,
+      "lo20": 107.61,
+      "atr14": 3.3614857142857155,
+      "avgvol20": 6274970.3,
+      "lastvol": 7905097.0
+    },
+    "CEG": {
+      "sma10": 267.011,
+      "sma20": 261.95625,
+      "sma50": 262.1025,
+      "hi20": 279.6,
+      "lo20": 244.95,
+      "atr14": 10.06344285714286,
+      "avgvol20": 2734363.55,
+      "lastvol": 3154740.0
+    },
+    "NVDA": {
+      "sma10": 203.272,
+      "sma20": 205.3565,
+      "sma50": 205.7642,
+      "hi20": 222.22,
+      "lo20": 190.01,
+      "atr14": 8.008135714285718,
+      "avgvol20": 130266128.9,
+      "lastvol": 158187403.0
+    },
+    "XOM": {
+      "sma10": 155.145,
+      "sma20": 150.4865,
+      "sma50": 142.3122,
+      "hi20": 159.0722,
+      "lo20": 137.12,
+      "atr14": 4.038007142857144,
+      "avgvol20": 14295824.9,
+      "lastvol": 12227544.0
+    },
+    "GOOGL": {
+      "sma10": 343.779,
+      "sma20": 348.963,
+      "sma50": 357.81879999999995,
+      "hi20": 384.48,
+      "lo20": 314.9,
+      "atr14": 14.203085714285711,
+      "avgvol20": 32427919.55,
+      "lastvol": 46926339.0
+    },
+    "META": {
+      "sma10": 583.687,
+      "sma20": 618.201,
+      "sma50": 601.0691,
+      "hi20": 686.08,
+      "lo20": 524.49,
+      "atr14": 24.679607142857133,
+      "avgvol20": 19457559.3,
+      "lastvol": 14897162.0
+    },
+    "UBER": {
+      "sma10": 69.748,
+      "sma20": 71.29650000000001,
+      "sma50": 71.654,
+      "hi20": 76.3,
+      "lo20": 65.41,
+      "atr14": 2.415321428571429,
+      "avgvol20": 18115437.9,
+      "lastvol": 50131932.0
+    },
+    "CRM": {
+      "sma10": 179.872,
+      "sma20": 174.031,
+      "sma50": 171.69400000000002,
+      "hi20": 194.94,
+      "lo20": 155.145,
+      "atr14": 8.77379285714285,
+      "avgvol20": 12689775.4,
+      "lastvol": 9605450.0
+    },
+    "PANW": {
+      "sma10": 333.35299999999995,
+      "sma20": 338.68600000000004,
+      "sma50": 311.5901,
+      "hi20": 376.98,
+      "lo20": 308.54,
+      "atr14": 15.744921428571429,
+      "avgvol20": 6289072.0,
+      "lastvol": 5607463.0
+    },
+    "CRWD": {
+      "sma10": 190.769,
+      "sma20": 194.179,
+      "sma50": 184.06195,
+      "hi20": 219.35,
+      "lo20": 174.14,
+      "atr14": 9.175678571428566,
+      "avgvol20": 8352707.95,
+      "lastvol": 7324890.0
+    }
+  },
+  "fund": {
+    "AVGO": {
+      "market_cap": "2151483291366.617676",
+      "pe_ratio": "65.295489",
+      "volume": "6572566.000000",
+      "average_volume_2_weeks": "19949363.112612",
+      "high": "427.580000",
+      "low": "410.760000",
+      "sector": "Electronic Technology",
+      "industry": "Semiconductors"
+    },
+    "MA": {
+      "market_cap": "503484830710.932617",
+      "pe_ratio": "31.411847",
+      "volume": "1014149.000000",
+      "average_volume_2_weeks": "3267137.727995",
+      "high": "572.945000",
+      "low": "566.370000",
+      "sector": "Finance",
+      "industry": "Finance/Rental/Leasing"
+    },
+    "BAC": {
+      "market_cap": "441850223711.159058",
+      "pe_ratio": "14.379085",
+      "volume": "10899121.000000",
+      "average_volume_2_weeks": "29652041.763960",
+      "high": "63.970000",
+      "low": "62.750000",
+      "sector": "Finance",
+      "industry": "Major Banks"
+    },
+    "SHOP": {
+      "market_cap": "201739596127.663544",
+      "pe_ratio": "115.020151",
+      "volume": "9214889.000000",
+      "average_volume_2_weeks": "14259860.964559",
+      "high": "148.090000",
+      "low": "142.100200",
+      "sector": "Commercial Services",
+      "industry": "Miscellaneous Commercial Services"
+    },
+    "DIS": {
+      "market_cap": "179437363625.956635",
+      "pe_ratio": "15.702400",
+      "volume": "6543755.000000",
+      "average_volume_2_weeks": "14016766.767825",
+      "high": "104.080000",
+      "low": "102.515000",
+      "sector": "Consumer Services",
+      "industry": "Movies/Entertainment"
+    },
+    "COP": {
+      "market_cap": "141285091300.000000",
+      "pe_ratio": "20.261171",
+      "volume": "3617613.000000",
+      "average_volume_2_weeks": "6628298.157487",
+      "high": "119.900000",
+      "low": "115.430000",
+      "sector": "Energy Minerals",
+      "industry": "Oil & Gas Production"
+    },
+    "CEG": {
+      "market_cap": "94957347148.600006",
+      "pe_ratio": "23.770072",
+      "volume": "2673381.000000",
+      "average_volume_2_weeks": "2857650.196191",
+      "high": "280.000000",
+      "low": "262.400000",
+      "sector": "Utilities",
+      "industry": "Electric Utilities"
+    },
+    "NVDA": {
+      "market_cap": "5391455394000.000000",
+      "pe_ratio": "31.645686",
+      "volume": "70788825.000000",
+      "average_volume_2_weeks": "135197572.577242",
+      "high": "223.627500",
+      "low": "217.270000",
+      "sector": "Electronic Technology",
+      "industry": "Semiconductors"
+    },
+    "XOM": {
+      "market_cap": "638247668892.000000",
+      "pe_ratio": "19.954187",
+      "volume": "5349268.000000",
+      "average_volume_2_weeks": "14215490.373575",
+      "high": "154.110000",
+      "low": "151.855000",
+      "sector": "Energy Minerals",
+      "industry": "Integrated Oil"
+    },
+    "GOOGL": {
+      "market_cap": "4416781820264.666992",
+      "pe_ratio": "18.764349",
+      "volume": "13343906.000000",
+      "average_volume_2_weeks": "38467913.959032",
+      "high": "364.125900",
+      "low": "357.650000",
+      "sector": "Technology Services",
+      "industry": "Internet Software/Services"
+    },
+    "META": {
+      "market_cap": "1497628836082.080078",
+      "pe_ratio": "22.233188",
+      "volume": "7487170.000000",
+      "average_volume_2_weeks": "19790128.275544",
+      "high": "595.310000",
+      "low": "585.995000",
+      "sector": "Technology Services",
+      "industry": "Internet Software/Services"
+    },
+    "UBER": {
+      "market_cap": "142542890000.000000",
+      "pe_ratio": "17.845839",
+      "volume": "16210927.000000",
+      "average_volume_2_weeks": "21966845.698100",
+      "high": "70.320000",
+      "low": "68.170000",
+      "sector": "Transportation",
+      "industry": "Other Transportation"
+    },
+    "CRM": {
+      "market_cap": "155932919514.276123",
+      "pe_ratio": "21.524980",
+      "volume": "6210565.000000",
+      "average_volume_2_weeks": "13005695.145131",
+      "high": "186.480000",
+      "low": "183.000000",
+      "sector": "Technology Services",
+      "industry": "Packaged Software"
+    },
+    "PANW": {
+      "market_cap": "303810052326.441956",
+      "pe_ratio": "285.539196",
+      "volume": "3117186.000000",
+      "average_volume_2_weeks": "6214310.611177",
+      "high": "361.470000",
+      "low": "349.000000",
+      "sector": "Technology Services",
+      "industry": "Packaged Software"
+    },
+    "CRWD": {
+      "market_cap": "218591606629.571503",
+      "pe_ratio": "-4455.630000",
+      "volume": "3426176.000000",
+      "average_volume_2_weeks": "7741353.788588",
+      "high": "207.630000",
+      "low": "201.750000",
+      "sector": "Technology Services",
+      "industry": "Packaged Software"
+    }
+  },
+  "earn_latest": {
+    "AVGO": {
+      "symbol": "AVGO",
+      "year": 2026,
+      "quarter": 4,
+      "eps": {
+        "estimate": "3.790000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-12-10",
+        "timing": "pm",
+        "verified": false
+      }
+    },
+    "MA": {
+      "symbol": "MA",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "5.110000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-10-29",
+        "timing": "am",
+        "verified": false
+      }
+    },
+    "BAC": {
+      "symbol": "BAC",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "1.140000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-10-14",
+        "timing": "am",
+        "verified": true
+      }
+    },
+    "SHOP": {
+      "symbol": "SHOP",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "0.410000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-11-03",
+        "timing": "am",
+        "verified": false
+      }
+    },
+    "DIS": {
+      "symbol": "DIS",
+      "year": 2026,
+      "quarter": 4,
+      "eps": {
+        "estimate": "1.780000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-11-12",
+        "timing": "am",
+        "verified": false
+      }
+    },
+    "COP": {
+      "symbol": "COP",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "2.540000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-11-05",
+        "timing": "am",
+        "verified": false
+      }
+    },
+    "CEG": {
+      "symbol": "CEG",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "3.840000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-11-06",
+        "timing": "am",
+        "verified": false
+      }
+    },
+    "NVDA": {
+      "symbol": "NVDA",
+      "year": 2027,
+      "quarter": 3,
+      "eps": {
+        "estimate": "2.330000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-11-18",
+        "timing": "pm",
+        "verified": false
+      }
+    },
+    "XOM": {
+      "symbol": "XOM",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "3.410000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-10-30",
+        "timing": "am",
+        "verified": false
+      }
+    },
+    "GOOGL": {
+      "symbol": "GOOGL",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "3.010000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-10-28",
+        "timing": "pm",
+        "verified": false
+      }
+    },
+    "META": {
+      "symbol": "META",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "7.020000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-10-28",
+        "timing": "pm",
+        "verified": false
+      }
+    },
+    "UBER": {
+      "symbol": "UBER",
+      "year": 2026,
+      "quarter": 3,
+      "eps": {
+        "estimate": "0.910000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-11-03",
+        "timing": "am",
+        "verified": false
+      }
+    },
+    "CRM": {
+      "symbol": "CRM",
+      "year": 2027,
+      "quarter": 3,
+      "eps": {
+        "estimate": "3.150000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-12-02",
+        "timing": "pm",
+        "verified": false
+      }
+    },
+    "PANW": {
+      "symbol": "PANW",
+      "year": 2027,
+      "quarter": 1,
+      "eps": {
+        "estimate": "0.450000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-11-18",
+        "timing": "pm",
+        "verified": false
+      }
+    },
+    "CRWD": {
+      "symbol": "CRWD",
+      "year": 2027,
+      "quarter": 3,
+      "eps": {
+        "estimate": "0.260000",
+        "actual": null
+      },
+      "report": {
+        "date": "2026-12-01",
+        "timing": "pm",
+        "verified": false
+      }
+    }
+  }
+}
