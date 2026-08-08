@@ -7,7 +7,7 @@
 	url = https://github.com/ItMeansBigMountain/cox-elementary-pta.git
 	branch = main
 [submodule "projects/osrs-plugins/BisLoadouts"]
-	path = projects/osrs-plugins/pr-review-pending/BisLoadouts
+	path = projects/osrs-plugins/completed/BisLoadouts
 	url = https://github.com/ItMeansBigMountain/bis-loadouts-osrs.git
 	branch = main
 [submodule "projects/osrs-plugins/ClanWarBoard"]
