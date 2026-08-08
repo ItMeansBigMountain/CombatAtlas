@@ -33,3 +33,7 @@
 	path = projects/osrs-plugins/services/clan-war-board-service
 	url = https://github.com/ItMeansBigMountain/clan-war-board-service.git
 	branch = main
+[submodule "projects/osrs-plugins/completed/DeadmanBreachTimer"]
+	path = projects/osrs-plugins/completed/DeadmanBreachTimer
+	url = https://github.com/ItMeansBigMountain/breach-check-osrs.git
+	branch = master
