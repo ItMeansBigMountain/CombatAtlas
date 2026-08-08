@@ -1,0 +1,2570 @@
+{
+  "portfolio": {
+    "total_value": "330.926875625",
+    "equity_value": "299.876875625",
+    "options_value": "0",
+    "futures_value": "0",
+    "event_contracts_value": "0",
+    "crypto_value": "0",
+    "cash": "31.05",
+    "pending_deposits": "0",
+    "mutual_funds_value": "0",
+    "fixed_income_value": "0",
+    "currency": "USD",
+    "buying_power": {
+      "buying_power": "31.0500",
+      "unleveraged_buying_power": "31.0500",
+      "display_currency": "USD"
+    }
+  },
+  "positions": {
+    "positions": [
+      {
+        "symbol": "AVGO",
+        "quantity": "0.095750",
+        "intraday_quantity": "0.000000",
+        "average_buy_price": "411.280000",
+        "shares_available_for_sells": "0.095750",
+        "shares_held_for_sells": "0.000000",
+        "shares_held_for_stock_grants": "0.000000",
+        "shares_held_for_options_events": "0.000000",
+        "shares_held_for_asset_transfer": "0.000000",
+        "shares_pending_from_options_events": "0.000000",
+        "type": "long"
+      },
+      {
+        "symbol": "MA",
+        "quantity": "0.113541",
+        "intraday_quantity": "0.000000",
+        "average_buy_price": "572.480000",
+        "shares_available_for_sells": "0.113541",
+        "shares_held_for_sells": "0.000000",
+        "shares_held_for_stock_grants": "0.000000",
+        "shares_held_for_options_events": "0.000000",
+        "shares_held_for_asset_transfer": "0.000000",
+        "shares_pending_from_options_events": "0.000000",
+        "type": "long"
+      },
+      {
+        "symbol": "BAC",
+        "quantity": "1.046363",
+        "intraday_quantity": "0.000000",
+        "average_buy_price": "62.120000",
+        "shares_available_for_sells": "1.046363",
+        "shares_held_for_sells": "0.000000",
+        "shares_held_for_stock_grants": "0.000000",
+        "shares_held_for_options_events": "0.000000",
+        "shares_held_for_asset_transfer": "0.000000",
+        "shares_pending_from_options_events": "0.000000",
+        "type": "long"
+      },
+      {
+        "symbol": "SHOP",
+        "quantity": "0.862075",
+        "intraday_quantity": "0.000000",
+        "average_buy_price": "144.090000",
+        "shares_available_for_sells": "0.862075",
+        "shares_held_for_sells": "0.000000",
+        "shares_held_for_stock_grants": "0.000000",
+        "shares_held_for_options_events": "0.000000",
+        "shares_held_for_asset_transfer": "0.000000",
+        "shares_pending_from_options_events": "0.000000",
+        "type": "long"
+      }
+    ]
+  },
+  "orders": [
+    {
+      "orders": []
+    },
+    {
+      "orders": []
+    },
+    {
+      "orders": []
+    },
+    {
+      "orders": []
+    },
+    {
+      "orders": []
+    },
+    {
+      "orders": []
+    }
+  ],
+  "quotes": [
+    {
+      "quote": {
+        "symbol": "SPY",
+        "last_trade_price": "772.830000",
+        "venue_last_trade_time": "2026-08-07T16:00:52.421427772Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "768.560000",
+        "previous_close": "768.560000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "772.820000",
+        "venue_bid_time": "2026-08-07T16:00:52.771576683Z",
+        "ask_price": "772.830000",
+        "venue_ask_time": "2026-08-07T16:00:52.771576683Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "QQQ",
+        "last_trade_price": "722.180000",
+        "venue_last_trade_time": "2026-08-07T16:00:52.828215933Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "714.650000",
+        "previous_close": "714.650000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "722.160000",
+        "venue_bid_time": "2026-08-07T16:00:53.024807719Z",
+        "ask_price": "722.200000",
+        "venue_ask_time": "2026-08-07T16:00:53.024807719Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "IWM",
+        "last_trade_price": "300.910000",
+        "venue_last_trade_time": "2026-08-07T16:00:50.239264417Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "298.250000",
+        "previous_close": "298.250000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "300.900000",
+        "venue_bid_time": "2026-08-07T16:00:52.630630586Z",
+        "ask_price": "300.910000",
+        "venue_ask_time": "2026-08-07T16:00:52.630630586Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "XLK",
+        "last_trade_price": "187.679500",
+        "venue_last_trade_time": "2026-08-07T16:00:52.39870363Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "185.330000",
+        "previous_close": "185.330000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "187.660000",
+        "venue_bid_time": "2026-08-07T16:00:52.408974683Z",
+        "ask_price": "187.680000",
+        "venue_ask_time": "2026-08-07T16:00:52.408974683Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "XLF",
+        "last_trade_price": "57.550000",
+        "venue_last_trade_time": "2026-08-07T16:00:50.350188731Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "57.810000",
+        "previous_close": "57.810000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "57.550000",
+        "venue_bid_time": "2026-08-07T16:00:51.996831956Z",
+        "ask_price": "57.560000",
+        "venue_ask_time": "2026-08-07T16:00:51.996831956Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "XLI",
+        "last_trade_price": "185.085000",
+        "venue_last_trade_time": "2026-08-07T16:00:47.98616119Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "184.760000",
+        "previous_close": "184.760000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "185.060000",
+        "venue_bid_time": "2026-08-07T16:00:53.311831593Z",
+        "ask_price": "185.090000",
+        "venue_ask_time": "2026-08-07T16:00:53.311831593Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "XLE",
+        "last_trade_price": "57.940000",
+        "venue_last_trade_time": "2026-08-07T16:00:52.511173278Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "58.160000",
+        "previous_close": "58.160000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "57.930000",
+        "venue_bid_time": "2026-08-07T16:00:52.87669761Z",
+        "ask_price": "57.940000",
+        "venue_ask_time": "2026-08-07T16:00:52.87669761Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "XLV",
+        "last_trade_price": "164.470000",
+        "venue_last_trade_time": "2026-08-07T16:00:44.997862221Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "164.450000",
+        "previous_close": "164.450000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "164.450000",
+        "venue_bid_time": "2026-08-07T16:00:53.21785929Z",
+        "ask_price": "164.480000",
+        "venue_ask_time": "2026-08-07T16:00:53.21785929Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "XLC",
+        "last_trade_price": "111.350000",
+        "venue_last_trade_time": "2026-08-07T16:00:52.85317083Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "111.180000",
+        "previous_close": "111.180000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "111.340000",
+        "venue_bid_time": "2026-08-07T16:00:53.062192405Z",
+        "ask_price": "111.350000",
+        "venue_ask_time": "2026-08-07T16:00:53.062192405Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "XLP",
+        "last_trade_price": "84.880000",
+        "venue_last_trade_time": "2026-08-07T16:00:30.085458859Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "85.110000",
+        "previous_close": "85.110000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "84.910000",
+        "venue_bid_time": "2026-08-07T16:00:51.995412942Z",
+        "ask_price": "84.920000",
+        "venue_ask_time": "2026-08-07T16:00:51.995412942Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "SMH",
+        "last_trade_price": "581.255000",
+        "venue_last_trade_time": "2026-08-07T16:00:51.759361443Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "571.480000",
+        "previous_close": "571.480000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "581.130000",
+        "venue_bid_time": "2026-08-07T16:00:51.619508176Z",
+        "ask_price": "581.370000",
+        "venue_ask_time": "2026-08-07T16:00:51.619508176Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "AVGO",
+        "last_trade_price": "425.275000",
+        "venue_last_trade_time": "2026-08-07T16:00:44.277315407Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "420.565000",
+        "previous_close": "420.565000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "425.160000",
+        "venue_bid_time": "2026-08-07T16:00:53.086030147Z",
+        "ask_price": "425.260000",
+        "venue_ask_time": "2026-08-07T16:00:53.086030147Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "MA",
+        "last_trade_price": "564.780000",
+        "venue_last_trade_time": "2026-08-07T16:00:49.69057267Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "575.950000",
+        "previous_close": "575.950000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "564.540000",
+        "venue_bid_time": "2026-08-07T16:00:51.923850876Z",
+        "ask_price": "564.880000",
+        "venue_ask_time": "2026-08-07T16:00:51.923850876Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "BAC",
+        "last_trade_price": "62.915000",
+        "venue_last_trade_time": "2026-08-07T16:00:49.425120825Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "63.000000",
+        "previous_close": "63.000000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "62.910000",
+        "venue_bid_time": "2026-08-07T16:00:51.464967385Z",
+        "ask_price": "62.920000",
+        "venue_ask_time": "2026-08-07T16:00:51.464967385Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "SHOP",
+        "last_trade_price": "149.870000",
+        "venue_last_trade_time": "2026-08-07T16:00:50.77756692Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "147.440000",
+        "previous_close": "147.440000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "149.810000",
+        "venue_bid_time": "2026-08-07T16:00:52.731150823Z",
+        "ask_price": "149.890000",
+        "venue_ask_time": "2026-08-07T16:00:52.731150823Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "CRM",
+        "last_trade_price": "190.900000",
+        "venue_last_trade_time": "2026-08-07T16:00:48.097146357Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "186.770000",
+        "previous_close": "186.770000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "190.820000",
+        "venue_bid_time": "2026-08-07T16:00:49.200461677Z",
+        "ask_price": "191.020000",
+        "venue_ask_time": "2026-08-07T16:00:49.200461677Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "UBER",
+        "last_trade_price": "74.534600",
+        "venue_last_trade_time": "2026-08-07T16:00:44.327432914Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "70.470000",
+        "previous_close": "70.470000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "74.520000",
+        "venue_bid_time": "2026-08-07T16:00:52.927437276Z",
+        "ask_price": "74.530000",
+        "venue_ask_time": "2026-08-07T16:00:52.927437276Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "NOW",
+        "last_trade_price": "124.630000",
+        "venue_last_trade_time": "2026-08-07T16:00:51.269907222Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "117.350000",
+        "previous_close": "117.350000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "124.600000",
+        "venue_bid_time": "2026-08-07T16:00:51.282797751Z",
+        "ask_price": "124.630000",
+        "venue_ask_time": "2026-08-07T16:00:51.282797751Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "MCHP",
+        "last_trade_price": "84.675000",
+        "venue_last_trade_time": "2026-08-07T16:00:45.464751553Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "74.360000",
+        "previous_close": "74.360000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "84.640000",
+        "venue_bid_time": "2026-08-07T16:00:51.991344848Z",
+        "ask_price": "84.690000",
+        "venue_ask_time": "2026-08-07T16:00:51.991344848Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "PLTR",
+        "last_trade_price": "170.305000",
+        "venue_last_trade_time": "2026-08-07T16:00:52.360771055Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "155.920000",
+        "previous_close": "155.920000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "170.260000",
+        "venue_bid_time": "2026-08-07T16:00:52.739721078Z",
+        "ask_price": "170.300000",
+        "venue_ask_time": "2026-08-07T16:00:52.739721078Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "DIS",
+        "last_trade_price": "104.825000",
+        "venue_last_trade_time": "2026-08-07T16:00:53.239660256Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "104.680000",
+        "previous_close": "104.680000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "104.820000",
+        "venue_bid_time": "2026-08-07T16:00:53.24988009Z",
+        "ask_price": "104.830000",
+        "venue_ask_time": "2026-08-07T16:00:53.24988009Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "COP",
+        "last_trade_price": "118.100000",
+        "venue_last_trade_time": "2026-08-07T16:00:48.650206485Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "116.760000",
+        "previous_close": "116.760000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "118.090000",
+        "venue_bid_time": "2026-08-07T16:00:52.059415079Z",
+        "ask_price": "118.120000",
+        "venue_ask_time": "2026-08-07T16:00:52.059415079Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "NVDA",
+        "last_trade_price": "223.690000",
+        "venue_last_trade_time": "2026-08-07T16:00:53.491613559Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "218.990000",
+        "previous_close": "218.990000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "223.680000",
+        "venue_bid_time": "2026-08-07T16:00:53.449793305Z",
+        "ask_price": "223.700000",
+        "venue_ask_time": "2026-08-07T16:00:53.449793305Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    },
+    {
+      "quote": {
+        "symbol": "CEG",
+        "last_trade_price": "268.505000",
+        "venue_last_trade_time": "2026-08-07T16:00:53.418285118Z",
+        "last_non_reg_trade_price": null,
+        "venue_last_non_reg_trade_time": null,
+        "adjusted_previous_close": "261.100000",
+        "previous_close": "261.100000",
+        "previous_close_date": "2026-08-06",
+        "bid_price": "268.300000",
+        "venue_bid_time": "2026-08-07T16:00:48.802493331Z",
+        "ask_price": "268.680000",
+        "venue_ask_time": "2026-08-07T16:00:48.802493331Z",
+        "has_traded": true,
+        "state": "active"
+      }
+    }
+  ],
+  "intraday": {
+    "SPY": {
+      "last": 773.04,
+      "sma10": 773.30849,
+      "sma20": 772.895745,
+      "sma50": 772.33521,
+      "atr14": 0.5564000000000046,
+      "support20": 769.68,
+      "resistance20": 773.915,
+      "ret5": -0.05816494824303353,
+      "ret20": 0.15806794330284202,
+      "vol_ratio": 0.69859842490565
+    },
+    "QQQ": {
+      "last": 722.49,
+      "sma10": 722.36407,
+      "sma20": 721.22104,
+      "sma50": 720.8093066666667,
+      "atr14": 0.88482142857144,
+      "support20": 716.6,
+      "resistance20": 723.4999,
+      "ret5": -0.09921080741004396,
+      "ret20": 0.3291118146975469,
+      "vol_ratio": 0.6725506778574069
+    },
+    "IWM": {
+      "last": 301.01,
+      "sma10": 301.053,
+      "sma20": 300.82925,
+      "sma50": 300.73516666666666,
+      "atr14": 0.26658571428571676,
+      "support20": 299.82,
+      "resistance20": 301.32,
+      "ret5": -0.04648846089987391,
+      "ret20": 0.03323252799838361,
+      "vol_ratio": 0.8100477999000322
+    },
+    "AVGO": {
+      "last": 425.53,
+      "sma10": 425.286,
+      "sma20": 425.372,
+      "sma50": 425.4842,
+      "atr14": 1.0526642857142738,
+      "support20": 421.69,
+      "resistance20": 427.87,
+      "ret5": -0.08335583549550218,
+      "ret20": 0.01292672894999125,
+      "vol_ratio": 0.7541397376572718
+    },
+    "MA": {
+      "last": 564.76,
+      "sma10": 564.90705,
+      "sma20": 566.1340299999999,
+      "sma50": 567.3863533333333,
+      "atr14": 1.2092785714285779,
+      "support20": 562.915,
+      "resistance20": 571.01,
+      "ret5": 0.29123455036226265,
+      "ret20": -0.685822811521819,
+      "vol_ratio": 1.0057998461265314
+    },
+    "BAC": {
+      "last": 62.945,
+      "sma10": 62.9155,
+      "sma20": 62.92725,
+      "sma50": 62.84283333333333,
+      "atr14": 0.06785000000000048,
+      "support20": 62.79,
+      "resistance20": 63.04,
+      "ret5": 0.23089171974521872,
+      "ret20": 0.17506166945173707,
+      "vol_ratio": 0.8949359260631103
+    },
+    "SHOP": {
+      "last": 150.16,
+      "sma10": 151.07262,
+      "sma20": 151.61896000000002,
+      "sma50": 150.88887333333332,
+      "atr14": 0.5239142857142879,
+      "support20": 150.45,
+      "resistance20": 152.85,
+      "ret5": -0.338488086546751,
+      "ret20": -1.0901426077792098,
+      "vol_ratio": 1.013337393378077
+    },
+    "CRM": {
+      "last": 190.685,
+      "sma10": 191.399,
+      "sma20": 192.41061,
+      "sma50": 192.29840666666666,
+      "atr14": 0.5685571428571389,
+      "support20": 190.71,
+      "resistance20": 194.7,
+      "ret5": -0.18321250032715675,
+      "ret20": -0.9171213302156311,
+      "vol_ratio": 0.7904542206596102
+    },
+    "UBER": {
+      "last": 74.5,
+      "sma10": 74.7463,
+      "sma20": 74.8534,
+      "sma50": 74.54324666666666,
+      "atr14": 0.22624285714286024,
+      "support20": 74.33,
+      "resistance20": 75.42,
+      "ret5": -0.33444816053511683,
+      "ret20": -0.5066814103745543,
+      "vol_ratio": 0.5678260219344776
+    },
+    "NOW": {
+      "last": 124.53,
+      "sma10": 124.78397,
+      "sma20": 125.03094,
+      "sma50": 124.77694333333334,
+      "atr14": 0.5314499999999975,
+      "support20": 123.86,
+      "resistance20": 126.15,
+      "ret5": 0.1648904082043101,
+      "ret20": 0.09283483838298245,
+      "vol_ratio": 0.49992439192926913
+    }
+  },
+  "daily": {
+    "AVGO": {
+      "last": 420.565,
+      "sma10": 394.2725,
+      "sma20": 390.46750000000003,
+      "sma50": 394.9224,
+      "atr14": 16.38237857142857,
+      "support20": 357.8,
+      "resistance20": 427.0,
+      "ret5": 8.437757838283844,
+      "ret20": 4.850290444017857,
+      "vol_ratio": 0.7037196219475822
+    },
+    "MA": {
+      "last": 575.95,
+      "sma10": 565.639,
+      "sma20": 551.8605,
+      "sma50": 520.1178,
+      "atr14": 11.844221428571432,
+      "support20": 515.11,
+      "resistance20": 583.7089,
+      "ret5": -0.2424872261193367,
+      "ret20": 10.082186544342498,
+      "vol_ratio": 0.998675147812521
+    },
+    "BAC": {
+      "last": 63.0,
+      "sma10": 62.318,
+      "sma20": 61.593,
+      "sma50": 58.1454,
+      "atr14": 1.032707142857142,
+      "support20": 58.41,
+      "resistance20": 63.565,
+      "ret5": 2.057346508990765,
+      "ret20": 6.329113924050622,
+      "vol_ratio": 0.7368528543486638
+    },
+    "SHOP": {
+      "last": 147.44,
+      "sma10": 127.162,
+      "sma20": 124.734,
+      "sma50": 118.3528,
+      "atr14": 8.26455714285714,
+      "support20": 111.055,
+      "resistance20": 153.88,
+      "ret5": 20.457516339869276,
+      "ret20": 19.704473491921725,
+      "vol_ratio": 1.6611440673106908
+    },
+    "CRM": {
+      "last": 186.77,
+      "sma10": 182.856,
+      "sma20": 175.2445,
+      "sma50": 171.8478,
+      "atr14": 9.080964285714277,
+      "support20": 155.145,
+      "resistance20": 194.94,
+      "ret5": 3.3534392119971335,
+      "ret20": 14.935384615384617,
+      "vol_ratio": 1.0479016043105065
+    },
+    "UBER": {
+      "last": 70.47,
+      "sma10": 69.904,
+      "sma20": 71.1025,
+      "sma50": 71.661,
+      "atr14": 2.478178571428572,
+      "support20": 65.41,
+      "resistance20": 76.3,
+      "ret5": 0.14210601108426424,
+      "ret20": -5.218560860793541,
+      "vol_ratio": 1.7394037159874562
+    },
+    "NOW": {
+      "last": 117.35,
+      "sma10": 111.892,
+      "sma20": 107.444,
+      "sma50": 106.8606,
+      "atr14": 7.063764285714287,
+      "support20": 91.5311,
+      "resistance20": 120.0,
+      "ret5": 6.613972926319622,
+      "ret20": 7.818816611539869,
+      "vol_ratio": 0.6593583300428447
+    },
+    "MCHP": {
+      "last": 74.36,
+      "sma10": 76.118,
+      "sma20": 80.01350000000001,
+      "sma50": 87.5164,
+      "atr14": 4.054428571428572,
+      "support20": 71.235,
+      "resistance20": 90.85,
+      "ret5": -0.8665511265164683,
+      "ret20": -15.748923634715617,
+      "vol_ratio": 1.4617625687329923
+    },
+    "PLTR": {
+      "last": 155.92,
+      "sma10": 134.89600000000002,
+      "sma20": 132.777,
+      "sma50": 131.8106,
+      "atr14": 8.432850000000004,
+      "support20": 117.89,
+      "resistance20": 166.08,
+      "ret5": 27.53149026664483,
+      "ret20": 20.830750154990696,
+      "vol_ratio": 0.9635893259142091
+    },
+    "NVDA": {
+      "last": 218.99,
+      "sma10": 204.295,
+      "sma20": 206.167,
+      "sma50": 205.8468,
+      "atr14": 7.808135714285718,
+      "support20": 190.01,
+      "resistance20": 222.22,
+      "ret5": 12.279532403609528,
+      "ret20": 7.993884998520562,
+      "vol_ratio": 0.8746759035686674
+    }
+  },
+  "fundamentals": [
+    {
+      "symbol": "AVGO",
+      "open": "429.130000",
+      "high": "430.820000",
+      "low": "421.610000",
+      "volume": "4877356.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-08-07",
+      "average_volume_2_weeks": "19705249.365570",
+      "average_volume": "19705249.365570",
+      "average_volume_30_days": "20213322.224600",
+      "high_52_weeks": "495.000000",
+      "high_52_weeks_date": "2026-06-03",
+      "low_52_weeks": "281.870000",
+      "low_52_weeks_date": "2025-08-20",
+      "float": "4666400979.299999",
+      "market_cap": "2157656223649.961670",
+      "pb_ratio": "21.281900",
+      "pe_ratio": "65.295489",
+      "shares_outstanding": "5073555284.580476",
+      "dividend_yield": "0.647579",
+      "dividend_per_share": "0.650000",
+      "distribution_frequency": "Quarterly",
+      "payable_date": "2026-06-30",
+      "ex_dividend_date": "2026-06-22",
+      "record_date": "2026-06-22",
+      "thirty_day_sec_yield": null,
+      "description": "Broadcom Inc. is a global technology company, which designs, develops, and supplies semiconductors and infrastructure software solutions. It operates through the Semiconductor Solutions and Infrastructure Software segments. The Semiconductor Solutions segment refers to product lines and intellectual property licensing. The Infrastructure Software segment relates to mainframe, distributed and cyber security solutions, and fibre channel storage area networking business. The company was founded in 1961 and is headquartered in Palo Alto, CA.",
+      "ceo": "Hock E. Tan",
+      "headquarters_city": "Palo Alto",
+      "headquarters_state": "California",
+      "sector": "Electronic Technology",
+      "industry": "Semiconductors",
+      "num_employees": 33000,
+      "year_founded": 1961,
+      "financial_status_indicator": "CC0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "MA",
+      "open": "573.620000",
+      "high": "573.620000",
+      "low": "562.915000",
+      "volume": "1216373.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-08-07",
+      "average_volume_2_weeks": "3361656.517270",
+      "average_volume": "3361656.517270",
+      "average_volume_30_days": "3029692.411180",
+      "high_52_weeks": "601.770000",
+      "high_52_weeks_date": "2025-08-22",
+      "low_52_weeks": "464.520000",
+      "low_52_weeks_date": "2026-06-03",
+      "float": "814101650.712000",
+      "market_cap": "499285852080.000000",
+      "pb_ratio": "89.344400",
+      "pe_ratio": "31.411847",
+      "shares_outstanding": "884036000.000000",
+      "dividend_yield": "0.590224",
+      "dividend_per_share": "0.870000",
+      "distribution_frequency": "Quarterly",
+      "payable_date": "2026-08-07",
+      "ex_dividend_date": "2026-07-09",
+      "record_date": "2026-07-09",
+      "thirty_day_sec_yield": null,
+      "description": "Mastercard, Inc. is a technology company, which engages in the provision of payment solutions for the development and implementation of credit, debit, prepaid, commercial, and payment programs through its brands including Mastercard, Maestro, and Cirrus. It also offers cyber and intelligence solutions. The company was founded in November 1966 and is headquartered in Purchase, NY.",
+      "ceo": "Michael E. Miebach",
+      "headquarters_city": "Purchase",
+      "headquarters_state": "New York",
+      "sector": "Finance",
+      "industry": "Finance/Rental/Leasing",
+      "num_employees": 39800,
+      "year_founded": 1966,
+      "financial_status_indicator": "CA0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "BAC",
+      "open": "62.650000",
+      "high": "63.040000",
+      "low": "62.390000",
+      "volume": "6986495.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-08-07",
+      "average_volume_2_weeks": "29175008.447261",
+      "average_volume": "29175008.447261",
+      "average_volume_30_days": "32526871.738500",
+      "high_52_weeks": "63.970000",
+      "high_52_weeks_date": "2026-08-06",
+      "low_52_weeks": "44.780000",
+      "low_52_weeks_date": "2025-08-07",
+      "float": "6972408090.250000",
+      "market_cap": "445370677995.755981",
+      "pb_ratio": "1.588140",
+      "pe_ratio": "14.379085",
+      "shares_outstanding": "7078926774.151729",
+      "dividend_yield": "1.792574",
+      "dividend_per_share": "0.320000",
+      "distribution_frequency": "Quarterly",
+      "payable_date": "2026-09-25",
+      "ex_dividend_date": "2026-09-04",
+      "record_date": "2026-09-04",
+      "thirty_day_sec_yield": null,
+      "description": "Bank of America Corp. is a bank and financial holding company, which engages in the provision of banking and nonbank financial services. It operates through the following segments: Consumer Banking, Global Wealth and Investment Management (GWIM), Global Banking, Global Markets, and All Other. The Consumer Banking segment offers credit, banking, and investment products and services to consumers and small businesses. The GWIM segment focuses on solutions to meet clients\u2019 needs through a full set of investment management, brokerage, banking, and retirement products. The Global Banking segment deals with lending-related products and services, integrated working capital management and treasury solutions to clients, and underwriting and advisory services. The Global Markets segment includes sales and trading services, as well as research, to institutional clients across fixed-income, credit, currency, commodity, and equity businesses. The All Other segment consists of asset and liability management activities, equity investments, non-core mortgage loans and servicing activities, the net impact of periodic revisions to the mortgage servicing rights valuation model for both core and non-core MSRs, other liquidating businesses, residual expense allocations and other. The company was founded by Amadeo Peter Giannini in 1904 and is headquartered in Charlotte, NC.",
+      "ceo": "Brian Thomas Moynihan",
+      "headquarters_city": "Charlotte",
+      "headquarters_state": "North Carolina",
+      "sector": "Finance",
+      "industry": "Major Banks",
+      "num_employees": 213000,
+      "year_founded": 1904,
+      "financial_status_indicator": "CA0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "SHOP",
+      "open": "148.425000",
+      "high": "152.850000",
+      "low": "145.600100",
+      "volume": "5249045.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-08-07",
+      "average_volume_2_weeks": "14958672.867849",
+      "average_volume": "14958672.867849",
+      "average_volume_30_days": "10640688.787900",
+      "high_52_weeks": "182.190000",
+      "high_52_weeks_date": "2025-10-29",
+      "low_52_weeks": "94.000000",
+      "low_52_weeks_date": "2026-05-14",
+      "float": "1215712489.068000",
+      "market_cap": "242609259614.495575",
+      "pb_ratio": "12.175400",
+      "pe_ratio": "115.020151",
+      "shares_outstanding": "1618798022.382702",
+      "dividend_yield": null,
+      "dividend_per_share": null,
+      "distribution_frequency": null,
+      "payable_date": null,
+      "ex_dividend_date": null,
+      "record_date": null,
+      "thirty_day_sec_yield": null,
+      "description": "Shopify, Inc. is a global commerce company that provides essential internet infrastructure for commerce, offering trusted tools to start, scale, market, and run a retail business of any size. The Company's software enables merchants to run their business across all of their sales channels, including web and mobile storefronts, physical retail locations, social media storefronts and marketplaces. The Shopify platform provides merchants with a single view of their business across all of their sales channels and enables them to manage products and inventory, process orders and payments, fulfill and ship orders, build customer relationships, source products, leverage analytics and reporting and access financing, all from one integrated back office. The company was founded on September 28, 2004 and is headquartered in Ottawa, Canada.",
+      "ceo": "Tobias Albin L\u00fctke",
+      "headquarters_city": "Ottawa",
+      "headquarters_state": "Ontario",
+      "sector": "Commercial Services",
+      "industry": "Miscellaneous Commercial Services",
+      "num_employees": 7600,
+      "year_founded": 2004,
+      "financial_status_indicator": "CC0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "CRM",
+      "open": "191.150000",
+      "high": "194.700000",
+      "low": "190.600000",
+      "volume": "3949678.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-08-07",
+      "average_volume_2_weeks": "13057960.585685",
+      "average_volume": "13057960.585685",
+      "average_volume_30_days": "12606238.451400",
+      "high_52_weeks": "269.110000",
+      "high_52_weeks_date": "2025-12-29",
+      "low_52_weeks": "146.320000",
+      "low_52_weeks_date": "2026-06-22",
+      "float": "792950067.000000",
+      "market_cap": "162257933261.849396",
+      "pb_ratio": "4.448460",
+      "pe_ratio": "21.524980",
+      "shares_outstanding": "849962981.989782",
+      "dividend_yield": "0.920678",
+      "dividend_per_share": "0.440000",
+      "distribution_frequency": "Quarterly",
+      "payable_date": "2026-07-02",
+      "ex_dividend_date": "2026-06-11",
+      "record_date": "2026-06-11",
+      "thirty_day_sec_yield": null,
+      "description": "Salesforce, Inc. engages in the design and development of cloud-based enterprise software for customer relationship management. Its solutions include sales force automation, customer service and support, marketing automation, digital commerce, community management, collaboration, industry-specific solutions, and salesforce platform. The firm also provides guidance, support, training, and advisory services. The company was founded by Marc Russell Benioff and Parker Harris in 1999 and is headquartered in San Francisco, CA.",
+      "ceo": "Marc Russell Benioff",
+      "headquarters_city": "San Francisco",
+      "headquarters_state": "California",
+      "sector": "Technology Services",
+      "industry": "Packaged Software",
+      "num_employees": 83334,
+      "year_founded": 1999,
+      "financial_status_indicator": "CA0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "UBER",
+      "open": "71.230000",
+      "high": "75.420000",
+      "low": "71.230000",
+      "volume": "16230975.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-08-07",
+      "average_volume_2_weeks": "22752918.306545",
+      "average_volume": "22752918.306545",
+      "average_volume_30_days": "18349882.797500",
+      "high_52_weeks": "101.990000",
+      "high_52_weeks_date": "2025-09-22",
+      "low_52_weeks": "65.410000",
+      "low_52_weeks_date": "2026-07-27",
+      "float": "1945074832.400000",
+      "market_cap": "151722631760.000000",
+      "pb_ratio": "5.891810",
+      "pe_ratio": "17.845839",
+      "shares_outstanding": "2035600000.000000",
+      "dividend_yield": null,
+      "dividend_per_share": null,
+      "distribution_frequency": null,
+      "payable_date": null,
+      "ex_dividend_date": null,
+      "record_date": null,
+      "thirty_day_sec_yield": null,
+      "description": "Uber Technologies, Inc. is a technology platform, which engages in the development and operation of technology applications, networks, and product to power movement from point A to point B. The firm offers ride services and merchants delivery service providers for meal preparation, grocery, and other delivery services. It operates through the following segments: Mobility, Delivery, and Freight. The Mobility segment refers to products that connect consumers with mobility drivers who provide rides in a variety of vehicles, such as cars, auto rickshaws, motorbikes, minibuses, and taxis. The Delivery segment offers consumers the chance to search for and discover local restaurants, order a meal, and either pick-up at the restaurant or have the meal delivered. The Freight segment focuses on connecting carriers with shippers on its platform, and gives carriers upfront, transparent pricing, and the ability to book a shipment. The company was founded by Oscar Salazar Gaitan, Travis Kalanick, and Garrett Camp in 2009 and is headquartered in San Francisco, CA.",
+      "ceo": "Dara Khosrowshahi",
+      "headquarters_city": "San Francisco",
+      "headquarters_state": "California",
+      "sector": "Transportation",
+      "industry": "Other Transportation",
+      "num_employees": 34000,
+      "year_founded": 2009,
+      "financial_status_indicator": "CA0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "NOW",
+      "open": "121.665000",
+      "high": "126.150000",
+      "low": "120.960000",
+      "volume": "14321085.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-08-07",
+      "average_volume_2_weeks": "26236614.897161",
+      "average_volume": "26236614.897161",
+      "average_volume_30_days": "23806433.858900",
+      "high_52_weeks": "194.726000",
+      "high_52_weeks_date": "2025-09-24",
+      "low_52_weeks": "81.240000",
+      "low_52_weeks_date": "2026-04-10",
+      "float": "1024624722.000000",
+      "market_cap": "132286882648.945282",
+      "pb_ratio": "9.432470",
+      "pe_ratio": "71.346454",
+      "shares_outstanding": "1061436914.458359",
+      "dividend_yield": null,
+      "dividend_per_share": null,
+      "distribution_frequency": null,
+      "payable_date": null,
+      "ex_dividend_date": null,
+      "record_date": null,
+      "thirty_day_sec_yield": null,
+      "description": "ServiceNow, Inc. engages in the provision of an end-to-end workflow automation platform for digital businesses. Its Now Platform is a cloud-based solution embedded with artificial intelligence (AI) and machine learning (ML). The company was founded by Frederic B. Luddy in June 2004 and is headquartered in Santa Clara, CA.",
+      "ceo": "William R. McDermott",
+      "headquarters_city": "Santa Clara",
+      "headquarters_state": "California",
+      "sector": "Technology Services",
+      "industry": "Packaged Software",
+      "num_employees": 29187,
+      "year_founded": 2004,
+      "financial_status_indicator": "CA0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "MCHP",
+      "open": "81.840000",
+      "high": "84.750000",
+      "low": "80.680000",
+      "volume": "6892988.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-08-07",
+      "average_volume_2_weeks": "12519228.277313",
+      "average_volume": "12519228.277313",
+      "average_volume_30_days": "11031763.053800",
+      "high_52_weeks": "105.910000",
+      "high_52_weeks_date": "2026-05-08",
+      "low_52_weeks": "48.520000",
+      "low_52_weeks_date": "2025-11-21",
+      "float": "533140458.624000",
+      "market_cap": "47544564927.311821",
+      "pb_ratio": "6.339030",
+      "pe_ratio": "345.204222",
+      "shares_outstanding": "561561033.807498",
+      "dividend_yield": "2.419569",
+      "dividend_per_share": "0.455000",
+      "distribution_frequency": "Quarterly",
+      "payable_date": "2026-06-05",
+      "ex_dividend_date": "2026-05-22",
+      "record_date": "2026-05-22",
+      "thirty_day_sec_yield": null,
+      "description": "Microchip Technology, Inc. engages in the provision of semiconductor products. It operates through the Semiconductor Products and Technology Licensing segments. The Semiconductor Products segment is involved in designing, developing, manufacturing, and marketing microcontrollers, development tools and analog, interface, mixed signal, connectivity devices, and timing products. The Technology Licensing segment offers license fees and royalties associated with technology licenses for the use of SuperFlash embedded flash and Smartbits one-time programmable technologies. The company was founded on February 14, 1989 and is headquartered in Chandler, AZ.",
+      "ceo": "Steve Sanghi",
+      "headquarters_city": "Chandler",
+      "headquarters_state": "Arizona",
+      "sector": "Electronic Technology",
+      "industry": "Semiconductors",
+      "num_employees": 17900,
+      "year_founded": 1989,
+      "financial_status_indicator": "CC0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "PLTR",
+      "open": "160.000000",
+      "high": "171.430000",
+      "low": "159.970100",
+      "volume": "40392256.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-08-07",
+      "average_volume_2_weeks": "54316200.002248",
+      "average_volume": "54316200.002248",
+      "average_volume_30_days": "43543021.563300",
+      "high_52_weeks": "207.520000",
+      "high_52_weeks_date": "2025-11-03",
+      "low_52_weeks": "106.370000",
+      "low_52_weeks_date": "2026-06-25",
+      "float": "2193497664.890000",
+      "market_cap": "507792590788.387146",
+      "pb_ratio": "35.646400",
+      "pe_ratio": "107.383984",
+      "shares_outstanding": "2982015977.851174",
+      "dividend_yield": null,
+      "dividend_per_share": null,
+      "distribution_frequency": null,
+      "payable_date": null,
+      "ex_dividend_date": null,
+      "record_date": null,
+      "thirty_day_sec_yield": null,
+      "description": "Palantir Technologies, Inc. engages in the business of building and deploying software platforms that serve as the central operating systems for its customers. It operates through the Commercial and Government segments. The Commercial segment focuses on customers working in non-government industries. The Government segment is involved in providing services to customers that are the United States government and non-United States government agencies. Its platforms are widely used in areas such as defense, intelligence, healthcare, energy, and financial services, supporting data integration, large-scale analytics, and operational decision-making. The company was founded by Alexander Ceadmon Karp, Peter Andreas Thiel, Stephen Cohen, Joseph Lonsdale, and Nathan Dale Gettings in 2003 and is headquartered in Aventura, FL.",
+      "ceo": "Alexander Caedmon Karp",
+      "headquarters_city": "Aventura",
+      "headquarters_state": "Florida",
+      "sector": "Technology Services",
+      "industry": "Packaged Software",
+      "num_employees": 4429,
+      "year_founded": 2003,
+      "financial_status_indicator": "CC0",
+      "financial_status_description": ""
+    },
+    {
+      "symbol": "NVDA",
+      "open": "221.600000",
+      "high": "224.760000",
+      "low": "220.660000",
+      "volume": "46059884.000000",
+      "overnight_volume": "0.000000",
+      "bounds": "regular",
+      "market_date": "2026-08-07",
+      "average_volume_2_weeks": "135541104.201209",
+      "average_volume": "135541104.201209",
+      "average_volume_30_days": "130036388.796000",
+      "high_52_weeks": "236.540000",
+      "high_52_weeks_date": "2026-05-14",
+      "low_52_weeks": "164.070000",
+      "low_52_weeks_date": "2025-09-05",
+      "float": "23269631000.000000",
+      "market_cap": "5502393727000.000000",
+      "pb_ratio": "25.604600",
+      "pe_ratio": "31.645686",
+      "shares_outstanding": "24598300000.000000",
+      "dividend_yield": "0.135501",
+      "dividend_per_share": "0.250000",
+      "distribution_frequency": "Quarterly",
+      "payable_date": "2026-06-26",
+      "ex_dividend_date": "2026-06-04",
+      "record_date": "2026-06-04",
+      "thirty_day_sec_yield": null,
+      "description": "NVIDIA Corp. engages in the design and manufacture of computer graphics processors, chipsets, and related multimedia software. It operates through the following segments: Graphics Processing Unit (GPU) and Compute & Networking. The Graphics segment includes GeForce GPUs for gaming and PCs, the GeForce NOW game streaming service and related infrastructure, Quadro and NVIDIA RTX GPUs for enterprise workstation graphics, virtual GPU, or vGPU, software for cloud-based visual and virtual computing, automotive platforms for infotainment systems, and Omniverse Enterprise software for building and operating metaverse and 3D internet applications. The Compute & Networking segment consists of Data Center accelerated computing platforms and end-to-end networking platforms including Quantum for InfiniBand and Spectrum for Ethernet, NVIDIA DRIVE automated-driving platform and automotive development agreements, Jetson robotics and other embedded platforms, NVIDIA AI Enterprise and other software, and DGX Cloud software and services. The company was founded by Jen Hsun Huang, Chris A. Malachowsky, and Curtis R. Priem in April 1993 and is headquartered in Santa Clara, CA.",
+      "ceo": "Jen Hsun Huang",
+      "headquarters_city": "Santa Clara",
+      "headquarters_state": "California",
+      "sector": "Electronic Technology",
+      "industry": "Semiconductors",
+      "num_employees": 42000,
+      "year_founded": 1993,
+      "financial_status_indicator": "CC0",
+      "financial_status_description": ""
+    }
+  ],
+  "financials": [
+    {
+      "symbol": "AVGO",
+      "period": "quarterly",
+      "financials": [
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 2,
+          "period_end_date": "2026-05-03",
+          "revenue": "22187000000.000000",
+          "gross_profit": "15415000000.000000",
+          "net_income": "9310000000.000000",
+          "net_margin": "41.960000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 1,
+          "period_end_date": "2026-02-01",
+          "revenue": "19311000000.000000",
+          "gross_profit": "13157000000.000000",
+          "net_income": "7349000000.000000",
+          "net_margin": "38.060000"
+        },
+        {
+          "fiscal_year": 2025,
+          "fiscal_quarter": 4,
+          "period_end_date": "2025-11-02",
+          "revenue": "18015000000.000000",
+          "gross_profit": "12249000000.000000",
+          "net_income": "8518000000.000000",
+          "net_margin": "47.280000"
+        },
+        {
+          "fiscal_year": 2025,
+          "fiscal_quarter": 3,
+          "period_end_date": "2025-08-03",
+          "revenue": "15952000000.000000",
+          "gross_profit": "10703000000.000000",
+          "net_income": "4140000000.000000",
+          "net_margin": "25.950000"
+        }
+      ]
+    },
+    {
+      "symbol": "MA",
+      "period": "quarterly",
+      "financials": [
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 2,
+          "period_end_date": "2026-06-30",
+          "revenue": "9277000000.000000",
+          "gross_profit": null,
+          "net_income": "4388000000.000000",
+          "net_margin": "47.300000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 1,
+          "period_end_date": "2026-03-31",
+          "revenue": "8398000000.000000",
+          "gross_profit": null,
+          "net_income": "3882000000.000000",
+          "net_margin": "46.230000"
+        },
+        {
+          "fiscal_year": 2025,
+          "fiscal_quarter": 4,
+          "period_end_date": "2025-12-31",
+          "revenue": "8806000000.000000",
+          "gross_profit": null,
+          "net_income": "4060000000.000000",
+          "net_margin": "46.100000"
+        },
+        {
+          "fiscal_year": 2025,
+          "fiscal_quarter": 3,
+          "period_end_date": "2025-09-30",
+          "revenue": "8602000000.000000",
+          "gross_profit": null,
+          "net_income": "3927000000.000000",
+          "net_margin": "45.650000"
+        }
+      ]
+    },
+    {
+      "symbol": "BAC",
+      "period": "quarterly",
+      "financials": [
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 2,
+          "period_end_date": "2026-06-30",
+          "revenue": "31558000000.000000",
+          "gross_profit": null,
+          "net_income": "9074000000.000000",
+          "net_margin": "28.750000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 1,
+          "period_end_date": "2026-03-31",
+          "revenue": "30272000000.000000",
+          "gross_profit": null,
+          "net_income": "8584000000.000000",
+          "net_margin": "28.360000"
+        },
+        {
+          "fiscal_year": 2025,
+          "fiscal_quarter": 4,
+          "period_end_date": "2025-12-31",
+          "revenue": "31180000000.000000",
+          "gross_profit": null,
+          "net_income": "7528000000.000000",
+          "net_margin": "24.140000"
+        },
+        {
+          "fiscal_year": 2025,
+          "fiscal_quarter": 3,
+          "period_end_date": "2025-09-30",
+          "revenue": "28088000000.000000",
+          "gross_profit": null,
+          "net_income": "8469000000.000000",
+          "net_margin": "30.150000"
+        }
+      ]
+    },
+    {
+      "symbol": "SHOP",
+      "period": "quarterly",
+      "financials": [
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 2,
+          "period_end_date": "2026-06-30",
+          "revenue": "3583000000.000000",
+          "gross_profit": "1708000000.000000",
+          "net_income": "1502000000.000000",
+          "net_margin": "41.920000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 1,
+          "period_end_date": "2026-03-31",
+          "revenue": "3170000000.000000",
+          "gross_profit": "1546000000.000000",
+          "net_income": "-581000000.000000",
+          "net_margin": "-18.330000"
+        },
+        {
+          "fiscal_year": 2025,
+          "fiscal_quarter": 4,
+          "period_end_date": "2025-12-31",
+          "revenue": "3672000000.000000",
+          "gross_profit": "1693000000.000000",
+          "net_income": "743000000.000000",
+          "net_margin": "20.230000"
+        },
+        {
+          "fiscal_year": 2025,
+          "fiscal_quarter": 3,
+          "period_end_date": "2025-09-30",
+          "revenue": "2844000000.000000",
+          "gross_profit": "1391000000.000000",
+          "net_income": "264000000.000000",
+          "net_margin": "9.280000"
+        }
+      ]
+    },
+    {
+      "symbol": "CRM",
+      "period": "quarterly",
+      "financials": [
+        {
+          "fiscal_year": 2027,
+          "fiscal_quarter": 1,
+          "period_end_date": "2026-04-30",
+          "revenue": "11133000000.000000",
+          "gross_profit": "8563000000.000000",
+          "net_income": "2107000000.000000",
+          "net_margin": "18.930000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 4,
+          "period_end_date": "2026-01-31",
+          "revenue": "11201000000.000000",
+          "gross_profit": "8693000000.000000",
+          "net_income": "1943000000.000000",
+          "net_margin": "17.350000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 3,
+          "period_end_date": "2025-10-31",
+          "revenue": "10259000000.000000",
+          "gross_profit": "8004000000.000000",
+          "net_income": "2086000000.000000",
+          "net_margin": "20.330000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 2,
+          "period_end_date": "2025-07-31",
+          "revenue": "10236000000.000000",
+          "gross_profit": "7994000000.000000",
+          "net_income": "1887000000.000000",
+          "net_margin": "18.430000"
+        }
+      ]
+    },
+    {
+      "symbol": "UBER",
+      "period": "quarterly",
+      "financials": [
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 2,
+          "period_end_date": "2026-06-30",
+          "revenue": "14191000000.000000",
+          "gross_profit": null,
+          "net_income": "2394000000.000000",
+          "net_margin": "16.870000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 1,
+          "period_end_date": "2026-03-31",
+          "revenue": "13203000000.000000",
+          "gross_profit": null,
+          "net_income": "263000000.000000",
+          "net_margin": "1.990000"
+        },
+        {
+          "fiscal_year": 2025,
+          "fiscal_quarter": 4,
+          "period_end_date": "2025-12-31",
+          "revenue": "14366000000.000000",
+          "gross_profit": null,
+          "net_income": "296000000.000000",
+          "net_margin": "2.060000"
+        },
+        {
+          "fiscal_year": 2025,
+          "fiscal_quarter": 3,
+          "period_end_date": "2025-09-30",
+          "revenue": "13467000000.000000",
+          "gross_profit": null,
+          "net_income": "6626000000.000000",
+          "net_margin": "49.200000"
+        }
+      ]
+    },
+    {
+      "symbol": "NOW",
+      "period": "quarterly",
+      "financials": [
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 2,
+          "period_end_date": "2026-06-30",
+          "revenue": "3987000000.000000",
+          "gross_profit": "2818000000.000000",
+          "net_income": "298000000.000000",
+          "net_margin": "7.470000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 1,
+          "period_end_date": "2026-03-31",
+          "revenue": "3770000000.000000",
+          "gross_profit": "2830000000.000000",
+          "net_income": "469000000.000000",
+          "net_margin": "12.440000"
+        },
+        {
+          "fiscal_year": 2025,
+          "fiscal_quarter": 4,
+          "period_end_date": "2025-12-31",
+          "revenue": "3568000000.000000",
+          "gross_profit": "2734000000.000000",
+          "net_income": "401000000.000000",
+          "net_margin": "11.240000"
+        },
+        {
+          "fiscal_year": 2025,
+          "fiscal_quarter": 3,
+          "period_end_date": "2025-09-30",
+          "revenue": "3407000000.000000",
+          "gross_profit": "2633000000.000000",
+          "net_income": "502000000.000000",
+          "net_margin": "14.730000"
+        }
+      ]
+    },
+    {
+      "symbol": "MCHP",
+      "period": "quarterly",
+      "financials": [
+        {
+          "fiscal_year": 2027,
+          "fiscal_quarter": 1,
+          "period_end_date": "2026-06-30",
+          "revenue": "1484700000.000000",
+          "gross_profit": "938900000.000000",
+          "net_income": "229800000.000000",
+          "net_margin": "15.480000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 4,
+          "period_end_date": "2026-03-31",
+          "revenue": "1311200000.000000",
+          "gross_profit": "799600000.000000",
+          "net_income": "144200000.000000",
+          "net_margin": "11.000000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 3,
+          "period_end_date": "2025-12-31",
+          "revenue": "1186000000.000000",
+          "gross_profit": "706900000.000000",
+          "net_income": "62700000.000000",
+          "net_margin": "5.290000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 2,
+          "period_end_date": "2025-09-30",
+          "revenue": "1140400000.000000",
+          "gross_profit": "637900000.000000",
+          "net_income": "41700000.000000",
+          "net_margin": "3.660000"
+        }
+      ]
+    },
+    {
+      "symbol": "PLTR",
+      "period": "quarterly",
+      "financials": [
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 2,
+          "period_end_date": "2026-06-30",
+          "revenue": "1935464000.000000",
+          "gross_profit": "1638594000.000000",
+          "net_income": "1061890000.000000",
+          "net_margin": "54.860000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 1,
+          "period_end_date": "2026-03-31",
+          "revenue": "1632583000.000000",
+          "gross_profit": "1416785000.000000",
+          "net_income": "870527000.000000",
+          "net_margin": "53.320000"
+        },
+        {
+          "fiscal_year": 2025,
+          "fiscal_quarter": 4,
+          "period_end_date": "2025-12-31",
+          "revenue": "1406802000.000000",
+          "gross_profit": "1190836000.000000",
+          "net_income": "608676000.000000",
+          "net_margin": "43.270000"
+        },
+        {
+          "fiscal_year": 2025,
+          "fiscal_quarter": 3,
+          "period_end_date": "2025-09-30",
+          "revenue": "1181092000.000000",
+          "gross_profit": "973785000.000000",
+          "net_income": "475599000.000000",
+          "net_margin": "40.270000"
+        }
+      ]
+    },
+    {
+      "symbol": "NVDA",
+      "period": "quarterly",
+      "financials": [
+        {
+          "fiscal_year": 2027,
+          "fiscal_quarter": 1,
+          "period_end_date": "2026-04-26",
+          "revenue": "81615000000.000000",
+          "gross_profit": "61157000000.000000",
+          "net_income": "58321000000.000000",
+          "net_margin": "71.460000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 4,
+          "period_end_date": "2026-01-25",
+          "revenue": "68127000000.000000",
+          "gross_profit": "51093000000.000000",
+          "net_income": "42960000000.000000",
+          "net_margin": "63.060000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 3,
+          "period_end_date": "2025-10-26",
+          "revenue": "57006000000.000000",
+          "gross_profit": "41849000000.000000",
+          "net_income": "31910000000.000000",
+          "net_margin": "55.980000"
+        },
+        {
+          "fiscal_year": 2026,
+          "fiscal_quarter": 2,
+          "period_end_date": "2025-07-27",
+          "revenue": "46743000000.000000",
+          "gross_profit": "33853000000.000000",
+          "net_income": "26422000000.000000",
+          "net_margin": "56.530000"
+        }
+      ]
+    }
+  ],
+  "earnings": {
+    "AVGO": {
+      "results": [
+        {
+          "symbol": "AVGO",
+          "year": 2025,
+          "quarter": 1,
+          "eps": {
+            "estimate": "1.490000",
+            "actual": "1.600000"
+          },
+          "report": {
+            "date": "2025-03-06",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "AVGO",
+          "year": 2025,
+          "quarter": 2,
+          "eps": {
+            "estimate": "1.570000",
+            "actual": "1.580000"
+          },
+          "report": {
+            "date": "2025-06-05",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "AVGO",
+          "year": 2025,
+          "quarter": 3,
+          "eps": {
+            "estimate": "1.540000",
+            "actual": "1.690000"
+          },
+          "report": {
+            "date": "2025-09-04",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "AVGO",
+          "year": 2025,
+          "quarter": 4,
+          "eps": {
+            "estimate": "1.720000",
+            "actual": "1.950000"
+          },
+          "report": {
+            "date": "2025-12-11",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "AVGO",
+          "year": 2026,
+          "quarter": 1,
+          "eps": {
+            "estimate": "1.880000",
+            "actual": "2.050000"
+          },
+          "report": {
+            "date": "2026-03-04",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "AVGO",
+          "year": 2026,
+          "quarter": 2,
+          "eps": {
+            "estimate": "2.320000",
+            "actual": "2.440000"
+          },
+          "report": {
+            "date": "2026-06-03",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "AVGO",
+          "year": 2026,
+          "quarter": 3,
+          "eps": {
+            "estimate": "3.160000",
+            "actual": null
+          },
+          "report": {
+            "date": "2026-09-02",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "AVGO",
+          "year": 2026,
+          "quarter": 4,
+          "eps": {
+            "estimate": "3.790000",
+            "actual": null
+          },
+          "report": {
+            "date": "2026-12-10",
+            "timing": "pm",
+            "verified": false
+          }
+        }
+      ]
+    },
+    "MA": {
+      "results": [
+        {
+          "symbol": "MA",
+          "year": 2024,
+          "quarter": 4,
+          "eps": {
+            "estimate": "3.690000",
+            "actual": "3.820000"
+          },
+          "report": {
+            "date": "2025-01-30",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "MA",
+          "year": 2025,
+          "quarter": 1,
+          "eps": {
+            "estimate": "3.570000",
+            "actual": "3.730000"
+          },
+          "report": {
+            "date": "2025-05-01",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "MA",
+          "year": 2025,
+          "quarter": 2,
+          "eps": {
+            "estimate": "4.030000",
+            "actual": "4.150000"
+          },
+          "report": {
+            "date": "2025-07-31",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "MA",
+          "year": 2025,
+          "quarter": 3,
+          "eps": {
+            "estimate": "4.310000",
+            "actual": "4.380000"
+          },
+          "report": {
+            "date": "2025-10-30",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "MA",
+          "year": 2025,
+          "quarter": 4,
+          "eps": {
+            "estimate": "4.220000",
+            "actual": "4.760000"
+          },
+          "report": {
+            "date": "2026-01-29",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "MA",
+          "year": 2026,
+          "quarter": 1,
+          "eps": {
+            "estimate": "4.410000",
+            "actual": "4.600000"
+          },
+          "report": {
+            "date": "2026-04-30",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "MA",
+          "year": 2026,
+          "quarter": 2,
+          "eps": {
+            "estimate": "4.760000",
+            "actual": "5.040000"
+          },
+          "report": {
+            "date": "2026-07-30",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "MA",
+          "year": 2026,
+          "quarter": 3,
+          "eps": {
+            "estimate": "5.110000",
+            "actual": null
+          },
+          "report": {
+            "date": "2026-10-29",
+            "timing": "am",
+            "verified": false
+          }
+        }
+      ]
+    },
+    "BAC": {
+      "results": [
+        {
+          "symbol": "BAC",
+          "year": 2024,
+          "quarter": 4,
+          "eps": {
+            "estimate": "0.770000",
+            "actual": "0.820000"
+          },
+          "report": {
+            "date": "2025-01-16",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "BAC",
+          "year": 2025,
+          "quarter": 1,
+          "eps": {
+            "estimate": "0.820000",
+            "actual": "0.900000"
+          },
+          "report": {
+            "date": "2025-04-15",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "BAC",
+          "year": 2025,
+          "quarter": 2,
+          "eps": {
+            "estimate": "0.870000",
+            "actual": "0.890000"
+          },
+          "report": {
+            "date": "2025-07-16",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "BAC",
+          "year": 2025,
+          "quarter": 3,
+          "eps": {
+            "estimate": "0.940000",
+            "actual": "1.060000"
+          },
+          "report": {
+            "date": "2025-10-15",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "BAC",
+          "year": 2025,
+          "quarter": 4,
+          "eps": {
+            "estimate": "0.960000",
+            "actual": "0.980000"
+          },
+          "report": {
+            "date": "2026-01-14",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "BAC",
+          "year": 2026,
+          "quarter": 1,
+          "eps": {
+            "estimate": "1.010000",
+            "actual": "1.110000"
+          },
+          "report": {
+            "date": "2026-04-15",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "BAC",
+          "year": 2026,
+          "quarter": 2,
+          "eps": {
+            "estimate": "1.110000",
+            "actual": "1.210000"
+          },
+          "report": {
+            "date": "2026-07-14",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "BAC",
+          "year": 2026,
+          "quarter": 3,
+          "eps": {
+            "estimate": "1.140000",
+            "actual": null
+          },
+          "report": {
+            "date": "2026-10-14",
+            "timing": "am",
+            "verified": true
+          }
+        }
+      ]
+    },
+    "SHOP": {
+      "results": [
+        {
+          "symbol": "SHOP",
+          "year": 2024,
+          "quarter": 4,
+          "eps": {
+            "estimate": "0.430000",
+            "actual": "0.440000"
+          },
+          "report": {
+            "date": "2025-02-11",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "SHOP",
+          "year": 2025,
+          "quarter": 1,
+          "eps": {
+            "estimate": "0.260000",
+            "actual": "0.250000"
+          },
+          "report": {
+            "date": "2025-05-08",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "SHOP",
+          "year": 2025,
+          "quarter": 2,
+          "eps": {
+            "estimate": "0.250000",
+            "actual": "0.350000"
+          },
+          "report": {
+            "date": "2025-08-06",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "SHOP",
+          "year": 2025,
+          "quarter": 3,
+          "eps": {
+            "estimate": "0.300000",
+            "actual": "0.340000"
+          },
+          "report": {
+            "date": "2025-11-04",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "SHOP",
+          "year": 2025,
+          "quarter": 4,
+          "eps": {
+            "estimate": "0.470000",
+            "actual": "0.480000"
+          },
+          "report": {
+            "date": "2026-02-11",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "SHOP",
+          "year": 2026,
+          "quarter": 1,
+          "eps": {
+            "estimate": "0.310000",
+            "actual": "0.360000"
+          },
+          "report": {
+            "date": "2026-05-05",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "SHOP",
+          "year": 2026,
+          "quarter": 2,
+          "eps": {
+            "estimate": "0.370000",
+            "actual": "0.420000"
+          },
+          "report": {
+            "date": "2026-08-05",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "SHOP",
+          "year": 2026,
+          "quarter": 3,
+          "eps": {
+            "estimate": "0.410000",
+            "actual": null
+          },
+          "report": {
+            "date": "2026-11-03",
+            "timing": "am",
+            "verified": false
+          }
+        }
+      ]
+    },
+    "CRM": {
+      "results": [
+        {
+          "symbol": "CRM",
+          "year": 2025,
+          "quarter": 4,
+          "eps": {
+            "estimate": "2.610000",
+            "actual": "2.780000"
+          },
+          "report": {
+            "date": "2025-02-26",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "CRM",
+          "year": 2026,
+          "quarter": 1,
+          "eps": {
+            "estimate": "2.550000",
+            "actual": "2.580000"
+          },
+          "report": {
+            "date": "2025-05-28",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "CRM",
+          "year": 2026,
+          "quarter": 2,
+          "eps": {
+            "estimate": "2.520000",
+            "actual": "2.910000"
+          },
+          "report": {
+            "date": "2025-09-03",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "CRM",
+          "year": 2026,
+          "quarter": 3,
+          "eps": {
+            "estimate": "2.580000",
+            "actual": "3.250000"
+          },
+          "report": {
+            "date": "2025-12-03",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "CRM",
+          "year": 2026,
+          "quarter": 4,
+          "eps": {
+            "estimate": "2.690000",
+            "actual": "3.810000"
+          },
+          "report": {
+            "date": "2026-02-25",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "CRM",
+          "year": 2027,
+          "quarter": 1,
+          "eps": {
+            "estimate": "2.960000",
+            "actual": "3.880000"
+          },
+          "report": {
+            "date": "2026-05-27",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "CRM",
+          "year": 2027,
+          "quarter": 2,
+          "eps": {
+            "estimate": "3.090000",
+            "actual": null
+          },
+          "report": {
+            "date": "2026-08-26",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "CRM",
+          "year": 2027,
+          "quarter": 3,
+          "eps": {
+            "estimate": "3.150000",
+            "actual": null
+          },
+          "report": {
+            "date": "2026-12-02",
+            "timing": "pm",
+            "verified": false
+          }
+        }
+      ]
+    },
+    "UBER": {
+      "results": [
+        {
+          "symbol": "UBER",
+          "year": 2024,
+          "quarter": 4,
+          "eps": {
+            "estimate": "0.480000",
+            "actual": "0.230000"
+          },
+          "report": {
+            "date": "2025-02-05",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "UBER",
+          "year": 2025,
+          "quarter": 1,
+          "eps": {
+            "estimate": "0.500000",
+            "actual": "0.830000"
+          },
+          "report": {
+            "date": "2025-05-07",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "UBER",
+          "year": 2025,
+          "quarter": 2,
+          "eps": {
+            "estimate": "0.620000",
+            "actual": "0.630000"
+          },
+          "report": {
+            "date": "2025-08-06",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "UBER",
+          "year": 2025,
+          "quarter": 3,
+          "eps": {
+            "estimate": "0.680000",
+            "actual": "0.810000"
+          },
+          "report": {
+            "date": "2025-11-04",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "UBER",
+          "year": 2025,
+          "quarter": 4,
+          "eps": {
+            "estimate": "0.780000",
+            "actual": "0.710000"
+          },
+          "report": {
+            "date": "2026-02-04",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "UBER",
+          "year": 2026,
+          "quarter": 1,
+          "eps": {
+            "estimate": "0.700000",
+            "actual": "0.720000"
+          },
+          "report": {
+            "date": "2026-05-06",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "UBER",
+          "year": 2026,
+          "quarter": 2,
+          "eps": {
+            "estimate": "0.830000",
+            "actual": "0.810000"
+          },
+          "report": {
+            "date": "2026-08-05",
+            "timing": "am",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "UBER",
+          "year": 2026,
+          "quarter": 3,
+          "eps": {
+            "estimate": "0.910000",
+            "actual": null
+          },
+          "report": {
+            "date": "2026-11-03",
+            "timing": "am",
+            "verified": false
+          }
+        }
+      ]
+    },
+    "NOW": {
+      "results": [
+        {
+          "symbol": "NOW",
+          "year": 2024,
+          "quarter": 4,
+          "eps": {
+            "estimate": "0.732000",
+            "actual": "0.734000"
+          },
+          "report": {
+            "date": "2025-01-29",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "NOW",
+          "year": 2025,
+          "quarter": 1,
+          "eps": {
+            "estimate": "0.768000",
+            "actual": "0.808000"
+          },
+          "report": {
+            "date": "2025-04-23",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "NOW",
+          "year": 2025,
+          "quarter": 2,
+          "eps": {
+            "estimate": "0.564000",
+            "actual": "0.818000"
+          },
+          "report": {
+            "date": "2025-07-23",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "NOW",
+          "year": 2025,
+          "quarter": 3,
+          "eps": {
+            "estimate": "0.698000",
+            "actual": "0.964000"
+          },
+          "report": {
+            "date": "2025-10-29",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "NOW",
+          "year": 2025,
+          "quarter": 4,
+          "eps": {
+            "estimate": "0.720000",
+            "actual": "0.920000"
+          },
+          "report": {
+            "date": "2026-01-28",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "NOW",
+          "year": 2026,
+          "quarter": 1,
+          "eps": {
+            "estimate": "0.800000",
+            "actual": "0.970000"
+          },
+          "report": {
+            "date": "2026-04-22",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "NOW",
+          "year": 2026,
+          "quarter": 2,
+          "eps": {
+            "estimate": "0.760000",
+            "actual": "0.900000"
+          },
+          "report": {
+            "date": "2026-07-22",
+            "timing": "pm",
+            "verified": true
+          }
+        },
+        {
+          "symbol": "NOW",
+          "year": 2026,
+          "quarter": 3,
+          "eps": {
+            "estimate": "0.990000",
+            "actual": null
+          },
+          "report": {
+            "date": "2026-10-28",
+            "timing": "pm",
+            "verified": false
+          }
+        }
+      ]
+    }
+  },
+  "scans": {
+    "scans": [
+      {
+        "scan_id": "10497ef1-584d-4bce-b953-1566d14c4336",
+        "title": "Agentic 1041 Afternoon Upcoming Earnings 2026-07-17",
+        "filter_summary": [
+          {
+            "filter_type": "Earnings date",
+            "filter_type_enum": "FILTER_TYPE_EARNINGS_DATE",
+            "predicate": "BETWEEN",
+            "values": [
+              "0",
+              "7"
+            ],
+            "expression": "fundamental.earningsYmd"
+          },
+          {
+            "filter_type": "Asset type",
+            "filter_type_enum": "FILTER_TYPE_INSTRUMENT_TYPE",
+            "predicate": "ANY_OF",
+            "values": [
+              "STOCK"
+            ],
+            "expression": "type"
+          }
+        ],
+        "column_count": 10,
+        "columns": [
+          {
+            "display_name": "Symbol",
+            "visible": true,
+            "order": 0,
+            "expression": "symbol"
+          },
+          {
+            "display_name": "Name",
+            "visible": true,
+            "order": 1,
+            "expression": "description"
+          },
+          {
+            "display_name": "Net change",
+            "visible": true,
+            "order": 2,
+            "expression": "changeFromCloseAllDay(candlePeriod=\"1d\")"
+          },
+          {
+            "display_name": "% Change",
+            "visible": true,
+            "order": 3,
+            "expression": "changeFromCloseAllDayRatio(candlePeriod=\"1d\")"
+          },
+          {
+            "display_name": "Last",
+            "visible": true,
+            "order": 4,
+            "expression": "tradeAllDay.price"
+          },
+          {
+            "display_name": "Market cap",
+            "visible": true,
+            "order": 5,
+            "expression": "fundamental.marketCap"
+          },
+          {
+            "display_name": "Volume",
+            "visible": true,
+            "order": 6,
+            "expression": "dayVolume"
+          },
+          {
+            "display_name": "Relative volume",
+            "visible": true,
+            "order": 7,
+            "expression": "dayVolume / volumeAvg(candlePeriod=\"1d\", session=\"all\")"
+          },
+          {
+            "display_name": "Earnings date",
+            "visible": true,
+            "order": 8,
+            "expression": "fundamental.earningsYmd"
+          },
+          {
+            "display_name": "Asset type",
+            "visible": true,
+            "order": 9,
+            "expression": "type"
+          }
+        ],
+        "sorting": "Earnings date desc",
+        "cortex_managed": false
+      },
+      {
+        "scan_id": "8b91f5ef-1f90-4dea-8115-35238c26dfc4",
+        "title": "Agentic 1041 Afternoon Daily Gainers 2026-07-17",
+        "filter_summary": [
+          {
+            "filter_type": "Asset type",
+            "filter_type_enum": "FILTER_TYPE_INSTRUMENT_TYPE",
+            "predicate": "ANY_OF",
+            "values": [
+              "STOCK"
+            ],
+            "expression": "type"
+          }
+        ],
+        "column_count": 9,
+        "columns": [
+          {
+            "display_name": "Symbol",
+            "visible": true,
+            "order": 0,
+            "expression": "symbol"
+          },
+          {
+            "display_name": "Name",
+            "visible": true,
+            "order": 1,
+            "expression": "description"
+          },
+          {
+            "display_name": "Net change",
+            "visible": true,
+            "order": 2,
+            "expression": "changeFromCloseAllDay(candlePeriod=\"1d\")"
+          },
+          {
+            "display_name": "% Change",
+            "visible": true,
+            "order": 3,
+            "expression": "changeFromCloseAllDayRatio(candlePeriod=\"1d\")"
+          },
+          {
+            "display_name": "Last",
+            "visible": true,
+            "order": 4,
+            "expression": "tradeAllDay.price"
+          },
+          {
+            "display_name": "Market cap",
+            "visible": true,
+            "order": 5,
+            "expression": "fundamental.marketCap"
+          },
+          {
+            "display_name": "Volume",
+            "visible": true,
+            "order": 6,
+            "expression": "dayVolume"
+          },
+          {
+            "display_name": "Relative volume",
+            "visible": true,
+            "order": 7,
+            "expression": "dayVolume / volumeAvg(candlePeriod=\"1d\", session=\"all\")"
+          },
+          {
+            "display_name": "Asset type",
+            "visible": true,
+            "order": 8,
+            "expression": "type"
+          }
+        ],
+        "sorting": "% Change desc",
+        "cortex_managed": false
+      }
+    ]
+  }
+}
