@@ -1,6 +1,6 @@
 Discord IDs: General 1499990220077137943 stand-up only; coding 1523247688689258586; personal 1524172425393340516; YT 1524259261281206332; trading 1524259597232242831; business 1524259978167451689; redteam 1524312655894937623.
 §
-OSRS/RuneLite: production Plugin Hub patterns; respectful follow-ups; preserve PRs; no dev/pretend modes or endpoint overrides; compact vertical tabs. API-driven READMEs list endpoints, purpose/data, auth, fallback, privacy/telemetry.
+OSRS/RuneLite: production Plugin Hub; preserve PRs; respectful follow-ups; no dev/pretend modes or endpoint overrides; compact vertical tabs. Study full combat/scaling mechanics before formulas, incl. elemental weaknesses. API READMEs cover endpoints, data/purpose, auth, fallback, privacy/telemetry.
 §
 Client sites: live Git auto-deploy first; Stripe/domains later.
 §

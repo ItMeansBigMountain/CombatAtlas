@@ -4,14 +4,13 @@ Use this when continuing Clan War Board RuneLite plugin/service work after the P
 
 ## Durable product decisions
 
-- Online sync is required for Clan War Board; do not reintroduce an `Enable Online Sync` disable option.
-- Members must have a setting controlling whether their player-level performance appears publicly on the website.
-  - Current plugin setting: `Show My Player Stats Publicly`.
-  - Default must be `false`.
-  - Clan-level telemetry can still sync while the member's public website identity is hidden.
-- Fight worlds are intentionally public. The user wants world visibility to help revive Wilderness activity.
-- Private-by-default data should focus on member/player identity and leader notes/rally details, not the world.
-- If public tracking creates problems, the operational plan is to ship an update rather than over-block public world visibility up front.
+- Online board sync is required for Clan War Board; do not reintroduce an `Enable Online Sync` option. Basic registration for clan identity and leader authorization is part of board sync and must be clearly disclosed.
+- **Do not conflate required board sync with combat telemetry consent.** War telemetry sends substantially broader data (opponent names, event types, damage, world/tick/time, evidence/confidence, and region/tile/plane) and must have a separate explicit `Share War Telemetry` control that defaults to `false`.
+- When `Share War Telemetry` is off, do not enqueue heartbeat/combat/location events, do not upload batches, and clear any buffered telemetry immediately when the option is disabled or identity changes.
+- Members separately control whether already-consented player-level performance appears publicly on the website through `Show My Player Stats Publicly`, default `false`. That publication setting must never silently enable telemetry collection.
+- Attach an in-client third-party-data warning to the setting that enables transmission, describing the destination and actual payload categories. If the current RuneLite `PluginDescriptor` API has no warning attribute, use the enabling `ConfigItem` name/description and verify the warning is visible before opt-in; README disclosure alone is insufficient.
+- Fight worlds may be public for submitted/scheduled fights, but telemetry still requires explicit consent. Private-by-default data includes member/player identity and leader notes/rally details.
+- Validate both config states by capturing actual requests and comparing them against documentation and server persistence/publication behavior.
 
 ## Anti-lag telemetry pattern
 

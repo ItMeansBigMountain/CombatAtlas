@@ -24,6 +24,37 @@ When the user explicitly prioritizes plugin A over plugin B:
 
 Preserve an existing PR’s queue position by default, but explicit user priority overrides that default. Do not argue for preserving the lower-priority PR after the user has chosen the order.
 
+## Feature submissions versus maintenance revisions
+
+Treat completed-plugin maintenance updates (icon corrections, README-only changes, minor polish) as real marker-update PRs that consume the same one-open-PR-per-author slot.
+
+When the user defines an ordered release train:
+
+1. Record the full queue explicitly: current pending PR, next new plugin, then completed-plugin revisions.
+2. Do not open a maintenance revision while a higher-priority new-plugin submission is pending or being finalized.
+3. A child repository may receive and publish the approved maintenance commit early, but state clearly that the live Plugin Hub version remains pinned to the old SHA until its later marker-update PR merges.
+4. After the current PR merges, finish and locally validate the next new plugin before submitting it; do not let already-prepared maintenance revisions jump the queue merely because their child SHAs exist.
+5. Submit deferred maintenance revisions one at a time only after higher-priority feature/plugin work reaches the user-approved queue position.
+6. Monitor only the currently open PR; keep deferred items as local task state rather than opening speculative branches/PRs.
+
+This ordering is a workflow decision, not a technical readiness claim. A green child build does not authorize changing the user’s release priority.
+
+## Reintroducing the deferred PR after the priority PR merges
+
+When plugin A merges and plugin B was closed only for sequencing:
+
+1. Verify A is truly `merged=true`, its official build succeeded, and its PR changed one marker.
+2. Retire A's monitor so a completed submission is not polled forever.
+3. Move A's child repo from `pr-review-pending/` to `completed/` and advance the parent gitlink to the exact accepted child SHA.
+4. Inspect every feedback surface on B's old PR. Distinguish a sequencing closure from maintainer-requested changes.
+5. Attempt to reopen B's original PR first. A successful reopen preserves review history and is preferable to creating a duplicate.
+6. If reopened, do not assume its old Plugin Hub branch is current. Rebuild the branch from current upstream `master`, recreate exactly one marker pinned to B's latest tested child SHA, and push with `--force-with-lease=<branch>:<observed-old-sha>`.
+7. Verify the live PR file list is exactly one marker, wait for the official `build` check, and inspect issue comments, reviews, and inline comments again.
+8. Post at most one concise status note explaining that A merged, B was reopened, the branch was refreshed from current upstream, and local plus official builds are green.
+9. Start a low-noise monitor for B; silence it unless feedback is actionable or the PR merges.
+
+Never force-push from an unverified stale local branch. Resolve and pin the observed remote branch SHA first so `--force-with-lease` protects concurrent changes.
+
 ## Immutable child SHA update loop
 
 For any child change after submission, including README-only documentation:

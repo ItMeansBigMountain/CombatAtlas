@@ -45,7 +45,9 @@ Avoid broad substring filters like `gauntlet`: `confliction gauntlets` are real 
 - Do not mix 1H and 2H weapons in one cycling list. Maintain separate weapon alternative sets:
   - 2H weapon set
   - 1H weapon set
-- The panel should let the user switch/cycle those sets. If a 1H weapon is displayed, recommend/cycle a compatible shield/offhand. If a 2H weapon is displayed, suppress/disable shield display but keep shield alternatives internally so they reappear when switching back to 1H.
+- Expose those sets through **one compact state-labeled toggle beside the primary `Analyze` action**, not two permanent buttons below the equipment grid. The button text is the active state (`1H` or `2H`); one click switches to the other set. Initialize from the strongest recommended weapon, reset weapon/shield/ammo indices on mode changes, and omit the toggle entirely unless both handedness sets exist so `Analyze` can keep the full row width.
+- Preserve the recommendation model while moving the control: this is a UI consolidation, not a new scoring mode. If a 1H weapon is displayed, recommend/cycle a compatible shield/offhand. If a 2H weapon is displayed, suppress/disable shield display but keep shield alternatives internally so they reappear when switching back to 1H.
+- Add a focused Swing regression test on the EDT that recursively finds buttons and verifies: exactly one `1H`/`2H` button exists, it shares the same immediate parent row as `Analyze`, its initial label follows the recommended weapon, and one click flips the label/state. This catches both duplicate-control and wrong-row regressions that a build-only test misses.
 - Use GearScape `two_handed` boolean when available. Fall back to known-name/subcategory heuristics only when the live boolean is missing.
 
 ## Ranged ammo compatibility — critical pitfall
@@ -83,6 +85,29 @@ Test requirements for future changes:
 - Blowpipe accepts darts and rejects arrows.
 - Self-contained bowfa/crystal-style weapons reject generic arrows.
 - Ranged recommendations include arrow, bolt, and dart alternatives in the internal ammo pool so UI cycling can recalculate ammo by weapon type.
+
+## Current boss data and freshness strategy
+
+Boss support has two distinct layers; audit both before concluding that a new boss is unsupported:
+
+1. The checked-in fallback/index list provides offline autocomplete.
+2. Runtime refresh merges GearScape's boss index with OSRS Wiki `Category:Bosses`.
+
+A new boss can therefore appear in autocomplete while still receiving generic fallback stats. Do not treat name presence as complete support. For every newly released repeatable boss, verify whether GearScape has a detailed monster ID/profile; when it does not, add a curated OSRS Wiki-backed local `BossTarget` containing combat level, HP, base combat stats, style defences, attributes, release date, and Wiki URL. Keep resolution priority as **live GearScape detail → curated local Wiki profile → generic fallback** so a curated snapshot never overrides a newer machine-readable profile.
+
+Research rules:
+
+- Start from the OSRS Wiki boss index/category, then inspect each post-boundary boss page individually.
+- Include released, repeatable encounters; exclude unreleased proposals, quest-only forms, and League-only encounters.
+- Model distinct repeatable forms separately when they have materially different stats, e.g. Brutus vs Demonic Brutus and quest vs post-quest Mad Angel.
+- For paired encounters, support the encounter search term plus individual combatants where users may search either, e.g. `Royal Titans`, `Branda the Fire Queen`, and `Eldric the Ice King`.
+- Prefer the repeatable post-quest form for a repeatable boss. Raw Wiki template/switch data may be necessary when the rendered summary exposes only the quest form.
+- Preserve unusual mechanics in attributes/source notes instead of inventing numeric stats. Example: Gemstone Crab has effectively infinite HP; use its documented 300 effective HP for ruby bolts for the numeric display and explicitly label the infinite-HP mechanic.
+- Avoid `Integer.MAX_VALUE` or other sentinel values in displayed boss fields even when they do not affect scoring; sidebar metadata must remain readable.
+
+As of the 29 July 2026 content boundary, the post-Araxxor curated set is: Amoxliatl, The Hueycoatl, Royal Titans, Branda the Fire Queen, Eldric the Ice King, Yama, Doom of Mokhaiotl, Gemstone Crab, Brutus, Demonic Brutus, Maggot King, and Mad Angel. Treat this as a dated research checkpoint, not a permanent complete roster; re-run the Wiki comparison whenever the user asks for newest bosses.
+
+Test the data layer before networking: instantiate `BossDataService`, assert every newly researched boss is present in offline suggestions, and verify representative raw fields/source labels for at least a high-level boss, a mechanically unusual boss, and the newest boss. This catches the common regression where the live Wiki category masks a stale fallback list or generic profile.
 
 ## Boss weakness / defence display
 

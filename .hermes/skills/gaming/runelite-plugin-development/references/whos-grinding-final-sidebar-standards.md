@@ -2,13 +2,16 @@
 
 Use this when polishing Who's Grinding Panel or future RuneLite sidebar plugins with narrow expandable cards.
 
-## Approved width standard
+## Approved width and inset standard
 
 - Match the content width visually approved by the user: the same width as the top title/dropdown/control area.
-- Do **not** use the full screenshot/window width as the target. RuneLite sidebars have a narrow real content budget.
+- Do **not** use the full screenshot/window width as the target. RuneLite sidebars have a narrow real content budget; a maximized client can make a fixed-width column look unusually small without making the plugin's standard-width budget wrong.
 - Align major content to the same left edge as the dropdown/title block.
 - Keep only a tiny right safety pad, around 3 px.
 - Avoid both trailing cutoff and large right gutters.
+- If the whole column looks slammed against the left edge, add one small left inset to the shared `content` container. For Who's Grinding, `BorderFactory.createEmptyBorder(2, 4, 2, 0)` produced the requested subtle 4 px shift.
+- Apply the shift to the shared container—not separate title, summary, control, member-row, and card margins—so all elements remain aligned and width logic stays centralized.
+- Keep the inset as a named dimensions constant and assert its value in the dimensions test. Do not subtract it from or expand every child independently unless visual verification proves clipping.
 
 ## Expanded player card standards
 

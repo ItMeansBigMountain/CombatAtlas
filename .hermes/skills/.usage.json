@@ -95,13 +95,13 @@
     "created_at": "2026-06-07T02:46:32.165533+00:00",
     "created_by": null,
     "last_patched_at": "2026-06-07T02:46:32.165554+00:00",
-    "last_used_at": "2026-06-09T01:49:38.730088+00:00",
-    "last_viewed_at": "2026-06-09T01:49:38.724858+00:00",
+    "last_used_at": "2026-08-08T18:27:13.107314+00:00",
+    "last_viewed_at": "2026-08-08T18:27:13.105211+00:00",
     "patch_count": 1,
     "pinned": false,
     "state": "active",
-    "use_count": 2,
-    "view_count": 2
+    "use_count": 3,
+    "view_count": 3
   },
   "email-discussion-briefing": {
     "archived_at": null,
@@ -134,26 +134,26 @@
     "created_at": "2026-05-29T12:58:37.902485+00:00",
     "created_by": null,
     "last_patched_at": "2026-08-03T14:15:16.696070+00:00",
-    "last_used_at": "2026-08-06T14:59:01.688557+00:00",
-    "last_viewed_at": "2026-08-03T14:06:48.015129+00:00",
+    "last_used_at": "2026-08-09T01:36:23.518647+00:00",
+    "last_viewed_at": "2026-08-08T23:38:44.259421+00:00",
     "patch_count": 10,
     "pinned": false,
     "state": "active",
-    "use_count": 49,
-    "view_count": 13
+    "use_count": 61,
+    "view_count": 15
   },
   "github-repo-management": {
     "archived_at": null,
     "created_at": "2026-05-29T22:37:56.151647+00:00",
     "created_by": null,
     "last_patched_at": "2026-08-03T07:23:12.316884+00:00",
-    "last_used_at": "2026-08-03T07:22:17.444209+00:00",
-    "last_viewed_at": "2026-08-03T07:22:17.442101+00:00",
+    "last_used_at": "2026-08-08T22:19:52.045311+00:00",
+    "last_viewed_at": "2026-08-08T22:19:52.043491+00:00",
     "patch_count": 24,
     "pinned": false,
     "state": "active",
-    "use_count": 33,
-    "view_count": 32
+    "use_count": 35,
+    "view_count": 34
   },
   "github-workflows": {
     "archived_at": null,
@@ -186,12 +186,12 @@
     "created_at": "2026-05-31T17:07:23.940211+00:00",
     "created_by": null,
     "last_patched_at": "2026-08-03T15:14:27.769054+00:00",
-    "last_used_at": "2026-08-07T13:50:09.225603+00:00",
+    "last_used_at": "2026-08-08T13:30:27.402870+00:00",
     "last_viewed_at": "2026-08-03T15:12:30.991511+00:00",
     "patch_count": 133,
     "pinned": false,
     "state": "active",
-    "use_count": 248,
+    "use_count": 249,
     "view_count": 118
   },
   "hermes-agent": {
@@ -420,13 +420,13 @@
     "created_at": "2026-06-18T09:35:32.836139+00:00",
     "created_by": null,
     "last_patched_at": "2026-06-28T13:30:19.493527+00:00",
-    "last_used_at": "2026-08-03T14:27:20.991624+00:00",
-    "last_viewed_at": "2026-08-03T14:27:20.989194+00:00",
+    "last_used_at": "2026-08-08T04:37:53.143198+00:00",
+    "last_viewed_at": "2026-08-08T04:37:53.140446+00:00",
     "patch_count": 2,
     "pinned": false,
     "state": "active",
-    "use_count": 6,
-    "view_count": 6
+    "use_count": 7,
+    "view_count": 7
   },
   "research/robinhood-trading-operator": {
     "archived_at": null,
@@ -458,14 +458,14 @@
     "archived_at": null,
     "created_at": "2026-07-06T00:38:17.566913+00:00",
     "created_by": "agent",
-    "last_patched_at": "2026-08-03T17:50:05.632384+00:00",
-    "last_used_at": "2026-08-03T17:49:36.413147+00:00",
-    "last_viewed_at": "2026-08-03T17:49:36.410998+00:00",
-    "patch_count": 197,
+    "last_patched_at": "2026-08-08T23:36:14.232287+00:00",
+    "last_used_at": "2026-08-08T23:35:44.644297+00:00",
+    "last_viewed_at": "2026-08-08T23:35:44.642093+00:00",
+    "patch_count": 231,
     "pinned": false,
     "state": "active",
-    "use_count": 90,
-    "view_count": 90
+    "use_count": 113,
+    "view_count": 113
   },
   "segment-anything-model": {
     "archived_at": null,
@@ -498,12 +498,12 @@
     "created_at": "2026-06-07T00:28:30.328615+00:00",
     "created_by": null,
     "last_patched_at": "2026-08-03T14:25:38.656911+00:00",
-    "last_used_at": "2026-08-08T01:02:12.913999+00:00",
+    "last_used_at": "2026-08-09T01:02:23.344448+00:00",
     "last_viewed_at": "2026-08-03T14:25:06.073917+00:00",
     "patch_count": 119,
     "pinned": false,
     "state": "active",
-    "use_count": 324,
+    "use_count": 330,
     "view_count": 84
   },
   "software-development/osrs-plugins": {
@@ -550,26 +550,26 @@
     "created_at": "2026-05-29T05:53:03.366345+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-08-03T14:27:25.622315+00:00",
-    "last_viewed_at": "2026-08-03T14:27:25.620416+00:00",
+    "last_used_at": "2026-08-08T06:15:59.874596+00:00",
+    "last_viewed_at": "2026-08-08T06:15:59.872379+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 17,
-    "view_count": 17
+    "use_count": 19,
+    "view_count": 19
   },
   "visual-artifact-design": {
     "archived_at": null,
     "created_at": "2026-06-07T02:46:39.491850+00:00",
     "created_by": null,
-    "last_patched_at": "2026-06-07T02:46:39.491869+00:00",
-    "last_used_at": "2026-07-10T00:35:22.416454+00:00",
-    "last_viewed_at": "2026-07-10T00:35:22.413835+00:00",
-    "patch_count": 1,
+    "last_patched_at": "2026-08-08T06:28:50.786573+00:00",
+    "last_used_at": "2026-08-08T17:44:26.757899+00:00",
+    "last_viewed_at": "2026-08-08T17:44:26.754161+00:00",
+    "patch_count": 2,
     "pinned": false,
     "state": "active",
-    "use_count": 2,
-    "view_count": 2
+    "use_count": 5,
+    "view_count": 5
   },
   "webhook-subscriptions": {
     "archived_at": null,
@@ -615,12 +615,12 @@
     "created_at": "2026-06-07T00:21:18.846681+00:00",
     "created_by": null,
     "last_patched_at": "2026-08-03T14:36:21.667498+00:00",
-    "last_used_at": "2026-08-08T01:02:12.942068+00:00",
+    "last_used_at": "2026-08-09T01:02:23.372402+00:00",
     "last_viewed_at": "2026-08-03T14:28:47.949800+00:00",
     "patch_count": 136,
     "pinned": false,
     "state": "active",
-    "use_count": 330,
+    "use_count": 335,
     "view_count": 96
   }
 }

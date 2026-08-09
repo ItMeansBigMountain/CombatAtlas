@@ -55,6 +55,17 @@ Use infographic workflows for structured visual explanation with layout/style ga
 5. Iterate on layout, legibility, contrast, and export format.
 6. Return the file path/media attachment and concise usage notes.
 
+## Repository README SVGs
+
+For architecture diagrams and plain-language formula graphics embedded in GitHub READMEs:
+
+1. Prefer repository-owned SVGs when editable labels, small diffs, and dependency-free rendering matter.
+2. Include `<title>`, `<desc>`, `role="img"`, and useful Markdown alt text. Avoid scripts, tracking, remote fonts, and remote image dependencies.
+3. Use a restrained high-contrast palette, system fonts, and a wide README-friendly view box. Keep jokes audience-appropriate and subordinate to the explanation.
+4. Render each local SVG directly in the browser and visually inspect clipping, overlap, contrast, alignment, and README-scale legibility.
+5. After publishing, inspect the live GitHub README DOM: verify the expected copy, support-link destination, and every README image's `complete`, `naturalWidth`, `naturalHeight`, and final `currentSrc`. Local XML validity alone does not prove GitHub rendered it.
+6. Validate SVG XML and all local Markdown image paths deterministically before commit.
+
 ## Common Pitfalls
 
 1. **Stopping at a description.** The deliverable is a rendered artifact or source file.

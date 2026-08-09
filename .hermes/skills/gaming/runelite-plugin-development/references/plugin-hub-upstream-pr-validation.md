@@ -22,7 +22,8 @@ Treat the actual `runelite/plugin-hub` pull-request `build` check as the authori
 
 7. Open a non-draft PR to `runelite/plugin-hub:master`. One plugin marker per PR keeps review and CI isolated.
 8. Monitor the upstream `build` check. If it fails, download the GitHub Actions log/annotations, patch the standalone plugin, rebuild, push a new plugin SHA, and update the marker in the existing PR branch.
-9. Read Plugin Hub bot comments and reviews. Do not interpret every red policy check as an actionable code failure.
+9. Before pushing any marker refresh, query the live PR and use its authoritative `head.repo.full_name` and `head.ref`; do not rely on a remembered local/remote branch name from an earlier submission. Push the current marker commit explicitly to `HEAD:<head.ref>`, then read the PR back and verify that `head.sha` advanced and the changed-file list is still exactly the intended one marker. A similarly named stale branch may exist and may reject non-fast-forward pushes; that is not evidence that the active PR branch is wrong.
+10. Read Plugin Hub bot comments and reviews. Do not interpret every red policy check as an actionable code failure.
 
 ## Bundled Gson compatibility pitfall
 
