@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-09T02:56:40.161877",
+  "updated_at": "2026-08-10T02:56:42.727181",
   "platforms": {
     "discord": [
       {
@@ -43,18 +43,6 @@
         "name": "coding",
         "guild": "TRAPISTAN",
         "type": "channel"
-      },
-      {
-        "id": "1503250944526258207:1503250944526258207",
-        "name": "TRAPISTAN / #general / hello / topic 1503250944526258207",
-        "type": "thread",
-        "thread_id": "1503250944526258207"
-      },
-      {
-        "id": "1503251111149047868:1503251111149047868",
-        "name": "TRAPISTAN / #general / i want this thread to be about configuring this discord. you are the admin / topic 1503251111149047868",
-        "type": "thread",
-        "thread_id": "1503251111149047868"
       },
       {
         "id": "1499990220077137943",
