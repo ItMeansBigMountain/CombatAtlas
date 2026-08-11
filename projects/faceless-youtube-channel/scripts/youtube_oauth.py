@@ -24,8 +24,8 @@ SCOPES = [
 ]
 SCOPE = " ".join(SCOPES)
 DEFAULT_CLIENT = "/opt/data/secrets/faceless-youtube-channel/youtube_client_secret.json"
-DEFAULT_TOKEN = "/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json"
-PENDING = "/opt/data/secrets/youtube-trapiistan/youtube_oauth_pending.json"
+DEFAULT_TOKEN = "/opt/data/secrets/youtube-fareed320/youtube_upload_token.json"
+PENDING = "/opt/data/secrets/youtube-fareed320/youtube_oauth_pending.json"
 
 
 def paths(args):

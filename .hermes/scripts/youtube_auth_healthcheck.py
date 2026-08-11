@@ -36,20 +36,20 @@ EXPECTED = {
         'token': '/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json',
     },
     'fareed320': {
-        'channel_id': 'PENDING_FAREED320_CHANNEL_ID',
-        'title': 'fareed320 YouTube failover',
+        'channel_id': 'UCX_nUA3Yr9VR884DNanyMYA',
+        'title': 'A F',
         'token': '/opt/data/secrets/youtube-fareed320/youtube_upload_token.json',
-        'optional_until_verified': True,
+
     },
 }
 
 REQUIRED_SNIPPETS = {
     str(FACELESS_NEWSLETTER): [
-        '/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json',
-        'UCsxzQlusqwmMUdjMvKAJDfA',
+        '/opt/data/secrets/youtube-fareed320/youtube_upload_token.json',
+        'UCX_nUA3Yr9VR884DNanyMYA',
     ],
     str(FACELESS_WRAPPER): [
-        'YOUTUBE_UPLOAD_TOKEN=/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json',
+        'YOUTUBE_UPLOAD_TOKEN=/opt/data/secrets/youtube-fareed320/youtube_upload_token.json',
     ],
     str(VIRAL_UPLOADER): [
         "/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json",

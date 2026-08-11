@@ -1,0 +1,8 @@
+[
+ {"tool":"get_equity_quotes","args":{"symbols":["AVGO","MA","BAC","SHOP","ABCL","ACHR","HZO","VREX","NESR","AAON","CECO","XOM"]}},
+ {"tool":"get_equity_tradability","args":{"account_number":"433711041","symbols":["ABCL","ACHR","HZO","VREX","NESR","AAON","CECO","XOM"]}},
+ {"tool":"get_equity_historicals","args":{"symbols":["AVGO","MA","BAC","SHOP","ABCL","ACHR","HZO","VREX","NESR","AAON"],"start_time":"2026-05-01T00:00:00Z","end_time":"2026-08-10T14:00:00Z","interval":"day","bounds":"regular","adjustment_type":"split"}},
+ {"tool":"get_equity_historicals","args":{"symbols":["AVGO","MA","BAC","SHOP","ABCL","ACHR","HZO","VREX","NESR","AAON"],"start_time":"2026-08-10T13:30:00Z","end_time":"2026-08-10T14:00:00Z","interval":"5minute","bounds":"regular","adjustment_type":"split"}},
+ {"tool":"get_equity_fundamentals","args":{"symbols":["AVGO","MA","BAC","SHOP","ABCL","ACHR","HZO","VREX","NESR","AAON"],"bounds":"regular"}},
+ {"tool":"get_financials","args":{"symbols":["ABCL","ACHR","HZO","VREX","NESR","AAON","AVGO","MA","BAC","SHOP"],"period":"quarterly","limit":4}}
+]

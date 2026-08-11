@@ -43,6 +43,16 @@ class RetentionScriptTests(unittest.TestCase):
         )
         self.assertFalse(any(phrase in narration for phrase in banned))
 
+    def test_daily_stoic_description_leads_with_book_and_membership_offers(self):
+        description = module.build_script(stoic_source())["description"]
+        first_section = description.split("\n\n", 1)[0]
+        self.assertIn("Daily Stoic", first_section)
+        self.assertIn("Ryan Holiday", first_section)
+        self.assertIn("Robert Greene", first_section)
+        self.assertIn("Affiliate disclosure", description)
+        self.assertIn("As an Amazon Associate I earn from qualifying purchases.", description)
+        self.assertLess(description.index("Ryan Holiday"), description.index("More from me"))
+
     def test_scene_duration_guard_rejects_silence_or_corrupt_tts(self):
         self.assertTrue(module.scene_audio_too_long("A short sentence with only a few words.", 77.0))
         self.assertFalse(module.scene_audio_too_long("A short sentence with only a few words.", 5.0))

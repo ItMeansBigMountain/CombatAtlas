@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+<title id="title">HeRmEz autonomous maintenance and error handling architecture</title>
+<desc id="desc">A dark operations diagram showing intake, guarded execution, verified success cleanup, durable backlog on failure, and maintenance control plane.</desc>
+<defs><style>
+text{font-family:Inter,Segoe UI,Arial,sans-serif;fill:#e5edf7}.h{font-size:36px;font-weight:700}.s{font-size:18px;fill:#9fb1c7}.t{font-size:20px;font-weight:700}.b{font-size:16px}.small{font-size:14px;fill:#a9bad0}.box{fill:#121b2b;stroke:#33445f;stroke-width:2}.good{fill:#10271f;stroke:#2dd4bf}.warn{fill:#2b2210;stroke:#fbbf24}.bad{fill:#30171c;stroke:#fb7185}.ctrl{fill:#18213a;stroke:#818cf8}.arrow{stroke:#7186a3;stroke-width:3;fill:none;marker-end:url(#m)}
+</style><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7186a3"/></marker></defs>
+<rect width="1600" height="1100" fill="#08101d"/><text x="70" y="70" class="h">HeRmEz — Fresh Autonomous Operations Loop</text><text x="70" y="105" class="s">Evidence first • one source → one artifact • verify before cleanup • durable retry state • bounded concurrency</text>
+<rect x="60" y="160" rx="18" width="270" height="150" class="box"/><text x="85" y="200" class="t">1 · SOURCE INTAKE</text><text x="85" y="235" class="b">Daily Stoic email</text><text x="85" y="262" class="b">Creator discovery</text><text x="85" y="289" class="small">Message ID / source URL is identity</text>
+<rect x="410" y="160" rx="18" width="290" height="150" class="ctrl"/><text x="435" y="200" class="t">2 · PRE-FLIGHT GUARDS</text><text x="435" y="235" class="b">Auth + expected channel</text><text x="435" y="262" class="b">Disk/RAM + duplicate ledger</text><text x="435" y="289" class="small">Fail closed; no destructive action</text>
+<rect x="780" y="160" rx="18" width="290" height="150" class="box"/><text x="805" y="200" class="t">3 · BUILD / RENDER</text><text x="805" y="235" class="b">Bounded worker + timeout</text><text x="805" y="262" class="b">Checkpoint metadata first</text><text x="805" y="289" class="small">Media is disposable; source is durable</text>
+<rect x="1150" y="160" rx="18" width="380" height="150" class="ctrl"/><text x="1175" y="200" class="t">4 · QUALITY + UPLOAD GATE</text><text x="1175" y="235" class="b">ffprobe • captions • duration</text><text x="1175" y="262" class="b">YouTube video ID + channel match</text><text x="1175" y="289" class="small">Only verified ID means success</text>
+<path d="M330 235H410" class="arrow"/><path d="M700 235H780" class="arrow"/><path d="M1070 235H1150" class="arrow"/>
+<rect x="250" y="410" rx="18" width="460" height="190" class="good"/><text x="280" y="452" class="t">SUCCESS PATH</text><text x="280" y="490" class="b">✓ Append immutable upload ledger + URL</text><text x="280" y="522" class="b">✓ Trash used Daily Stoic email</text><text x="280" y="554" class="b">✓ Delete generated media immediately</text><text x="280" y="582" class="small">Keep manifests, IDs, analytics and audit logs</text>
+<rect x="890" y="410" rx="18" width="460" height="190" class="bad"/><text x="920" y="452" class="t">FAILURE PATH</text><text x="920" y="490" class="b">! Keep source email / source URL</text><text x="920" y="522" class="b">! Write backlog record + exact blocker</text><text x="920" y="554" class="b">! Continue next item; retry after batch</text><text x="920" y="582" class="small">If cleanup removes media, rebuild from source identity</text>
+<path d="M1340 310V355H480V410" class="arrow"/><path d="M1340 310V355H1120V410" class="arrow"/>
+<rect x="60" y="690" rx="18" width="1470" height="290" class="warn"/><text x="90" y="735" class="t">MAINTENANCE CONTROL PLANE — current reset priorities</text>
+<text x="100" y="785" class="b">A. Reconcile Kanban: 420 tasks → 105 blocked, 191 todo, 2 stranded ready; archive obsolete sweep fan-out before restarting</text>
+<text x="100" y="825" class="b">B. Fix worker protocol: repeated clean exits without complete/block; validate real assignees and enforce terminal-state handoff</text>
+<text x="100" y="865" class="b">C. Resource guard: 7.8 GiB RAM, ~966 MiB available, no swap; cap concurrent heavy renders/builds</text>
+<text x="100" y="905" class="b">D. Stale candidates: 1.1 GiB Kanban workspace (local .NET SDK/build residue), misplaced 5.3 MiB security archive, expired renders</text>
+<text x="100" y="945" class="small">Deletion remains approval-gated. Back up board DB first; never delete queues, backlogs, source emails, credentials, ledgers, logs, or active workspaces.</text>
+<path d="M800 690V640H1120V600" class="arrow"/><path d="M800 690V640H480V600" class="arrow"/>
+<text x="70" y="1045" class="small">Generated 2026-08-11 • /opt/data/HeRmEz/projects/OPERATIONS_MAINTENANCE_DIAGRAM.svg</text>
+</svg>

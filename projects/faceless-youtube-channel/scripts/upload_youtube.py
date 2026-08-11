@@ -13,7 +13,7 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 SCOPE="https://www.googleapis.com/auth/youtube.upload"
-DEFAULT_TOKEN="/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json"
+DEFAULT_TOKEN="/opt/data/secrets/youtube-fareed320/youtube_upload_token.json"
 
 def load_token(path):
     creds=Credentials.from_authorized_user_file(path, scopes=[SCOPE])

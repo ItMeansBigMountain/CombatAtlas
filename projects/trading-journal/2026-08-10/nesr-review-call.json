@@ -1,0 +1,3 @@
+[
+ {"tool":"review_equity_order","args":{"account_number":"433711041","symbol":"NESR","side":"buy","type":"market","dollar_amount":"24.85","time_in_force":"gfd","market_hours":"regular_hours"}}
+]

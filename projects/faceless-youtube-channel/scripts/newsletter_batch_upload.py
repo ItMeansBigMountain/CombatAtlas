@@ -15,14 +15,16 @@ from googleapiclient.discovery import build
 ROOT = Path(__file__).resolve().parents[1]
 TOKEN_BASE = Path('/opt/data/google_profiles')
 GMAIL_SCOPE = 'https://www.googleapis.com/auth/gmail.modify'
-# Faceless/newsletter videos must always upload to Trapiistan/Sosai.
+# Faceless/newsletter videos must always upload to A F (fareed320).
 # Do not honor an inherited YOUTUBE_UPLOAD_TOKEN here: Viral Radar jobs export
 # the Classical Echos token, and a shared process environment once caused a
 # newsletter Short to land on the wrong channel.
-YOUTUBE_TOKEN = Path('/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json')
+YOUTUBE_TOKEN = Path('/opt/data/secrets/youtube-fareed320/youtube_upload_token.json')
 UPLOADER = Path('/opt/data/HeRmEz/projects/_ops/youtube-automation/scripts/upload_youtube.py')
 UPLOAD_LOG = ROOT / 'UPLOADS' / 'newsletter_youtube_uploads.jsonl'
 VISUAL_HISTORY = ROOT / 'UPLOADS' / 'visual_asset_history.jsonl'
+BACKLOG = ROOT / 'BACKLOG_DAILY_STOIC'
+BACKLOG_LOG = ROOT / 'UPLOADS' / 'daily_stoic_backlog.jsonl'
 
 SAFE_TAGS = 'discipline,self improvement,technology,finance,stoicism,motivation,shorts'
 TARGET_SHORT_SECONDS = (45, 95)  # full newsletter shorts can run longer, but avoid draggy 2+ min renders
@@ -208,6 +210,20 @@ def loosen_story_voice(text: str) -> str:
     return re.sub(r'\s+',' ',text).strip()
 
 
+def stoic_affiliate_block() -> str:
+    """Top-of-description Stoic offers; env URLs can carry the owner's affiliate IDs."""
+    daily_stoic_url=os.getenv('DAILY_STOIC_AFFILIATE_URL','https://dailystoic.com/life').strip()
+    ryan_url=os.getenv('RYAN_HOLIDAY_AFFILIATE_URL','https://geni.us/rAlqw').strip()
+    greene_url=os.getenv('ROBERT_GREENE_AFFILIATE_URL','https://www.amazon.com/48-Laws-Power-Robert-Greene/dp/0140280197').strip()
+    return (
+        "Go deeper with Daily Stoic Life: " + daily_stoic_url + "\n"
+        "Ryan Holiday — The Obstacle Is the Way: " + ryan_url + "\n"
+        "Robert Greene — The 48 Laws of Power: " + greene_url + "\n"
+        "Affiliate disclosure: Some links may be affiliate links. If you purchase through them, I may earn a commission at no extra cost to you.\n"
+        "As an Amazon Associate I earn from qualifying purchases."
+    )
+
+
 def build_stoic_retention_script(src):
     """Build a tension-first Stoic story instead of stitching facts with boilerplate."""
     subject=clean_text(src['subject']); body=clean_text(src.get('body',''))
@@ -257,7 +273,8 @@ def build_stoic_retention_script(src):
     ][:len(beats)]
     narration=' '.join(line for _,line in beats)
     title=safe_title(subject)
-    desc=(f"{title}\n\nMarcus Aurelius kept returning to the same lessons for a reason: recognition is not mastery.\n\n"
+    desc=(stoic_affiliate_block() + "\n\n" +
+          f"{title}\n\nMarcus Aurelius kept returning to the same lessons for a reason: recognition is not mastery.\n\n"
           "More from me: https://linktr.ee/sosai.oyama\n"
           "Support the channel: https://buymeacoffee.com/affanfareev\n"
           "Cash App: https://cash.app/$sosaioyama\n"
@@ -732,7 +749,7 @@ def parse_uploader_json(raw: str):
 
 
 def upload(video:Path, script):
-    raw=sh([sys.executable,str(UPLOADER),str(video),'--title',script['title'],'--description',script['description'],'--tags',SAFE_TAGS,'--privacy','public','--token',str(YOUTUBE_TOKEN),'--expect-channel-id','UCsxzQlusqwmMUdjMvKAJDfA','--project','faceless-youtube-newsletters','--log-jsonl',str(UPLOAD_LOG),'--delete-after-upload'],600)
+    raw=sh([sys.executable,str(UPLOADER),str(video),'--title',script['title'],'--description',script['description'],'--tags',SAFE_TAGS,'--privacy','public','--token',str(YOUTUBE_TOKEN),'--expect-channel-id','UCX_nUA3Yr9VR884DNanyMYA','--project','faceless-youtube-newsletters','--log-jsonl',str(UPLOAD_LOG),'--delete-after-upload'],600)
     return parse_uploader_json(raw)
 
 
@@ -763,8 +780,9 @@ def process(profile,msg_id, upload_enabled=True):
         print(json.dumps({'warning':'duration_outside_ideal_range','duration':duration,'ideal_seconds':TARGET_SHORT_SECONDS}), file=sys.stderr)
     result={'profile':profile,'message_id':msg_id,'subject':src['subject'],'workspace':str(work),'video':str(video),'probe':probe,'uploaded':False}
     if upload_enabled:
-        if duration_gate_failed:
-            raise RuntimeError(f'upload blocked by duration quality gate: {duration:.2f}s outside {TARGET_SHORT_SECONDS}')
+        # Faceless/newsletter policy: duration is a diagnostic warning, not a
+        # public-upload blocker. Hard render failures (missing/corrupt output)
+        # are handled above; otherwise attempt the public upload.
         up=upload(video,script); result['upload']=up; result['uploaded']=up.get('status')=='UPLOADED'
         if result['uploaded'] and up.get('video_id'):
             # append source id marker to upload log for idempotency even if Gmail cleanup fails
@@ -775,7 +793,20 @@ def process(profile,msg_id, upload_enabled=True):
                 result['trashed_source_email']=False
                 result['cleanup_error']=str(e)[:500]
     (work/'result.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
+    if result['uploaded'] and result.get('upload',{}).get('video_id'):
+        # Upload and source-email cleanup are durable; remove generated media now.
+        shutil.rmtree(work, ignore_errors=True)
     return result
+
+
+def queue_failure(profile: str, msg_id: str, err: BaseException) -> dict:
+    """Record a durable retry while retaining Gmail as the remake source."""
+    BACKLOG.mkdir(parents=True, exist_ok=True)
+    record={'timestamp':dt.datetime.now(dt.UTC).isoformat(),'profile':profile,'message_id':msg_id,'status':'backlogged','email_retained':True,'remake_source':'gmail','error':type(err).__name__,'detail':str(err)[:1000]}
+    BACKLOG_LOG.parent.mkdir(parents=True, exist_ok=True)
+    (BACKLOG/f'{profile}-{msg_id}.json').write_text(json.dumps(record,indent=2),encoding='utf-8')
+    with BACKLOG_LOG.open('a',encoding='utf-8') as f: f.write(json.dumps(record,separators=(',',':'))+'\n')
+    return record
 
 
 def discover(profile, limit):
@@ -784,13 +815,10 @@ def discover(profile, limit):
     # can have duplicate subscriptions; duplicates are normally removed from affan,
     # while unique affan-only source emails may be processed here and trashed only
     # after a verified YouTube upload.
-    queries=[
-        'is:unread from:tldrnewsletter.com newer_than:30d -in:trash',
-        'is:unread from:dan@tldrnewsletter.com newer_than:30d -in:trash',
-        'is:unread from:info@dailystoic.com newer_than:30d -in:trash',
-        'is:unread from:support@kinobody.com newer_than:30d -in:trash',
-        'is:unread from:news@kinobody.com newer_than:30d -in:trash',
-    ]
+    # This lane is intentionally Daily Stoic only. Unread/recency filters are
+    # deliberately omitted: any untrashed, unlogged message is an unused source
+    # that can remake an unfinished render deleted by cleanup.
+    queries=['from:info@dailystoic.com -in:trash']
     out=[]; seen=set()
     for q in queries:
         resp=g.users().messages().list(userId='me',q=q,maxResults=limit).execute()
@@ -845,7 +873,8 @@ def main():
             results.append(process(profile,mid,not args.no_upload))
             print(json.dumps(results[-1],indent=2))
         except Exception as e:
-            err={'profile':profile,'message_id':mid,'error':type(e).__name__,'detail':str(e)[:1000],'traceback':traceback.format_exc()[-2000:]}
+            backlog=queue_failure(profile,mid,e)
+            err={'profile':profile,'message_id':mid,'error':type(e).__name__,'detail':str(e)[:1000],'traceback':traceback.format_exc()[-2000:],'backlog':backlog}
             results.append(err); print(json.dumps(err,indent=2))
     print(json.dumps({'processed':len(results),'uploaded':sum(1 for r in results if r.get('uploaded')),'results':results},indent=2))
 

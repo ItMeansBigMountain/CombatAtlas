@@ -35,7 +35,7 @@ When explaining customer/user experience flows for this user, keep it in very sm
 1. **Inspect before changing.** Read project files, trackers, README/direction docs, git status, and relevant branches or child repos.
 2. **Classify the job.** Is this a portfolio decision, new scaffold, feature slice, bugfix, QA pass, deployment, or handoff?
 3. **Write or update source-of-truth docs.** Use `PRODUCT_DIRECTION.md`, `MERGE_INTO_*.md`, `DEVELOPMENT_PLAN.md`, `DEVELOPER_CHEATSHEET.md`, trackers, or client guides where appropriate.
-4. **Implement a vertical slice.** Prefer a small working feature with tests over broad unverified scaffolding.
+4. **Implement vertical slices without premature handoff.** Prefer a small working feature with tests over broad unverified scaffolding, but when the user gives a standing end-to-end implementation mandate, keep advancing through the full task list across continuation turns. A passing intermediate slice is progress—not a reason to stop with a summary while executable work remains.
 5. **Verify with real execution.** Run tests/builds, start servers, fetch endpoints, inspect browser console, or attach a debugger as needed.
 6. **Protect credentials and nested repos.** Never print `.env` values; keep standalone child repos ignored/submodule-managed if nested under a parent workspace.
 7. **Commit/push when requested.** Do not claim code is pullable until `git push` has succeeded.
@@ -111,6 +111,14 @@ For OSRS plugins, each child plugin should be its own Gradle/RuneLite repo under
 - For plugin-hub submission: child repo build/test/push first, update plugin-hub manifest with the child commit SHA, then push parent pointers.
 - For plugin-hub submission: child repo build/test/push first, update plugin-hub manifest with the child commit SHA, then push parent pointers.
 
+### Social-proof commerce and creator-linked marketplaces
+
+For marketplaces that connect products to creator posts, cumulative engagement, or a derived “heat” score, load `references/social-proof-commerce-mvp.md`. Keep commercial product truth separate from attributed social evidence, use approved platform APIs or rights-confirmed submissions instead of scraping, and trust only server-side catalog prices when creating Stripe Checkout Sessions. Verify production UI with real image loading, checkout error paths, and horizontal-overflow checks.
+
+When turning a storefront prototype into a durable Vercel/Next.js commerce operation, also load `references/serverless-commerce-backend-delivery.md`. It covers managed Postgres provisioning, delimiter-aware migrations, signed persistent carts, database-atomic Stripe webhook finalization, passwordless administrator invitations, social-evidence legitimacy, and the full verification gates required before calling the build complete.
+
+Before committing any newly scaffolded standalone app inside a larger portfolio workspace, run `git rev-parse --show-toplevel` from the child and confirm the Git root is the child directory. Scaffolding tools may inherit the parent repository; never use broad staging until this boundary is verified.
+
 ### Node inspect debugging
 
 When `console.log` is not enough:
@@ -154,6 +162,9 @@ Archived source packages absorbed into this umbrella are preserved under `refere
 4. Ignoring support files when consolidating a project-specific skill into this umbrella.
 5. Printing secret values while inspecting env files.
 6. Using generic web-app advice when a domain playbook has concrete constraints and verification commands.
+7. Assuming migration files are repeat-safe because a schema-version row exists; rerun the complete set and use delimiter-aware, conditional compatibility DDL.
+8. Writing audit/movement rows unconditionally after a conditional update; make dependent writes select from the successful `UPDATE ... RETURNING` CTE.
+9. Removing fictional evidence from the database while leaving invented handles, engagement, post counts, or derived heat claims hard-coded in public components.
 
 ## Verification Checklist
 

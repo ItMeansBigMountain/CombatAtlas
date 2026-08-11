@@ -8,7 +8,7 @@ This is the required bar for the faceless YouTube channel.
 - **Use the actual newsletter.** The subject, core points, and body excerpt must drive the hook, script, b-roll prompts, and metadata.
 - **No static text-slide placeholders.** If AI video/B-roll generation is unavailable, produce only a script/storyboard package and do not upload.
 - **Public metadata must hide the production method.** Titles/descriptions/tags must not say AI-generated, automation, faceless, ElevenLabs, pipeline, source email, source profile, or similar behind-the-scenes wording.
-- **Description style:** reword the email in the user's voice. Keep it natural, motivational, and opinionated. Include the configured public support links (Linktree, Buy Me a Coffee, Cash App, Venmo); affiliate links come later after video quality is approved.
+- **Description style:** reword the email in the user's voice. Keep it natural, motivational, and opinionated. Daily Stoic videos lead with the configured Daily Stoic/Ryan Holiday/Robert Greene offer links and affiliate disclosure, followed by the configured public support links (Linktree, Buy Me a Coffee, Cash App, Venmo). Use owner-attributed affiliate URLs from `DAILY_STOIC_AFFILIATE_URL`, `RYAN_HOLIDAY_AFFILIATE_URL`, and `ROBERT_GREENE_AFFILIATE_URL` when available; otherwise use the approved direct product links without claiming tracked commission.
 - **Relevant B-roll required.** Use AI video generation internally for shots that match the specific email topic, but do not disclose that in public metadata.
 - **Upload public by default; do not block on quality gates.** Render/upload should continue even if provider or media checks are imperfect. Then trash the source Gmail message only after YouTube returns a verified `video_id`.
 

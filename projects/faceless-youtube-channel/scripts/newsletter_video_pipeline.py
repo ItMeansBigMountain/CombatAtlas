@@ -197,8 +197,8 @@ def main():
             '--description', description,
             '--tags', 'discipline,self improvement,motivation,shorts',
             '--privacy', 'public',
-            '--token', '/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json',
-            '--expect-channel-id', 'UCsxzQlusqwmMUdjMvKAJDfA',
+            '--token', '/opt/data/secrets/youtube-fareed320/youtube_upload_token.json',
+            '--expect-channel-id', 'UCX_nUA3Yr9VR884DNanyMYA',
             '--project', PROJECT,
             '--log-jsonl', str(UPLOAD_LOG),
             '--delete-after-upload'

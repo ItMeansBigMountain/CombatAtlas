@@ -136,6 +136,11 @@ def cmd_youtube_exchange(args) -> int:
     if data.get("code_verifier"):
         flow.code_verifier = data["code_verifier"]
     os.environ.setdefault("OAUTHLIB_INSECURE_TRANSPORT", "1")
+    # Google may return previously granted Workspace scopes in addition to the
+    # requested YouTube scopes when include_granted_scopes=true. oauthlib treats
+    # that safe superset as a scope-change error unless relaxed. We still enforce
+    # the complete required YouTube subset below before replacing the token.
+    os.environ.setdefault("OAUTHLIB_RELAX_TOKEN_SCOPE", "1")
     callback_params = parse_qs(urlparse(args.callback).query)
     returned_state = (callback_params.get("state") or [None])[0]
     if returned_state and returned_state != data.get("state"):

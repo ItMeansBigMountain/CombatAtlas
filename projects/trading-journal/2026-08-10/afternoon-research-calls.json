@@ -1,0 +1,12 @@
+[
+  {"tool":"run_scan","args":{"scan_id":"8b91f5ef-1f90-4dea-8115-35238c26dfc4"}},
+  {"tool":"run_scan","args":{"scan_id":"10497ef1-584d-4bce-b953-1566d14c4336"}},
+  {"tool":"get_watchlist_items","args":{"watchlist_id":"eddbebe5-34cc-4df1-953c-d3e3cb55bc19"}},
+  {"tool":"get_equity_historicals","args":{"symbols":["AVGO","MA","BAC","SHOP","NESR","FSLY","ABCL","ACHR","XOM","CECO"],"start_time":"2026-05-01T00:00:00Z","end_time":"2026-08-10T17:35:00Z","interval":"day","bounds":"regular","adjustment_type":"split"}},
+  {"tool":"get_equity_historicals","args":{"symbols":["AVGO","MA","BAC","SHOP","NESR","FSLY","ABCL","ACHR","XOM","CECO"],"start_time":"2026-08-10T13:30:00Z","end_time":"2026-08-10T17:35:00Z","interval":"5minute","bounds":"regular","adjustment_type":"split"}},
+  {"tool":"get_equity_fundamentals","args":{"symbols":["AVGO","MA","BAC","SHOP","NESR","FSLY","ABCL","ACHR","XOM","CECO"],"bounds":"regular"}},
+  {"tool":"get_earnings_results","args":{"symbol":"NESR"}},
+  {"tool":"get_earnings_results","args":{"symbol":"FSLY"}},
+  {"tool":"get_earnings_results","args":{"symbol":"ABCL"}},
+  {"tool":"get_earnings_results","args":{"symbol":"ACHR"}}
+]

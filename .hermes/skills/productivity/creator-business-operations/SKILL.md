@@ -92,6 +92,22 @@ Treat Gmail/Workspace data as read-only until the user approves destructive acti
 - Summarize useful source emails (TLDR from the right account, Kino Body, Daily Stoic, Grammarly Insights) before cleanup decisions.
 - Known junk/spam cleanup may recur after approval; ambiguous or important Workspace actions still require confirmation.
 
+## Managed Agentic AI Services Operations
+
+For small-business Hermes/agentic-AI service ventures, sell measurable outcomes and managed operations rather than a bare software installation. Keep this venture separate from unrelated businesses even when they share one Google account. Build a real private Google Drive operating library under the explicitly selected account: native offer/capability/sales/audit/onboarding/security/delivery Docs, an ROI and pipeline Sheet, a client-delivery area, and a visually inspected flier.
+
+Default initial offer architecture can use a paid AI Opportunity Audit followed by setup fee + monthly managed service. Define workflow, integration, user, support, variable-cost, human-approval, and change-order boundaries; never promise unlimited AI or unrestricted autonomous action. Keep permanent business name/contact details as explicit placeholders until selected rather than inventing them.
+
+Use `references/agentic-ai-automation-business-google-drive.md` for positioning, working package prices, minimum launch assets, folder structure, capability categories, security controls, ROI formulas, production/verification steps, and the distinction between a Drive folder and a Gemini Drive Project.
+
+## Personalized Coding Curriculum Operations
+
+For kids/teens coding tutoring, default to a premium **1:1** offer; optional **2:1** delivery remains instructor-controlled. Build a teacher-first learning track alongside student materials, and center the program on algorithm patterns, debugging, documentation literacy, responsible AI use, and demonstrable projects.
+
+When producing the offer in Google Workspace, create real private Drive artifacts—not merely a plan: native Docs, a progress Sheet, separate teacher/customer areas, and a visually inspected flier. Verify representative artifacts and ownership through API read-back, and request separate approval before changing sharing permissions.
+
+Use `references/personalized-coding-curriculum-google-drive.md` for the curriculum spine, Explain–Test–Change AI standard, minimum launch package, Drive production pattern, and 1:1/2:1 adaptations.
+
 ## Support Package Index
 
 Archived source packages absorbed into this umbrella are preserved under `references/absorbed/<old-skill-name>/` when available:

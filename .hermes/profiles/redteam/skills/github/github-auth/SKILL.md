@@ -30,6 +30,11 @@ gh --version 2>/dev/null || echo "gh not installed"
 # Check if already authenticated
 gh auth status 2>/dev/null || echo "gh not authenticated"
 git config --global credential.helper 2>/dev/null || echo "no git credential helper"
+
+# Git-only optimization: if gh unavailable but credentials exist, skip gh setup
+if [ ! -x "$(command -v gh)" ] && [ -f ~/.git-credentials ]; then
+    echo "Git credentials detected, using git-only mode"
+fi
 ```
 
 **Decision tree:**

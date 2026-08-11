@@ -1,0 +1,45 @@
+[
+  {
+    "tool": "review_equity_order",
+    "args": {
+      "account_number": "433711041",
+      "symbol": "NESR",
+      "side": "buy",
+      "type": "market",
+      "dollar_amount": "24.85",
+      "time_in_force": "gfd",
+      "market_hours": "regular_hours"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"symbol\":\"NESR\",\"side\":\"buy\",\"type\":\"market\",\"dollar_amount\":\"24.85\",\"order_checks\":{},\"quote_data\":{\"symbol\":\"NESR\",\"last_trade_price\":\"33.599300\",\"venue_last_trade_time\":\"2026-08-10T13:52:40.782556286Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"29.020000\",\"previous_close\":\"29.020000\",\"previous_close_date\":\"2026-08-07\",\"bid_price\":\"33.410000\",\"venue_bid_time\":\"2026-08-10T13:52:49.966542992Z\",\"ask_price\":\"33.700000\",\"venue_ask_time\":\"2026-08-10T13:52:49.966542992Z\",\"has_traded\":true,\"state\":\"active\"},\"market_data_disclosure\":\"Bid $33.41 \u00d7 200 Q \u00b7 Ask $33.74 \u00d7 200 P \u00b7 Last $33.5993 \u00d7 300 D. Updated 9:52 AM ET.\"},\"guide\":\"This tool does NOT place the order \u2014 it returns a preview for the user to review. Reaching this tool means the user opted into the review step, so you MUST present the preview to the user (symbol, side, type, quantity or dollar_amount, limit/stop prices, estimated execution) and get explicit confirmation before calling place_equity_order. This holds even when order_checks is empty ({}) \u2014 empty means no broker alerts, NOT that confirmation can be skipped; the user asked to review, so let them review. Surface any non-empty alert in order_checks verbatim alongside the preview. In addition, you MUST always show the quotes to the user for compliance reasons: whenever market_data_disclosure is present, display it to the user exactly as provided \u2014 verbatim and unmodified \u2014 as the required compliance quote disclosure. Market orders: estimate execution from quote_data.last_trade_price (ask for buys, bid for sells when spreads are wide). Limit orders: compare limit_price to quote_data bid/ask so the user knows the distance from market.\"}"
+    ],
+    "structuredContent": {
+      "data": {
+        "symbol": "NESR",
+        "side": "buy",
+        "type": "market",
+        "dollar_amount": "24.85",
+        "order_checks": {},
+        "quote_data": {
+          "symbol": "NESR",
+          "last_trade_price": "33.599300",
+          "venue_last_trade_time": "2026-08-10T13:52:40.782556286Z",
+          "last_non_reg_trade_price": null,
+          "venue_last_non_reg_trade_time": null,
+          "adjusted_previous_close": "29.020000",
+          "previous_close": "29.020000",
+          "previous_close_date": "2026-08-07",
+          "bid_price": "33.410000",
+          "venue_bid_time": "2026-08-10T13:52:49.966542992Z",
+          "ask_price": "33.700000",
+          "venue_ask_time": "2026-08-10T13:52:49.966542992Z",
+          "has_traded": true,
+          "state": "active"
+        },
+        "market_data_disclosure": "Bid $33.41 \u00d7 200 Q \u00b7 Ask $33.74 \u00d7 200 P \u00b7 Last $33.5993 \u00d7 300 D. Updated 9:52 AM ET."
+      },
+      "guide": "This tool does NOT place the order \u2014 it returns a preview for the user to review. Reaching this tool means the user opted into the review step, so you MUST present the preview to the user (symbol, side, type, quantity or dollar_amount, limit/stop prices, estimated execution) and get explicit confirmation before calling place_equity_order. This holds even when order_checks is empty ({}) \u2014 empty means no broker alerts, NOT that confirmation can be skipped; the user asked to review, so let them review. Surface any non-empty alert in order_checks verbatim alongside the preview. In addition, you MUST always show the quotes to the user for compliance reasons: whenever market_data_disclosure is present, display it to the user exactly as provided \u2014 verbatim and unmodified \u2014 as the required compliance quote disclosure. Market orders: estimate execution from quote_data.last_trade_price (ask for buys, bid for sells when spreads are wide). Limit orders: compare limit_price to quote_data bid/ask so the user knows the distance from market."
+    }
+  }
+]

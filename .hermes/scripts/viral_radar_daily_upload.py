@@ -679,7 +679,8 @@ def ensure_source(manifest: dict) -> Path:
             "--outdir", str(source.parent),
             "--logdir", str(logdir),
             "--skip-cleanup",
-            "--no-ytdlp",
+            # yt-dlp is the primary authenticated path. Keep pytubefix/pytube as
+            # fallbacks, but do not disable yt-dlp now that cookies are repaired.
             "--try-pytubefix",
             "--oauth",
             "--pytubefix-client", os.getenv("PYTUBEFIX_CLIENTS", "WEB"),

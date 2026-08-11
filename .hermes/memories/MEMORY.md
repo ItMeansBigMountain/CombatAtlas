@@ -2,7 +2,7 @@ Daily HeRmEz backup cron: cfcea697da5c, 03:00, /opt/data/scripts/backup_hermez.s
 §
 Hermes Kanban is consolidated to the canonical default board for the user's main workspace. DB path is /opt/data/kanban.db; current-board file is /opt/data/kanban/current with value "default". Use the default board for active HeRmEz project work; old hermez and nous-kanban-demo boards were removed after backup.
 §
-YT: faceless paused; Viral Radar priority. Never ask user for source videos. On download failure, alert redownload needed, remove only verified corrupt/partial artifacts, then auto-try downloader/auth/client/proxy/archive/official-repost fallbacks with evidence. No filler. Upload: Classical Echos→Trapiistan→fareed320.
+YT: Viral Radar priority; route Classical Echos→Sosai Oyama→A F. Daily Stoic→A F, one video/email; description top: Daily Stoic/Ryan Holiday/Robert Greene affiliate offers + disclosure. Delete email+media only after verified upload; failures backlog by Gmail ID, retain email for remake.
 §
 Cox Elementary PTA dynamic Django site is deployed at https://cox-elementary-pta.onrender.com from repo /opt/data/HeRmEz/projects/cox-elementary-pta.
 §

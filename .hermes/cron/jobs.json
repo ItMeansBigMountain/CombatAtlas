@@ -20,17 +20,17 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 85
+        "completed": 86
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-08-11T03:00:00+00:00",
-      "last_run_at": "2026-08-09T03:00:55.380838+00:00",
+      "next_run_at": "2026-08-12T03:00:00+00:00",
+      "last_run_at": "2026-08-10T03:01:03.835278+00:00",
       "last_status": "error",
-      "last_error": "Script exited with code 1\nstderr:\nwarning: adding embedded git repository: projects/_tmp/bis-gear-plugin-audit\nhint: You've added another git repository inside your current repository.\nhint: Clones of the outer repository will not contain the contents of\nhint: the embedded repository and will not know how to obtain it.\nhint: If you meant to add a submodule, use:\nhint:\nhint: \tgit submodule add <url> projects/_tmp/bis-gear-plugin-audit\nhint:\nhint: If you added this path by mistake, you can remove it from the\nhint: index with:\nhint:\nhint: \tgit rm --cached projects/_tmp/bis-gear-plugin-audit\nhint:\nhint: See \"git help submodule\" for more information.\nhint: Disable this message with \"git config advice.addEmbeddedRepo false\"\nwarning: adding embedded git repository: projects/_tmp/hermez-icon-gitlinks\nwarning: adding embedded git repository: projects/_tmp/plugin-hub-whos-icon\nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [rejected]            main -> main (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'\nhint: Updates were rejected because the tip of your current branch is behind\nhint: its remote counterpart. If you want to integrate the remote changes,\nhint: use 'git pull' before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.",
+      "last_error": "Script exited with code 1\nstderr:\nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [rejected]            main -> main (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'\nhint: Updates were rejected because the tip of your current branch is behind\nhint: its remote counterpart. If you want to integrate the remote changes,\nhint: use 'git pull' before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.",
       "last_delivery_error": null,
       "deliver": "discord:1523247688689258586",
       "origin": null,
@@ -60,15 +60,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 84
+        "completed": 85
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-08-10T13:30:00+00:00",
-      "last_run_at": "2026-08-09T13:31:30.150172+00:00",
+      "next_run_at": "2026-08-11T13:30:00+00:00",
+      "last_run_at": "2026-08-10T13:31:16.824641+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -112,15 +112,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 261
+        "completed": 265
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-08-10T05:47:03.660331+00:00",
-      "last_run_at": "2026-08-09T23:47:03.660331+00:00",
+      "next_run_at": "2026-08-11T05:20:27.844599+00:00",
+      "last_run_at": "2026-08-10T23:20:27.844599+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -141,8 +141,8 @@
     },
     {
       "id": "c9e81ae638fe",
-      "name": "Daily faceless YouTube full video generation + upload",
-      "prompt": "Run the user's Daily Faceless YouTube full video generation + upload pipeline as a full growth loop. First read /opt/data/HeRmEz/projects/faceless-youtube-channel/VIRAL_YOUTUBE_SYSTEM.md and /opt/data/HeRmEz/projects/_ops/social-growth/PERFORMANCE_LEARNINGS.md if present. Apply viral packaging: 1-3s high-contrast hook, no intro, hook\u2192context\u2192receipts\u2192implication\u2192identity/action close, short on-screen captions, visual changes every 2-4s, title/on-screen text/description semantically aligned. Then run the configured project pipeline from /opt/data/HeRmEz/projects/faceless-youtube-channel. Prefer newsletter_batch_upload.py for real newsletter videos when Gmail/Youtube/TTS are ready; otherwise run the wrapper dry-run and report the blocker. Verify with py_compile, ffprobe, and uploader JSON before reporting. Do not trash source emails unless YouTube returns a verified video_id. Keep the final Discord report concise with video path/URL, upload status, and any blocker.",
+      "name": "Daily Stoic email \u2192 A F faceless video backlog processor",
+      "prompt": "Process DAILY STOIC EMAILS ONLY into faceless YouTube videos. Run /opt/data/scripts/run_faceless_video.sh from /opt/data/HeRmEz/projects/faceless-youtube-channel. One untrashed, not-yet-uploaded Daily Stoic Gmail message becomes one public video on A F (fareed320). Never process TLDR, Kino, or other newsletters in this lane. After a verified YouTube video_id, trash that source email and delete all generated media immediately. On any render/upload/auth/quota failure, leave the source email untrashed, write a durable BACKLOG_DAILY_STOIC record identifying profile+message_id and the blocker, and continue other messages; the email is the canonical remake source if the media cleanup cron later deletes partial media. Preserve backlog records and upload ledgers. Report uploaded URLs, backlog message IDs/blockers, remaining source count, and cleanup result. Load the attached skills and honor A F channel identity UCX_nUA3Yr9VR884DNanyMYA.",
       "skills": [
         "social-video-cron-growth-loop",
         "youtube-automation-with-tts"
@@ -162,15 +162,15 @@
       "schedule_display": "45 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 35
+        "completed": 36
       },
-      "enabled": false,
-      "state": "paused",
-      "paused_at": "2026-07-09T14:13:19.303566+00:00",
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:55:03.480224+00:00",
-      "next_run_at": "2026-07-10T01:45:00+00:00",
-      "last_run_at": "2026-07-09T01:47:58.432260+00:00",
+      "next_run_at": "2026-08-12T01:45:00+00:00",
+      "last_run_at": "2026-08-11T02:28:00.932615+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -182,7 +182,6 @@
         "thread_id": null
       },
       "enabled_toolsets": [
-        "web",
         "terminal",
         "file"
       ],
@@ -215,15 +214,15 @@
       "schedule_display": "0 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 66
+        "completed": 67
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-08-11T01:00:00+00:00",
-      "last_run_at": "2026-08-10T01:05:50.924262+00:00",
+      "next_run_at": "2026-08-12T01:00:00+00:00",
+      "last_run_at": "2026-08-11T01:33:11.933836+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -262,15 +261,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 6961
+        "completed": 7092
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-08-10T03:06:32.089552+00:00",
-      "last_run_at": "2026-08-10T02:56:32.089552+00:00",
+      "next_run_at": "2026-08-11T03:07:41.464505+00:00",
+      "last_run_at": "2026-08-11T02:57:41.464505+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -308,15 +307,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 64
+        "completed": 65
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-08-10T14:00:00+00:00",
-      "last_run_at": "2026-08-09T14:00:28.397420+00:00",
+      "next_run_at": "2026-08-11T14:00:00+00:00",
+      "last_run_at": "2026-08-10T14:00:36.332052+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -355,15 +354,15 @@
       "schedule_display": "15 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 62
+        "completed": 63
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T04:20:40.734347+00:00",
-      "next_run_at": "2026-08-10T13:15:00+00:00",
-      "last_run_at": "2026-08-09T13:15:31.380237+00:00",
+      "next_run_at": "2026-08-11T13:15:00+00:00",
+      "last_run_at": "2026-08-10T13:15:36.338553+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -404,15 +403,15 @@
       "schedule_display": "50 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 39
+        "completed": 40
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T15:48:08.357771+00:00",
-      "next_run_at": "2026-08-10T13:50:00+00:00",
-      "last_run_at": "2026-08-07T13:53:09.567019+00:00",
+      "next_run_at": "2026-08-11T13:50:00+00:00",
+      "last_run_at": "2026-08-10T13:54:36.732456+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -454,15 +453,15 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 52
+        "completed": 54
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T17:32:19.594106+00:00",
-      "next_run_at": "2026-08-10T09:00:00+00:00",
-      "last_run_at": "2026-08-09T09:05:04.167100+00:00",
+      "next_run_at": "2026-08-11T09:00:00+00:00",
+      "last_run_at": "2026-08-11T00:18:39.807158+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -503,15 +502,15 @@
       "schedule_display": "35 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 42
+        "completed": 43
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T16:12:37.431999+00:00",
-      "next_run_at": "2026-08-10T13:35:00+00:00",
-      "last_run_at": "2026-08-07T13:46:08.716243+00:00",
+      "next_run_at": "2026-08-11T13:35:00+00:00",
+      "last_run_at": "2026-08-10T13:40:39.799740+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -553,15 +552,15 @@
       "schedule_display": "0 16 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 34
+        "completed": 35
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T18:35:06.052701+00:00",
-      "next_run_at": "2026-08-10T16:00:00+00:00",
-      "last_run_at": "2026-08-07T16:03:10.159165+00:00",
+      "next_run_at": "2026-08-11T16:00:00+00:00",
+      "last_run_at": "2026-08-10T16:04:43.026024+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -603,15 +602,15 @@
       "schedule_display": "30 19 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 35
+        "completed": 36
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T18:35:07.056543+00:00",
-      "next_run_at": "2026-08-10T19:30:00+00:00",
-      "last_run_at": "2026-08-07T19:34:12.131571+00:00",
+      "next_run_at": "2026-08-11T19:30:00+00:00",
+      "last_run_at": "2026-08-10T19:33:09.340000+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -651,17 +650,17 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 138
+        "completed": 143
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-06T15:04:47.122120+00:00",
-      "next_run_at": "2026-08-10T04:52:34.556582+00:00",
-      "last_run_at": "2026-08-09T22:52:34.556582+00:00",
-      "last_status": "error",
-      "last_error": "Script exited with code 1\nstdout:\n{\n  \"status\": \"blocked_auth_hardening\",\n  \"problems\": [\n    \"youtube_profiles: trapiistan: verify failed: {\\n  \\\"profile\\\": \\\"trapiistan\\\",\\n  \\\"expected_channel_title\\\": \\\"Sosai Oyama\\\",\\n  \\\"expected_channel_id\\\": \\\"UCsxzQlusqwmMUdjMvKAJDfA\\\",\\n  \\\"token_path\\\": \\\"/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json\\\",\\n  \\\"valid\\\": false,\\n  \\\"scopes\\\": [\\n    \\\"https://www.googleapis.com/auth/youtube\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.upload\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.force-ssl\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.readonly\\\",\\n    \\\"https://www.googleapis.com/auth/yt-analytics.readonly\\\"\\n  ],\\n  \\\"refresh_error\\\": \\\"RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})\\\",\\n  \\\"next_step\\\": \\\"Run: python3 /opt/data/scripts/google_reauth_workflow.py youtube-auth-url trapiistan\\\"\\n}\\n\",\n    \"youtube_profiles: classicalechos: verify failed: {\\n  \\\"profile\\\": \\\"classicalechos\\\",\\n  \\\"expected_channel_title\\\": \\\"Classical Echos\\\",\\n  \\\"expected_channel_id\\\": \\\"UCcIpxiU2CLEsBdHcc7_lcyA\\\",\\n  \\\"token_path\\\": \\\"/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json\\\",\\n  \\\"valid\\\": false,\\n  \\\"scopes\\\": [\\n    \\\"https://www.googleapis.com/auth/youtube\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.upload\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.force-ssl\\\",\\n    \\\"https://www.googleapis.com/auth/youtube.readonly\\\",\\n    \\\"https://www.googleapis.com/auth/yt-analytics.readonly\\\"\\n  ],\\n  \\\"refresh_error\\\": \\\"RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})\\\",\\n  \\\"next_step\\\": \\\"Run: python3 /opt/data/scripts/google_reauth_workflow.py youtube-auth-url classicalechos\\\"\\n}\\n\"\n  ],\n  \"checks\": null,\n  \"reauth_urls\": {\n    \"trapiistan\": {\n      \"status\": \"pending\",\n      \"expected_channel_title\": \"Sosai Oyama\",\n      \"expected_email\": \"trapiistan@gmail.com\",\n      \"token_path\": \"/opt/data/secrets/youtube-trapiistan/youtube_upload_token.json\",\n      \"auth_url\": \"https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=ICpzJHRWMTY1ZVbUrNmDl2EWhROcdc&code_challenge=JnOcxA42RCDa3wXdvTLv9vIBWhvV6dgZuBNIBAMILgY&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=trapiistan%40gmail.com\",\n      \"callback_format\": \"youtube:trapiistan: <full localhost URL>\"\n    },\n    \"classicalechos\": {\n      \"status\": \"pending\",\n      \"expected_channel_title\": \"Classical Echos\",\n      \"expected_email\": \"classicalechos@gmail.com\",\n      \"token_path\": \"/opt/data/secrets/youtube-classicalechos/youtube_upload_token.json\",\n      \"auth_url\": \"https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=OXlA7xsQYvr05XAJ3BaLQma3JIsEuY&code_challenge=PHwcQyt2pxNCyC4NKe2SgaS3DgWrNMf2NrQmgiNPio0&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=classicalechos%40gmail.com\",\n      \"callback_format\": \"youtube:classicalechos: <full localhost URL>\"\n    }\n  },\n  \"callback_instructions\": [\n    \"After logging in, send back: youtube:trapiistan: <full localhost callback URL>\",\n    \"After logging in, send back: youtube:classicalechos: <full localhost callback URL>\"\n  ],\n  \"next_steps\": [\n    \"Open each reauth_urls.<profile>.auth_url in a browser and approve the expected YouTube account/channel.\",\n    \"Send me each full localhost callback URL exactly as redirected, prefixed as shown in callback_instructions.\",\n    \"I will exchange with: python3 /opt/data/scripts/google_reauth_workflow.py youtube-exchange <profile> <localhost callback URL> --verify\",\n    \"Then I will rerun: python3 /opt/data/scripts/youtube_auth_healthcheck.py --verbose\"\n  ]\n}",
+      "next_run_at": "2026-08-11T07:05:47.166985+00:00",
+      "last_run_at": "2026-08-11T01:05:47.166985+00:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "deliver": "discord:1524259261281206332",
       "origin": {
@@ -741,15 +740,15 @@
       "schedule_display": "30 17 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 16
+        "completed": 17
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-17T16:12:35.294628+00:00",
-      "next_run_at": "2026-08-10T17:30:00+00:00",
-      "last_run_at": "2026-08-07T17:33:18.868220+00:00",
+      "next_run_at": "2026-08-11T17:30:00+00:00",
+      "last_run_at": "2026-08-10T17:33:47.240970+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -790,15 +789,15 @@
       "schedule_display": "every 120m",
       "repeat": {
         "times": 36,
-        "completed": 21
+        "completed": 33
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-08T07:24:20.276406+00:00",
-      "next_run_at": "2026-08-10T03:54:12.433799+00:00",
-      "last_run_at": "2026-08-10T01:54:12.433799+00:00",
+      "next_run_at": "2026-08-11T04:28:40.170753+00:00",
+      "last_run_at": "2026-08-11T02:28:40.170753+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -815,7 +814,92 @@
       ],
       "workdir": "/opt/data/HeRmEz/projects/osrs-plugins/pr-review-pending/WhosGrindingClanPanel",
       "fire_claim": null
+    },
+    {
+      "id": "e11ecd9b1861",
+      "name": "Automatic YouTube clipping media cleanup",
+      "prompt": "Automatically clean stale generated YouTube clipping media while preserving retry/hold queues, manifests, metadata, logs, subtitles, analytics, and upload ledgers. Stay silent when there is nothing to remove.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "cleanup_youtube_clipping_media.py",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 4 * * *",
+        "display": "30 4 * * *"
+      },
+      "schedule_display": "30 4 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-08-10T23:16:50.928183+00:00",
+      "next_run_at": "2026-08-11T04:30:00+00:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "discord:1524259261281206332",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1524259261281206332",
+        "chat_name": "TRAPISTAN / #youtube-automation",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null
+    },
+    {
+      "id": "c19a8554055a",
+      "name": "Daily stale Hermes worktree cleanup and disk guard",
+      "prompt": "Run the guarded stale Hermes temporary worktree cleanup and disk-pressure monitor. The script is allowlist-only, preserves active/recent/mounted/held paths, and leaves persistent project/cache worktrees monitor-only.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": "cleanup_stale_hermes_worktrees.sh",
+      "no_agent": true,
+      "context_from": null,
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 4 * * *",
+        "display": "15 4 * * *"
+      },
+      "schedule_display": "15 4 * * *",
+      "repeat": {
+        "times": null,
+        "completed": 1
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-08-11T00:15:18.540600+00:00",
+      "next_run_at": "2026-08-11T04:15:00+00:00",
+      "last_run_at": "2026-08-11T00:15:25.589543+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "discord:1523247688689258586",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null,
+      "fire_claim": null
     }
   ],
-  "updated_at": "2026-08-10T03:00:31.786155+00:00"
+  "updated_at": "2026-08-11T03:00:41.164211+00:00"
 }

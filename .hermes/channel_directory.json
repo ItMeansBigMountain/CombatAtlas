@@ -1,10 +1,16 @@
 {
-  "updated_at": "2026-08-10T02:56:42.727181",
+  "updated_at": "2026-08-11T02:56:45.073813",
   "platforms": {
     "discord": [
       {
         "id": "1499990220077137943",
         "name": "general",
+        "guild": "TRAPISTAN",
+        "type": "channel"
+      },
+      {
+        "id": "1524172425393340516",
+        "name": "personal",
         "guild": "TRAPISTAN",
         "type": "channel"
       },
@@ -21,14 +27,14 @@
         "type": "channel"
       },
       {
-        "id": "1524172425393340516",
-        "name": "personal",
+        "id": "1524259261281206332",
+        "name": "youtube-automation",
         "guild": "TRAPISTAN",
         "type": "channel"
       },
       {
-        "id": "1524259261281206332",
-        "name": "youtube-automation",
+        "id": "1536538137378164757",
+        "name": "ai-video",
         "guild": "TRAPISTAN",
         "type": "channel"
       },
@@ -89,6 +95,12 @@
       {
         "id": "1524312655894937623",
         "name": "TRAPISTAN / #security-redteam",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "1536538137378164757",
+        "name": "TRAPISTAN / #ai-video",
         "type": "group",
         "thread_id": null
       }

@@ -107,6 +107,9 @@ gh repo create my-new-project --private --description "A useful tool" --license 
 gh repo create my-org/my-new-project --public --clone
 
 # From existing local directory
+# Preflight: from the intended child directory, verify `git rev-parse --show-toplevel`
+# resolves to that child—not a surrounding portfolio repository. Scaffolders may inherit
+# the parent Git root. Initialize the child repo before staging if it is meant to stand alone.
 cd /path/to/existing/project
 gh repo create my-project --source . --public --push
 ```
@@ -274,7 +277,22 @@ Pitfalls:
 - When a repo was just renamed, keep the renamed repo and treat the old name as gone/redirected; update local submodule URLs before classifying anything as unused.
 - Avoid broad `git add .` in a large workspace after cleanup; stage only the docs/submodule paths relevant to the repo cleanup.
 
-## 6. Repository Settings
+## 6. Repository Renames and Hosted-App Continuity
+
+When the user wants the same project under a new repository name, prefer a GitHub rename over creating a duplicate repository. This preserves commit history, issues, stars, redirects, and deployment linkage.
+
+1. Verify the intended destination name does not already exist and the source repository is the expected remote.
+2. Require a clean local tree and verify local `HEAD` equals the current remote default-branch SHA.
+3. Rename through `gh repo rename NEW_NAME` or `PATCH /repos/{owner}/{old}` with `{ "name": "NEW_NAME" }`.
+4. Update the local `origin` to the new canonical URL even though GitHub provides redirects.
+5. Verify the new repository URL, default branch, visibility, and remote SHA; do not treat the redirect alone as final verification.
+6. For connected hosting platforms, rename/relink the hosted project separately. Repository renames do not guarantee project aliases, primary domains, deployment-protection rules, or environment settings migrate as intended.
+7. Preserve the old public deployment alias when useful for compatibility, but establish and verify a new canonical alias.
+8. If an authenticated shell header is rewritten by credential redaction, use a short Python `urllib.request`/`subprocess` client that reads the token from `os.environ` internally. Never interpolate or print the token.
+
+For Vercel-specific project rename, alias, and SSO-protection handling, use the cloud deployment umbrella's `references/vercel-project-rename-and-alias-migration.md`.
+
+## 7. Repository Settings
 
 **With gh:**
 
@@ -395,6 +413,8 @@ Note: For secrets, `gh secret set` is dramatically simpler. If setting secrets i
 When a user wants an active project backed up inside a larger private workspace repo, first check whether the project is itself a Git repo. If it is nested inside the parent repo, prefer a **Git bundle** committed to the parent repo over trying to `git add` the nested worktree directly.
 
 If the user explicitly asks to make inner repos submodules, use real Git submodules instead of bundles: register each child path in `.gitmodules`, stage the child path as a `160000` gitlink, run `git submodule absorbgitdirs` for existing nested worktrees, and verify with `git submodule status` plus `git ls-files -s`. See `references/nested-repo-submodules-and-backup-cache-hygiene.md` for the command pattern and backup-cache cleanup checklist. When consolidating multiple existing workspace codebases into one new child repo and then placing that child back under `/opt/data/HeRmEz/projects` as a submodule, use `references/consolidated-child-repo-submodule.md`: inspect internal files before/after copy, preserve any pre-existing target files under `legacy-existing/`, exclude media/runtime/secrets, push/verify the child, then stage the parent gitlink.
+
+When consolidating malware, phishing, exploit, leaked, or other dual-use research repositories into an attributed source monorepo, use `references/security-research-source-monorepos.md`: pin provenance, preserve per-folder licensing and original bytes, scan statically without execution, default to private for sensitive/no-license collections, and verify the remote tree through GitHub API readback.
 
 Recommended sequence:
 

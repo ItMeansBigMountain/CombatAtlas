@@ -82,6 +82,10 @@ Use this pattern for scheduled Hermes jobs and script-backed automations.
 
 Common cron pitfalls: missing scripts, stale OAuth tokens, wrong workdir, non-executable files, silent no-agent jobs that should have emitted status, wrappers that consume discovery state during smoke tests, and rerouting cron deliveries without first confirming the target Discord channel.
 
+### VPS storage and temporary-worktree hygiene
+
+Agent-driven Git reconciliation and publish commands can leave multi-gigabyte clones behind when a tool session is interrupted. Use source-level `trap` cleanup **and** a locked, allowlist-only retention watchdog; neither is sufficient alone. Before any broad VPS cleanup, audit disk, inodes, RAM, processes, open/deleted files, and candidate identities, then obtain explicit approval for exact paths or a narrowly defined automated policy. Never turn approval for named paths into permission to remove adjacent caches or stop processes. See `references/stale-worktree-retention-and-disk-guard.md` for the safety model, test matrix, disk-pressure alerts, and silent `no_agent` scheduling pattern.
+
 ## Kanban Worker Operations
 
 Workers are headless. Use durable board signals instead of live-user clarification.

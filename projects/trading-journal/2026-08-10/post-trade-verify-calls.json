@@ -1,0 +1,5 @@
+[
+ {"tool":"get_equity_orders","args":{"account_number":"433711041","order_id":"6a79d7bc-78ff-4efa-87d5-ad2434cf8c2e"}},
+ {"tool":"get_portfolio","args":{"account_number":"433711041"}},
+ {"tool":"get_equity_positions","args":{"account_number":"433711041"}}
+]

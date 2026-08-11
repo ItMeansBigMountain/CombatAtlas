@@ -9,7 +9,7 @@ No uploads unless the output passes the newsletter video quality standard:
 - public title/description/tags hide production method
 - description sounds like Affan's voice, not a bot disclosure
 - include all support links when configured: Linktree, Buy Me a Coffee, Cash App, Venmo
-- no affiliate links until Affan likes the videos
+- Daily Stoic descriptions put the configured Daily Stoic/Ryan Holiday/Robert Greene offer block and affiliate disclosure at the top; owner-attributed affiliate URLs override direct fallbacks through `DAILY_STOIC_AFFILIATE_URL`, `RYAN_HOLIDAY_AFFILIATE_URL`, and `ROBERT_GREENE_AFFILIATE_URL`
 - ElevenLabs voiceover required; accepted env names are `ELEVENLABS_API_KEY`, `XI_API_KEY`, `ELEVEN_API_KEY`, or the user's current `EllevenLabsKey`.
 - relevant AI-generated video/B-roll required; preferred provider is Hermes `video_generate` with `video_gen.provider: openai-sora` backed by `OPENAI_API_KEY` with Sora Videos API access. Higgsfield/FAL/etc. are fallback paths only.
 

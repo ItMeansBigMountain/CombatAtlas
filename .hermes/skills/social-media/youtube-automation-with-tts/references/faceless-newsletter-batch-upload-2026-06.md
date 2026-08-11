@@ -4,7 +4,7 @@ Use this when catching up newsletter emails into public faceless YouTube uploads
 
 ## User corrections captured
 
-- The user accepted the **Sosai Oyama** channel token for the current faceless lane even though the credential path is named `faceless-youtube-channel`.
+- The current faceless Daily Stoic lane uploads to **A F** using the explicit fareed320 token. It processes Daily Stoic emails only; other newsletter types stay out of this lane.
 - The user corrected the visual-provider requirement: **do not require Higgsfield/Sora** for this lane. Use **Pexels** when `PEXELS_API_KEY` exists; otherwise use the stock/manual/Mixkit-style fallback or dynamic cinematic visuals. Higgsfield auth failure is not a blocker for this workflow.
 - Google Cloud TTS is approved as the fallback/equivalent voice path when ElevenLabs credits are low or unavailable. Do not burn the last ElevenLabs free-tier credits on batch catch-up.
 - Every newsletter email still needs a solid attention-grabbing/operator-style summary; do not upload generic scripts that ignore the email body.
