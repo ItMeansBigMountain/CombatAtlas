@@ -20,17 +20,17 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 86
+        "completed": 87
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-08-12T03:00:00+00:00",
-      "last_run_at": "2026-08-10T03:01:03.835278+00:00",
+      "next_run_at": "2026-08-13T03:00:00+00:00",
+      "last_run_at": "2026-08-11T03:01:14.302225+00:00",
       "last_status": "error",
-      "last_error": "Script exited with code 1\nstderr:\nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [rejected]            main -> main (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'\nhint: Updates were rejected because the tip of your current branch is behind\nhint: its remote counterpart. If you want to integrate the remote changes,\nhint: use 'git pull' before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.",
+      "last_error": "Script exited with code 1\nstderr:\nwarning: adding embedded git repository: projects/security-research-source-monorepo\nhint: You've added another git repository inside your current repository.\nhint: Clones of the outer repository will not contain the contents of\nhint: the embedded repository and will not know how to obtain it.\nhint: If you meant to add a submodule, use:\nhint:\nhint: \tgit submodule add <url> projects/security-research-source-monorepo\nhint:\nhint: If you added this path by mistake, you can remove it from the\nhint: index with:\nhint:\nhint: \tgit rm --cached projects/security-research-source-monorepo\nhint:\nhint: See \"git help submodule\" for more information.\nhint: Disable this message with \"git config advice.addEmbeddedRepo false\"\nwarning: adding embedded git repository: projects/wornly\nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [rejected]            main -> main (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'\nhint: Updates were rejected because the tip of your current branch is behind\nhint: its remote counterpart. If you want to integrate the remote changes,\nhint: use 'git pull' before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.",
       "last_delivery_error": null,
       "deliver": "discord:1523247688689258586",
       "origin": null,
@@ -60,15 +60,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 85
+        "completed": 86
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-08-11T13:30:00+00:00",
-      "last_run_at": "2026-08-10T13:31:16.824641+00:00",
+      "next_run_at": "2026-08-12T13:30:00+00:00",
+      "last_run_at": "2026-08-11T13:31:48.797969+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -112,15 +112,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 265
+        "completed": 269
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-08-11T05:20:27.844599+00:00",
-      "last_run_at": "2026-08-10T23:20:27.844599+00:00",
+      "next_run_at": "2026-08-12T05:38:56.462110+00:00",
+      "last_run_at": "2026-08-11T23:38:56.462110+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -162,15 +162,15 @@
       "schedule_display": "45 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 36
+        "completed": 37
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:55:03.480224+00:00",
-      "next_run_at": "2026-08-12T01:45:00+00:00",
-      "last_run_at": "2026-08-11T02:28:00.932615+00:00",
+      "next_run_at": "2026-08-13T01:45:00+00:00",
+      "last_run_at": "2026-08-12T02:03:59.628991+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -214,15 +214,15 @@
       "schedule_display": "0 1 * * *",
       "repeat": {
         "times": null,
-        "completed": 67
+        "completed": 68
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-08-12T01:00:00+00:00",
-      "last_run_at": "2026-08-11T01:33:11.933836+00:00",
+      "next_run_at": "2026-08-13T01:00:00+00:00",
+      "last_run_at": "2026-08-12T01:04:48.220084+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -261,15 +261,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 7092
+        "completed": 7223
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-08-11T03:07:41.464505+00:00",
-      "last_run_at": "2026-08-11T02:57:41.464505+00:00",
+      "next_run_at": "2026-08-12T03:08:49.509890+00:00",
+      "last_run_at": "2026-08-12T02:58:49.509890+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -307,15 +307,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 65
+        "completed": 66
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-08-11T14:00:00+00:00",
-      "last_run_at": "2026-08-10T14:00:36.332052+00:00",
+      "next_run_at": "2026-08-12T14:00:00+00:00",
+      "last_run_at": "2026-08-11T14:00:47.613108+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -354,15 +354,15 @@
       "schedule_display": "15 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 63
+        "completed": 64
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T04:20:40.734347+00:00",
-      "next_run_at": "2026-08-11T13:15:00+00:00",
-      "last_run_at": "2026-08-10T13:15:36.338553+00:00",
+      "next_run_at": "2026-08-12T13:15:00+00:00",
+      "last_run_at": "2026-08-11T13:15:52.457426+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -403,15 +403,15 @@
       "schedule_display": "50 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 40
+        "completed": 41
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T15:48:08.357771+00:00",
-      "next_run_at": "2026-08-11T13:50:00+00:00",
-      "last_run_at": "2026-08-10T13:54:36.732456+00:00",
+      "next_run_at": "2026-08-12T13:50:00+00:00",
+      "last_run_at": "2026-08-11T13:55:42.062998+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -453,15 +453,15 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 54
+        "completed": 55
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T17:32:19.594106+00:00",
-      "next_run_at": "2026-08-11T09:00:00+00:00",
-      "last_run_at": "2026-08-11T00:18:39.807158+00:00",
+      "next_run_at": "2026-08-12T09:00:00+00:00",
+      "last_run_at": "2026-08-11T09:01:35.474862+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -502,15 +502,15 @@
       "schedule_display": "35 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 43
+        "completed": 44
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T16:12:37.431999+00:00",
-      "next_run_at": "2026-08-11T13:35:00+00:00",
-      "last_run_at": "2026-08-10T13:40:39.799740+00:00",
+      "next_run_at": "2026-08-12T13:35:00+00:00",
+      "last_run_at": "2026-08-11T13:38:41.839928+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -552,15 +552,15 @@
       "schedule_display": "0 16 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 35
+        "completed": 36
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T18:35:06.052701+00:00",
-      "next_run_at": "2026-08-11T16:00:00+00:00",
-      "last_run_at": "2026-08-10T16:04:43.026024+00:00",
+      "next_run_at": "2026-08-12T16:00:00+00:00",
+      "last_run_at": "2026-08-11T16:04:43.485799+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -602,15 +602,15 @@
       "schedule_display": "30 19 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 36
+        "completed": 37
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T18:35:07.056543+00:00",
-      "next_run_at": "2026-08-11T19:30:00+00:00",
-      "last_run_at": "2026-08-10T19:33:09.340000+00:00",
+      "next_run_at": "2026-08-12T19:30:00+00:00",
+      "last_run_at": "2026-08-11T19:42:03.223266+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -650,15 +650,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 143
+        "completed": 147
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-06T15:04:47.122120+00:00",
-      "next_run_at": "2026-08-11T07:05:47.166985+00:00",
-      "last_run_at": "2026-08-11T01:05:47.166985+00:00",
+      "next_run_at": "2026-08-12T07:09:52.235555+00:00",
+      "last_run_at": "2026-08-12T01:09:52.235555+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -740,15 +740,15 @@
       "schedule_display": "30 17 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 17
+        "completed": 18
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-17T16:12:35.294628+00:00",
-      "next_run_at": "2026-08-11T17:30:00+00:00",
-      "last_run_at": "2026-08-10T17:33:47.240970+00:00",
+      "next_run_at": "2026-08-12T17:30:00+00:00",
+      "last_run_at": "2026-08-11T17:34:51.364462+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -765,54 +765,6 @@
         "file"
       ],
       "workdir": null,
-      "fire_claim": null
-    },
-    {
-      "id": "cb159caac160",
-      "name": "Monitor Who's Grinding Plugin Hub PR",
-      "prompt": "Monitor RuneLite Plugin Hub PR https://github.com/runelite/plugin-hub/pull/13917 for Who's Grinding Panel. It must remain a single-plugin submission changing only plugins/whos-grinding-panel and point to ItMeansBigMountain/whos-grinding-clan-panel-osrs commit 78a545e88b2414622cd4d1a0b4655fc81d0bca33 unless an intentional newer tested child revision is published. Inspect issue comments, formal reviews, inline comments, merge/closed state, changed files, and check runs. Treat a red aggregate check titled 'Requires maintainer review' as the expected human-review gate, not a defect. Build failures or 'Changes are needed' are actionable. If there is no new actionable feedback and the build remains healthy, send nothing. If merged, report success and recommend moving the project from pr-review-pending to completed; do not create another PR or schedule jobs recursively.",
-      "skills": [
-        "github-pr-workflow"
-      ],
-      "skill": "github-pr-workflow",
-      "model": null,
-      "provider": null,
-      "base_url": null,
-      "script": null,
-      "no_agent": false,
-      "context_from": null,
-      "schedule": {
-        "kind": "interval",
-        "minutes": 120,
-        "display": "every 120m"
-      },
-      "schedule_display": "every 120m",
-      "repeat": {
-        "times": 36,
-        "completed": 33
-      },
-      "enabled": true,
-      "state": "scheduled",
-      "paused_at": null,
-      "paused_reason": null,
-      "created_at": "2026-08-08T07:24:20.276406+00:00",
-      "next_run_at": "2026-08-11T04:28:40.170753+00:00",
-      "last_run_at": "2026-08-11T02:28:40.170753+00:00",
-      "last_status": "ok",
-      "last_error": null,
-      "last_delivery_error": null,
-      "deliver": "origin",
-      "origin": {
-        "platform": "discord",
-        "chat_id": "1523247688689258586",
-        "chat_name": "TRAPISTAN / #coding",
-        "thread_id": null
-      },
-      "enabled_toolsets": [
-        "terminal",
-        "web"
-      ],
-      "workdir": "/opt/data/HeRmEz/projects/osrs-plugins/pr-review-pending/WhosGrindingClanPanel",
       "fire_claim": null
     },
     {
@@ -835,16 +787,16 @@
       "schedule_display": "30 4 * * *",
       "repeat": {
         "times": null,
-        "completed": 0
+        "completed": 1
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-10T23:16:50.928183+00:00",
-      "next_run_at": "2026-08-11T04:30:00+00:00",
-      "last_run_at": null,
-      "last_status": null,
+      "next_run_at": "2026-08-12T04:30:00+00:00",
+      "last_run_at": "2026-08-11T04:30:42.079527+00:00",
+      "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
       "deliver": "discord:1524259261281206332",
@@ -855,7 +807,8 @@
         "thread_id": null
       },
       "enabled_toolsets": null,
-      "workdir": null
+      "workdir": null,
+      "fire_claim": null
     },
     {
       "id": "c19a8554055a",
@@ -877,15 +830,15 @@
       "schedule_display": "15 4 * * *",
       "repeat": {
         "times": null,
-        "completed": 1
+        "completed": 2
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-11T00:15:18.540600+00:00",
-      "next_run_at": "2026-08-11T04:15:00+00:00",
-      "last_run_at": "2026-08-11T00:15:25.589543+00:00",
+      "next_run_at": "2026-08-12T04:15:00+00:00",
+      "last_run_at": "2026-08-11T04:15:52.057514+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -899,7 +852,49 @@
       "enabled_toolsets": null,
       "workdir": null,
       "fire_claim": null
+    },
+    {
+      "id": "f71cf32691ae",
+      "name": "Amazon Creators API 24-hour follow-up",
+      "prompt": "Remind the user that Amazon's 24-hour waiting period should now be complete. Ask them to revisit https://affiliate-program.amazon.com/creatorsapi/docs/en-us/onboarding while signed into their Amazon Associates account, obtain the newly available Creators API application/credential information, and securely place the Credential ID and Credential Secret in /opt/data/secrets/affiliate-ops/creators.env (do not paste the secret into Discord). Their confirmed tracking ID is masub-20. Then ask them to tell Hermes so it can test the amazon_affiliate MCP authentication and integrate verified tracking URLs into Daily Stoic descriptions.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "base_url": null,
+      "script": null,
+      "no_agent": false,
+      "context_from": null,
+      "schedule": {
+        "kind": "once",
+        "run_at": "2026-08-12T03:15:47+00:00",
+        "display": "once at 2026-08-12 03:15"
+      },
+      "schedule_display": "once at 2026-08-12 03:15",
+      "repeat": {
+        "times": 1,
+        "completed": 0
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-08-11T03:16:07.134519+00:00",
+      "next_run_at": "2026-08-12T03:15:47+00:00",
+      "last_run_at": null,
+      "last_status": null,
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "discord",
+        "chat_id": "1524259261281206332",
+        "chat_name": "TRAPISTAN / #youtube-automation",
+        "thread_id": null
+      },
+      "enabled_toolsets": null,
+      "workdir": null
     }
   ],
-  "updated_at": "2026-08-11T03:00:41.164211+00:00"
+  "updated_at": "2026-08-12T03:00:49.231530+00:00"
 }

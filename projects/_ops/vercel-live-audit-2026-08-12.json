@@ -1,0 +1,4353 @@
+{
+  "generated_at": "2026-08-12T02:32:37.791415+00:00",
+  "team": "team_9IP8D1xXFQSrBMZrMjRnl9sD",
+  "project_count": 55,
+  "projects": [
+    {
+      "name": "fashion-social",
+      "id": "prj_E5jFpg5qm2p7pye4t5eHr1rkq5Dh",
+      "framework": "nextjs",
+      "updatedAt": 1786425691362,
+      "gitRepository": {
+        "type": "github",
+        "repo": "fashion-social",
+        "repoId": 1330363860,
+        "org": "ItMeansBigMountain",
+        "repoOwnerId": 48029592,
+        "gitCredentialId": "cred_a1bad0a2471c5f67d63307893d7acfe89a423047",
+        "productionBranch": "main",
+        "createdAt": 1786409422333,
+        "updatedAt": 1786425691362,
+        "deployHooks": []
+      },
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [
+        "DATABASE_URL",
+        "DATABASE_URL_UNPOOLED",
+        "NEON_PROJECT_ID",
+        "PGDATABASE",
+        "PGHOST",
+        "PGHOST_UNPOOLED",
+        "PGPASSWORD",
+        "PGUSER",
+        "POSTGRES_DATABASE",
+        "POSTGRES_HOST",
+        "POSTGRES_PASSWORD",
+        "POSTGRES_PRISMA_URL",
+        "POSTGRES_URL",
+        "POSTGRES_URL_NON_POOLING",
+        "POSTGRES_URL_NO_SSL",
+        "POSTGRES_USER",
+        "VOTE_COOKIE_SECRET"
+      ],
+      "env_targets": {
+        "DATABASE_URL": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "DATABASE_URL_UNPOOLED": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "NEON_PROJECT_ID": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "PGDATABASE": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "PGHOST": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "PGHOST_UNPOOLED": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "PGPASSWORD": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "PGUSER": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_DATABASE": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_HOST": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_PASSWORD": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_PRISMA_URL": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_URL": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_URL_NON_POOLING": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_URL_NO_SSL": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_USER": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "VOTE_COOKIE_SECRET": [
+          "production"
+        ]
+      },
+      "domains": [
+        {
+          "name": "wornly-two.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "wornly-two.vercel.app",
+        "fashion-social-itmeansbigmountains-projects.vercel.app",
+        "fashion-social-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "wornly-two.vercel.app",
+      "latest": {
+        "id": "dpl_G3fqLp4nHza3Ck6iEVuzNrGudhQX",
+        "url": "fashion-social-qitheqc7g-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1786410781920,
+        "target": "production",
+        "gitCommitSha": "d36b03eda2b76d4baf373186f2e8051cacdb25c1",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://wornly-two.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "Wornly \u2014 Shop what\u2019s heating up",
+          "bytes_sampled": 31499
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://fashion-social-qitheqc7g-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "Wornly \u2014 Shop what\u2019s heating up",
+          "bytes_sampled": 31499
+        },
+        "aliases": {
+          "wornly-two.vercel.app": {
+            "status": 200,
+            "final_url": "https://wornly-two.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "Wornly \u2014 Shop what\u2019s heating up",
+            "bytes_sampled": 31499
+          },
+          "fashion-social-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://fashion-social-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "Wornly \u2014 Shop what\u2019s heating up",
+            "bytes_sampled": 31499
+          },
+          "fashion-social-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://fashion-social-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "Wornly \u2014 Shop what\u2019s heating up",
+            "bytes_sampled": 31499
+          }
+        }
+      }
+    },
+    {
+      "name": "card-intel-scanner",
+      "id": "prj_FEKYn9dRZDfek4BqjNReW9AniGF1",
+      "framework": "vite",
+      "updatedAt": 1782719732281,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "card-intel-scanner.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "card-intel-scanner.vercel.app",
+        "card-intel-scanner-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "card-intel-scanner.vercel.app",
+      "latest": {
+        "id": "dpl_7HLPvhTWuS9DUp89rH9vgcXz8YoA",
+        "url": "card-intel-scanner-fmgrupmx5-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1782719726942,
+        "target": "production",
+        "gitCommitSha": "663f24daa61bde9120405d87e6f6003718d9642b",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://card-intel-scanner.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "Card Intel Scanner",
+          "bytes_sampled": 453
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://card-intel-scanner-fmgrupmx5-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "Card Intel Scanner",
+          "bytes_sampled": 453
+        },
+        "aliases": {
+          "card-intel-scanner.vercel.app": {
+            "status": 200,
+            "final_url": "https://card-intel-scanner.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "Card Intel Scanner",
+            "bytes_sampled": 453
+          },
+          "card-intel-scanner-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://card-intel-scanner-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "Card Intel Scanner",
+            "bytes_sampled": 453
+          }
+        }
+      }
+    },
+    {
+      "name": "combatatlas",
+      "id": "prj_FdhtK8wy2OA4mMdGZFjN43L0nTHB",
+      "framework": "vite",
+      "updatedAt": 1782719566860,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "combatatlas-flame.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "combatatlas-flame.vercel.app",
+        "combatatlas-itmeansbigmountains-projects.vercel.app",
+        "combatatlas-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "combatatlas-flame.vercel.app",
+      "latest": {
+        "id": "dpl_9NMwRQVH5yuGG24QdzxRe4SzfUpz",
+        "url": "combatatlas-4t4nd6kon-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1782719558417,
+        "target": "production",
+        "gitCommitSha": "663f24daa61bde9120405d87e6f6003718d9642b",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://combatatlas-flame.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "CombatAtlas \u2014 Martial Arts Drill Database",
+          "bytes_sampled": 538
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://combatatlas-4t4nd6kon-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "CombatAtlas \u2014 Martial Arts Drill Database",
+          "bytes_sampled": 538
+        },
+        "aliases": {
+          "combatatlas-flame.vercel.app": {
+            "status": 200,
+            "final_url": "https://combatatlas-flame.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "CombatAtlas \u2014 Martial Arts Drill Database",
+            "bytes_sampled": 538
+          },
+          "combatatlas-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://combatatlas-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "CombatAtlas \u2014 Martial Arts Drill Database",
+            "bytes_sampled": 538
+          },
+          "combatatlas-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://combatatlas-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "CombatAtlas \u2014 Martial Arts Drill Database",
+            "bytes_sampled": 538
+          }
+        }
+      }
+    },
+    {
+      "name": "local-meeting-transcriber-frontend",
+      "id": "prj_7SmkfkaxvdrpKnT5JdYBrUldBwwN",
+      "framework": null,
+      "updatedAt": 1782719376548,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": {
+          "deploymentType": "all_except_custom_domains"
+        },
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "local-meeting-transcriber-frontend.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "local-meeting-transcriber-frontend.vercel.app",
+        "local-meeting-transcriber-frontend-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "local-meeting-transcriber-frontend.vercel.app",
+      "latest": {
+        "id": "dpl_28YmtX11qgLq31MU1FdsNHtQKPU1",
+        "url": "local-meeting-transcriber-frontend-jgjp5tcs3.vercel.app",
+        "state": "READY",
+        "created": 1782719367201,
+        "target": "production",
+        "gitCommitSha": "663f24daa61bde9120405d87e6f6003718d9642b",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://local-meeting-transcriber-frontend.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "LMT",
+          "bytes_sampled": 1170
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://vercel.com/login?next=%2Fsso-api%3Furl%3Dhttps%253A%252F%252Flocal-meeting-transcriber-frontend-jgjp5tcs3.vercel.app%252F%26nonce%3D68884fac4198aea95078ba1a099f2cf61d67c77eee98f3b50c173f75eeaebcdc",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 120000
+        },
+        "aliases": {
+          "local-meeting-transcriber-frontend.vercel.app": {
+            "status": 200,
+            "final_url": "https://local-meeting-transcriber-frontend.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "LMT",
+            "bytes_sampled": 1170
+          },
+          "local-meeting-transcriber-frontend-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://vercel.com/login?next=%2Fsso-api%3Furl%3Dhttps%253A%252F%252Flocal-meeting-transcriber-frontend-itmeansbigmountains-projects.vercel.app%252F%26nonce%3D5cc2eb6e115d23f4ebb01f0e9fd757b72bdfff8cc977273b646941e4896ac66e",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 120000
+          }
+        }
+      }
+    },
+    {
+      "name": "honda-tech-upgrade",
+      "id": "prj_EqqJiUJWGeWJjp4vYGmY6CGBZa9z",
+      "framework": "vite",
+      "updatedAt": 1780970806168,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "honda-tech-upgrade.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "honda-tech-upgrade.vercel.app",
+        "honda-tech-upgrade-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "honda-tech-upgrade.vercel.app",
+      "latest": {
+        "id": "dpl_4dv9Vb15nmTZ5VTso2Nk9Zag6KbK",
+        "url": "honda-tech-upgrade-wwlgq1wci-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1780970800773,
+        "target": "production",
+        "gitCommitSha": "1558e47bd7b322eb68ae5d7e09be7b34eac3279c",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://honda-tech-upgrade.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "Honda Tech Upgrade",
+          "bytes_sampled": 573
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://honda-tech-upgrade-wwlgq1wci-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "Honda Tech Upgrade",
+          "bytes_sampled": 573
+        },
+        "aliases": {
+          "honda-tech-upgrade.vercel.app": {
+            "status": 200,
+            "final_url": "https://honda-tech-upgrade.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "Honda Tech Upgrade",
+            "bytes_sampled": 573
+          },
+          "honda-tech-upgrade-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://honda-tech-upgrade-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "Honda Tech Upgrade",
+            "bytes_sampled": 573
+          }
+        }
+      }
+    },
+    {
+      "name": "journal-app",
+      "id": "prj_AzN7MI5velmnJYEAGEXcMgNnMU0i",
+      "framework": "vite",
+      "updatedAt": 1780970709671,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": {
+          "deploymentType": "all_except_custom_domains"
+        },
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "journal-app-five-delta.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "journal-app-five-delta.vercel.app",
+        "journal-app-itmeansbigmountains-projects.vercel.app",
+        "journal-app-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "journal-app-five-delta.vercel.app",
+      "latest": {
+        "id": "dpl_4x4YEy7yKfG8Zwj2zqKJD94pvsjK",
+        "url": "journal-kvudpjkp8-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1780970702885,
+        "target": "production",
+        "gitCommitSha": "1558e47bd7b322eb68ae5d7e09be7b34eac3279c",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://journal-app-five-delta.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "Journal AI",
+          "bytes_sampled": 459
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://vercel.com/login?next=%2Fsso-api%3Furl%3Dhttps%253A%252F%252Fjournal-kvudpjkp8-itmeansbigmountains-projects.vercel.app%252F%26nonce%3Dd67ba4ae6020e6b527b18366c437feb26dd465af4955535e601a24adb1451d1b",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 120000
+        },
+        "aliases": {
+          "journal-app-five-delta.vercel.app": {
+            "status": 200,
+            "final_url": "https://journal-app-five-delta.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "Journal AI",
+            "bytes_sampled": 459
+          },
+          "journal-app-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://vercel.com/login?next=%2Fsso-api%3Furl%3Dhttps%253A%252F%252Fjournal-app-itmeansbigmountains-projects.vercel.app%252F%26nonce%3D9d3f06d8d06065c6140f79eb24136921984325d3fed22949e4c366a27018b08b",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 120000
+          },
+          "journal-app-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://vercel.com/login?next=%2Fsso-api%3Furl%3Dhttps%253A%252F%252Fjournal-app-itmeansbigmountain-itmeansbigmountains-projects.vercel.app%252F%26nonce%3D1c7f624ff943e233dbf70dacf4ac9f3ff5e97587283cba554800515fc1f64acb",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 120000
+          }
+        }
+      }
+    },
+    {
+      "name": "musicai",
+      "id": "prj_d9hV7l03poACvRI1g6P8TEa9z7nJ",
+      "framework": "vite",
+      "updatedAt": 1780970530272,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [
+        "DATABASE_URL",
+        "DATABASE_URL_UNPOOLED",
+        "FLASK_DEBUG",
+        "FLASK_ENV",
+        "FLASK_SECRET_KEY",
+        "GENIUS_API_KEY",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "MUSICAI_DATABASE_URL",
+        "MUSICAI_PUBLIC_BASE_URL",
+        "MUSICAI_TOKEN_DB",
+        "MUSICAI_TOKEN_SECRET",
+        "NEON_AUTH_BASE_URL",
+        "NEON_PROJECT_ID",
+        "PGDATABASE",
+        "PGHOST",
+        "PGHOST_UNPOOLED",
+        "PGPASSWORD",
+        "PGUSER",
+        "POSTGRES_DATABASE",
+        "POSTGRES_HOST",
+        "POSTGRES_PASSWORD",
+        "POSTGRES_PRISMA_URL",
+        "POSTGRES_URL",
+        "POSTGRES_URL_NON_POOLING",
+        "POSTGRES_URL_NO_SSL",
+        "POSTGRES_USER",
+        "SOUNDCLOUD_CALLBACK_URL",
+        "SPOTIFY_CALLBACK_URL",
+        "SPOTIFY_CLIENT_ID",
+        "SPOTIFY_CLIENT_SECRET",
+        "VITE_NEON_AUTH_URL",
+        "WATSON_API_KEY",
+        "WATSON_SERVICE_URL"
+      ],
+      "env_targets": {
+        "DATABASE_URL": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "DATABASE_URL_UNPOOLED": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "FLASK_DEBUG": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "FLASK_ENV": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "FLASK_SECRET_KEY": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "GENIUS_API_KEY": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "GOOGLE_CLIENT_ID": [
+          "development",
+          "production"
+        ],
+        "GOOGLE_CLIENT_SECRET": [
+          "development",
+          "production"
+        ],
+        "MUSICAI_DATABASE_URL": [
+          "development",
+          "production"
+        ],
+        "MUSICAI_PUBLIC_BASE_URL": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "MUSICAI_TOKEN_DB": [
+          "production"
+        ],
+        "MUSICAI_TOKEN_SECRET": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "NEON_AUTH_BASE_URL": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "NEON_PROJECT_ID": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "PGDATABASE": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "PGHOST": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "PGHOST_UNPOOLED": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "PGPASSWORD": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "PGUSER": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_DATABASE": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_HOST": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_PASSWORD": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_PRISMA_URL": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_URL": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_URL_NON_POOLING": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_URL_NO_SSL": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "POSTGRES_USER": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "SOUNDCLOUD_CALLBACK_URL": [
+          "production"
+        ],
+        "SPOTIFY_CALLBACK_URL": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "SPOTIFY_CLIENT_ID": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "SPOTIFY_CLIENT_SECRET": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "VITE_NEON_AUTH_URL": [
+          "development",
+          "preview",
+          "production"
+        ],
+        "WATSON_API_KEY": [
+          "development",
+          "production"
+        ],
+        "WATSON_SERVICE_URL": [
+          "development",
+          "production"
+        ]
+      },
+      "domains": [
+        {
+          "name": "musicai-rouge.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "musicai-rouge.vercel.app",
+        "musicai-itmeansbigmountains-projects.vercel.app",
+        "musicai-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "musicai-rouge.vercel.app",
+      "latest": {
+        "id": "dpl_Fbn8tucZXt32hZgjjRft46cNod9Q",
+        "url": "musicai-9mrbydwjy-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1780970513783,
+        "target": "production",
+        "gitCommitSha": "1558e47bd7b322eb68ae5d7e09be7b34eac3279c",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://musicai-rouge.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "MusicAI \u2014 Your cross-platform music taste map",
+          "bytes_sampled": 7285
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://musicai-9mrbydwjy-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "MusicAI \u2014 Your cross-platform music taste map",
+          "bytes_sampled": 7285
+        },
+        "aliases": {
+          "musicai-rouge.vercel.app": {
+            "status": 200,
+            "final_url": "https://musicai-rouge.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "MusicAI \u2014 Your cross-platform music taste map",
+            "bytes_sampled": 7285
+          },
+          "musicai-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://musicai-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "MusicAI \u2014 Your cross-platform music taste map",
+            "bytes_sampled": 7285
+          },
+          "musicai-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://musicai-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "MusicAI \u2014 Your cross-platform music taste map",
+            "bytes_sampled": 7285
+          }
+        }
+      }
+    },
+    {
+      "name": "faceless-youtube-channel",
+      "id": "prj_GbcoPnfgD7jApkOuVbwQuv5jbO2m",
+      "framework": "vite",
+      "updatedAt": 1780729676354,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": {
+          "deploymentType": "all_except_custom_domains"
+        },
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "faceless-youtube-channel-beta.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "faceless-youtube-channel-beta.vercel.app",
+        "faceless-youtube-channel-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "faceless-youtube-channel-beta.vercel.app",
+      "latest": {
+        "id": "dpl_3v5jBqxxfGFSe6LKs2D8SnhSArT8",
+        "url": "faceless-youtube-channel-gowlje7bn-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1780729670401,
+        "target": "production",
+        "gitCommitSha": "d716e880d6c6ab7496a0c86d6f42637d07dd4b64",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://faceless-youtube-channel-beta.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "Faceless YouTube Channel",
+          "bytes_sampled": 409
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://vercel.com/login?next=%2Fsso-api%3Furl%3Dhttps%253A%252F%252Ffaceless-youtube-channel-gowlje7bn-itmeansbigmountains-projects.vercel.app%252F%26nonce%3D1aa18fd7c1c0369af1bed80f6749833fd61d2314e7a38b2855b268e2163ab32a",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 120000
+        },
+        "aliases": {
+          "faceless-youtube-channel-beta.vercel.app": {
+            "status": 200,
+            "final_url": "https://faceless-youtube-channel-beta.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "Faceless YouTube Channel",
+            "bytes_sampled": 409
+          },
+          "faceless-youtube-channel-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://vercel.com/login?next=%2Fsso-api%3Furl%3Dhttps%253A%252F%252Ffaceless-youtube-channel-itmeansbigmountains-projects.vercel.app%252F%26nonce%3D337b4ff0ab1f28062a5fb1fdabfdf7e6123c721327bdc9d3c5cfd5b7cfb26d96",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 120000
+          }
+        }
+      }
+    },
+    {
+      "name": "api-requests",
+      "id": "prj_XejNpjhnkMrTwCzq77B93i1I5Rf9",
+      "framework": "vite",
+      "updatedAt": 1780711734254,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "api-requests-one.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "api-requests-one.vercel.app",
+        "api-requests-itmeansbigmountains-projects.vercel.app",
+        "api-requests-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "api-requests-one.vercel.app",
+      "latest": {
+        "id": "dpl_7X8tza12yAXDhXex5quQP7RBrud5",
+        "url": "api-requests-dva8de7d4-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1780711728701,
+        "target": "production",
+        "gitCommitSha": "8cc7346e31c4e68a9d2de6ac7a611ad43bffd87e",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://api-requests-one.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://api-requests-dva8de7d4-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "api-requests-one.vercel.app": {
+            "status": 200,
+            "final_url": "https://api-requests-one.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "api-requests-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://api-requests-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "api-requests-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://api-requests-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "3d-react-web",
+      "id": "prj_0oWaflxyCQwtjoM45TLvURa6FawF",
+      "framework": "create-react-app",
+      "updatedAt": 1780711697956,
+      "gitRepository": {
+        "type": "github",
+        "repo": "3D-React-Web",
+        "repoId": 687145227,
+        "org": "ItMeansBigMountain",
+        "repoOwnerId": 48029592,
+        "gitCredentialId": "cred_a1bad0a2471c5f67d63307893d7acfe89a423047",
+        "productionBranch": "main",
+        "createdAt": 1778299673378,
+        "updatedAt": 1778299673378,
+        "deployHooks": []
+      },
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "3d-react-web.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "3d-react-web-itmeansbigmountains-projects.vercel.app",
+        "3d-react-web-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "3d-react-web-itmeansbigmountains-projects.vercel.app",
+      "latest": {
+        "id": "dpl_EtchLjsvbveDTi68SH4AQpsWPs19",
+        "url": "3d-react-4olrp2xq4-itmeansbigmountains-projects.vercel.app",
+        "state": "BLOCKED",
+        "created": 1780711697440,
+        "target": "production",
+        "gitCommitSha": "8cc7346e31c4e68a9d2de6ac7a611ad43bffd87e",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://3d-react-web-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "3 Dimentional App",
+          "bytes_sampled": 652
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://3d-react-4olrp2xq4-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "Deployment is building",
+          "bytes_sampled": 21549
+        },
+        "aliases": {
+          "3d-react-web-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://3d-react-web-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "3 Dimentional App",
+            "bytes_sampled": 652
+          },
+          "3d-react-web-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://3d-react-web-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "3 Dimentional App",
+            "bytes_sampled": 652
+          }
+        }
+      }
+    },
+    {
+      "name": "addictive-mobile-games",
+      "id": "prj_xorXFL6LwJNdsIFSju9bgqeiPeTa",
+      "framework": "vite",
+      "updatedAt": 1780711605820,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "addictive-mobile-games.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "addictive-mobile-games.vercel.app",
+        "addictive-mobile-games-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "addictive-mobile-games.vercel.app",
+      "latest": {
+        "id": "dpl_7Kj5sUs2q6FUseyTCKuvFiFZ7WBu",
+        "url": "addictive-mobile-games-o6tpbnd3r-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1780711599920,
+        "target": "production",
+        "gitCommitSha": "8cc7346e31c4e68a9d2de6ac7a611ad43bffd87e",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://addictive-mobile-games.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://addictive-mobile-games-o6tpbnd3r-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "addictive-mobile-games.vercel.app": {
+            "status": 200,
+            "final_url": "https://addictive-mobile-games.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "addictive-mobile-games-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://addictive-mobile-games-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "legacy-src",
+      "id": "prj_wP9CwkUE7EOkIodnuc8lKz8dVqVW",
+      "framework": "vite",
+      "updatedAt": 1779770422222,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "legacy-src.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "legacy-src.vercel.app",
+        "legacy-src-itmeansbigmountains-projects.vercel.app",
+        "legacy-src-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "legacy-src.vercel.app",
+      "latest": {
+        "id": "dpl_61UGfWZG1avVFfbNoyLvoqKqKEu6",
+        "url": "legacy-83p5fc87p-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779688830568,
+        "target": "production",
+        "gitCommitSha": "604ffdd05775934586963e34b819c2c78f11eb5f",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://legacy-src.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://legacy-83p5fc87p-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "legacy-src.vercel.app": {
+            "status": 200,
+            "final_url": "https://legacy-src.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "legacy-src-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://legacy-src-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "legacy-src-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://legacy-src-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "consumer-advocate-app",
+      "id": "prj_9LjLwyrg9muBgAOLEljgFzC51yDi",
+      "framework": "vite",
+      "updatedAt": 1779770421701,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "consumer-advocate-app.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "consumer-advocate-app.vercel.app",
+        "consumer-advocate-app-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "consumer-advocate-app.vercel.app",
+      "latest": {
+        "id": "dpl_Ab8Q7czDQj69p3gY5UgRuz1gquFr",
+        "url": "consumer-advocate-jbnx8bpq3-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779688819033,
+        "target": "production",
+        "gitCommitSha": "604ffdd05775934586963e34b819c2c78f11eb5f",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://consumer-advocate-app.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://consumer-advocate-jbnx8bpq3-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "consumer-advocate-app.vercel.app": {
+            "status": 200,
+            "final_url": "https://consumer-advocate-app.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "consumer-advocate-app-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://consumer-advocate-app-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "algos",
+      "id": "prj_6kr6NQuwVAk9C0iHEMYCuT5FQbix",
+      "framework": "vite",
+      "updatedAt": 1779770421223,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "algos-beta.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "algos-beta.vercel.app",
+        "algos-itmeansbigmountains-projects.vercel.app",
+        "algos-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "algos-beta.vercel.app",
+      "latest": {
+        "id": "dpl_DUcUp7YFwGcG2ETh9Yv5fUi3JBYH",
+        "url": "algos-qr2kwrdcu-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779688795723,
+        "target": "production",
+        "gitCommitSha": "604ffdd05775934586963e34b819c2c78f11eb5f",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://algos-beta.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://algos-qr2kwrdcu-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "algos-beta.vercel.app": {
+            "status": 200,
+            "final_url": "https://algos-beta.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "algos-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://algos-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "algos-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://algos-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "ticvoter",
+      "id": "prj_O0AsRKFKiJLsIHwHSPNaWiSctfBY",
+      "framework": null,
+      "updatedAt": 1779459188785,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "ticvoter.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "ticvoter.vercel.app",
+        "ticvoter-itmeansbigmountains-projects.vercel.app",
+        "ticvoter-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "ticvoter.vercel.app",
+      "latest": {
+        "id": "dpl_B5e7aLcLYREvF4SbxQcxTKxn66Bs",
+        "url": "ticvoter-eajc3saby-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779459181972,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://ticvoter.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://ticvoter-eajc3saby-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "ticvoter.vercel.app": {
+            "status": 200,
+            "final_url": "https://ticvoter.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "ticvoter-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://ticvoter-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "ticvoter-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://ticvoter-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "musclemadness",
+      "id": "prj_tx4OtjjAx1RoKawT7puIvaMAUCsV",
+      "framework": null,
+      "updatedAt": 1779459178307,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "musclemadness-theta.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "musclemadness-theta.vercel.app",
+        "musclemadness-itmeansbigmountains-projects.vercel.app",
+        "musclemadness-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "musclemadness-theta.vercel.app",
+      "latest": {
+        "id": "dpl_2fJhbZA45FdsW3k1qq8p9McQASxP",
+        "url": "musclemadness-ro6gd6z8x-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779459171315,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://musclemadness-theta.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://musclemadness-ro6gd6z8x-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "musclemadness-theta.vercel.app": {
+            "status": 200,
+            "final_url": "https://musclemadness-theta.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "musclemadness-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://musclemadness-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "musclemadness-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://musclemadness-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "api.requests",
+      "id": "prj_qVr4p6JJarFRgPrxI0jnxerr3MI7",
+      "framework": "vite",
+      "updatedAt": 1779459125461,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "apirequests.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "apirequests.vercel.app",
+        "apirequests-itmeansbigmountains-projects.vercel.app",
+        "apirequests-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "apirequests.vercel.app",
+      "latest": {
+        "id": "dpl_ELibZ2M6668n7knVjXneD6C5Y7Um",
+        "url": "apirequests-1pntxt66f-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458059830,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://apirequests.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://apirequests-1pntxt66f-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "apirequests.vercel.app": {
+            "status": 200,
+            "final_url": "https://apirequests.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "apirequests-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://apirequests-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "apirequests-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://apirequests-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "cellphone_scripts",
+      "id": "prj_TtE3FxLgOYBidXuJXzcZyGv8TwY9",
+      "framework": "vite",
+      "updatedAt": 1779459124100,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "cellphonescripts.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "cellphonescripts.vercel.app",
+        "cellphonescripts-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "cellphonescripts.vercel.app",
+      "latest": {
+        "id": "dpl_E5D3Q6dGHvSKfQpgUc8p9H8n8gTo",
+        "url": "cellphonescripts-fp147lbsh-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458101555,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://cellphonescripts.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://cellphonescripts-fp147lbsh-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "cellphonescripts.vercel.app": {
+            "status": 200,
+            "final_url": "https://cellphonescripts.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "cellphonescripts-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://cellphonescripts-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "coding-school-platform",
+      "id": "prj_2RTTGwmqepGM9TMkyX2iXX9jbrNt",
+      "framework": "vite",
+      "updatedAt": 1779459123749,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "coding-school-platform.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "coding-school-platform.vercel.app",
+        "coding-school-platform-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "coding-school-platform.vercel.app",
+      "latest": {
+        "id": "dpl_vczLp6H5Mh4LxB6ccXLWp1T7mwHL",
+        "url": "coding-school-platform-epgt7zyry-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458124353,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://coding-school-platform.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://coding-school-platform-epgt7zyry-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "coding-school-platform.vercel.app": {
+            "status": 200,
+            "final_url": "https://coding-school-platform.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "coding-school-platform-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://coding-school-platform-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "cox-elementary-pta",
+      "id": "prj_OIYXboSuHASgszRzWwBgTRWALulr",
+      "framework": "vite",
+      "updatedAt": 1779459122919,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "cox-elementary-pta.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "cox-elementary-pta.vercel.app",
+        "cox-elementary-pta-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "cox-elementary-pta.vercel.app",
+      "latest": {
+        "id": "dpl_3Zr5WrGjBYAw884uh2rf9zAdjGss",
+        "url": "cox-elementary-d4raizwqa-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458162288,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://cox-elementary-pta.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://cox-elementary-d4raizwqa-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "cox-elementary-pta.vercel.app": {
+            "status": 200,
+            "final_url": "https://cox-elementary-pta.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "cox-elementary-pta-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://cox-elementary-pta-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "deployment_docs",
+      "id": "prj_PUSyXCEnfLIEVQIqPTiGz6x0IC65",
+      "framework": "vite",
+      "updatedAt": 1779459122527,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "deploymentdocs.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "deploymentdocs.vercel.app",
+        "deploymentdocs-itmeansbigmountains-projects.vercel.app",
+        "deploymentdocs-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "deploymentdocs.vercel.app",
+      "latest": {
+        "id": "dpl_DHjbTpCipoUxMR4BARCPJWKfSUqG",
+        "url": "deploymentdocs-kl94n8e0i-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458178144,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://deploymentdocs.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://deploymentdocs-kl94n8e0i-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "deploymentdocs.vercel.app": {
+            "status": 200,
+            "final_url": "https://deploymentdocs.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "deploymentdocs-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://deploymentdocs-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "deploymentdocs-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://deploymentdocs-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "journal-ai",
+      "id": "prj_EC6a9ueGFlWgZ9msQchU1qXLm3iO",
+      "framework": "vite",
+      "updatedAt": 1779459121693,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "journal-ai-sooty.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "journal-ai-sooty.vercel.app",
+        "journal-ai-itmeansbigmountains-projects.vercel.app",
+        "journal-ai-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "journal-ai-sooty.vercel.app",
+      "latest": {
+        "id": "dpl_mjGwtqtEL1aHdszfGgPM1LCG6D2g",
+        "url": "journal-4gx44o85h-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458228083,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://journal-ai-sooty.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "Journal AI",
+          "bytes_sampled": 459
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://journal-4gx44o85h-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "journal-ai-sooty.vercel.app": {
+            "status": 200,
+            "final_url": "https://journal-ai-sooty.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "Journal AI",
+            "bytes_sampled": 459
+          },
+          "journal-ai-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://journal-ai-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "journal-ai-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://journal-ai-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "local-meeting-transcriber",
+      "id": "prj_b5praCfmuwYbQZd0bf63IIpxIEaJ",
+      "framework": "vite",
+      "updatedAt": 1779459120953,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "local-meeting-transcriber.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "local-meeting-transcriber.vercel.app",
+        "local-meeting-transcriber-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "local-meeting-transcriber.vercel.app",
+      "latest": {
+        "id": "dpl_68NURAfShaG8oubdBzAaDFozML1S",
+        "url": "local-meeting-transcriber-9hq9z1l4s.vercel.app",
+        "state": "READY",
+        "created": 1779458251509,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://local-meeting-transcriber.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://local-meeting-transcriber-9hq9z1l4s.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "local-meeting-transcriber.vercel.app": {
+            "status": 200,
+            "final_url": "https://local-meeting-transcriber.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "local-meeting-transcriber-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://local-meeting-transcriber-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "music",
+      "id": "prj_RluCGFF4sY3hjL3s7ACyVgmVKg5V",
+      "framework": "vite",
+      "updatedAt": 1779459120231,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "music-lac-seven.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "music-lac-seven.vercel.app",
+        "music-itmeansbigmountains-projects.vercel.app",
+        "music-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "music-lac-seven.vercel.app",
+      "latest": {
+        "id": "dpl_4AveTWi5o26svRYjs4oweoVwgMhA",
+        "url": "music-kdw85q93c-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458288294,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://music-lac-seven.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://music-kdw85q93c-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "music-lac-seven.vercel.app": {
+            "status": 200,
+            "final_url": "https://music-lac-seven.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "music-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://music-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "music-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://music-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "music-mood-app",
+      "id": "prj_hfcdtjl0kLfSuWacJSVrrsS172D1",
+      "framework": "vite",
+      "updatedAt": 1779459119658,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "music-mood-app-chi.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "music-mood-app-chi.vercel.app",
+        "music-mood-app-itmeansbigmountains-projects.vercel.app",
+        "music-mood-app-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "music-mood-app-chi.vercel.app",
+      "latest": {
+        "id": "dpl_HizS8n4UkTaFxALp4rwhUpeUBh26",
+        "url": "music-mood-mrahbfuj1-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458305358,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://music-mood-app-chi.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://music-mood-mrahbfuj1-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "music-mood-app-chi.vercel.app": {
+            "status": 200,
+            "final_url": "https://music-mood-app-chi.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "music-mood-app-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://music-mood-app-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "music-mood-app-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://music-mood-app-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "networking",
+      "id": "prj_cILUR4NAYqPSG15WeR3wDg33cydD",
+      "framework": "vite",
+      "updatedAt": 1779459119314,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "networking-ebon.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "networking-ebon.vercel.app",
+        "networking-itmeansbigmountains-projects.vercel.app",
+        "networking-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "networking-ebon.vercel.app",
+      "latest": {
+        "id": "dpl_FPMzosy7r7Pto67hMDSBqQDkS5r1",
+        "url": "networking-nk7cgbofi-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458326754,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://networking-ebon.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://networking-nk7cgbofi-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "networking-ebon.vercel.app": {
+            "status": 200,
+            "final_url": "https://networking-ebon.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "networking-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://networking-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "networking-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://networking-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "oyama-productions-legal",
+      "id": "prj_z8B8rvpFwW8kKp3s8xa4hqxS3oga",
+      "framework": "vite",
+      "updatedAt": 1779459118968,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "oyama-productions-legal.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "oyama-productions-legal.vercel.app",
+        "oyama-productions-legal-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "oyama-productions-legal.vercel.app",
+      "latest": {
+        "id": "dpl_AKdt5C5wyNuf4bxxs8Eyzxp9n3D1",
+        "url": "oyama-productions-legal-aga0qfqqb-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458344143,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://oyama-productions-legal.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://oyama-productions-legal-aga0qfqqb-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "oyama-productions-legal.vercel.app": {
+            "status": 200,
+            "final_url": "https://oyama-productions-legal.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "oyama-productions-legal-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://oyama-productions-legal-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "policy-pit-app",
+      "id": "prj_M9eLsN6slcubBluJKfRmSMMx1byz",
+      "framework": "vite",
+      "updatedAt": 1779459118621,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "policy-pit-app.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "policy-pit-app.vercel.app",
+        "policy-pit-app-itmeansbigmountains-projects.vercel.app",
+        "policy-pit-app-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "policy-pit-app.vercel.app",
+      "latest": {
+        "id": "dpl_C9EPXH1CMaahspY5WzDP3z5XthXh",
+        "url": "policy-pit-6d80ak1qd-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458361035,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://policy-pit-app.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://policy-pit-6d80ak1qd-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "policy-pit-app.vercel.app": {
+            "status": 200,
+            "final_url": "https://policy-pit-app.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "policy-pit-app-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://policy-pit-app-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "policy-pit-app-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://policy-pit-app-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "portfolio-sentiment-subscription-app",
+      "id": "prj_zaEDnTwRYPXChigZ3Vh3FJQOR1Kq",
+      "framework": "vite",
+      "updatedAt": 1779459118268,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "portfolio-sentiment-subscription-ap.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "portfolio-sentiment-subscription-ap.vercel.app",
+        "portfolio-sentiment-subscription-a-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "portfolio-sentiment-subscription-ap.vercel.app",
+      "latest": {
+        "id": "dpl_FvrQpfJv6sk6ABWJKte9RaLB6Pq7",
+        "url": "portfolio-sentiment-subscription-fi1fdh28h.vercel.app",
+        "state": "READY",
+        "created": 1779458376922,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://portfolio-sentiment-subscription-ap.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://portfolio-sentiment-subscription-fi1fdh28h.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "portfolio-sentiment-subscription-ap.vercel.app": {
+            "status": 200,
+            "final_url": "https://portfolio-sentiment-subscription-ap.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "portfolio-sentiment-subscription-a-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://portfolio-sentiment-subscription-a-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "robinhood-email-reports",
+      "id": "prj_1c5VzAfxRYX68Ei4ZQbXQZ4jDeM4",
+      "framework": "vite",
+      "updatedAt": 1779459117913,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "robinhood-email-reports.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "robinhood-email-reports.vercel.app",
+        "robinhood-email-reports-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "robinhood-email-reports.vercel.app",
+      "latest": {
+        "id": "dpl_HxFDzHtm8KePoXxzmrsF7uJuAaUD",
+        "url": "robinhood-email-reports-q52c1d1tn-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458392065,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://robinhood-email-reports.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://robinhood-email-reports-q52c1d1tn-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "robinhood-email-reports.vercel.app": {
+            "status": 200,
+            "final_url": "https://robinhood-email-reports.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "robinhood-email-reports-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://robinhood-email-reports-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "school",
+      "id": "prj_ZKcNYhrQQYGYdLVdLBgbd4VL6dfd",
+      "framework": "vite",
+      "updatedAt": 1779459117503,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "school-plum-beta.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "school-plum-beta.vercel.app",
+        "school-itmeansbigmountains-projects.vercel.app",
+        "school-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "school-plum-beta.vercel.app",
+      "latest": {
+        "id": "dpl_DYoqhGTzjJvzAppYjAuAHQ8v4uqF",
+        "url": "school-3uzd9xf86-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458415101,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://school-plum-beta.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://school-3uzd9xf86-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "school-plum-beta.vercel.app": {
+            "status": 200,
+            "final_url": "https://school-plum-beta.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "school-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://school-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "school-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://school-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "scraper-project",
+      "id": "prj_Ss7FerpCWj7hW5kP6SAqPplKottz",
+      "framework": "vite",
+      "updatedAt": 1779459117149,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "scraper-project-five.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "scraper-project-five.vercel.app",
+        "scraper-project-itmeansbigmountains-projects.vercel.app",
+        "scraper-project-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "scraper-project-five.vercel.app",
+      "latest": {
+        "id": "dpl_5x8iFvp9wriWyA7yxJhpLdRcWWtL",
+        "url": "scraper-project-6ypi33354-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458431148,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://scraper-project-five.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://scraper-project-6ypi33354-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "scraper-project-five.vercel.app": {
+            "status": 200,
+            "final_url": "https://scraper-project-five.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "scraper-project-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://scraper-project-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "scraper-project-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://scraper-project-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "selenium",
+      "id": "prj_Gnbe7V1P4xClUZZMayAcKfT8YmBc",
+      "framework": "vite",
+      "updatedAt": 1779459116810,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "selenium-alpha.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "selenium-alpha.vercel.app",
+        "selenium-itmeansbigmountains-projects.vercel.app",
+        "selenium-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "selenium-alpha.vercel.app",
+      "latest": {
+        "id": "dpl_CEjtPZkthbXb3fu5QTh97rGP1xzf",
+        "url": "selenium-6pzej25xt-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458447687,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://selenium-alpha.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://selenium-6pzej25xt-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "selenium-alpha.vercel.app": {
+            "status": 200,
+            "final_url": "https://selenium-alpha.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "selenium-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://selenium-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "selenium-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://selenium-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "sleep-dream-app",
+      "id": "prj_DLQ1lnfxfCUV52cspTvDqxxuRmBw",
+      "framework": "vite",
+      "updatedAt": 1779459116337,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "sleep-dream-app.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "sleep-dream-app.vercel.app",
+        "sleep-dream-app-itmeansbigmountains-projects.vercel.app",
+        "sleep-dream-app-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "sleep-dream-app.vercel.app",
+      "latest": {
+        "id": "dpl_GfPHLNojzUVaNupMo2Swx5inX8eL",
+        "url": "sleep-dream-1b7d4zkk3-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458463405,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://sleep-dream-app.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://sleep-dream-1b7d4zkk3-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "sleep-dream-app.vercel.app": {
+            "status": 200,
+            "final_url": "https://sleep-dream-app.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "sleep-dream-app-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://sleep-dream-app-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "sleep-dream-app-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://sleep-dream-app-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "social-media-analysis",
+      "id": "prj_PeCHajPBtjtcbrQvkjMmdUJEaDU1",
+      "framework": "vite",
+      "updatedAt": 1779459115798,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "social-media-analysis-five.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "social-media-analysis-five.vercel.app",
+        "social-media-analysis-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "social-media-analysis-five.vercel.app",
+      "latest": {
+        "id": "dpl_FiQ9dm7Wjt4EowarFyXqCEpmJsfE",
+        "url": "social-media-analysis-di2o1difc-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458479135,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://social-media-analysis-five.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://social-media-analysis-di2o1difc-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "social-media-analysis-five.vercel.app": {
+            "status": 200,
+            "final_url": "https://social-media-analysis-five.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "social-media-analysis-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://social-media-analysis-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "stock-news-frontend",
+      "id": "prj_2PYd7tq2vZev24wYaGX6XsxjBHDB",
+      "framework": "angular",
+      "updatedAt": 1779459115377,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "stock-news-frontend-chi.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "stock-news-frontend-chi.vercel.app",
+        "stock-news-frontend-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "stock-news-frontend-chi.vercel.app",
+      "latest": {
+        "id": "dpl_9fQoFmGBMNPfDB9DQzDuhytnpE2d",
+        "url": "stock-news-frontend-iyr2jromi-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458505656,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://stock-news-frontend-chi.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "StockNewsFrontend",
+          "bytes_sampled": 507
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://stock-news-frontend-iyr2jromi-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": "StockNewsFrontend",
+          "bytes_sampled": 507
+        },
+        "aliases": {
+          "stock-news-frontend-chi.vercel.app": {
+            "status": 200,
+            "final_url": "https://stock-news-frontend-chi.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "StockNewsFrontend",
+            "bytes_sampled": 507
+          },
+          "stock-news-frontend-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://stock-news-frontend-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": "StockNewsFrontend",
+            "bytes_sampled": 507
+          }
+        }
+      }
+    },
+    {
+      "name": "store-code-content-studio",
+      "id": "prj_CCnoFuYlONF69T2EPUVqg6RlA9Kb",
+      "framework": "vite",
+      "updatedAt": 1779459115017,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "store-code-content-studio.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "store-code-content-studio.vercel.app",
+        "store-code-content-studio-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "store-code-content-studio.vercel.app",
+      "latest": {
+        "id": "dpl_DWsHA6mwb7fqtSL23MNcdQNmkifW",
+        "url": "store-code-content-studio-jm1r8hkyp.vercel.app",
+        "state": "READY",
+        "created": 1779458541063,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://store-code-content-studio.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://store-code-content-studio-jm1r8hkyp.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "store-code-content-studio.vercel.app": {
+            "status": 200,
+            "final_url": "https://store-code-content-studio.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "store-code-content-studio-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://store-code-content-studio-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "survey-analytics-website",
+      "id": "prj_l8oAfqq3wUkC0ShPfQIDsmecRJp3",
+      "framework": "vite",
+      "updatedAt": 1779459114661,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "survey-analytics-website.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "survey-analytics-website.vercel.app",
+        "survey-analytics-website-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "survey-analytics-website.vercel.app",
+      "latest": {
+        "id": "dpl_8ujCJTQBybVitSVNdPhijQaLZN2P",
+        "url": "survey-analytics-website-gzpg2gjvy-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458556071,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://survey-analytics-website.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://survey-analytics-website-gzpg2gjvy-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "survey-analytics-website.vercel.app": {
+            "status": 200,
+            "final_url": "https://survey-analytics-website.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "survey-analytics-website-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://survey-analytics-website-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "tiktok-clone",
+      "id": "prj_SNSu6I0WhiufWU7oxIKOKBKb5F4E",
+      "framework": "vite",
+      "updatedAt": 1779459114316,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "tiktok-clone-eta-one.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "tiktok-clone-eta-one.vercel.app",
+        "tiktok-clone-itmeansbigmountains-projects.vercel.app",
+        "tiktok-clone-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "tiktok-clone-eta-one.vercel.app",
+      "latest": {
+        "id": "dpl_HPRgEgA5qwW5kLJxDdg8LjhrPewt",
+        "url": "tiktok-clone-jjw6oyktc-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458609309,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://tiktok-clone-eta-one.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://tiktok-clone-jjw6oyktc-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "tiktok-clone-eta-one.vercel.app": {
+            "status": 200,
+            "final_url": "https://tiktok-clone-eta-one.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "tiktok-clone-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://tiktok-clone-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "tiktok-clone-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://tiktok-clone-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "tiktok-shop-shopify-commerce",
+      "id": "prj_jgg1ONl160rOpLwhLlFRCocdKxJn",
+      "framework": "vite",
+      "updatedAt": 1779459113699,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "tiktok-shop-shopify-commerce.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "tiktok-shop-shopify-commerce.vercel.app",
+        "tiktok-shop-shopify-commerce-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "tiktok-shop-shopify-commerce.vercel.app",
+      "latest": {
+        "id": "dpl_AE8b4EqnusUdpziYTQNC6RSZnVBn",
+        "url": "tiktok-shop-shopify-commerce-1at2oq8zz.vercel.app",
+        "state": "READY",
+        "created": 1779458625876,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://tiktok-shop-shopify-commerce.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://tiktok-shop-shopify-commerce-1at2oq8zz.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "tiktok-shop-shopify-commerce.vercel.app": {
+            "status": 200,
+            "final_url": "https://tiktok-shop-shopify-commerce.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "tiktok-shop-shopify-commerce-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://tiktok-shop-shopify-commerce-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "tournament-wager-app",
+      "id": "prj_12noKqpT3Qnz1pASZZQlAqxEjYvd",
+      "framework": "vite",
+      "updatedAt": 1779459113342,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "tournament-wager-app.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "tournament-wager-app.vercel.app",
+        "tournament-wager-app-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "tournament-wager-app.vercel.app",
+      "latest": {
+        "id": "dpl_2nnwQnQxMW195MW4RXzbC6rEAKZw",
+        "url": "tournament-wager-5iap7mgcs-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458644682,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://tournament-wager-app.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://tournament-wager-5iap7mgcs-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "tournament-wager-app.vercel.app": {
+            "status": 200,
+            "final_url": "https://tournament-wager-app.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "tournament-wager-app-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://tournament-wager-app-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "tweet_video_generator",
+      "id": "prj_42N0aepwODIHyQ8ql3Was23s5q3L",
+      "framework": "vite",
+      "updatedAt": 1779459112821,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "tweetvideogenerator.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "tweetvideogenerator.vercel.app",
+        "tweetvideogenerator-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "tweetvideogenerator.vercel.app",
+      "latest": {
+        "id": "dpl_4EqHW7BtWAGX9tjpWLnbxMSbSYux",
+        "url": "tweetvideogenerator-i4m3rw5cx-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458665487,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://tweetvideogenerator.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://tweetvideogenerator-i4m3rw5cx-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "tweetvideogenerator.vercel.app": {
+            "status": 200,
+            "final_url": "https://tweetvideogenerator.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "tweetvideogenerator-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://tweetvideogenerator-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "twitter-therapy-app",
+      "id": "prj_7WpImnO8cr6FLch1g6C9DLZ2EtnZ",
+      "framework": "vite",
+      "updatedAt": 1779459112484,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "twitter-therapy-app.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "twitter-therapy-app.vercel.app",
+        "twitter-therapy-app-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "twitter-therapy-app.vercel.app",
+      "latest": {
+        "id": "dpl_31c7mECZL6ej9KpXFVNGVxuJZagm",
+        "url": "twitter-therapy-k9qd3eozf-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458688120,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://twitter-therapy-app.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://twitter-therapy-k9qd3eozf-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "twitter-therapy-app.vercel.app": {
+            "status": 200,
+            "final_url": "https://twitter-therapy-app.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "twitter-therapy-app-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://twitter-therapy-app-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "cloudautomation",
+      "id": "prj_POevOSofGQ3aTTzQqQaJWSkbUyXJ",
+      "framework": "vite",
+      "updatedAt": 1779459111200,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "cloudautomation.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "cloudautomation.vercel.app",
+        "cloudautomation-itmeansbigmountains-projects.vercel.app",
+        "cloudautomation-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "cloudautomation.vercel.app",
+      "latest": {
+        "id": "dpl_Ci6CCimdPAjm2ULNUSUiEtkrX6um",
+        "url": "cloudautomation-7rx3hmny2-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458810490,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://cloudautomation.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://cloudautomation-7rx3hmny2-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "cloudautomation.vercel.app": {
+            "status": 200,
+            "final_url": "https://cloudautomation.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "cloudautomation-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://cloudautomation-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "cloudautomation-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://cloudautomation-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "docs",
+      "id": "prj_LTWTWqo1YHQlaASPUQ2hUfbvA9Dl",
+      "framework": "vite",
+      "updatedAt": 1779459109858,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "docs-umber-two-76.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "docs-umber-two-76.vercel.app",
+        "docs-itmeansbigmountains-projects.vercel.app",
+        "docs-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "docs-umber-two-76.vercel.app",
+      "latest": {
+        "id": "dpl_HoVAaGAgYNbM7BjjFbemPyHHzLCm",
+        "url": "docs-agvde8o1m-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458860393,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://docs-umber-two-76.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://docs-agvde8o1m-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "docs-umber-two-76.vercel.app": {
+            "status": 200,
+            "final_url": "https://docs-umber-two-76.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "docs-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://docs-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "docs-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://docs-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "jupyter-notebooks",
+      "id": "prj_Pc5R8mnV5kZARxHkwuSLvFiHMZpO",
+      "framework": "vite",
+      "updatedAt": 1779459109250,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "jupyter-notebooks-green.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "jupyter-notebooks-green.vercel.app",
+        "jupyter-notebooks-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "jupyter-notebooks-green.vercel.app",
+      "latest": {
+        "id": "dpl_FmfuUAChakSLS2XL58kMtwoRw8CJ",
+        "url": "jupyter-notebooks-pbninjam0-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458874884,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://jupyter-notebooks-green.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://jupyter-notebooks-pbninjam0-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "jupyter-notebooks-green.vercel.app": {
+            "status": 200,
+            "final_url": "https://jupyter-notebooks-green.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "jupyter-notebooks-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://jupyter-notebooks-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "musclemadness-api",
+      "id": "prj_WkAYGpagrtHOBkZsSAgUDb2G3j2O",
+      "framework": "vite",
+      "updatedAt": 1779459108378,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "musclemadness-api.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "musclemadness-api.vercel.app",
+        "musclemadness-api-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "musclemadness-api.vercel.app",
+      "latest": {
+        "id": "dpl_5djNFPUEWDevgav6QRwUJo9cbZHj",
+        "url": "musclemadness-q5gendrfd-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458904692,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://musclemadness-api.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://musclemadness-q5gendrfd-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "musclemadness-api.vercel.app": {
+            "status": 200,
+            "final_url": "https://musclemadness-api.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "musclemadness-api-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://musclemadness-api-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "rts-js-chatrooms",
+      "id": "prj_IsR0xBpiMcUcIFY4cAkTFPAsHH0M",
+      "framework": "vite",
+      "updatedAt": 1779459107620,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "rts-js-chatrooms.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "rts-js-chatrooms.vercel.app",
+        "rts-js-chatrooms-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "rts-js-chatrooms.vercel.app",
+      "latest": {
+        "id": "dpl_A7oYwWyQgGT1FWCEp4cjqgndY4LV",
+        "url": "rts-js-chatrooms-1ql6l49h9-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458936982,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://rts-js-chatrooms.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://rts-js-chatrooms-1ql6l49h9-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "rts-js-chatrooms.vercel.app": {
+            "status": 200,
+            "final_url": "https://rts-js-chatrooms.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "rts-js-chatrooms-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://rts-js-chatrooms-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "ticvoter-rest-api",
+      "id": "prj_WNXZLKMT9RwJ740sxidzDlECKlL5",
+      "framework": "vite",
+      "updatedAt": 1779459106898,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "ticvoter-rest-api.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "ticvoter-rest-api.vercel.app",
+        "ticvoter-rest-api-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "ticvoter-rest-api.vercel.app",
+      "latest": {
+        "id": "dpl_6mYNytAXZrbwGPNr7gyvABV891hC",
+        "url": "ticvoter-rest-p5og04e8t-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458967589,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://ticvoter-rest-api.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://ticvoter-rest-p5og04e8t-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "ticvoter-rest-api.vercel.app": {
+            "status": 200,
+            "final_url": "https://ticvoter-rest-api.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "ticvoter-rest-api-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://ticvoter-rest-api-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "tutoring-repl",
+      "id": "prj_1mIKPieIIoFhhAcRzIJJ8GmXiBtg",
+      "framework": "vite",
+      "updatedAt": 1779459106558,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "tutoring-repl.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "tutoring-repl.vercel.app",
+        "tutoring-repl-itmeansbigmountains-projects.vercel.app",
+        "tutoring-repl-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "tutoring-repl.vercel.app",
+      "latest": {
+        "id": "dpl_6Az3ASXskHpvjJbc3vVdpEoEmRir",
+        "url": "tutoring-repl-1as4pvhqq-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458982858,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://tutoring-repl.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://tutoring-repl-1as4pvhqq-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "tutoring-repl.vercel.app": {
+            "status": 200,
+            "final_url": "https://tutoring-repl.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "tutoring-repl-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://tutoring-repl-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "tutoring-repl-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://tutoring-repl-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "tweetbetweenthelines",
+      "id": "prj_LsRQMFSOwUIeMNRiC8cioBstOpbw",
+      "framework": "vite",
+      "updatedAt": 1779459106075,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "tweetbetweenthelines.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "tweetbetweenthelines.vercel.app",
+        "tweetbetweenthelines-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "tweetbetweenthelines.vercel.app",
+      "latest": {
+        "id": "dpl_3tY4PymV4Fx2GRLGx3aRS1SQVnnB",
+        "url": "tweetbetweenthelines-ajw57fpq3-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779458998492,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://tweetbetweenthelines.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://tweetbetweenthelines-ajw57fpq3-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "tweetbetweenthelines.vercel.app": {
+            "status": 200,
+            "final_url": "https://tweetbetweenthelines.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "tweetbetweenthelines-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://tweetbetweenthelines-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "utilityscripts",
+      "id": "prj_eUlq8QAz6DcLrAoulwhUmdgh5PVt",
+      "framework": "vite",
+      "updatedAt": 1779459105543,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "utilityscripts.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "utilityscripts.vercel.app",
+        "utilityscripts-itmeansbigmountains-projects.vercel.app",
+        "utilityscripts-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "utilityscripts.vercel.app",
+      "latest": {
+        "id": "dpl_2DgzRVVWerigpGhZP3muuVRZyqr2",
+        "url": "utilityscripts-imhyba23x-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779459013267,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://utilityscripts.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://utilityscripts-imhyba23x-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "utilityscripts.vercel.app": {
+            "status": 200,
+            "final_url": "https://utilityscripts.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "utilityscripts-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://utilityscripts-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "utilityscripts-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://utilityscripts-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "watsonai",
+      "id": "prj_KckUWCTacphufQVu5Vt6MfdekP54",
+      "framework": "vite",
+      "updatedAt": 1779459105156,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "watsonai.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "watsonai.vercel.app",
+        "watsonai-itmeansbigmountains-projects.vercel.app",
+        "watsonai-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "watsonai.vercel.app",
+      "latest": {
+        "id": "dpl_9ANLx2XFnLkbwTczFu4ATVjEUEUo",
+        "url": "watsonai-k1h14aqon-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779459028009,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://watsonai.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://watsonai-k1h14aqon-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "watsonai.vercel.app": {
+            "status": 200,
+            "final_url": "https://watsonai.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "watsonai-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://watsonai-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "watsonai-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://watsonai-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "webcrawl",
+      "id": "prj_mTyyrOj9cuwwTJgPQ9mc4ZQ6jjzU",
+      "framework": "vite",
+      "updatedAt": 1779459104680,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "webcrawl-ochre.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "webcrawl-ochre.vercel.app",
+        "webcrawl-itmeansbigmountains-projects.vercel.app",
+        "webcrawl-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "webcrawl-ochre.vercel.app",
+      "latest": {
+        "id": "dpl_2Y9CSVLHkMKhx7ie9vhqd64eQAbE",
+        "url": "webcrawl-e1i2qrx5b-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779459043255,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://webcrawl-ochre.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://webcrawl-e1i2qrx5b-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "webcrawl-ochre.vercel.app": {
+            "status": 200,
+            "final_url": "https://webcrawl-ochre.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "webcrawl-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://webcrawl-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "webcrawl-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://webcrawl-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    },
+    {
+      "name": "wuthappened",
+      "id": "prj_veJHCVAXkVjE5bLMplCYseD49ftE",
+      "framework": "vite",
+      "updatedAt": 1779459104119,
+      "gitRepository": null,
+      "protection": {
+        "deploymentType": null,
+        "passwordProtection": false,
+        "ssoProtection": null,
+        "trustedIps": null,
+        "protectionBypass": false
+      },
+      "env_names": [],
+      "env_targets": {},
+      "domains": [
+        {
+          "name": "wuthappened.vercel.app",
+          "verified": true,
+          "redirect": null
+        }
+      ],
+      "aliases": [
+        "wuthappened.vercel.app",
+        "wuthappened-itmeansbigmountains-projects.vercel.app",
+        "wuthappened-itmeansbigmountain-itmeansbigmountains-projects.vercel.app"
+      ],
+      "primary_alias": "wuthappened.vercel.app",
+      "latest": {
+        "id": "dpl_5SR8hrvN6PWdLYAdVw4U61vmndg2",
+        "url": "wuthappened-nhil745qb-itmeansbigmountains-projects.vercel.app",
+        "state": "READY",
+        "created": 1779459058866,
+        "target": "production",
+        "gitCommitSha": "af1ad45111952047c6b0ebfd534a44903d88e9f7",
+        "gitCommitRef": "main"
+      },
+      "health": {
+        "primary": {
+          "status": 200,
+          "final_url": "https://wuthappened.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "latest": {
+          "status": 200,
+          "final_url": "https://wuthappened-nhil745qb-itmeansbigmountains-projects.vercel.app",
+          "content_type": "text/html; charset=utf-8",
+          "title": null,
+          "bytes_sampled": 167
+        },
+        "aliases": {
+          "wuthappened.vercel.app": {
+            "status": 200,
+            "final_url": "https://wuthappened.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "wuthappened-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://wuthappened-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          },
+          "wuthappened-itmeansbigmountain-itmeansbigmountains-projects.vercel.app": {
+            "status": 200,
+            "final_url": "https://wuthappened-itmeansbigmountain-itmeansbigmountains-projects.vercel.app",
+            "content_type": "text/html; charset=utf-8",
+            "title": null,
+            "bytes_sampled": 167
+          }
+        }
+      }
+    }
+  ]
+}

@@ -127,11 +127,9 @@ If the user asks for a dry run, report findings without editing.
 
 ## Domain-Specific Review References
 
+- For PostgreSQL functions, scheduled workers, Stripe ledgers/webhooks, and Next.js hydration QA, use `references/full-stack-marketplace-lifecycle-verification.md`. It covers runtime database-function tests, double-run idempotency assertions, exact refund/payout checks, app-client chunk diagnosis, and responsive interaction gates.
 - For reviewing a portfolio of standalone RuneLite/OSRS external plugins, use `references/runelite-plugin-portfolio-review.md`. It covers multi-repo inventory, Gradle verification, Plugin Hub metadata checks, product-readiness ranking, and common consolidation families.
 - For consolidating many OSRS plugin repos into canonical child repos inside a parent workspace/submodule repo, use `references/runelite-osrs-consolidation-submodule-workflow.md`. It covers TDD feature absorption, child-first pushes, exact parent submodule pointer staging, Java 11 verification, and authenticated GitHub push patterns with `GITHUB_ACCESS_TOKEN`.
-- For RuneLite side-panel QA, treat default sidebar width as a hard requirement: verify controls do not trail off, prefer compact dropdowns/icon buttons over wide tabs, and call out Swing controls that need explicit preferred/maximum sizing.
-
-## Verification Checklistushes, exact parent submodule pointer staging, Java 11 verification, and authenticated GitHub push patterns with `GITHUB_ACCESS_TOKEN`.
 - For RuneLite side-panel QA, treat default sidebar width as a hard requirement: verify controls do not trail off, prefer compact dropdowns/icon buttons over wide tabs, and call out Swing controls that need explicit preferred/maximum sizing.
 
 ## Verification Checklist

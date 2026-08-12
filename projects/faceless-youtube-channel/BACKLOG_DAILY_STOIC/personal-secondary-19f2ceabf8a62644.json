@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-08-12T02:03:30.989088+00:00",
+  "profile": "personal-secondary",
+  "message_id": "19f2ceabf8a62644",
+  "status": "backlogged",
+  "email_retained": true,
+  "remake_source": "gmail",
+  "error": "RuntimeError",
+  "detail": "visual gate blocked: no stock/API visual asset for scene 6 query='journaling repeated practice morning'; attempts={\"provider\": \"fallback_dynamic\", \"query\": \"journaling repeated practice morning\", \"attempts\": [{\"provider\": \"pexels_video\", \"query\": \"journaling repeated practice morning\", \"error\": \"HTTP Error 403: Forbidden\"}, {\"provider\": \"pixabay_video\", \"query\": \"journaling repeated practice morning\", \"error\": \"no_downloadable_result\"}, {\"provider\": \"pexels_photo\", \"query\": \"journaling repeated practice morning\", \"error\": \"HTTP Error 403: Forbidden\"}, {\"provider\": \"pixabay_photo\", \"query\": \"journaling repeated practice morning\", \"error\": \"no_downloadable_result\"}, {\"provider\": \"shutterstock_preview_video\", \"query\": \"journaling repeated practice morning\", \"error\": \"no_downloadable_result\"}, {\"provider\": \"wikimedia_image\", \"query\": \"journaling repeated practice morning\", \"error\": \"no_downloadable_result"
+}

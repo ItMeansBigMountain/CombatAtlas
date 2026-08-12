@@ -104,8 +104,9 @@ A no-extra-provider-key approach:
 - `admin_invites`: admin ID, SHA-256 token hash, expiry, consumed timestamp.
 - `admin_sessions`: admin ID, SHA-256 session hash, expiry, last-seen timestamp.
 - Invitation exchange must lock and consume the invitation atomically while creating the session.
-- Cookie: `HttpOnly`, `Secure` in production, `SameSite=Strict`, admin-only path, bounded lifetime.
-- Roles should map to explicit capabilities (catalog, social moderation, inventory, fulfillment, refunds, admin management).
+- Cookie: `HttpOnly`, `Secure` in production, `SameSite=Strict`, bounded lifetime, and a path that covers both the UI and mutation APIs. If the UI is `/admin` but mutations are `/api/admin/*`, `Path=/admin` will silently exclude those API requests; use `/` (with a distinct cookie name) or colocate APIs under the scoped path.
+- Browser-test an authenticated admin mutation, not only page rendering or server-side session resolution; this catches cookie-path mismatches.
+- Roles should map to explicit capabilities (catalog, social moderation, inventory, fulfillment, refunds, support, admin management).
 - Deliver the one-time link through an already authorized communication channel without printing/logging its raw token.
 
 ## Social evidence legitimacy

@@ -117,6 +117,8 @@ For marketplaces that connect products to creator posts, cumulative engagement, 
 
 When turning a storefront prototype into a durable Vercel/Next.js commerce operation, also load `references/serverless-commerce-backend-delivery.md`. It covers managed Postgres provisioning, delimiter-aware migrations, signed persistent carts, database-atomic Stripe webhook finalization, passwordless administrator invitations, social-evidence legitimacy, and the full verification gates required before calling the build complete.
 
+For hybrid first-party plus creator/vendor marketplaces, load `references/hybrid-creator-marketplace-fulfillment.md`. It covers rights-reviewed creator-post media, seller ownership, per-line dropship fulfillment, the idempotent 48-hour tracking watchdog, mixed-cart refund allocation, delivery/return holds, Stripe Connect transfers, creator/admin portal boundaries, and webhook-authoritative payouts.
+
 Before committing any newly scaffolded standalone app inside a larger portfolio workspace, run `git rev-parse --show-toplevel` from the child and confirm the Git root is the child directory. Scaffolding tools may inherit the parent repository; never use broad staging until this boundary is verified.
 
 ### Node inspect debugging
@@ -165,6 +167,9 @@ Archived source packages absorbed into this umbrella are preserved under `refere
 7. Assuming migration files are repeat-safe because a schema-version row exists; rerun the complete set and use delimiter-aware, conditional compatibility DDL.
 8. Writing audit/movement rows unconditionally after a conditional update; make dependent writes select from the successful `UPDATE ... RETURNING` CTE.
 9. Removing fictional evidence from the database while leaving invented handles, engagement, post counts, or derived heat claims hard-coded in public components.
+10. Scoping an authentication cookie to `/admin` or `/creator` when mutations live under `/api/admin/*` or `/api/creator/*`; the browser will omit the cookie from those APIs even though the protected page renders.
+11. Modeling creator fulfillment/refunds/payouts only at whole-order level; mixed carts require immutable per-line seller, fulfillment, refund, and earning ledgers.
+12. Marking Stripe refunds or creator payouts terminal from a cron/API response. Store them as submitted and finalize from signature-verified, idempotent webhooks.
 
 ## Verification Checklist
 

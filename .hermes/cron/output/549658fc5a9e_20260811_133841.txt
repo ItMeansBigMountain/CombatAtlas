@@ -1,0 +1,89 @@
+Cronjob Response: Agentic Robinhood Trade Account Monitor — Market Open
+(job_id: 549658fc5a9e)
+-------------
+
+# OPEN Scan Decision — No Trade
+
+**Timestamp:** August 11, 2026, 09:36 ET  
+**Account:** Robinhood Agentic **433711041 / ending 1041 only**
+
+## Live Account State
+
+- **Portfolio value:** $335.57
+- **Equities:** $329.36
+- **Cash / buying power:** $6.21
+- **Pending-order commitment:** $0
+- **Open orders:** None across `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled`
+- **Fills today:** None
+- **Positions:** AVGO, MA, BAC, SHOP, NESR
+- **Options/shorts:** None
+- **Aggregate planned entry-to-stop risk:** approximately **$5.33**, near the default $6 limit
+
+Kill switches passed:
+
+- Account is active and explicitly Agentic-enabled.
+- Value is safely above $10.
+- Approximate change from yesterday’s $337.25 snapshot is **-0.50%**, below the daily drawdown pause.
+- Broker, position, buying-power, order, and fill state were successfully verified.
+
+`get_realized_pnl` failed because the tool required an unspecified asset-class parameter. This was journaled; no realized-P&L claim is being made. The successful portfolio and order checks were sufficient to establish current trading state.
+
+## Allocation Decision
+
+Available liquid buying power after pending orders: **$6.21**
+
+- Policy deployment target, 80%: **$4.97**
+- Required 20% reserve: **$1.24**
+- **Actually deployed this scan:** $0
+- **Cash retained:** $6.21
+
+No purchase was forced because the portfolio already contains five holdings, aggregate risk is near its limit, and $4.97 would create an operationally trivial sixth position. The opening playbook also prohibits chasing the first 5–15 minutes.
+
+## Market Regime
+
+**Mixed/rotation, with a constructive broad-market bias:**
+
+- SPY **$773.33**, +0.04%; above SMA20/SMA50
+- QQQ **$720.26**, -0.08%; above SMA20 but only narrowly above SMA50
+- IWM **$301.33**, +0.45%; above SMA20/SMA50
+- DIA **$540.76**, +0.33%; above SMA20/SMA50
+- SMH remains below its SMA50 with negative 20/60-day momentum
+- XLI, XLV, XLE, and XLF showed better opening leadership
+
+The confirmed July CPI release is tomorrow, August 12 at 08:30 ET. That favors confirmation and reduced opening risk rather than broad-beta chasing.
+
+## Position Decisions
+
+| Rank | Position | Decision | Live Price | Score | Key levels |
+|---|---|---:|---:|---:|---|
+| 1 | SHOP | Hold; no add | $152.60 | 13/16 | Stop $143.50; targets $160/$165 |
+| 2 | BAC | Hold; assess resistance | $64.15 | 13/16 | Stop $61.40; targets $64.80/$66 |
+| 3 | NESR | Hold; actively manage profit | $35.91 | 12/16 | Stop $31.85; targets $36.60/$38 |
+| 4 | AVGO | Hold cautiously | $419.70 | 11/16 | Stop $410; targets $440/$455 |
+| 5 | MA | Weakest holding; rotation candidate | $564.70 | 10/16 | Stop $550 |
+
+No stop was widened.
+
+## Ranked Fresh Candidates
+
+1. **RTX — 13/16:** Strong industrial relative strength and positive 20/60-day momentum. Entry requires a sustained breakout and successful retest above approximately **$225.70**. Invalidation **$216**; targets **$240/$248**.
+2. **XOM — 13/16:** Strong energy-sector alignment. Require a **$157–$158** retest followed by a VWAP reclaim/hold. Current $159.88 price was above the intended entry zone, so it was not chased.
+3. **CRWD — 12/16:** Strong longer-term momentum but -2.03% at the open and high volatility. Require an orderly **$214–$216** retest; invalidation **$208**; targets **$232/$240**.
+4. **UBER — 11/16:** Constructive reclaimed trend, but extended above the preferred **$75–$76** retest zone. Invalidation **$71.80**; targets **$83/$86**.
+5. **NVDA — 10/16:** Above key averages, but negative 60-day momentum and weak semiconductor-sector relative structure prevent an entry.
+
+PLTR and MSFT were rejected as too extended. AMD, MU, HOOD, and TSLA lacked qualifying trend structure.
+
+## Exact Actions
+
+- **Orders reviewed:** None—no setup triggered.
+- **Orders placed:** None.
+- **Orders canceled:** None.
+- **Fills:** None.
+- **Management action:** Hold all five positions without adding or widening risk.
+
+The complete decision, candidate scores, policy calculations, and tool failure were journaled at:
+
+`projects/trading-journal/2026-08-11/OPEN-decision.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Trade Account Monitor — Market Open").

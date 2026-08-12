@@ -1,0 +1,335 @@
+[
+  {
+    "tool": "get_accounts",
+    "args": {},
+    "isError": false,
+    "content": [
+      "{\"data\":{\"accounts\":[{\"account_number\":\"5QY17335\",\"rhs_account_number\":\"108173352\",\"type\":\"margin\",\"unsettled_funds\":\"0.0000\",\"brokerage_account_type\":\"individual\",\"is_default\":true,\"agentic_allowed\":false,\"option_level\":\"option_level_2\",\"management_type\":\"self_directed\",\"affiliate\":\"rhf\",\"state\":\"active\",\"deactivated\":false,\"permanently_deactivated\":false},{\"account_number\":\"816993596\",\"rhs_account_number\":\"816993596\",\"type\":\"limited_margin\",\"unsettled_funds\":\"0.0000\",\"brokerage_account_type\":\"ira_roth\",\"is_default\":false,\"agentic_allowed\":false,\"option_level\":\"\",\"management_type\":\"self_directed\",\"affiliate\":\"rhf\",\"state\":\"active\",\"deactivated\":false,\"permanently_deactivated\":false},{\"account_number\":\"181713026274\",\"rhs_account_number\":\"181713026274\",\"type\":\"limited_margin\",\"unsettled_funds\":\"0.0000\",\"brokerage_account_type\":\"individual\",\"is_default\":false,\"agentic_allowed\":false,\"option_level\":\"\",\"management_type\":\"managed\",\"affiliate\":\"rhf\",\"state\":\"active\",\"deactivated\":false,\"permanently_deactivated\":false},{\"account_number\":\"433711041\",\"rhs_account_number\":\"433711041\",\"type\":\"cash\",\"unsettled_funds\":\"0.0000\",\"brokerage_account_type\":\"individual\",\"nickname\":\"Agentic\",\"is_default\":false,\"agentic_allowed\":true,\"option_level\":\"\",\"management_type\":\"self_directed\",\"affiliate\":\"rhf\",\"state\":\"active\",\"deactivated\":false,\"permanently_deactivated\":false}]},\"guide\":\"Sort the list deterministically when presenting: the default account first, agentic accounts (agentic_allowed=true) second, then other individual accounts, then retirement (IRA) accounts. Present account_number, rhc_account_number (label it \\\"Crypto Account\\\"), brokerage_account_type (label it \\\"Account Type\\\" \u2014 a linked crypto account always shares it, so never add a separate crypto account type column), type (label it \\\"Brokerage Trading Type\\\"), nickname (if set), and is_default \u2014 in that column order. In the Crypto Account column show \\\"N/A\\\" for accounts with an empty rhc_account_number; omit the column entirely only when no account has one. When referring to the account in user-facing prose (e.g. \\\"your \\u003cX\\u003e account\\\"), use nickname when set; fall back to brokerage_account_type otherwise. When displaying account_number or rhc_account_number to the user, mask all but the last 4 digits (e.g. '\u2022\u2022\u2022\u20221234'); pass the full value to other tools unchanged \u2014 including get_option_level_upgrade_info and any fallback upgrade URL; masking breaks the link. Flag agentic_allowed when the user is choosing an account for a trade. agentic_allowed is caller-relative \u2014 true means accessible to this agent, false means this agent cannot act on it (the account may still be agentic-enabled for a different agent). Do not use nickname to determine agentic-account eligibility. Skip false accounts for trade operations; if the user asks why, say the account is not accessible to this agent, not that it needs to be enabled. When option_level is empty or 'option_level_0' and the user wants options, call get_option_level_upgrade_info with the account_number; if that tool is unavailable, direct the user to https://applink.robinhood.com/upgrade_options?account_number=\\u003cthat account's account_number\\u003e (embed the full unmasked account_number in the URL). management_type='managed' is layered on brokerage_account_type \u2014 surface alongside, not as a replacement. For tools that ask for an account identifier on a crypto-backed flow (get_crypto_positions, future crypto write tools), pass rhs_account_number; for everything else (equities, options, etc.) pass account_number. Do not add an unsettled_funds column to the account table \u2014 surface it only via the following rule. Whenever you report an account's funds, value, or buying power and that account has type='cash' with unsettled_funds greater than 0, tell the user those unsettled proceeds could be traded immediately with a limited-margin upgrade, and \u2014 if the get_limited_margin_upgrade_info tool is available \u2014 call it with the account_number and share the appropriate upgrade link. If that tool is not available, say nothing about limited margin (there is no fallback). \"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_portfolio",
+    "args": {
+      "account_number": "433711041"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"total_value\":\"335.25462549\",\"equity_value\":\"329.04462549\",\"options_value\":\"0\",\"futures_value\":\"0\",\"event_contracts_value\":\"0\",\"crypto_value\":\"0\",\"cash\":\"6.21\",\"pending_deposits\":\"0\",\"mutual_funds_value\":\"0\",\"fixed_income_value\":\"0\",\"currency\":\"USD\",\"buying_power\":{\"buying_power\":\"6.2100\",\"unleveraged_buying_power\":\"6.2100\",\"display_currency\":\"USD\"}},\"guide\":\"Show total_value as \\\"account value\\\" or \\\"portfolio value\\\". The breakdown fields show how value is distributed across asset types. Zero-value fields mean the user has no holdings in that asset class \u2014 omit them from display unless the user explicitly asks. For \\\"how much cash do I have?\\\" use the cash field. buying_power is the real-time authoritative spendable figure from the broker; quote buying_power.buying_power as the primary affordability answer with buying_power.display_currency. For \\\"how much can I spend on crypto?\\\" quote crypto_buying_power.buying_power instead \u2014 crypto is cash-only (not marginable), so the top-level buying_power may overstate it; crypto_buying_power is omitted when unavailable. crypto_value reflects the user's crypto holdings value. On a cash account, recently sold proceeds that have not yet settled are not spendable and are not included in buying_power; that unsettled amount is reported as unsettled_funds by get_accounts (not here), so if you do not already have the account's unsettled_funds, call get_accounts to check it. Whenever you report buying power or account value for a type='cash' account whose unsettled_funds is greater than 0, inform the user those unsettled proceeds could be traded immediately with a limited-margin upgrade, and \u2014 if the get_limited_margin_upgrade_info tool is available \u2014 call it with the account_number and share the appropriate upgrade link. If that tool is not available, say nothing about limited margin (there is no fallback).\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_equity_positions",
+    "args": {
+      "account_number": "433711041"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"positions\":[{\"symbol\":\"AVGO\",\"quantity\":\"0.095750\",\"intraday_quantity\":\"0.000000\",\"average_buy_price\":\"411.280000\",\"shares_available_for_sells\":\"0.095750\",\"shares_held_for_sells\":\"0.000000\",\"shares_held_for_stock_grants\":\"0.000000\",\"shares_held_for_options_events\":\"0.000000\",\"shares_held_for_asset_transfer\":\"0.000000\",\"shares_pending_from_options_events\":\"0.000000\",\"type\":\"long\"},{\"symbol\":\"MA\",\"quantity\":\"0.113541\",\"intraday_quantity\":\"0.000000\",\"average_buy_price\":\"572.480000\",\"shares_available_for_sells\":\"0.113541\",\"shares_held_for_sells\":\"0.000000\",\"shares_held_for_stock_grants\":\"0.000000\",\"shares_held_for_options_events\":\"0.000000\",\"shares_held_for_asset_transfer\":\"0.000000\",\"shares_pending_from_options_events\":\"0.000000\",\"type\":\"long\"},{\"symbol\":\"BAC\",\"quantity\":\"1.046363\",\"intraday_quantity\":\"0.000000\",\"average_buy_price\":\"62.120000\",\"shares_available_for_sells\":\"1.046363\",\"shares_held_for_sells\":\"0.000000\",\"shares_held_for_stock_grants\":\"0.000000\",\"shares_held_for_options_events\":\"0.000000\",\"shares_held_for_asset_transfer\":\"0.000000\",\"shares_pending_from_options_events\":\"0.000000\",\"type\":\"long\"},{\"symbol\":\"SHOP\",\"quantity\":\"0.862075\",\"intraday_quantity\":\"0.000000\",\"average_buy_price\":\"144.090000\",\"shares_available_for_sells\":\"0.862075\",\"shares_held_for_sells\":\"0.000000\",\"shares_held_for_stock_grants\":\"0.000000\",\"shares_held_for_options_events\":\"0.000000\",\"shares_held_for_asset_transfer\":\"0.000000\",\"shares_pending_from_options_events\":\"0.000000\",\"type\":\"long\"},{\"symbol\":\"NESR\",\"quantity\":\"0.736516\",\"intraday_quantity\":\"0.000000\",\"average_buy_price\":\"33.740000\",\"shares_available_for_sells\":\"0.736516\",\"shares_held_for_sells\":\"0.000000\",\"shares_held_for_stock_grants\":\"0.000000\",\"shares_held_for_options_events\":\"0.000000\",\"shares_held_for_asset_transfer\":\"0.000000\",\"shares_pending_from_options_events\":\"0.000000\",\"type\":\"long\"}]},\"guide\":\"Sellable shares: use shares_available_for_sells, not quantity. Yesterday's quantity = quantity - intraday_quantity. average_buy_price is the average cost per share shown in the Robinhood app (it already reflects partial sells) \u2014 use it as the user's average cost; it may be omitted for positions still reconciling. No market price here \u2014 for current value or PnL, call get_equity_quotes and multiply by quantity. Present symbol, quantity, average_buy_price, and type when not 'long'; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "created_at_gte": "2026-08-11"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "new"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "queued"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "confirmed"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "unconfirmed"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_equity_orders",
+    "args": {
+      "account_number": "433711041",
+      "state": "partially_filled"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"orders\":[]},\"guide\":\"For dollar-based orders (dollar_based_amount populated, quantity sometimes null) describe in dollars until cumulative_quantity is meaningful. Mention placed_agent when it is not 'user'. Recover the user-facing order type from type+trigger or from price/stop_price. Present symbol, side, type, state, quantity (or dollar_based_amount), cumulative_quantity when partially filled, price for limit orders, average_price once filled, last_transaction_at (or created_at), and id when cancellation may follow; suppress other fields unless asked.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_equity_quotes",
+    "args": {
+      "symbols": [
+        "SPY",
+        "QQQ",
+        "IWM",
+        "DIA",
+        "XLK",
+        "SMH",
+        "XLF",
+        "XLE",
+        "XLI",
+        "XLV",
+        "XLY",
+        "AVGO",
+        "MA",
+        "BAC",
+        "SHOP",
+        "NESR",
+        "XOM",
+        "CRWD",
+        "RTX",
+        "UBER",
+        "CRWV",
+        "NVDA",
+        "PLTR",
+        "CEG"
+      ]
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"quote\":{\"symbol\":\"SPY\",\"last_trade_price\":\"772.080000\",\"venue_last_trade_time\":\"2026-08-11T16:02:04.17006567Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"773.030000\",\"previous_close\":\"773.030000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"772.050000\",\"venue_bid_time\":\"2026-08-11T16:02:04.123410302Z\",\"ask_price\":\"772.080000\",\"venue_ask_time\":\"2026-08-11T16:02:04.123410302Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"QQQ\",\"last_trade_price\":\"718.890000\",\"venue_last_trade_time\":\"2026-08-11T16:02:03.189773308Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"720.870000\",\"previous_close\":\"720.870000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"718.860000\",\"venue_bid_time\":\"2026-08-11T16:02:03.562550625Z\",\"ask_price\":\"718.880000\",\"venue_ask_time\":\"2026-08-11T16:02:03.562550625Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"IWM\",\"last_trade_price\":\"301.125000\",\"venue_last_trade_time\":\"2026-08-11T16:02:03.723654364Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"299.980000\",\"previous_close\":\"299.980000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"301.110000\",\"venue_bid_time\":\"2026-08-11T16:02:03.591151991Z\",\"ask_price\":\"301.130000\",\"venue_ask_time\":\"2026-08-11T16:02:03.591151991Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"DIA\",\"last_trade_price\":\"539.030000\",\"venue_last_trade_time\":\"2026-08-11T16:01:56.190484176Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"538.990000\",\"previous_close\":\"538.990000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"539.020000\",\"venue_bid_time\":\"2026-08-11T16:02:03.751378225Z\",\"ask_price\":\"539.040000\",\"venue_ask_time\":\"2026-08-11T16:02:03.751378225Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"XLK\",\"last_trade_price\":\"186.100000\",\"venue_last_trade_time\":\"2026-08-11T16:02:03.580957358Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"186.320000\",\"previous_close\":\"186.320000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"186.110000\",\"venue_bid_time\":\"2026-08-11T16:02:03.717038027Z\",\"ask_price\":\"186.130000\",\"venue_ask_time\":\"2026-08-11T16:02:03.717038027Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"SMH\",\"last_trade_price\":\"572.789500\",\"venue_last_trade_time\":\"2026-08-11T16:02:02.745676575Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"569.410000\",\"previous_close\":\"569.410000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"572.520000\",\"venue_bid_time\":\"2026-08-11T16:02:03.759269841Z\",\"ask_price\":\"572.650000\",\"venue_ask_time\":\"2026-08-11T16:02:03.759269841Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"XLF\",\"last_trade_price\":\"57.925000\",\"venue_last_trade_time\":\"2026-08-11T16:02:02.258005761Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"57.810000\",\"previous_close\":\"57.810000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"57.920000\",\"venue_bid_time\":\"2026-08-11T16:02:02.979396717Z\",\"ask_price\":\"57.930000\",\"venue_ask_time\":\"2026-08-11T16:02:02.979396717Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"XLE\",\"last_trade_price\":\"60.970000\",\"venue_last_trade_time\":\"2026-08-11T16:02:03.160084229Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"60.180000\",\"previous_close\":\"60.180000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"60.970000\",\"venue_bid_time\":\"2026-08-11T16:02:03.539468484Z\",\"ask_price\":\"60.980000\",\"venue_ask_time\":\"2026-08-11T16:02:03.539468484Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"XLI\",\"last_trade_price\":\"185.950000\",\"venue_last_trade_time\":\"2026-08-11T16:02:03.851641155Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"184.600000\",\"previous_close\":\"184.600000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"185.940000\",\"venue_bid_time\":\"2026-08-11T16:02:04.583501391Z\",\"ask_price\":\"185.950000\",\"venue_ask_time\":\"2026-08-11T16:02:04.583501391Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"XLV\",\"last_trade_price\":\"168.145000\",\"venue_last_trade_time\":\"2026-08-11T16:01:57.612057718Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"168.440000\",\"previous_close\":\"168.440000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"168.130000\",\"venue_bid_time\":\"2026-08-11T16:02:02.98717095Z\",\"ask_price\":\"168.150000\",\"venue_ask_time\":\"2026-08-11T16:02:02.98717095Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"XLY\",\"last_trade_price\":\"119.400000\",\"venue_last_trade_time\":\"2026-08-11T16:01:44.951924621Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"119.670000\",\"previous_close\":\"119.670000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"119.400000\",\"venue_bid_time\":\"2026-08-11T16:02:03.180847586Z\",\"ask_price\":\"119.410000\",\"venue_ask_time\":\"2026-08-11T16:02:03.180847586Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"AVGO\",\"last_trade_price\":\"419.450000\",\"venue_last_trade_time\":\"2026-08-11T16:02:01.631859316Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"422.400000\",\"previous_close\":\"422.400000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"419.370000\",\"venue_bid_time\":\"2026-08-11T16:02:03.755941132Z\",\"ask_price\":\"419.520000\",\"venue_ask_time\":\"2026-08-11T16:02:03.755941132Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"MA\",\"last_trade_price\":\"565.970000\",\"venue_last_trade_time\":\"2026-08-11T16:01:59.820989572Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"563.170000\",\"previous_close\":\"563.170000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"565.750000\",\"venue_bid_time\":\"2026-08-11T16:02:00.591407276Z\",\"ask_price\":\"566.100000\",\"venue_ask_time\":\"2026-08-11T16:02:00.591407276Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"BAC\",\"last_trade_price\":\"63.910000\",\"venue_last_trade_time\":\"2026-08-11T16:01:52.160248261Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"63.860000\",\"previous_close\":\"63.860000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"63.900000\",\"venue_bid_time\":\"2026-08-11T16:02:02.975301513Z\",\"ask_price\":\"63.920000\",\"venue_ask_time\":\"2026-08-11T16:02:02.975301513Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"SHOP\",\"last_trade_price\":\"152.730000\",\"venue_last_trade_time\":\"2026-08-11T16:01:54.160698442Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"155.180000\",\"previous_close\":\"155.180000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"152.680000\",\"venue_bid_time\":\"2026-08-11T16:01:59.437567559Z\",\"ask_price\":\"152.730000\",\"venue_ask_time\":\"2026-08-11T16:01:59.437567559Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"NESR\",\"last_trade_price\":\"35.415000\",\"venue_last_trade_time\":\"2026-08-11T16:01:48.576852166Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"35.790000\",\"previous_close\":\"35.790000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"35.380000\",\"venue_bid_time\":\"2026-08-11T16:01:57.82902232Z\",\"ask_price\":\"35.450000\",\"venue_ask_time\":\"2026-08-11T16:01:57.82902232Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"XOM\",\"last_trade_price\":\"160.855000\",\"venue_last_trade_time\":\"2026-08-11T16:01:54.325038621Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"159.790000\",\"previous_close\":\"159.790000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"160.860000\",\"venue_bid_time\":\"2026-08-11T16:02:03.207914325Z\",\"ask_price\":\"160.890000\",\"venue_ask_time\":\"2026-08-11T16:02:03.207914325Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"CRWD\",\"last_trade_price\":\"222.120000\",\"venue_last_trade_time\":\"2026-08-11T16:01:54.254639543Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"225.160000\",\"previous_close\":\"225.160000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"221.900000\",\"venue_bid_time\":\"2026-08-11T16:02:02.600764187Z\",\"ask_price\":\"222.130000\",\"venue_ask_time\":\"2026-08-11T16:02:02.600764187Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"RTX\",\"last_trade_price\":\"224.344300\",\"venue_last_trade_time\":\"2026-08-11T16:01:39.272686333Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"224.120000\",\"previous_close\":\"224.120000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"224.340000\",\"venue_bid_time\":\"2026-08-11T16:02:03.236378858Z\",\"ask_price\":\"224.430000\",\"venue_ask_time\":\"2026-08-11T16:02:03.236378858Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"UBER\",\"last_trade_price\":\"78.120000\",\"venue_last_trade_time\":\"2026-08-11T16:02:00.037565438Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"78.030000\",\"previous_close\":\"78.030000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"78.110000\",\"venue_bid_time\":\"2026-08-11T16:02:03.825318709Z\",\"ask_price\":\"78.120000\",\"venue_ask_time\":\"2026-08-11T16:02:03.825318709Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"CRWV\",\"last_trade_price\":\"88.720000\",\"venue_last_trade_time\":\"2026-08-11T16:02:03.358462278Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"88.190000\",\"previous_close\":\"88.190000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"88.700000\",\"venue_bid_time\":\"2026-08-11T16:02:03.195085485Z\",\"ask_price\":\"88.750000\",\"venue_ask_time\":\"2026-08-11T16:02:03.195085485Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"NVDA\",\"last_trade_price\":\"218.419900\",\"venue_last_trade_time\":\"2026-08-11T16:02:04.491424326Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"217.550000\",\"previous_close\":\"217.550000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"218.400000\",\"venue_bid_time\":\"2026-08-11T16:02:04.267333304Z\",\"ask_price\":\"218.420000\",\"venue_ask_time\":\"2026-08-11T16:02:04.267333304Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"PLTR\",\"last_trade_price\":\"173.729900\",\"venue_last_trade_time\":\"2026-08-11T16:02:03.92253579Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"175.230000\",\"previous_close\":\"175.230000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"173.680000\",\"venue_bid_time\":\"2026-08-11T16:02:03.548311894Z\",\"ask_price\":\"173.730000\",\"venue_ask_time\":\"2026-08-11T16:02:03.548311894Z\",\"has_traded\":true,\"state\":\"active\"}},{\"quote\":{\"symbol\":\"CEG\",\"last_trade_price\":\"279.330000\",\"venue_last_trade_time\":\"2026-08-11T16:02:03.876168741Z\",\"last_non_reg_trade_price\":null,\"venue_last_non_reg_trade_time\":null,\"adjusted_previous_close\":\"270.430000\",\"previous_close\":\"270.430000\",\"previous_close_date\":\"2026-08-10\",\"bid_price\":\"279.210000\",\"venue_bid_time\":\"2026-08-11T16:02:03.341772637Z\",\"ask_price\":\"279.350000\",\"venue_ask_time\":\"2026-08-11T16:02:03.341772637Z\",\"has_traded\":true,\"state\":\"active\"}}],\"closes_error\":\"closes omitted: this tool returns the official close for up to 20 symbols per call; quotes are still included for all 24 requested symbols\"},\"guide\":\"Each entry in results pairs the live quote with the official prior-session close for the same symbol. Current price: pick whichever of quote.last_trade_price / quote.last_non_reg_trade_price has the more recent timestamp, then verify that timestamp is recent before calling it \\\"current\\\" \u2014 otherwise phrase as \\\"as of \\u003ctime\\u003e\\\". Daily change uses quote.adjusted_previous_close. \\\"Yesterday's close\\\" uses results[].close.price (official settled close); when a result is missing close \u2014 either closes_error is set tool-wide, or this symbol had no close in an otherwise-successful batch \u2014 fall back to quote.previous_close and tell the user the official close lookup is unavailable. Drop bid/ask when zero. Surface has_traded=false or any non-'active' state before quoting a price.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_equity_historicals",
+    "args": {
+      "symbols": [
+        "SPY",
+        "QQQ",
+        "IWM",
+        "DIA",
+        "XLK",
+        "SMH",
+        "XLF",
+        "XLE",
+        "XLI",
+        "XLV",
+        "AVGO",
+        "MA",
+        "BAC",
+        "SHOP",
+        "NESR",
+        "XOM",
+        "CRWD",
+        "RTX",
+        "UBER"
+      ],
+      "start_time": "2026-05-01T00:00:00Z",
+      "interval": "day",
+      "bounds": "regular"
+    },
+    "isError": false,
+    "content": [
+      "too many symbols for get_equity_historicals (max 10, got 19); split your request into smaller batches"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_equity_historicals",
+    "args": {
+      "symbols": [
+        "SPY",
+        "QQQ",
+        "IWM",
+        "AVGO",
+        "MA",
+        "BAC",
+        "SHOP",
+        "NESR",
+        "XOM",
+        "CRWD",
+        "RTX",
+        "UBER"
+      ],
+      "start_time": "2026-08-11T13:30:00Z",
+      "interval": "5minute",
+      "bounds": "regular"
+    },
+    "isError": false,
+    "content": [
+      "too many symbols for get_equity_historicals (max 10, got 12); split your request into smaller batches"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_equity_fundamentals",
+    "args": {
+      "symbols": [
+        "AVGO",
+        "MA",
+        "BAC",
+        "SHOP",
+        "NESR",
+        "XOM",
+        "CRWD",
+        "RTX",
+        "UBER",
+        "CRWV",
+        "NVDA",
+        "PLTR",
+        "CEG"
+      ]
+    },
+    "isError": false,
+    "content": [
+      "too many symbols (max 10, got 13)"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "AVGO"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"AVGO\",\"year\":2025,\"quarter\":1,\"eps\":{\"estimate\":\"1.490000\",\"actual\":\"1.600000\"},\"report\":{\"date\":\"2025-03-06\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"AVGO\",\"year\":2025,\"quarter\":2,\"eps\":{\"estimate\":\"1.570000\",\"actual\":\"1.580000\"},\"report\":{\"date\":\"2025-06-05\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"AVGO\",\"year\":2025,\"quarter\":3,\"eps\":{\"estimate\":\"1.540000\",\"actual\":\"1.690000\"},\"report\":{\"date\":\"2025-09-04\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"AVGO\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"1.720000\",\"actual\":\"1.950000\"},\"report\":{\"date\":\"2025-12-11\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"AVGO\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"1.880000\",\"actual\":\"2.050000\"},\"report\":{\"date\":\"2026-03-04\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"AVGO\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"2.320000\",\"actual\":\"2.440000\"},\"report\":{\"date\":\"2026-06-03\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"AVGO\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"3.160000\",\"actual\":null},\"report\":{\"date\":\"2026-09-02\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"AVGO\",\"year\":2026,\"quarter\":4,\"eps\":{\"estimate\":\"3.790000\",\"actual\":null},\"report\":{\"date\":\"2026-12-10\",\"timing\":\"pm\",\"verified\":false}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "MA"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"MA\",\"year\":2024,\"quarter\":4,\"eps\":{\"estimate\":\"3.690000\",\"actual\":\"3.820000\"},\"report\":{\"date\":\"2025-01-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"MA\",\"year\":2025,\"quarter\":1,\"eps\":{\"estimate\":\"3.570000\",\"actual\":\"3.730000\"},\"report\":{\"date\":\"2025-05-01\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"MA\",\"year\":2025,\"quarter\":2,\"eps\":{\"estimate\":\"4.030000\",\"actual\":\"4.150000\"},\"report\":{\"date\":\"2025-07-31\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"MA\",\"year\":2025,\"quarter\":3,\"eps\":{\"estimate\":\"4.310000\",\"actual\":\"4.380000\"},\"report\":{\"date\":\"2025-10-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"MA\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"4.220000\",\"actual\":\"4.760000\"},\"report\":{\"date\":\"2026-01-29\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"MA\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"4.410000\",\"actual\":\"4.600000\"},\"report\":{\"date\":\"2026-04-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"MA\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"4.760000\",\"actual\":\"5.040000\"},\"report\":{\"date\":\"2026-07-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"MA\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"5.140000\",\"actual\":null},\"report\":{\"date\":\"2026-10-29\",\"timing\":\"am\",\"verified\":false}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "BAC"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"BAC\",\"year\":2024,\"quarter\":4,\"eps\":{\"estimate\":\"0.770000\",\"actual\":\"0.820000\"},\"report\":{\"date\":\"2025-01-16\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"BAC\",\"year\":2025,\"quarter\":1,\"eps\":{\"estimate\":\"0.820000\",\"actual\":\"0.900000\"},\"report\":{\"date\":\"2025-04-15\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"BAC\",\"year\":2025,\"quarter\":2,\"eps\":{\"estimate\":\"0.870000\",\"actual\":\"0.890000\"},\"report\":{\"date\":\"2025-07-16\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"BAC\",\"year\":2025,\"quarter\":3,\"eps\":{\"estimate\":\"0.940000\",\"actual\":\"1.060000\"},\"report\":{\"date\":\"2025-10-15\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"BAC\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"0.960000\",\"actual\":\"0.980000\"},\"report\":{\"date\":\"2026-01-14\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"BAC\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"1.010000\",\"actual\":\"1.110000\"},\"report\":{\"date\":\"2026-04-15\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"BAC\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"1.110000\",\"actual\":\"1.210000\"},\"report\":{\"date\":\"2026-07-14\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"BAC\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"1.190000\",\"actual\":null},\"report\":{\"date\":\"2026-10-14\",\"timing\":\"am\",\"verified\":true}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "SHOP"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"SHOP\",\"year\":2024,\"quarter\":4,\"eps\":{\"estimate\":\"0.430000\",\"actual\":\"0.440000\"},\"report\":{\"date\":\"2025-02-11\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"SHOP\",\"year\":2025,\"quarter\":1,\"eps\":{\"estimate\":\"0.260000\",\"actual\":\"0.250000\"},\"report\":{\"date\":\"2025-05-08\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"SHOP\",\"year\":2025,\"quarter\":2,\"eps\":{\"estimate\":\"0.250000\",\"actual\":\"0.350000\"},\"report\":{\"date\":\"2025-08-06\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"SHOP\",\"year\":2025,\"quarter\":3,\"eps\":{\"estimate\":\"0.300000\",\"actual\":\"0.340000\"},\"report\":{\"date\":\"2025-11-04\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"SHOP\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"0.470000\",\"actual\":\"0.480000\"},\"report\":{\"date\":\"2026-02-11\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"SHOP\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"0.310000\",\"actual\":\"0.360000\"},\"report\":{\"date\":\"2026-05-05\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"SHOP\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"0.370000\",\"actual\":\"0.420000\"},\"report\":{\"date\":\"2026-08-05\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"SHOP\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"0.430000\",\"actual\":null},\"report\":{\"date\":\"2026-11-03\",\"timing\":\"am\",\"verified\":false}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "NESR"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"NESR\",\"year\":2024,\"quarter\":4,\"eps\":{\"estimate\":\"0.250000\",\"actual\":\"0.300000\"},\"report\":{\"date\":\"2025-03-12\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"NESR\",\"year\":2025,\"quarter\":1,\"eps\":{\"estimate\":\"0.200000\",\"actual\":\"0.140000\"},\"report\":{\"date\":\"2025-06-03\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"NESR\",\"year\":2025,\"quarter\":2,\"eps\":{\"estimate\":\"0.190000\",\"actual\":\"0.210000\"},\"report\":{\"date\":\"2025-08-20\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"NESR\",\"year\":2025,\"quarter\":3,\"eps\":{\"estimate\":\"0.150000\",\"actual\":\"0.160000\"},\"report\":{\"date\":\"2025-11-13\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"NESR\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"0.260000\",\"actual\":\"0.320000\"},\"report\":{\"date\":\"2026-02-17\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"NESR\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"0.210000\",\"actual\":\"0.260000\"},\"report\":{\"date\":\"2026-05-11\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"NESR\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"0.350000\",\"actual\":\"0.440000\"},\"report\":{\"date\":\"2026-08-10\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"NESR\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"0.480000\",\"actual\":null},\"report\":{\"date\":\"2026-11-12\",\"timing\":\"am\",\"verified\":false}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "XOM"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"XOM\",\"year\":2024,\"quarter\":4,\"eps\":{\"estimate\":\"1.550000\",\"actual\":\"1.670000\"},\"report\":{\"date\":\"2025-01-31\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"XOM\",\"year\":2025,\"quarter\":1,\"eps\":{\"estimate\":\"1.700000\",\"actual\":\"1.760000\"},\"report\":{\"date\":\"2025-05-02\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"XOM\",\"year\":2025,\"quarter\":2,\"eps\":{\"estimate\":\"1.530000\",\"actual\":\"1.640000\"},\"report\":{\"date\":\"2025-08-01\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"XOM\",\"year\":2025,\"quarter\":3,\"eps\":{\"estimate\":\"1.810000\",\"actual\":\"1.880000\"},\"report\":{\"date\":\"2025-10-31\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"XOM\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"1.690000\",\"actual\":\"1.710000\"},\"report\":{\"date\":\"2026-01-30\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"XOM\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"1.020000\",\"actual\":\"1.160000\"},\"report\":{\"date\":\"2026-05-01\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"XOM\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"3.760000\",\"actual\":\"3.520000\"},\"report\":{\"date\":\"2026-07-31\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"XOM\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"3.540000\",\"actual\":null},\"report\":{\"date\":\"2026-10-30\",\"timing\":\"am\",\"verified\":false}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "CRWD"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"CRWD\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"0.860000\",\"actual\":\"1.030000\"},\"report\":{\"date\":\"2025-03-04\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"CRWD\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"0.660000\",\"actual\":\"0.730000\"},\"report\":{\"date\":\"2025-06-03\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"CRWD\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"0.420000\",\"actual\":\"0.930000\"},\"report\":{\"date\":\"2025-08-27\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"CRWD\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"0.590000\",\"actual\":\"0.960000\"},\"report\":{\"date\":\"2025-12-02\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"CRWD\",\"year\":2026,\"quarter\":4,\"eps\":{\"estimate\":\"0.740000\",\"actual\":\"1.120000\"},\"report\":{\"date\":\"2026-03-03\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"CRWD\",\"year\":2027,\"quarter\":1,\"eps\":{\"estimate\":\"0.880000\",\"actual\":\"1.100000\"},\"report\":{\"date\":\"2026-06-03\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"CRWD\",\"year\":2027,\"quarter\":2,\"eps\":{\"estimate\":\"0.240000\",\"actual\":null},\"report\":{\"date\":\"2026-08-26\",\"timing\":\"pm\",\"verified\":true}},{\"symbol\":\"CRWD\",\"year\":2027,\"quarter\":3,\"eps\":{\"estimate\":\"0.260000\",\"actual\":null},\"report\":{\"date\":\"2026-12-01\",\"timing\":\"pm\",\"verified\":false}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "RTX"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"RTX\",\"year\":2024,\"quarter\":4,\"eps\":{\"estimate\":\"1.380000\",\"actual\":\"1.540000\"},\"report\":{\"date\":\"2025-01-28\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"RTX\",\"year\":2025,\"quarter\":1,\"eps\":{\"estimate\":\"1.350000\",\"actual\":\"1.470000\"},\"report\":{\"date\":\"2025-04-22\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"RTX\",\"year\":2025,\"quarter\":2,\"eps\":{\"estimate\":\"1.440000\",\"actual\":\"1.560000\"},\"report\":{\"date\":\"2025-07-22\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"RTX\",\"year\":2025,\"quarter\":3,\"eps\":{\"estimate\":\"1.410000\",\"actual\":\"1.700000\"},\"report\":{\"date\":\"2025-10-21\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"RTX\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"1.470000\",\"actual\":\"1.550000\"},\"report\":{\"date\":\"2026-01-27\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"RTX\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"1.520000\",\"actual\":\"1.780000\"},\"report\":{\"date\":\"2026-04-21\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"RTX\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"1.660000\",\"actual\":\"1.890000\"},\"report\":{\"date\":\"2026-07-23\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"RTX\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"1.760000\",\"actual\":null},\"report\":{\"date\":\"2026-10-20\",\"timing\":\"am\",\"verified\":false}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_earnings_results",
+    "args": {
+      "symbol": "UBER"
+    },
+    "isError": false,
+    "content": [
+      "{\"data\":{\"results\":[{\"symbol\":\"UBER\",\"year\":2024,\"quarter\":4,\"eps\":{\"estimate\":\"0.480000\",\"actual\":\"0.230000\"},\"report\":{\"date\":\"2025-02-05\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"UBER\",\"year\":2025,\"quarter\":1,\"eps\":{\"estimate\":\"0.500000\",\"actual\":\"0.830000\"},\"report\":{\"date\":\"2025-05-07\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"UBER\",\"year\":2025,\"quarter\":2,\"eps\":{\"estimate\":\"0.620000\",\"actual\":\"0.630000\"},\"report\":{\"date\":\"2025-08-06\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"UBER\",\"year\":2025,\"quarter\":3,\"eps\":{\"estimate\":\"0.680000\",\"actual\":\"0.810000\"},\"report\":{\"date\":\"2025-11-04\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"UBER\",\"year\":2025,\"quarter\":4,\"eps\":{\"estimate\":\"0.780000\",\"actual\":\"0.710000\"},\"report\":{\"date\":\"2026-02-04\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"UBER\",\"year\":2026,\"quarter\":1,\"eps\":{\"estimate\":\"0.700000\",\"actual\":\"0.720000\"},\"report\":{\"date\":\"2026-05-06\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"UBER\",\"year\":2026,\"quarter\":2,\"eps\":{\"estimate\":\"0.830000\",\"actual\":\"0.810000\"},\"report\":{\"date\":\"2026-08-05\",\"timing\":\"am\",\"verified\":true}},{\"symbol\":\"UBER\",\"year\":2026,\"quarter\":3,\"eps\":{\"estimate\":\"0.940000\",\"actual\":null},\"report\":{\"date\":\"2026-11-03\",\"timing\":\"am\",\"verified\":false}}]},\"guide\":\"Entries are sorted ascending \u2014 historical quarters first, most recent / upcoming quarter last. Distinguish \\\"upcoming\\\" from \\\"reported\\\" by eps.actual: null means the company has not yet reported. For \\\"will earnings happen by date X\\\" questions, use report.date. When report.verified is false, present the date as tentative rather than confirmed. If upstream cannot resolve the symbol (typo, delisted, non-equity), the response carries an empty results array and the symbol appears in not_found \u2014 surface that as \\\"no data for X\\\" rather than treating it as a tool failure. This tool does NOT return an \\\"expected move\\\" \u2014 pair with options data for implied-volatility-based moves.\"}"
+    ],
+    "structuredContent": null
+  },
+  {
+    "tool": "get_scans",
+    "args": {},
+    "isError": false,
+    "content": [
+      "{\"data\":{\"scans\":[{\"scan_id\":\"10497ef1-584d-4bce-b953-1566d14c4336\",\"title\":\"Agentic 1041 Afternoon Upcoming Earnings 2026-07-17\",\"filter_summary\":[{\"filter_type\":\"Earnings date\",\"filter_type_enum\":\"FILTER_TYPE_EARNINGS_DATE\",\"predicate\":\"BETWEEN\",\"values\":[\"0\",\"7\"],\"expression\":\"fundamental.earningsYmd\"},{\"filter_type\":\"Asset type\",\"filter_type_enum\":\"FILTER_TYPE_INSTRUMENT_TYPE\",\"predicate\":\"ANY_OF\",\"values\":[\"STOCK\"],\"expression\":\"type\"}],\"column_count\":10,\"columns\":[{\"display_name\":\"Symbol\",\"visible\":true,\"order\":0,\"expression\":\"symbol\"},{\"display_name\":\"Name\",\"visible\":true,\"order\":1,\"expression\":\"description\"},{\"display_name\":\"Net change\",\"visible\":true,\"order\":2,\"expression\":\"changeFromCloseAllDay(candlePeriod=\\\"1d\\\")\"},{\"display_name\":\"% Change\",\"visible\":true,\"order\":3,\"expression\":\"changeFromCloseAllDayRatio(candlePeriod=\\\"1d\\\")\"},{\"display_name\":\"Last\",\"visible\":true,\"order\":4,\"expression\":\"tradeAllDay.price\"},{\"display_name\":\"Market cap\",\"visible\":true,\"order\":5,\"expression\":\"fundamental.marketCap\"},{\"display_name\":\"Volume\",\"visible\":true,\"order\":6,\"expression\":\"dayVolume\"},{\"display_name\":\"Relative volume\",\"visible\":true,\"order\":7,\"expression\":\"dayVolume / volumeAvg(candlePeriod=\\\"1d\\\", session=\\\"all\\\")\"},{\"display_name\":\"Earnings date\",\"visible\":true,\"order\":8,\"expression\":\"fundamental.earningsYmd\"},{\"display_name\":\"Asset type\",\"visible\":true,\"order\":9,\"expression\":\"type\"}],\"sorting\":\"Earnings date desc\",\"cortex_managed\":false},{\"scan_id\":\"8b91f5ef-1f90-4dea-8115-35238c26dfc4\",\"title\":\"Agentic 1041 Afternoon Daily Gainers 2026-07-17\",\"filter_summary\":[{\"filter_type\":\"Asset type\",\"filter_type_enum\":\"FILTER_TYPE_INSTRUMENT_TYPE\",\"predicate\":\"ANY_OF\",\"values\":[\"STOCK\"],\"expression\":\"type\"}],\"column_count\":9,\"columns\":[{\"display_name\":\"Symbol\",\"visible\":true,\"order\":0,\"expression\":\"symbol\"},{\"display_name\":\"Name\",\"visible\":true,\"order\":1,\"expression\":\"description\"},{\"display_name\":\"Net change\",\"visible\":true,\"order\":2,\"expression\":\"changeFromCloseAllDay(candlePeriod=\\\"1d\\\")\"},{\"display_name\":\"% Change\",\"visible\":true,\"order\":3,\"expression\":\"changeFromCloseAllDayRatio(candlePeriod=\\\"1d\\\")\"},{\"display_name\":\"Last\",\"visible\":true,\"order\":4,\"expression\":\"tradeAllDay.price\"},{\"display_name\":\"Market cap\",\"visible\":true,\"order\":5,\"expression\":\"fundamental.marketCap\"},{\"display_name\":\"Volume\",\"visible\":true,\"order\":6,\"expression\":\"dayVolume\"},{\"display_name\":\"Relative volume\",\"visible\":true,\"order\":7,\"expression\":\"dayVolume / volumeAvg(candlePeriod=\\\"1d\\\", session=\\\"all\\\")\"},{\"display_name\":\"Asset type\",\"visible\":true,\"order\":8,\"expression\":\"type\"}],\"sorting\":\"% Change desc\",\"cortex_managed\":false}]},\"guide\":\"How to interpret the response:\\n- scans is an array, newest first. Empty when the user has no saved scans \u2014 offer to create one with create_scan if they ask.\\n- filter_summary on each scan describes the active filters. Use filter_type (e.g. \\\"RSI\\\"), predicate, values and optional interval/length to tell the user what the scan does. To re-send a filter to update_scan_filters or create_scan, copy filter_type_enum \u2014 not filter_type, which is a user-editable column label and will be rejected.\\n- A filter whose filter_type_enum is FILTER_TYPE_CUSTOM is defined by its expression, and no write tool can express one yet. If the user asks to change a scan that has one, warn them that filter cannot be preserved instead of silently dropping it.\\n- cortex_managed: true means the scan was created or modified by Cortex inside Legend. Tell the user it's read-only via MCP if they ask to modify it. Suggest creating a fresh scan via create_scan as the alternative.\\n- columns lists every configured column, hidden ones included; column_count counts only the visible ones. When the user asks to re-sort a scan, take update_scan_config's sorting_column verbatim from a columns[].display_name \u2014 never guess it.\\n- sorting describes the scan's current sort (e.g. \\\"Volume desc\\\"). Mention it when summarizing how results would be ordered.\\n- Use scan_id (not title) when calling run_scan, update_scan_filters, or update_scan_config.\\n\\nWhen presenting scans to the user:\\n- Render as a numbered list with the title prominent and a short summary of filters.\\n- Mark Cortex-managed scans clearly so the user knows they're read-only here.\\n- If the user wants to see results, ask which scan and call run_scan with that scan_id.\"}"
+    ],
+    "structuredContent": null
+  }
+]

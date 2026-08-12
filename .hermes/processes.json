@@ -128,5 +128,25 @@
     "watcher_interval": 0,
     "notify_on_complete": false,
     "watch_patterns": []
+  },
+  {
+    "session_id": "proc_64c6a9b3d1f6",
+    "command": "npm run dev",
+    "pid": 517872,
+    "pid_scope": "host",
+    "host_start_time": 710741696,
+    "cwd": "/opt/data/HeRmEz/projects/wornly",
+    "started_at": 1786419053.338237,
+    "task_id": "default",
+    "session_key": "agent:main:discord:group:1523247688689258586:219376861866754049",
+    "watcher_platform": "",
+    "watcher_chat_id": "",
+    "watcher_user_id": "",
+    "watcher_user_name": "",
+    "watcher_thread_id": "",
+    "watcher_message_id": "",
+    "watcher_interval": 0,
+    "notify_on_complete": false,
+    "watch_patterns": []
   }
 ]
