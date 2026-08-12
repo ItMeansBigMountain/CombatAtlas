@@ -11,3 +11,11 @@
 !pr-review-pending/.gitkeep
 !in-progress/
 !in-progress/.gitkeep
+
+# Registered submodule gitlinks are durable parent-repository metadata.
+!completed/BisLoadouts
+!completed/DeadmanBreachTimer
+!in-progress/ClanWarBoard
+!pr-review-pending/WhosGrindingClanPanel
+!services/
+!services/clan-war-board-service
