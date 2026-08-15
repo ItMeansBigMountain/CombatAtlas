@@ -20,17 +20,17 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 87
+        "completed": 88
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
-      "next_run_at": "2026-08-13T03:00:00+00:00",
-      "last_run_at": "2026-08-11T03:01:14.302225+00:00",
+      "next_run_at": "2026-08-16T03:00:00+00:00",
+      "last_run_at": "2026-08-12T03:01:21.484705+00:00",
       "last_status": "error",
-      "last_error": "Script exited with code 1\nstderr:\nwarning: adding embedded git repository: projects/security-research-source-monorepo\nhint: You've added another git repository inside your current repository.\nhint: Clones of the outer repository will not contain the contents of\nhint: the embedded repository and will not know how to obtain it.\nhint: If you meant to add a submodule, use:\nhint:\nhint: \tgit submodule add <url> projects/security-research-source-monorepo\nhint:\nhint: If you added this path by mistake, you can remove it from the\nhint: index with:\nhint:\nhint: \tgit rm --cached projects/security-research-source-monorepo\nhint:\nhint: See \"git help submodule\" for more information.\nhint: Disable this message with \"git config advice.addEmbeddedRepo false\"\nwarning: adding embedded git repository: projects/wornly\nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [rejected]            main -> main (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'\nhint: Updates were rejected because the tip of your current branch is behind\nhint: its remote counterpart. If you want to integrate the remote changes,\nhint: use 'git pull' before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.",
+      "last_error": "Script exited with code 1\nstderr:\nTo https://github.com/ItMeansBigMountain/HeRmEz.git\n ! [rejected]            main -> main (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/ItMeansBigMountain/HeRmEz.git'\nhint: Updates were rejected because the tip of your current branch is behind\nhint: its remote counterpart. If you want to integrate the remote changes,\nhint: use 'git pull' before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.",
       "last_delivery_error": null,
       "deliver": "discord:1523247688689258586",
       "origin": null,
@@ -41,7 +41,7 @@
     {
       "id": "92f873723241",
       "name": "Morning operator report",
-      "prompt": "You are doing the user's proactive daily morning stand-up/operator report in Discord.\n\nUse the loaded `operator-morning-reports` skill as a tone guide, but apply the user's latest corrections below. Keep it laconic, skimmable, Discord-native, no Markdown tables, no long essays.\n\nA pre-run script may inject Google Workspace context above this prompt. Treat that injected output as read-only source material from these five profiles:\n- `hermes-agent` / trapiistan@gmail.com \u2014 Hermes/YouTube/operator account\n- `personal-main` / Affan.fareed@gmail.com \u2014 personal main, read-focused\n- `personal-secondary` / fareed320@gmail.com \u2014 personal secondary, read-focused\n- `classicalechos` / classicalechos@gmail.com \u2014 Classical Echos/content lane\n- `burner` / laflametoast@gmail.com \u2014 low-stakes/burner account\n\nFormatting requirements:\n- Use clean bullets with nested sub-bullets instead of comma-heavy bullets.\n- Prefer at-a-glance structure:\n  - Main point\n    - Detail\n    - Why it matters / action\n- Do not include generic filler sections.\n- Do NOT include a section named **Capability / trend radar**. The user explicitly called that section nonsense and wants it removed.\n- Do NOT include generic agent/automation advice like \"build small agents that do boring repeatable work\" unless it is tied to a concrete active task or blocker from the day's actual context.\n- Do not include the 14-Day Challenge Check-In, 14-day challenge boxes, one-second-rule tracker, or `done: meditation...` reply prompt anymore. The user explicitly removed that section.\n\nInclude a compact **Google Workspace pulse** inside the Work source / operating pulse section. Summarize high-signal updates from all accounts: unread or important Gmail, calendar events, useful Drive/Docs/Sheets movement, deadlines, receipts/renewals, opportunities, and weird useful AI/content/tooling leads. Group by profile only when useful; otherwise consolidate into:\n- Needs attention\n- Calendar\n- Ops/admin\n- Interesting/source material\n- Email cleanup candidates\n\nEmail-specific rules for the report:\n- Prioritize billing/charges/receipts, Chase, Apple receipts/Card, cloud services, AI APIs, Robinhood, Landing only for active stay/rent-impacting logistics, Ticketmaster ticket/venue info, myQ/Chamberlain garage alerts, GitGuardian/security, official/vehicle renewal notices, and similar life/admin signals.\n- TLDR is useful for latest news, but only use/keep the feed from `fareed320@gmail.com`; TLDR on other accounts is duplicate cleanup candidate.\n- Kino Body/Kinobody and Daily Stoic are approved faceless-video source senders. If unread items from these senders appear, flag them as `faceless video source queued/eligible`, not as a personal \"needs attention\" item.\n- Grammarly Insights is interesting self-metrics/profile data: summarize what it says about the user's writing/communication habits and connect it to his personal operating profile.\n- For TLDR, Kino Body/Kinobody, Daily Stoic, and Grammarly Insights: summarize through the lens of the user's known interests/profile, draw appealing personal insights, then list each as a newsletter cleanup candidate with sender, category, and title. Since the user has approved junk-email cleanup, clearly separate already-approved junk categories from any newsletter/source emails that still need review before deletion.\n- Junk categories approved for cleanup include FoundersCard, Yieldi, Crunch, Higgsfield, Fundrise, Kling AI, Instagram notifications, Lumen marketing, Chess.com nags, YEEZY, City Experiences, LELO, GNC, and generic consumer sales/promotional emails.\n- Include an **Email priority + cleanup** mini-section every morning with concise nested bullets:\n  - Priority emails\n  - Interesting/source emails\n  - Cleanup actions\n  - Needs review\n- Do not actually delete newsletter/source emails unless they have already been used for the requested video pipeline and the upload has been verified, or the user has explicitly approved that sender/category as junk.\n\nCalendar/personal context:\n- For any Jared coding prep/event, mention that Jared likes Codewars.com and SoloLearn.com.\n  - Completing modules gives him a nice rush of accomplishment.\n  - Suggest those as prep/context only if relevant to the day's calendar.\n\nHard rules:\n- Do not send emails, reply, create/delete calendar events, share/edit/delete Drive files, or modify Docs/Sheets without explicit user approval in a separate user request.\n- Personal accounts are read-first; never send from `personal-main` or `personal-secondary` without approval of the exact message.\n- Do not include raw secrets, recovery-code filenames, token contents, or credential-looking file names. If credential/recovery-like items are detected, mention only that sensitive Drive items were hidden.\n- If Google context is unavailable or an API errors, state the blocker briefly and continue the rest of the report.\n\nReport sections to include:\n- Top line\n- Work source / operating pulse\n- Email priority + cleanup\n- Calendar / prep notes when relevant\n- Chicago local pulse\n- Market pulse\n- Google search / social pulse, only if source-backed and concrete\n- AI + coding news, only if source-backed and concrete\n- Interesting item(s), only if concrete\n- Numerology, if useful/short\n- Daily challenge\n- One big priority prompt\n- Hard truth / leverage move\n\nDo not ask questions; final response is delivered to Discord by cron.",
+      "prompt": "You are doing the user's proactive daily morning stand-up/operator report in Discord.\n\nUse the loaded `operator-morning-reports` skill as a tone guide, but apply the user's latest corrections below. Keep it laconic, skimmable, Discord-native, no Markdown tables, no long essays.\n\nA pre-run script may inject Google Workspace context above this prompt. Treat that injected output as read-only source material from these five profiles:\n- `hermes-agent` / trapiistan@gmail.com — Hermes/YouTube/operator account\n- `personal-main` / Affan.fareed@gmail.com — personal main, read-focused\n- `personal-secondary` / fareed320@gmail.com — personal secondary, read-focused\n- `classicalechos` / classicalechos@gmail.com — Classical Echos/content lane\n- `burner` / laflametoast@gmail.com — low-stakes/burner account\n\nFormatting requirements:\n- Use clean bullets with nested sub-bullets instead of comma-heavy bullets.\n- Prefer at-a-glance structure:\n  - Main point\n    - Detail\n    - Why it matters / action\n- Do not include generic filler sections.\n- Do NOT include a section named **Capability / trend radar**. The user explicitly called that section nonsense and wants it removed.\n- Do NOT include generic agent/automation advice like \"build small agents that do boring repeatable work\" unless it is tied to a concrete active task or blocker from the day's actual context.\n- Do not include the 14-Day Challenge Check-In, 14-day challenge boxes, one-second-rule tracker, or `done: meditation...` reply prompt anymore. The user explicitly removed that section.\n\nInclude a compact **Google Workspace pulse** inside the Work source / operating pulse section. Summarize high-signal updates from all accounts: unread or important Gmail, calendar events, useful Drive/Docs/Sheets movement, deadlines, receipts/renewals, opportunities, and weird useful AI/content/tooling leads. Group by profile only when useful; otherwise consolidate into:\n- Needs attention\n- Calendar\n- Ops/admin\n- Interesting/source material\n- Email cleanup candidates\n\nEmail-specific rules for the report:\n- Prioritize billing/charges/receipts, Chase, Apple receipts/Card, cloud services, AI APIs, Robinhood, Landing only for active stay/rent-impacting logistics, Ticketmaster ticket/venue info, myQ/Chamberlain garage alerts, GitGuardian/security, official/vehicle renewal notices, and similar life/admin signals.\n- TLDR is useful for latest news, but only use/keep the feed from `fareed320@gmail.com`; TLDR on other accounts is duplicate cleanup candidate.\n- Kino Body/Kinobody and Daily Stoic are approved faceless-video source senders. If unread items from these senders appear, flag them as `faceless video source queued/eligible`, not as a personal \"needs attention\" item.\n- Grammarly Insights is interesting self-metrics/profile data: summarize what it says about the user's writing/communication habits and connect it to his personal operating profile.\n- For TLDR, Kino Body/Kinobody, Daily Stoic, and Grammarly Insights: summarize through the lens of the user's known interests/profile, draw appealing personal insights, then list each as a newsletter cleanup candidate with sender, category, and title. Since the user has approved junk-email cleanup, clearly separate already-approved junk categories from any newsletter/source emails that still need review before deletion.\n- Junk categories approved for cleanup include FoundersCard, Yieldi, Crunch, Higgsfield, Fundrise, Kling AI, Instagram notifications, Lumen marketing, Chess.com nags, YEEZY, City Experiences, LELO, GNC, and generic consumer sales/promotional emails.\n- Include an **Email priority + cleanup** mini-section every morning with concise nested bullets:\n  - Priority emails\n  - Interesting/source emails\n  - Cleanup actions\n  - Needs review\n- Do not actually delete newsletter/source emails unless they have already been used for the requested video pipeline and the upload has been verified, or the user has explicitly approved that sender/category as junk.\n\nCalendar/personal context:\n- For any Jared coding prep/event, mention that Jared likes Codewars.com and SoloLearn.com.\n  - Completing modules gives him a nice rush of accomplishment.\n  - Suggest those as prep/context only if relevant to the day's calendar.\n\nHard rules:\n- Do not send emails, reply, create/delete calendar events, share/edit/delete Drive files, or modify Docs/Sheets without explicit user approval in a separate user request.\n- Personal accounts are read-first; never send from `personal-main` or `personal-secondary` without approval of the exact message.\n- Do not include raw secrets, recovery-code filenames, token contents, or credential-looking file names. If credential/recovery-like items are detected, mention only that sensitive Drive items were hidden.\n- If Google context is unavailable or an API errors, state the blocker briefly and continue the rest of the report.\n\nReport sections to include:\n- Top line\n- Work source / operating pulse\n- Email priority + cleanup\n- Calendar / prep notes when relevant\n- Chicago local pulse\n- Market pulse\n- Google search / social pulse, only if source-backed and concrete\n- AI + coding news, only if source-backed and concrete\n- Interesting item(s), only if concrete\n- Numerology, if useful/short\n- Daily challenge\n- One big priority prompt\n- Hard truth / leverage move\n\nDo not ask questions; final response is delivered to Discord by cron.",
       "skills": [
         "google-workspace"
       ],
@@ -60,15 +60,15 @@
       "schedule_display": "30 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 86
+        "completed": 87
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-05-21T01:20:05.320432+00:00",
-      "next_run_at": "2026-08-12T13:30:00+00:00",
-      "last_run_at": "2026-08-11T13:31:48.797969+00:00",
+      "next_run_at": "2026-08-16T13:30:00+00:00",
+      "last_run_at": "2026-08-12T13:31:35.434210+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -112,15 +112,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 269
+        "completed": 272
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T02:32:26.430124+00:00",
-      "next_run_at": "2026-08-12T05:38:56.462110+00:00",
-      "last_run_at": "2026-08-11T23:38:56.462110+00:00",
+      "next_run_at": "2026-08-16T01:11:23.378289+00:00",
+      "last_run_at": "2026-08-12T17:50:51.519662+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -141,7 +141,7 @@
     },
     {
       "id": "c9e81ae638fe",
-      "name": "Daily Stoic email \u2192 A F faceless video backlog processor",
+      "name": "Daily Stoic email → A F faceless video backlog processor",
       "prompt": "Process DAILY STOIC EMAILS ONLY into faceless YouTube videos. Run /opt/data/scripts/run_faceless_video.sh from /opt/data/HeRmEz/projects/faceless-youtube-channel. One untrashed, not-yet-uploaded Daily Stoic Gmail message becomes one public video on A F (fareed320). Never process TLDR, Kino, or other newsletters in this lane. After a verified YouTube video_id, trash that source email and delete all generated media immediately. On any render/upload/auth/quota failure, leave the source email untrashed, write a durable BACKLOG_DAILY_STOIC record identifying profile+message_id and the blocker, and continue other messages; the email is the canonical remake source if the media cleanup cron later deletes partial media. Preserve backlog records and upload ledgers. Report uploaded URLs, backlog message IDs/blockers, remaining source count, and cleanup result. Load the attached skills and honor A F channel identity UCX_nUA3Yr9VR884DNanyMYA.",
       "skills": [
         "social-video-cron-growth-loop",
@@ -169,7 +169,7 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:55:03.480224+00:00",
-      "next_run_at": "2026-08-13T01:45:00+00:00",
+      "next_run_at": "2026-08-16T01:45:00+00:00",
       "last_run_at": "2026-08-12T02:03:59.628991+00:00",
       "last_status": "ok",
       "last_error": null,
@@ -221,7 +221,7 @@
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-04T12:58:58.087889+00:00",
-      "next_run_at": "2026-08-13T01:00:00+00:00",
+      "next_run_at": "2026-08-16T01:00:00+00:00",
       "last_run_at": "2026-08-12T01:04:48.220084+00:00",
       "last_status": "ok",
       "last_error": null,
@@ -261,15 +261,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 7223
+        "completed": 7328
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-08-12T03:08:49.509890+00:00",
-      "last_run_at": "2026-08-12T02:58:49.509890+00:00",
+      "next_run_at": "2026-08-15T19:21:26.348758+00:00",
+      "last_run_at": "2026-08-15T19:11:26.348758+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -307,15 +307,15 @@
       "schedule_display": "0 14 * * *",
       "repeat": {
         "times": null,
-        "completed": 66
+        "completed": 68
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-07T00:27:10.163742+00:00",
-      "next_run_at": "2026-08-12T14:00:00+00:00",
-      "last_run_at": "2026-08-11T14:00:47.613108+00:00",
+      "next_run_at": "2026-08-16T14:00:00+00:00",
+      "last_run_at": "2026-08-15T19:11:27.279859+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -354,15 +354,15 @@
       "schedule_display": "15 13 * * *",
       "repeat": {
         "times": null,
-        "completed": 64
+        "completed": 66
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T04:20:40.734347+00:00",
-      "next_run_at": "2026-08-12T13:15:00+00:00",
-      "last_run_at": "2026-08-11T13:15:52.457426+00:00",
+      "next_run_at": "2026-08-16T13:15:00+00:00",
+      "last_run_at": "2026-08-15T19:11:31.363431+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -403,17 +403,17 @@
       "schedule_display": "50 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 41
+        "completed": 43
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T15:48:08.357771+00:00",
-      "next_run_at": "2026-08-12T13:50:00+00:00",
-      "last_run_at": "2026-08-11T13:55:42.062998+00:00",
-      "last_status": "ok",
-      "last_error": null,
+      "next_run_at": "2026-08-17T13:50:00+00:00",
+      "last_run_at": "2026-08-15T19:11:25.759844+00:00",
+      "last_status": "blocked_config",
+      "last_error": "[blocked_config] attached skill 'google-workspace' is not ready: missing credential file google_token.json. Provide the missing prerequisites or detach the skill from this job.",
       "last_delivery_error": null,
       "deliver": "discord:1524259597232242831",
       "origin": {
@@ -429,7 +429,8 @@
       ],
       "workdir": null,
       "profile": null,
-      "fire_claim": null
+      "fire_claim": null,
+      "preflight_alerted": true
     },
     {
       "id": "f02334d43494",
@@ -453,15 +454,15 @@
       "schedule_display": "0 9 * * *",
       "repeat": {
         "times": null,
-        "completed": 55
+        "completed": 56
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-12T17:32:19.594106+00:00",
-      "next_run_at": "2026-08-12T09:00:00+00:00",
-      "last_run_at": "2026-08-11T09:01:35.474862+00:00",
+      "next_run_at": "2026-08-16T09:00:00+00:00",
+      "last_run_at": "2026-08-12T09:01:54.124592+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -482,7 +483,7 @@
     },
     {
       "id": "549658fc5a9e",
-      "name": "Agentic Robinhood Trade Account Monitor \u2014 Market Open",
+      "name": "Agentic Robinhood Trade Account Monitor — Market Open",
       "prompt": "Run the autonomous Robinhood Agentic swing-trading OPEN scan for account 433711041 / ending 1041 only. Load and obey robinhood-trading-operator and /opt/data/HeRmEz/projects/trading-journal/playbook/autonomous-policy.md. Verify live account, portfolio, buying power, positions, all open-ish equity order states, fills, and kill switches before acting. Analyze SPY/QQQ/IWM, sectors, current news/fundamental/earnings/macro trends, and a broad liquid equity universe beyond stale watchlists. Perform technical analysis using trend, support/resistance, relative strength, volume, volatility, breakout/pullback/retest structure, and explicit invalidation. Seek professional-quality swing trades lasting days to weeks, while rotating or exiting sooner when technical or fundamental theses fail. Calculate available liquid buying power after pending orders; target deploying 80% of that liquid balance across 1-4 qualifying liquid fractional equities and retain 20% cash. Do not force trades, churn, use options/shorts, trade another account, violate drawdown/risk gates, or claim guaranteed returns. Review each order before placement, autonomously place/manage/exit policy-compliant equity trades, and journal every preview, trade, management action, no-trade decision, and tool failure. Report live state, market regime, ranked candidates, exact actions/fills, stops/invalidation, targets, cash deployed, reserved buffer, and blockers. If broker/tool/risk state is uncertain, place nothing and report the pause.",
       "skills": [
         "robinhood-trading-operator"
@@ -502,15 +503,15 @@
       "schedule_display": "35 13 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 44
+        "completed": 45
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T16:12:37.431999+00:00",
-      "next_run_at": "2026-08-12T13:35:00+00:00",
-      "last_run_at": "2026-08-11T13:38:41.839928+00:00",
+      "next_run_at": "2026-08-17T13:35:00+00:00",
+      "last_run_at": "2026-08-12T13:45:51.593783+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -532,7 +533,7 @@
     },
     {
       "id": "d7f2c79b64db",
-      "name": "Agentic Robinhood Trade Account Monitor \u2014 Midday",
+      "name": "Agentic Robinhood Trade Account Monitor — Midday",
       "prompt": "Run the autonomous Robinhood Agentic swing-trading MIDDAY scan for account 433711041 / ending 1041 only. Load and obey robinhood-trading-operator and /opt/data/HeRmEz/projects/trading-journal/playbook/autonomous-policy.md. Verify live portfolio, buying power, positions, fills, all open-ish equity orders, and kill switches. Reassess each holding using intraday and daily technical structure, relative strength, volume, support/resistance, stops and targets, plus latest fundamentals, earnings/news catalysts, macro and sector flows. Scan broadly for superior liquid swing setups; actively rotate or exit when a thesis invalidates or a materially better risk-adjusted setup appears, but never churn or force a trade. Calculate available liquid buying power after pending orders; deploy 80% of qualifying available liquid balance and retain 20% cash, using 1-4 liquid fractional equities when justified. Equities only; no options, shorts, other accounts, averaging down, widened stops, or guaranteed-return claims. Review before placing, autonomously execute policy-compliant actions, journal everything, and report holdings, changes, fills, ranked opportunities, technical/fundamental thesis, risk, deployment percentage and 20% reserve. If broker/tool/risk state is uncertain, place nothing and report the pause.",
       "skills": [
         "robinhood-trading-operator"
@@ -552,15 +553,15 @@
       "schedule_display": "0 16 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 36
+        "completed": 37
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T18:35:06.052701+00:00",
-      "next_run_at": "2026-08-12T16:00:00+00:00",
-      "last_run_at": "2026-08-11T16:04:43.485799+00:00",
+      "next_run_at": "2026-08-17T16:00:00+00:00",
+      "last_run_at": "2026-08-12T16:02:15.028497+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -582,7 +583,7 @@
     },
     {
       "id": "44b1b5e0156f",
-      "name": "Agentic Robinhood Trade Account Monitor \u2014 Power Hour",
+      "name": "Agentic Robinhood Trade Account Monitor — Power Hour",
       "prompt": "Run the autonomous Robinhood Agentic swing-trading POWER-HOUR scan for account 433711041 / ending 1041 only. Load and obey robinhood-trading-operator and /opt/data/HeRmEz/projects/trading-journal/playbook/autonomous-policy.md. Verify live portfolio, liquid buying power, positions, fills, all open-ish equity orders, and kill switches. Decide overnight exposure professionally using daily/intraday technicals, trend and relative strength, volume, support/resistance, invalidation, earnings/event risk, current fundamentals/news, macro and sector flows. Manage stops/targets, exit broken theses, and rotate into materially better liquid swing setups when risk-adjusted evidence supports it; do not churn or force trades. After pending orders, target deploying 80% of qualifying available liquid balance while preserving 20% cash. Equities only; no options, shorts, other accounts, averaging down, or widening stops. Review every order before autonomous placement, journal every action/no-action/failure, and report exact fills/actions, overnight theses, risks/events, stops/targets, deployed cash and reserve. If broker/tool/risk state is uncertain, place nothing and report the pause.",
       "skills": [
         "robinhood-trading-operator"
@@ -602,15 +603,15 @@
       "schedule_display": "30 19 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 37
+        "completed": 38
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-19T18:35:07.056543+00:00",
-      "next_run_at": "2026-08-12T19:30:00+00:00",
-      "last_run_at": "2026-08-11T19:42:03.223266+00:00",
+      "next_run_at": "2026-08-17T19:30:00+00:00",
+      "last_run_at": "2026-08-12T19:35:24.635754+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -650,15 +651,15 @@
       "schedule_display": "every 360m",
       "repeat": {
         "times": null,
-        "completed": 147
+        "completed": 150
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-06T15:04:47.122120+00:00",
-      "next_run_at": "2026-08-12T07:09:52.235555+00:00",
-      "last_run_at": "2026-08-12T01:09:52.235555+00:00",
+      "next_run_at": "2026-08-16T01:11:23.378289+00:00",
+      "last_run_at": "2026-08-12T19:12:58.991248+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -720,7 +721,7 @@
     },
     {
       "id": "f65ae3c6a5ba",
-      "name": "Agentic Robinhood Swing Opportunity Scan \u2014 Afternoon",
+      "name": "Agentic Robinhood Swing Opportunity Scan — Afternoon",
       "prompt": "Run an autonomous AFTERNOON swing-opportunity and rotation scan for Robinhood Agentic account 433711041 / ending 1041 only. Load and obey robinhood-trading-operator and /opt/data/HeRmEz/projects/trading-journal/playbook/autonomous-policy.md. Verify live account, portfolio, liquid buying power, positions, fills, all open-ish equity orders, and kill switches. Analyze broad market/sector regime, current fundamental/earnings/news/macro trends, and technical structure across a broad liquid universe: trend, support/resistance, relative strength, volume, volatility, pullback/retest/breakout, and invalidation. Seek high-quality swing trades lasting days to weeks and actively rotate/exit when evidence changes, without forcing trades or churning. After pending orders, target deploying 80% of qualifying available liquid buying power into 1-4 liquid fractional equities and retain 20% cash. Equities only; no options, shorts, other accounts, averaging down, widened stops, or guaranteed-return claims. Review orders before autonomous placement; journal all previews, executions, management actions, no-trades and failures. Report live state, ranked candidates, technical plus fundamental thesis, exact fills/actions, stops/targets, deployed cash and reserve. If broker/tool/risk state is uncertain, place nothing and report the pause.",
       "skills": [
         "robinhood-trading-operator"
@@ -740,15 +741,15 @@
       "schedule_display": "30 17 * * 1-5",
       "repeat": {
         "times": null,
-        "completed": 18
+        "completed": 19
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-07-17T16:12:35.294628+00:00",
-      "next_run_at": "2026-08-12T17:30:00+00:00",
-      "last_run_at": "2026-08-11T17:34:51.364462+00:00",
+      "next_run_at": "2026-08-17T17:30:00+00:00",
+      "last_run_at": "2026-08-12T17:41:08.399634+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -787,15 +788,15 @@
       "schedule_display": "30 4 * * *",
       "repeat": {
         "times": null,
-        "completed": 1
+        "completed": 2
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-10T23:16:50.928183+00:00",
-      "next_run_at": "2026-08-12T04:30:00+00:00",
-      "last_run_at": "2026-08-11T04:30:42.079527+00:00",
+      "next_run_at": "2026-08-16T04:30:00+00:00",
+      "last_run_at": "2026-08-12T04:30:50.044456+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -830,15 +831,15 @@
       "schedule_display": "15 4 * * *",
       "repeat": {
         "times": null,
-        "completed": 2
+        "completed": 4
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-11T00:15:18.540600+00:00",
-      "next_run_at": "2026-08-12T04:15:00+00:00",
-      "last_run_at": "2026-08-11T04:15:52.057514+00:00",
+      "next_run_at": "2026-08-16T04:15:00+00:00",
+      "last_run_at": "2026-08-12T18:00:13.382247+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -854,47 +855,50 @@
       "fire_claim": null
     },
     {
-      "id": "f71cf32691ae",
-      "name": "Amazon Creators API 24-hour follow-up",
-      "prompt": "Remind the user that Amazon's 24-hour waiting period should now be complete. Ask them to revisit https://affiliate-program.amazon.com/creatorsapi/docs/en-us/onboarding while signed into their Amazon Associates account, obtain the newly available Creators API application/credential information, and securely place the Credential ID and Credential Secret in /opt/data/secrets/affiliate-ops/creators.env (do not paste the secret into Discord). Their confirmed tracking ID is masub-20. Then ask them to tell Hermes so it can test the amazon_affiliate MCP authentication and integrate verified tracking URLs into Daily Stoic descriptions.",
+      "id": "5ddd58d66dba",
+      "name": "VPS RAM disk and OOM pressure watchdog",
+      "prompt": "Run the stateful VPS resource-pressure watchdog. It must remain silent when healthy and emit alerts only for low available RAM, sustained memory pressure, disk pressure, or an increased OOM-kill counter. It must never stop processes.",
       "skills": [],
       "skill": null,
       "model": null,
       "provider": null,
       "base_url": null,
-      "script": null,
-      "no_agent": false,
+      "script": "resource_health_watchdog.py",
+      "no_agent": true,
       "context_from": null,
       "schedule": {
-        "kind": "once",
-        "run_at": "2026-08-12T03:15:47+00:00",
-        "display": "once at 2026-08-12 03:15"
+        "kind": "interval",
+        "minutes": 30,
+        "display": "every 30m"
       },
-      "schedule_display": "once at 2026-08-12 03:15",
+      "schedule_display": "every 30m",
       "repeat": {
-        "times": 1,
-        "completed": 0
+        "times": null,
+        "completed": 8
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
-      "created_at": "2026-08-11T03:16:07.134519+00:00",
-      "next_run_at": "2026-08-12T03:15:47+00:00",
-      "last_run_at": null,
-      "last_status": null,
+      "created_at": "2026-08-12T18:13:27.248211+00:00",
+      "next_run_at": "2026-08-15T19:41:23.378289+00:00",
+      "last_run_at": "2026-08-12T21:43:55.357575+00:00",
+      "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
-      "deliver": "origin",
+      "deliver": "discord:1523247688689258586",
       "origin": {
         "platform": "discord",
-        "chat_id": "1524259261281206332",
-        "chat_name": "TRAPISTAN / #youtube-automation",
+        "chat_id": "1499990220077137943",
+        "chat_name": "TRAPISTAN / #general",
         "thread_id": null
       },
-      "enabled_toolsets": null,
-      "workdir": null
+      "enabled_toolsets": [
+        "terminal"
+      ],
+      "workdir": null,
+      "fire_claim": null
     }
   ],
-  "updated_at": "2026-08-12T03:00:49.231530+00:00"
+  "updated_at": "2026-08-15T19:11:31.363916+00:00"
 }

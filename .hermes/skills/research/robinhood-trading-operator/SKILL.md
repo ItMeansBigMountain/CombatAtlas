@@ -366,6 +366,8 @@ When a trade closes, review:
 - Lesson
 - Playbook update
 
+When the user asks whether historical orders could have been better given today's price, perform an account-scoped, execution-level counterfactual review rather than inspecting only current positions. Reconstruct buys, sells, remaining quantities, actual marked outcome, and a clearly labeled hold-all counterfactual; then separate hindsight from whether the original decision process was reasonable at the time. Use broker realized-P&L/tax-lot data when available and order arithmetic as a cross-check. See `references/order-history-counterfactual-review.md` for formulas, limitations, and reporting structure.
+
 ## Position Sizing Formula
 
 ```text

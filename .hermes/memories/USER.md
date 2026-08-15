@@ -1,4 +1,4 @@
-Discord: standup 1499990220077137943; code 1523247688689258586; personal 1524172425393340516; YT 1524259261281206332; trading 1524259597232242831; business 1524259978167451689; redteam 1524312655894937623; AI narrative-only 1536538137378164757.
+Discord channels: standup 1499990220077137943; code 1523247688689258586; personal 1524172425393340516; YT 1524259261281206332; trading 1524259597232242831; business 1524259978167451689.
 §
 OSRS/RuneLite: production Plugin Hub; preserve PRs; no dev modes/endpoint overrides; compact tabs. Study full mechanics before formulas. API docs cover endpoints, auth, fallbacks, privacy.
 §
@@ -12,4 +12,4 @@ Email cleanup: known junk OK; source emails delete post-upload; Grammarly person
 §
 YT: Viral Radar priority; faceless paused. Classical Echos→Trapiistan→fareed320. Credited sources/no filler; truthful titles/no title hashtags. Repair blockers then resume scout→clip→upload→cleanup; report URLs/queues/blockers.
 §
-User wants Windows-compatible single-line commands; show relevant raw failure logs in fenced code blocks.
+User prefers laconic updates, Windows one-line commands, raw failure logs, and internet-first troubleshooting crowdsourced from current docs/forums/issues.

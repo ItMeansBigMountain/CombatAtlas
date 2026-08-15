@@ -26,6 +26,16 @@ Primary login identity observed/provided by user:
 
 Do **not** store or repeat the user's password in files, skills, logs, or reports. The user provided it in-chat once for browser login, but durable skills/memory/docs must not contain raw secrets. Login is through the browser session only; if the session expires, ask the user to provide/enter the password again or use an approved secret manager/env var that is outside the repo.
 
+## Research-First Source Acquisition and Audio Fallback
+
+When creator-video acquisition is blocked, research the current failure across official documentation, active issue trackers, recent operator forums, and official creator distribution before repeating local retries. Classify player/API rejection separately from media/GVS rejection: a PO-token provider may solve media authorization but cannot necessarily fix an IP/player-level `LOGIN_REQUIRED` gate.
+
+If exact official audio is available, use the documented audio-first fallback: verify the RSS/CDN enclosure, transcribe with word timestamps, select complete transcript-backed moments, and render clearly labeled audio-led vertical clips. For long files on constrained hosts, use chunked CPU transcription with per-chunk checkpoints and bounded concurrency.
+
+Keep user-facing operational reports laconic: status, produced artifacts/URLs, queue count, raw blocker, and next action. Do not repeatedly explain already-established context.
+
+See [`references/source-acquisition-and-audio-fallback.md`](references/source-acquisition-and-audio-fallback.md) for route ordering, verification gates, chunked transcription, FFmpeg waveform composition, and queue semantics.
+
 ## Current Account Snapshot
 
 Observed in the logged-in web app:
@@ -380,6 +390,14 @@ Riskier public framing:
 - `SpongeBob reads AI news`
 - `Elon Musk endorses this stock`
 - `clone this real person without consent`
+
+## Source Acquisition and Audio-First Fallback
+
+For creator clips blocked by YouTube bot/IP attestation, use the internet-first diagnosis, acquisition ladder, official-audio fallback, resumable low-memory transcription, and truthful audio-led rendering workflow in:
+
+- `references/youtube-source-acquisition-audio-fallback.md`
+
+Do not repeatedly mutate yt-dlp flags without researching the current failure class. In particular, distinguish GVS/format 403 failures that may benefit from PO tokens from player API `LOGIN_REQUIRED` failures that occur before media URLs are issued.
 
 ## Verification Checklist
 

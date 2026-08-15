@@ -59,6 +59,14 @@ if command -v rsync >/dev/null 2>&1; then
     --exclude='/.local/***' \
     --exclude='/.expo/***' \
     --exclude='/jdks/***' \
+    --exclude='/.nuget/***' \
+    --exclude='/.dotnet/***' \
+    --exclude='/home/***' \
+    --exclude='/kanban/workspaces/***' \
+    --exclude='/kanban/logs/***' \
+    --exclude='/sandboxes/***' \
+    --exclude='/image_cache/***' \
+    --exclude='/images/***' \
     --exclude='/tmp/***' \
     --exclude='/bin/***' \
     --exclude='/cache/***' \
@@ -72,6 +80,18 @@ if command -v rsync >/dev/null 2>&1; then
     --exclude='/credentials/***' \
     --exclude='/secrets/***' \
     --exclude='/models_dev_cache.json' \
+    --exclude='/processes.json' \
+    --exclude='/gateway_state.json' \
+    --exclude='/gateway_voice_mode.json' \
+    --exclude='/context_length_cache.yaml' \
+    --exclude='/provider_models_cache.json' \
+    --exclude='/ollama_cloud_models_cache.json' \
+    --exclude='/kanban.db*' \
+    --exclude='/kanban*.bak' \
+    --exclude='/kanban*.sql' \
+    --exclude='/*oauth_pending*.json' \
+    --exclude='**/*oauth_pending*.json' \
+    --exclude='/*.bak*' \
     --exclude='/state.db' \
     --exclude='**/*.db' \
     --exclude='**/*.sqlite' \
@@ -106,6 +126,16 @@ if command -v rsync >/dev/null 2>&1; then
     --exclude='**/.next/***' \
     --exclude='**/.nuxt/***' \
     --exclude='**/.expo/***' \
+    --exclude='**/.terraform/***' \
+    --exclude='**/.terragrunt-cache/***' \
+    --exclude='**/.vercel/***' \
+    --exclude='**/.angular/***' \
+    --exclude='**/.turbo/***' \
+    --exclude='**/.parcel-cache/***' \
+    --exclude='**/bin/***' \
+    --exclude='**/obj/***' \
+    --exclude='**/test-results/***' \
+    --exclude='**/*.tsbuildinfo' \
     --exclude='**/.git/***' \
     "$SRC/" "$BACKUP_DIR/"
 else
@@ -118,13 +148,20 @@ from pathlib import Path
 src = Path('/opt/data')
 dst = Path('/opt/data/HeRmEz/.hermes')
 
-exclude_exact = {'.env', '.git-credentials', '.gitconfig', 'auth.json', 'auth.lock'}
+exclude_exact = {
+    '.env', '.git-credentials', '.gitconfig', 'auth.json', 'auth.lock',
+    'processes.json', 'gateway_state.json', 'gateway_voice_mode.json',
+    'context_length_cache.yaml', 'provider_models_cache.json',
+    'ollama_cloud_models_cache.json',
+}
 exclude_dir_names = {
-    '.git', '.cache', '.config', '.npm', '.gradle', '.local', '.expo', 'jdks', 'tmp',
-    'bin', 'cache', 'lsp', 'logs', 'sessions', 'audio_cache', 'state-snapshots',
-    'ibmcloud-cli', 'hermes-agent', 'credentials', 'secrets', '__pycache__',
+    '.git', '.cache', '.config', '.npm', '.gradle', '.local', '.expo', '.nuget', '.dotnet',
+    'jdks', 'tmp', 'bin', 'cache', 'lsp', 'logs', 'sessions', 'audio_cache',
+    'state-snapshots', 'ibmcloud-cli', 'hermes-agent', 'credentials', 'secrets',
+    'home', 'sandboxes', 'image_cache', 'images', 'workspaces', '__pycache__',
     '.pytest_cache', '.mypy_cache', '.ruff_cache', '.venv', 'venv', 'node_modules',
-    'dist', 'build', 'web_dist', '.next', '.nuxt',
+    'dist', 'build', 'web_dist', '.next', '.nuxt', '.terraform', '.terragrunt-cache',
+    '.vercel', '.angular', '.turbo', '.parcel-cache', 'obj', 'test-results',
 }
 exclude_file_globs = [
     '.env.*', 'models_dev_cache.json', '*secret*', '*token*', '*credential*', 'oauth*.json', 'keyring*',
@@ -183,6 +220,9 @@ This is a sanitized snapshot. Excluded intentionally:
 - files whose names contain secret, token, or credential
 - private key material (*.pem, *.key, *.p12, *.pfx, id_rsa*, id_ed25519*)
 - runtime locks, pids, sockets, common cache/build directories, session logs, local SDKs/CLIs, and generated installs
+- downloaded package stores/SDKs (.nuget, .dotnet, node_modules, virtualenvs)
+- Kanban scratch workspaces, sandboxes, generated media, and provider/deployment caches
+- runtime databases, journals, corruption snapshots, and OAuth pending callback state
 - nested .git directories
 
 Future project folders should live under /opt/data/HeRmEz/projects.
@@ -190,6 +230,7 @@ EOF
 
 mkdir -p "$REPO/scripts"
 cp -p "$0" "$REPO/scripts/backup_hermez.sh"
+cp -p "/opt/data/scripts/verify_hermez_backup_stage.py" "$REPO/scripts/verify_hermez_backup_stage.py"
 
 if ! git -C "$REPO" config user.email >/dev/null; then
   git -C "$REPO" config user.email 'hermes-agent@local'
@@ -200,7 +241,9 @@ fi
 
 cd "$REPO"
 
-git add .gitignore .gitmodules README.md KANBAN.md .hermes projects scripts/backup_hermez.sh
+git add .gitignore .gitmodules README.md KANBAN.md .hermes projects scripts/backup_hermez.sh scripts/verify_hermez_backup_stage.py
+
+python3 "$REPO/scripts/verify_hermez_backup_stage.py"
 
 if git diff --cached --quiet; then
   echo "HeRmEz backup complete: no changes to commit at $STAMP"

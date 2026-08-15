@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-12T02:56:47.024505",
+  "updated_at": "2026-08-15T19:11:22.142265",
   "platforms": {
     "discord": [
       {
@@ -51,14 +51,14 @@
         "type": "channel"
       },
       {
-        "id": "1499990220077137943",
-        "name": "TRAPISTAN / #general",
+        "id": "1524259261281206332",
+        "name": "TRAPISTAN / #youtube-automation",
         "type": "group",
         "thread_id": null
       },
       {
-        "id": "1509751204953985054",
-        "name": "TRAPISTAN / #red-team",
+        "id": "1499990220077137943",
+        "name": "TRAPISTAN / #general",
         "type": "group",
         "thread_id": null
       },
@@ -69,20 +69,14 @@
         "thread_id": null
       },
       {
-        "id": "1524172425393340516",
-        "name": "TRAPISTAN / #personal",
-        "type": "group",
-        "thread_id": null
-      },
-      {
-        "id": "1524259261281206332",
-        "name": "TRAPISTAN / #youtube-automation",
-        "type": "group",
-        "thread_id": null
-      },
-      {
         "id": "1524259597232242831",
         "name": "TRAPISTAN / #trading",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "1524172425393340516",
+        "name": "TRAPISTAN / #personal",
         "type": "group",
         "thread_id": null
       },
@@ -93,45 +87,23 @@
         "thread_id": null
       },
       {
+        "id": "1536538137378164757",
+        "name": "TRAPISTAN / #ai-video",
+        "type": "group",
+        "thread_id": null
+      },
+      {
         "id": "1524312655894937623",
         "name": "TRAPISTAN / #security-redteam",
         "type": "group",
         "thread_id": null
       },
       {
-        "id": "1536538137378164757",
-        "name": "TRAPISTAN / #ai-video",
+        "id": "1509751204953985054",
+        "name": "TRAPISTAN / #red-team",
         "type": "group",
         "thread_id": null
       }
-    ],
-    "telegram": [],
-    "whatsapp": [],
-    "whatsapp_cloud": [],
-    "slack": [],
-    "signal": [],
-    "mattermost": [],
-    "matrix": [],
-    "homeassistant": [],
-    "email": [],
-    "sms": [],
-    "dingtalk": [],
-    "msgraph_webhook": [],
-    "feishu": [],
-    "wecom": [],
-    "wecom_callback": [],
-    "weixin": [],
-    "bluebubbles": [],
-    "qqbot": [],
-    "yuanbao": [],
-    "relay": [],
-    "google_chat": [],
-    "irc": [],
-    "line": [],
-    "ntfy": [],
-    "photon": [],
-    "raft": [],
-    "simplex": [],
-    "teams": []
+    ]
   }
 }

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-12T02:58:50.266349",
+  "updated_at": "2026-08-15T19:11:11.763769",
   "platforms": {
     "discord": [
       {
@@ -104,34 +104,6 @@
         "type": "group",
         "thread_id": null
       }
-    ],
-    "telegram": [],
-    "whatsapp": [],
-    "whatsapp_cloud": [],
-    "slack": [],
-    "signal": [],
-    "mattermost": [],
-    "matrix": [],
-    "homeassistant": [],
-    "email": [],
-    "sms": [],
-    "dingtalk": [],
-    "msgraph_webhook": [],
-    "feishu": [],
-    "wecom": [],
-    "wecom_callback": [],
-    "weixin": [],
-    "bluebubbles": [],
-    "qqbot": [],
-    "yuanbao": [],
-    "relay": [],
-    "google_chat": [],
-    "irc": [],
-    "line": [],
-    "ntfy": [],
-    "photon": [],
-    "raft": [],
-    "simplex": [],
-    "teams": []
+    ]
   }
 }

@@ -36,6 +36,9 @@ CACHE_PREFIXES = (
 )
 KEEP_MARKER = ".hermes-keep"
 DEFAULT_MIN_AGE_HOURS = 48
+HIGH_RSS_BYTES = 750 * 1024 * 1024
+STALE_PROCESS_HOURS = 24
+DEV_PROCESS_MARKERS = ("pyright", "tsserver", "gradle", "runelite", "language-server")
 
 
 def has_allowed_prefix(name: str, prefixes: tuple[str, ...]) -> bool:
@@ -128,6 +131,41 @@ def disk_status(path: Path = Path("/opt/data")) -> dict[str, int]:
     return {"total": usage.total, "used": usage.used, "free": usage.free, "percent": percent}
 
 
+def stale_high_memory_processes() -> list[dict]:
+    """Report, but never kill, old development processes with unusually high RSS."""
+    findings: list[dict] = []
+    try:
+        uptime = float(Path("/proc/uptime").read_text().split()[0])
+        ticks = os.sysconf(os.sysconf_names["SC_CLK_TCK"])
+    except (OSError, ValueError):
+        return findings
+    for entry in Path("/proc").iterdir():
+        if not entry.name.isdigit():
+            continue
+        try:
+            stat = (entry / "stat").read_text().split()
+            age_hours = max(0.0, (uptime - (int(stat[21]) / ticks)) / 3600)
+            status = (entry / "status").read_text()
+            rss_kib = int(next(line.split()[1] for line in status.splitlines() if line.startswith("VmRSS:")))
+            cmdline = (entry / "cmdline").read_bytes().replace(b"\0", b" ").decode(errors="replace")
+        except (FileNotFoundError, PermissionError, OSError, ValueError, StopIteration):
+            continue
+        lowered = cmdline.lower()
+        if (
+            rss_kib * 1024 >= HIGH_RSS_BYTES
+            and age_hours >= STALE_PROCESS_HOURS
+            and any(marker in lowered for marker in DEV_PROCESS_MARKERS)
+        ):
+            findings.append({
+                "pid": int(entry.name),
+                "rss_bytes": rss_kib * 1024,
+                "age_hours": round(age_hours, 1),
+                "command": cmdline[:300],
+                "action": "alert_only",
+            })
+    return sorted(findings, key=lambda item: item["rss_bytes"], reverse=True)
+
+
 def discover(root: Path, prefixes: tuple[str, ...]) -> list[Path]:
     try:
         return sorted(
@@ -175,6 +213,7 @@ def run(apply: bool, min_age_hours: int, now: float | None = None) -> dict:
         "removed": removed,
         "skipped": skipped,
         "persistent_cache_monitored": monitored_cache,
+        "stale_high_memory_processes": stale_high_memory_processes(),
     }
 
 
@@ -183,6 +222,7 @@ def should_emit(result: dict) -> bool:
         result["removed"]
         or result["candidates"]
         or result["disk"]["percent"] >= 80
+        or result["stale_high_memory_processes"]
     )
 
 

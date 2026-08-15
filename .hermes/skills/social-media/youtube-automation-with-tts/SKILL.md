@@ -9,7 +9,15 @@ tags: ["youtube", "automation", "tts", "elevenlabs", "faceless-channel"]
 ---
 
 ## Overview
-Automated YouTube video creation pipeline with ElevenLabs/Google TTS voice-over integration for faceless channels and viral radar content. Ensures professional-quality narration and script-matched visuals on all videos.
+Automated YouTube video creation pipeline with ElevenLabs/Google TTS voice-over integration for faceless channels and viral radar content. Ensures professional-quality narration, truthful metadata, source attribution, durable queue semantics, and verified uploads.
+
+## Viral Clip Radar source acquisition and review
+
+For creator-clip jobs, load `references/source-acquisition-and-manifest-review.md`. It defines queue-vs-never-rendered semantics, the bounded acquisition ladder, zero-byte placeholder protection, exact-source search discipline, and the mandatory review gate for auto-generated windows/titles. In particular, do not retry identical cloud-IP bot-check failures unchanged and do not treat generic auto-spaced manifests as reviewed clips.
+
+When acquisition hits YouTube bot confirmation, HTTP 400/403, login-required, or PO-token failures, also load `references/internet-first-youtube-acquisition-troubleshooting.md`. Research current official docs, issue trackers, and operator reports before retrying; verify that yt-dlp discovers both its PO-token provider and JavaScript challenge runtime. A healthy helper server alone does not prove the downloader environment has the provider plugin wired.
+
+Require script-matched visuals on all faceless/newsletter videos.
 
 **Stock visual reference:** see `references/stock-visual-provider-pattern.md` for the current faceless newsletter visual standard: derive per-beat search queries from the script, prefer Pexels/Pixabay/Shutterstock stock footage/photos, and avoid text-only backgrounds.
 

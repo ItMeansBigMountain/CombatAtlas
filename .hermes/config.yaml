@@ -2,21 +2,18 @@ model:
   provider: openai-codex
   base_url: https://chatgpt.com/backend-api/codex
   default: gpt-5.6-sol
-providers: {}
 fallback_providers:
-- provider: custom:venice
-  model: venice-uncensored
-  base_url: https://api.venice.ai/api/v1
-  api_key: ${VENICE_API_KEY}
-  api_mode: chat_completions
-- provider: openrouter
-  model: openrouter/free
-credential_pool_strategies: {}
+  - provider: custom:venice
+    model: venice-uncensored
+    base_url: https://api.venice.ai/api/v1
+    api_key: ${VENICE_API_KEY}
+    api_mode: chat_completions
+  - provider: openrouter
+    model: openrouter/free
 toolsets:
-- hermes-cli
-- discord
-- discord_admin
-max_concurrent_sessions: null
+  - hermes-cli
+  - discord
+  - discord_admin
 agent:
   max_turns: 90
   gateway_timeout: 1800
@@ -48,7 +45,6 @@ terminal:
   auto_source_bashrc: true
   docker_image: nikolaik/python-nodejs:python3.11-nodejs20
   docker_forward_env: []
-  docker_env: {}
   singularity_image: docker://nikolaik/python-nodejs:python3.11-nodejs20
   modal_image: nikolaik/python-nodejs:python3.11-nodejs20
   daytona_image: nikolaik/python-nodejs:python3.11-nodejs20
@@ -92,7 +88,6 @@ checkpoints:
   retention_days: 7
   delete_orphans: true
   min_interval_hours: 24
-context_file_max_chars: null
 file_read_max_chars: 100000
 mcp_discovery_timeout: 1.5
 tool_output:
@@ -128,7 +123,6 @@ kanban:
   worker_log_backup_count: 1
   orchestrator_profile: ''
   default_assignee: ''
-  max_in_progress_per_profile: null
   auto_decompose: true
   auto_decompose_per_tick: 3
   dispatch_stale_timeout_seconds: 14400
@@ -158,7 +152,6 @@ auxiliary:
     base_url: ''
     api_key: ''
     timeout: 120
-    extra_body: {}
     download_timeout: 30
   web_extract:
     provider: auto
@@ -166,42 +159,36 @@ auxiliary:
     base_url: ''
     api_key: ''
     timeout: 360
-    extra_body: {}
   compression:
     provider: auto
     model: ''
     base_url: ''
     api_key: ''
     timeout: 120
-    extra_body: {}
   skills_hub:
     provider: auto
     model: ''
     base_url: ''
     api_key: ''
     timeout: 30
-    extra_body: {}
   approval:
     provider: auto
     model: ''
     base_url: ''
     api_key: ''
     timeout: 30
-    extra_body: {}
   mcp:
     provider: auto
     model: ''
     base_url: ''
     api_key: ''
     timeout: 30
-    extra_body: {}
   title_generation:
     provider: auto
     model: ''
     base_url: ''
     api_key: ''
     timeout: 30
-    extra_body: {}
     language: ''
   tts_audio_tags:
     provider: auto
@@ -209,42 +196,36 @@ auxiliary:
     base_url: ''
     api_key: ''
     timeout: 30
-    extra_body: {}
   triage_specifier:
     provider: auto
     model: ''
     base_url: ''
     api_key: ''
     timeout: 120
-    extra_body: {}
   kanban_decomposer:
     provider: auto
     model: ''
     base_url: ''
     api_key: ''
     timeout: 180
-    extra_body: {}
   profile_describer:
     provider: auto
     model: ''
     base_url: ''
     api_key: ''
     timeout: 60
-    extra_body: {}
   curator:
     provider: auto
     model: ''
     base_url: ''
     api_key: ''
     timeout: 600
-    extra_body: {}
   monitor:
     provider: auto
     model: ''
     base_url: ''
     api_key: ''
     timeout: 60
-    extra_body: {}
   session_search:
     provider: auto
     model: ''
@@ -255,7 +236,7 @@ auxiliary:
     max_concurrency: 3
 display:
   compact: false
-  personality: kawaii
+  personality: ''
   resume_display: full
   resume_exchanges: 10
   resume_max_user_chars: 300
@@ -303,9 +284,9 @@ display:
   runtime_footer:
     enabled: false
     fields:
-    - model
-    - context_pct
-    - cwd
+      - model
+      - context_pct
+      - cwd
   copy_shortcut: auto
   tool_progress: all
 dashboard:
@@ -399,7 +380,6 @@ delegation:
   child_timeout_seconds: 600
   reasoning_effort: ''
   max_concurrent_children: 3
-  max_async_children: 3
   max_spawn_depth: 1
   orchestrator_enabled: true
   subagent_auto_approve: false
@@ -424,13 +404,11 @@ curator:
   backup:
     enabled: true
     keep: 5
-honcho: {}
 timezone: ''
 slack:
   require_mention: true
   free_response_channels: ''
   allowed_channels: ''
-  channel_prompts: {}
 discord:
   require_mention: false
   free_response_channels: ''
@@ -440,7 +418,6 @@ discord:
   history_backfill: true
   history_backfill_limit: 50
   reactions: true
-  channel_prompts: {}
   dm_role_auth_guild: ''
   server_actions: ''
   allow_any_attachment: false
@@ -454,11 +431,11 @@ discord:
     speech_gain: 1.0
     ack_enabled: true
     ack_phrases:
-    - Let me look into that.
-    - One moment.
-    - Checking on that now.
-    - Give me a sec.
-    - On it.
+      - Let me look into that.
+      - One moment.
+      - Checking on that now.
+      - Give me a sec.
+      - On it.
   allow_mentions:
     everyone: false
     roles: false
@@ -466,10 +443,8 @@ discord:
     replied_user: true
   reply_to_mode: false
   ignored_channels: 1524312655894937623
-whatsapp: {}
 telegram:
   reactions: false
-  channel_prompts: {}
   allowed_chats: ''
   extra:
     rich_messages: false
@@ -477,7 +452,6 @@ mattermost:
   require_mention: true
   free_response_channels: ''
   allowed_channels: ''
-  channel_prompts: {}
 matrix:
   require_mention: true
   free_response_rooms: ''
@@ -489,12 +463,8 @@ approvals:
   mcp_reload_confirm: true
   destructive_slash_confirm: true
 command_allowlist:
-- overwrite project env/config via redirection
-quick_commands: {}
-platform_hints: {}
-hooks: {}
+  - overwrite project env/config via redirection
 hooks_auto_accept: false
-personalities: {}
 security:
   allow_private_urls: false
   redact_secrets: true
@@ -516,7 +486,6 @@ cron:
     expected_audience: ''
     nas_jwks_url: ''
   wrap_response: true
-  max_parallel_jobs: null
 code_execution:
   mode: project
 tools:
@@ -536,7 +505,6 @@ model_catalog:
   enabled: true
   url: https://hermes-agent.nousresearch.com/docs/api/model-catalog.json
   ttl_hours: 1
-  providers: {}
 network:
   force_ipv4: false
 gateway:
@@ -554,7 +522,7 @@ streaming:
   transport: auto
   edit_interval: 0.8
   buffer_threshold: 24
-  cursor: " \u2589"
+  cursor: ' ▉'
   fresh_final_after_seconds: 60.0
 sessions:
   auto_prune: false
@@ -576,7 +544,6 @@ lsp:
   wait_mode: document
   wait_timeout: 5.0
   install_strategy: auto
-  servers: {}
 x_search:
   model: grok-4.20-reasoning
   timeout_seconds: 180
@@ -593,7 +560,7 @@ secrets:
 paste_collapse_threshold: 5
 paste_collapse_threshold_fallback: 5
 paste_collapse_char_threshold: 2000
-_config_version: 27
+_config_version: 35
 session_reset:
   mode: both
   idle_minutes: 1440
@@ -609,28 +576,28 @@ video_gen:
   model: sora-2
 platform_toolsets:
   cli:
-  - browser
-  - clarify
-  - code_execution
-  - computer_use
-  - cronjob
-  - delegation
-  - file
-  - image_gen
-  - kanban
-  - memory
-  - messaging
-  - session_search
-  - skills
-  - terminal
-  - todo
-  - tts
-  - video_gen
-  - vision
-  - web
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - cronjob
+    - delegation
+    - file
+    - image_gen
+    - kanban
+    - memory
+    - messaging
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - tts
+    - video_gen
+    - vision
+    - web
 known_plugin_toolsets:
   cli:
-  - spotify
+    - spotify
 mcp_servers:
   robinhood_trading:
     url: https://agent.robinhood.com/mcp/trading
@@ -643,14 +610,14 @@ mcp_servers:
   amazon_affiliate:
     command: python3
     args:
-    - /opt/data/HeRmEz/projects/affiliate-ops/mcp_server.py
+      - /opt/data/HeRmEz/projects/affiliate-ops/mcp_server.py
     enabled: true
 custom_providers:
-- name: Venice
-  base_url: https://api.venice.ai/api/v1
-  api_key: ${VENICE_API_KEY}
-  model: venice-uncensored
-  api_mode: chat_completions
+  - name: Venice
+    base_url: https://api.venice.ai/api/v1
+    api_key: ${VENICE_API_KEY}
+    model: venice-uncensored
+    api_mode: chat_completions
 
 # ── Fallback Model ────────────────────────────────────────────────────
 # Automatic provider failover when primary is unavailable.
