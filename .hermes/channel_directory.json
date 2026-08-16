@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-15T19:11:22.142265",
+  "updated_at": "2026-08-16T02:56:58.791638",
   "platforms": {
     "discord": [
       {
@@ -51,6 +51,12 @@
         "type": "channel"
       },
       {
+        "id": "1523247688689258586",
+        "name": "TRAPISTAN / #coding",
+        "type": "group",
+        "thread_id": null
+      },
+      {
         "id": "1524259261281206332",
         "name": "TRAPISTAN / #youtube-automation",
         "type": "group",
@@ -59,12 +65,6 @@
       {
         "id": "1499990220077137943",
         "name": "TRAPISTAN / #general",
-        "type": "group",
-        "thread_id": null
-      },
-      {
-        "id": "1523247688689258586",
-        "name": "TRAPISTAN / #coding",
         "type": "group",
         "thread_id": null
       },

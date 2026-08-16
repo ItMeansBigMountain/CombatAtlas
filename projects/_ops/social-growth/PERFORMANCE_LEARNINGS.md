@@ -1,6 +1,6 @@
 # Viral Radar Performance Learnings
 
-Last updated: `2026-08-15T19:11:36.333269+00:00`
+Last updated: `2026-08-16T01:46:54.154285+00:00`
 
 ## Metrics status
 
@@ -9,7 +9,7 @@ Last updated: `2026-08-15T19:11:36.333269+00:00`
 
 ## viral-clip-radar
 
-- Uploads logged: 457 total; 433 public/metric-eligible.
+- Uploads logged: 465 total; 441 public/metric-eligible.
 - Median public views in latest snapshot: 2.0.
 - Current winners to study:
   - 1338 views / 18 likes / 0 comments — Alex Hormozi: Whoever You Blame Is Who You Give Power To — https://youtu.be/8vdPqKeijgw — metrics account: Classical Echos (UCcIpxiU2CLEsBdHcc7_lcyA) via /opt/data/secrets/youtube-classicalechos/youtube_upload_token.json

@@ -702,8 +702,12 @@ def render(work:Path, script):
         query=queries[i-1] if i-1 < len(queries) else f"{script.get('type','technology')} people working laptop"
         asset, meta=visual_asset(query, assets_dir/f'{i:02d}')
         if not asset:
-            raise RuntimeError(f"visual gate blocked: no stock/API visual asset for scene {i} query={query!r}; attempts={json.dumps(meta)[:800]}")
-        visual_manifest.append({'scene':i,'caption':cap,'keyword':scene_keyword(body, query),'query':query,'asset':str(asset),'meta':meta})
+            # Current faceless-lane policy makes stock/provider quality failures
+            # warnings rather than public-upload blockers. background_input(None)
+            # produces the deterministic dark motion/text fallback, while the
+            # manifest preserves every provider attempt for later QA.
+            print(json.dumps({'warning':'visual_provider_fallback','scene':i,'query':query,'meta':meta}), flush=True)
+        visual_manifest.append({'scene':i,'caption':cap,'keyword':scene_keyword(body, query),'query':query,'asset':str(asset) if asset else None,'meta':meta,'quality_warning':not bool(asset)})
         titlef=scenes/f'{i:02d}_title.txt'; bodyf=scenes/f'{i:02d}_body.txt'
         titlef.write_text('\n'.join(textwrap.wrap(cap,16)),encoding='utf-8')
         bodyf.write_text('\n'.join(textwrap.wrap(body,31))[:520],encoding='utf-8')

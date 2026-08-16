@@ -1,0 +1,123 @@
+Cronjob Response: Agentic Robinhood Swing Opportunity Scan — Afternoon
+(job_id: f65ae3c6a5ba)
+-------------
+
+# Afternoon Decision — No Orders; Market Closed
+
+The scan ran **Saturday, August 15 at 3:16 PM ET**. Robinhood’s equity market was closed, so Friday’s prices were not executable live quotes. No blind weekend orders were queued.
+
+## Live Account State
+
+**Agentic account ••••1041 only**
+
+- Account status: Active, agent-accessible cash account
+- Account value: **$335.09**
+- Equity value: **$302.98**
+- Cash / buying power: **$32.11**
+- Unsettled funds: **$0**
+- Pending deposits: **$0**
+- Open-ish equity orders:
+  - New: 0
+  - Queued: 0
+  - Confirmed: 0
+  - Unconfirmed: 0
+  - Partially filled: 0
+- Kill switch: **Clear**
+- Equity deployment: **90.42%**
+- Cash reserve: **9.58%**
+
+Liquid-balance policy math:
+
+- Available liquid buying power: **$32.11**
+- 80% qualifying deployment target: **$25.69**
+- Required 20% reserve: **$6.42**
+- Deployed today: **$0**, because no entry could be confirmed while the market was closed.
+
+Recent fills reconciled:
+
+- Bought **0.736516 NESR at $33.7399** on August 10
+- Sold **0.736516 NESR at $35.1601** on August 12
+- Estimated realized gain: **+$1.05**, with $0 fees
+- No later fills found
+
+## Market and Sector Regime
+
+The completed Friday tape supports a **mixed risk-on rotation**:
+
+- SPY: **$776.01**, above SMA20 **$756.20** and SMA50 **$748.93**
+- IWM: **$304.90**, above SMA20 **$296.72** and near a new 52-week high
+- Small caps, energy, industrials, and financials showed better relative strength
+- Technology remained constructive but selective
+- Friday volume was generally subdued except for isolated breakdowns such as AVGO
+
+Macro conditions remain two-sided:
+
+- July inflation reports were characterized as roughly in line, but inflation remains above the Fed’s 2% goal
+- July retail sales unexpectedly declined **0.6%**
+- Low volatility suggests market complacency
+- Upcoming HD, TJX, TGT, LOW, and WMT earnings create consumer-sector event risk
+
+## Position Decisions
+
+| Rank | Position | Friday mark | Unrealized P/L | Decision | Stop / invalidation | Targets |
+|---:|---|---:|---:|---|---:|---:|
+| 1 | BAC | $64.4782 | **+$2.47 / +3.80%** | Hold | $61.40 | $66 / $68 |
+| 2 | SHOP | $154.50 | **+$8.97 / +7.22%** | Hold; protect winner | $143.50 | $160 / $166 |
+| 3 | MA | $569.29 | **-$0.36 / -0.56%** | Hold; weakest valid holding | $550 | $583.70 / $596 |
+| 4 | AVGO | $393.5485 | **-$1.70 / -4.31%** | **Exit review Monday** | Prior $410 invalidation breached | No add |
+
+### Critical AVGO Change
+
+AVGO closed below its documented **$410 binding invalidation**:
+
+- Friday decline: approximately **5.9%**
+- Close: **$393.55**
+- SMA20: **$399.49**
+- SMA50: **$390.46**
+- ATR14: **$16.62**
+- Volume: approximately **1.6×** average
+
+The underlying AI and financial-growth story remains credible, but the swing-trade technical thesis failed. **No averaging down and no stop widening.** AVGO should be prioritized for an exit at the next liquid session unless it decisively reclaims $410 with convincing price and volume. A blind weekend market order was rejected because Monday gap/slippage risk cannot be calculated from Friday quotes.
+
+## Ranked Fresh Candidates
+
+1. **JPM — 13/16, preferred rotation watch**
+   - Above SMA20 **$354.62** and SMA50 **$339.37**
+   - Near $366.50 resistance
+   - Preferred trigger: successful **$355–360 retest** or breakout-retest above $366.50
+   - Stop: **$345**
+   - Targets: **$385 / $395**
+   - Constraint: avoid excessive overlap with BAC
+
+2. **NVDA — 12/16, reduced-size watch**
+   - Above SMA20 **$210.40** and SMA50 **$206.52**
+   - Strong revenue and margin trajectory
+   - Preferred trigger: **$216–220 retest hold** or confirmed breakout-retest above $227.50
+   - Stop: **$205**
+   - Targets: **$236.50 / $250**
+   - Risks: August 26 earnings and semiconductor correlation with AVGO
+
+3. **CAT — 9/16, no trade**
+   - Near SMA20 **$853.61**, but below SMA50 **$912.53**
+   - Fundamentals and industrial flows are favorable
+   - Intermediate chart damage and ATR14 of **$35.97** make the stop impractical for this account
+   - Require a base and SMA50 reclaim
+
+## Actions and Deployment
+
+- Order reviews: **0**
+- Orders placed: **0**
+- Orders canceled: **0**
+- Fills this run: **0**
+- Cash deployed: **$0**
+- Buying power remaining: **$32.11**
+- Designated reserve: **$6.42**
+- Undeployed qualifying balance: **$25.69**
+
+No options, shorts, other-account trades, averaging down, or widened stops occurred.
+
+The complete decision was journaled at:
+
+`projects/trading-journal/2026-08-15/AFTERNOON-weekend-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Swing Opportunity Scan — Afternoon").

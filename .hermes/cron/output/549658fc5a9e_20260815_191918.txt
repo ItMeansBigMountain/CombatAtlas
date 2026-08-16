@@ -1,0 +1,120 @@
+Cronjob Response: Agentic Robinhood Trade Account Monitor — Market Open
+(job_id: 549658fc5a9e)
+-------------
+
+# Autonomous OPEN Scan — No Trade
+
+**Account:** Robinhood Agentic ••••1041 only  
+**Scan time:** Saturday, August 15, 2026, 3:16 PM ET  
+**Decision:** **No orders placed.** U.S. equities are closed, so Monday entry prices, spreads, and triggers cannot be verified. The no-trade decision was journaled.
+
+## Live Account State
+
+- **Portfolio value:** $335.09
+- **Equities:** $302.98
+- **Cash / buying power:** $32.11
+- **Unsettled funds:** $0
+- **Pending/open orders:** None across all checked states:
+  - new
+  - queued
+  - confirmed
+  - unconfirmed
+  - partially filled
+- **Latest returned fill:** NESR sale, 0.736516 shares at $35.1601 on August 12
+- **Liquid buying power after pending orders:** $32.11
+- **80% deployable target:** $25.69
+- **20% minimum reserve:** $6.42
+- Existing equities already represent approximately **90.4%** of cash plus equity value, so the portfolio is already heavily deployed.
+
+## Kill Switches
+
+- Account value below $10: **Not triggered**
+- Approximate Friday position change versus prior closes: **-$5.14, or about -1.51%**
+- 5% daily drawdown pause: **Not triggered**
+- The 10% drawdown-from-recent-high test could not be reconstructed independently from the current snapshot. It must be rechecked Monday before any entry.
+- Binding pause: **market closed and live-entry state unavailable**
+
+## Position Decisions
+
+| Position | Friday mark | Return from cost | Decision | Technical state |
+|---|---:|---:|---|---|
+| AVGO | $393.55 | -4.31% | **Watch / weakest** | Below SMA20 $399.49; just above SMA50 $390.46 |
+| MA | $569.29 | -0.56% | **Hold** | Above SMA20 $559.40 and SMA50 $529.25 |
+| BAC | $64.48 | +3.80% | **Hold** | Above SMA20 $62.61/SMA50 $59.64; near $65.20 high |
+| SHOP | $154.50 | +7.22% | **Hold; protect winner** | Well above SMA20 $133.61 and SMA50 $122.92 |
+
+### Management levels
+
+- **AVGO:** Do not add. Review for exit if approximately **$388.50–$390** fails. A reclaim of **$399.50** would improve the setup. Targets: $412.50, then $417.82.
+- **MA:** Invalidation below approximately **$558–$559**. Targets: $580, then $601.77.
+- **BAC:** Invalidation below approximately **$62.60**. Targets: $65.20 breakout, then about $67.50.
+- **SHOP:** Initial warning below **$145**; major thesis review below **$133.60**. Targets: $165, then $175–$182.
+
+## Market Regime
+
+**Classification: mixed/risk-on rotation.**
+
+- **SPY:** $776.01; above SMA20 $756.20 and SMA50 $748.93
+- **QQQ:** $730.85; above both averages, although SMA20 $704.13 remains below SMA50 $712.95
+- **IWM:** $304.90; fresh 52-week high and above SMA20 $296.72/SMA50 $295.10
+
+Friday favored broader rotation:
+
+- Energy: approximately **+1.39%**
+- Utilities: **+0.59%**
+- Small caps: **+0.52%**
+- Industrials: **+0.38%**
+- Technology: approximately **-0.39%**
+- Healthcare: **-0.60%**
+
+Macro context remains mixed: cooler inflation reduced immediate Fed-hike pressure, but inflation remains above target; weak retail sales indicate consumer softness; oil rose on Persian Gulf risk. Next week includes housing and industrial data, FOMC minutes, and major retail/semiconductor earnings.
+
+## Ranked Fresh Candidates
+
+1. **XOM — 12/16, watch for pullback/retest**
+   - $160.22; SMA20 $155.59; SMA50 $145.32; ATR14 $3.32
+   - Trigger: hold/retest $158.60–$160
+   - Invalidation: $155.50
+   - Targets: $166, then $172–$176
+   - Supported by energy leadership and oil/geopolitical catalyst, but requires Monday confirmation.
+
+2. **GE — 12/16, breakout-retest watch**
+   - $368.37; SMA20 $360.90; SMA50 $356.43; ATR14 $9.45
+   - Trigger: sustained hold over $368–$370 or pullback to $361–$364
+   - Invalidation: close below $356
+   - Targets: $380, then $388.84
+   - Constructive industrial/aerospace trend; valuation is a caution.
+
+3. **MU — 11/16, reduced-size watch**
+   - $972.98; SMA20 $890.05; SMA50 $960.72; ATR14 $72.75
+   - Trigger: successful retest of $950–$961
+   - Invalidation: below approximately $920
+   - Targets: $1,050, then $1,120
+   - AI/HBM fundamentals are supportive, but volatility is high and the intermediate moving-average structure is not fully aligned.
+
+4. **RDDT — 10/16, catalyst-gap watch**
+   - $178.26 following a roughly 12.7% session on more than 3× normal volume
+   - SMA20 $165.84; SMA50 $175.03; ATR14 $12.14
+   - Trigger: consolidate and hold $174–$178
+   - Invalidation: below $165
+   - Targets: $195, then $210
+   - Reported S&P 500 inclusion is a catalyst, but this is not an opening-chase setup.
+
+5. **SNDK/STX — rejected for immediate entry**
+   - Strong momentum but high-beta, extended structures.
+   - Require multi-session consolidation or a controlled retest.
+
+Robinhood Daily Movers were not used as the primary universe because many constituents showed sub-$5 prices, OTC-like timestamps, or unusably wide/stale spreads.
+
+## Exact Actions
+
+- **Orders reviewed:** None; no reliable live trigger existed
+- **Orders placed/cancelled:** None
+- **New fills:** None
+- **Cash deployed:** $0
+- **Buying power retained:** $32.11
+- **Journal:** `projects/trading-journal/2026-08-15/OPEN-scan-no-trade.md`
+
+Monday’s opening priorities are to recheck every broker/risk gate, manage AVGO first if $388.50 fails, and favor confirmed XOM or GE retests over chasing RDDT, MU, or storage-stock gaps.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Trade Account Monitor — Market Open").
