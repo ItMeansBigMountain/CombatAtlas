@@ -1,6 +1,6 @@
 Discord channels: standup 1499990220077137943; code 1523247688689258586; personal 1524172425393340516; YT 1524259261281206332; trading 1524259597232242831; business 1524259978167451689.
 §
-OSRS/RuneLite: production Plugin Hub; preserve PRs; no dev modes/endpoint overrides; compact tabs. Study full mechanics before formulas. API docs cover endpoints, auth, fallbacks, privacy.
+OSRS/RuneLite: production Plugin Hub; preserve PRs; no dev modes/endpoint overrides. Research source before formulas. Clan War Board: CWA first; Wildy multi-only TDM and surprise KOTH; privacy opt-out; split ratings.
 §
 Client sites: Git auto-deploy first; Stripe/domains later.
 §
