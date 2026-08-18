@@ -1,0 +1,101 @@
+Cronjob Response: Agentic Robinhood Trade Account Monitor — Market Open
+(job_id: 549658fc5a9e)
+-------------
+
+# OPEN Scan Decision — Agentic ••••1041
+
+## Action Taken
+
+**Exited AVGO after its swing thesis remained invalidated.**
+
+- Sold **0.095750 AVGO**
+- Order: market, regular hours, GFD
+- Fill: **$393.5001**
+- Filled: **2026-08-17 09:37:43 ET**
+- Proceeds: approximately **$37.68**
+- Estimated realized loss: **$1.70 / 4.32%**
+- Fees: **$0**
+- Order ID: `6a830ea7-840c-4031-926c-664a1e3077b8`
+
+The prior plan required AVGO to reclaim $410 after Friday’s high-volume breakdown. It opened near $395, remained below SMA20, and did not repair the failed swing structure. Strong fundamentals did not justify widening the invalidation or averaging down.
+
+Required review disclosure:
+
+> Bid $393.53 × 80 Q · Ask $393.65 × 80 Q · Last $393.53 × 50 Q. Updated 9:37 AM ET.
+
+## Live Account State
+
+- Account value: **$333.38**
+- Equity value: **$263.59**
+- Cash: **$69.79**
+- Settled buying power: **$32.11**
+- Unsettled AVGO proceeds: **$37.68**
+- Open-ish orders checked after execution: **none**
+- Kill switch: **clear**
+- Daily/recent drawdown gates: **not triggered**
+- No options, shorts, other-account activity, or pending commitments
+
+Because this is a cash account, the $37.68 AVGO proceeds are not currently buying power.
+
+## Remaining Positions
+
+| Position | Live mark | Approx. P/L | Decision | Invalidation | Targets |
+|---|---:|---:|---|---:|---:|
+| BAC | $64.735 | +$2.74 / +4.21% | **Hold — 14/16** | $61.40 | $66 / $68 |
+| SHOP | $153.19 | +$7.84 / +6.32% | **Hold/protect — 12/16** | $143.50 | $160 / $166 |
+| MA | $566.88 | -$0.64 / -0.98% | **Hold — 10/16** | $550 | $583.70 / $596 |
+
+Stops are scan-managed invalidations, not resting broker orders.
+
+## Market Regime
+
+**Mixed risk-on/rotation during opening price discovery.**
+
+- SPY remained above SMA20/SMA50 but opened nearly flat.
+- QQQ showed relative opening strength.
+- IWM and several defensive sectors weakened.
+- Technology led early, but breadth did not confirm an indiscriminate risk-on entry.
+- Macro/event risk includes Tuesday housing/industrial data, Wednesday FOMC minutes, and HD/TJX/TGT/LOW/WMT earnings this week.
+
+## Ranked Fresh Candidates
+
+1. **NVDA — 12/16, watch**
+   - Strong momentum, revenue, and margins.
+   - Entry only after a $216–220 retest hold or confirmed breakout-retest above $227.50.
+   - Invalidation $205; targets $236.50/$250.
+   - Aug. 26 earnings increase event risk.
+
+2. **AXTI — 11/16, reduced-size watch**
+   - Q2 revenue and profitability improved sharply, supported by AI optical-material demand.
+   - Extremely volatile and opening-extended.
+   - Require consolidation/retest around $80–82; invalidation below approximately $75; targets $90.40/$100.
+
+3. **ARGX — 10/16, gap-hold watch**
+   - Opened roughly 13.6% higher at a new 52-week high.
+   - Too extended for an opening chase.
+   - Require a sustained hold/retest around $925–935; invalidation below $900; targets $1,000/$1,050.
+
+4. **MESO — 8/16, no trade**
+   - Insufficient liquidity, negative 20-day momentum, loss-making profile, and no sufficiently verified fresh catalyst.
+
+## Deployment
+
+- Settled liquid buying power: **$32.11**
+- 80% qualifying deployment target: **$25.69**
+- Required 20% settled-cash buffer: **$6.42**
+- New cash deployed: **$0**
+
+No opening candidate produced a confirmed policy-grade retest, so no forced rotation or gap chase was made. Existing equity exposure is approximately **79.1% of account value**.
+
+## Limited-Margin Information
+
+Limited margin would allow unsettled sale proceeds to be reused immediately without borrowing or leverage. Agentic ••••1041 is eligible:
+
+- [Phone/app upgrade](https://applink.robinhood.com/self_serve?account_number=433711041&account_type=individual&flow_id=brokerage.switch-to-margin-account&source=MCP&target_margin_type=limited)
+- [Desktop/web upgrade](https://robinhood.com/contact?account_number=433711041&account_type=individual&flow_id=brokerage.switch-to-margin-account&source=MCP&target_margin_type=limited)
+
+Journal saved to:
+
+`projects/trading-journal/2026-08-17/OPEN-agentic-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Trade Account Monitor — Market Open").
