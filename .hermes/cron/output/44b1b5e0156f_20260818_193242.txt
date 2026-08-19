@@ -1,0 +1,85 @@
+Cronjob Response: Agentic Robinhood Trade Account Monitor — Power Hour
+(job_id: 44b1b5e0156f)
+-------------
+
+# Power-Hour Decision — Hold Overnight
+
+**Account:** Agentic ••••1041 only  
+**Scan time:** August 18, 2026, 3:30 PM ET
+
+## Exact Actions
+
+- **Held:** MA, BAC, SHOP
+- **Orders reviewed or placed:** None
+- **Exits, trims, additions, or rotations:** None
+- **New fills today:** None
+- **Open-ish equity orders:** None across `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled`
+- No averaging down or stop widening occurred.
+
+## Account and Kill Switches
+
+- Account value: **$329.52**
+- Equity holdings: **$259.73**
+- Cash and liquid buying power: **$69.79**
+- Pending-order commitments: **$0**
+- Unsettled funds: **$0**
+- Equity deployment: **78.82%**
+- Account-level cash reserve: **21.18%**
+- Kill switch below $10: **Not triggered**
+- Daily-drawdown pause: **Not triggered**
+- Broker and risk state reconciled sufficiently for management.
+
+The mechanical 80% tranche of remaining buying power is **$55.83**, with a **$13.96** minimum reserve. However, the account is already essentially at the intended **80/20 total allocation**. Spending another $55.83 would recursively reduce account cash toward 4%, contrary to reserve intent.
+
+## Overnight Positions
+
+| Position | Mark | P/L | Decision | Invalidation | Targets |
+|---|---:|---:|---|---:|---:|
+| **MA** | $578.15 | +$0.64 / +0.99% | **Hold — strongest, 14/16** | $559 | $584 / $601 |
+| **BAC** | $64.09 | +$2.06 / +3.17% | **Hold, 13/16** | $62.45 | $65.20 / $68 |
+| **SHOP** | $147.42 | +$2.87 / +2.31% | **Hold/protect, 11/16** | $142.75 | $158.85 / $170 |
+
+### MA
+Rose **2.83%** and traded near its session high despite weak indexes—excellent relative strength. Price remains above rising SMA20/SMA50, while Q2 EPS, revenue, and margins support the quality thesis. No add after today’s vertical move.
+
+### BAC
+Held positive while financials outperformed. Its 20- and 60-day trends remain strong, with improving Q2 earnings and revenue. It is close to $65.225 resistance, so adding here offers inferior risk/reward.
+
+### SHOP
+Still above its post-earnings support and rising SMA20/SMA50, supported by approximately 34% Q2 revenue growth and an earnings beat. It remains the weakest holding because of growth-sector weakness, high valuation, and post-gap volatility. The $142.75 invalidation remains binding.
+
+## Market Regime and Overnight Risks
+
+**Regime: mixed/rotation with a risk-off technology impulse.**
+
+- SPY: **-0.60%**
+- QQQ: **-1.64%**
+- IWM: **-1.10%**
+- XLK: **-2.52%**
+- XLF: **+0.61%**
+
+Financial strength supported MA and BAC, but technology weakness argued against adding growth exposure. Overnight macro risks include US-Iran tensions, elevated oil/inflation concerns, and rising Treasury yields.
+
+## Fresh Candidate Scan
+
+- **HAE — 11/16, watch:** Strong gap and volume, but too extended without a confirmed retest.
+- **AMLX — 8/16, no trade:** +64% biotech move with binary-catalyst and loss-making-company risk.
+- **WEAV — 8/16, no trade:** +32% gap on extreme volume, but no validated retest or clean invalidation.
+- **RCEL — 7/16, no trade:** Loss-making micro-cap with insufficient liquidity/catalyst quality.
+- **FN — 5/16, no trade:** Broken momentum, down approximately 20%, with an unattractive spread.
+
+No fresh candidate reached the **13/16 full-policy threshold** with a confirmed, non-extended entry or materially improved the portfolio.
+
+## Final Allocation
+
+- Cash deployed this scan: **$0**
+- Equity exposure: **$259.73 / $329.52 = 78.82%**
+- Cash reserve: **$69.79 = 21.18%**
+- Current-price giveback to binding invalidations: approximately **$7.92**
+- Entry-to-invalidation planned risk: approximately **$2.69**
+
+**Final decision:** Hold MA, BAC, and SHOP overnight. Preserve the 21.18% cash reserve rather than force a trade in a mixed tape.
+
+Journal saved to `projects/trading-journal/2026-08-18/POWER-HOUR-agentic-scan.md`.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Trade Account Monitor — Power Hour").

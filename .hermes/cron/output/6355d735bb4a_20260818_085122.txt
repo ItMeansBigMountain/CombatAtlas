@@ -1,0 +1,64 @@
+Cronjob Response: Creator discovery feeder for Viral Radar
+(job_id: 6355d735bb4a)
+-------------
+
+## Viral Radar — **BLOCKED/PARTIAL**
+
+**Product status:** `blocked_auth`  
+**Uploaded URLs:** None  
+**Queue count:** `1`
+
+### Per-source result
+
+- **Chris Williamson — “Q&A: Becoming A Dad, Health Update & Favourite Peptides”**
+  - Source: https://www.youtube.com/watch?v=8Oj3NxSLP1U
+  - Public uploads: **0/5 — BLOCKED**
+  - Rendered and queued: `1`
+  - Never-rendered deficit: `4`
+
+The queue-first upload attempt failed with `invalid_grant`. The exact rendered clip and its complete upload metadata remain protected:
+
+- `UPLOAD_QUEUE/chris-williamson-q-a-becoming-a-dad-health-update-f-02-daily.mp4`
+- `UPLOAD_QUEUE/chris-williamson-q-a-becoming-a-dad-health-update-f-02-daily.mp4.upload.json`
+
+The remaining four clips were never rendered and are explicitly backlog—not an empty-queue success.
+
+### Blockers
+
+```text
+google.auth.exceptions.RefreshError:
+('invalid_grant: Token has been expired or revoked.',
+ {'error': 'invalid_grant',
+  'error_description': 'Token has been expired or revoked.'})
+```
+
+- Queue replay could not upload publicly.
+- Latest watchlist seeding with five windows per source failed before discovery because the Classical Echos OAuth token could not refresh.
+- No source reached the required **5/5** public uploads.
+- No NASA, space, unknown-creator, filler, or unrelated queue item was counted.
+
+### Metrics monitor
+
+- Status: `ok_with_token_error`
+- Video IDs seen: `477`
+- Statistics fetched: `0`
+- Error: Classical Echos `invalid_grant`
+
+### Fresh OAuth recovery URLs
+
+Authorize each account, then return the **full localhost callback URL** shown after authorization.
+
+**Classical Echos:**  
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=YvvxBpsEKJPoTlvoUkHy6Mzspv0GRT&code_challenge=N6l3Ui8W4pd_t5jYflOtA-SSqmfcdfPuMS1p2f2yxuQ&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=classicalechos%40gmail.com
+
+**Trapiistan / Sosai Oyama:**  
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=f31bupeT1Z97XgcDb8MhXWLnGCqvEn&code_challenge=N3zVPiHCxR_wIoEifoFRzRlH1fWQhE95jQFA4kqCxFc&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=trapiistan%40gmail.com
+
+**A F / fareed320:**  
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=FsMbmrggMq36MQoxLGutjx8gReIBOm&code_challenge=-7X_wJmekUJMK7WgHeeiTKGu8RU7xLPAJ5er7Ik9qyk&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=fareed320%40gmail.com
+
+**Next action:** Exchange and verify the refreshed tokens, drain the protected queue first, seed current long-form watchlist manifests, and process every selected exact source to **5/5**.
+
+Artifact: `OUTPUTS/research-brief-2026-08-18T085024Z-strict-creator-run.json`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Creator discovery feeder for Viral Radar").

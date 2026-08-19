@@ -1,0 +1,59 @@
+Cronjob Response: Daily Viral Radar / Creator clip generation + upload
+(job_id: bce8ebabac36)
+-------------
+
+## 🔴 Viral Radar — BLOCKED/PARTIAL
+
+- **Public uploads:** **0/5**
+- **Uploaded URLs:** None
+- **Protected retry queue:** **1 rendered clip + metadata**
+  - `UPLOAD_QUEUE/chris-williamson-q-a-becoming-a-dad-health-update-f-02-daily.mp4`
+- **Metrics:** 477 videos found, 0 live statistics fetched because Classical Echos OAuth is revoked.
+- **Run log:** `STATE/strict_daily_cron_20260819.log`
+
+### Source results
+
+- Alex Hormozi — *How We Got 500,000 Leads for a Book Launch*: **0/5**
+- Alex Hormozi — *8 Entrepreneurs Compete for $100,000*: **0/5**
+- Ten candidate renders were rejected by the **duplicate guard**, so they were deleted rather than queued or counted.
+- Existing Chris Williamson retry clip could not upload and remains protected. The old queue item does **not** satisfy either Alex Hormozi source minimum.
+
+### Exact blockers
+
+1. **Upload/discovery authentication:** Classical Echos, Sosai Oyama/Trapiistan, and A F/fareed320 all return `invalid_grant: Token has been expired or revoked`.
+2. **Discovery:** Latest-watchlist seeding failed on the revoked token.
+3. **Duplicate guard:** All ten selected Alex Hormozi candidates matched prior normalized stems/titles or `source_url + title`; none counted toward the minimum.
+4. **Queue semantics:** Queue count remains **1** because the Alex candidates were duplicate skips—not failed unique uploads. No rendered failed upload was lost.
+5. No source-download, source-duration, render, quota, or rate-limit failure was reported during this run.
+
+```text
+"status": "blocked_min_uploads_not_met"
+"uploaded_count": 0
+"remaining_queue_count": 1
+google.auth.exceptions.RefreshError: ('invalid_grant: Token has been expired or revoked.')
+```
+
+### Required next action
+
+Reauthorize each account below, then return the **full localhost callback URL** for each profile:
+
+- **Classical Echos:**  
+  https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=z8CYQmhQ0uW0L5Mr9Ihhn5LDbvPkY6&code_challenge=0ZXMKU2r6dtURM24Z7hkCjTq04w18WXDCPjaXVjdZ14&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=classicalechos%40gmail.com
+
+- **Sosai Oyama / Trapiistan:**  
+  https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=0oBXfSjzd9cQm1Z2QCmaRzJIjdR849&code_challenge=z-GRnlnTLRsqJnJiawImv_Al3GJw8wtgbIwZlXVsiQY&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=trapiistan%40gmail.com
+
+- **A F / fareed320:**  
+  https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=uiHuuj2hzahaSuabPm0af4WycaLZNT&code_challenge=rQ8FunH6vnRSnQuIMln06SmWqSC-H4w4a3wSl3v5ztw&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=fareed320%40gmail.com
+
+Callback formats:
+
+```text
+youtube:classicalechos: <full localhost callback URL>
+youtube:trapiistan: <full localhost callback URL>
+youtube:fareed320: <full localhost callback URL>
+```
+
+After reauthorization: drain the protected Chris Williamson clip first, refresh creator discovery, select non-duplicate windows, and upload each selected source to at least **5/5**.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Daily Viral Radar / Creator clip generation + upload").
