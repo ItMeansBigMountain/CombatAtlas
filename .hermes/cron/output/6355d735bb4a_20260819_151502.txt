@@ -1,0 +1,83 @@
+Cronjob Response: Creator discovery feeder for Viral Radar
+(job_id: 6355d735bb4a)
+-------------
+
+## Viral Radar — **BLOCKED / PARTIAL**
+
+**Product status:** `blocked_auth`  
+**Uploaded URLs:** None  
+**Queue count:** **1**
+
+### Per-source result
+
+- **Chris Williamson — “Q&A: Becoming A Dad, Health Update & Favourite Peptides”**
+  - Source: https://www.youtube.com/watch?v=8Oj3NxSLP1U
+  - Public uploads this run: **0/5**
+  - The queue-first upload failed during OAuth refresh.
+  - The exact rendered clip remains protected in `UPLOAD_QUEUE`.
+  - Queue asset verified: **42 seconds, 1080×1920, audio present**
+  - This is **PARTIAL/BLOCKED**, not success.
+
+### Watchlist discovery
+
+Latest watchlist seeding was attempted with a five-clip target but failed before discovery. Therefore:
+
+- Newly selected sources: **0**
+- Newly planned/rendered clips: **0**
+- The deficit is an **auth-blocked discovery/planning deficit**, not an empty-queue success.
+- No filler, NASA/space, unknown-creator, or unrelated clips were used.
+
+### Blockers
+
+All three upload-chain OAuth profiles return `invalid_grant`:
+
+- Classical Echos
+- Trapiistan / Sosai Oyama
+- fareed320 / A F
+
+Raw error:
+
+```text
+google.auth.exceptions.RefreshError:
+('invalid_grant: Token has been expired or revoked.',
+ {'error': 'invalid_grant',
+  'error_description': 'Token has been expired or revoked.'})
+```
+
+Metrics monitor completed, but fetched **0 live statistics** because Classical Echos OAuth is revoked.
+
+### Required next action
+
+Open each fresh authorization URL using the specified Google account, approve access, and return the **complete localhost callback URL**.
+
+**Classical Echos (`classicalechos@gmail.com`):**
+
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=87uRvjiXxyCYWHhXJZvsrPVS3t72xI&code_challenge=Yo2d13-vN4OR75wM-fwe7PI_MecKE0QV5P1jUhsXBSU&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=classicalechos%40gmail.com
+
+**Trapiistan / Sosai (`trapiistan@gmail.com`):**
+
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=fSmn7lg5x7iq0gpB9TWyzG8zxS9HNJ&code_challenge=oXe48jw9LuuZQ-ayDHsk4kEaC73811ehbPe1Imxofdo&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=trapiistan%40gmail.com
+
+**A F (`fareed320@gmail.com`):**
+
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=ZeLm3ODd1dSAPLfKX4N6Mm8gGNYR55&code_challenge=1I-_0DUA2Gn2736L2ysw3Hkjk-rkh4zAKJJni7lNzo0&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=fareed320%40gmail.com
+
+Return in this format:
+
+```text
+youtube:classicalechos: <full localhost callback URL>
+youtube:trapiistan: <full localhost callback URL>
+youtube:fareed320: <full localhost callback URL>
+```
+
+After token exchange and verification, the next run must drain the preserved queue first, seed current long-form sources, and process each selected source to at least **5/5**.
+
+**Artifacts:**
+
+- `OUTPUTS/strict-cron-result-20260819T151354Z.json`
+- `OUTPUTS/strict-cron-20260819T151257Z.log`
+- `OUTPUTS/seed-latest-20260819T151353Z.log`
+
+Filesystem free space: **31 GB**.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Creator discovery feeder for Viral Radar").

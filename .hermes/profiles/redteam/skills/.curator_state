@@ -1,9 +1,9 @@
 {
-  "last_report_path": "/opt/data/profiles/redteam/logs/curator/20260812-082850",
-  "last_run_at": "2026-08-12T08:28:50.576342+00:00",
-  "last_run_duration_seconds": 0.990486,
-  "last_run_summary": "auto: 69 marked stale; llm: skipped (consolidation off)",
+  "last_report_path": "/opt/data/profiles/redteam/logs/curator/20260819-092138",
+  "last_run_at": "2026-08-19T09:21:38.652927+00:00",
+  "last_run_duration_seconds": 0.892168,
+  "last_run_summary": "auto: no changes; llm: skipped (consolidation off)",
   "last_run_summary_shown_at": null,
   "paused": false,
-  "run_count": 8
+  "run_count": 9
 }
