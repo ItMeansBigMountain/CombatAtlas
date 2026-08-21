@@ -1,0 +1,89 @@
+Cronjob Response: Creator discovery feeder for Viral Radar
+(job_id: 6355d735bb4a)
+-------------
+
+## Viral Radar — **BLOCKED / PARTIAL**
+
+**Status:** `blocked_auth` + `blocked_source`  
+**Public uploads:** **0**  
+**Uploaded URLs:** None  
+**queue_count:** **1 rendered clip** plus its metadata, safely preserved
+
+### Queue drained first
+
+- **Chris Williamson — Q&A: Becoming A Dad, Health Update & Favourite Peptides**
+- Source: https://www.youtube.com/watch?v=8Oj3NxSLP1U
+- Result: **0/5 public clips**
+- Rendered and protected in `UPLOAD_QUEUE`: **1**
+- Never-rendered deficit: **4**
+- The four missing clips are backlog deficits and are **not** included in `queue_count`.
+
+### Discovery and source processing
+
+- Latest-watchlist seeding was attempted but failed because the Classical Echos OAuth token could not refresh.
+- Newly discovered sources: **0**
+- The pipeline then attempted **50 existing creator manifests** as source-ready fallbacks.
+- All remained **0/5** because exact-source acquisition failed:
+  - yt-dlp: YouTube bot-confirmation block
+  - pytubefix: `VideoUnavailable`
+  - pytube: HTTP 400
+- These are never-rendered source deficits, not upload-queue items.
+- No NASA, space, unknown-creator, unrelated filler, or old queued upload was counted toward a new-source minimum.
+
+### Raw blockers
+
+```text
+Classical Echos: invalid_grant: Token has been expired or revoked.
+Trapiistan/Sosai: invalid_grant: Token has been expired or revoked.
+fareed320/A F: invalid_grant: Token has been expired or revoked.
+```
+
+```text
+yt-dlp: Sign in to confirm you’re not a bot.
+pytubefix: VideoUnavailable
+pytube: HTTP Error 400: Bad Request
+```
+
+### Fresh OAuth recovery links
+
+Open each link using the named account, approve access, and return the **full localhost callback URL**.
+
+**Classical Echos (`classicalechos@gmail.com`)**  
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=kfVTk0AST8El8sYjipI2OjxSWRpVkk&code_challenge=SGolbrb169wsIrRmm8m0wGxvoZ7QXFa_PO5n6xkyqRM&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=classicalechos%40gmail.com
+
+Return as: `youtube:classicalechos: <full localhost URL>`
+
+**Trapiistan/Sosai (`trapiistan@gmail.com`)**  
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=vi5jPsJBX1JeIBIAWyq0NdQhZj1MUR&code_challenge=mDa81FUU9Kq1XhQSNi8_T2P3x9HsvOxgtkO7V9XpyFU&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=trapiistan%40gmail.com
+
+Return as: `youtube:trapiistan: <full localhost URL>`
+
+**A F (`fareed320@gmail.com`)**  
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=Nv9E07WAjUVn9k7aN0y4Gm2gmTJ6zO&code_challenge=qk86Rpr5y-3AxrIPZErpzqmKllzuihjOv64H0SoaQHM&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=fareed320%40gmail.com
+
+Return as: `youtube:fareed320: <full localhost URL>`
+
+### Metrics
+
+- IDs found: **477**
+- Live statistics fetched: **0**
+- Cause: Classical Echos `invalid_grant`; missing statistics were not treated as performance data.
+
+### Next action
+
+Reauthorize and verify all three upload profiles, then:
+
+1. Drain the protected queue first.
+2. Supply fresh YouTube cookies, a residential proxy, or rights-cleared local source media.
+3. Seed the latest long-form watchlist manifests.
+4. Review five distinct transcript-grounded windows per selected source.
+5. Render and upload each selected source to **5/5**.
+
+Artifacts:
+
+- `OUTPUTS/research-brief-20260820T2127Z-strict-creator-run.json`
+- `OUTPUTS/strict-queue-drain-20260820T-current.log`
+- `UPLOAD_QUEUE/chris-williamson-q-a-becoming-a-dad-health-update-f-02-daily.mp4`
+- Queue integrity verified; filesystem has **32 GB free**.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Creator discovery feeder for Viral Radar").

@@ -1,0 +1,84 @@
+Cronjob Response: Daily Viral Radar Content Backlog Processor
+(job_id: f02334d43494)
+-------------
+
+## Viral Clip Radar backlog drain — **BLOCKED**
+
+- **Status:** `blocked_auth` / `blocked_source`
+- **Uploaded:** 0
+- **Public URLs:** None
+- **queue_before:** 1
+- **queue_after:** 1
+- **hold_queue:** 1
+- **pipeline_exit:** 2
+- **Minimum required:** 10
+- **Pipeline status:** `blocked_min_uploads_not_met`
+- **Durable raw log:** `/opt/data/HeRmEz/projects/viral-clip-radar/OUTPUTS/backlog-processor-logs/2026-08-20T090031Z.log`
+
+The queued rendered clip remains protected:
+
+`UPLOAD_QUEUE/chris-williamson-q-a-becoming-a-dad-health-update-f-02-daily.mp4.upload.json`
+
+The hold queue remains intact:
+
+`UPLOAD_QUEUE_HOLD/alex-hormozi-8-entrepreneurs-compete-for-100-00-02-daily.mp4.upload.json`
+
+No failed rendered clips were deleted.
+
+### Blockers
+
+1. All three upload-account OAuth tokens are expired or revoked.
+2. YouTube source acquisition is being rejected by bot/age verification; yt-dlp, pytubefix, and pytube fallbacks failed.
+3. One planned Alex Hormozi render references a missing source MP4.
+
+Raw application errors:
+
+```text
+google.auth.exceptions.RefreshError: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})
+```
+
+```text
+ERROR: [youtube] 8Oj3NxSLP1U: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication.
+pytubefix.exceptions.VideoUnavailable: 8Oj3NxSLP1U is unavailable
+urllib.error.HTTPError: HTTP Error 400: Bad Request
+```
+
+```text
+source file missing for clip alex-hormozi-how-we-got-500-000-leads-for-a-book-launch-auto-01: /opt/data/HeRmEz/projects/viral-clip-radar/SOURCES/s8RSjblOel4/source.mp4
+```
+
+### Fresh OAuth recovery URLs
+
+Open each URL with the specified account and return the **full localhost callback URL**.
+
+**Classical Echos — `classicalechos@gmail.com`**
+
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=HbcjlVvoBQb1qYZahq0zs254C5RfLQ&code_challenge=Hhry9rARJZt4KFdLpVvVKUb93ZrhiMDRU5vtNHhhQdY&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=classicalechos%40gmail.com
+
+Return as:
+
+```text
+youtube:classicalechos: <full localhost callback URL>
+```
+
+**Trapiistan / Sosai Oyama — `trapiistan@gmail.com`**
+
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=EWq3Q28jpUsZmFKBH9q2oCr6dsbw2t&code_challenge=1js_lbxUXzhYSlAjjUmNzS4KI5V0I9PrurwX3dLgLw4&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=trapiistan%40gmail.com
+
+Return as:
+
+```text
+youtube:trapiistan: <full localhost callback URL>
+```
+
+**A F — `fareed320@gmail.com`**
+
+https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=iNktcbTDYs553YIhDg41y7XqSYoOru&code_challenge=WaEmC8Tcb0vZXVcFGpfrUMuY6VW7WcF4oFJZZlUeMnY&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=fareed320%40gmail.com
+
+Return as:
+
+```text
+youtube:fareed320: <full localhost callback URL>
+```
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Daily Viral Radar Content Backlog Processor").

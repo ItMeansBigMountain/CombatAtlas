@@ -1,8 +1,8 @@
 {
   "profile": "personal-secondary",
   "email": "fareed320@gmail.com",
-  "state": "obZ6u1JpCW8Nky0eGvFqzXLzDaZFFx",
-  "code_verifier": "kseugVkt4O6sFP~LRI-QyM1jDSi7Afe5neKAS3ouzNG55uznwq3IRrH-pyYSGd_.Pla~MJmqi1jfO3wc_n0eeXgq-Uqu7-HodjJ1dYGh5Ve64~h9KRIBvUw7P5oXJyvU",
+  "state": "j2OD2Yl2qTadNaq2jBHaGvdiOpU6p7",
+  "code_verifier": "8DhX2af0uNV1OmOm797pgsRmIwhy0AY3AISkf2zRYEH2asQxF6UI2XRlB9p-nDbJtszYH4HJm8mWFyNITgDQvc5gVdMR_X9GMNlKQ7ZL1u.maw8~QQFVRTiIG.PY~ya1",
   "redirect_uri": "http://localhost:1",
   "scopes": [
     "https://www.googleapis.com/auth/gmail.readonly",
