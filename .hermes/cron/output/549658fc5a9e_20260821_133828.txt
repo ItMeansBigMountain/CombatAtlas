@@ -1,0 +1,109 @@
+Cronjob Response: Agentic Robinhood Trade Account Monitor — Market Open
+(job_id: 549658fc5a9e)
+-------------
+
+# Robinhood Agentic OPEN Scan — 2026-08-21
+
+## Decision
+
+**Hold MA, BAC, XOM, and SHOP. No new order, rotation, or add.**
+
+The scan occurred approximately six minutes after the opening bell. Fresh movers were opening gaps without confirmed retests or sufficiently verified catalysts. The portfolio already holds the policy maximum of four equities, and aggregate planned risk remains above the default $6 target. Spending cash merely to meet the 80% liquid-cash target would violate the no-force and risk gates.
+
+## Live Account State
+
+- **Account:** Robinhood Agentic ••••1041 only
+- **Account status:** Active, cash account, agent-accessible
+- **Account value:** **$326.59**
+- **Equity value:** **$312.63**
+- **Cash / buying power:** **$13.96**
+- **Pending commitments:** **$0**
+- **Unsettled funds:** **$0**
+- **Open-ish orders checked:** `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled` — **all empty**
+- **Kill switch:** Clear; account value is above $10 and available snapshots show neither a 5% daily loss nor 10% recent-high drawdown
+- **Latest fill:** XOM buy for **$55.83**, filled **0.332975 shares at $167.6699** on August 20; $0 fees
+
+Liquid-balance allocation:
+
+- Nominal 80% deployable: **$11.17**
+- Required 20% reserve: **$2.79**
+- Newly deployed: **$0**
+- Remaining buying power: **$13.96**
+
+## Market Regime
+
+**Mixed/rotation, but constructive at the open.**
+
+- SPY **$764.71**, +0.28%; above SMA20/SMA50
+- QQQ **$711.98**, +0.15%; above SMA20 but below SMA50
+- IWM **$299.36**, +0.57%; above SMA50 and near SMA20
+
+Opening leadership favored energy, financials, industrials, and healthcare. Energy and healthcare retained the strongest intermediate trends. Higher oil prices and inflation risk from Middle East disruption remain supportive for energy but create a macro headwind elsewhere.
+
+## Position Decisions
+
+1. **XOM — HOLD, 14/16**
+   - Mark: **$167.56**
+   - Position value: approximately **$55.79**
+   - Above SMA20/SMA50; 20/60-day momentum +5.9%/+10.9%
+   - Energy sector leadership and higher oil support the thesis, although Q2 EPS missed estimates
+   - **Stop/invalidation:** $163.50
+   - **Targets:** $176.50 / $182
+   - Maintain 3–5-session time stop; no opening add
+
+2. **MA — HOLD, 13/16**
+   - Mark: **$574.32**
+   - Position value: approximately **$65.21**
+   - Unrealized P/L: approximately **+$0.21**
+   - Above rising SMA20/SMA50; Q2 EPS beat estimates
+   - **Stop:** $561
+   - **Targets:** $584 / $601.77
+
+3. **SHOP — HOLD/PROTECT, 12/16**
+   - Mark: **$147.08**
+   - Position value: approximately **$126.79**
+   - Unrealized P/L: approximately **+$2.58**
+   - Strong 20/60-day momentum and recent EPS beat, offset by high valuation and extension risk
+   - **Stop:** $140
+   - **Targets:** $158.87 / $170
+   - No add
+
+4. **BAC — HOLD, weakest, 10/16**
+   - Mark: **$62.32**
+   - Position value: approximately **$65.21**
+   - Above SMA50 but below SMA20
+   - Financial-sector opening strength and Q2 EPS beat support holding
+   - **Hard stop:** $60.70
+   - **Targets:** $65.20 / $67
+   - Do not average down; exit promptly if invalidated
+
+## Ranked Fresh Candidates
+
+1. **MRVI — 11/16, watch for retest**
+   - New 52-week high and strong 20/60-day momentum
+   - Loss-making and entering resistance without a verified fresh catalyst
+   - Require an orderly hold/retest around **$8.00–$8.20**
+
+2. **MRNA — 10/16, watch only**
+   - Approximately 9.5% opening gap with extreme momentum
+   - Loss-making, ATR around $14.55, and no confirmed opening retest
+   - Do not chase; require consolidation around **$135–$140** plus catalyst confirmation
+
+3. **MARA — 9/16, no trade**
+   - Liquid and up sharply at the open
+   - Still below SMA50 with negative 20/60-day momentum and negative earnings
+   - Rejected under the quality and volatility guardrails
+
+AAP, AMRC, ONT, CAPR, SPRY, EYPT, and BTBT were rejected for broken trends, weak quality, low prices, wide spreads, or unverified speculative catalysts.
+
+## Exact Actions
+
+- **Order reviews:** None; no candidate passed the confirmed-entry gate
+- **Orders placed:** None
+- **Sales/exits:** None
+- **New deployment:** **$0**
+- **Journal:** Written to `projects/trading-journal/2026-08-21/OPEN-agentic-scan.md`
+
+Next management priorities are BAC at **$60.70**, SHOP at **$140**, XOM at **$163.50**, and MA at **$561**. Stops will not be widened.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Trade Account Monitor — Market Open").

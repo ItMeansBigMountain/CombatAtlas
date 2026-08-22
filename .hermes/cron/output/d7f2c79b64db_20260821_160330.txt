@@ -1,0 +1,102 @@
+Cronjob Response: Agentic Robinhood Trade Account Monitor — Midday
+(job_id: d7f2c79b64db)
+-------------
+
+# MIDDAY Decision — Hold, No New Orders
+
+**Account:** Robinhood Agentic ••••1041 only  
+**Scan time:** 2026-08-21 16:01–16:06 UTC / 12:01 ET
+
+No position breached its invalidation, and no fresh candidate offered a confirmed, materially superior risk-adjusted setup. The portfolio already holds the policy maximum of four equities, so no order was reviewed, placed, or cancelled.
+
+## Current State
+
+- **Account value:** $328.20
+- **Equity value:** $314.24
+- **Cash / authoritative buying power:** $13.96
+- **Unsettled funds:** $0
+- **Open-ish orders:** None across `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled`
+- **Fills today:** None
+- **Most recent fill:** XOM bought August 20 — $55.83, 0.332975 shares at $167.6699
+- **Kill switches:** Clear; value is above $10, broker state is coherent, and available snapshots show no 5% daily or 10% recent-high drawdown trigger
+
+## Market Regime
+
+**Selective risk-on rebound with sector rotation.**
+
+- SPY: $767.13, **+0.59%**
+- QQQ: $714.52, **+0.50%**
+- IWM: $299.58, **+0.64%**
+- XLF: **+0.90%**
+- XLY: **+1.21%**
+- XLE: approximately flat
+
+SPY remains above its 20- and 50-day averages. QQQ is above its 20-day but below its 50-day average, supporting selective longs rather than indiscriminate breakout chasing.
+
+## Holdings
+
+| Rank | Holding | Midday decision | Approx. P/L | Score |
+|---|---|---|---:|---:|
+| 1 | SHOP | **Hold** | +$4.02 / +3.23% | 14/16 |
+| 2 | MA | **Hold** | +$0.97 / +1.50% | 14/16 |
+| 3 | XOM | **Hold, monitor** | -$0.52 / -0.94% | 12/16 |
+| 4 | BAC | **Hold, weakest** | -$0.25 / -0.38% | 11/16 |
+
+### SHOP
+
+Strongest momentum holding: $148.75, above SMA20 $139.15 and SMA50 $125.76, and above intraday VWAP. Q2 revenue reached $3.583B versus $2.680B a year earlier; EPS beat estimates.
+
+- Support: $145, then approximately $139
+- Target: $158.87, followed by continuation if volume confirms
+- Invalidation: sustained loss of the post-earnings structure/SMA20
+
+### MA
+
+Trading at $581.05, above SMA20 $566.21, SMA50 $535.85, and intraday VWAP. Q2 revenue grew approximately 14% year over year, margin reached 47.3%, and EPS beat estimates.
+
+- Support: $573–574, then approximately $566
+- Target: breakout above $583.71, then $595–600
+- Invalidation: failed breakout followed by loss of SMA20
+
+### XOM
+
+Daily trend remains intact above SMA20 $157.92 and SMA50 $148.68, but intraday relative strength softened alongside flat energy-sector performance. Q2 revenue and margins improved sharply, although EPS missed estimates.
+
+- Support: $165.30, then $160–157.92
+- Target: $168.64, then $174–176
+- Invalidation: sustained failure of the $157.92–160 structure
+- **No averaging down**
+
+### BAC
+
+Weakest holding because it remains below SMA20 $63.04 and lagged XLF intraday, though it is still above SMA50 $60.38. Q2 revenue, net income, and EPS were strong, supported by trading and investment-banking activity.
+
+- Support: $60.90–60.38
+- Target: $63, then $65.22
+- Invalidation: sustained break below SMA50 or continued material sector-relative weakness
+- First candidate for a future rotation if a clearly superior setup confirms
+
+## Ranked Fresh Opportunities
+
+1. **ARCT — 10/16, watch only:** Real Thermo Fisher/ARCT-032 catalyst and strong volume, but up more than 20% today after an already sharp breakout. Biotech and clinical risks require a consolidation or retest around $12.30–12.60.
+2. **CRML — 8/16, no trade:** Strong intraday liquidity and critical-minerals catalyst, but longer-term structure remains damaged and fundamental visibility is poor. Require a multi-session hold above roughly $6.60–7.00.
+3. **ASST — 7/16, no trade:** Consecutive high-volume gaps and crypto-treasury momentum, but weak operating fundamentals, financing/dilution risk, and extreme volatility fail the quality guardrail.
+
+Other Daily Movers were rejected for sub-$5 prices, stale or wide ADR spreads, extreme unconfirmed gaps, poor liquidity, or unclear invalidation.
+
+## Deployment and Reserve
+
+- Liquid buying power after pending orders: **$13.96**
+- Nominal 80% deployment slice: **$11.17**
+- Required 20% liquid reserve: **$2.79**
+- New deployment: **$0**
+- Current total equity exposure: approximately **95.75%**
+- Current cash: approximately **4.25%** of account value
+
+The full $13.96 remains liquid because deploying $11.17 would require forcing an unqualified fifth holding or chasing an extended mover. Existing equity exposure counts separately from the policy’s 80/20 treatment of currently available liquid buying power.
+
+Journal saved to:
+
+`projects/trading-journal/2026-08-21/MIDDAY-agentic-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Trade Account Monitor — Midday").

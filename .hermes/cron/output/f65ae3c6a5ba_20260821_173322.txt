@@ -1,0 +1,69 @@
+Cronjob Response: Agentic Robinhood Swing Opportunity Scan — Afternoon
+(job_id: f65ae3c6a5ba)
+-------------
+
+# Afternoon Decision — Hold / No Rotation
+
+**Account:** Robinhood Agentic ••••1041 only  
+**Scan time:** August 21, 2026, 1:31 PM ET
+
+## Live State
+
+- **Account value:** $327.77
+- **Equity value:** $313.81
+- **Cash / buying power:** $13.96
+- **Open or pending equity orders:** None across `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled`
+- **Latest fill:** XOM buy, 0.332975 shares at $167.6699 on August 20
+- **Kill switches:** Clear; account is active and accessible, value exceeds $10, and available snapshots do not indicate a daily or recent-high drawdown pause
+- **Current deployment:** 95.74% equities; 4.26% cash
+
+The $13.96 is the protected reserve left after yesterday’s exact 80% deployment of available liquidity. Spending 80% of that reserve again would recursively consume the policy buffer.
+
+## Market Regime
+
+**Mixed/risk-on rebound with active sector rotation.**
+
+- SPY $765.80, **+0.42%**
+- QQQ $713.44, **+0.35%**
+- IWM $299.70, **+0.68%**
+- Strongest sectors: healthcare, consumer discretionary, financials
+- Lagging: energy and semiconductors
+
+SPY remains above its 20- and 50-day averages, but QQQ remains slightly below its 50-day average. Elevated yields, geopolitical tension, and oil/inflation uncertainty keep this from being a uniformly strong trend regime.
+
+## Position Decisions
+
+| Position | Live | Marked value | P/L | Decision | Management |
+|---|---:|---:|---:|---|---|
+| MA | $580.29 | $65.89 | +$0.89 | **Hold — 14/16** | Stop $561; targets $584/$601.77 |
+| SHOP | $149.09 | $128.52 | +$4.31 | **Hold/protect — 14/16** | Stop $140; targets $158.85/$170 |
+| XOM | $165.19 | $55.00 | -$0.83 | **Hold — 12/16; no add** | Stop $163.50; targets $176.50/$182 |
+| BAC | $61.55 | $64.40 | -$0.60 | **Hold, weakest — 10/16** | Stop $60.70; targets $65.20/$67 |
+
+### Thesis updates
+
+- **MA:** Strongest quality-adjusted holding. It remains above rising SMA20/SMA50 with positive 20- and 60-day momentum. Q2 EPS and revenue beat, with improved operating margins. No add near $583.71 resistance.
+- **SHOP:** Strong post-earnings trend supported by 34% revenue growth, 32% GMV growth, and an 18% free-cash-flow margin. Its high valuation and roughly 5% ATR make adding here unattractive.
+- **XOM:** Intermediate uptrend remains intact, supported by strong operating and free cash flow. Energy is lagging today, but the binding $163.50 invalidation has not broken. No averaging down.
+- **BAC:** Weakest holding because it is below SMA20 and lagging over the short term. Q2 fundamentals remain constructive and XLF is positive today. Exit promptly if $60.70 breaks or relative weakness persists.
+
+## Ranked Fresh Candidates
+
+1. **COP — 12/16, wait for retest.** Strong 20/60-day momentum and Q2 earnings/revenue beat, but it is at a fresh 52-week high while energy lags. Do not chase. Preferred retest zone: $130–132.
+2. **PLTR — 12/16, wait for retest.** Exceptional growth and raised guidance, but +41% over 20 sessions, approximately 149× earnings, and roughly 5.3% ATR make $180 extended. Preferred support/retest: $170–174.
+3. **MA — 14/16, already held.** Highest-quality trend but near resistance; no incremental position.
+4. **ORCL — 10/16, watch.** Strong 20-day rebound but still below SMA50 with negative 60-day momentum.
+5. **GOOGL — 9/16, no trade.** Attractive valuation, but below SMA20/SMA50 and lacking positive 60-day momentum.
+
+## Actions and Capital
+
+- **Orders reviewed:** None—no setup qualified for execution.
+- **Orders placed/cancelled:** None.
+- **New fills:** None.
+- **Rotation:** None. COP and PLTR are not confirmed retest entries and do not justify replacing BAC after considering extension, slippage, and thesis uncertainty.
+- **Cash retained:** $13.96 protected reserve.
+- **Management triggers:** MA $561; SHOP $140; XOM $163.50; BAC $60.70.
+
+Journal saved to `projects/trading-journal/2026-08-21/AFTERNOON-agentic-scan.md`.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Swing Opportunity Scan — Afternoon").

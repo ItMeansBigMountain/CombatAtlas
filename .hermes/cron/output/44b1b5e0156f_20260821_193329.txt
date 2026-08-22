@@ -1,0 +1,79 @@
+Cronjob Response: Agentic Robinhood Trade Account Monitor — Power Hour
+(job_id: 44b1b5e0156f)
+-------------
+
+# Power-Hour Decision — Hold, No Orders
+
+**Account:** Agentic ••••1041 only  
+**Scan time:** August 21, 2026, approximately 3:31–3:35 p.m. ET
+
+## Current State
+
+- **Account value:** $327.51
+- **Equities:** $313.55
+- **Cash / liquid buying power:** $13.96
+- **Pending deposits / unsettled funds:** $0
+- **Open positions:** 4
+- **Open-ish equity orders:** None across `new`, `queued`, `confirmed`, `unconfirmed`, and `partially_filled`
+- **Today’s fills:** None
+- **Kill switch:** Clear; account value remains well above $10
+- **Current equity deployment:** approximately **95.7% of account value**
+
+Liquid-balance policy math:
+
+- 80% potentially deployable: **$11.17**
+- Required 20% reserve: **$2.79**
+- Actual cash retained after this scan: **$13.96**
+- New cash deployed: **$0**
+
+## Market Regime
+
+**Mixed/rotation with a constructive power-hour rebound.**
+
+SPY was above its SMA20/SMA50, but QQQ remained below its SMA50 and all three major benchmarks had negative five-session returns. Financials and consumer discretionary led today, while energy was flat. Elevated Treasury yields—approximately 4.7% for the 10-year and above 5.25% for the 30-year—remain an overnight valuation and volatility risk.
+
+## Overnight Positions
+
+| Position | Decision | Live mark | P/L | Stop / invalidation | Targets |
+|---|---|---:|---:|---:|---:|
+| **MA** | Hold, 14/16 | $579.52 | +$0.80 / +1.23% | **$561** | $584 / $601.77 |
+| **SHOP** | Hold/protect, 14/16 | $148.66 | +$3.94 / +3.17% | **$140** | $158.87 / $170 |
+| **XOM** | Hold, 11/16 | $164.95 | -$0.91 / -1.62% | **$163.50** | $176.50 / $182 |
+| **BAC** | Hold, weakest, 10/16 | $61.745 | -$0.39 / -0.60% | **$60.70** | $65.20 / $67 |
+
+### Position notes
+
+- **MA:** Strong rising daily trend and another constructive intraday recovery. No add immediately below resistance.
+- **SHOP:** Best momentum and strongest catalyst profile, but also the largest position and main risk contributor. Its elevated valuation and volatility argue for protection rather than adding.
+- **XOM:** Longer trend remains valid, but it underperformed and faded from $168. No averaging down; exit review is mandatory below $163.50.
+- **BAC:** Weakest holding. It lagged XLF and remains below SMA20, but recovered from $61.52 without breaching its written stop. It is the first rotation/exit candidate if relative weakness persists.
+
+Estimated aggregate risk to written stops is approximately **$11.13**, above the policy’s default $6 target, primarily because of SHOP’s existing stop distance. No stop was widened and no additional risk was accepted.
+
+## Fresh Candidates
+
+- **CVX — 12/16, watch:** Strong energy trend, but stalled under $208.98 and would duplicate XOM exposure.
+- **JPM — 10/16, watch:** High-quality financial with reasonable valuation, but short-term momentum is deteriorating and it duplicates BAC/XLF exposure.
+- **AMZN — 9/16, no trade:** Excellent Q2/AWS catalyst, but post-gap structure has not reconfirmed and QQQ remains below SMA50.
+
+The Robinhood Daily Movers list was also inspected. It was dominated by speculative miners, biotech names, and ADRs; none offered a sufficiently liquid, confirmed, high-quality replacement.
+
+## Actions and Fills
+
+**No orders reviewed or placed. No fills. No exits or rotations.**
+
+Although $11.17 of buying power was nominally deployable, the portfolio already contains the policy maximum of four equities, aggregate risk is elevated, and no confirmed 13+ candidate materially improved upon the existing holdings. Spending cash merely to meet the deployment target would have forced a fifth position or added risk without adequate evidence.
+
+## Overnight Controls
+
+- **BAC:** Exit/reassess on a decisive break below $60.70 or continued sector-relative weakness.
+- **XOM:** Exit/reassess below $163.50; never average down.
+- **SHOP:** Protect or exit below $140; do not widen the stop.
+- **MA:** Maintain $561 invalidation; assess profit-taking if momentum stalls at $584 or $601.77.
+- Retain at least **$2.79** cash reserve; rotate only into a confirmed, materially higher-scoring setup.
+
+Journal saved to:
+
+`projects/trading-journal/2026-08-21/POWER-HOUR-agentic-scan.md`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Agentic Robinhood Trade Account Monitor — Power Hour").
