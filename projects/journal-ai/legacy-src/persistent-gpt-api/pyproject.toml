@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "journal-ai-api"
+version = "0.1.0"
+description = "Modernized Django API runtime for journal-ai"
+readme = "SETUP.md"
+requires-python = ">=3.11"
+dependencies = [
+  "Django>=5.1,<5.3",
+  "djangorestframework>=3.15,<3.17",
+  "djangorestframework-simplejwt>=5.3,<6",
+  "python-dotenv>=1.0,<2",
+  "django-rest-framework-social-oauth2>=1.2,<2",
+]
+
+[tool.setuptools.packages.find]
+include = ["Persistent_GPT_api*", "core*"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "Persistent_GPT_api.settings"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]

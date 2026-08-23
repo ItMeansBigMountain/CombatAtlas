@@ -15,6 +15,9 @@ python3 manage.py check
 python3 manage.py test
 ```
 
+For editable development installs, the equivalent `pyproject.toml` manifest is
+also available: `uv pip install -e .`.
+
 If `uv` is not available, create a venv with Python and use pip inside that venv:
 
 ```bash
@@ -65,3 +68,7 @@ Expected response:
 ```json
 {"status":"ok","service":"journal-ai-api"}
 ```
+
+Vercel's filesystem is ephemeral. The default SQLite configuration is suitable
+for health checks and preview validation only; configure a hosted database
+before enabling journal writes in production.

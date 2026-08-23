@@ -17,6 +17,14 @@ class HealthCheckTests(SimpleTestCase):
 
 
 class VercelDeploymentConfigTests(SimpleTestCase):
+    def test_dependency_manifests_are_present(self):
+        requirements = (PROJECT_DIR / "requirements.txt").read_text()
+        pyproject = (PROJECT_DIR / "pyproject.toml").read_text()
+
+        self.assertIn("Django>=5.1,<5.3", requirements)
+        self.assertIn('name = "journal-ai-api"', pyproject)
+        self.assertIn('requires-python = ">=3.11"', pyproject)
+
     def test_vercel_json_routes_all_requests_to_serverless_wsgi_entry(self):
         config_path = PROJECT_DIR / "vercel.json"
         self.assertTrue(config_path.exists(), "vercel.json is required for Vercel deployment")
