@@ -11,7 +11,7 @@
 	url = https://github.com/ItMeansBigMountain/bis-loadouts-osrs.git
 	branch = main
 [submodule "projects/osrs-plugins/ClanWarBoard"]
-	path = projects/osrs-plugins/in-progress/ClanWarBoard
+	path = projects/osrs-plugins/pr-review-pending/ClanWarBoard
 	url = https://github.com/ItMeansBigMountain/clan-war-board-osrs.git
 	branch = main
 [submodule "projects/osrs-plugins/WhosGrindingClanPanel"]
