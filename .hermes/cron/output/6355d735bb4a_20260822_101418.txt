@@ -1,0 +1,66 @@
+Cronjob Response: Creator discovery feeder for Viral Radar
+(job_id: 6355d735bb4a)
+-------------
+
+## BLOCKED — Viral Radar strict creator-source run
+
+- **Public uploads:** 0
+- **Uploaded URLs:** None
+- **Newly discovered sources:** None; watchlist seeding failed before discovery.
+- **Per-source result:** No source reached **5/5**.
+- **UPLOAD_QUEUE:** **1 protected rendered clip**
+  - Creator: Chris Williamson
+  - Source: https://www.youtube.com/watch?v=8Oj3NxSLP1U
+  - Asset: `/opt/data/HeRmEz/projects/viral-clip-radar/UPLOAD_QUEUE/chris-williamson-q-a-becoming-a-dad-health-update-f-02-daily.mp4`
+  - Latest replay failed with `invalid_grant`; media and metadata remain queued.
+
+### Blockers
+
+1. All three Viral Radar upload profiles have expired or revoked OAuth grants:
+   - Classical Echos
+   - Sosai Oyama/Trapiistan
+   - A F/fareed320
+
+2. Latest-watchlist seeding failed while refreshing the Classical Echos token. Therefore, no newly discovered source could be processed toward 5/5.
+
+3. Existing exact-source candidates were not rendered because source acquisition failed:
+   - `yt-dlp`: YouTube bot confirmation
+   - `pytubefix`: video unavailable
+   - `pytube`: HTTP 400
+
+   These are **never-rendered deficits**, so they do not appear in `UPLOAD_QUEUE`.
+
+4. The Alex Hormozi candidate `s8RSjblOel4` is a YouTube Short and cannot support five distinct excerpts. It was not counted as complete; a longer watchlist source is required.
+
+```text
+status: blocked_min_uploads_not_met
+min_uploads: 5
+uploaded_count: 0
+queued_replay_uploaded_count: 0
+remaining_queue_count: 1
+seed_result.status: seed_failed
+google.auth.exceptions.RefreshError: invalid_grant: Token has been expired or revoked
+```
+
+### Metrics monitor
+
+- Video IDs seen: **477**
+- Live statistics fetched: **0**
+- Status: setup blocked by Classical Echos `invalid_grant`; this is not performance data.
+
+### Required next action
+
+Reauthorize the three accounts, returning each **full localhost callback URL**:
+
+- **Classical Echos:** [Authorize](https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=cpJe7Kgpg0x2jWNLc93D8VegLVB75e&code_challenge=RO8mbOcpycBZEWRVaXHyKL8wLnsqH2wnvhB4MOylsE4&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=classicalechos%40gmail.com)
+- **Sosai Oyama/Trapiistan:** [Authorize](https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=xeAIHj6B6CajbXHRu8SVv0RX45waaJ&code_challenge=schaN-NAorpM1rJIGly0RavYXXRsy3EmdRB-eQM8PNw&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=trapiistan%40gmail.com)
+- **A F/fareed320:** [Authorize](https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=dNF3gS5aJ2VsN6skbtflRBKJOVEH5d&code_challenge=WuSOkrSzSzlIju1rpeCUeD2o_l04kj8PY6oULqBwtjk&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=fareed320%40gmail.com)
+
+After reauthorization: verify auth, drain the protected queue first, seed latest manifests, acquire a longer creator-original source, and publish five distinct clips from that exact source.
+
+Artifacts:
+
+- Run log: `/opt/data/HeRmEz/projects/viral-clip-radar/OUTPUTS/strict-cron-20260822-current.log`
+- Durable report: `/opt/data/HeRmEz/projects/viral-clip-radar/OUTPUTS/strict-cron-report-2026-08-22.json`
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Creator discovery feeder for Viral Radar").
