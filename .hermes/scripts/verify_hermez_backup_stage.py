@@ -42,8 +42,28 @@ def staged_size(path: str) -> int:
     return int(raw)
 
 
+def verify_sanitized_config(errors: list[str]) -> None:
+    """Reject credential material in the Git-backed config snapshot."""
+    path = ".hermes/config.yaml"
+    try:
+        raw = run("git", "show", f":{path}", text=True)
+    except subprocess.CalledProcessError:
+        return
+    try:
+        import yaml
+        data = yaml.safe_load(raw) or {}
+    except Exception as exc:
+        errors.append(f"cannot parse staged sanitized config: {exc}")
+        return
+    basic = ((data.get("dashboard") or {}).get("basic_auth") or {})
+    for key in ("password", "password_hash", "secret"):
+        if str(basic.get(key) or "").strip():
+            errors.append(f"dashboard credential present in sanitized config: dashboard.basic_auth.{key}")
+
+
 def main() -> int:
     errors: list[str] = []
+    verify_sanitized_config(errors)
     for path in staged_paths():
         parts = set(Path(path).parts)
         lower = path.lower()

@@ -105,6 +105,10 @@
       1780954624210973957,
       8173
     ],
+    "email/agentmail/SKILL.md": [
+      1787559763256375482,
+      4091
+    ],
     "email/email-inbox-triage/SKILL.md": [
       1786692616000000000,
       4057
@@ -732,7 +736,7 @@
       "skill_name": "kanban-worker",
       "category": "devops",
       "frontmatter_name": "kanban-worker",
-      "description": "Pitfalls, examples, and edge cases for Hermes Kanban work...",
+      "description": "",
       "platforms": [
         "linux",
         "macos",
@@ -749,7 +753,7 @@
       "skill_name": "sdlc-review",
       "category": "devops",
       "frontmatter_name": "sdlc-review",
-      "description": "Review Kanban handoffs and route verified outcomes.",
+      "description": "",
       "platforms": [
         "linux",
         "macos",
@@ -769,6 +773,23 @@
       "category": "devops",
       "frontmatter_name": "webhook-subscriptions",
       "description": "Webhook subscriptions: event-driven agent runs.",
+      "platforms": [
+        "linux",
+        "macos",
+        "windows"
+      ],
+      "conditions": {
+        "fallback_for_toolsets": [],
+        "requires_toolsets": [],
+        "fallback_for_tools": [],
+        "requires_tools": []
+      }
+    },
+    {
+      "skill_name": "agentmail",
+      "category": "email",
+      "frontmatter_name": "agentmail",
+      "description": "Give the agent its own inbox: send and receive email.",
       "platforms": [
         "linux",
         "macos",

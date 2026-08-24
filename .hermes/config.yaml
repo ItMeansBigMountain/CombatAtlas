@@ -1,19 +1,19 @@
 model:
-  provider: openai-codex
   base_url: https://chatgpt.com/backend-api/codex
   default: gpt-5.6-sol
+  provider: openai-codex
 fallback_providers:
-  - provider: custom:venice
-    model: venice-uncensored
-    base_url: https://api.venice.ai/api/v1
-    api_key: ${VENICE_API_KEY}
-    api_mode: chat_completions
-  - provider: openrouter
-    model: openrouter/free
+- api_key: ${VENICE_API_KEY}
+  api_mode: chat_completions
+  base_url: https://api.venice.ai/api/v1
+  model: venice-uncensored
+  provider: custom:venice
+- model: openrouter/free
+  provider: openrouter
 toolsets:
-  - hermes-cli
-  - discord
-  - discord_admin
+- hermes-cli
+- discord
+- discord_admin
 agent:
   max_turns: 90
   gateway_timeout: 1800
@@ -216,13 +216,13 @@ auxiliary:
     api_key: ''
     timeout: 60
   session_search:
-    provider: auto
-    model: ''
-    base_url: ''
     api_key: ''
-    timeout: 30
+    base_url: ''
     extra_body: {}
     max_concurrency: 3
+    model: ''
+    provider: auto
+    timeout: 30
 display:
   compact: false
   personality: ''
@@ -272,12 +272,12 @@ display:
   runtime_footer:
     enabled: false
     fields:
-      - model
-      - context_pct
-      - cwd
+    - model
+    - context_pct
+    - cwd
   copy_shortcut: auto
-  tool_progress_overrides: {}
   tool_progress: all
+  tool_progress_overrides: {}
 dashboard:
   theme: mono
   show_token_analytics: false
@@ -287,8 +287,8 @@ dashboard:
   basic_auth:
     username: oyama
     password_hash: ''
-    password: ***REMOVED***
-    secret: ***REMOVED***
+    password: ''
+    secret: ''
     session_ttl_seconds: 604800
   public_url: https://technician-double-network-decrease.trycloudflare.com
   font: ibm-plex-mono
@@ -381,31 +381,31 @@ moa:
   presets:
     default:
       reference_models:
-        - provider: openai-codex
-          model: gpt-5.6-sol
-          enabled: true
-        - provider: openrouter
-          model: deepseek/deepseek-v4-pro
-          enabled: true
+      - enabled: true
+        model: gpt-5.6-sol
+        provider: openai-codex
+      - enabled: true
+        model: deepseek/deepseek-v4-pro
+        provider: openrouter
       aggregator:
         provider: openai-codex
         model: gpt-5.6-sol
       degraded_reference_policy: loud
       fanout: user_turn
-  reference_models:
-    - provider: openai-codex
-      model: gpt-5.6-sol
-      enabled: true
-    - provider: openrouter
-      model: deepseek/deepseek-v4-pro
-      enabled: true
   aggregator:
-    provider: openai-codex
     model: gpt-5.6-sol
+    provider: openai-codex
   degraded_reference_policy: loud
-  max_tokens: 4096
-  fanout: user_turn
   enabled: true
+  fanout: user_turn
+  max_tokens: 4096
+  reference_models:
+  - enabled: true
+    model: gpt-5.6-sol
+    provider: openai-codex
+  - enabled: true
+    model: deepseek/deepseek-v4-pro
+    provider: openrouter
 skills:
   external_dirs: []
   template_vars: true
@@ -452,18 +452,18 @@ discord:
     speech_gain: 1.0
     ack_enabled: true
     ack_phrases:
-      - Let me look into that.
-      - One moment.
-      - Checking on that now.
-      - Give me a sec.
-      - On it.
+    - Let me look into that.
+    - One moment.
+    - Checking on that now.
+    - Give me a sec.
+    - On it.
   allow_mentions:
     everyone: false
+    replied_user: true
     roles: false
     users: true
-    replied_user: true
-  reply_to_mode: false
   ignored_channels: 1524312655894937623
+  reply_to_mode: false
 telegram:
   reactions: false
   allowed_chats: ''
@@ -484,7 +484,7 @@ approvals:
   mcp_reload_confirm: true
   destructive_slash_confirm: true
 command_allowlist:
-  - overwrite project env/config via redirection
+- overwrite project env/config via redirection
 hooks_auto_accept: false
 security:
   allow_private_urls: false
@@ -564,8 +564,8 @@ sessions:
   write_json_snapshots: false
 onboarding:
   seen:
-    tool_progress_prompt: true
     busy_input_prompt: true
+    tool_progress_prompt: true
   profile_build: ask
 updates:
   pre_update_backup: false
@@ -597,199 +597,182 @@ paste_collapse_threshold: 5
 paste_collapse_threshold_fallback: 5
 paste_collapse_char_threshold: 2000
 _config_version: 37
-session_reset:
-  mode: both
-  idle_minutes: 1440
-  at_hour: 4
-plugins:
-  hermes-memory-store:
-    db_path: $HERMES_HOME/memory_store.db
-    auto_extract: false
-    default_trust: 0.5
-    hrr_dim: 1024
-video_gen:
-  provider: openai-sora
-  model: sora-2
-platform_toolsets:
+custom_providers:
+- api_key: ${VENICE_API_KEY}
+  api_mode: chat_completions
+  base_url: https://api.venice.ai/api/v1
+  model: venice-uncensored
+  name: Venice
+known_builtin_toolsets:
   cli:
-    - a2a
-    - bfl
-    - browser
-    - clarify
-    - code_execution
-    - computer_use
-    - cronjob
-    - delegation
-    - file
-    - image_gen
-    - kanban
-    - memory
-    - messaging
-    - session_search
-    - skills
-    - spotify
-    - terminal
-    - todo
-    - tts
-    - video_gen
-    - vision
-    - web
+  - bfl
+  - browser
+  - clarify
+  - code_execution
+  - computer_use
+  - context_engine
+  - cronjob
+  - delegation
+  - discord
+  - discord_admin
+  - file
+  - homeassistant
+  - image_gen
+  - memory
+  - session_search
+  - skills
+  - spotify
+  - stt
+  - terminal
+  - todo
+  - tts
+  - video
+  - video_gen
+  - vision
+  - web
+  - x_search
+  - yuanbao
   discord:
-    - bfl
-    - browser
-    - clarify
-    - code_execution
-    - computer_use
-    - cronjob
-    - delegation
-    - discord
-    - discord_admin
-    - file
-    - image_gen
-    - kanban
-    - memory
-    - session_search
-    - skills
-    - terminal
-    - todo
-    - tts
-    - vision
-    - web
+  - bfl
+  - browser
+  - clarify
+  - code_execution
+  - computer_use
+  - context_engine
+  - cronjob
+  - delegation
+  - discord
+  - discord_admin
+  - file
+  - homeassistant
+  - image_gen
+  - memory
+  - session_search
+  - skills
+  - spotify
+  - stt
+  - terminal
+  - todo
+  - tts
+  - video
+  - video_gen
+  - vision
+  - web
+  - x_search
+  - yuanbao
 known_plugin_toolsets:
   cli:
-    - a2a
-    - spotify
+  - a2a
+  - spotify
   discord:
-    - a2a
-    - spotify
+  - a2a
+  - spotify
 mcp_servers:
+  amazon_affiliate:
+    args:
+    - /opt/data/HeRmEz/projects/affiliate-ops/mcp_server.py
+    command: python3
+    enabled: true
   robinhood_trading:
-    url: https://agent.robinhood.com/mcp/trading
     auth: oauth
-    timeout: 180
     connect_timeout: 60
+    enabled: true
     sampling:
       enabled: false
-    enabled: true
-  amazon_affiliate:
-    command: python3
-    args:
-      - /opt/data/HeRmEz/projects/affiliate-ops/mcp_server.py
-    enabled: true
+    timeout: 180
+    url: https://agent.robinhood.com/mcp/trading
   unreal-engine:
-    url: http://127.0.0.1:8000/mcp
     enabled: true
-  comfy-cloud:
-    url: https://cloud.comfy.org/mcp
+    url: http://127.0.0.1:8000/mcp
+  paypal:
+    url: https://mcp.paypal.com/http
     auth: oauth
     enabled: true
-    tools:
-      include:
-        - search_templates
-        - get_template
-        - get_template_schema
-        - search_models
-        - search_nodes
-        - get_node
-        - get_prompting_guide
-        - run_template
-        - submit_workflow
-        - partner_generate
-        - upload_file
-        - apply_slots
-        - get_job_status
-        - wait_for_job
-        - get_output
-        - use_previous_output
-        - cancel_job
-        - get_queue
-        - get_billing_status
-        - get_workflow_canvas_url
-custom_providers:
-  - name: Venice
-    base_url: https://api.venice.ai/api/v1
-    api_key: ${VENICE_API_KEY}
-    model: venice-uncensored
-    api_mode: chat_completions
+  square:
+    url: https://mcp.squareup.com/sse
+    auth: oauth
+    enabled: true
+  stripe:
+    url: https://mcp.stripe.com
+    auth: oauth
+    enabled: true
+  vercel:
+    url: https://mcp.vercel.com
+    auth: oauth
+    enabled: true
+platform_toolsets:
+  cli:
+  - a2a
+  - bfl
+  - browser
+  - clarify
+  - code_execution
+  - computer_use
+  - cronjob
+  - delegation
+  - file
+  - image_gen
+  - kanban
+  - memory
+  - messaging
+  - session_search
+  - skills
+  - spotify
+  - terminal
+  - todo
+  - tts
+  - video_gen
+  - vision
+  - web
+  discord:
+  - bfl
+  - browser
+  - clarify
+  - code_execution
+  - computer_use
+  - cronjob
+  - delegation
+  - discord
+  - discord_admin
+  - file
+  - image_gen
+  - kanban
+  - memory
+  - session_search
+  - skills
+  - terminal
+  - todo
+  - tts
+  - vision
+  - web
+  - spotify
 platforms:
   webhook:
     enabled: true
-known_builtin_toolsets:
   discord:
-    - bfl
-    - browser
-    - clarify
-    - code_execution
-    - computer_use
-    - context_engine
-    - cronjob
-    - delegation
-    - discord
-    - discord_admin
-    - file
-    - homeassistant
-    - image_gen
-    - memory
-    - session_search
-    - skills
-    - spotify
-    - stt
-    - terminal
-    - todo
-    - tts
-    - video
-    - video_gen
-    - vision
-    - web
-    - x_search
-    - yuanbao
-  cli:
-    - bfl
-    - browser
-    - clarify
-    - code_execution
-    - computer_use
-    - context_engine
-    - cronjob
-    - delegation
-    - discord
-    - discord_admin
-    - file
-    - homeassistant
-    - image_gen
-    - memory
-    - session_search
-    - skills
-    - spotify
-    - stt
-    - terminal
-    - todo
-    - tts
-    - video
-    - video_gen
-    - vision
-    - web
-    - x_search
-    - yuanbao
-
-# ── Fallback Model ────────────────────────────────────────────────────
-# Automatic provider failover when primary is unavailable.
-# Uncomment and configure to enable. Triggers on rate limits (429),
-# overload (529), service errors (503), or connection failures.
-#
-# Supported providers:
-#   openrouter   (OPENROUTER_API_KEY)  — routes to any model
-#   openai-codex (OAuth — hermes auth) — OpenAI Codex
-#   nous         (OAuth — hermes auth) — Nous Portal
-#   zai          (ZAI_API_KEY)         — Z.AI / GLM
-#   kimi-coding  (KIMI_API_KEY)        — Kimi / Moonshot
-#   kimi-coding-cn (KIMI_CN_API_KEY)   — Kimi / Moonshot (China)
-#   minimax      (MINIMAX_API_KEY)     — MiniMax
-#   minimax-cn   (MINIMAX_CN_API_KEY)  — MiniMax (China)
-#   bedrock      (AWS IAM / boto3)     — AWS Bedrock (Converse API)
-#
-# For custom OpenAI-compatible endpoints, add base_url and key_env.
-#
-# fallback_model:
-#   provider: openrouter
-#   model: anthropic/claude-sonnet-4
+    enabled: true
+plugins:
+  disabled: []
+  enabled:
+  - deepinfra
+  - discord-platform
+  - disk-cleanup
+  - email-platform
+  - fal
+  - google_meet
+  - openai
+  - openai-codex
+  - openrouter
+  - spotify
+  hermes-memory-store:
+    auto_extract: 'true'
+    db_path: $HERMES_HOME/memory_store.db
+    default_trust: '0.5'
+    hrr_dim: '1024'
+session_reset:
+  at_hour: 4
+  idle_minutes: 1440
+  mode: both
+video_gen:
+  model: sora-2
+  provider: openai-sora

@@ -57,11 +57,12 @@ Run deterministic synthetic/consented-fixture API E2E and persistence/concurrenc
 
 ## Public web deployment evidence
 
-- Verified public temporary deployment: `https://temporary-fleet-spinel-7z1x41g.vercel.app`.
-- Verification command: `PLAYWRIGHT_BROWSERS_PATH=/opt/data/.cache/ms-playwright node .hermes-public-web-smoke.cjs https://temporary-fleet-spinel-7z1x41g.vercel.app`.
+- Durable public web MVP URL: `https://tweetbetweenthelines.vercel.app`.
+- Immutable deployment URL: `https://tweetbetweenthelines-8x7w3cgwv-itmeansbigmountains-projects.vercel.app` (Vercel deployment `dpl_48iL5zGA17zczz25v4rNVi6xSQsg`).
+- Verification command: `PLAYWRIGHT_BROWSERS_PATH=/opt/data/.cache/ms-playwright node .hermes-public-web-smoke.cjs https://tweetbetweenthelines.vercel.app`.
 - Result: passed synthetic fixture intake, traceable metric/profile display, provenance/limitations, correction, JSON export, delete, and zero console/page errors.
-- Deployment config: `vercel.json` builds with `npm run build` and serves `apps/mobile/dist` for credentialed durable deploys.
-- Boundary: this anonymous Vercel deployment expires after 60 minutes unless claimed. The historical permanent alias `https://tweetbetweenthelines.vercel.app` currently serves a stale Vite shell, not this Expo web MVP; do not cite it as the verified MVP URL until authenticated Vercel access or equivalent hosting is used to promote the current static export.
+- Deployment config: `vercel.json` builds with `npm run build` and serves `apps/mobile/dist`.
+- Evidence boundary: the durable URL verifies the current static Expo web MVP from Git commit `072e95cc704452826522bb9522c44d98524e9bca`; it does not verify live OAuth/providers, durable backend operations, signed mobile releases, or production-readiness gates listed below.
 
 ## Non-negotiable boundaries
 

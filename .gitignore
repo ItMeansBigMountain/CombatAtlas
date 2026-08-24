@@ -56,6 +56,7 @@
 /.hermes/sessions/
 /.hermes/audio_cache/
 /.hermes/state-snapshots/
+/.hermes/backups/
 /.hermes/ibmcloud-cli/
 /.hermes/hermes-agent/
 /.hermes/credentials/

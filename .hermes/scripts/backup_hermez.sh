@@ -75,6 +75,7 @@ if command -v rsync >/dev/null 2>&1; then
     --exclude='/sessions/***' \
     --exclude='/audio_cache/***' \
     --exclude='/state-snapshots/***' \
+    --exclude='/backups/***' \
     --exclude='/ibmcloud-cli/***' \
     --exclude='/hermes-agent/***' \
     --exclude='/credentials/***' \
@@ -157,7 +158,7 @@ exclude_exact = {
 exclude_dir_names = {
     '.git', '.cache', '.config', '.npm', '.gradle', '.local', '.expo', '.nuget', '.dotnet',
     'jdks', 'tmp', 'bin', 'cache', 'lsp', 'logs', 'sessions', 'audio_cache',
-    'state-snapshots', 'ibmcloud-cli', 'hermes-agent', 'credentials', 'secrets',
+    'state-snapshots', 'backups', 'ibmcloud-cli', 'hermes-agent', 'credentials', 'secrets',
     'home', 'sandboxes', 'image_cache', 'images', 'workspaces', '__pycache__',
     '.pytest_cache', '.mypy_cache', '.ruff_cache', '.venv', 'venv', 'node_modules',
     'dist', 'build', 'web_dist', '.next', '.nuxt', '.terraform', '.terragrunt-cache',
@@ -204,6 +205,25 @@ for root, dirs, files in os.walk(src):
 PY
 fi
 
+# rsync exclusions do not remove a directory copied by an older script. This
+# directory contains full machine archives and must never be nested in Git.
+rm -rf -- "$BACKUP_DIR/backups"
+
+# Config is useful recovery state, but dashboard credentials must never enter
+# Git. Blank credential-bearing fields in the sanitized copy only; the live
+# runtime reads its password hash/signing key from the protected .env file.
+/opt/hermes/.venv/bin/python - <<'PY'
+from pathlib import Path
+import yaml
+p = Path('/opt/data/HeRmEz/.hermes/config.yaml')
+if p.exists():
+    data = yaml.safe_load(p.read_text(encoding='utf-8')) or {}
+    basic = (data.setdefault('dashboard', {}).setdefault('basic_auth', {}))
+    for key in ('password', 'password_hash', 'secret'):
+        basic[key] = ''
+    p.write_text(yaml.safe_dump(data, sort_keys=False, allow_unicode=True), encoding='utf-8')
+PY
+
 cat > "$BACKUP_DIR/BACKUP_MANIFEST.md" <<EOF
 # Hermes home backup manifest
 
@@ -241,9 +261,22 @@ fi
 
 cd "$REPO"
 
-git add .gitignore .gitmodules README.md KANBAN.md .hermes projects scripts/backup_hermez.sh scripts/verify_hermez_backup_stage.py
+# Active workers may create and remove generated files while the backup stages.
+# Retry the whole add so a transient ENOENT cannot fail the daily snapshot.
+add_ok=0
+for attempt in 1 2 3 4 5; do
+  if git add .gitignore .gitmodules README.md KANBAN.md .hermes projects scripts/backup_hermez.sh scripts/verify_hermez_backup_stage.py; then
+    add_ok=1
+    break
+  fi
+  sleep "$attempt"
+done
+if [ "$add_ok" -ne 1 ]; then
+  echo "ERROR: git staging remained unstable after 5 attempts" >&2
+  exit 1
+fi
 
-python3 "$REPO/scripts/verify_hermez_backup_stage.py"
+/opt/hermes/.venv/bin/python "$REPO/scripts/verify_hermez_backup_stage.py"
 
 if git diff --cached --quiet; then
   echo "HeRmEz backup complete: no changes to commit at $STAMP"

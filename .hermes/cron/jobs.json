@@ -20,7 +20,7 @@
       "schedule_display": "0 3 * * *",
       "repeat": {
         "times": null,
-        "completed": 98
+        "completed": 99
       },
       "enabled": true,
       "state": "scheduled",
@@ -28,19 +28,16 @@
       "paused_reason": null,
       "created_at": "2026-05-14T06:28:44.368316+00:00",
       "next_run_at": "2026-08-25T03:00:00+00:00",
-      "last_run_at": "2026-08-24T03:01:13.126240+00:00",
-      "last_status": "error",
-      "last_error": "Script exited with code 1\nstderr:\nERROR: HeRmEz backup stage rejected:\n  - runtime database/cache suffix: projects/_backups/kanban-consolidation-20260529T053711Z/default-kanban.db-shm\n  - runtime database/cache suffix: projects/_backups/kanban-consolidation-20260529T053711Z/default-kanban.db-wal\n  - runtime database/cache suffix: projects/_backups/kanban-consolidation-20260529T053711Z/kanban-dir/boards/hermez/kanban.db-shm\n  - runtime database/cache suffix: projects/_backups/kanban-consolidation-20260529T053711Z/kanban-dir/boards/hermez/kanban.db-wal",
+      "last_run_at": "2026-08-24T07:48:20.561939+00:00",
+      "last_status": "ok",
+      "last_error": null,
       "last_delivery_error": null,
       "deliver": "discord:1523247688689258586",
       "origin": null,
       "enabled_toolsets": null,
       "workdir": null,
-      "fire_claim": {
-        "at": "2026-08-24T07:48:12.972353+00:00",
-        "by": "064665236bea:166:d3d197f54f5d422385f2381980aef138"
-      },
-      "failure_streak": 1
+      "fire_claim": null,
+      "failure_streak": 0
     },
     {
       "id": "92f873723241",
@@ -268,15 +265,15 @@
       "schedule_display": "every 10m",
       "repeat": {
         "times": null,
-        "completed": 8448
+        "completed": 8455
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-06-06T02:05:15.742685+00:00",
-      "next_run_at": "2026-08-24T07:49:53.889863+00:00",
-      "last_run_at": "2026-08-24T07:39:53.889863+00:00",
+      "next_run_at": "2026-08-24T09:03:57.256400+00:00",
+      "last_run_at": "2026-08-24T08:53:57.256400+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -839,15 +836,15 @@
       "schedule_display": "every 30m",
       "repeat": {
         "times": null,
-        "completed": 418
+        "completed": 420
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-12T18:13:27.248211+00:00",
-      "next_run_at": "2026-08-24T08:17:55.643896+00:00",
-      "last_run_at": "2026-08-24T07:47:55.643896+00:00",
+      "next_run_at": "2026-08-24T09:18:56.163179+00:00",
+      "last_run_at": "2026-08-24T08:48:56.163179+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -868,7 +865,7 @@
     {
       "id": "5a17c78d51f0",
       "name": "Autonomous project-completion Kanban operator",
-      "prompt": "Operate the canonical default HeRmEz Kanban board autonomously. Workdir /opt/data/HeRmEz; DB /opt/data/kanban.db. Keep at most two workers running and require real test/build/git/deployment evidence.\n\nCURRENT PRODUCT PRIORITY: tweetBetweenTheLines is active now. Do not wait for Journal AI. Its graph is t_de9f41d3 prior-art recovery and t_e75e8f5d official platform OAuth/archive matrix running in parallel; then t_32dde48a safety/privacy architecture; t_07ab744d secure accounts/consent/token-vault/schema; t_15f9b1d1 connectors/imports; t_ca612c9b explainable metrics; t_fa6fc99c personality/non-diagnostic wellbeing; t_ec81a357 red team; t_40bb4353 web+iOS+Android; t_207c85af closed-beta production; t_b5fa76dd absorb obsolete scaffold. Preserve dependencies but immediately promote/dispatch ready tweetBetweenTheLines cards before unrelated portfolio work.\n\nProduct requirements: slogan “Free the minds of the consumer with data.” Use official OAuth/API or official user archives/manual imports only; never scrape credentials or fabricate platform coverage. All consumer clients must target web, iOS and Android under projects/_ops/CROSS_PLATFORM_APP_STANDARD.md, defaulting to TypeScript + React Native + Expo Router and shared typed packages. Handle mobile OAuth via PKCE/deep links and secure Keychain/Keystore storage. Never diagnose depression from social data; keep validated consented self-report screening separate from observational signals with uncertainty, privacy, professional-help and crisis safeguards. Use test-first development for new behavior.\n\nMaintain the external OSRS lane without consuming a development slot: monitor Who's Grinding PR #13917 card t_f60939a6 across comments/reviews/files/checks without posting noise; Clan War Board submission t_7fcb1ea2 follows when it clears, then BIS t_ec69c509.\n\nEvery run inspect stats, diagnostics, focused cards, runs/comments/dependencies. Dispatch max 2. Reclaim only crashed/stale work. Require real verification; do not invent credentials, purchases, production data/users, licenses, merges, API access, mobile builds or deployments. Never print or repeat the Kanban dashboard password. Report only material starts/completions/failures, verified URLs, actionable PR feedback or exact user decisions; otherwise exactly [SILENT].",
+      "prompt": "Operate the canonical default HeRmEz Kanban board autonomously and continuously. Workdir /opt/data/HeRmEz; DB /opt/data/kanban.db. Standing execution policy: fully complete tweetBetweenTheLines first. Its release gate is THREE PLATFORMS: publicly reachable web, verified/installable iOS, and verified/installable Android. Current P0 cards include t_1e4df44f (public web deploy), t_a194460a (iOS+Android builds/deploys), t_f30ad061 (three-platform verifier), t_5503c223 (production-gap closure), t_207c85af (release gate), and t_b5fa76dd (portfolio absorption). Before declaring iOS/Android deployment blocked, audit this repo and prior maintained HeRmEz dev-project deployments for existing Expo/EAS, TestFlight/App Store, Android internal-track/Play, APK/AAB, signing, credentials, and deployment patterns. Use available legitimate authenticated paths. Never fabricate store status. Then work every remaining actionable card in `hermes kanban list --sort priority` order. If a card is blocked by unavailable credentials, external approval, store access, or human input: inspect whether another maintained path can solve it; if not, record the exact irreducible blocker on-card and immediately pick/dispatch the next highest-priority doable task. Never let one blocker stall the queue. Respect intentionally scheduled holds until explicitly resumed. At each run inspect statuses, comments, logs, runs, diagnostics, repository truth, tests/builds, prior deployment configs, and public URLs. Recover transient failures; create idempotent precise follow-up cards; dispatch ready work within safe resource limits. Remote-first completion: localhost/VPS-only output does not count as delivered. Every completed deployable artifact must have exact verified URLs recorded directly on its Kanban card and labeled Web, iOS, Android plus production/preview/installable status. If no remote URL exists, keep the delivery/release card open or blocked and continue elsewhere. Send concise Discord updates only for meaningful completions, new public/install URLs, or blockers requiring user action.",
       "skills": [],
       "skill": null,
       "model": null,
@@ -881,7 +878,9 @@
       "monitor_script": null,
       "monitor_url": null,
       "monitor_state": null,
-      "context_from": null,
+      "context_from": [
+        "self"
+      ],
       "schedule": {
         "kind": "interval",
         "minutes": 20,
@@ -890,15 +889,15 @@
       "schedule_display": "every 20m",
       "repeat": {
         "times": null,
-        "completed": 31
+        "completed": 33
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-23T19:26:23.167147+00:00",
-      "next_run_at": "2026-08-24T08:03:15.343327+00:00",
-      "last_run_at": "2026-08-24T07:43:15.343327+00:00",
+      "next_run_at": "2026-08-24T09:01:41.174385+00:00",
+      "last_run_at": "2026-08-24T08:27:29.565838+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -997,15 +996,15 @@
       "schedule_display": "every 5m",
       "repeat": {
         "times": null,
-        "completed": 75
+        "completed": 88
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-24T01:02:31.821947+00:00",
-      "next_run_at": "2026-08-24T07:50:54.956403+00:00",
-      "last_run_at": "2026-08-24T07:45:54.956403+00:00",
+      "next_run_at": "2026-08-24T09:00:55.793169+00:00",
+      "last_run_at": "2026-08-24T08:55:55.793169+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -1047,15 +1046,15 @@
       "schedule_display": "every 2m",
       "repeat": {
         "times": null,
-        "completed": 134
+        "completed": 156
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-24T01:05:21.119487+00:00",
-      "next_run_at": "2026-08-24T07:49:58.828464+00:00",
-      "last_run_at": "2026-08-24T07:47:58.828464+00:00",
+      "next_run_at": "2026-08-24T08:55:59.513005+00:00",
+      "last_run_at": "2026-08-24T08:53:59.513005+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -1099,15 +1098,15 @@
       "schedule_display": "every 30m",
       "repeat": {
         "times": 24,
-        "completed": 1
+        "completed": 3
       },
       "enabled": true,
       "state": "scheduled",
       "paused_at": null,
       "paused_reason": null,
       "created_at": "2026-08-24T07:13:39.433790+00:00",
-      "next_run_at": "2026-08-24T08:15:52.803861+00:00",
-      "last_run_at": "2026-08-24T07:45:52.803861+00:00",
+      "next_run_at": "2026-08-24T09:20:51.913731+00:00",
+      "last_run_at": "2026-08-24T08:50:51.913731+00:00",
       "last_status": "ok",
       "last_error": null,
       "last_delivery_error": null,
@@ -1182,5 +1181,5 @@
       "workdir": "/opt/data/HeRmEz"
     }
   ],
-  "updated_at": "2026-08-24T07:48:12.972641+00:00"
+  "updated_at": "2026-08-24T08:55:55.793390+00:00"
 }
