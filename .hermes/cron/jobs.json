@@ -36,7 +36,10 @@
       "origin": null,
       "enabled_toolsets": null,
       "workdir": null,
-      "fire_claim": null,
+      "fire_claim": {
+        "at": "2026-08-24T08:56:41.816315+00:00",
+        "by": "064665236bea:105695:f7e5114928624015b055bdea3251b2fa"
+      },
       "failure_streak": 0
     },
     {
@@ -1181,5 +1184,5 @@
       "workdir": "/opt/data/HeRmEz"
     }
   ],
-  "updated_at": "2026-08-24T08:55:55.793390+00:00"
+  "updated_at": "2026-08-24T08:56:41.816748+00:00"
 }
