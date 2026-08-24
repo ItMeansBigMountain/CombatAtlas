@@ -46,12 +46,12 @@
       42836
     ],
     "gaming/minecraft-modpack-server/SKILL.md": [
-      1778573798000000000,
-      6559
+      1787556700368474819,
+      6628
     ],
     "gaming/pokemon-player/SKILL.md": [
-      1778573798000000000,
-      8709
+      1787556700488475117,
+      8857
     ],
     "diagramming/DESCRIPTION.md": [
       1778239059000000000,
@@ -154,8 +154,8 @@
       10131
     ],
     "creative/pixel-art/SKILL.md": [
-      1778573798000000000,
-      7581
+      1787556700208474421,
+      7587
     ],
     "creative/creative-production-systems/SKILL.md": [
       1781407530739738694,
@@ -174,8 +174,8 @@
       4289
     ],
     "creative/creative-ideation/SKILL.md": [
-      1778573798000000000,
-      6318
+      1787556699400472412,
+      10434
     ],
     "creative/claude-design/SKILL.md": [
       1778996040870548899,
@@ -302,8 +302,8 @@
       114
     ],
     "productivity/google-workspace/SKILL.md": [
-      1786411901926966900,
-      32867
+      1787557180407678731,
+      33401
     ],
     "productivity/session-librarian/SKILL.md": [
       1786692616000000000,
@@ -382,8 +382,8 @@
       211
     ],
     "autonomous-ai-agents/computer-use/SKILL.md": [
-      1786692616000000000,
-      16461
+      1787121264000000000,
+      18603
     ],
     "autonomous-ai-agents/ai-coding-agents/SKILL.md": [
       1781493682299152171,
@@ -616,8 +616,8 @@
     {
       "skill_name": "creative-ideation",
       "category": "creative",
-      "frontmatter_name": "ideation",
-      "description": "Generate project ideas via creative constraints.",
+      "frontmatter_name": "creative-ideation",
+      "description": "Generate ideas via named methods from creative practice.",
       "platforms": [
         "linux",
         "macos",
@@ -732,7 +732,7 @@
       "skill_name": "kanban-worker",
       "category": "devops",
       "frontmatter_name": "kanban-worker",
-      "description": "",
+      "description": "Pitfalls, examples, and edge cases for Hermes Kanban work...",
       "platforms": [
         "linux",
         "macos",
@@ -749,7 +749,7 @@
       "skill_name": "sdlc-review",
       "category": "devops",
       "frontmatter_name": "sdlc-review",
-      "description": "",
+      "description": "Review Kanban handoffs and route verified outcomes.",
       "platforms": [
         "linux",
         "macos",

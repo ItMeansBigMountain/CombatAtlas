@@ -1,0 +1,4 @@
+#!/command/with-contenv sh
+set -eu
+cd /opt/data/dashboard-proxy
+exec s6-setuidgid hermes /opt/data/.local/bin/caddy run --config /opt/data/dashboard-proxy/Caddyfile

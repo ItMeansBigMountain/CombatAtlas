@@ -494,8 +494,8 @@
       10781
     ],
     "productivity/teams-meeting-pipeline/SKILL.md": [
-      1786692616000000000,
-      6816
+      1787121264000000000,
+      6953
     ],
     "productivity/operator-morning-reports/SKILL.md": [
       1779776433321151173,
@@ -546,8 +546,8 @@
       211
     ],
     "autonomous-ai-agents/computer-use/SKILL.md": [
-      1786692616000000000,
-      16461
+      1787121264000000000,
+      18603
     ],
     "autonomous-ai-agents/codex/SKILL.md": [
       1786692616000000000,
@@ -1208,7 +1208,7 @@
       "skill_name": "kanban-worker",
       "category": "devops",
       "frontmatter_name": "kanban-worker",
-      "description": "",
+      "description": "Pitfalls, examples, and edge cases for Hermes Kanban work...",
       "platforms": [
         "linux",
         "macos",
@@ -1225,7 +1225,7 @@
       "skill_name": "sdlc-review",
       "category": "devops",
       "frontmatter_name": "sdlc-review",
-      "description": "",
+      "description": "Review Kanban handoffs and route verified outcomes.",
       "platforms": [
         "linux",
         "macos",

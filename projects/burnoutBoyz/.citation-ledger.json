@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": 1,
+      "url": "https://vpic.nhtsa.dot.gov/api",
+      "title": "",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 2,
+      "url": "https://www.nhtsa.gov/nhtsa-datasets-and-apis",
+      "title": "",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 3,
+      "url": "https://www.fueleconomy.gov/feg/ws",
+      "title": "",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 4,
+      "url": "https://smartcar.com/docs/api",
+      "title": "",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 5,
+      "url": "https://smartcar.com/pricing",
+      "title": "",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 6,
+      "url": "https://www.motor.com/products/data-as-a-service",
+      "title": "",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 7,
+      "url": "https://vehicledatabases.com/vehicle-maintenance-api",
+      "title": "",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 8,
+      "url": "https://www.autocare.org/data-standards",
+      "title": "",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 9,
+      "url": "https://www.autocare.org/data-standards/subscriptions",
+      "title": "",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 10,
+      "url": "https://mitchell1.com/resources/api-request",
+      "title": "",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 11,
+      "url": "https://mitchell1.com/prodemand",
+      "title": "",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 12,
+      "url": "https://catalog.data.gov/dataset/nhtsa-communications-by-manufacturer",
+      "title": "",
+      "accessed": "2026-08-24"
+    }
+  ]
+}

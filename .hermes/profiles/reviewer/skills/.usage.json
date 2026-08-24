@@ -4,12 +4,44 @@
     "created_at": "2026-06-09T17:11:50.232448+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-06-10T15:45:04.347303+00:00",
-    "last_viewed_at": null,
+    "last_reused_patch_generation": 0,
+    "last_used_at": "2026-08-24T07:39:44.121327+00:00",
+    "last_viewed_at": "2026-08-24T07:39:44.119969+00:00",
     "patch_count": 0,
+    "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 10,
-    "view_count": 0
+    "use_count": 28,
+    "view_count": 18
+  },
+  "sdlc-review": {
+    "archived_at": null,
+    "created_at": "2026-08-23T19:41:09.716186+00:00",
+    "created_by": null,
+    "last_patched_at": null,
+    "last_reused_patch_generation": 0,
+    "last_used_at": "2026-08-24T07:39:49.778623+00:00",
+    "last_viewed_at": "2026-08-24T07:39:49.777506+00:00",
+    "patch_count": 0,
+    "patch_generation": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 9,
+    "view_count": 3
+  },
+  "test-driven-development": {
+    "archived_at": null,
+    "created_at": "2026-08-23T19:31:24.260884+00:00",
+    "created_by": null,
+    "last_patched_at": null,
+    "last_reused_patch_generation": 0,
+    "last_used_at": "2026-08-23T19:31:26.112976+00:00",
+    "last_viewed_at": "2026-08-23T19:31:26.111854+00:00",
+    "patch_count": 0,
+    "patch_generation": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 2,
+    "view_count": 2
   }
 }

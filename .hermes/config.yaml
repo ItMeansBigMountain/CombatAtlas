@@ -48,6 +48,7 @@ terminal:
   singularity_image: docker://nikolaik/python-nodejs:python3.11-nodejs20
   modal_image: nikolaik/python-nodejs:python3.11-nodejs20
   daytona_image: nikolaik/python-nodejs:python3.11-nodejs20
+  vercel_runtime: node24
   container_cpu: 1
   container_memory: 5120
   container_disk: 51200
@@ -57,7 +58,6 @@ terminal:
   docker_extra_args: []
   docker_run_as_host_user: false
   persistent_shell: true
-  vercel_runtime: node24
 web:
   backend: ''
   search_backend: ''
@@ -86,8 +86,8 @@ checkpoints:
   max_file_size_mb: 10
   auto_prune: true
   retention_days: 7
-  delete_orphans: true
   min_interval_hours: 24
+  delete_orphans: true
 file_read_max_chars: 100000
 mcp_discovery_timeout: 1.5
 tool_output:
@@ -115,17 +115,6 @@ compression:
   abort_on_summary_failure: false
   codex_gpt55_autoraise: true
   in_place: false
-kanban:
-  dispatch_in_gateway: true
-  dispatch_interval_seconds: 60
-  failure_limit: 2
-  worker_log_rotate_bytes: 2097152
-  worker_log_backup_count: 1
-  orchestrator_profile: ''
-  default_assignee: ''
-  auto_decompose: true
-  auto_decompose_per_tick: 3
-  dispatch_stale_timeout_seconds: 14400
 prompt_caching:
   cache_ttl: 5m
   long_lived_prefix: true
@@ -271,7 +260,6 @@ display:
     last_lines: 2
   interim_assistant_messages: true
   tool_progress_command: false
-  tool_progress_overrides: {}
   tool_preview_length: 0
   tool_progress_grouping: accumulate
   ephemeral_system_ttl: 0
@@ -288,24 +276,26 @@ display:
       - context_pct
       - cwd
   copy_shortcut: auto
+  tool_progress_overrides: {}
   tool_progress: all
 dashboard:
-  theme: default
+  theme: mono
   show_token_analytics: false
   oauth:
     client_id: ''
     portal_url: ''
   basic_auth:
-    username: ''
+    username: oyama
     password_hash: ''
-    password: ''
-    secret: ''
-    session_ttl_seconds: 0
-  public_url: ''
+    password: ***REMOVED***
+    secret: ***REMOVED***
+    session_ttl_seconds: 604800
+  public_url: https://technician-double-network-decrease.trycloudflare.com
+  font: ibm-plex-mono
 privacy:
   redact_pii: false
 tts:
-  provider: edge
+  provider: elevenlabs
   edge:
     voice: en-US-AriaNeural
   elevenlabs:
@@ -336,7 +326,8 @@ tts:
     voice: en_US-lessac-medium
 stt:
   enabled: true
-  provider: local
+  provider: elevenlabs
+  language: en
   local:
     model: base
     language: ''
@@ -376,16 +367,45 @@ delegation:
   api_key: ''
   api_mode: ''
   inherit_mcp_toolsets: true
-  max_iterations: 50
+  max_iterations: 250
   child_timeout_seconds: 600
   reasoning_effort: ''
-  max_concurrent_children: 3
+  max_concurrent_children: 10
   max_spawn_depth: 1
   orchestrator_enabled: true
   subagent_auto_approve: false
 prefill_messages_file: ''
 goals:
   max_turns: 20
+moa:
+  presets:
+    default:
+      reference_models:
+        - provider: openai-codex
+          model: gpt-5.6-sol
+          enabled: true
+        - provider: openrouter
+          model: deepseek/deepseek-v4-pro
+          enabled: true
+      aggregator:
+        provider: openai-codex
+        model: gpt-5.6-sol
+      degraded_reference_policy: loud
+      fanout: user_turn
+  reference_models:
+    - provider: openai-codex
+      model: gpt-5.6-sol
+      enabled: true
+    - provider: openrouter
+      model: deepseek/deepseek-v4-pro
+      enabled: true
+  aggregator:
+    provider: openai-codex
+    model: gpt-5.6-sol
+  degraded_reference_policy: loud
+  max_tokens: 4096
+  fanout: user_turn
+  enabled: true
 skills:
   external_dirs: []
   template_vars: true
@@ -393,6 +413,7 @@ skills:
   inline_shell_timeout: 10
   guard_agent_created: false
   write_approval: false
+  disabled: []
 curator:
   enabled: true
   interval_hours: 168
@@ -423,8 +444,8 @@ discord:
   allow_any_attachment: false
   max_attachment_bytes: 33554432
   voice_fx:
-    enabled: false
-    ambient_enabled: true
+    enabled: true
+    ambient_enabled: false
     ambient_path: ''
     ambient_gain: 0.18
     duck_gain: 0.06
@@ -486,6 +507,17 @@ cron:
     expected_audience: ''
     nas_jwks_url: ''
   wrap_response: true
+kanban:
+  dispatch_in_gateway: true
+  dispatch_interval_seconds: 60
+  failure_limit: 2
+  worker_log_rotate_bytes: 2097152
+  worker_log_backup_count: 1
+  orchestrator_profile: ''
+  default_assignee: ''
+  auto_decompose: true
+  auto_decompose_per_tick: 3
+  dispatch_stale_timeout_seconds: 14400
 code_execution:
   mode: project
 tools:
@@ -544,6 +576,10 @@ lsp:
   wait_mode: document
   wait_timeout: 5.0
   install_strategy: auto
+  idle_timeout: 60
+  servers:
+    typescript:
+      disabled: true
 x_search:
   model: grok-4.20-reasoning
   timeout_seconds: 180
@@ -560,7 +596,7 @@ secrets:
 paste_collapse_threshold: 5
 paste_collapse_threshold_fallback: 5
 paste_collapse_char_threshold: 2000
-_config_version: 35
+_config_version: 37
 session_reset:
   mode: both
   idle_minutes: 1440
@@ -576,6 +612,8 @@ video_gen:
   model: sora-2
 platform_toolsets:
   cli:
+    - a2a
+    - bfl
     - browser
     - clarify
     - code_execution
@@ -589,14 +627,40 @@ platform_toolsets:
     - messaging
     - session_search
     - skills
+    - spotify
     - terminal
     - todo
     - tts
     - video_gen
     - vision
     - web
+  discord:
+    - bfl
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - cronjob
+    - delegation
+    - discord
+    - discord_admin
+    - file
+    - image_gen
+    - kanban
+    - memory
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - tts
+    - vision
+    - web
 known_plugin_toolsets:
   cli:
+    - a2a
+    - spotify
+  discord:
+    - a2a
     - spotify
 mcp_servers:
   robinhood_trading:
@@ -612,12 +676,101 @@ mcp_servers:
     args:
       - /opt/data/HeRmEz/projects/affiliate-ops/mcp_server.py
     enabled: true
+  unreal-engine:
+    url: http://127.0.0.1:8000/mcp
+    enabled: true
+  comfy-cloud:
+    url: https://cloud.comfy.org/mcp
+    auth: oauth
+    enabled: true
+    tools:
+      include:
+        - search_templates
+        - get_template
+        - get_template_schema
+        - search_models
+        - search_nodes
+        - get_node
+        - get_prompting_guide
+        - run_template
+        - submit_workflow
+        - partner_generate
+        - upload_file
+        - apply_slots
+        - get_job_status
+        - wait_for_job
+        - get_output
+        - use_previous_output
+        - cancel_job
+        - get_queue
+        - get_billing_status
+        - get_workflow_canvas_url
 custom_providers:
   - name: Venice
     base_url: https://api.venice.ai/api/v1
     api_key: ${VENICE_API_KEY}
     model: venice-uncensored
     api_mode: chat_completions
+platforms:
+  webhook:
+    enabled: true
+known_builtin_toolsets:
+  discord:
+    - bfl
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - context_engine
+    - cronjob
+    - delegation
+    - discord
+    - discord_admin
+    - file
+    - homeassistant
+    - image_gen
+    - memory
+    - session_search
+    - skills
+    - spotify
+    - stt
+    - terminal
+    - todo
+    - tts
+    - video
+    - video_gen
+    - vision
+    - web
+    - x_search
+    - yuanbao
+  cli:
+    - bfl
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - context_engine
+    - cronjob
+    - delegation
+    - discord
+    - discord_admin
+    - file
+    - homeassistant
+    - image_gen
+    - memory
+    - session_search
+    - skills
+    - spotify
+    - stt
+    - terminal
+    - todo
+    - tts
+    - video
+    - video_gen
+    - vision
+    - web
+    - x_search
+    - yuanbao
 
 # ── Fallback Model ────────────────────────────────────────────────────
 # Automatic provider failover when primary is unavailable.

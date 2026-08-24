@@ -1,0 +1,59 @@
+Cronjob Response: Daily Viral Radar / Creator clip generation + upload
+(job_id: bce8ebabac36)
+-------------
+
+## Viral Radar — BLOCKED/PARTIAL
+
+- **Public uploads:** `0/5`
+- **Uploaded URLs:** None
+- **Protected retry queue:** `1` rendered clip, with its upload metadata intact
+- **Metrics:** 477 videos discovered; 0 live statistics fetched because Classical Echos OAuth is revoked
+- **Run result:** `viral_radar_daily_upload.py` exceeded the scheduler/tool’s 420-second execution limit. No public upload was proven.
+- **Cleanup:** Not performed; the queued MP4 and metadata were preserved.
+
+### Exact blockers
+
+1. **Upload authentication:** all three Viral Radar upload accounts return `invalid_grant`, so neither the primary account nor either failover can upload.
+2. **Queue drain:** the queued Chris Williamson clip remains protected after the unsuccessful attempt.
+3. **Source acquisition:** recent candidates continue to hit YouTube cloud-IP bot confirmation; pytubefix reports unavailable and pytube returns HTTP 400.
+4. **Minimum not met:** no source reached five verified public uploads.
+
+```text
+Classical Echos: RefreshError: invalid_grant: Token has been expired or revoked.
+Trapiistan/Sosai: RefreshError: invalid_grant: Token has been expired or revoked.
+A F/fareed320: RefreshError: invalid_grant: Token has been expired or revoked.
+viral_radar_daily_upload.py: timed out after 420.0s
+```
+
+### Protected queued artifact
+
+```text
+/opt/data/HeRmEz/projects/viral-clip-radar/UPLOAD_QUEUE/chris-williamson-q-a-becoming-a-dad-health-update-f-02-daily.mp4
+/opt/data/HeRmEz/projects/viral-clip-radar/UPLOAD_QUEUE/chris-williamson-q-a-becoming-a-dad-health-update-f-02-daily.mp4.upload.json
+```
+
+### OAuth recovery
+
+Open each link using the indicated account, approve access, and return the **complete localhost callback URL**.
+
+**Classical Echos — classicalechos@gmail.com**
+
+<https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=T6UvzA36r5Lx40EDypZr3CxGA41zrR&code_challenge=tYzhuJdM-YaZMOhpnrmnBIclXl5uA_5bxFxkQx_IGT0&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=classicalechos%40gmail.com>
+
+`youtube:classicalechos: <full localhost callback URL>`
+
+**Trapiistan/Sosai — trapiistan@gmail.com**
+
+<https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=i0deU7BUUKihmsVCHM5pvxVPKM5BJ8&code_challenge=sLfstr1QBBq26SClwhmgCtQaKttweGiJlt_k2xh_AeY&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=trapiistan%40gmail.com>
+
+`youtube:trapiistan: <full localhost callback URL>`
+
+**A F — fareed320@gmail.com**
+
+<https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=984335329962-jmsnmsu79o45n751hdguq832dqool860.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A1%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyt-analytics.readonly&state=ghwTWFxCMunCAvmUDdmSh33f5EKPOA&code_challenge=QGccdeN_sAKGP6X3xjgJpUJp8uZMJ5T1nSKEGZBBmCk&code_challenge_method=S256&access_type=offline&include_granted_scopes=true&prompt=consent+select_account&login_hint=fareed320%40gmail.com>
+
+`youtube:fareed320: <full localhost callback URL>`
+
+**Next action:** reauthorize the three upload profiles, verify channel identities, drain the preserved queue first, then replay the strict creator-source pipeline. Source downloading will still require fresh authenticated YouTube cookies, a residential proxy, or a rights-safe local/direct source if bot confirmation persists.
+
+To stop or manage this job, send me a new message (e.g. "stop reminder Daily Viral Radar / Creator clip generation + upload").

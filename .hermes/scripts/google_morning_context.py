@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
 from datetime import datetime, timedelta, timezone
 from email.utils import parseaddr
@@ -265,11 +266,39 @@ def profile_block(profile: str, email: str, role: str) -> str:
     return "\n".join(lines) + "\n"
 
 
+def kanban_plan_block() -> str:
+    """Return a compact read-only Kanban direction snapshot."""
+    try:
+        proc = subprocess.run(
+            ["/opt/data/.local/bin/hermes", "kanban", "list"],
+            cwd="/opt/data/HeRmEz",
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            timeout=30,
+            check=False,
+        )
+        focused = [
+            line for line in proc.stdout.splitlines()
+            if "OSRS:" in line or "New project:" in line
+        ]
+        lines = [
+            "# Kanban plan direction",
+            "The morning report MUST include a concise `Kanban plan / direction` section derived from this live board snapshot.",
+            "Explain what is running now, what unlocks next, blockers requiring the user, and today's recommended direction. Do not list completed historical clutter.",
+        ]
+        lines.extend(focused or ["- No focused active cards returned; state this as a board blocker."])
+        return "\n".join(lines) + "\n"
+    except Exception as exc:
+        return f"# Kanban plan direction\n- ERROR collecting board: {type(exc).__name__}: {safe(exc, 300)}\n"
+
+
 def main() -> int:
     now = datetime.now(CHICAGO)
     print(f"# Google Workspace morning context — {now:%A, %Y-%m-%d %I:%M %p %Z}")
     print("Read-only collection across all authorized Google profiles. Summarize high-signal items only; do not send, delete, modify, share, or create anything without explicit user approval.")
     print(EMAIL_POLICY_NOTE + "\n")
+    print(kanban_plan_block())
     for profile, email, role in PROFILES:
         print(profile_block(profile, email, role))
     return 0

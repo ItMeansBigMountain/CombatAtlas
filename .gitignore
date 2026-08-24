@@ -269,6 +269,9 @@
 # These narrow exceptions override broad machine-state/project ignore rules.
 !/projects/_backups/kanban-consolidation-20260529T053711Z/
 !/projects/_backups/kanban-consolidation-20260529T053711Z/**
+# Preserve the recovery bundle, but never its live SQLite journal sidecars.
+/projects/_backups/kanban-consolidation-20260529T053711Z/**/*.db-shm
+/projects/_backups/kanban-consolidation-20260529T053711Z/**/*.db-wal
 !/projects/_ops/google-credentials-inventory.md
 !/projects/algos
 !/projects/cox-elementary-pta

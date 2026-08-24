@@ -86,10 +86,10 @@ The application now has:
 
 ## Final Handoff
 - **Classification**: script/archive (no Vercel redeploy needed)
-- **Build/Test**: No build step; functional tests verified via Playwright smoke tests (6 passed, 1 failed due to UI selector timing – issue resolved in child task `t_65340c2e`).
+- **Build/Test**: No build step; all seven Playwright smoke tests pass, including the single-song API and browser form flow.
 - **Deployment**: Existing production deployment verified ready. No redeploy performed.
-- **Public Access**: Alias https://music-lac-seven.vercel.app (HTTP 200), prod https://music-kdw85q93c-itmeansbigmountains-projects.vercel.app (HTTP 200).
-- **Smoke Tests**: Passed – navigation, YouTube connection, console clean.
+- **Public Access**: https://musicai-rouge.vercel.app (`/`, `/healthz`, and `/analyze-song` return HTTP 200).
+- **Smoke Tests**: Passed – navigation, YouTube connection, provider parking, text analysis, and single-song analysis.
 - **Screenshots/Reports**: Playwright test artifacts not tracked; smoke test comments in parent tasks.
 - **Blockers**: None
 - **Next Steps/Child PBIs**: None

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-23T02:57:54.333820",
+  "updated_at": "2026-08-24T07:45:54.824897",
   "platforms": {
     "discord": [
       {
@@ -51,8 +51,20 @@
         "type": "channel"
       },
       {
+        "id": "1499990220077137943",
+        "name": "TRAPISTAN / #general",
+        "type": "group",
+        "thread_id": null
+      },
+      {
         "id": "1523247688689258586",
         "name": "TRAPISTAN / #coding",
+        "type": "group",
+        "thread_id": null
+      },
+      {
+        "id": "1524172425393340516",
+        "name": "TRAPISTAN / #personal",
         "type": "group",
         "thread_id": null
       },
@@ -63,20 +75,8 @@
         "thread_id": null
       },
       {
-        "id": "1499990220077137943",
-        "name": "TRAPISTAN / #general",
-        "type": "group",
-        "thread_id": null
-      },
-      {
         "id": "1524259597232242831",
         "name": "TRAPISTAN / #trading",
-        "type": "group",
-        "thread_id": null
-      },
-      {
-        "id": "1524172425393340516",
-        "name": "TRAPISTAN / #personal",
         "type": "group",
         "thread_id": null
       },

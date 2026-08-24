@@ -1,8 +1,8 @@
 {
   "profile": "personal-main",
   "email": "affan.fareed@gmail.com",
-  "state": "2ek9EEogxxAS6zUtlcsBR4uzepHce2",
-  "code_verifier": "VDQSUvDC2LQJMedpoYiq7glPkmdm3fvaZuNZL..AeHSHiY_Bg35X2FM1gfcjI.pfV6cvZdX4x~9uGc4cSMsBlUvfqIXRtTiEND8aD6jfV96pKl3pCOdoXTTkJyH_Ew7Z",
+  "state": "JrGMkC6E0yZB7WrTJuWO4VoBI50sOo",
+  "code_verifier": "xZFbK7Bl8MPJVC6XysQYo-ZWnYsnWUUKY0Fddbd.MSFp85DbVFpwG1LFvnb2iHMx01xPk4kZkN6eeY-ZJ9.~UQdd29XKXC11uMYemu_-2719Ge8V87tcmJaLiq0hZy7W",
   "redirect_uri": "http://localhost:1",
   "scopes": [
     "https://www.googleapis.com/auth/gmail.readonly",

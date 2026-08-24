@@ -27,6 +27,7 @@ Update the pinned plugin SHA on the existing marker branch when code changes. Ke
 - Prefer the RuneLite Discord's appropriate public plugin-development/support channel for a combined queue check when several PRs are waiting.
 - Never use or share bot links labeled `Internal use only`, and do not ping individual maintainers unless they invited it.
 - If Discord is unavailable or gives no clarification, add one concise comment to each existing PR, then wait for a response.
+- Tailor the single follow-up to the actual review gate. If a maintainer named a concern such as file I/O, acknowledge that the requested context was provided, invite concrete changes, and state that the author can respond promptly. Do not merely say “bump,” ask for expedited treatment, or imply entitlement to completion.
 
 Suggested new-plugin comment:
 
