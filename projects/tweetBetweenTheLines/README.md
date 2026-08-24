@@ -14,6 +14,7 @@ Historical prior art exists in `ItMeansBigMountain/tweetBetweenTheLines`; the mo
 - [`PLATFORM_OAUTH_ARCHIVE_MATRIX.md`](PLATFORM_OAUTH_ARCHIVE_MATRIX.md) — official-source OAuth/API and archive-import coverage decisions for the connector registry
 - [`OPERATIONS_RUNBOOK.md`](OPERATIONS_RUNBOOK.md) — observability, backups/restore, incident response, cost controls, privacy requests, and closed-beta operations gates
 - [`CLOSED_BETA_DEPLOYMENT_PLAN.md`](CLOSED_BETA_DEPLOYMENT_PLAN.md) — Git-based deployment flow, consented/synthetic E2E fixture policy, and per-platform release evidence ledger
+- [`MOBILE_RELEASE_MATRIX.md`](MOBILE_RELEASE_MATRIX.md) — verified Android installable-preview URL/checksum, iOS installable-web path, native export evidence, and exact store-signing gates
 - [`DURABLE_BACKEND_RUNBOOK.md`](DURABLE_BACKEND_RUNBOOK.md) — local durable adapter, PostgreSQL/queue/KMS/sandbox bindings, migrations, and recovery commands
 - [`SECURITY_AUDIT.md`](SECURITY_AUDIT.md) — production dependency-audit triage and accepted-risk boundary
 
