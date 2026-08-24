@@ -1,35 +1,37 @@
 # tweetBetweenTheLines Development Plan
 
-Last updated: 2026-05-26
+Last updated: 2026-08-24
 
 ## Current role
 
-Merge/source archive for `social-media-analysis`.
+Active TypeScript/Expo universal product for privacy-first personal data liberation.
 
 ## Portfolio priority
 
-Low
+High — explicitly promoted to active development.
 
 ## Detected context
 
-- Classification: Merge source/archive
-- Detected stack: Python
+- Classification: Active product rebuild with preserved Python/Django prior art
+- Detected stack: TypeScript workspaces, Expo Router universal app, legacy Python archive
 - Current tracked URL: https://tweetbetweenthelines.vercel.app
-- Tracker note: Merge into social-media-analysis as Twitter/X parser, historical text analysis, topic trend, and mood/sentiment source modules.
+- Tracker note: Build a new consent-first product surface under `tweetBetweenTheLines`; preserve `social-media-analysis`, MusicAI, Journal AI, watsonAI, and legacy Python ideas as source material.
 
 ## Existing direction artifacts
 
-- `MERGE_INTO_SOCIAL_MEDIA_ANALYSIS.md`
+- `PRODUCT_DIRECTION.md`
+- `PRODUCT_ARCHITECTURE.md`
+- `PLATFORM_OAUTH_ARCHIVE_MATRIX.md`
 
 ## Development phases
 
-1. Inventory reusable modules and ideas for `social-media-analysis`.
-2. Move useful code/data/docs into `social-media-analysis` behind feature flags or import scripts.
-3. Mark stale standalone UI/deploy surfaces as archive after target absorbs value.
+1. Preserve prior-art audit and build-vs-rewrite map.
+2. Establish TypeScript/Expo universal architecture with a tested domain package.
+3. Implement connector registry, consent receipts, archive import sandbox, token vault, profile cards, and export/delete workflows in small TDD slices.
 
 ## Vercel / hosting plan
 
-Do not advance as separate product unless explicitly reactivated; maintain only as source material.
+Do not deploy until consent, revoke, export/delete, source provenance, and no-diagnosis safety gates are implemented and reviewed.
 
 ## Review checklist
 

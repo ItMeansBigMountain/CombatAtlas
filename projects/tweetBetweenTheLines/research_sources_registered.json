@@ -1,0 +1,356 @@
+[
+  {
+    "key": "google-oauth-web",
+    "title": "Google Identity: OAuth 2.0 for Web Server Applications",
+    "url": "https://developers.google.com/identity/protocols/oauth2/web-server",
+    "citation": "[1] https://developers.google.com/identity/protocols/oauth2/web-server"
+  },
+  {
+    "key": "google-oauth-installed",
+    "title": "Google Identity: OAuth 2.0 for Mobile & Desktop Apps",
+    "url": "https://developers.google.com/identity/protocols/oauth2/native-app",
+    "citation": "[2] https://developers.google.com/identity/protocols/oauth2/native-app"
+  },
+  {
+    "key": "google-scopes",
+    "title": "Google Identity: OAuth 2.0 Scopes for Google APIs",
+    "url": "https://developers.google.com/identity/protocols/oauth2/scopes",
+    "citation": "[3] https://developers.google.com/identity/protocols/oauth2/scopes"
+  },
+  {
+    "key": "youtube-quota",
+    "title": "YouTube Data API: Quota Calculator",
+    "url": "https://developers.google.com/youtube/v3/determine_quota_cost",
+    "citation": "[4] https://developers.google.com/youtube/v3/determine_quota_cost"
+  },
+  {
+    "key": "google-takeout",
+    "title": "Google Account Help: Download your data",
+    "url": "https://support.google.com/accounts/answer/3024190",
+    "citation": "[5] https://support.google.com/accounts/answer/3024190"
+  },
+  {
+    "key": "google-revoke",
+    "title": "Google Account Help: Third-party apps and services with access",
+    "url": "https://support.google.com/accounts/answer/3466521",
+    "citation": "[6] https://support.google.com/accounts/answer/3466521"
+  },
+  {
+    "key": "facebook-login",
+    "title": "Meta for Developers: Facebook Login",
+    "url": "https://developers.facebook.com/docs/facebook-login/",
+    "citation": "[7] https://developers.facebook.com/docs/facebook-login"
+  },
+  {
+    "key": "meta-permissions",
+    "title": "Meta for Developers: Permissions Reference",
+    "url": "https://developers.facebook.com/docs/permissions/reference/",
+    "citation": "[8] https://developers.facebook.com/docs/permissions/reference"
+  },
+  {
+    "key": "meta-app-review",
+    "title": "Meta for Developers: App Review",
+    "url": "https://developers.facebook.com/docs/app-review/",
+    "citation": "[9] https://developers.facebook.com/docs/app-review"
+  },
+  {
+    "key": "meta-access-tokens",
+    "title": "Meta Facebook Login: Access Tokens",
+    "url": "https://developers.facebook.com/docs/facebook-login/guides/access-tokens/",
+    "citation": "[10] https://developers.facebook.com/docs/facebook-login/guides/access-tokens"
+  },
+  {
+    "key": "facebook-download",
+    "title": "Facebook Help: Download a copy of your information",
+    "url": "https://www.facebook.com/help/212802592074644",
+    "citation": "[11] https://www.facebook.com/help/212802592074644"
+  },
+  {
+    "key": "instagram-download",
+    "title": "Instagram Help: Download a copy of your information",
+    "url": "https://help.instagram.com/181231772500920",
+    "citation": "[12] https://help.instagram.com/181231772500920"
+  },
+  {
+    "key": "instagram-platform",
+    "title": "Instagram Platform: API with Instagram Login",
+    "url": "https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/",
+    "citation": "[13] https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login"
+  },
+  {
+    "key": "instagram-basic-display",
+    "title": "Instagram Basic Display API",
+    "url": "https://developers.facebook.com/docs/instagram-basic-display-api/",
+    "citation": "[14] https://developers.facebook.com/docs/instagram-basic-display-api"
+  },
+  {
+    "key": "threads-api",
+    "title": "Threads API Documentation",
+    "url": "https://developers.facebook.com/docs/threads/",
+    "citation": "[15] https://developers.facebook.com/docs/threads"
+  },
+  {
+    "key": "threads-permissions",
+    "title": "Threads API Documentation",
+    "url": "https://developers.facebook.com/docs/threads/",
+    "citation": "[15] https://developers.facebook.com/docs/threads"
+  },
+  {
+    "key": "x-oauth2",
+    "title": "X API: OAuth 2.0 Authorization Code Flow with PKCE",
+    "url": "https://docs.x.com/fundamentals/authentication/oauth-2-0/authorization-code",
+    "citation": "[16] https://docs.x.com/fundamentals/authentication/oauth-2-0/authorization-code"
+  },
+  {
+    "key": "x-manage-posts",
+    "title": "X API: Manage Posts Introduction",
+    "url": "https://docs.x.com/x-api/posts/manage-tweets/introduction",
+    "citation": "[17] https://docs.x.com/x-api/posts/manage-tweets/introduction"
+  },
+  {
+    "key": "x-download-archive",
+    "title": "X Help: How to download your X archive",
+    "url": "https://help.x.com/en/managing-your-account/how-to-download-your-x-archive",
+    "citation": "[18] https://help.x.com/en/managing-your-account/how-to-download-your-x-archive"
+  },
+  {
+    "key": "x-rate-limits",
+    "title": "X API: Rate limits",
+    "url": "https://docs.x.com/x-api/fundamentals/rate-limits",
+    "citation": "[19] https://docs.x.com/x-api/fundamentals/rate-limits"
+  },
+  {
+    "key": "tiktok-login-kit",
+    "title": "TikTok for Developers: Login Kit Web",
+    "url": "https://developers.tiktok.com/doc/login-kit-web/",
+    "citation": "[20] https://developers.tiktok.com/doc/login-kit-web"
+  },
+  {
+    "key": "tiktok-scopes",
+    "title": "TikTok for Developers: Scopes Overview",
+    "url": "https://developers.tiktok.com/doc/scopes-overview",
+    "citation": "[21] https://developers.tiktok.com/doc/scopes-overview"
+  },
+  {
+    "key": "tiktok-data-download",
+    "title": "TikTok Support: Requesting your data",
+    "url": "https://support.tiktok.com/en/account-and-privacy/personalized-ads-and-data/requesting-your-data",
+    "citation": "[22] https://support.tiktok.com/en/account-and-privacy/personalized-ads-and-data/requesting-your-data"
+  },
+  {
+    "key": "tiktok-developer-docs",
+    "title": "TikTok for Developers Documentation",
+    "url": "https://developers.tiktok.com/doc/overview/",
+    "citation": "[23] https://developers.tiktok.com/doc/overview"
+  },
+  {
+    "key": "reddit-oauth",
+    "title": "Reddit: OAuth2",
+    "url": "https://github.com/reddit-archive/reddit/wiki/OAuth2",
+    "citation": "[24] https://github.com/reddit-archive/reddit/wiki/OAuth2"
+  },
+  {
+    "key": "reddit-scopes",
+    "title": "Reddit: OAuth2 Scopes",
+    "url": "https://www.reddit.com/dev/api/oauth",
+    "citation": "[25] https://www.reddit.com/dev/api/oauth"
+  },
+  {
+    "key": "reddit-rate-limits",
+    "title": "Reddit API Wiki: API",
+    "url": "https://github.com/reddit-archive/reddit/wiki/API",
+    "citation": "[26] https://github.com/reddit-archive/reddit/wiki/API"
+  },
+  {
+    "key": "reddit-data-request",
+    "title": "Reddit Help: Request a copy of your Reddit data",
+    "url": "https://support.reddithelp.com/hc/en-us/articles/360043048352-How-do-I-request-a-copy-of-my-Reddit-data-and-information",
+    "citation": "[27] https://support.reddithelp.com/hc/en-us/articles/360043048352-How-do-I-request-a-copy-of-my-Reddit-data-and-information"
+  },
+  {
+    "key": "linkedin-oauth",
+    "title": "LinkedIn: Authorization Code Flow",
+    "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+    "citation": "[28] https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow"
+  },
+  {
+    "key": "linkedin-rate-limits",
+    "title": "LinkedIn API: Rate Limits",
+    "url": "https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/rate-limits",
+    "citation": "[29] https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/rate-limits"
+  },
+  {
+    "key": "linkedin-profile-api",
+    "title": "LinkedIn: Profile API",
+    "url": "https://learn.microsoft.com/en-us/linkedin/shared/integrations/people/profile-api",
+    "citation": "[30] https://learn.microsoft.com/en-us/linkedin/shared/integrations/people/profile-api"
+  },
+  {
+    "key": "linkedin-data-download",
+    "title": "LinkedIn Help: Download your account data",
+    "url": "https://www.linkedin.com/help/linkedin/answer/a1339364/downloading-your-account-data",
+    "citation": "[31] https://www.linkedin.com/help/linkedin/answer/a1339364/downloading-your-account-data"
+  },
+  {
+    "key": "snap-login-kit",
+    "title": "Snap Kit: Login Kit Overview",
+    "url": "https://developers.snap.com/snap-kit/login-kit/overview",
+    "citation": "[32] https://developers.snap.com/snap-kit/login-kit/overview"
+  },
+  {
+    "key": "snapkit-review",
+    "title": "Snap Kit: Login Kit Overview",
+    "url": "https://developers.snap.com/snap-kit/login-kit/overview",
+    "citation": "[32] https://developers.snap.com/snap-kit/login-kit/overview"
+  },
+  {
+    "key": "snap-data-download",
+    "title": "Snapchat Support: Download My Data",
+    "url": "https://help.snapchat.com/hc/articles/7012305371156",
+    "citation": "[33] https://help.snapchat.com/hc/articles/7012305371156"
+  },
+  {
+    "key": "snap-dev-terms",
+    "title": "Snap Developer Terms",
+    "url": "https://www.snap.com/terms/developer",
+    "citation": "[34] https://www.snap.com/terms/developer"
+  },
+  {
+    "key": "discord-oauth2",
+    "title": "Discord Developer Docs: OAuth2",
+    "url": "https://discord.com/developers/docs/topics/oauth2",
+    "citation": "[35] https://discord.com/developers/docs/topics/oauth2"
+  },
+  {
+    "key": "discord-rate-limits",
+    "title": "Discord Developer Docs: Rate Limits",
+    "url": "https://discord.com/developers/docs/topics/rate-limits",
+    "citation": "[36] https://discord.com/developers/docs/topics/rate-limits"
+  },
+  {
+    "key": "discord-data-package",
+    "title": "Discord Support: Requesting a Copy of your Data",
+    "url": "https://support.discord.com/hc/en-us/articles/360004027692-Requesting-a-Copy-of-your-Data",
+    "citation": "[37] https://support.discord.com/hc/en-us/articles/360004027692-Requesting-a-Copy-of-your-Data"
+  },
+  {
+    "key": "bluesky-oauth",
+    "title": "AT Protocol: OAuth",
+    "url": "https://atproto.com/specs/oauth",
+    "citation": "[38] https://atproto.com/specs/oauth"
+  },
+  {
+    "key": "bluesky-api",
+    "title": "Bluesky Docs: API Hosts and Auth",
+    "url": "https://docs.bsky.app/docs/advanced-guides/api-directory",
+    "citation": "[39] https://docs.bsky.app/docs/advanced-guides/api-directory"
+  },
+  {
+    "key": "atproto-repo-export",
+    "title": "AT Protocol: Repository Export",
+    "url": "https://atproto.com/guides/account-migration",
+    "citation": "[40] https://atproto.com/guides/account-migration"
+  },
+  {
+    "key": "pinterest-oauth",
+    "title": "Pinterest Developers: Authorization",
+    "url": "https://developers.pinterest.com/docs/getting-started/authentication-and-authorization/",
+    "citation": "[41] https://developers.pinterest.com/docs/getting-started/authentication-and-authorization"
+  },
+  {
+    "key": "pinterest-api-overview",
+    "title": "Pinterest Developers: API Overview",
+    "url": "https://developers.pinterest.com/docs/api/v5/",
+    "citation": "[42] https://developers.pinterest.com/docs/api/v5"
+  },
+  {
+    "key": "pinterest-data-download",
+    "title": "Pinterest Privacy Policy",
+    "url": "https://policy.pinterest.com/en/privacy-policy",
+    "citation": "[43] https://policy.pinterest.com/en/privacy-policy"
+  },
+  {
+    "key": "tumblr-api",
+    "title": "Tumblr API Documentation",
+    "url": "https://www.tumblr.com/docs/en/api/v2",
+    "citation": "[44] https://www.tumblr.com/docs/en/api/v2"
+  },
+  {
+    "key": "tumblr-export",
+    "title": "Tumblr Help: Export your blog",
+    "url": "https://help.tumblr.com/export-your-blog/",
+    "citation": "[45] https://help.tumblr.com/export-your-blog"
+  },
+  {
+    "key": "tumblr-terms",
+    "title": "Tumblr API License Agreement",
+    "url": "https://www.tumblr.com/docs/en/api_agreement",
+    "citation": "[46] https://www.tumblr.com/docs/en/api_agreement"
+  },
+  {
+    "key": "twitch-oauth",
+    "title": "Twitch Developer Docs: Authentication",
+    "url": "https://dev.twitch.tv/docs/authentication/",
+    "citation": "[47] https://dev.twitch.tv/docs/authentication"
+  },
+  {
+    "key": "twitch-scopes",
+    "title": "Twitch Developer Docs: Scopes",
+    "url": "https://dev.twitch.tv/docs/authentication/scopes/",
+    "citation": "[48] https://dev.twitch.tv/docs/authentication/scopes"
+  },
+  {
+    "key": "twitch-rate-limits",
+    "title": "Twitch Developer Docs: Rate Limits",
+    "url": "https://dev.twitch.tv/docs/api/guide#twitch-rate-limits",
+    "citation": "[49] https://dev.twitch.tv/docs/api/guide"
+  },
+  {
+    "key": "twitch-privacy",
+    "title": "Twitch Privacy Choices",
+    "url": "https://www.twitch.tv/p/en/legal/privacy-notice/#privacy-choices",
+    "citation": "[50] https://www.twitch.tv/p/en/legal/privacy-notice"
+  },
+  {
+    "key": "spotify-auth-code-pkce",
+    "title": "Spotify Web API: Authorization Code with PKCE",
+    "url": "https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow",
+    "citation": "[51] https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow"
+  },
+  {
+    "key": "spotify-scopes",
+    "title": "Spotify Web API: Scopes",
+    "url": "https://developer.spotify.com/documentation/web-api/concepts/scopes",
+    "citation": "[52] https://developer.spotify.com/documentation/web-api/concepts/scopes"
+  },
+  {
+    "key": "spotify-rate-limits",
+    "title": "Spotify Web API: Rate limits",
+    "url": "https://developer.spotify.com/documentation/web-api/concepts/rate-limits",
+    "citation": "[53] https://developer.spotify.com/documentation/web-api/concepts/rate-limits"
+  },
+  {
+    "key": "spotify-extended-streaming-history",
+    "title": "Spotify Support: Understanding my data",
+    "url": "https://support.spotify.com/us/article/understanding-my-data/",
+    "citation": "[54] https://support.spotify.com/us/article/understanding-my-data"
+  },
+  {
+    "key": "mastodon-oauth",
+    "title": "Mastodon API: OAuth",
+    "url": "https://docs.joinmastodon.org/methods/oauth/",
+    "citation": "[55] https://docs.joinmastodon.org/methods/oauth"
+  },
+  {
+    "key": "mastodon-scopes",
+    "title": "Mastodon API: OAuth Scopes",
+    "url": "https://docs.joinmastodon.org/api/oauth-scopes/",
+    "citation": "[56] https://docs.joinmastodon.org/api/oauth-scopes"
+  },
+  {
+    "key": "mastodon-export",
+    "title": "Mastodon User Guide: Import and export",
+    "url": "https://docs.joinmastodon.org/user/moving/#export",
+    "citation": "[57] https://docs.joinmastodon.org/user/moving"
+  }
+]

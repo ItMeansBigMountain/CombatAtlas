@@ -1,0 +1,347 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": 1,
+      "url": "https://developers.google.com/identity/protocols/oauth2/web-server",
+      "title": "Google Identity: OAuth 2.0 for Web Server Applications",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 2,
+      "url": "https://developers.google.com/identity/protocols/oauth2/native-app",
+      "title": "Google Identity: OAuth 2.0 for Mobile & Desktop Apps",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 3,
+      "url": "https://developers.google.com/identity/protocols/oauth2/scopes",
+      "title": "Google Identity: OAuth 2.0 Scopes for Google APIs",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 4,
+      "url": "https://developers.google.com/youtube/v3/determine_quota_cost",
+      "title": "YouTube Data API: Quota Calculator",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 5,
+      "url": "https://support.google.com/accounts/answer/3024190",
+      "title": "Google Account Help: Download your data",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 6,
+      "url": "https://support.google.com/accounts/answer/3466521",
+      "title": "Google Account Help: Third-party apps and services with access",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 7,
+      "url": "https://developers.facebook.com/docs/facebook-login",
+      "title": "Meta for Developers: Facebook Login",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 8,
+      "url": "https://developers.facebook.com/docs/permissions/reference",
+      "title": "Meta for Developers: Permissions Reference",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 9,
+      "url": "https://developers.facebook.com/docs/app-review",
+      "title": "Meta for Developers: App Review",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 10,
+      "url": "https://developers.facebook.com/docs/facebook-login/guides/access-tokens",
+      "title": "Meta Facebook Login: Access Tokens",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 11,
+      "url": "https://www.facebook.com/help/212802592074644",
+      "title": "Facebook Help: Download a copy of your information",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 12,
+      "url": "https://help.instagram.com/181231772500920",
+      "title": "Instagram Help: Download a copy of your information",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 13,
+      "url": "https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login",
+      "title": "Instagram Platform: API with Instagram Login",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 14,
+      "url": "https://developers.facebook.com/docs/instagram-basic-display-api",
+      "title": "Instagram Basic Display API",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 15,
+      "url": "https://developers.facebook.com/docs/threads",
+      "title": "Threads API Documentation",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 16,
+      "url": "https://docs.x.com/fundamentals/authentication/oauth-2-0/authorization-code",
+      "title": "X API: OAuth 2.0 Authorization Code Flow with PKCE",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 17,
+      "url": "https://docs.x.com/x-api/posts/manage-tweets/introduction",
+      "title": "X API: Manage Posts Introduction",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 18,
+      "url": "https://help.x.com/en/managing-your-account/how-to-download-your-x-archive",
+      "title": "X Help: How to download your X archive",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 19,
+      "url": "https://docs.x.com/x-api/fundamentals/rate-limits",
+      "title": "X API: Rate limits",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 20,
+      "url": "https://developers.tiktok.com/doc/login-kit-web",
+      "title": "TikTok for Developers: Login Kit Web",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 21,
+      "url": "https://developers.tiktok.com/doc/scopes-overview",
+      "title": "TikTok for Developers: Scopes Overview",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 22,
+      "url": "https://support.tiktok.com/en/account-and-privacy/personalized-ads-and-data/requesting-your-data",
+      "title": "TikTok Support: Requesting your data",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 23,
+      "url": "https://developers.tiktok.com/doc/overview",
+      "title": "TikTok for Developers Documentation",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 24,
+      "url": "https://github.com/reddit-archive/reddit/wiki/OAuth2",
+      "title": "Reddit: OAuth2",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 25,
+      "url": "https://www.reddit.com/dev/api/oauth",
+      "title": "Reddit: OAuth2 Scopes",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 26,
+      "url": "https://github.com/reddit-archive/reddit/wiki/API",
+      "title": "Reddit API Wiki: API",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 27,
+      "url": "https://support.reddithelp.com/hc/en-us/articles/360043048352-How-do-I-request-a-copy-of-my-Reddit-data-and-information",
+      "title": "Reddit Help: Request a copy of your Reddit data",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 28,
+      "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow",
+      "title": "LinkedIn: Authorization Code Flow",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 29,
+      "url": "https://learn.microsoft.com/en-us/linkedin/shared/api-guide/concepts/rate-limits",
+      "title": "LinkedIn API: Rate Limits",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 30,
+      "url": "https://learn.microsoft.com/en-us/linkedin/shared/integrations/people/profile-api",
+      "title": "LinkedIn: Profile API",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 31,
+      "url": "https://www.linkedin.com/help/linkedin/answer/a1339364/downloading-your-account-data",
+      "title": "LinkedIn Help: Download your account data",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 32,
+      "url": "https://developers.snap.com/snap-kit/login-kit/overview",
+      "title": "Snap Kit: Login Kit Overview",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 33,
+      "url": "https://help.snapchat.com/hc/articles/7012305371156",
+      "title": "Snapchat Support: Download My Data",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 34,
+      "url": "https://www.snap.com/terms/developer",
+      "title": "Snap Developer Terms",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 35,
+      "url": "https://discord.com/developers/docs/topics/oauth2",
+      "title": "Discord Developer Docs: OAuth2",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 36,
+      "url": "https://discord.com/developers/docs/topics/rate-limits",
+      "title": "Discord Developer Docs: Rate Limits",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 37,
+      "url": "https://support.discord.com/hc/en-us/articles/360004027692-Requesting-a-Copy-of-your-Data",
+      "title": "Discord Support: Requesting a Copy of your Data",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 38,
+      "url": "https://atproto.com/specs/oauth",
+      "title": "AT Protocol: OAuth",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 39,
+      "url": "https://docs.bsky.app/docs/advanced-guides/api-directory",
+      "title": "Bluesky Docs: API Hosts and Auth",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 40,
+      "url": "https://atproto.com/guides/account-migration",
+      "title": "AT Protocol: Repository Export",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 41,
+      "url": "https://developers.pinterest.com/docs/getting-started/authentication-and-authorization",
+      "title": "Pinterest Developers: Authorization",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 42,
+      "url": "https://developers.pinterest.com/docs/api/v5",
+      "title": "Pinterest Developers: API Overview",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 43,
+      "url": "https://policy.pinterest.com/en/privacy-policy",
+      "title": "Pinterest Privacy Policy",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 44,
+      "url": "https://www.tumblr.com/docs/en/api/v2",
+      "title": "Tumblr API Documentation",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 45,
+      "url": "https://help.tumblr.com/export-your-blog",
+      "title": "Tumblr Help: Export your blog",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 46,
+      "url": "https://www.tumblr.com/docs/en/api_agreement",
+      "title": "Tumblr API License Agreement",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 47,
+      "url": "https://dev.twitch.tv/docs/authentication",
+      "title": "Twitch Developer Docs: Authentication",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 48,
+      "url": "https://dev.twitch.tv/docs/authentication/scopes",
+      "title": "Twitch Developer Docs: Scopes",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 49,
+      "url": "https://dev.twitch.tv/docs/api/guide",
+      "title": "Twitch Developer Docs: Rate Limits",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 50,
+      "url": "https://www.twitch.tv/p/en/legal/privacy-notice",
+      "title": "Twitch Privacy Choices",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 51,
+      "url": "https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow",
+      "title": "Spotify Web API: Authorization Code with PKCE",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 52,
+      "url": "https://developer.spotify.com/documentation/web-api/concepts/scopes",
+      "title": "Spotify Web API: Scopes",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 53,
+      "url": "https://developer.spotify.com/documentation/web-api/concepts/rate-limits",
+      "title": "Spotify Web API: Rate limits",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 54,
+      "url": "https://support.spotify.com/us/article/understanding-my-data",
+      "title": "Spotify Support: Understanding my data",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 55,
+      "url": "https://docs.joinmastodon.org/methods/oauth",
+      "title": "Mastodon API: OAuth",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 56,
+      "url": "https://docs.joinmastodon.org/api/oauth-scopes",
+      "title": "Mastodon API: OAuth Scopes",
+      "accessed": "2026-08-24"
+    },
+    {
+      "id": 57,
+      "url": "https://docs.joinmastodon.org/user/moving",
+      "title": "Mastodon User Guide: Import and export",
+      "accessed": "2026-08-24"
+    }
+  ]
+}
