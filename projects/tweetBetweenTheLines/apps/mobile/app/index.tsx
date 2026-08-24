@@ -1,151 +1,108 @@
 import { useMemo, useState } from 'react'
-import { Alert, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 
-import { createPrivacyClient, type ImportJob, type SourceConnection, validateArchiveSelection } from '../lib/privacyClient'
+import type { EvidenceRef, ExplainableMetricCard } from '../../../packages/domain/src/explainableMetrics'
+import { createPrivacyClient, validateArchiveSelection } from '../lib/privacyClient'
+import { analyzeDataset, parseDatasetJson, syntheticDataset, type MvpDataset } from '../lib/mvpData'
 
-type ProfileEvidence = { source: string; sourceRecordId: string; occurredAt: string; excerpt: string }
-const evidenceItems: ProfileEvidence[] = [
-  { source: 'x-archive', sourceRecordId: 'tweet-1', occurredAt: '2026-08-24T01:00:00Z', excerpt: 'I am grateful for family but overwhelmed by work deadlines.' },
-  { source: 'youtube', sourceRecordId: 'video-1', occurredAt: '2026-08-25T01:00:00Z', excerpt: 'Watched music production and fitness creators while thinking about data freedom.' },
-]
-const profile = {
-  safetyBoundary: 'This profile is not a diagnosis. Validated self-report screening stays separate from observational social-media signals.',
-  cards: [
-    { kind: 'attention', title: 'Attention clusters: music, fitness, data', summary: 'Your imported events point toward music production, fitness, and data freedom.', confidence: 'medium', evidence: evidenceItems },
-    { kind: 'language', title: 'Language balance', summary: 'Both constructive and strain language appear in this small slice.', confidence: 'low', evidence: evidenceItems.slice(0, 1) },
-    { kind: 'wellbeing-pattern', title: 'Non-diagnostic wellbeing pattern', summary: 'Some language contains stress signals; use this as a reflection prompt, not a medical conclusion.', confidence: 'low', evidence: evidenceItems.slice(0, 1) },
-  ],
-} as const
+type Section = 'data' | 'metrics' | 'control' | 'limits'
+type Correction = { metricId: string; note: string }
 
-const initialSources: SourceConnection[] = [
-  { id: 'youtube', name: 'Google / YouTube', coverage: 'Recent API activity; Takeout adds archive history.', status: 'available', method: 'oauth' },
-  { id: 'reddit', name: 'Reddit', coverage: 'Official API history within provider limits.', status: 'available', method: 'oauth' },
-  { id: 'x', name: 'X', coverage: 'Official archive recommended; API access is paid and incomplete.', status: 'available', method: 'archive' },
-]
+function Button({ label, onPress, danger = false, disabled = false }: { label: string; onPress: () => void; danger?: boolean; disabled?: boolean }) {
+  return <Pressable accessibilityRole="button" accessibilityState={{ disabled }} disabled={disabled} onPress={onPress} style={({ pressed }) => [styles.button, danger && styles.danger, disabled && styles.disabled, pressed && styles.pressed]}><Text style={styles.buttonText}>{label}</Text></Pressable>
+}
 
-const operationsChecklist = [
-  { label: 'Observability', status: 'planned', detail: 'Sentry/OpenTelemetry IDs only; no raw posts, tokens, prompts, filenames, or archive text in telemetry.' },
-  { label: 'Backups and restore', status: 'blocked', detail: 'Needs a real restore drill proving deletion keys, exports, queues, caches, and backup retention reconcile.' },
-  { label: 'Incident response', status: 'planned', detail: 'Privacy/security runbook is drafted; on-call, severity, notification, and regulator timelines must be rehearsed.' },
-  { label: 'Cost controls', status: 'planned', detail: 'Closed beta has hard caps for API quota, archive jobs, storage, and model calls before any public launch.' },
-  { label: 'Closed beta', status: 'blocked', detail: 'Only synthetic or explicitly consented fixtures; TestFlight/Internal-track evidence is still required.' },
-] as const
+function downloadJson(fileName: string, value: unknown) {
+  if (Platform.OS !== 'web' || typeof document === 'undefined') return false
+  const url = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2)], { type: 'application/json' }))
+  const anchor = document.createElement('a'); anchor.href = url; anchor.download = fileName; anchor.click()
+  URL.revokeObjectURL(url)
+  return true
+}
 
-type Section = 'sources' | 'profile' | 'privacy' | 'ops'
-
-function ActionButton({ label, onPress, danger = false, disabled = false }: { label: string; onPress: () => void; danger?: boolean; disabled?: boolean }) {
-  return <Pressable accessibilityRole="button" accessibilityState={{ disabled }} disabled={disabled} onPress={onPress} style={({ pressed }) => [styles.button, danger && styles.dangerButton, disabled && styles.disabled, pressed && styles.pressed]}><Text style={styles.buttonText}>{label}</Text></Pressable>
+function aggregateSummary(card: ExplainableMetricCard): string {
+  const ranked = card.aggregates.ranked
+  if (Array.isArray(ranked)) return ranked.slice(0, 5).map((row) => `${String((row as { label?: unknown }).label)} (${String((row as { count?: unknown }).count)})`).join(' · ') || 'No matching evidence'
+  if (card.category === 'sentiment') return `positive ${card.aggregates.positive} · neutral ${card.aggregates.neutral} · negative ${card.aggregates.negative}`
+  if (card.category === 'language-style') return `${card.aggregates.tokenCount} words · ${card.aggregates.uniqueTokens} unique · locales ${JSON.stringify(card.aggregates.localeCounts)}`
+  if (card.category === 'attention-rhythm') return 'Event counts grouped by UTC hour and weekday; inspect derivation for the exact arrays.'
+  return JSON.stringify(card.aggregates)
 }
 
 export default function HomeScreen() {
   const client = useMemo(createPrivacyClient, [])
-  const [section, setSection] = useState<Section>('sources')
+  const [section, setSection] = useState<Section>('data')
   const [consented, setConsented] = useState(false)
-  const [sources, setSources] = useState(initialSources)
-  const [job, setJob] = useState<ImportJob | null>(null)
-  const [evidence, setEvidence] = useState<ProfileEvidence[] | null>(null)
-  const [notice, setNotice] = useState('Your data stays under your control.')
+  const [dataset, setDataset] = useState<MvpDataset | null>(null)
+  const [snapshot, setSnapshot] = useState<ReturnType<typeof analyzeDataset> | null>(null)
+  const [selected, setSelected] = useState<ExplainableMetricCard | null>(null)
+  const [corrections, setCorrections] = useState<Correction[]>([])
+  const [notice, setNotice] = useState('No data loaded. Start with the synthetic demo or explicitly consent to your own JSON export.')
 
-  const connect = async (id: string) => {
-    if (!consented) return setNotice('Review and accept the specific analysis consent first.')
-    const source = sources.find((item) => item.id === id)
-    if (!source) return
-    if (source.method === 'archive') return chooseArchive()
-    setNotice(`OAuth will open in your browser and return to ${client.oauthRedirectUri}. Tokens are never exposed to analytics.`)
-    setSources((items) => items.map((item) => item.id === id ? { ...item, status: 'connected' } : item))
+  const load = (next: MvpDataset) => {
+    const analyzed = analyzeDataset(next)
+    setDataset(next); setSnapshot(analyzed); setSelected(null); setCorrections([]); setSection('metrics')
+    setNotice(`${next.events.length} events analyzed locally from ${next.label}.`)
   }
 
-  const chooseArchive = async () => {
-    if (!consented) return setNotice('Archive analysis requires explicit consent first.')
+  const chooseJson = async () => {
+    if (!consented) return setNotice('Check explicit consent before importing personal data.')
     const file = await client.chooseArchive()
     if (!file) return
-    const error = validateArchiveSelection(file)
-    if (error) return setNotice(error)
-    setJob({ id: `local-${Date.now()}`, fileName: file.name, progress: 15, status: 'uploading', message: 'Encrypted upload queued. Server-side malware and archive checks are required.' })
-    setNotice('Archive selected. Closing this screen will not grant broader access.')
+    const selectionError = validateArchiveSelection(file)
+    if (selectionError) return setNotice(selectionError)
+    if (!file.name.toLowerCase().endsWith('.json')) return setNotice('This runnable web MVP accepts normalized JSON only. ZIP provider adapters remain a production integration gate.')
+    try {
+      const response = await fetch(file.uri)
+      load(parseDatasetJson(await response.text()))
+    } catch (error) {
+      setNotice(`Import rejected: ${error instanceof Error ? error.message : 'invalid JSON'}`)
+    }
   }
 
-  const revoke = (id: string) => {
-    setSources((items) => items.map((item) => item.id === id ? { ...item, status: 'revoked' } : item))
-    setNotice('Source revoked. New ingestion stopped; deletion reconciliation is queued for derived data and backups.')
+  const correct = (metricId: string) => {
+    setCorrections((items) => items.some((item) => item.metricId === metricId) ? items.filter((item) => item.metricId !== metricId) : [...items, { metricId, note: 'User marked this derived metric as inaccurate or unrepresentative.' }])
+    setNotice('Correction saved separately from source evidence and included in export. It does not rewrite the original archive.')
   }
 
-  const confirmDestructive = (kind: 'delete' | 'revoke all') => Alert.alert(
-    kind === 'delete' ? 'Delete account and data?' : 'Revoke every source?',
-    'This requires step-up authentication. Deletion remains pending until descendants, caches, exports, and backup retention are reconciled.',
-    [{ text: 'Cancel', style: 'cancel' }, { text: 'Continue', style: 'destructive', onPress: () => setNotice(`${kind} request queued; a completion receipt will appear after reconciliation.`) }],
-  )
+  const exportData = () => {
+    if (!dataset || !snapshot) return setNotice('Load data before exporting.')
+    const ok = downloadJson('tweet-between-the-lines-export.json', { schemaVersion: 1, exportedAt: new Date().toISOString(), dataset, metrics: snapshot, corrections, limitations: 'Deterministic reflections from only the imported data; not diagnosis or complete platform coverage.' })
+    setNotice(ok ? 'Export downloaded as JSON.' : 'Export is available in the web MVP; native sharing is not wired in this milestone.')
+  }
 
-  return <View style={styles.root}>
-    <ScrollView contentContainerStyle={styles.page}>
-      <Text style={styles.eyebrow}>tweetBetweenTheLines</Text>
-      <Text accessibilityRole="header" style={styles.title}>Your data. Your evidence. Your call.</Text>
-      <Text style={styles.body}>Connect only the sources you choose, inspect why every reflection appears, correct it, or erase it.</Text>
+  const deleteData = () => {
+    if (Platform.OS === 'web' && typeof window !== 'undefined' && !window.confirm('Delete this browser session’s imported data, metrics, and corrections?')) return
+    setDataset(null); setSnapshot(null); setSelected(null); setCorrections([]); setConsented(false); setSection('data')
+    setNotice('Browser-session data deleted. This local MVP did not upload or persist it.')
+  }
 
-      <View accessibilityLiveRegion="polite" style={styles.notice}><Text style={styles.noticeText}>{notice}</Text></View>
+  return <View style={styles.root}><ScrollView contentContainerStyle={styles.page}>
+    <Text style={styles.eyebrow}>tweetBetweenTheLines · runnable web MVP</Text>
+    <Text accessibilityRole="header" style={styles.title}>See what your data can say — and exactly why.</Text>
+    <Text style={styles.body}>Analyze a synthetic fixture or your explicitly consented normalized JSON locally. Every metric keeps source records, deterministic derivation, confidence, and limitations visible.</Text>
+    <View accessibilityLiveRegion="polite" style={styles.notice}><Text style={styles.noticeText}>{notice}</Text></View>
 
-      <View accessibilityRole="tablist" style={styles.tabs}>
-        {(['sources', 'profile', 'privacy', 'ops'] as Section[]).map((item) => <Pressable key={item} accessibilityRole="tab" accessibilityState={{ selected: section === item }} onPress={() => setSection(item)} style={[styles.tab, section === item && styles.activeTab]}><Text style={styles.tabText}>{item}</Text></Pressable>)}
-      </View>
+    <View accessibilityRole="tablist" style={styles.tabs}>{(['data', 'metrics', 'control', 'limits'] as Section[]).map((item) => <Pressable key={item} accessibilityRole="tab" accessibilityState={{ selected: section === item }} onPress={() => setSection(item)} style={[styles.tab, section === item && styles.activeTab]}><Text style={styles.tabText}>{item}</Text></Pressable>)}</View>
 
-      {section === 'sources' && <>
-        <View style={styles.panel}>
-          <Text accessibilityRole="header" style={styles.panelTitle}>Consent before collection</Text>
-          <Text style={styles.body}>Purpose: build explainable personal reflections. Categories: posts, viewing/listening activity, reactions, and account metadata. Retention: until you revoke or delete. No sale, ads, diagnosis, or silent scope expansion.</Text>
-          <Pressable accessibilityRole="checkbox" accessibilityState={{ checked: consented }} onPress={() => setConsented((value) => !value)} style={styles.checkRow}><View style={[styles.checkbox, consented && styles.checked]} /><Text style={styles.checkText}>I choose to allow this analysis. I can withdraw consent at any time.</Text></Pressable>
-        </View>
-        <View style={styles.panel}>
-          <Text accessibilityRole="header" style={styles.panelTitle}>Source coverage dashboard</Text>
-          <Text style={styles.body}>Coverage is intentionally conservative: “connected” means this app has a consented OAuth handoff or official archive selected, not that the platform provides complete history.</Text>
-          <Text style={styles.meta}>Available now: YouTube/Reddit OAuth handoff contracts and X official archive import. Restricted/roadmap platforms stay unlisted in the active connector UI until verified.</Text>
-        </View>
-        {sources.map((source) => <View key={source.id} style={styles.card}>
-          <View style={styles.row}><Text style={styles.cardTitle}>{source.name}</Text><Text style={styles.badge}>{source.status}</Text></View>
-          <Text style={styles.body}>{source.coverage}</Text>
-          <Text style={styles.meta}>{source.method === 'oauth' ? `Browser OAuth + mobile PKCE · ${client.platform}` : 'Official archive import'}</Text>
-          <View style={styles.actions}><ActionButton label={source.method === 'oauth' ? 'Connect' : 'Choose archive'} onPress={() => void connect(source.id)} disabled={source.status === 'revoked'} />{source.status === 'connected' && <ActionButton label="Revoke" danger onPress={() => revoke(source.id)} />}</View>
-        </View>)}
-        <ActionButton label="Import another official archive" onPress={() => void chooseArchive()} />
-        {job && <View style={styles.panel} accessible accessibilityLabel={`Import ${job.progress} percent complete`}><Text style={styles.panelTitle}>{job.fileName}</Text><View style={styles.track}><View style={[styles.progress, { width: `${job.progress}%` }]} /></View><Text style={styles.meta}>{job.progress}% · {job.message}</Text></View>}
-      </>}
+    {section === 'data' && <>
+      <View style={styles.panel}><Text style={styles.panelTitle}>1. Try without personal data</Text><Text style={styles.body}>The bundled demo is clearly labeled synthetic. Its X, YouTube, and Reddit-style records are examples, not claims that accounts or live APIs are connected.</Text><Button label="Use synthetic demo" onPress={() => load(syntheticDataset)} /></View>
+      <View style={styles.panel}><Text style={styles.panelTitle}>2. Or import data you control</Text><Text style={styles.body}>Accepted MVP format: JSON array (or {`{ events: [...] }`}) with id, sourceId, sourceRecordId, occurredAt, kind, and content. Analysis happens in this browser session; no upload occurs.</Text><Pressable accessibilityRole="checkbox" accessibilityState={{ checked: consented }} onPress={() => setConsented((value) => !value)} style={styles.checkRow}><View style={[styles.checkbox, consented && styles.checked]} /><Text style={styles.checkText}>I own or have explicit permission to analyze this file and choose local deterministic analysis.</Text></Pressable><Button label="Choose consented JSON" onPress={() => void chooseJson()} disabled={!consented} /></View>
+      <View style={styles.panel}><Text style={styles.panelTitle}>Loaded data</Text><Text style={styles.body}>{dataset ? `${dataset.label}: ${dataset.events.length} records from ${new Set(dataset.events.map((event) => event.sourceId)).size} labeled source(s).` : 'None.'}</Text></View>
+    </>}
 
-      {section === 'profile' && <>
-        <Text style={styles.safety}>{profile.safetyBoundary}</Text>
-        {profile.cards.map((card) => <View key={card.kind} style={styles.card}>
-          <Text style={styles.kind}>{card.kind}</Text><Text style={styles.cardTitle}>{card.title}</Text><Text style={styles.body}>{card.summary}</Text><Text style={styles.meta}>{card.confidence} confidence · {card.evidence.length} evidence item(s)</Text>
-          <View style={styles.actions}><ActionButton label="See evidence" onPress={() => setEvidence(card.evidence)} /><ActionButton label="Correct this" onPress={() => setNotice('Correction opened. The original and your correction remain distinguishable in provenance.')} /></View>
-        </View>)}
-        {evidence && <View style={styles.panel}><Text accessibilityRole="header" style={styles.panelTitle}>Evidence behind this reflection</Text>{evidence.length ? evidence.map((item) => <View key={`${item.source}:${item.sourceRecordId}`} style={styles.evidence}><Text style={styles.meta}>{item.source} · {item.occurredAt.slice(0, 10)}</Text><Text style={styles.body}>{item.excerpt}</Text></View>) : <Text style={styles.body}>No supporting evidence. This reflection should abstain.</Text>}<ActionButton label="Close evidence" onPress={() => setEvidence(null)} /></View>}
-        <View style={styles.crisis}><Text style={styles.crisisTitle}>Need immediate support?</Text><Text style={styles.body}>These reflections are not medical advice. If you may hurt yourself or someone else, contact local emergency services now. In the U.S. or Canada, call or text 988.</Text></View>
-      </>}
+    {section === 'metrics' && <>{!snapshot ? <View style={styles.panel}><Text style={styles.panelTitle}>No metrics yet</Text><Text style={styles.body}>Load the synthetic demo or a consented JSON file first.</Text><Button label="Go to data" onPress={() => setSection('data')} /></View> : <>
+      <View style={styles.warning}><Text style={styles.warningTitle}>Not a diagnosis or complete profile</Text><Text style={styles.body}>{snapshot.eventCount} imported events only. Missing sources and uneven time windows can materially change results.</Text></View>
+      {snapshot.cards.map((card) => <View key={card.id} style={styles.card}><View style={styles.row}><Text style={styles.cardTitle}>{card.title}</Text><Text style={styles.badge}>{card.confidence.level} · {Math.round(card.confidence.score * 100)}%</Text></View><Text style={styles.body}>{aggregateSummary(card)}</Text><Text style={styles.meta}>{card.evidence.length} evidence rows · {card.sourceCoverage.length} imported source labels</Text><View style={styles.actions}><Button label="Inspect derivation" onPress={() => setSelected(card)} /><Button label={corrections.some((item) => item.metricId === card.id) ? 'Remove correction' : 'Mark inaccurate'} onPress={() => correct(card.id)} /></View>{corrections.some((item) => item.metricId === card.id) && <Text style={styles.corrected}>User correction attached: inaccurate or unrepresentative.</Text>}</View>)}
+      {selected && <View style={styles.panel}><Text style={styles.panelTitle}>How “{selected.title}” was derived</Text><Text style={styles.body}>Method: deterministic schema v{selected.analyzer.schemaVersion}. No generative model or diagnosis. Aggregate: {aggregateSummary(selected)}</Text>{selected.confidence.reasons.map((reason) => <Text key={reason} style={styles.meta}>• {reason}</Text>)}<Text style={styles.subhead}>Limitations</Text>{selected.limitations.map((item) => <Text key={item} style={styles.meta}>• {item}</Text>)}<Text style={styles.subhead}>Source coverage</Text>{selected.sourceCoverage.map((source) => <Text key={source.sourceId} style={styles.meta}>• {source.sourceId}: {source.events} events, {source.firstEventAt.slice(0, 10)} to {source.lastEventAt.slice(0, 10)}</Text>)}<Text style={styles.subhead}>Evidence</Text>{selected.evidence.map((item: EvidenceRef) => <View key={item.eventId} style={styles.evidence}><Text style={styles.meta}>{item.sourceId} / {item.sourceRecordId} · {item.occurredAt}</Text><Text style={styles.body}>{item.excerpt}</Text><Text style={styles.meta}>Matched: {item.matched.join(', ')}</Text></View>)}<Button label="Close derivation" onPress={() => setSelected(null)} /></View>}
+    </>}</>}
 
-      {section === 'privacy' && <>
-        <View style={styles.panel}><Text style={styles.panelTitle}>Platform privacy</Text><Text style={styles.body}>{Platform.OS === 'web' ? 'Web sessions use server-managed secure, HttpOnly cookies; provider tokens never enter browser storage.' : 'Native session references use this device’s Keychain/Keystore. Provider tokens stay server-side.'}</Text><Text style={styles.meta}>Analytics is opt-in. Notifications are off until requested in context. No contacts, precise location, microphone, camera, or tracking permission is requested.</Text></View>
-        <ActionButton label="Download my data" onPress={() => setNotice('Step-up authentication required. A signed export job will be queued.')} />
-        <ActionButton label="Revoke all sources" danger onPress={() => confirmDestructive('revoke all')} />
-        <ActionButton label="Delete account and data" danger onPress={() => confirmDestructive('delete')} />
-      </>}
+    {section === 'control' && <><View style={styles.panel}><Text style={styles.panelTitle}>Your controls</Text><Text style={styles.body}>Corrections remain distinguishable from source evidence. Export includes the imported records, metrics, derivation evidence, limitations, and corrections.</Text><Text style={styles.meta}>{corrections.length} correction(s) · {dataset?.events.length ?? 0} loaded event(s)</Text></View><Button label="Download complete JSON export" onPress={exportData} disabled={!dataset} /><Button label="Delete browser-session data" danger onPress={deleteData} disabled={!dataset} /></>}
 
-      {section === 'ops' && <>
-        <View style={styles.panel}>
-          <Text accessibilityRole="header" style={styles.panelTitle}>Production and closed-beta readiness</Text>
-          <Text style={styles.body}>This screen tracks operational truth for testers. Web, iOS, and Android bundles can be exported locally, but signed deployment, device evidence, TestFlight, Android internal testing, monitoring, and restore drills are still release gates.</Text>
-        </View>
-        {operationsChecklist.map((item) => <View key={item.label} style={styles.card}>
-          <View style={styles.row}><Text style={styles.cardTitle}>{item.label}</Text><Text style={[styles.badge, item.status === 'blocked' && styles.blockedBadge]}>{item.status}</Text></View>
-          <Text style={styles.body}>{item.detail}</Text>
-        </View>)}
-        <View style={styles.crisis}><Text style={styles.crisisTitle}>No diagnosis claims</Text><Text style={styles.body}>Closed beta copy may describe source-backed reflections and uncertainty only. It must not claim diagnosis, crisis prediction, or complete platform coverage.</Text></View>
-      </>}
-    </ScrollView>
-  </View>
+    {section === 'limits' && <><View style={styles.warning}><Text style={styles.warningTitle}>What this milestone is</Text><Text style={styles.body}>A runnable local/static web MVP using synthetic or consented normalized JSON. Deterministic metrics run in-browser and are inspectable, correctable, exportable, and deletable.</Text></View><View style={styles.panel}><Text style={styles.panelTitle}>What is not claimed</Text><Text style={styles.body}>No live platform OAuth, no ZIP provider parser, no complete account history, no production persistence, no medical or personality diagnosis, and no signed iOS/Android release. Official production connectors, authentication, server deletion reconciliation, and deployment evidence remain separate gates.</Text></View></>}
+  </ScrollView></View>
 }
 
 const styles = StyleSheet.create({
-  root: { flex: 1, backgroundColor: '#07111f' }, page: { width: '100%', maxWidth: 760, alignSelf: 'center', gap: 16, padding: 20, paddingTop: 54, paddingBottom: 80 },
-  eyebrow: { color: '#67e8f9', fontSize: 13, fontWeight: '800', letterSpacing: 1.4, textTransform: 'uppercase' }, title: { color: '#f8fafc', fontSize: 34, fontWeight: '900', lineHeight: 40 }, body: { color: '#cbd5e1', fontSize: 16, lineHeight: 24 },
-  notice: { backgroundColor: '#0c4a6e', borderRadius: 12, padding: 12 }, noticeText: { color: '#e0f2fe', fontSize: 14, lineHeight: 20 }, tabs: { flexDirection: 'row', gap: 8 }, tab: { flex: 1, borderColor: '#334155', borderWidth: 1, borderRadius: 12, padding: 12, alignItems: 'center' }, activeTab: { backgroundColor: '#155e75', borderColor: '#67e8f9' }, tabText: { color: '#f8fafc', fontWeight: '700', textTransform: 'capitalize' },
-  panel: { gap: 12, padding: 18, borderRadius: 20, backgroundColor: '#10213a', borderColor: '#1e40af', borderWidth: 1 }, panelTitle: { color: '#f8fafc', fontSize: 20, fontWeight: '800' }, card: { gap: 10, padding: 18, borderRadius: 18, backgroundColor: '#111827', borderColor: '#334155', borderWidth: 1 }, cardTitle: { color: '#f8fafc', fontSize: 18, fontWeight: '800', flexShrink: 1 }, row: { flexDirection: 'row', justifyContent: 'space-between', gap: 12 }, badge: { color: '#a5f3fc', fontSize: 12, fontWeight: '800', textTransform: 'uppercase' }, meta: { color: '#94a3b8', fontSize: 13, lineHeight: 19 }, kind: { color: '#67e8f9', fontSize: 12, fontWeight: '800', letterSpacing: 1, textTransform: 'uppercase' },
-  actions: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 }, button: { minHeight: 44, justifyContent: 'center', backgroundColor: '#0369a1', paddingHorizontal: 16, paddingVertical: 10, borderRadius: 10 }, dangerButton: { backgroundColor: '#991b1b' }, buttonText: { color: '#fff', fontWeight: '800' }, pressed: { opacity: 0.75 }, disabled: { opacity: 0.45 }, checkRow: { flexDirection: 'row', gap: 12, alignItems: 'flex-start', minHeight: 44 }, checkbox: { width: 24, height: 24, borderRadius: 5, borderWidth: 2, borderColor: '#67e8f9' }, checked: { backgroundColor: '#0891b2' }, checkText: { color: '#f1f5f9', flex: 1, lineHeight: 22 }, blockedBadge: { color: '#fecaca' },
-  safety: { color: '#fde68a', fontSize: 14, lineHeight: 21 }, evidence: { borderTopColor: '#334155', borderTopWidth: 1, paddingTop: 10, gap: 4 }, track: { height: 10, overflow: 'hidden', borderRadius: 5, backgroundColor: '#334155' }, progress: { height: '100%', backgroundColor: '#22d3ee' }, crisis: { gap: 8, padding: 18, borderRadius: 18, borderColor: '#f59e0b', borderWidth: 1, backgroundColor: '#451a03' }, crisisTitle: { color: '#fef3c7', fontSize: 18, fontWeight: '800' },
+  root: { flex: 1, backgroundColor: '#07111f' }, page: { width: '100%', maxWidth: 820, alignSelf: 'center', gap: 16, padding: 20, paddingTop: 48, paddingBottom: 80 }, eyebrow: { color: '#67e8f9', fontSize: 13, fontWeight: '800', letterSpacing: 1.2, textTransform: 'uppercase' }, title: { color: '#f8fafc', fontSize: 36, fontWeight: '900', lineHeight: 42 }, body: { color: '#cbd5e1', fontSize: 16, lineHeight: 24 }, notice: { backgroundColor: '#0c4a6e', borderRadius: 12, padding: 12 }, noticeText: { color: '#e0f2fe', lineHeight: 20 }, tabs: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 }, tab: { flexGrow: 1, minWidth: 100, borderColor: '#334155', borderWidth: 1, borderRadius: 12, padding: 12, alignItems: 'center' }, activeTab: { backgroundColor: '#155e75', borderColor: '#67e8f9' }, tabText: { color: '#f8fafc', fontWeight: '700', textTransform: 'capitalize' }, panel: { gap: 12, padding: 18, borderRadius: 18, backgroundColor: '#10213a', borderColor: '#1e40af', borderWidth: 1 }, panelTitle: { color: '#f8fafc', fontSize: 20, fontWeight: '800' }, card: { gap: 10, padding: 18, borderRadius: 18, backgroundColor: '#111827', borderColor: '#334155', borderWidth: 1 }, row: { flexDirection: 'row', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }, cardTitle: { color: '#f8fafc', fontSize: 18, fontWeight: '800', flexShrink: 1 }, badge: { color: '#a5f3fc', fontSize: 12, fontWeight: '800', textTransform: 'uppercase' }, meta: { color: '#94a3b8', fontSize: 13, lineHeight: 19 }, subhead: { color: '#e2e8f0', fontWeight: '800', marginTop: 6 }, actions: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 }, button: { minHeight: 44, justifyContent: 'center', backgroundColor: '#0369a1', paddingHorizontal: 16, paddingVertical: 10, borderRadius: 10 }, danger: { backgroundColor: '#991b1b' }, buttonText: { color: '#fff', fontWeight: '800' }, disabled: { opacity: 0.4 }, pressed: { opacity: 0.75 }, checkRow: { flexDirection: 'row', gap: 12, alignItems: 'flex-start', minHeight: 44 }, checkbox: { width: 24, height: 24, borderRadius: 5, borderWidth: 2, borderColor: '#67e8f9' }, checked: { backgroundColor: '#0891b2' }, checkText: { color: '#f1f5f9', flex: 1, lineHeight: 22 }, warning: { gap: 8, padding: 18, borderRadius: 18, borderColor: '#f59e0b', borderWidth: 1, backgroundColor: '#451a03' }, warningTitle: { color: '#fef3c7', fontSize: 18, fontWeight: '800' }, evidence: { borderTopColor: '#334155', borderTopWidth: 1, paddingTop: 10, gap: 4 }, corrected: { color: '#fde68a', fontWeight: '700' },
 })

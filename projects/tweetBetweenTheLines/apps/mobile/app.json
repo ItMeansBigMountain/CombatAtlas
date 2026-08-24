@@ -9,7 +9,8 @@
     "newArchEnabled": true,
     "web": {
       "bundler": "metro",
-      "output": "single"
+      "output": "single",
+      "favicon": "./assets/favicon.png"
     },
     "ios": {
       "bundleIdentifier": "com.tweetbetweenthelines.app",
