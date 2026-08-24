@@ -4,7 +4,7 @@ Verified: 2026-08-24
 
 ## Android
 
-- Installable artifact: `https://tweetbetweenthelines.vercel.app/downloads/tweet-between-the-lines-android-arm64-v0.1.0.apk`
+- Verified installable artifact: `https://temporary-rushing-saffron-chouvqx.vercel.app/downloads/tweet-between-the-lines-android-arm64-v0.1.0.apk`
 - Package: `com.tweetbetweenthelines.app`
 - Version: `0.1.0` (`versionCode` 1)
 - Compatibility: Android 7.0+ (`minSdk` 24), arm64-v8a devices
@@ -14,7 +14,8 @@ Verified: 2026-08-24
 
 ## iOS
 
-- Installable web app: `https://tweetbetweenthelines.vercel.app`
+- Production installable web path: `https://tweetbetweenthelines.vercel.app`
+- Verified PWA preview (manifest, icons, and service worker): `https://temporary-rushing-saffron-chouvqx.vercel.app`
 - Installation: open in Safari, Share, then **Add to Home Screen**.
 - Native bundle evidence: `npx expo export --platform ios --output-dir dist-ios-native` passes.
 - Native `.ipa` / TestFlight: unavailable. No authenticated Expo/EAS session, Apple distribution certificate, provisioning profile, App Store Connect credential, or macOS/Xcode host was found. Apple does not permit a Linux-built unsigned `.ipa` to be installed on normal iOS devices.
@@ -24,6 +25,7 @@ Verified: 2026-08-24
 - Apple App Store/TestFlight: not submitted.
 - Google Play: not submitted.
 - `eas.json` includes internal-preview and production profiles for use after authenticated Expo and store-signing credentials are supplied.
+- The verified mobile-preview deployment is anonymous and expires after 60 minutes unless claimed. Claim URL: `https://vercel.com/claim-deployment?code=04bfc722-e7ae-4781-811d-67e7ab2d40db`. The APK is also preserved at Git commit `ab8f65c17`.
 
 ## Shared privacy behavior
 
