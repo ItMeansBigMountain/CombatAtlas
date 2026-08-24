@@ -14,7 +14,8 @@ High — explicitly promoted to active development.
 
 - Classification: Active product rebuild with preserved Python/Django prior art
 - Detected stack: TypeScript workspaces, Expo Router universal app, legacy Python archive
-- Current tracked URL: https://tweetbetweenthelines.vercel.app
+- Current tracked URL: https://tweetbetweenthelines.vercel.app (stale Vite shell as of 2026-08-24; do not treat as the verified Expo MVP)
+- Temporary verified Expo MVP URL: https://temporary-fleet-spinel-7z1x41g.vercel.app (anonymous Vercel deployment; expires unless claimed)
 - Tracker note: Build a new consent-first product surface under `tweetBetweenTheLines`; preserve `social-media-analysis`, MusicAI, Journal AI, watsonAI, and legacy Python ideas as source material.
 
 ## Existing direction artifacts

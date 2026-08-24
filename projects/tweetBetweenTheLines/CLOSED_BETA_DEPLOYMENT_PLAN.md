@@ -1,6 +1,6 @@
 # Closed beta and deployment evidence plan
 
-Status: plan plus executable gate. No production deploy, TestFlight run, Android internal-track run, or live monitoring evidence exists yet.
+Status: plan plus executable gate. A temporary anonymous public web deployment exists for the runnable Expo web MVP, but no durable production deploy, TestFlight run, Android internal-track run, or live monitoring evidence exists yet.
 
 ## Environments
 
@@ -71,7 +71,8 @@ Use this ledger in reviews. `blocked` means the release must remain blocked.
 | Web bundle | Expo web export | verified locally only |
 | iOS bundle | Expo iOS JS export | verified locally only |
 | Android bundle | Expo Android JS export | verified locally only |
-| Production web URL | None | blocked |
+| Public web URL | Temporary anonymous Vercel URL `https://temporary-fleet-spinel-7z1x41g.vercel.app`; Playwright smoke passed; expires unless claimed | temporary verified |
+| Durable production web URL | Historical `https://tweetbetweenthelines.vercel.app` serves a stale shell; authenticated deploy/alias access missing | blocked |
 | Real backend OAuth/code exchange | None | blocked |
 | Signed iOS build/TestFlight | None | blocked |
 | Signed Android bundle/internal track | None | blocked |

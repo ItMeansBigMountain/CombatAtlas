@@ -9,12 +9,14 @@ Current decision: BLOCK for production and external closed beta until every item
 Allowed now:
 
 - Local synthetic/consented-fixture verification.
+- Temporary public Expo web-MVP smoke verification at `https://temporary-fleet-spinel-7z1x41g.vercel.app` until the anonymous deployment expires.
 - Web/iOS/Android JavaScript bundle exports.
 - UX review of consent, source coverage, evidence, corrections, revocation, export, delete, and non-diagnostic safety copy.
 
 Not allowed to claim yet:
 
 - Production web deployment.
+- The historical `https://tweetbetweenthelines.vercel.app` alias as MVP evidence; it currently serves a stale Vite shell until a credentialed redeploy/alias promotion is performed.
 - TestFlight verification.
 - Android internal testing track verification.
 - Complete source/platform coverage beyond the implemented and verified connector contracts.

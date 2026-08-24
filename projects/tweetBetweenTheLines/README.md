@@ -15,6 +15,7 @@ Historical prior art exists in `ItMeansBigMountain/tweetBetweenTheLines`; the mo
 - [`OPERATIONS_RUNBOOK.md`](OPERATIONS_RUNBOOK.md) — observability, backups/restore, incident response, cost controls, privacy requests, and closed-beta operations gates
 - [`CLOSED_BETA_DEPLOYMENT_PLAN.md`](CLOSED_BETA_DEPLOYMENT_PLAN.md) — Git-based deployment flow, consented/synthetic E2E fixture policy, and per-platform release evidence ledger
 - [`DURABLE_BACKEND_RUNBOOK.md`](DURABLE_BACKEND_RUNBOOK.md) — local durable adapter, PostgreSQL/queue/KMS/sandbox bindings, migrations, and recovery commands
+- [`SECURITY_AUDIT.md`](SECURITY_AUDIT.md) — production dependency-audit triage and accepted-risk boundary
 
 ## Current implementation slice
 
@@ -53,6 +54,14 @@ curl http://127.0.0.1:3001/readyz
 Run deterministic synthetic/consented-fixture API E2E and persistence/concurrency tests with `npm run test -w @tweet-between-the-lines/api`. The local server's `x-tenant-id`, `x-subject-id`, and `x-actor-id` headers are a trusted-auth-proxy development contract, not production authentication. The in-memory and atomic-file repositories and environment key provider are injectable test/local adapters; production still requires a transactional PostgreSQL binding with verified RLS, managed KMS/HSM and IAM evidence, real session verification, managed queue workers, malware scanning/sandbox infrastructure, official provider-specific code exchange/revocation adapters, provider credentials/review, rate controls, monitoring, backup/restore evidence, and deployment verification. The default local OAuth exchanger deliberately fails rather than fabricating provider access.
 
 `npm run build` includes the production static web export at `apps/mobile/dist`. `npm run start:web` launches the local browser app. The web journey works without credentials by choosing **Use synthetic demo**; personal JSON imports require explicit consent and the normalized event fields shown in the UI. These exports verify JavaScript bundles, not signed store releases. Production hosting, live OAuth/provider archive adapters, physical-device runs, TestFlight, Android internal-track verification, durable server persistence/workers, and live infrastructure controls remain release gates and must not be represented as complete until evidence exists.
+
+## Public web deployment evidence
+
+- Verified public temporary deployment: `https://temporary-fleet-spinel-7z1x41g.vercel.app`.
+- Verification command: `PLAYWRIGHT_BROWSERS_PATH=/opt/data/.cache/ms-playwright node .hermes-public-web-smoke.cjs https://temporary-fleet-spinel-7z1x41g.vercel.app`.
+- Result: passed synthetic fixture intake, traceable metric/profile display, provenance/limitations, correction, JSON export, delete, and zero console/page errors.
+- Deployment config: `vercel.json` builds with `npm run build` and serves `apps/mobile/dist` for credentialed durable deploys.
+- Boundary: this anonymous Vercel deployment expires after 60 minutes unless claimed. The historical permanent alias `https://tweetbetweenthelines.vercel.app` currently serves a stale Vite shell, not this Expo web MVP; do not cite it as the verified MVP URL until authenticated Vercel access or equivalent hosting is used to promote the current static export.
 
 ## Non-negotiable boundaries
 
