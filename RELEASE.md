@@ -23,14 +23,14 @@ Current production deployment (2026-08-25):
 - Vercel deployment status: Ready
 - External probe: currently HTTP 404 because account-level Vercel deployment protection still gates the project. The workflow smoke test intentionally fails until the alias is public.
 
-## iPhone test route
+## Current mobile support boundary
 
-Until an EAS `EXPO_TOKEN` and Expo project ID are available, the verified iPhone route is Expo Go:
+Local Expo exports are verified for web, iOS, and Android. These exports are JavaScript bundles, not signed installable applications, and native device launch has not been verified. Until EAS credentials and project configuration are available:
 
-1. `cd projects/CombatAtlas/mobile && npm ci && npm start -- --tunnel`
-2. Scan the live QR with the iPhone Camera app and open it in Expo Go.
+1. iPhone testing is development-only through Expo Go: `cd projects/CombatAtlas/mobile && npm ci && npm start -- --tunnel`, then scan the QR with the iPhone Camera app.
+2. Android is source/export-only; there is no APK, AAB, Play internal-testing URL, or verified native launch.
+3. Do not describe either platform as a signed preview, App Store, or Play build until EAS returns install URLs and testers verify launch.
 
-This route is development-only. Do not describe it as an App Store or signed preview build.
 
 ## Rollback
 

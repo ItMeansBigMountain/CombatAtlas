@@ -97044,6 +97044,7 @@ export const drills = [
 export const stats = {
   arts: martialArts.length,
   drills: drills.length,
+  publishedDrills: drills.filter((drill) => drill.id.startsWith('named-')).length,
   categories: categories.length,
   beginner: drills.filter((d) => d.difficulty === 'beginner').length,
   noEquipment: drills.filter((d) => d.equipment.includes('none')).length,
@@ -97052,6 +97053,9 @@ export const stats = {
 export function searchDrills(filters = {}) {
   const query = (filters.query || '').trim().toLowerCase();
   return drills.filter((drill) => {
+    // Generic generated templates remain bundled as draft source material, but
+    // only individually named, art-specific guides are customer-facing.
+    if (!drill.id.startsWith('named-')) return false;
     const haystack = [drill.title, drill.summary, drill.primaryCategory, drill.difficulty, ...drill.martialArts, ...(drill.compatibleArts || []), ...(drill.subcategories || []), ...(drill.skillsTrained || []), ...(drill.equipment || [])].join(' ').toLowerCase();
     if (query && !haystack.includes(query)) return false;
     if (filters.martialArt && !drill.martialArts.includes(filters.martialArt) && !(drill.compatibleArts || []).includes(filters.martialArt)) return false;
@@ -97098,11 +97102,9 @@ const palette = [
   ['#292524', '#7c3aed', '#ede9fe'],
 ];
 
-function svgImage(title, subtitle = '', key = 0) {
+function svgImage(_title, _subtitle = '', key = 0) {
   const colors = palette[Math.abs(key) % palette.length];
-  const safeTitle = String(title).replace(/[&<>]/g, '');
-  const safeSubtitle = String(subtitle).replace(/[&<>]/g, '');
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="${safeTitle}">
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="Abstract martial arts training illustration">
     <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${colors[0]}"/><stop offset="1" stop-color="${colors[1]}"/></linearGradient></defs>
     <rect width="900" height="620" fill="url(#g)"/>
     <circle cx="708" cy="110" r="172" fill="${colors[2]}" opacity="0.14"/>
@@ -97110,8 +97112,6 @@ function svgImage(title, subtitle = '', key = 0) {
     <path d="M192 415 C285 280 392 265 474 355 C542 428 636 401 721 292" fill="none" stroke="${colors[2]}" stroke-width="30" stroke-linecap="round" opacity="0.72"/>
     <circle cx="372" cy="258" r="58" fill="${colors[2]}" opacity="0.82"/>
     <path d="M280 390 L385 318 L517 384 L628 312" fill="none" stroke="${colors[2]}" stroke-width="42" stroke-linecap="round" stroke-linejoin="round" opacity="0.86"/>
-    <text x="52" y="88" fill="${colors[2]}" font-size="54" font-family="Inter,Arial,sans-serif" font-weight="800" letter-spacing="-2">${safeTitle}</text>
-    <text x="56" y="548" fill="${colors[2]}" opacity="0.78" font-size="28" font-family="Inter,Arial,sans-serif" font-weight="700">${safeSubtitle}</text>
   </svg>`;
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
@@ -97144,7 +97144,10 @@ export function searchAll(query = '') {
 
 export function getArtProfile(id) {
   const art = martialArts.find((item) => item.id === id) || martialArts[0];
-  const artDrills = drills.filter((d) => d.martialArts.includes(art.id) || (d.compatibleArts || []).includes(art.id));
+  // Art pages are authoritative catalogs, not broad compatibility suggestions.
+  // Only show drills explicitly authored for the selected art; compatibleArts
+  // remains available to opt-in search filters without relabeling another art's drill.
+  const artDrills = drills.filter((d) => d.id.startsWith('named-') && d.martialArts.includes(art.id));
   const categoryCounts = categories.map((category) => ({ ...category, count: artDrills.filter((d) => d.primaryCategory === category.id).length })).filter((c) => c.count > 0);
   return { ...art, drills: artDrills, categoryCounts };
 }

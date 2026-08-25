@@ -16,6 +16,7 @@ assert(searchAll('boxing').arts.some((art) => art.id === 'boxing'), 'universal s
 assert(searchAll('armbar').drills.length > 0, 'universal search finds drills');
 assert(martialArts.every((art) => art.imageUrl && art.imageAlt), 'every martial art has a customer-facing image');
 assert(drills.every((drill) => getDrillMedia(drill).imageUrl && getDrillMedia(drill).imageAlt), 'every drill resolves to an image');
+assert(!decodeURIComponent(getDrillMedia(drills[0]).imageUrl).includes('<text'), 'generated illustrations do not embed text that can clip');
 assert(drills.every((drill) => getDrillMedia(drill).youtubeUrl?.startsWith('https://www.youtube.com/results?search_query=')), 'every drill resolves to a YouTube demonstration search link');
 assert(getArtProfile('bjj').drills.length > 0, 'selected art exposes drills');
 assert(!/API|Vercel|seed|developer|KeyRound|Database|externalSources/i.test(ui), 'customer UI contains no developer-specific panels or copy');

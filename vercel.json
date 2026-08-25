@@ -1,1 +1,10 @@
-{"buildCommand":"npm run build","outputDirectory":"dist","framework":"vite","cleanUrls":true}
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "cleanUrls": true,
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}

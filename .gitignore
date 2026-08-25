@@ -7,9 +7,12 @@ dist/
 
 mobile/node_modules/
 mobile/dist/
+mobile/dist-ios/
+mobile/dist-android/
 mobile/.expo/
 
 **/__pycache__/
 **/*.py[cod]
 **/.DS_Store
 **/db.sqlite3
+.vercel

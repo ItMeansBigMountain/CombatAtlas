@@ -1,12 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { AD_POLICY, canShowInterstitial, createBillingBoundary, developmentAdAdapter } from '../src/monetization.js';
-import { martialArts, drills, searchAll } from '../src/data/combatData.js';
+import { martialArts, drills, getArtProfile, getDrillMedia, searchAll } from '../src/data/combatData.js';
 
 test('mobile build preserves the full atlas', () => {
   assert.equal(martialArts.length, 22);
   assert.equal(drills.length, 882);
   assert.ok(searchAll('armbar').drills.length > 0);
+});
+
+test('mobile art profiles and generated illustrations preserve catalog accuracy', () => {
+  for (const artId of ['kendo', 'fencing', 'hema', 'bjj', 'arnis-kali-eskrima']) {
+    assert.ok(getArtProfile(artId).drills.every((drill) => drill.martialArts.includes(artId)));
+  }
+  assert.ok(!decodeURIComponent(getDrillMedia(drills[0]).imageUrl).includes('<text'));
 });
 
 test('ads require consent and respect remove-ads entitlement', () => {

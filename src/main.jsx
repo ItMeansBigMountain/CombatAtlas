@@ -126,6 +126,7 @@ function ArtView({ art, visualTheme, onOpenDrill }) {
 
     <div className="drill-grid">
       {art.drills.slice(0, 36).map((drill) => <DrillCard key={drill.id} drill={drill} visualTheme={visualTheme} onClick={() => onOpenDrill(drill)} />)}
+      {art.drills.length === 0 && <p className="empty">No reviewed drill guides are published for this art yet.</p>}
     </div>
   </section>;
 }

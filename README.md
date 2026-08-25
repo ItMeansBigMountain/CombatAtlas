@@ -2,7 +2,7 @@
 
 CombatAtlas is now a Vercel-ready React/Vite app with a bundled local martial arts drill atlas.
 
-An Expo universal iPhone/web shell is available in `mobile/`. It preserves the same 22-art/882-drill atlas and adds consent-first test ads plus a receipt-verifying remove-ads boundary. See `mobile/README.md` for Expo Go and verification commands.
+An Expo source shell is available in `mobile/`. Web, iOS, and Android JavaScript exports are verified locally, but there are no signed/installable native builds yet. iPhone testing is supported through Expo Go; Android is export-only until an EAS build is published. It preserves the same 22-art catalog and 15 published drill guides, plus consent-first test ads and a receipt-verifying remove-ads boundary. See `mobile/README.md` for the exact support boundary and verification commands.
 
 CI/CD, environment separation, release, and rollback procedures are documented in `RELEASE.md`. The canonical Vercel alias is `https://combatatlas-flame.vercel.app`; its current deployment-protection blocker is recorded there rather than hidden.
 
@@ -10,14 +10,14 @@ CI/CD, environment separation, release, and rollback procedures are documented i
 
 - 22 martial arts profiles across striking, grappling, weapons, traditional practice, self-defense, hybrid MMA, and movement arts.
 - Minimal customer-facing homepage: universal search bar plus a clean martial arts grid.
-- 882 searchable drills with short instructions, coaching cues, difficulty, contact level, and YouTube demonstration search links.
+- 15 individually named, art-specific drill guides are searchable and published with short instructions, coaching cues, difficulty, contact level, and YouTube demonstration search links.
 - Search finds both martial arts and drills from one field.
 - Each martial art and drill resolves to a visual illustration, so the product no longer depends on broken external image providers.
 - Developer/source panels were removed from the public webpage.
 
 ## Why the database is bundled first
 
-No single free public API appears to provide “every martial art drill.” CombatAtlas works now with a broad seed atlas and can later enrich from APIs/datasets without making the live app depend on credentials or third-party uptime.
+No single free public API appears to provide “every martial art drill.” The bundle retains 882 draft/generated source records for offline review, but customer search and art pages intentionally publish only the 15 individually curated guides. Draft templates must not be counted or presented as verified art-specific instruction.
 
 ## Optional future data/API enrichers
 
