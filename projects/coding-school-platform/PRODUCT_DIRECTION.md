@@ -6,6 +6,8 @@ Codology becomes the learning engine inside the broader school platform.
 
 A parent/student/teacher learning portal where students practice coding, parents track progress, and teachers record lesson notes/test outcomes.
 
+The current curriculum/product source of truth is `CURRICULUM_SOURCE_OF_TRUTH.md`. It supersedes scattered curriculum notes for implementation sequencing and requires the teacher mastery track before learner-facing Algorithm Academy workflows.
+
 ## Core roles
 
 - Students: lessons, examples, practice, quizzes, streaks, confidence checks.
@@ -17,6 +19,7 @@ A parent/student/teacher learning portal where students practice coding, parents
 - Import `algos` examples from all branches as lessons and code exercises.
 - Convert each algorithm into explanation, runnable example, practice task, and assessment rubric.
 - Store progress by concept, language, difficulty, and mastery state.
+- Start with Basic 13 and Linear Search as the first concrete Algorithm Academy content, using teacher-reviewed evidence and accomplishment badges rather than click-through completion.
 
 ## Coding-school CRM direction
 

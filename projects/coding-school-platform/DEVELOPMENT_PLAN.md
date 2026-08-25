@@ -19,6 +19,7 @@ High
 
 ## Existing direction artifacts
 
+- `CURRICULUM_SOURCE_OF_TRUTH.md`
 - `CODERSCHOOL_CRM_RESEARCH_AND_PLAN.md`
 - `PRODUCT_DIRECTION.md`
 - `TEACHER_HIRING_LOCATION_PLAN.md`
@@ -26,10 +27,11 @@ High
 
 ## Development phases
 
-1. Implement teacher login and today schedule from demo seed data.
-2. Add student after-class check-ins with AI entitlement gating and local tag parser.
-3. Render progress graph from tags/progress events and parent weekly dashboard.
-4. Connect Codology lesson recommendations from `Codology/ALGOS_IMPORT_PLAN.json`.
+1. Implement structured curriculum data from `CURRICULUM_SOURCE_OF_TRUTH.md`, with teacher mastery modules before student modules.
+2. Implement teacher login and today schedule from demo seed data.
+3. Add student after-class check-ins with curriculum tags, teacher-reviewed evidence, AI entitlement gating, and local tag parser.
+4. Render accomplishment badges, progress graph from evidence/progress events, and parent weekly dashboard.
+5. Connect Codology/Algorithm Academy lesson recommendations, starting with Basic 13 and Linear Search.
 
 ## Vercel / hosting plan
 

@@ -4,6 +4,8 @@
 
 **Goal:** Build a coding-school CRM that gives teachers schedules and after-class check-ins, parents progress visibility, students accomplishments/practice, and AI-extracted tags from lesson/Zoom notes.
 
+**Curriculum source of truth:** `../../CURRICULUM_SOURCE_OF_TRUTH.md` now defines the teacher mastery track, Basic 13 progression, Algorithm Academy scope, accomplishment loop, and child-safe AI/portfolio requirements. Implement curriculum/progress work from that file first.
+
 **Architecture:** Start as a web app inside `coding-school-platform` with a role-based demo data model and UI. Codology remains the practice/lesson engine and links into the CRM through lessons, exercises, tags, and progress evidence.
 
 **Tech Stack:** Current project is mostly static/legacy source, so first sprint should use a simple React/Vite or Next.js app with local JSON/demo data before adding hosted database/auth.
@@ -260,13 +262,15 @@ Start deterministic/local, no API key required. Use keyword extraction and simpl
 The first shippable vertical slice should be:
 
 1. Demo teacher login.
-2. Teacher today schedule.
-3. Click student.
-4. Paste Zoom note or enter tags line-by-line/comma/space separated.
-5. If entitled, AI suggests tags; otherwise local parser extracts tags.
-6. Teacher reviews and saves note.
-7. Student progress graph updates.
-8. Parent dashboard shows a clean weekly summary.
+2. Teacher sees teacher mastery modules before learner modules.
+3. Teacher today schedule.
+4. Click student.
+5. Select Basic 13 or Linear Search curriculum item.
+6. Paste Zoom note or enter tags line-by-line/comma/space separated.
+7. If entitled, AI suggests tags; otherwise local parser extracts tags.
+8. Teacher reviews and saves note/evidence.
+9. Student accomplishment/progress graph updates.
+10. Parent dashboard shows a clean weekly summary.
 
 ## Verification checklist
 
