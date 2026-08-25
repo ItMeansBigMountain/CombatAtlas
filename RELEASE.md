@@ -23,6 +23,15 @@ Current production deployment (2026-08-25):
 - Vercel deployment status: Ready
 - External probe: currently HTTP 404 because account-level Vercel deployment protection still gates the project. The workflow smoke test intentionally fails until the alias is public.
 
+Current public remediation preview (2026-08-25):
+
+- Commit: `459776158951a31179873ab0da0830c03b8fefcb`
+- Temporary URL: https://temporary-quick-platinum-11g8xnv.vercel.app
+- Vercel deployment ID: `dpl_5WeyCstT4wVquRwTfrWrBHFy7V7s`
+- Vercel deployment status: Ready; anonymous preview expires at 2026-08-25 22:42 UTC unless claimed.
+- External verification: HTTP 200; Playwright loaded the CombatAtlas UI, searched for `armbar`, opened `Armbar from Guard Chain`, and confirmed four practice steps plus its demonstration link.
+- Rollback: no production alias was changed. Let the temporary deployment expire; the canonical production deployment remains untouched.
+
 ## Current mobile support boundary
 
 Local Expo exports are verified for web, iOS, and Android. These exports are JavaScript bundles, not signed installable applications, and native device launch has not been verified. Until EAS credentials and project configuration are available:
