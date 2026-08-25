@@ -23,6 +23,22 @@ export const syntheticDataset: MvpDataset = {
   ],
 }
 
+export const importTemplate = {
+  label: 'My consented social export',
+  events: [
+    {
+      id: 'my-source:1',
+      sourceId: 'my-source',
+      sourceRecordId: 'record-1',
+      occurredAt: '2026-08-01T12:00:00Z',
+      kind: 'post',
+      content: 'Replace this example with content from data you control.',
+      locale: 'en',
+      metadata: { note: 'Optional object; remove this field if unused.' },
+    },
+  ],
+}
+
 const eventKinds = new Set<MetricEvent['kind']>(['post', 'message', 'reaction', 'view', 'listen', 'search', 'import-note'])
 
 export function parseDatasetJson(text: string): MvpDataset {

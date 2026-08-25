@@ -3,7 +3,7 @@ import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-n
 
 import type { EvidenceRef, ExplainableMetricCard } from '../../../packages/domain/src/explainableMetrics'
 import { createPrivacyClient, validateArchiveSelection } from '../lib/privacyClient'
-import { analyzeDataset, parseDatasetJson, syntheticDataset, type MvpDataset } from '../lib/mvpData'
+import { analyzeDataset, importTemplate, parseDatasetJson, syntheticDataset, type MvpDataset } from '../lib/mvpData'
 
 type Section = 'data' | 'metrics' | 'control' | 'limits'
 type Correction = { metricId: string; note: string }
@@ -15,8 +15,14 @@ function Button({ label, onPress, danger = false, disabled = false }: { label: s
 function downloadJson(fileName: string, value: unknown) {
   if (Platform.OS !== 'web' || typeof document === 'undefined') return false
   const url = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2)], { type: 'application/json' }))
-  const anchor = document.createElement('a'); anchor.href = url; anchor.download = fileName; anchor.click()
-  URL.revokeObjectURL(url)
+  const anchor = document.createElement('a')
+  anchor.href = url
+  anchor.download = fileName
+  anchor.style.display = 'none'
+  document.body.appendChild(anchor)
+  anchor.click()
+  anchor.remove()
+  window.setTimeout(() => URL.revokeObjectURL(url), 1_000)
   return true
 }
 
@@ -60,6 +66,11 @@ export default function HomeScreen() {
     }
   }
 
+  const downloadTemplate = () => {
+    const ok = downloadJson('tweet-between-the-lines-import-template.json', importTemplate)
+    setNotice(ok ? 'Import template downloaded. Replace the example record with data you control, then import the JSON below.' : 'Template download is available in the web app.')
+  }
+
   const correct = (metricId: string) => {
     setCorrections((items) => items.some((item) => item.metricId === metricId) ? items.filter((item) => item.metricId !== metricId) : [...items, { metricId, note: 'User marked this derived metric as inaccurate or unrepresentative.' }])
     setNotice('Correction saved separately from source evidence and included in export. It does not rewrite the original archive.')
@@ -87,7 +98,7 @@ export default function HomeScreen() {
 
     {section === 'data' && <>
       <View style={styles.panel}><Text style={styles.panelTitle}>1. Try without personal data</Text><Text style={styles.body}>The bundled demo is clearly labeled synthetic. Its X, YouTube, and Reddit-style records are examples, not claims that accounts or live APIs are connected.</Text><Button label="Use synthetic demo" onPress={() => load(syntheticDataset)} /></View>
-      <View style={styles.panel}><Text style={styles.panelTitle}>2. Or import data you control</Text><Text style={styles.body}>Accepted MVP format: JSON array (or {`{ events: [...] }`}) with id, sourceId, sourceRecordId, occurredAt, kind, and content. Analysis happens in this browser session; no upload occurs.</Text><Pressable accessibilityRole="checkbox" accessibilityState={{ checked: consented }} onPress={() => setConsented((value) => !value)} style={styles.checkRow}><View style={[styles.checkbox, consented && styles.checked]} /><Text style={styles.checkText}>I own or have explicit permission to analyze this file and choose local deterministic analysis.</Text></Pressable><Button label="Choose consented JSON" onPress={() => void chooseJson()} disabled={!consented} /></View>
+      <View style={styles.panel}><Text style={styles.panelTitle}>2. Or import data you control</Text><Text style={styles.body}>Start with the ready-to-edit template instead of guessing the schema. Each event needs id, sourceId, sourceRecordId, occurredAt, kind, and content. Supported kinds: post, message, reaction, view, listen, search, and import-note.</Text><Button label="Download JSON template" onPress={downloadTemplate} /><Text style={styles.body}>Analysis happens in this browser session; no upload occurs.</Text><Pressable accessibilityRole="checkbox" accessibilityState={{ checked: consented }} onPress={() => setConsented((value) => !value)} style={styles.checkRow}><View style={[styles.checkbox, consented && styles.checked]} /><Text style={styles.checkText}>I own or have explicit permission to analyze this file and choose local deterministic analysis.</Text></Pressable><Button label="Choose consented JSON" onPress={() => void chooseJson()} disabled={!consented} /></View>
       <View style={styles.panel}><Text style={styles.panelTitle}>Loaded data</Text><Text style={styles.body}>{dataset ? `${dataset.label}: ${dataset.events.length} records from ${new Set(dataset.events.map((event) => event.sourceId)).size} labeled source(s).` : 'None.'}</Text></View>
     </>}
 
