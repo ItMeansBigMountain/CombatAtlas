@@ -2,10 +2,11 @@ import { useMemo, useState } from 'react'
 import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 
 import type { EvidenceRef, ExplainableMetricCard } from '../../../packages/domain/src/explainableMetrics'
+import { buildPrivateReflection, type PrivateReflection } from '../../../packages/domain/src/privateReflection'
 import { createPrivacyClient, validateArchiveSelection } from '../lib/privacyClient'
 import { analyzeDataset, importTemplate, parseDatasetJson, syntheticDataset, type MvpDataset } from '../lib/mvpData'
 
-type Section = 'account' | 'data' | 'metrics' | 'control' | 'limits'
+type Section = 'account' | 'data' | 'metrics' | 'reflection' | 'control' | 'limits'
 type Correction = { metricId: string; note: string }
 
 function Button({ label, onPress, danger = false, disabled = false }: { label: string; onPress: () => void; danger?: boolean; disabled?: boolean }) {
@@ -43,11 +44,12 @@ export default function HomeScreen() {
   const [snapshot, setSnapshot] = useState<ReturnType<typeof analyzeDataset> | null>(null)
   const [selected, setSelected] = useState<ExplainableMetricCard | null>(null)
   const [corrections, setCorrections] = useState<Correction[]>([])
+  const [reflection, setReflection] = useState<PrivateReflection | null>(null)
   const [notice, setNotice] = useState('No data loaded. Start with the synthetic demo or explicitly consent to your own JSON export.')
 
   const load = (next: MvpDataset) => {
     const analyzed = analyzeDataset(next)
-    setDataset(next); setSnapshot(analyzed); setSelected(null); setCorrections([]); setSection('metrics')
+    setDataset(next); setSnapshot(analyzed); setSelected(null); setCorrections([]); setReflection(null); setSection('metrics')
     setNotice(`${next.events.length} events analyzed locally from ${next.label}.`)
   }
 
@@ -78,13 +80,13 @@ export default function HomeScreen() {
 
   const exportData = () => {
     if (!dataset || !snapshot) return setNotice('Load data before exporting.')
-    const ok = downloadJson('tweet-between-the-lines-export.json', { schemaVersion: 1, exportedAt: new Date().toISOString(), dataset, metrics: snapshot, corrections, limitations: 'Deterministic reflections from only the imported data; not diagnosis or complete platform coverage.' })
+    const ok = downloadJson('tweet-between-the-lines-export.json', { schemaVersion: 1, exportedAt: new Date().toISOString(), dataset, metrics: snapshot, corrections, privateReflection: reflection, limitations: 'Deterministic reflections from only the imported data; not diagnosis or complete platform coverage.' })
     setNotice(ok ? 'Export downloaded as JSON.' : 'Export is available in the web MVP; native sharing is not wired in this milestone.')
   }
 
   const deleteData = () => {
     if (Platform.OS === 'web' && typeof window !== 'undefined' && !window.confirm('Delete this browser session’s imported data, metrics, and corrections?')) return
-    setDataset(null); setSnapshot(null); setSelected(null); setCorrections([]); setConsented(false); setSection('data')
+    setDataset(null); setSnapshot(null); setSelected(null); setCorrections([]); setReflection(null); setConsented(false); setSection('data')
     setNotice('Browser-session data deleted. This local MVP did not upload or persist it.')
   }
 
@@ -94,7 +96,7 @@ export default function HomeScreen() {
     <Text style={styles.body}>Analyze a synthetic fixture or your explicitly consented normalized JSON locally. Every metric keeps source records, deterministic derivation, confidence, and limitations visible.</Text>
     <View accessibilityLiveRegion="polite" style={styles.notice}><Text style={styles.noticeText}>{notice}</Text></View>
 
-    <View accessibilityRole="tablist" style={styles.tabs}>{(['account', 'data', 'metrics', 'control', 'limits'] as Section[]).map((item) => <Pressable key={item} accessibilityRole="tab" accessibilityState={{ selected: section === item }} onPress={() => setSection(item)} style={[styles.tab, section === item && styles.activeTab]}><Text style={styles.tabText}>{item}</Text></Pressable>)}</View>
+    <View accessibilityRole="tablist" style={styles.tabs}>{(['account', 'data', 'metrics', 'reflection', 'control', 'limits'] as Section[]).map((item) => <Pressable key={item} accessibilityRole="tab" accessibilityState={{ selected: section === item }} onPress={() => setSection(item)} style={[styles.tab, section === item && styles.activeTab]}><Text style={styles.tabText}>{item}</Text></Pressable>)}</View>
 
     {section === 'account' && <>
       <View style={styles.panel}><Text style={styles.panelTitle}>Sign in to your BetweenLines account</Text><Text style={styles.body}>Google and Apple sign-in create the first-party app account. They do not connect social history or grant analysis access.</Text><Button label="Google sign-in · unavailable until configured" onPress={() => setNotice('Google sign-in is not configured in this testing build. No provider access was requested.')} /><Button label="Apple sign-in · unavailable until configured" onPress={() => setNotice('Apple sign-in is not configured in this testing build. No provider access was requested.')} /></View>
@@ -112,6 +114,16 @@ export default function HomeScreen() {
       {snapshot.cards.map((card) => <View key={card.id} style={styles.card}><View style={styles.row}><Text style={styles.cardTitle}>{card.title}</Text><Text style={styles.badge}>{card.confidence.level} · {Math.round(card.confidence.score * 100)}%</Text></View><Text style={styles.body}>{aggregateSummary(card)}</Text><Text style={styles.meta}>{card.evidence.length} evidence rows · {card.sourceCoverage.length} imported source labels</Text><View style={styles.actions}><Button label="Inspect derivation" onPress={() => setSelected(card)} /><Button label={corrections.some((item) => item.metricId === card.id) ? 'Remove correction' : 'Mark inaccurate'} onPress={() => correct(card.id)} /></View>{corrections.some((item) => item.metricId === card.id) && <Text style={styles.corrected}>User correction attached: inaccurate or unrepresentative.</Text>}</View>)}
       {selected && <View style={styles.panel}><Text style={styles.panelTitle}>How “{selected.title}” was derived</Text><Text style={styles.body}>Method: deterministic schema v{selected.analyzer.schemaVersion}. No generative model or diagnosis. Aggregate: {aggregateSummary(selected)}</Text>{selected.confidence.reasons.map((reason) => <Text key={reason} style={styles.meta}>• {reason}</Text>)}<Text style={styles.subhead}>Limitations</Text>{selected.limitations.map((item) => <Text key={item} style={styles.meta}>• {item}</Text>)}<Text style={styles.subhead}>Source coverage</Text>{selected.sourceCoverage.map((source) => <Text key={source.sourceId} style={styles.meta}>• {source.sourceId}: {source.events} events, {source.firstEventAt.slice(0, 10)} to {source.lastEventAt.slice(0, 10)}</Text>)}<Text style={styles.subhead}>Evidence</Text>{selected.evidence.map((item: EvidenceRef) => <View key={item.eventId} style={styles.evidence}><Text style={styles.meta}>{item.sourceId} / {item.sourceRecordId} · {item.occurredAt}</Text><Text style={styles.body}>{item.excerpt}</Text><Text style={styles.meta}>Matched: {item.matched.join(', ')}</Text></View>)}<Button label="Close derivation" onPress={() => setSelected(null)} /></View>}
     </>}</>}
+
+    {section === 'reflection' && <>{!dataset ? <View style={styles.panel}><Text style={styles.panelTitle}>Private reflection needs selected data</Text><Text style={styles.body}>Load the synthetic demo or your explicitly consented JSON first. Nothing is inferred automatically.</Text><Button label="Go to data" onPress={() => setSection('data')} /></View> : !reflection ? <View style={styles.panel}><Text style={styles.panelTitle}>Create a private reflection period</Text><Text style={styles.body}>You initiate this lane. It uses only the currently selected records, stays private, and compares descriptive language counts across the first and second half of the period.</Text><Text style={styles.meta}>No automatic breakup inference · no relationship judgment · no diagnosis · public sharing unavailable</Text><Button label="Create private reflection from selected data" onPress={() => {
+      const times = dataset.events.map((event) => new Date(event.occurredAt).getTime())
+      setReflection(buildPrivateReflection({
+        id: `private-reflection-${Date.now()}`, title: 'My private reflection period', purpose: 'breakup-recovery', visibility: 'private', consented: true,
+        startAt: new Date(Math.min(...times)).toISOString(), endAt: new Date(Math.max(...times)).toISOString(), selectedEventIds: dataset.events.map((event) => event.id), notes: [],
+        events: dataset.events.map((event) => ({ id: event.id, sourceId: event.sourceId, sourceRecordId: event.sourceRecordId, occurredAt: event.occurredAt, text: event.content })),
+      }))
+      setNotice('Private reflection created from the records you selected. Nothing was shared or uploaded.')
+    }} /></View> : <><View style={styles.warning}><Text style={styles.warningTitle}>{reflection.title} · private only</Text><Text style={styles.body}>{reflection.boundary}</Text></View><View style={styles.panel}><Text style={styles.panelTitle}>Descriptive progress view</Text><Text style={styles.body}>{reflection.summary}</Text><Text style={styles.meta}>Earlier: {reflection.progress.earlier.events} events · {reflection.progress.earlier.strainLanguageEvents} strain-language · {reflection.progress.earlier.supportiveLanguageEvents} supportive-language</Text><Text style={styles.meta}>Later: {reflection.progress.later.events} events · {reflection.progress.later.strainLanguageEvents} strain-language · {reflection.progress.later.supportiveLanguageEvents} supportive-language</Text><Text style={styles.subhead}>Reflection prompts</Text>{reflection.prompts.map((prompt) => <Text key={prompt} style={styles.meta}>• {prompt}</Text>)}<Text style={styles.subhead}>Selected evidence</Text>{reflection.evidence.map((event) => <View key={event.eventId} style={styles.evidence}><Text style={styles.meta}>{event.sourceId} / {event.sourceRecordId} · {event.occurredAt}</Text><Text style={styles.body}>{event.text}</Text></View>)}<Text style={styles.subhead}>Limitations</Text>{reflection.limitations.map((item) => <Text key={item} style={styles.meta}>• {item}</Text>)}</View><Button label="Delete private reflection" danger onPress={() => { setReflection(null); setNotice('Private reflection deleted from this browser session. Source records were not changed.') }} /></>}</>}
 
     {section === 'control' && <><View style={styles.panel}><Text style={styles.panelTitle}>Your controls</Text><Text style={styles.body}>Corrections remain distinguishable from source evidence. Export includes the imported records, metrics, derivation evidence, limitations, and corrections.</Text><Text style={styles.meta}>{corrections.length} correction(s) · {dataset?.events.length ?? 0} loaded event(s)</Text></View><Button label="Download complete JSON export" onPress={exportData} disabled={!dataset} /><Button label="Delete browser-session data" danger onPress={deleteData} disabled={!dataset} /></>}
 

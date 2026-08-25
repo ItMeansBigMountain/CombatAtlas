@@ -15,6 +15,7 @@ if (!url) throw new Error('usage: node smoke.cjs <url>');
   await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
   await assertVisible(page, 'tweetBetweenTheLines · runnable web MVP');
   await assertVisible(page, 'Analyze a synthetic fixture');
+  await page.getByRole('tab', { name: 'data' }).click();
   await assertVisible(page, 'no upload occurs');
 
   await page.getByRole('button', { name: 'Use synthetic demo' }).click();
@@ -32,6 +33,14 @@ if (!url) throw new Error('usage: node smoke.cjs <url>');
 
   await page.getByRole('button', { name: 'Mark inaccurate' }).first().click();
   await assertVisible(page, 'Correction saved separately from source evidence');
+  await page.getByRole('tab', { name: 'reflection' }).click();
+  await assertVisible(page, 'Create a private reflection period');
+  await page.getByRole('button', { name: 'Create private reflection from selected data' }).click();
+  await assertVisible(page, 'private only');
+  await assertVisible(page, 'Descriptive progress view');
+  await assertVisible(page, 'not mental-health assessment');
+  await assertVisible(page, 'Selected evidence');
+  await assertVisible(page, 'do not establish recovery');
   await page.getByRole('tab', { name: 'control' }).click();
   await assertVisible(page, '1 correction(s)');
 
