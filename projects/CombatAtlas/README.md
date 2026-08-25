@@ -2,6 +2,8 @@
 
 CombatAtlas is now a Vercel-ready React/Vite app with a bundled local martial arts drill atlas.
 
+An Expo universal iPhone/web shell is available in `mobile/`. It preserves the same 22-art/882-drill atlas and adds consent-first test ads plus a receipt-verifying remove-ads boundary. See `mobile/README.md` for Expo Go and verification commands.
+
 ## Current shipped state
 
 - 22 martial arts profiles across striking, grappling, weapons, traditional practice, self-defense, hybrid MMA, and movement arts.
