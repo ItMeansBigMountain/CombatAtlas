@@ -25,11 +25,14 @@ Current production deployment (2026-08-25):
 
 Current public remediation preview (2026-08-25):
 
-- Commit: `459776158951a31179873ab0da0830c03b8fefcb`
-- Temporary URL: https://temporary-quick-platinum-11g8xnv.vercel.app
-- Vercel deployment ID: `dpl_5WeyCstT4wVquRwTfrWrBHFy7V7s`
-- Vercel deployment status: Ready; anonymous preview expires at 2026-08-25 22:42 UTC unless claimed.
-- External verification: HTTP 200; Playwright loaded the CombatAtlas UI, searched for `armbar`, opened `Armbar from Guard Chain`, and confirmed four practice steps plus its demonstration link.
+- Source commit: `c94856daa331084f332381735d1aff7fc148f632` (application remediation is in parent commit `459776158951a31179873ab0da0830c03b8fefcb`).
+- Temporary URL: https://temporary-quick-peridot-4y06631.vercel.app
+- Vercel deployment ID: `dpl_Gzw2RZCHU7nwvo3nBZcVjiNA1jUJ`
+- Vercel deployment status: Ready; anonymous preview expires at 2026-08-25 23:26:05 UTC unless claimed.
+- Deployment method: direct upload of the locally verified `dist` output. This deliberately allocated a new anonymous project/URL instead of reusing the stale `temporary-quick-platinum-11g8xnv` URL.
+- External HTTP evidence: anonymous GET returned HTTP 200 `text/html`, title `CombatAtlas — Martial Arts Drill Database`, and `/assets/index-DmOkF31J.js` (not stale `/assets/index-BJT5b6Cu.js`).
+- External Playwright evidence at 1440x900 and 390x844: Kendo showed only `Men Strike Footwork`; Historical European Martial Arts showed only `Longsword Zornhau Entry`; Brazilian Jiu-Jitsu showed exactly its three curated guides (`Armbar from Guard Chain`, `Triangle Choke Angle Cut`, `Rear Naked Choke Back Control`); Arnis/Kali/Eskrima showed only `Sinawali Double Stick Flow`; Fencing and Pencak Silat each showed zero options and the no-reviewed-guides message. Both viewports had zero console errors and `scrollWidth == clientWidth`.
+- Local release verification: web `npm test`, `npm run lint`, and `npm run build` passed; mobile `npm test` passed 6/6, Expo Doctor passed 21/21, and web/iOS/Android Expo exports completed.
 - Rollback: no production alias was changed. Let the temporary deployment expire; the canonical production deployment remains untouched.
 
 ## Current mobile support boundary
