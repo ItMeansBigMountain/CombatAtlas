@@ -1,8 +1,0 @@
-requests
-beautifulsoup4
-praw
-nextdoor-api
-lxml
-html5lib
-pandas
-numpy

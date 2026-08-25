@@ -1,1 +1,0 @@
-User prefers Discord bot conversations to be natural channel back-and-forth rather than automatic per-conversation threads.

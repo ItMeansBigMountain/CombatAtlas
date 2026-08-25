@@ -1,6 +1,0 @@
-{
-  "buildCommand": "npm run build",
-  "outputDirectory": "apps/mobile/dist",
-  "installCommand": "npm ci",
-  "framework": null
-}

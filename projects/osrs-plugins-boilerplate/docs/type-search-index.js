@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"com.itmeansbigmountain.osrsapi","l":"TempleApiClient"},{"p":"com.itmeansbigmountain.osrsapi","l":"WOMApiClient"}]

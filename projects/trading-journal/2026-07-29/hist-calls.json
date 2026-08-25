@@ -1,6 +1,0 @@
-[
- {"tool":"get_equity_historicals","args":{"symbols":["F","BE","STX","GRMN","GNRC","MAS","BIIB","GD","SOFI"],"start_time":"2026-04-29T00:00:00Z","interval":"day","bounds":"regular"}},
- {"tool":"get_equity_historicals","args":{"symbols":["JPM","SLB","UL","SPY","QQQ","IWM"],"start_time":"2026-04-29T00:00:00Z","interval":"day","bounds":"regular"}},
- {"tool":"get_equity_historicals","args":{"symbols":["F","BE","STX","GRMN","GNRC","MAS","BIIB","GD","SOFI"],"start_time":"2026-07-29T13:30:00Z","interval":"5minute","bounds":"regular"}},
- {"tool":"get_equity_historicals","args":{"symbols":["JPM","SLB","UL"],"start_time":"2026-07-29T13:30:00Z","interval":"5minute","bounds":"regular"}}
-]

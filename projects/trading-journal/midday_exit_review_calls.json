@@ -1,4 +1,0 @@
-[
- {"tool":"get_equity_quotes","args":{"symbols":["UNH","NVDA","JPM"]}},
- {"tool":"review_equity_order","args":{"account_number":"433711041","symbol":"UNH","side":"sell","type":"market","quantity":"0.031089","time_in_force":"gfd","market_hours":"regular_hours"}}
-]

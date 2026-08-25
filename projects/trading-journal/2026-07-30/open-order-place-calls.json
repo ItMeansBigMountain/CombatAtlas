@@ -1,4 +1,0 @@
-[
- {"tool":"place_equity_order","args":{"account_number":"433711041","symbol":"MA","side":"buy","type":"market","dollar_amount":"58.88","time_in_force":"gfd","market_hours":"regular_hours"}},
- {"tool":"place_equity_order","args":{"account_number":"433711041","symbol":"SHEL","side":"buy","type":"market","dollar_amount":"58.87","time_in_force":"gfd","market_hours":"regular_hours"}}
-]

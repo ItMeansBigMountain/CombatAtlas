@@ -1,3 +1,0 @@
-[
- {"tool":"place_equity_order","args":{"account_number":"433711041","symbol":"UL","side":"sell","type":"market","quantity":"0.508952","time_in_force":"gfd","market_hours":"regular_hours","ref_id":"618bb90f-d8dc-43e6-8ad2-d4d9841202c4"}}
-]

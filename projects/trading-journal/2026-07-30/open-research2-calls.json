@@ -1,9 +1,0 @@
-[
- {"tool":"get_watchlist_items","args":{"list_id":"eddbebe5-34cc-4df1-953c-d3e3cb55bc19"}},
- {"tool":"get_equity_historicals","args":{"symbols":["UL","SPY","QQQ","IWM","XLK","SMH","XLF","XLE","XLI","XLV"],"start_time":"2026-04-01T00:00:00Z","interval":"day","bounds":"regular"}},
- {"tool":"get_equity_historicals","args":{"symbols":["XLY","XLC","XLP","XLU","MSFT","AMZN","NVDA","AVGO","AMD","MA"],"start_time":"2026-04-01T00:00:00Z","interval":"day","bounds":"regular"}},
- {"tool":"get_equity_historicals","args":{"symbols":["SHEL","GEV","CAT","PWR","EME","BMY"],"start_time":"2026-04-01T00:00:00Z","interval":"day","bounds":"regular"}},
- {"tool":"get_equity_fundamentals","args":{"symbols":["UL","MSFT","AMZN","NVDA","AVGO","AMD","MA","SHEL","GEV","CAT"]}},
- {"tool":"get_equity_fundamentals","args":{"symbols":["PWR","EME","BMY"]}},
- {"tool":"get_financials","args":{"symbols":["UL","MSFT","AMZN","MA","SHEL","GEV","PWR","EME","BMY"],"period":"quarterly","limit":4}}
-]

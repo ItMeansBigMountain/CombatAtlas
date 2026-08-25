@@ -1,3 +1,0 @@
-[
- {"tool":"place_equity_order","args":{"account_number":"433711041","symbol":"NVDA","side":"sell","type":"market","quantity":"0.121165","time_in_force":"gfd","market_hours":"regular_hours","ref_id":"1b3abd41-b6d8-4941-9319-e896ea3b7b3a"}}
-]

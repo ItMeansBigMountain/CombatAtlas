@@ -1,3 +1,0 @@
-[
-  {"tool":"review_equity_order","args":{"account_number":"433711041","symbol":"MA","side":"sell","type":"market","quantity":"0.101447","time_in_force":"gfd","market_hours":"regular_hours"}}
-]

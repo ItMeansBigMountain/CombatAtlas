@@ -1,4 +1,0 @@
-[
- {"tool":"get_equity_quotes","args":{"symbols":["AVGO","MA","BAC","SPY","QQQ"]}},
- {"tool":"review_equity_order","args":{"account_number":"433711041","symbol":"AVGO","side":"buy","type":"market","dollar_amount":"39.38","time_in_force":"gfd","market_hours":"regular_hours"}}
-]

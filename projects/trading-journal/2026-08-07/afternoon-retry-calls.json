@@ -1,8 +1,0 @@
-[
- {"tool":"get_equity_historicals","args":{"symbols":["SPY","QQQ","IWM","AVGO","MA","BAC","SHOP","UBER","CRM","NOW"],"start_time":"2026-08-07T13:30:00Z","interval":"5minute","bounds":"regular"}},
- {"tool":"get_equity_historicals","args":{"symbols":["NVDA","PLTR","DIS","XOM","COP"],"start_time":"2026-08-07T13:30:00Z","interval":"5minute","bounds":"regular"}},
- {"tool":"get_equity_historicals","args":{"symbols":["AVGO","MA","BAC","SHOP","UBER","CRM","NOW","NVDA","PLTR","DIS"],"start_time":"2026-05-01T00:00:00Z","interval":"day","bounds":"regular"}},
- {"tool":"get_equity_historicals","args":{"symbols":["XOM","COP"],"start_time":"2026-05-01T00:00:00Z","interval":"day","bounds":"regular"}},
- {"tool":"get_equity_fundamentals","args":{"symbols":["AVGO","MA","BAC","SHOP","UBER","CRM","NOW","NVDA","PLTR","DIS"]}},
- {"tool":"get_equity_fundamentals","args":{"symbols":["XOM","COP"]}}
-]

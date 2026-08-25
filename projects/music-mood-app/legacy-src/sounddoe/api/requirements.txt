@@ -1,4 +1,0 @@
-flask
-bs4
-ibm_watson
-requests

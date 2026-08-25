@@ -1,5 +1,0 @@
-#!/command/with-contenv sh
-set -eu
-cd /opt/data/dashboard-proxy
-: > /opt/data/dashboard-proxy/tunnel.log
-exec s6-setuidgid hermes /opt/data/.local/bin/cloudflared tunnel --no-autoupdate --url http://127.0.0.1:4861 >> /opt/data/dashboard-proxy/tunnel.log 2>&1
