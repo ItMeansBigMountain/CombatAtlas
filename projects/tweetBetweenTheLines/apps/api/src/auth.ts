@@ -16,6 +16,12 @@ export type OAuthTransaction = {
   expiresAt: string
 }
 export type Identity = { provider: LoginProvider; providerSubject: string; email: string | null }
+export type FirstPartyOAuthProvider = {
+  authorizationEndpoint: string
+  clientId: string
+  scopes: string[]
+  exchange(input: { code: string; codeVerifier: string; redirectUri: string }): Promise<{ providerSubject: string; email: string | null }>
+}
 export type LinkedAccount = { provider: ConnectorPlatform; providerSubject: string; scopes: string[]; vaultRef: string; linkedAt: string }
 export type ConsentReceipt = { id: string; subjectId: string; provider: string; purpose: OAuthPurpose; scopes: string[]; grantedAt: string; revokedAt: string | null }
 
@@ -27,7 +33,7 @@ export class FirstPartyAuthStore {
   readonly identities = new Map<string, { subjectId: string; identity: Identity }>()
   readonly linkedAccounts = new Map<string, LinkedAccount>()
   readonly consents = new Map<string, ConsentReceipt>()
-  readonly sessions = new Map<string, { subjectId: string; createdAt: string }>()
+  readonly sessions = new Map<string, { subjectId: string; createdAt: string; expiresAt: string }>()
   constructor(private readonly now: () => string = () => new Date().toISOString()) {}
 
   begin(input: Omit<OAuthTransaction, 'state' | 'verifier' | 'expiresAt'>): OAuthTransaction {
@@ -41,9 +47,9 @@ export class FirstPartyAuthStore {
     if (this.consumedStates.has(state)) throw new Error('OAuth state already consumed')
     const transaction = this.transactions.get(state)
     if (!transaction) throw new Error('OAuth state not found')
-    this.transactions.delete(state); this.consumedStates.add(state)
     if (transaction.purpose !== purpose || transaction.provider !== provider || transaction.redirectUri !== redirectUri || transaction.subjectId !== subjectId) throw new Error('OAuth callback binding mismatch')
     if (new Date(this.now()).valueOf() > new Date(transaction.expiresAt).valueOf()) throw new Error('OAuth state expired')
+    this.transactions.delete(state); this.consumedStates.add(state)
     return transaction
   }
   login(identity: Identity): { subjectId: string; session: string; created: boolean } {
@@ -51,9 +57,18 @@ export class FirstPartyAuthStore {
     const existing = this.identities.get(key)
     const subjectId = existing?.subjectId ?? `user:${randomUUID()}`
     if (!existing) this.identities.set(key, { subjectId, identity: structuredClone(identity) })
+    for (const [digest, stored] of this.sessions) if (stored.subjectId === subjectId) this.sessions.delete(digest)
     const session = randomBytes(32).toString('base64url')
-    this.sessions.set(createHash('sha256').update(session).digest('hex'), { subjectId, createdAt: this.now() })
+    this.sessions.set(createHash('sha256').update(session).digest('hex'), { subjectId, createdAt: this.now(), expiresAt: new Date(new Date(this.now()).valueOf() + 30 * 24 * 60 * 60_000).toISOString() })
     return { subjectId, session, created: !existing }
+  }
+  verifySession(session: string | undefined): { subjectId: string } | null {
+    if (!session) return null
+    const digest = createHash('sha256').update(session).digest('hex')
+    const stored = this.sessions.get(digest)
+    if (!stored) return null
+    if (new Date(this.now()).valueOf() > new Date(stored.expiresAt).valueOf()) { this.sessions.delete(digest); return null }
+    return { subjectId: stored.subjectId }
   }
   link(subjectId: string, account: LinkedAccount): ConsentReceipt {
     this.linkedAccounts.set(`${subjectId}\u0000${account.provider}`, structuredClone(account))

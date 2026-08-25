@@ -91,6 +91,23 @@ test('OAuth state is tenant bound and unsupported/manual-only providers fail clo
   assert.equal(providers.threads.status, 'unavailable')
 })
 
+test('linked OAuth callback mismatch and expiry do not burn a valid state', async () => {
+  let now = '2026-08-24T05:00:00.000Z'
+  const store = new MemoryBackendStore()
+  const api = new ApiService({ store, keyProvider: new FixedKeyProvider(Buffer.alloc(32, 7), 'test-key-v1'), exchange, revoker: { async revoke() { return 'revoked' } }, now: () => now, allowedRedirectUris: ['app://oauth/callback'], configuredProviders: new Set(['reddit']), approvedProviders: new Set(['reddit']) })
+  const initiated = await api.handle(request('POST', '/v1/oauth/reddit/authorize', { redirectUri: 'app://oauth/callback', scopes: ['identity'] }))
+  const state = (initiated.body as { state: string }).state
+  assert.equal((await api.handle(request('POST', '/v1/oauth/reddit/callback', { redirectUri: 'app://wrong', state, code: 'wrong' }))).status, 422)
+  assert.equal((await api.handle(request('POST', '/v1/oauth/reddit/callback', { redirectUri: 'app://oauth/callback', state, code: 'valid' }))).status, 200)
+
+  const caller = { ...auth, subjectId: 'user-2', actorId: 'user-2' }
+  const expiring = await api.handle(request('POST', '/v1/oauth/reddit/authorize', { redirectUri: 'app://oauth/callback', scopes: ['identity'] }, caller))
+  const expiredState = (expiring.body as { state: string }).state
+  now = '2026-08-24T05:11:00.000Z'
+  assert.equal((await api.handle(request('POST', '/v1/oauth/reddit/callback', { redirectUri: 'app://oauth/callback', state: expiredState, code: 'expired' }, caller))).status, 422)
+  assert.equal(store.oauthStates.size, 1)
+})
+
 test('archive admission authenticates, validates a synthetic manifest, and returns an async job contract', async () => {
   const { api } = createApi()
   const accepted = await api.handle(request('POST', '/v1/imports/archive', {

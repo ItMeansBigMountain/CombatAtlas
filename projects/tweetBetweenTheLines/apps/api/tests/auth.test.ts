@@ -11,7 +11,18 @@ test('login OAuth transactions use PKCE and are purpose, redirect, and subject b
   assert.match(pending.state, /^[A-Za-z0-9_-]+$/)
   assert.notEqual(pkceChallenge(pending.verifier), pending.verifier)
   assert.throws(() => store.consume(pending.state, 'link', 'google', 'app://auth', null), /binding mismatch/)
+  assert.equal(store.consume(pending.state, 'login', 'google', 'app://auth', null).state, pending.state)
   assert.throws(() => store.consume(pending.state, 'login', 'google', 'app://auth', null), /already consumed/)
+})
+
+test('expired login OAuth state is rejected without consuming the transaction', () => {
+  let now = '2026-08-25T03:00:00.000Z'
+  const store = new FirstPartyAuthStore(() => now)
+  const pending = store.begin({ purpose: 'login', provider: 'google', redirectUri: 'app://auth', requestedScopes: ['openid'], subjectId: null })
+  now = '2026-08-25T03:11:00.000Z'
+  assert.throws(() => store.consume(pending.state, 'login', 'google', 'app://auth', null), /expired/)
+  assert.equal(store.transactions.has(pending.state), true)
+  assert.equal(store.consumedStates.has(pending.state), false)
 })
 
 test('first login creates an account and subsequent provider login returns the same subject', () => {
@@ -22,7 +33,7 @@ test('first login creates an account and subsequent provider login returns the s
   assert.equal(again.created, false)
   assert.equal(again.subjectId, first.subjectId)
   assert.notEqual(again.session, first.session)
-  assert.equal(store.sessions.size, 2)
+  assert.equal(store.sessions.size, 1)
 })
 
 test('linked social accounts require separate consent and unlink revokes before deleting metadata', async () => {

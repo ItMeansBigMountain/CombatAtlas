@@ -5,15 +5,15 @@ import {
   type ArchiveEnvelope, type AuditEvent, type ConnectorPlatform, type EncryptedTokenRecord, type PendingOAuthAuthorization,
   type TenantContext,
 } from '@tweet-between-the-lines/domain'
-import { linkedProviderStatus, type ProviderTokenRevoker, type ProviderAvailability } from './auth.js'
+import { FirstPartyAuthStore, linkedProviderStatus, loginProviderStatus, pkceChallenge, type FirstPartyOAuthProvider, type LoginProvider, type ProviderTokenRevoker, type ProviderAvailability } from './auth.js'
 
 export * from './durable.js'
 export * from './postgres.js'
 export * from './auth.js'
 
 export type AuthContext = { tenantId: string; subjectId: string; actorId: string }
-export type ApiRequest = { method: 'GET' | 'POST' | 'PUT' | 'DELETE'; path: string; auth: AuthContext | null; body?: unknown }
-export type ApiResponse = { status: number; body: unknown }
+export type ApiRequest = { method: 'GET' | 'POST' | 'PUT' | 'DELETE'; path: string; auth: AuthContext | null; body?: unknown; sessionToken?: string }
+export type ApiResponse = { status: number; body: unknown; headers?: Record<string, string> }
 export type OAuthExchangeInput = { provider: ConnectorPlatform; code: string; codeVerifier: string; redirectUri: string }
 export type OAuthExchangeResult = { accessToken: string; refreshToken?: string; grantedScopes: string[]; providerSubject: string }
 export type OAuthCodeExchanger = (input: OAuthExchangeInput) => Promise<OAuthExchangeResult>
@@ -55,13 +55,17 @@ export class MemoryBackendStore {
     this.consumedOAuthStates.add(key)
     return pending
   }
+  findOAuth(auth: AuthContext, provider: ConnectorPlatform, state: string): PendingState | undefined {
+    const pending = this.oauthStates.get(this.stateKey(auth, provider, state))
+    return pending ? structuredClone(pending) : undefined
+  }
   wasOAuthConsumed(auth: AuthContext, provider: ConnectorPlatform, state: string): boolean { return this.consumedOAuthStates.has(this.stateKey(auth, provider, state)) }
   subjectKey(auth: Pick<AuthContext, 'tenantId' | 'subjectId'>): string { return `${auth.tenantId}\u0000${auth.subjectId}` }
   linkedAccountKey(auth: Pick<AuthContext, 'tenantId' | 'subjectId'>, provider: ConnectorPlatform): string { return `${this.subjectKey(auth)}\u0000${provider}` }
   private stateKey(auth: Pick<AuthContext, 'tenantId' | 'subjectId'>, provider: string, state: string): string { return `${this.subjectKey(auth)}\u0000${provider}\u0000${state}` }
 }
 
-type ApiOptions = { store: MemoryBackendStore; keyProvider: KeyProvider; exchange: OAuthCodeExchanger; revoker: ProviderTokenRevoker; now?: () => string; allowedRedirectUris: string[]; configuredProviders: ReadonlySet<string>; approvedProviders: ReadonlySet<string> }
+type ApiOptions = { store: MemoryBackendStore; keyProvider: KeyProvider; exchange: OAuthCodeExchanger; revoker: ProviderTokenRevoker; now?: () => string; allowedRedirectUris: string[]; configuredProviders: ReadonlySet<string>; approvedProviders: ReadonlySet<string>; firstPartyAuth?: FirstPartyAuthStore; loginProviders?: Partial<Record<LoginProvider, FirstPartyOAuthProvider>> }
 
 export class ApiService {
   private readonly now: () => string
@@ -70,28 +74,60 @@ export class ApiService {
   async handle(request: ApiRequest): Promise<ApiResponse> {
     if (request.method === 'GET' && request.path === '/healthz') return { status: 200, body: { status: 'ok' } }
     if (request.method === 'GET' && request.path === '/readyz') return { status: 200, body: { status: 'ready' } }
-    if (!request.auth) return { status: 401, body: { error: 'authentication_required' } }
-    if (this.options.store.deletedSubjects.has(this.options.store.subjectKey(request.auth))) return { status: 404, body: { error: 'not_found' } }
 
     try {
+      if (request.method === 'GET' && request.path === '/v1/auth/providers') return { status: 200, body: loginProviderStatus(new Set(Object.keys(this.options.loginProviders ?? {}))) }
+      const loginOAuth = request.path.match(/^\/v1\/auth\/(google|apple)\/(authorize|callback)$/)
+      if (loginOAuth) return loginOAuth[2] === 'authorize' ? this.loginAuthorize(loginOAuth[1] as LoginProvider, request.body) : await this.loginCallback(loginOAuth[1] as LoginProvider, request.body)
+      const session = this.options.firstPartyAuth?.verifySession(request.sessionToken)
+      const auth = request.auth ?? (session ? { tenantId: session.subjectId, subjectId: session.subjectId, actorId: session.subjectId } : null)
+      if (request.method === 'GET' && request.path === '/v1/auth/session') return auth ? { status: 200, body: { subjectId: auth.subjectId } } : { status: 401, body: { error: 'authentication_required' } }
+      if (!auth) return { status: 401, body: { error: 'authentication_required' } }
+      request = { ...request, auth }
+      if (this.options.store.deletedSubjects.has(this.options.store.subjectKey(auth))) return { status: 404, body: { error: 'not_found' } }
       const oauth = request.path.match(/^\/v1\/oauth\/([a-z0-9_]+)\/(authorize|callback)$/)
       if (oauth) return oauth[2] === 'authorize'
-        ? this.authorize(request.auth, oauth[1] as ConnectorPlatform, request.body)
-        : await this.callback(request.auth, oauth[1] as ConnectorPlatform, request.body)
+        ? this.authorize(auth, oauth[1] as ConnectorPlatform, request.body)
+        : await this.callback(auth, oauth[1] as ConnectorPlatform, request.body)
       if (request.method === 'GET' && request.path === '/v1/oauth/providers') return this.providerStatuses()
-      if (request.method === 'GET' && request.path === '/v1/linked-accounts') return this.listLinkedAccounts(request.auth)
+      if (request.method === 'GET' && request.path === '/v1/linked-accounts') return this.listLinkedAccounts(auth)
       const linkedAccount = request.path.match(/^\/v1\/linked-accounts\/([a-z0-9_]+)$/)
-      if (request.method === 'DELETE' && linkedAccount) return await this.unlink(request.auth, linkedAccount[1] as ConnectorPlatform)
-      if (request.method === 'POST' && request.path === '/v1/imports/archive') return this.admitArchive(request.auth, request.body)
+      if (request.method === 'DELETE' && linkedAccount) return await this.unlink(auth, linkedAccount[1] as ConnectorPlatform)
+      if (request.method === 'POST' && request.path === '/v1/imports/archive') return this.admitArchive(auth, request.body)
       const correction = request.path.match(/^\/v1\/corrections\/([^/]+)$/)
-      if (request.method === 'PUT' && correction) return this.correct(request.auth, decodeURIComponent(correction[1]!), request.body)
-      if (request.method === 'POST' && request.path === '/v1/privacy/export') return this.export(request.auth, request.body)
-      if (request.method === 'DELETE' && request.path === '/v1/privacy/account') return this.deleteAccount(request.auth, request.body)
+      if (request.method === 'PUT' && correction) return this.correct(auth, decodeURIComponent(correction[1]!), request.body)
+      if (request.method === 'POST' && request.path === '/v1/privacy/export') return this.export(auth, request.body)
+      if (request.method === 'DELETE' && request.path === '/v1/privacy/account') return this.deleteAccount(auth, request.body)
       return { status: 404, body: { error: 'not_found' } }
     } catch (error) {
-      this.audit(request.auth, 'request-denied', 'request', 'deny', 'failed')
+      if (request.auth) this.audit(request.auth, 'request-denied', 'request', 'deny', 'failed')
       return { status: 422, body: { error: 'request_rejected', message: error instanceof Error ? error.message : 'Rejected' } }
     }
+  }
+
+  private loginAuthorize(providerName: LoginProvider, body: unknown): ApiResponse {
+    const auth = this.options.firstPartyAuth; const provider = this.options.loginProviders?.[providerName]
+    if (!auth || !provider) return { status: 503, body: { error: 'provider_unconfigured', provider: providerName } }
+    const redirectUri = text(object(body).redirectUri, 'redirectUri')
+    if (!this.options.allowedRedirectUris.includes(redirectUri)) throw new Error('Redirect URI is not allowlisted')
+    const pending = auth.begin({ purpose: 'login', provider: providerName, redirectUri, requestedScopes: provider.scopes, subjectId: null })
+    const url = new URL(provider.authorizationEndpoint)
+    url.searchParams.set('client_id', provider.clientId); url.searchParams.set('redirect_uri', redirectUri); url.searchParams.set('response_type', 'code'); url.searchParams.set('scope', provider.scopes.join(' ')); url.searchParams.set('state', pending.state); url.searchParams.set('code_challenge', pkceChallenge(pending.verifier)); url.searchParams.set('code_challenge_method', 'S256')
+    return { status: 201, body: { authorizationUrl: url.toString(), state: pending.state, expiresAt: pending.expiresAt } }
+  }
+
+  private async loginCallback(providerName: LoginProvider, body: unknown): Promise<ApiResponse> {
+    const auth = this.options.firstPartyAuth; const provider = this.options.loginProviders?.[providerName]
+    if (!auth || !provider) return { status: 503, body: { error: 'provider_unconfigured', provider: providerName } }
+    const input = object(body); const state = text(input.state, 'state'); const redirectUri = text(input.redirectUri, 'redirectUri'); const code = text(input.code, 'code')
+    let pending
+    try { pending = auth.consume(state, 'login', providerName, redirectUri, null) } catch (error) {
+      if (error instanceof Error && error.message.includes('already consumed')) return { status: 409, body: { error: 'oauth_state_consumed' } }
+      throw error
+    }
+    const identity = await provider.exchange({ code, codeVerifier: pending.verifier, redirectUri })
+    const login = auth.login({ provider: providerName, providerSubject: identity.providerSubject, email: identity.email })
+    return { status: 200, body: { authenticated: true, subjectId: login.subjectId, created: login.created }, headers: { 'set-cookie': `tbl_session=${login.session}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=2592000` } }
   }
 
   private authorize(auth: AuthContext, provider: ConnectorPlatform, body: unknown): ApiResponse {
@@ -106,7 +142,7 @@ export class ApiService {
 
   private async callback(auth: AuthContext, provider: ConnectorPlatform, body: unknown): Promise<ApiResponse> {
     const input = object(body); const state = text(input.state, 'state')
-    const pending = this.options.store.consumeOAuth(auth, provider, state)
+    const pending = this.options.store.findOAuth(auth, provider, state)
     if (!pending) return this.options.store.wasOAuthConsumed(auth, provider, state)
       ? { status: 409, body: { error: 'oauth_state_consumed' } }
       : { status: 404, body: { error: 'oauth_state_not_found' } }
@@ -115,6 +151,7 @@ export class ApiService {
     if (this.statusFor(provider) !== 'available') throw new Error(`${provider} OAuth is not available`)
     const accountKey = this.options.store.linkedAccountKey(auth, provider)
     if (this.options.store.linkedAccounts.has(accountKey)) throw new Error('Provider account is already linked')
+    this.options.store.consumeOAuth(auth, provider, state)
     const exchanged = await this.options.exchange({ provider, code, codeVerifier: pending.codeVerifier, redirectUri })
     if (exchanged.grantedScopes.some((scope) => !pending.requestedScopes.includes(scope))) throw new Error('Provider granted an unexpected scope')
     const { key, keyId } = await this.options.keyProvider.dataKey(auth)
