@@ -8,6 +8,7 @@ import {
 
 export * from './durable.js'
 export * from './postgres.js'
+export * from './auth.js'
 
 export type AuthContext = { tenantId: string; subjectId: string; actorId: string }
 export type ApiRequest = { method: 'GET' | 'POST' | 'PUT' | 'DELETE'; path: string; auth: AuthContext | null; body?: unknown }

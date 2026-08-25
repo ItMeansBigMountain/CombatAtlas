@@ -5,7 +5,7 @@ import type { EvidenceRef, ExplainableMetricCard } from '../../../packages/domai
 import { createPrivacyClient, validateArchiveSelection } from '../lib/privacyClient'
 import { analyzeDataset, importTemplate, parseDatasetJson, syntheticDataset, type MvpDataset } from '../lib/mvpData'
 
-type Section = 'data' | 'metrics' | 'control' | 'limits'
+type Section = 'account' | 'data' | 'metrics' | 'control' | 'limits'
 type Correction = { metricId: string; note: string }
 
 function Button({ label, onPress, danger = false, disabled = false }: { label: string; onPress: () => void; danger?: boolean; disabled?: boolean }) {
@@ -37,7 +37,7 @@ function aggregateSummary(card: ExplainableMetricCard): string {
 
 export default function HomeScreen() {
   const client = useMemo(createPrivacyClient, [])
-  const [section, setSection] = useState<Section>('data')
+  const [section, setSection] = useState<Section>('account')
   const [consented, setConsented] = useState(false)
   const [dataset, setDataset] = useState<MvpDataset | null>(null)
   const [snapshot, setSnapshot] = useState<ReturnType<typeof analyzeDataset> | null>(null)
@@ -94,7 +94,12 @@ export default function HomeScreen() {
     <Text style={styles.body}>Analyze a synthetic fixture or your explicitly consented normalized JSON locally. Every metric keeps source records, deterministic derivation, confidence, and limitations visible.</Text>
     <View accessibilityLiveRegion="polite" style={styles.notice}><Text style={styles.noticeText}>{notice}</Text></View>
 
-    <View accessibilityRole="tablist" style={styles.tabs}>{(['data', 'metrics', 'control', 'limits'] as Section[]).map((item) => <Pressable key={item} accessibilityRole="tab" accessibilityState={{ selected: section === item }} onPress={() => setSection(item)} style={[styles.tab, section === item && styles.activeTab]}><Text style={styles.tabText}>{item}</Text></Pressable>)}</View>
+    <View accessibilityRole="tablist" style={styles.tabs}>{(['account', 'data', 'metrics', 'control', 'limits'] as Section[]).map((item) => <Pressable key={item} accessibilityRole="tab" accessibilityState={{ selected: section === item }} onPress={() => setSection(item)} style={[styles.tab, section === item && styles.activeTab]}><Text style={styles.tabText}>{item}</Text></Pressable>)}</View>
+
+    {section === 'account' && <>
+      <View style={styles.panel}><Text style={styles.panelTitle}>Sign in to your BetweenLines account</Text><Text style={styles.body}>Google and Apple sign-in create the first-party app account. They do not connect social history or grant analysis access.</Text><Button label="Google sign-in · unavailable until configured" onPress={() => setNotice('Google sign-in is not configured in this testing build. No provider access was requested.')} /><Button label="Apple sign-in · unavailable until configured" onPress={() => setNotice('Apple sign-in is not configured in this testing build. No provider access was requested.')} /></View>
+      <View style={styles.panel}><Text style={styles.panelTitle}>Linked social accounts are separate</Text><Text style={styles.body}>After sign-in, each supported platform has its own least-privilege consent screen, PKCE authorization, consent receipt, and unlink/revocation control.</Text><Text style={styles.meta}>Reddit and Discord: unavailable until app credentials are configured · Google/YouTube and Spotify: pending provider review · Instagram, Facebook, TikTok, LinkedIn, and Snapchat: official archive import only · Threads: unavailable.</Text></View>
+    </>}
 
     {section === 'data' && <>
       <View style={styles.panel}><Text style={styles.panelTitle}>1. Try without personal data</Text><Text style={styles.body}>The bundled demo is clearly labeled synthetic. Its X, YouTube, and Reddit-style records are examples, not claims that accounts or live APIs are connected.</Text><Button label="Use synthetic demo" onPress={() => load(syntheticDataset)} /></View>
