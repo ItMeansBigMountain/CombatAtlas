@@ -1,22 +1,20 @@
-# Merge into Social Media Analysis
+# Merge into tweetBetweenTheLines
 
-`twitter-therapy-app` should be folded into `social-media-analysis` as the reflective and mental-health-adjacent interpretation layer.
+`twitter-therapy-app` is absorbed into `tweetBetweenTheLines` as a reflective, non-diagnostic interpretation layer. `social-media-analysis` is an archived scaffold, not the target product.
 
 ## Keep
 
-- Gentle reflection UX.
-- Mood/sentiment concepts.
-- Emotional-language interpretation.
-- User-facing prompts that help people understand communication patterns.
+- Gentle reflection UX
+- Mood/sentiment concepts
+- Emotional-language interpretation
+- Prompts that help users understand communication patterns
 
-## Important safety boundary
+## Safety boundary
 
-This module should not diagnose users. It should present patterns, stress markers, communication trends, and reflective prompts. It can recommend professional support or crisis resources when appropriate.
+Do not diagnose users. Present patterns, stress markers, communication trends, and reflective prompts. Route imminent self-harm language toward appropriate crisis resources and professional support.
 
-## Target product
-
-See:
+## Canonical product
 
 ```text
-../social-media-analysis/PRODUCT_DIRECTION.md
+../tweetBetweenTheLines/
 ```

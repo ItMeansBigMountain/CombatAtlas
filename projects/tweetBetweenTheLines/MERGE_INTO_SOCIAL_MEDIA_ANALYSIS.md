@@ -1,23 +1,24 @@
-# Merge into Social Media Analysis
+# Absorption complete
 
-`tweetBetweenTheLines` should be folded into `social-media-analysis`.
+`tweetBetweenTheLines` is now the canonical Personal Presence Intelligence product. The earlier instruction to merge it into `social-media-analysis` is obsolete.
 
-## Keep
+## Preserved capabilities
 
-- Tweet/text search utilities.
-- Topic and trend scripts.
-- Mood/sentiment experiments.
-- Django dashboard experiments.
-- Word database and ranking ideas.
+- Tweet/text and archive import concepts
+- Topic, trend, mood, and sentiment experiments
+- Django dashboard experiments and word-ranking ideas
+- Non-diagnostic reflective UX and safety boundaries
 
-## New role
-
-This project becomes the Twitter/X parser and historical code archive for the larger Personal Presence Intelligence app.
-
-## Target product
-
-See:
+The sanitized historical scaffold and legacy source are preserved at:
 
 ```text
-../social-media-analysis/PRODUCT_DIRECTION.md
+../_archive/social-media-analysis/
 ```
+
+The old static review shell is preserved at:
+
+```text
+../_archive/social-media-analysis-review-shell/
+```
+
+Neither archive is an active product or deployment target. Product work, release evidence, and future direction belong here in `tweetBetweenTheLines`.
