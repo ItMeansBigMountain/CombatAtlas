@@ -44,6 +44,7 @@ export type ExplainableMetricCard = {
   confidence: MetricConfidence
   limitations: string[]
   evidence: EvidenceRef[]
+  formula: { version: string; expression: string }
   analyzer: { schemaVersion: '1'; method: 'deterministic'; narrativeReady: boolean }
 }
 
@@ -81,6 +82,18 @@ const INTERESTS: Record<string, Set<string>> = {
 }
 
 const STOP = new Set([...Object.values(WORDS).flatMap((set) => [...set]), 'http', 'https', 'www', 'com'])
+
+const FORMULAS: Record<ExplainableMetricCard['category'], string> = {
+  interests: 'count(label) = number of events containing at least one configured interest term for label',
+  topics: 'count(token) = number of events containing token at least once after NFKC tokenization and stop-word removal',
+  communities: 'count(name) = number of events whose community, channel, or subreddit metadata equals name',
+  'language-style': 'average_tokens_per_event = total_tokens / imported_events; unique_tokens = cardinality(all normalized tokens)',
+  sentiment: 'class(event) = positive when positive_terms > negative_terms, negative when negative_terms > positive_terms, otherwise neutral',
+  'attention-rhythm': 'hourly_utc[h] = count(events where UTC hour = h); weekday_utc[d] = count(events where UTC weekday = d)',
+  'media-affinity': 'count(name) = number of events whose creator, artist, channel, or mediaTitle metadata equals name',
+  'stated-vs-observed': 'stated(label) = any post/message/import-note matching label; observed(label) = any view/listen/search/reaction matching label',
+  'change-over-time': 'midpoint = (earliest_timestamp + latest_timestamp) / 2; early = count(timestamp <= midpoint); recent = count(timestamp > midpoint)',
+}
 
 function tokenize(text: string): string[] {
   return (text.normalize('NFKC').toLocaleLowerCase().match(/[\p{L}\p{N}][\p{L}\p{N}'’_-]*/gu) ?? []).map((word) => word.replace(/’/g, "'"))
@@ -137,7 +150,7 @@ export function buildExplainableMetrics(input: MetricEvent[], generatedAt = new 
   }).sort((a, b) => a.occurredAt.localeCompare(b.occurredAt) || a.id.localeCompare(b.id))
   const sourceCoverage = coverage(events); const sources = sourceCoverage.length
   const limitations = ['Counts describe only imported, consented data; missing or unavailable sources can change results.', 'Lexicon and metadata matches do not establish identity, intent, beliefs, or clinical state.', 'Low-volume and uneven time windows reduce representativeness.']
-  const make = (id: string, category: ExplainableMetricCard['category'], title: string, aggregates: Record<string, unknown>, refs: EvidenceRef[], extra: string[] = []): ExplainableMetricCard => ({ id, category, title, sourceCoverage, aggregates, confidence: confidence(events, refs.length, sources), limitations: [...limitations, ...extra], evidence: refs, analyzer: { schemaVersion: '1', method: 'deterministic', narrativeReady: events.length >= 3 && refs.length > 0 } })
+  const make = (id: string, category: ExplainableMetricCard['category'], title: string, aggregates: Record<string, unknown>, refs: EvidenceRef[], extra: string[] = []): ExplainableMetricCard => ({ id, category, title, sourceCoverage, aggregates, confidence: confidence(events, refs.length, sources), limitations: [...limitations, ...extra], evidence: refs, formula: { version: `metric-formula@1:${id}`, expression: FORMULAS[category] }, analyzer: { schemaVersion: '1', method: 'deterministic', narrativeReady: events.length >= 3 && refs.length > 0 } })
 
   const interestCounts = new Map<string, number>()
   const interestEvidence = evidence(events, (event) => Object.entries(INTERESTS).flatMap(([label, terms]) => event.tokens.some((word) => terms.has(word)) ? [label] : []))

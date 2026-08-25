@@ -22,6 +22,8 @@ test('builds every explainable deterministic metric lane before narrative', () =
     assert.equal(card.confidence.reasons.length, 3)
     assert.equal(card.limitations.length >= 3, true)
     assert.equal(card.analyzer.method, 'deterministic')
+    assert.match(card.formula.expression, /\S/)
+    assert.match(card.formula.version, /^metric-formula@1:/)
     assert.equal(card.evidence.length > 0, true)
   }
   assert.equal(snapshot.narrativeGate.allowed, true)
