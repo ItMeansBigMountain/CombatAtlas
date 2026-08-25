@@ -5,6 +5,7 @@ import {
   type ArchiveEnvelope, type AuditEvent, type ConnectorPlatform, type EncryptedTokenRecord, type PendingOAuthAuthorization,
   type TenantContext,
 } from '@tweet-between-the-lines/domain'
+import { linkedProviderStatus, type ProviderTokenRevoker, type ProviderAvailability } from './auth.js'
 
 export * from './durable.js'
 export * from './postgres.js'
@@ -29,11 +30,15 @@ type StoredEvent = { id: string; tenantId: string; subjectId: string; sourceId: 
 type Correction = { eventId: string; tenantId: string; subjectId: string; value: string; correctedAt: string }
 type ImportJob = { id: string; tenantId: string; subjectId: string; sourceId: string; platform: string; status: 'queued'; archiveDigest: string; createdAt: string }
 type PendingState = PendingOAuthAuthorization
+export type LinkedAccountMetadata = { tenantId: string; subjectId: string; provider: ConnectorPlatform; providerSubject: string; scopes: string[]; vaultRef: string; consentReceiptId: string; linkedAt: string }
+export type SourceConsentReceipt = { id: string; tenantId: string; subjectId: string; provider: ConnectorPlatform; providerSubject: string; purpose: 'source-connection'; scopes: string[]; grantedAt: string; revokedAt: string | null }
 
 export class MemoryBackendStore {
   readonly oauthStates = new Map<string, PendingState>()
   readonly consumedOAuthStates = new Set<string>()
   readonly tokenRecords = new Map<string, EncryptedTokenRecord>()
+  readonly linkedAccounts = new Map<string, LinkedAccountMetadata>()
+  readonly consentReceipts = new Map<string, SourceConsentReceipt>()
   readonly importJobs = new Map<string, ImportJob>()
   readonly events = new Map<string, StoredEvent>()
   readonly corrections = new Map<string, Correction>()
@@ -52,10 +57,11 @@ export class MemoryBackendStore {
   }
   wasOAuthConsumed(auth: AuthContext, provider: ConnectorPlatform, state: string): boolean { return this.consumedOAuthStates.has(this.stateKey(auth, provider, state)) }
   subjectKey(auth: Pick<AuthContext, 'tenantId' | 'subjectId'>): string { return `${auth.tenantId}\u0000${auth.subjectId}` }
+  linkedAccountKey(auth: Pick<AuthContext, 'tenantId' | 'subjectId'>, provider: ConnectorPlatform): string { return `${this.subjectKey(auth)}\u0000${provider}` }
   private stateKey(auth: Pick<AuthContext, 'tenantId' | 'subjectId'>, provider: string, state: string): string { return `${this.subjectKey(auth)}\u0000${provider}\u0000${state}` }
 }
 
-type ApiOptions = { store: MemoryBackendStore; keyProvider: KeyProvider; exchange: OAuthCodeExchanger; now?: () => string; allowedRedirectUris: string[] }
+type ApiOptions = { store: MemoryBackendStore; keyProvider: KeyProvider; exchange: OAuthCodeExchanger; revoker: ProviderTokenRevoker; now?: () => string; allowedRedirectUris: string[]; configuredProviders: ReadonlySet<string>; approvedProviders: ReadonlySet<string> }
 
 export class ApiService {
   private readonly now: () => string
@@ -72,6 +78,10 @@ export class ApiService {
       if (oauth) return oauth[2] === 'authorize'
         ? this.authorize(request.auth, oauth[1] as ConnectorPlatform, request.body)
         : await this.callback(request.auth, oauth[1] as ConnectorPlatform, request.body)
+      if (request.method === 'GET' && request.path === '/v1/oauth/providers') return this.providerStatuses()
+      if (request.method === 'GET' && request.path === '/v1/linked-accounts') return this.listLinkedAccounts(request.auth)
+      const linkedAccount = request.path.match(/^\/v1\/linked-accounts\/([a-z0-9_]+)$/)
+      if (request.method === 'DELETE' && linkedAccount) return await this.unlink(request.auth, linkedAccount[1] as ConnectorPlatform)
       if (request.method === 'POST' && request.path === '/v1/imports/archive') return this.admitArchive(request.auth, request.body)
       const correction = request.path.match(/^\/v1\/corrections\/([^/]+)$/)
       if (request.method === 'PUT' && correction) return this.correct(request.auth, decodeURIComponent(correction[1]!), request.body)
@@ -87,6 +97,7 @@ export class ApiService {
   private authorize(auth: AuthContext, provider: ConnectorPlatform, body: unknown): ApiResponse {
     const input = object(body); const redirectUri = text(input.redirectUri, 'redirectUri'); const scopes = strings(input.scopes, 'scopes')
     if (!(provider in CONNECTOR_REGISTRY)) throw new Error('Unknown provider')
+    if (this.statusFor(provider) !== 'available') throw new Error(`${provider} OAuth is not available`)
     const pending = beginOAuthAuthorization({ context: tenant(auth, 'source-connection'), provider, redirectUri, allowedRedirectUris: this.options.allowedRedirectUris, requestedScopes: scopes, now: this.now() })
     this.options.store.saveOAuth(pending)
     this.audit(auth, 'oauth-started', provider, 'allow', 'succeeded')
@@ -101,13 +112,55 @@ export class ApiService {
       : { status: 404, body: { error: 'oauth_state_not_found' } }
     const redirectUri = text(input.redirectUri, 'redirectUri'); const code = text(input.code, 'code')
     if (redirectUri !== pending.redirectUri || new Date(this.now()).valueOf() > new Date(pending.expiresAt).valueOf()) throw new Error('OAuth callback binding or expiry check failed')
+    if (this.statusFor(provider) !== 'available') throw new Error(`${provider} OAuth is not available`)
+    const accountKey = this.options.store.linkedAccountKey(auth, provider)
+    if (this.options.store.linkedAccounts.has(accountKey)) throw new Error('Provider account is already linked')
     const exchanged = await this.options.exchange({ provider, code, codeVerifier: pending.codeVerifier, redirectUri })
     if (exchanged.grantedScopes.some((scope) => !pending.requestedScopes.includes(scope))) throw new Error('Provider granted an unexpected scope')
     const { key, keyId } = await this.options.keyProvider.dataKey(auth)
     const record = encryptProviderToken({ context: tenant(auth, 'connector-storage'), provider, scopes: exchanged.grantedScopes, token: JSON.stringify({ accessToken: exchanged.accessToken, refreshToken: exchanged.refreshToken ?? null, providerSubject: exchanged.providerSubject }), dataKey: key, keyId, createdAt: this.now() })
     this.options.store.tokenRecords.set(record.vaultRef, record)
+    const linkedAt = this.now()
+    const receipt: SourceConsentReceipt = { id: `consent:${randomUUID()}`, tenantId: auth.tenantId, subjectId: auth.subjectId, provider, providerSubject: exchanged.providerSubject, purpose: 'source-connection', scopes: [...exchanged.grantedScopes].sort(), grantedAt: linkedAt, revokedAt: null }
+    this.options.store.consentReceipts.set(receipt.id, receipt)
+    this.options.store.linkedAccounts.set(accountKey, { tenantId: auth.tenantId, subjectId: auth.subjectId, provider, providerSubject: exchanged.providerSubject, scopes: [...receipt.scopes], vaultRef: record.vaultRef, consentReceiptId: receipt.id, linkedAt })
     this.audit(auth, 'oauth-completed', provider, 'allow', 'succeeded')
     return { status: 200, body: { connected: true, provider, scopes: [...exchanged.grantedScopes].sort() } }
+  }
+
+  private providerStatuses(): ApiResponse {
+    const statuses = linkedProviderStatus(this.options.configuredProviders, this.options.approvedProviders)
+    const providers = Object.fromEntries(Object.entries(statuses).map(([provider, status]) => [provider, {
+      status,
+      scopes: status === 'available' ? [...CONNECTOR_REGISTRY[provider as ConnectorPlatform].allowedScopes] : [],
+    }]))
+    return { status: 200, body: { providers } }
+  }
+
+  private listLinkedAccounts(auth: AuthContext): ApiResponse {
+    const accounts = [...this.options.store.linkedAccounts.values()]
+      .filter((account) => account.tenantId === auth.tenantId && account.subjectId === auth.subjectId)
+      .map(({ provider, providerSubject, scopes, linkedAt }) => ({ provider, providerSubject, scopes: [...scopes], linkedAt }))
+      .sort((a, b) => a.provider.localeCompare(b.provider))
+    return { status: 200, body: { accounts } }
+  }
+
+  private async unlink(auth: AuthContext, provider: ConnectorPlatform): Promise<ApiResponse> {
+    if (!(provider in CONNECTOR_REGISTRY)) return { status: 404, body: { error: 'not_found' } }
+    const key = this.options.store.linkedAccountKey(auth, provider)
+    const account = this.options.store.linkedAccounts.get(key)
+    if (!account) return { status: 404, body: { error: 'not_found' } }
+    await this.options.revoker.revoke(provider, account.vaultRef)
+    this.options.store.linkedAccounts.delete(key)
+    this.options.store.tokenRecords.delete(account.vaultRef)
+    const receipt = this.options.store.consentReceipts.get(account.consentReceiptId)
+    if (receipt && !receipt.revokedAt) receipt.revokedAt = this.now()
+    this.audit(auth, 'oauth-unlinked', provider, 'allow', 'succeeded')
+    return { status: 200, body: { unlinked: true, provider } }
+  }
+
+  private statusFor(provider: ConnectorPlatform): ProviderAvailability {
+    return linkedProviderStatus(this.options.configuredProviders, this.options.approvedProviders)[provider]
   }
 
   private admitArchive(auth: AuthContext, body: unknown): ApiResponse {
@@ -146,6 +199,8 @@ export class ApiService {
     for (const [id, item] of this.options.store.events) if (item.tenantId === auth.tenantId && item.subjectId === auth.subjectId) this.options.store.events.delete(id)
     for (const [id, item] of this.options.store.corrections) if (item.tenantId === auth.tenantId && item.subjectId === auth.subjectId) this.options.store.corrections.delete(id)
     for (const [id, item] of this.options.store.tokenRecords) if (item.tenantId === auth.tenantId && item.subjectId === auth.subjectId) this.options.store.tokenRecords.delete(id)
+    for (const [id, item] of this.options.store.linkedAccounts) if (item.tenantId === auth.tenantId && item.subjectId === auth.subjectId) this.options.store.linkedAccounts.delete(id)
+    for (const item of this.options.store.consentReceipts.values()) if (item.tenantId === auth.tenantId && item.subjectId === auth.subjectId && !item.revokedAt) item.revokedAt = this.now()
     this.options.store.deletedSubjects.add(this.options.store.subjectKey(auth))
     const jobId = `deletion:${createHash('sha256').update(`${auth.tenantId}:${key}`).digest('hex')}`
     this.audit(auth, 'account-deleted', jobId, 'allow', 'succeeded')

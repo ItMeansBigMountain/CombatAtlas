@@ -7,7 +7,10 @@ const keyText = process.env.LOCAL_DATA_KEY_BASE64
 if (!keyText) throw new Error('LOCAL_DATA_KEY_BASE64 is required (32 bytes, base64)')
 const key = Buffer.from(keyText, 'base64')
 const exchange: OAuthCodeExchanger = async () => { throw new Error('No live OAuth exchanger configured; inject an official provider adapter') }
-const api = new ApiService({ store: new MemoryBackendStore(), keyProvider: new FixedKeyProvider(key, 'local-env-v1'), exchange, allowedRedirectUris: (process.env.OAUTH_REDIRECT_URIS ?? '').split(',').filter(Boolean) })
+const revoker = { async revoke(): Promise<'revoked'> { throw new Error('No live provider revoker configured; unlink denied') } }
+const configuredProviders = new Set((process.env.OAUTH_CONFIGURED_PROVIDERS ?? '').split(',').filter(Boolean))
+const approvedProviders = new Set((process.env.OAUTH_APPROVED_PROVIDERS ?? '').split(',').filter(Boolean))
+const api = new ApiService({ store: new MemoryBackendStore(), keyProvider: new FixedKeyProvider(key, 'local-env-v1'), exchange, revoker, configuredProviders, approvedProviders, allowedRedirectUris: (process.env.OAUTH_REDIRECT_URIS ?? '').split(',').filter(Boolean) })
 const port = Number(process.env.PORT ?? '3001')
 
 createServer(async (incoming, response) => {
