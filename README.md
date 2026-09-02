@@ -1,6 +1,6 @@
 # CombatAtlas — Martial Arts Drill Database
 
-CombatAtlas is now a Vercel-ready React/Vite app with a bundled local martial arts drill atlas.
+CombatAtlas is now a Vercel-ready React/Vite app with a bundled local martial arts drill atlas. The Vite and Expo clients intentionally ship the same catalog and media modules; `npm test` fails if either client drifts from the other.
 
 An Expo source shell is available in `mobile/`. Web, iOS, and Android JavaScript exports are verified locally, but there are no signed/installable native builds yet. iPhone testing is supported through Expo Go; Android is export-only until an EAS build is published. It preserves the same 22-art catalog and 15 published drill guides, plus consent-first test ads and a receipt-verifying remove-ads boundary. See `mobile/README.md` for the exact support boundary and verification commands.
 
@@ -41,4 +41,4 @@ npm run import:wikipedia
 
 ## Legacy backend
 
-The original Django REST backend remains under `combatAtlas_Backend/` as legacy source. The live Vercel product currently uses the static React/Vite frontend for fast public review without requiring a database or server credentials.
+The original Django REST backend remains under `combatAtlas_Backend/` as archival legacy source. It is not the data source for either shipped client and its older relational schema is not API-compatible with the bundled catalog. The canonical product data is `src/data/combatData.js` plus `src/data/themeMedia.js`, mirrored under `mobile/src/data/` and guarded by `npm run validate:sync`. Do not treat Django records as synchronized production content unless a future migration introduces an explicit canonical import/export contract.
