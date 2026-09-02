@@ -3,19 +3,22 @@
 ## Scope
 
 Audited the `projects/CombatAtlas` mapping and the complete gitlink/`.gitmodules`
-relationship in the local `/opt/data/HeRmEz` superproject on 2026-09-02.
+relationship in the local `/opt/data/HeRmEz` superproject on 2026-09-02 at
+07:42 UTC.
 
 ## CombatAtlas result
 
-- Parent gitlink: `50e4db359ad4a9533c8ea772a73e938151d2ae8f`
-- Local `main`: `50e4db359ad4a9533c8ea772a73e938151d2ae8f`
-- Live GitHub `origin/main`: `50e4db359ad4a9533c8ea772a73e938151d2ae8f`
+- Parent gitlink, local `main`, fetched `origin/main`, and the live GitHub
+  `refs/heads/main` commit were identical at verification time. Exact hashes
+  are intentionally omitted because committing this report advances the branch
+  and parent pointer.
 - `.gitmodules` URL and local `origin`:
   `https://github.com/ItMeansBigMountain/CombatAtlas.git`
 - Nested gitlinks inside CombatAtlas: none
 
-The CombatAtlas gitlink is initialized, correctly mapped, and synchronized. The
-only local CombatAtlas difference is this untracked audit report.
+The CombatAtlas gitlink is initialized, correctly mapped, and synchronized.
+The report files are tracked; there were no uncommitted differences before this
+verification update.
 
 ## Superproject-wide findings
 

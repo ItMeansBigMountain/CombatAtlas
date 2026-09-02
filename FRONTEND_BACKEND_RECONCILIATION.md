@@ -1,6 +1,6 @@
 # Frontend/backend reconciliation
 
-Verified: 2026-09-02T07:31:29Z
+Verified: 2026-09-02T07:42:16Z
 
 ## Result
 
@@ -41,5 +41,7 @@ From `combatAtlas_Backend/combatAtlas_Backend/`:
 
 Git alignment:
 
-- Local `HEAD`: `50e4db359ad4a9533c8ea772a73e938151d2ae8f`
-- Fetched `origin/main`: `50e4db359ad4a9533c8ea772a73e938151d2ae8f`
+- Local `HEAD`, fetched `origin/main`, live `refs/heads/main`, and the HeRmEz
+  parent gitlink were identical when this verification began. Exact commit
+  hashes are intentionally omitted because committing this report advances the
+  branch and parent pointer.
