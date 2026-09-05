@@ -2,26 +2,35 @@
 
 ## Environments
 
-- Pull requests: `.github/workflows/combatatlas-ci.yml` runs isolated web and Expo checks. Build artifacts are retained for 14 days.
-- Production web: `.github/workflows/combatatlas-deploy.yml` deploys `projects/CombatAtlas` to the protected `combatatlas-production` GitHub Environment.
-- Mobile preview: `.github/workflows/combatatlas-eas-preview.yml` is manual and uses the `preview` EAS profile. It queues internal iOS/Android builds only after `EXPO_TOKEN` is configured in the `combatatlas-preview` GitHub Environment.
+- Pull requests and manual dispatches: `.github/workflows/combatatlas-preview.yml` runs `npm test`, lint, and build, then creates and smoke-tests a Vercel preview.
+- Production web: intentionally not automated. Promotion remains gated on Oyama's browser review and explicit approval of a preview.
+- Mobile preview: local Expo export verification only. No EAS preview workflow or signed install link is currently configured.
 - Mobile production: intentionally not automated. Store signing, receipt verification, production ad IDs, and review gates must be completed first.
 
-Never copy credentials into workflow YAML. Vercel credentials are scoped as GitHub Environment secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID`. Expo uses only `EXPO_TOKEN` in the preview environment.
+Never copy credentials into workflow YAML. Vercel credentials are stored as GitHub repository secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID`.
 
 ## Release
 
-1. Require the `CombatAtlas CI` web and mobile jobs on pull requests.
-2. Merge to `main`; the production workflow rebuilds from the lockfile, deploys a prebuilt Vercel artifact, and smoke-tests the returned URL.
-3. Confirm the canonical alias externally: `curl --fail --location https://combatatlas-flame.vercel.app/`.
-4. For an internal mobile preview, configure `EXPO_TOKEN` and the Expo project ID once, then dispatch `CombatAtlas EAS preview` with `ios`, `android`, or `all`. Copy the EAS install link from the workflow log to testers.
+1. Require the `CombatAtlas Preview` job on pull requests.
+2. Open the workflow's Vercel preview URL and complete browser review. Do not promote it automatically.
+3. After explicit production approval, promote the reviewed deployment and confirm the canonical alias externally: `curl --fail --location https://combatatlas-flame.vercel.app/`.
+4. Mobile remains outside this web release path until an EAS preview workflow and signing prerequisites are configured.
 
-Current production deployment (2026-08-25):
+Current production deployment (verified 2026-09-05; not changed by the preview workflow):
 
 - Canonical alias: https://combatatlas-flame.vercel.app
-- Immutable deployment: https://combatatlas-5q5vngrjt-itmeansbigmountains-projects.vercel.app
+- Immutable deployment: https://combatatlas-jt3jry0wo-itmeansbigmountains-projects.vercel.app
+- Vercel deployment ID: `dpl_5MizirE9E4ubBcpmXL8BtiEFjVeX`
 - Vercel deployment status: Ready
-- External probe: currently HTTP 404 because account-level Vercel deployment protection still gates the project. The workflow smoke test intentionally fails until the alias is public.
+- External probe: HTTP 200 with title `CombatAtlas — Martial Arts Drill Database`.
+
+Current verified CI preview (2026-09-05):
+
+- Source commit: `e99119c2414744db89e7ca7053a998f35e5a9e5f`
+- Workflow run: https://github.com/ItMeansBigMountain/CombatAtlas/actions/runs/33948067111
+- Preview URL: https://combatatlas-cdz7crhhj-itmeansbigmountains-projects.vercel.app
+- Vercel deployment ID: `dpl_6q6PfAHQh6MKuAxmY1QvMRqtL8bU`
+- Verification: workflow passed; external HTTP 200; desktop 1440x900 and mobile 390x844 passed with no console errors, page errors, failed responses, or horizontal overflow.
 
 Current public remediation preview (2026-08-25):
 
