@@ -67,8 +67,10 @@ jobs:
 
       - name: Smoke test preview
         run: |
-          curl --fail --location --retry 5 --retry-delay 3 \
-            --output /tmp/combatatlas-preview.html \
-            "${{ steps.deploy.outputs.url }}"
+          vercel curl "${{ steps.deploy.outputs.url }}" \
+            --token="$VERCEL_TOKEN" \
+            --output /tmp/combatatlas-preview.html
           grep --fixed-strings '<title>CombatAtlas — Martial Arts Drill Database</title>' \
             /tmp/combatatlas-preview.html
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
