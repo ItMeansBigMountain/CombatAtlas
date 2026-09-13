@@ -1,6 +1,13 @@
 import fs from 'node:fs/promises';
+import path from 'node:path';
+
+import { buildAttribution, mergeRecords, normalizeWikipedia } from './lib/lawful-ingestion.mjs';
 
 const endpoint = 'https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Martial_arts_techniques&cmlimit=500&format=json&origin=*';
+const args = new Map(process.argv.slice(2).map((value, index, all) => value.startsWith('--') ? [value, all[index + 1]] : null).filter(Boolean));
+const outputPath = args.get('--output') ?? 'imports/wikipedia-techniques-normalized.json';
+const inputPath = args.get('--input');
+const retrievedAtUtc = args.get('--retrieved-at') ?? new Date().toISOString();
 async function fetchJson(url) {
   const response = await fetch(url, { headers: { 'User-Agent': 'CombatAtlas/1.0 data import' } });
   if (!response.ok) throw new Error(`${response.status} ${response.statusText} for ${url}`);
@@ -8,22 +15,30 @@ async function fetchJson(url) {
 }
 
 let pages;
-try {
+if (inputPath) {
+  const input = JSON.parse(await fs.readFile(inputPath, 'utf8'));
+  pages = input.records ?? input;
+} else try {
   const category = await fetchJson(endpoint);
   pages = category.query.categorymembers.filter((page) => page.ns === 0).slice(0, 160);
 } catch (error) {
-  console.warn(`Wikipedia live import unavailable (${error.message}); using bundled technique-index fallback.`);
-  const fallbackNames = ['Ashi guruma','Armbar','Back kick','Brazilian kick','Chokehold','Clinch fighting','Covering (martial arts)','De ashi barai','Double leg takedown','Elbow strike','Foot sweep','Front kick','Ground fighting','Hammerfist','Harai goshi','Head kick','Hip throw','Ippon seoi nage','Joint lock','Kata guruma','Knee strike','Low kick','Neck crank','Osoto gari','Parry','Punch (combat)','Rear naked choke','Roundhouse kick','Rubber guard','Shoulder throw','Side kick','Single-leg takedown','Spinning back fist','Sprawl (grappling)','Stance (martial arts)','Strike (attack)','Sweep (martial arts)','Throw (grappling)','Triangle choke','Uppercut','Wristlock','Uchi mata','Kimura lock','Omoplata','Guillotine choke','Ankle lock','Heel hook','Guard pass','Bridge and roll','Hip escape','Breakfall','Kesa gatame','Mount escape','Side control escape','Jab','Cross','Hook punch','Teep','Check hook','Bob and weave','Slip counter','Inside leg kick','Outside leg kick','Knee tap','Duck under','Arm drag','Sit-out','Granby roll','Shrimping','Technical stand-up','Men strike','Kote strike','Do strike','Sinawali','Hubud-lubud','Zornhau','Moulinet','Disarm','Knife defense'];
-  pages = fallbackNames.map((title, index) => ({ title, ns: 0, pageid: index }));
+  console.warn(`Wikipedia live import unavailable (${error.message}); using bundled API snapshot with real page IDs.`);
+  const fallback = JSON.parse(await fs.readFile('imports/research/wikipedia-martial-arts-techniques.json', 'utf8'));
+  pages = fallback.records;
 }
-const techniques = pages.map((page) => ({
-  name: page.title,
-  slug: page.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
-  source: 'Wikipedia category index',
-  sourceUrl: `https://en.wikipedia.org/wiki/${encodeURIComponent(page.title.replaceAll(' ', '_'))}`,
-  extract: '',
-  license: 'CC BY-SA; fetch summaries slowly and verify attribution before merging copied text into seed database',
-}));
-await fs.mkdir('imports', { recursive: true });
-await fs.writeFile('imports/wikipedia-techniques.json', JSON.stringify({ importedAt: new Date().toISOString(), count: techniques.length, techniques }, null, 2));
-console.log(`Imported ${techniques.length} Wikipedia martial arts technique records into imports/wikipedia-techniques.json`);
+async function existingRecords() {
+  try { return JSON.parse(await fs.readFile(outputPath, 'utf8')).records ?? []; }
+  catch (error) { if (error.code === 'ENOENT') return []; throw error; }
+}
+
+const normalized = normalizeWikipedia(pages, retrievedAtUtc);
+const records = mergeRecords(await existingRecords(), normalized);
+const document = { schemaVersion: 1, source: 'Wikipedia category index', generatedAtUtc: retrievedAtUtc, count: records.length, records };
+await fs.mkdir(path.dirname(outputPath), { recursive: true });
+await fs.writeFile(outputPath, `${JSON.stringify(document, null, 2)}\n`);
+let attributionRecords = records;
+try {
+  attributionRecords = attributionRecords.concat(JSON.parse(await fs.readFile('imports/bjjdata-normalized.json', 'utf8')).records ?? []);
+} catch (error) { if (error.code !== 'ENOENT') throw error; }
+await fs.writeFile('imports/ATTRIBUTION.md', buildAttribution(attributionRecords));
+console.log(`Imported ${normalized.length} Wikipedia records; ${records.length} deduplicated records in ${outputPath}`);

@@ -46,6 +46,25 @@ https://github.com/ubershmekel/bjjdata
 
 MIT-licensed BJJ clip/tag metadata. Good for optional BJJ enrichment.
 
+## Repeatable lawful imports
+
+Run `npm run import:bjjdata` and `npm run import:wikipedia` from this directory. Both importers:
+
+- write source records separately from the 22-art / 882-drill seed;
+- retain only factual names, IDs, tags, timestamps, and links (never video or instructional prose);
+- require source URL, allowlisted license, retrieval timestamp, attribution, and provenance;
+- deduplicate by stable source record ID and reject stale overwrites; and
+- regenerate `imports/ATTRIBUTION.md` from all normalized records.
+
+For deterministic/offline refreshes, pass the audited snapshots explicitly:
+
+```text
+node scripts/import_bjjdata.mjs --input imports/research/bjjdata-sample.json --retrieved-at 2026-09-13T07:00:00.000Z
+node scripts/import_wikipedia_techniques.mjs --input imports/research/wikipedia-martial-arts-techniques.json --retrieved-at 2026-09-13T07:00:00.000Z
+```
+
+The normalized outputs are `imports/bjjdata-normalized.json` and `imports/wikipedia-techniques-normalized.json`. Run `npm run validate:data` before committing refreshed data.
+
 ## Key-ready later
 
 ### Kaggle Grappling Techniques

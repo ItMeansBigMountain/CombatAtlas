@@ -1,0 +1,930 @@
+{
+  "schemaVersion": 1,
+  "source": "bjjdata",
+  "generatedAtUtc": "2026-09-13T07:00:00.000Z",
+  "count": 25,
+  "records": [
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2019-zajkowski-barros-1md:6:55-7:13",
+      "name": "Jakub Zajkowski vs Rafael Da Silva Barros - FINAL - London Warriors Cup 2019 - Black Adult",
+      "slug": "bjjdata-2019-zajkowski-barros-1md-6-55-7-13",
+      "techniqueFacets": [
+        "canto-choke",
+        "choke"
+      ],
+      "contextTags": [
+        "gi",
+        "top",
+        "tournament"
+      ],
+      "eventDate": "2019",
+      "participants": [
+        "Jakub Zajkowski",
+        "Rafael Da Silva Barros"
+      ],
+      "clip": {
+        "start": "6:55",
+        "end": "7:13"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=XtggrUd1q78",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2019-zajkowski-barros-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2020-gustavo-watson-1md:3:36-3:45",
+      "name": "Gustavo Batista VS Jake Watson / Pan Championship 2020",
+      "slug": "bjjdata-2020-gustavo-watson-1md-3-36-3-45",
+      "techniqueFacets": [
+        "arm-triangle"
+      ],
+      "contextTags": [
+        "gi",
+        "open-weight",
+        "tournament"
+      ],
+      "eventDate": "2020",
+      "participants": [
+        "Gustavo Batista",
+        "Jake Watson"
+      ],
+      "clip": {
+        "start": "3:36",
+        "end": "3:45"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=7YrUFIo609s",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2020-gustavo-watson-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2021-batista-passerrello-1md:2:00-2:19",
+      "name": "Gustavo Batista v Christopher Passerrello / Pan Championship 2021",
+      "slug": "bjjdata-2021-batista-passerrello-1md-2-00-2-19",
+      "techniqueFacets": [
+        "collar-choke",
+        "cross-collar-choke"
+      ],
+      "contextTags": [
+        "gi",
+        "heavy-weight",
+        "top",
+        "tournament"
+      ],
+      "eventDate": "2021",
+      "participants": [
+        "Gustavo Batista",
+        "Christopher Passerrello"
+      ],
+      "clip": {
+        "start": "2:00",
+        "end": "2:19"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=z4hiAPLdcOw",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2021-batista-passerrello-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2021-canuto-shields-1md:7:37-7:48",
+      "name": "Renato Canuto vs Jake Shields 3CG 8",
+      "slug": "bjjdata-2021-canuto-shields-1md-7-37-7-48",
+      "techniqueFacets": [
+        "armbar",
+        "flying",
+        "joint-lock"
+      ],
+      "contextTags": [
+        "no-gi",
+        "tournament"
+      ],
+      "eventDate": "2021",
+      "participants": [
+        "Renato Canuto",
+        "Jake Shields"
+      ],
+      "clip": {
+        "start": "7:37",
+        "end": "7:48"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=1KFOTybl2vw",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2021-canuto-shields-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2021-dalpra-tommy-1md:6:34-6:59",
+      "name": "Tainan Dalpra v Tommy Langaker / World Championship 2021",
+      "slug": "bjjdata-2021-dalpra-tommy-1md-6-34-6-59",
+      "techniqueFacets": [
+        "choke",
+        "collar-choke"
+      ],
+      "contextTags": [
+        "back",
+        "tournament"
+      ],
+      "eventDate": "2021",
+      "participants": [
+        "Tainan Dalpra",
+        "Tommy Langaker"
+      ],
+      "clip": {
+        "start": "6:34",
+        "end": "6:59"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=_VNIAkoTFYs",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2021-dalpra-tommy-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2021-galvao-levi-1md:1:22-1:57",
+      "name": "Micael Galvão vs Levi Jones-Leary. Quarterfinal 77kg Abu Dhabi World Professional Jiu Jitsu 2021",
+      "slug": "bjjdata-2021-galvao-levi-1md-1-22-1-57",
+      "techniqueFacets": [
+        "choke",
+        "triangle"
+      ],
+      "contextTags": [
+        "gi",
+        "light-weight",
+        "tournament"
+      ],
+      "eventDate": "2021",
+      "participants": [
+        "Micael Galvão",
+        "Levi Jones-Leary"
+      ],
+      "clip": {
+        "start": "1:22",
+        "end": "1:57"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=CijdjWsLh5c",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2021-galvao-levi-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2021-gordon-vagner-1md:21:29-21:42",
+      "name": "Gordon Ryan vs Vagner Rocha",
+      "slug": "bjjdata-2021-gordon-vagner-1md-21-29-21-42",
+      "techniqueFacets": [
+        "choke",
+        "reverse-triangle"
+      ],
+      "contextTags": [
+        "heavy-weight",
+        "no-gi",
+        "tournament"
+      ],
+      "eventDate": "2021-03-26",
+      "participants": [
+        "Gordon Ryan",
+        "Vagner Rocha"
+      ],
+      "clip": {
+        "start": "21:29",
+        "end": "21:42"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=JvEAAroDDqc",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2021-gordon-vagner-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2021-meregali-abreu-1md:2:55-3:12",
+      "name": "Nicholas Meregali v Roberto \"Cyborg\" Abreu / World Championship 2021",
+      "slug": "bjjdata-2021-meregali-abreu-1md-2-55-3-12",
+      "techniqueFacets": [
+        "choke",
+        "loop-choke"
+      ],
+      "contextTags": [
+        "bottom",
+        "gi",
+        "tournament"
+      ],
+      "eventDate": "2021",
+      "participants": [
+        "Nicholas Meregali",
+        "Roberto \"Cyborg\" Abreu"
+      ],
+      "clip": {
+        "start": "2:55",
+        "end": "3:12"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=FknfX8bvZMQ",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2021-meregali-abreu-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2021-meregali-tanaka-1md:1:31-1:57",
+      "name": "Nicholas Meregali v Marlon Tanaka / World Championship 2021",
+      "slug": "bjjdata-2021-meregali-tanaka-1md-1-31-1-57",
+      "techniqueFacets": [
+        "choke",
+        "triangle"
+      ],
+      "contextTags": [
+        "gi",
+        "tournament"
+      ],
+      "eventDate": "2021",
+      "participants": [
+        "Nicholas Meregali",
+        "Marlon Tanaka"
+      ],
+      "clip": {
+        "start": "1:31",
+        "end": "1:57"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=RZ55Cg0PxxU",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2021-meregali-tanaka-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-diogo-pinheiro-1md:9:20-9:47",
+      "name": "Diogo Reis v Lucas Pinheiro / World Championship 2022",
+      "slug": "bjjdata-2022-diogo-pinheiro-1md-9-20-9-47",
+      "techniqueFacets": [
+        "joint-lock",
+        "toe-hold"
+      ],
+      "contextTags": [
+        "gi",
+        "light-weight",
+        "tournament"
+      ],
+      "eventDate": "2022",
+      "participants": [
+        "Diogo Reis",
+        "Lucas Pinheiro"
+      ],
+      "clip": {
+        "start": "9:20",
+        "end": "9:47"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=UpThlsKJIIo",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-diogo-pinheiro-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-galvao-lucas-1md:10:20-10:44",
+      "name": "Micael Galvão Finaliza Lucas Hulk No BJJ STARS 8",
+      "slug": "bjjdata-2022-galvao-lucas-1md-10-20-10-44",
+      "techniqueFacets": [
+        "choke",
+        "sliding-collar-choke"
+      ],
+      "contextTags": [
+        "back",
+        "gi",
+        "middle-weight",
+        "tournament"
+      ],
+      "eventDate": "2022",
+      "participants": [
+        "Micael Galvão",
+        "Lucas Barbosa"
+      ],
+      "clip": {
+        "start": "10:20",
+        "end": "10:44"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=6YxnJbowEJ8",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-galvao-lucas-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-galvao-maia-1md:9:52-10:13",
+      "name": "Micael Galvâo v Pedro Maia / Brasileiro 2022",
+      "slug": "bjjdata-2022-galvao-maia-1md-9-52-10-13",
+      "techniqueFacets": [
+        "choke",
+        "side-triangle"
+      ],
+      "contextTags": [
+        "gi",
+        "middle-weight",
+        "tournament"
+      ],
+      "eventDate": "2022",
+      "participants": [
+        "Micael Galvâo",
+        "Pedro Maia"
+      ],
+      "clip": {
+        "start": "9:52",
+        "end": "10:13"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=D1wsP1qvmNY",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-galvao-maia-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-galvao-servio-1md:2:59-3:10",
+      "name": "Mica Galvão v Servio Tulio / Brasileiro 2022",
+      "slug": "bjjdata-2022-galvao-servio-1md-2-59-3-10",
+      "techniqueFacets": [
+        "armbar",
+        "joint-lock"
+      ],
+      "contextTags": [
+        "gi",
+        "middle-weight",
+        "tournament"
+      ],
+      "eventDate": "2022",
+      "participants": [
+        "Mica Galvão",
+        "Servio Tulio"
+      ],
+      "clip": {
+        "start": "2:59",
+        "end": "3:10"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=4Tr7R3oygO8",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-galvao-servio-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-gimenis-levi-1md:4:59-5:35",
+      "name": "Max Gimenis v Levi Moura / New Haven Open No-Gi 2022",
+      "slug": "bjjdata-2022-gimenis-levi-1md-4-59-5-35",
+      "techniqueFacets": [
+        "arm-triangle",
+        "choke",
+        "ultraheavy-weight"
+      ],
+      "contextTags": [
+        "no-gi",
+        "top",
+        "tournament"
+      ],
+      "eventDate": "2022",
+      "participants": [
+        "Max Gimenis",
+        "Levi Moura"
+      ],
+      "clip": {
+        "start": "4:59",
+        "end": "5:35"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=Ue3qYK8FhN0",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-gimenis-levi-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-kade-jimenez-1md:2:16-2:30",
+      "name": "2022 ADCC World Championships | Kade Ruotolo vs Roberto Jimenez",
+      "slug": "bjjdata-2022-kade-jimenez-1md-2-16-2-30",
+      "techniqueFacets": [
+        "heel-hook",
+        "joint-lock"
+      ],
+      "contextTags": [
+        "no-gi",
+        "tournament"
+      ],
+      "eventDate": "2022",
+      "participants": [
+        "Kade Ruotolo",
+        "Roberto Jimenez"
+      ],
+      "clip": {
+        "start": "2:16",
+        "end": "2:30"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=QUYui-viwwU",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-kade-jimenez-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-kade-pjb-1md:12:00-12:14",
+      "name": "2022 Match of The Year | Kade Ruotolo vs PJ Barch - 2022 ADCC World Championships",
+      "slug": "bjjdata-2022-kade-pjb-1md-12-00-12-14",
+      "techniqueFacets": [
+        "armbar",
+        "joint-lock"
+      ],
+      "contextTags": [
+        "no-gi",
+        "tournament"
+      ],
+      "eventDate": "2022",
+      "participants": [
+        "Kade Ruotolo",
+        "PJ Barch"
+      ],
+      "clip": {
+        "start": "12:00",
+        "end": "12:14"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=3gotA-Y0gXQ",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-kade-pjb-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-leandro-tosto-1md:8:48-9:14",
+      "name": "Leandro Lo v Bruno Tosto / Pan Championship 2022",
+      "slug": "bjjdata-2022-leandro-tosto-1md-8-48-9-14",
+      "techniqueFacets": [
+        "sliding-collar-choke"
+      ],
+      "contextTags": [
+        "back",
+        "gi",
+        "tournament"
+      ],
+      "eventDate": "2022",
+      "participants": [
+        "Leandro Lo",
+        "Bruno Tosto"
+      ],
+      "clip": {
+        "start": "8:48",
+        "end": "9:14"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=iK7X-O2HTlg",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-leandro-tosto-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-meregali-fellipe-1md:5:24-5:35",
+      "name": "Nicholas Meregali v Fellipe Andrew / World Championship 2022",
+      "slug": "bjjdata-2022-meregali-fellipe-1md-5-24-5-35",
+      "techniqueFacets": [
+        "choke",
+        "collar-choke",
+        "sliding-collar-choke"
+      ],
+      "contextTags": [
+        "back",
+        "gi",
+        "tournament"
+      ],
+      "eventDate": "2022",
+      "participants": [
+        "Nicholas Meregali",
+        "Fellipe Andrew"
+      ],
+      "clip": {
+        "start": "5:24",
+        "end": "5:35"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=8Hydk5Erhvc",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-meregali-fellipe-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-meregali-fellipe-armbarmd:5:44-5:50",
+      "name": "Nicholas Meregali v Fellipe Andrew / World Championship 2022",
+      "slug": "bjjdata-2022-meregali-fellipe-armbarmd-5-44-5-50",
+      "techniqueFacets": [
+        "armbar",
+        "joint-lock"
+      ],
+      "contextTags": [
+        "gi",
+        "open-weight",
+        "tournament"
+      ],
+      "eventDate": "2022",
+      "participants": [
+        "Nicholas Meregali",
+        "Fellipe Andrew"
+      ],
+      "clip": {
+        "start": "5:44",
+        "end": "5:50"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=M5DLu0PdI-w",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-meregali-fellipe-armbarmd",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-meregali-grout-1md:13:10-13:20",
+      "name": "Nicholas Meregali vs Breylor Grout | Tezos WNO: Who's Next Finale | Full Match",
+      "slug": "bjjdata-2022-meregali-grout-1md-13-10-13-20",
+      "techniqueFacets": [
+        "arm-triangle",
+        "choke"
+      ],
+      "contextTags": [
+        "back",
+        "no-gi",
+        "tournament"
+      ],
+      "eventDate": "2022",
+      "participants": [
+        "Nicholas Meregali",
+        "Breylor Grout"
+      ],
+      "clip": {
+        "start": "13:10",
+        "end": "13:20"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=geKoUDYj3Zs",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-meregali-grout-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-mergali-costa-1md:6:10-6:17",
+      "name": "Nicholas Meregali v Wallace Costa / World Championship 2022",
+      "slug": "bjjdata-2022-mergali-costa-1md-6-10-6-17",
+      "techniqueFacets": [
+        "choke",
+        "loop-choke"
+      ],
+      "contextTags": [
+        "bottom"
+      ],
+      "eventDate": "",
+      "participants": [
+        "Nicholas Meregali",
+        "Wallace Costa"
+      ],
+      "clip": {
+        "start": "6:10",
+        "end": "6:17"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=4otDPTc7_Ok",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-mergali-costa-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-tainan-andy-1md:4:39-5:30",
+      "name": "Tainan Dalpra v Andy Murasaki / World Championship 2022",
+      "slug": "bjjdata-2022-tainan-andy-1md-4-39-5-30",
+      "techniqueFacets": [
+        "choke",
+        "lapel-choke"
+      ],
+      "contextTags": [
+        "gi",
+        "middle-weight",
+        "top",
+        "tournament"
+      ],
+      "eventDate": "2022",
+      "participants": [
+        "Tainan Dalpra",
+        "Andy Murasaki"
+      ],
+      "clip": {
+        "start": "4:39",
+        "end": "5:30"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=2S3fK8lhueY",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-tainan-andy-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-tainan-caio-1md:2:00-2:12",
+      "name": "Tainan Dalpra v Caio Caetano / World Championship 2022",
+      "slug": "bjjdata-2022-tainan-caio-1md-2-00-2-12",
+      "techniqueFacets": [
+        "choke",
+        "sliding-collar-choke"
+      ],
+      "contextTags": [
+        "back",
+        "gi",
+        "middle-weight",
+        "tournament"
+      ],
+      "eventDate": "2022",
+      "participants": [
+        "Tainan Dalpra",
+        "Caio Caetano"
+      ],
+      "clip": {
+        "start": "2:00",
+        "end": "2:12"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=UmnDlhrwlXY",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-tainan-caio-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2022-tainan-roberto-1md:1:43-1:58",
+      "name": "Tainan Dalpra v Roberto Jimenez / Pan Championship 2022",
+      "slug": "bjjdata-2022-tainan-roberto-1md-1-43-1-58",
+      "techniqueFacets": [
+        "choke",
+        "triangle"
+      ],
+      "contextTags": [
+        "gi",
+        "tournament"
+      ],
+      "eventDate": "2022",
+      "participants": [
+        "Tainan Dalpra",
+        "Roberto Jimenez"
+      ],
+      "clip": {
+        "start": "1:43",
+        "end": "1:58"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=1e0aEtcr2Q0",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2022-tainan-roberto-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "recordType": "technique-evidence",
+      "sourceRecordId": "bjjdata:2023-meregali-kaynan-1md:15:20-15:33",
+      "name": "Tezos WNO 19 | Kaynan Duarte vs Nicholas Meregali",
+      "slug": "bjjdata-2023-meregali-kaynan-1md-15-20-15-33",
+      "techniqueFacets": [
+        "arm-triangle",
+        "choke"
+      ],
+      "contextTags": [
+        "no-gi",
+        "top",
+        "tournament"
+      ],
+      "eventDate": "2023",
+      "participants": [
+        "Nicholas Meregali",
+        "Kaynan Duarte"
+      ],
+      "clip": {
+        "start": "15:20",
+        "end": "15:33"
+      },
+      "source": "bjjdata",
+      "sourceUrl": "https://www.youtube.com/watch?v=0Dy2U48ADmE",
+      "repositoryUrl": "https://github.com/ubershmekel/bjjdata",
+      "license": "MIT",
+      "attribution": "bjjdata contributors; linked YouTube media remains owned and hosted by its respective rights holder.",
+      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "firstSeenAtUtc": "2026-09-10T05:31:46.789Z",
+      "provenance": {
+        "datasetUrl": "https://ubershmekel.github.io/bjjdata/data.json",
+        "upstreamEntryId": "2023-meregali-kaynan-1md",
+        "contentPolicy": "metadata-and-links-only"
+      }
+    }
+  ]
+}
