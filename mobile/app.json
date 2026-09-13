@@ -18,7 +18,8 @@
     },
     "web": {
       "bundler": "metro",
-      "output": "single"
+      "output": "single",
+      "favicon": "./assets/favicon.png"
     },
     "extra": {
       "adsMode": "test-only-until-production-ids-are-configured"
