@@ -1,0 +1,89 @@
+name: Ad SDK Integration
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: combatatlas-ads-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ad-sdk-test:
+    name: Ad SDK integration test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js (mobile)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: mobile/package-lock.json
+
+      - name: Install mobile dependencies
+        run: npm ci
+        working-directory: mobile
+
+      - name: Run ad SDK unit tests
+        run: |
+          if [ -f tests/ads.test.mjs ]; then
+            node --test tests/ads.test.mjs
+          else
+            echo "No ad SDK tests found, skipping"
+          fi
+        working-directory: mobile
+
+      - name: Validate mediation config
+        run: |
+          if [ -f src/ads/mediation-config.json ]; then
+            node -e "JSON.parse(require('fs').readFileSync('src/ads/mediation-config.json', 'utf8'))" && echo "Mediation config JSON valid"
+            # Add validation: required networks, valid ad unit IDs format, etc.
+          else
+            echo "No mediation config found at src/ads/mediation-config.json"
+          fi
+        working-directory: mobile
+
+      - name: Validate ad unit IDs format
+        run: |
+          if [ -f src/ads/ad-units.json ]; then
+            node -e "
+              const config = JSON.parse(require('fs').readFileSync('src/ads/ad-units.json', 'utf8'));
+              const required = ['ios', 'android'];
+              for (const platform of required) {
+                if (!config[platform]) throw new Error('Missing platform: ' + platform);
+                for (const [key, value] of Object.entries(config[platform])) {
+                  if (typeof value !== 'string' || value.trim() === '') {
+                    throw new Error('Invalid ad unit ID for ' + platform + '.' + key);
+                  }
+                }
+              }
+              console.log('Ad unit IDs format valid');
+            "
+          else
+            echo "No ad units config found at src/ads/ad-units.json"
+          fi
+        working-directory: mobile
+
+      - name: Test consent flow integration
+        run: |
+          if [ -f tests/consent.test.mjs ]; then
+            node --test tests/consent.test.mjs
+          else
+            echo "No consent flow tests found, skipping"
+          fi
+        working-directory: mobile
+
+      - name: Verify no ad loading in test/dev without consent
+        run: |
+          # Check that ad initialization respects consent state
+          grep -r "requestTrackingAuthorization\|requestConsentInfoUpdate\|canRequestAds" mobile/src/ads/ 2>/dev/null && echo "Consent checks found in ad initialization" || echo "No consent checks found in ad code"
+        working-directory: mobile

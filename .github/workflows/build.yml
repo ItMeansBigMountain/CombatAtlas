@@ -1,0 +1,95 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: combatatlas-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Vite web build
+  build-web:
+    name: Build web (Vite)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+      - name: Build web
+        run: npm run build
+
+      - name: Upload web build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-build
+          path: dist/
+          retention-days: 1
+
+  # Expo mobile web export
+  build-mobile-web:
+    name: Build mobile web (Expo export)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: mobile/package-lock.json
+
+      - name: Install mobile dependencies
+        run: npm ci
+        working-directory: mobile
+
+      - name: Test mobile
+        run: npm test
+        working-directory: mobile
+
+      - name: Export web (Expo)
+        run: npm run export:web
+        working-directory: mobile
+
+      - name: Verify mobile web output
+        run: |
+          if [ ! -f mobile/dist/index.html ]; then
+            echo "ERROR: mobile/dist/index.html not found after expo export"
+            exit 1
+          fi
+          echo "Expo web export verified: $(wc -c < mobile/dist/index.html) bytes"
+
+      - name: Upload mobile web build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-web-build
+          path: mobile/dist/
+          retention-days: 1

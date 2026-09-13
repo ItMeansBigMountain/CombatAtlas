@@ -1,0 +1,140 @@
+name: Mobile Build
+
+on:
+  push:
+    tags: ['v*.*.*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: combatatlas-mobile-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # EAS iOS dev build
+  ios-dev:
+    name: EAS iOS dev build
+    runs-on: macos-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: mobile/package-lock.json
+
+      - name: Install mobile dependencies
+        run: npm ci
+        working-directory: mobile
+
+      - name: Install EAS CLI
+        run: npm install --global eas-cli@latest
+
+      - name: Configure EAS
+        run: eas whoami
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Build iOS dev
+        run: eas build --platform ios --profile development --non-interactive --no-wait
+        working-directory: mobile
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+  # EAS Android internal track
+  android-internal:
+    name: EAS Android internal
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: mobile/package-lock.json
+
+      - name: Install mobile dependencies
+        run: npm ci
+        working-directory: mobile
+
+      - name: Install EAS CLI
+        run: npm install --global eas-cli@latest
+
+      - name: Configure EAS
+        run: eas whoami
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Build Android internal
+        run: eas build --platform android --profile internal --non-interactive --no-wait
+        working-directory: mobile
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+  # Submit to TestFlight (iOS) - manual trigger after build
+  submit-testflight:
+    name: Submit to TestFlight
+    runs-on: macos-latest
+    timeout-minutes: 30
+    needs: ios-dev
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: mobile/package-lock.json
+
+      - name: Install EAS CLI
+        run: npm install --global eas-cli@latest
+
+      - name: Submit to TestFlight
+        run: eas submit --platform ios --latest --non-interactive
+        working-directory: mobile
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          ASC_API_KEY_ID: ${{ secrets.ASC_API_KEY_ID }}
+          ASC_API_KEY_ISSUER: ${{ secrets.ASC_API_KEY_ISSUER }}
+          ASC_API_KEY_P8: ${{ secrets.ASC_API_KEY_P8 }}
+
+  # Submit to Play Console internal (Android) - manual trigger after build
+  submit-play-internal:
+    name: Submit to Play Console internal
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: android-internal
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: mobile/package-lock.json
+
+      - name: Install EAS CLI
+        run: npm install --global eas-cli@latest
+
+      - name: Submit to Play Console internal
+        run: eas submit --platform android --latest --non-interactive
+        working-directory: mobile
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}

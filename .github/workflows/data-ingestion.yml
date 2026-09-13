@@ -1,0 +1,95 @@
+name: Data Ingestion
+
+on:
+  schedule:
+    # Daily at 03:00 UTC
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    inputs:
+      source:
+        description: 'Data source to ingest (bjjdata, wikipedia, or all)'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - bjjdata
+          - wikipedia
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: combatatlas-data-ingestion-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    name: Provenance-aware data ingestion
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run bjjdata importer
+        if: ${{ github.event.inputs.source == 'all' || github.event.inputs.source == 'bjjdata' }}
+        run: npm run import:bjjdata
+
+      - name: Run Wikipedia importer
+        if: ${{ github.event.inputs.source == 'all' || github.event.inputs.source == 'wikipedia' }}
+        run: npm run import:wikipedia
+
+      - name: Validate data
+        run: npm run validate:data
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet imports/; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes in imports/"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Changes detected in imports/"
+          fi
+
+      - name: Create PR with updates
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'data: update normalized imports from scheduled ingestion'
+          title: 'chore(data): scheduled provenance-aware ingestion update'
+          body: |
+            Automated data ingestion from scheduled workflow.
+
+            Sources ingested:
+            - ${{ github.event.inputs.source == 'all' && 'bjjdata + wikipedia' || github.event.inputs.source }}
+
+            All records include full provenance (source URL, license, retrieved-at, content hash).
+            Deduplication preserves earliest first-seen timestamp and merges additional provenance.
+          branch: data/ingestion-${{ github.run_id }}
+          labels: |
+            data-ingestion
+            automated
+          reviewers: ${{ github.repository_owner }}
+
+      - name: Log result
+        if: steps.changes.outputs.changed == 'false'
+        run: echo "No data changes detected; no PR created."
