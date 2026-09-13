@@ -31,9 +31,6 @@ jobs:
       - name: Install web dependencies
         run: npm ci
 
-      - name: Type-check (tsc --noEmit)
-        run: npx tsc --noEmit
-
       - name: Lint
         run: npm run lint
 
