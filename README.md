@@ -2,9 +2,9 @@
 
 CombatAtlas is now a Vercel-ready React/Vite app with a bundled local martial arts drill atlas. The Vite and Expo clients intentionally ship the same catalog and media modules; `npm test` fails if either client drifts from the other.
 
-An Expo source shell is available in `mobile/`. Web, iOS, and Android JavaScript exports are verified locally, but there are no signed/installable native builds yet. iPhone testing is supported through Expo Go; Android is export-only until an EAS build is published. It preserves the same 22-art catalog and 15 published drill guides, plus consent-first test ads and a receipt-verifying remove-ads boundary. See `mobile/README.md` for the exact support boundary and verification commands.
+An Expo source shell is available in `mobile/`. Web, iOS, and Android JavaScript exports are verified locally, but there are no signed/installable native builds yet. The linked EAS project is `https://expo.dev/accounts/sosai.oyama/projects/combatatlas`; iPhone testing is supported through Expo Go, while native install links require a successful EAS internal build. It preserves the same 22-art catalog and 15 published drill guides, plus consent-first test ads and a receipt-verifying remove-ads boundary. See `mobile/README.md` for the exact support boundary and verification commands.
 
-CI/CD, environment separation, release, and rollback procedures are documented in `RELEASE.md`. The canonical Vercel alias is `https://combatatlas-flame.vercel.app`; its current deployment-protection blocker is recorded there rather than hidden.
+CI/CD, environment separation, release, and rollback procedures are documented in `RELEASE.md`. The canonical Vercel alias is `https://combatatlas-flame.vercel.app` and is anonymously reachable.
 
 ## Current shipped state
 

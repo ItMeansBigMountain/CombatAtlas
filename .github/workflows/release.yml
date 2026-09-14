@@ -1,8 +1,6 @@
 name: Release
 
 on:
-  push:
-    tags: ['v*.*.*']
   workflow_dispatch:
 
 permissions:
@@ -30,9 +28,6 @@ jobs:
 
       - name: Install web dependencies
         run: npm ci
-
-      - name: Type-check (tsc --noEmit)
-        run: npx tsc --noEmit
 
       - name: Lint
         run: npm run lint
@@ -214,7 +209,7 @@ jobs:
         env:
           BASE_URL: ${{ vars.STAGING_URL || 'https://combatatlas-flame.vercel.app' }}
 
-  # GATE 4: Gate summary + deploy blocker
+  # GATE 4: Gate summary. Production promotion is intentionally out of scope.
   gate-summary:
     name: Gate summary (blocks deploy on failure)
     runs-on: ubuntu-latest
@@ -246,36 +241,6 @@ jobs:
             echo "Deploy blocked - failed gates:$FAILED"
             exit 1
           fi
-          echo "All promotion gates passed. Proceeding to deploy."
+          echo "All release-candidate gates passed. No production deployment was requested."
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  # DEPLOY: runs only after all gates pass
-  deploy-production:
-    name: Deploy to production (Vercel)
-    runs-on: ubuntu-latest
-    environment:
-      name: production
-      url: ${{ vars.DEPLOY_URL || 'https://combatatlas-flame.vercel.app' }}
-    needs: [quality-gate, mobile-web-gate, desktop-gate, gate-summary]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build web
-        run: npm run build
-
-      - name: Deploy to Vercel (production)
-        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
