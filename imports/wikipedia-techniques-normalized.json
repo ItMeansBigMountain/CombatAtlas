@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "Wikipedia category index",
-  "generatedAtUtc": "2026-09-13T07:00:00.000Z",
+  "generatedAtUtc": "2026-09-14T19:20:49.705Z",
   "count": 78,
   "records": [
     {
@@ -14,7 +14,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Nip-up",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Nip-up”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 10122683,
@@ -33,7 +33,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/List_of_capoeira_techniques",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “List of capoeira techniques”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 10421353,
@@ -52,7 +52,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Stance_(martial_arts)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Stance (martial arts)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 10448601,
@@ -71,7 +71,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Open-hand_strikes",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Open-hand strikes”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 11151044,
@@ -90,7 +90,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Grappling",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Grappling”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 12564,
@@ -109,7 +109,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Pin_(sport_wrestling)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Pin (sport wrestling)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 13263345,
@@ -128,7 +128,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Touch_of_Death",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Touch of Death”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 13320978,
@@ -147,7 +147,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Kick",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Kick”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 16831,
@@ -166,7 +166,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Front_kick",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Front kick”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 1883461,
@@ -185,7 +185,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Chokehold",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Chokehold”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 1905451,
@@ -204,7 +204,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Ground_fighting",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Ground fighting”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 1956937,
@@ -223,7 +223,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/540_kick",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “540 kick”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 1995610,
@@ -242,7 +242,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Maipayat",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Maipayat”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 21915038,
@@ -261,7 +261,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Butterfly_kick",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Butterfly kick”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 2322187,
@@ -280,7 +280,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Lotus_kick",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Lotus kick”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 2399039,
@@ -299,7 +299,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Foot_sweep",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Foot sweep”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 2399047,
@@ -318,7 +318,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Aerial_cartwheel",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Aerial cartwheel”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 2425545,
@@ -337,7 +337,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Rubber_guard",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Rubber guard”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 24462403,
@@ -356,7 +356,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Taiho-jutsu",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Taiho-jutsu”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 25160190,
@@ -375,7 +375,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Joint_lock",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Joint lock”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 2575550,
@@ -394,7 +394,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Aliveness",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Aliveness”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 26997901,
@@ -413,7 +413,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Tsubame_gaeshi",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Tsubame gaeshi”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 28417323,
@@ -432,7 +432,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Choke-out",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Choke-out”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 31547326,
@@ -451,7 +451,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Kip-up",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Kip-up”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 3364116,
@@ -470,7 +470,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Tricking_(martial_arts)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Tricking (martial arts)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 33675167,
@@ -489,7 +489,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Roundhouse_kick",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Roundhouse kick”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 3434868,
@@ -508,7 +508,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Fish-hooking",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Fish-hooking”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 3522903,
@@ -527,7 +527,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Eye-gouging",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Eye-gouging”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 3523296,
@@ -546,7 +546,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Clinch_fighting",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Clinch fighting”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 3524194,
@@ -565,7 +565,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Throw_(grappling)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Throw (grappling)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 3538948,
@@ -584,7 +584,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Poking",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Poking”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 36894282,
@@ -603,7 +603,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Fergality",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Fergality”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 38981652,
@@ -622,7 +622,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Transition_(grappling)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Transition (grappling)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 4037113,
@@ -641,7 +641,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Groin_attack",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Groin attack”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 4218003,
@@ -660,7 +660,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Do-jime",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Do-jime”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 4277383,
@@ -679,7 +679,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Gainer_flash",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Gainer flash”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 4465680,
@@ -698,7 +698,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Touchless_knockout",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Touchless knockout”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 47566602,
@@ -717,7 +717,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Covering_(martial_arts)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Covering (martial arts)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 47690601,
@@ -736,7 +736,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Double_Leg_(trick)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Double Leg (trick)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 5076628,
@@ -755,7 +755,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Punch_(combat)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Punch (combat)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 509403,
@@ -774,7 +774,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Kata_guruma",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Kata guruma”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 5148346,
@@ -793,7 +793,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/De_ashi_barai",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “De ashi barai”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 5292534,
@@ -812,7 +812,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Hiza_guruma",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Hiza guruma”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 5318013,
@@ -831,7 +831,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Meia_lua_de_compasso",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Meia lua de compasso”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 55431987,
@@ -850,7 +850,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Okuri_ashi_barai",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Okuri ashi barai”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 5653681,
@@ -869,7 +869,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Ippon_seoi_nage",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Ippon seoi nage”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 5654370,
@@ -888,7 +888,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Gyaku_J%C5%ABji-jime",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Gyaku Jūji-jime”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 5656389,
@@ -907,7 +907,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Kata_juji_jime",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Kata juji jime”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 5656450,
@@ -926,7 +926,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Strike_(attack)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Strike (attack)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 574095,
@@ -945,7 +945,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Harai_goshi",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Harai goshi”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 5784294,
@@ -964,7 +964,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Hane_goshi",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Hane goshi”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 5824635,
@@ -983,7 +983,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Breaking_(martial_arts)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Breaking (martial arts)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 5841355,
@@ -1002,7 +1002,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Kata_ha_jime",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Kata ha jime”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 5910804,
@@ -1021,7 +1021,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Kata_te_jime",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Kata te jime”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 5912039,
@@ -1040,7 +1040,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Hammerblow",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Hammerblow”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6053496,
@@ -1059,7 +1059,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Cartwheel_kick",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Cartwheel kick”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6219721,
@@ -1078,7 +1078,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Ashi_guruma",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Ashi guruma”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6563922,
@@ -1097,7 +1097,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Harai_tsurikomi_ashi",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Harai tsurikomi ashi”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6564118,
@@ -1116,7 +1116,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Hane_makikomi",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Hane makikomi”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6579631,
@@ -1135,7 +1135,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Hikikomi_gaeshi",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Hikikomi gaeshi”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6600012,
@@ -1154,7 +1154,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Daki_wakare",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Daki wakare”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6600264,
@@ -1173,7 +1173,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Daki_age",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Daki age”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6612740,
@@ -1192,7 +1192,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Harai_goshi_gaeshi",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Harai goshi gaeshi”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6616634,
@@ -1211,7 +1211,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Hane_goshi_gaeshi",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Hane goshi gaeshi”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6616757,
@@ -1230,7 +1230,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Kawazu_gake",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Kawazu gake”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6617222,
@@ -1249,7 +1249,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Harai_makikomi",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Harai makikomi”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6617345,
@@ -1268,7 +1268,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Fighting_Woman_News",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Fighting Woman News”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 66868954,
@@ -1287,7 +1287,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Ashi-Hishigi",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Ashi-Hishigi”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6780848,
@@ -1306,7 +1306,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Boxing_styles_and_technique",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Boxing styles and technique”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6822383,
@@ -1325,7 +1325,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Ganseki_otoshi",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Ganseki otoshi”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 6960692,
@@ -1344,7 +1344,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Sweep_(martial_arts)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Sweep (martial arts)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 7216031,
@@ -1363,7 +1363,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Scorpion_kick_(capoeira)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Scorpion kick (capoeira)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 74662807,
@@ -1382,7 +1382,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Negativa",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Negativa”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 74700856,
@@ -1401,7 +1401,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Crab_Defense_(boxing_style)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Crab Defense (boxing style)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 79807871,
@@ -1420,7 +1420,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Long_guard",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Long guard”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 80291957,
@@ -1439,7 +1439,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Triangle_theory_(boxing)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Triangle theory (boxing)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 80411051,
@@ -1458,7 +1458,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Centerline_theory_(boxing)",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Centerline theory (boxing)”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 80512920,
@@ -1477,7 +1477,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Pressure_point",
       "license": "CC BY-SA 4.0",
       "attribution": "Wikipedia contributors, “Pressure point”, retrieved via the MediaWiki Action API.",
-      "retrievedAtUtc": "2026-09-13T07:00:00.000Z",
+      "retrievedAtUtc": "2026-09-14T19:20:49.705Z",
       "firstSeenAtUtc": "2026-09-13T07:00:00.000Z",
       "provenance": {
         "pageid": 810547,
