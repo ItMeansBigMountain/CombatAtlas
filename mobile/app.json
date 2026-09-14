@@ -22,7 +22,11 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
-      "adsMode": "test-only-until-production-ids-are-configured"
-    }
+      "adsMode": "test-only-until-production-ids-are-configured",
+      "eas": {
+        "projectId": "ba4964b4-58c0-454b-9f07-8b7f7ea8949c"
+      }
+    },
+    "owner": "sosai.oyama"
   }
 }

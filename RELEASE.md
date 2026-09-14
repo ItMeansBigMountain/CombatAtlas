@@ -2,9 +2,9 @@
 
 ## Environments
 
-- Pull requests and manual dispatches: `.github/workflows/combatatlas-preview.yml` runs `npm test`, lint, and build, then creates and smoke-tests a Vercel preview.
+- Pull requests and branch pushes: `.github/workflows/preview.yml` verifies both clients and deploys Vercel web previews. `.github/workflows/build.yml` provides independent web and Expo-web build artifacts.
 - Production web: intentionally not automated. Promotion remains gated on Oyama's browser review and explicit approval of a preview.
-- Mobile preview: local Expo export verification only. No EAS preview workflow or signed install link is currently configured.
+- Mobile preview: `.github/workflows/mobile.yml` can queue EAS internal iOS/Android previews after the required signing credentials are available. The project is linked at `https://expo.dev/accounts/sosai.oyama/projects/combatatlas`; no signed install link has been produced yet.
 - Mobile production: intentionally not automated. Store signing, receipt verification, production ad IDs, and review gates must be completed first.
 
 Never copy credentials into workflow YAML. Vercel credentials are stored as GitHub repository secrets: `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID`.
@@ -14,7 +14,7 @@ Never copy credentials into workflow YAML. Vercel credentials are stored as GitH
 1. Require the `CombatAtlas Preview` job on pull requests.
 2. Open the workflow's Vercel preview URL and complete browser review. Do not promote it automatically.
 3. After explicit production approval, promote the reviewed deployment and confirm the canonical alias externally: `curl --fail --location https://combatatlas-flame.vercel.app/`.
-4. Mobile remains outside this web release path until an EAS preview workflow and signing prerequisites are configured.
+4. Mobile remains outside this web release path until the EAS internal workflow returns signed install links and device launch is verified.
 
 Current production deployment (verified 2026-09-05; not changed by the preview workflow):
 
@@ -46,7 +46,7 @@ Current public remediation preview (2026-08-25):
 
 ## Current mobile support boundary
 
-Local Expo exports are verified for web, iOS, and Android. These exports are JavaScript bundles, not signed installable applications, and native device launch has not been verified. Until EAS credentials and project configuration are available:
+Local Expo exports are verified for web, iOS, and Android. These exports are JavaScript bundles, not signed installable applications, and native device launch has not been verified. Until EAS signing credentials are available and a build succeeds:
 
 1. iPhone testing is development-only through Expo Go: `cd projects/CombatAtlas/mobile && npm ci && npm start -- --tunnel`, then scan the QR with the iPhone Camera app.
 2. Android is source/export-only; there is no APK, AAB, Play internal-testing URL, or verified native launch.

@@ -41,8 +41,8 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Build iOS dev
-        run: eas build --platform ios --profile development --non-interactive --no-wait
+      - name: Build iOS internal preview
+        run: eas build --platform ios --profile preview --non-interactive --no-wait
         working-directory: mobile
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
