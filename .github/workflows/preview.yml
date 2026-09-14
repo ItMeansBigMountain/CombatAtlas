@@ -38,13 +38,19 @@ jobs:
       - name: Build web
         run: npm run build
 
+      - name: Install current Vercel CLI
+        run: npm install --global vercel@latest
+
       - name: Deploy web preview
         id: web-deploy
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          url="$(vercel deploy --token="$VERCEL_TOKEN")"
+          printf 'preview-url=%s\n' "$url" >> "$GITHUB_OUTPUT"
+          printf 'Web preview: %s\n' "$url" >> "$GITHUB_STEP_SUMMARY"
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Set up Node.js (mobile)
         uses: actions/setup-node@v4
@@ -65,23 +71,13 @@ jobs:
         run: npm run export:web
         working-directory: mobile
 
-      - name: Deploy mobile preview
-        id: mobile-deploy
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_MOBILE_PROJECT_ID }}
-          working-directory: mobile
-
       - name: Comment preview URLs on PR
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
           script: |
             const webUrl = '${{ steps.web-deploy.outputs.preview-url }}';
-            const mobileUrl = '${{ steps.mobile-deploy.outputs.preview-url }}';
-            const body = `## 🔗 CombatAtlas Preview Deployments\n\n**Web (Vite):** ${webUrl}\n\n**Mobile Web (Expo):** ${mobileUrl}\n\n_These are immutable preview URLs from this PR's workflow run._`;
+            const body = `## CombatAtlas preview\n\n**Web (Vite):** ${webUrl}\n\nThe Expo web export was verified in CI. Native test routes are tracked through EAS, not Vercel.\n\n_This is an immutable preview URL from this PR's workflow run._`;
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
