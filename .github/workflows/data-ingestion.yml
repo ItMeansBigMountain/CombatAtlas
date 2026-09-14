@@ -17,8 +17,7 @@ on:
           - wikipedia
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 concurrency:
   group: combatatlas-data-ingestion-${{ github.ref }}
@@ -29,14 +28,9 @@ jobs:
     name: Provenance-aware data ingestion
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -58,38 +52,20 @@ jobs:
       - name: Validate data
         run: npm run validate:data
 
-      - name: Check for changes
-        id: changes
+      - name: Summarize changes
         run: |
           if git diff --quiet imports/; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-            echo "No changes in imports/"
+            echo "No normalized import changes." >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "changed=true" >> $GITHUB_OUTPUT
-            echo "Changes detected in imports/"
+            echo "Normalized import changes are available in the workflow artifact for human review." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Create PR with updates
-        if: steps.changes.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v6
+      - name: Upload provenance-validated imports
+        uses: actions/upload-artifact@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'data: update normalized imports from scheduled ingestion'
-          title: 'chore(data): scheduled provenance-aware ingestion update'
-          body: |
-            Automated data ingestion from scheduled workflow.
-
-            Sources ingested:
-            - ${{ github.event_name == 'schedule' && 'bjjdata + wikipedia' || (github.event.inputs.source == 'all' && 'bjjdata + wikipedia' || github.event.inputs.source) }}
-
-            All records include full provenance (source URL, license, retrieved-at, content hash).
-            Deduplication preserves earliest first-seen timestamp and merges additional provenance.
-          branch: data/ingestion-${{ github.run_id }}
-          labels: |
-            data-ingestion
-            automated
-          reviewers: ${{ github.repository_owner }}
-
-      - name: Log result
-        if: steps.changes.outputs.changed == 'false'
-        run: echo "No data changes detected; no PR created."
+          name: provenance-validated-imports-${{ github.run_id }}
+          path: |
+            imports/*-normalized.json
+            imports/ATTRIBUTION.md
+          retention-days: 14
+          if-no-files-found: error
