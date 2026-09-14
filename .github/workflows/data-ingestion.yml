@@ -48,11 +48,11 @@ jobs:
         run: npm ci
 
       - name: Run bjjdata importer
-        if: ${{ github.event.inputs.source == 'all' || github.event.inputs.source == 'bjjdata' }}
+        if: ${{ github.event_name == 'schedule' || github.event.inputs.source == 'all' || github.event.inputs.source == 'bjjdata' }}
         run: npm run import:bjjdata
 
       - name: Run Wikipedia importer
-        if: ${{ github.event.inputs.source == 'all' || github.event.inputs.source == 'wikipedia' }}
+        if: ${{ github.event_name == 'schedule' || github.event.inputs.source == 'all' || github.event.inputs.source == 'wikipedia' }}
         run: npm run import:wikipedia
 
       - name: Validate data
@@ -80,7 +80,7 @@ jobs:
             Automated data ingestion from scheduled workflow.
 
             Sources ingested:
-            - ${{ github.event.inputs.source == 'all' && 'bjjdata + wikipedia' || github.event.inputs.source }}
+            - ${{ github.event_name == 'schedule' && 'bjjdata + wikipedia' || (github.event.inputs.source == 'all' && 'bjjdata + wikipedia' || github.event.inputs.source) }}
 
             All records include full provenance (source URL, license, retrieved-at, content hash).
             Deduplication preserves earliest first-seen timestamp and merges additional provenance.
